@@ -1,4 +1,3 @@
-
 require_relative "lib/rexml/rexml"
 
 Gem::Specification.new do |spec|
