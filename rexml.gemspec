@@ -6,8 +6,8 @@ require "rexml/rexml"
 Gem::Specification.new do |spec|
   spec.name          = "rexml"
   spec.version       = REXML::VERSION
-  spec.authors       = ["SHIBATA Hiroshi"]
-  spec.email         = ["hsbt@ruby-lang.org"]
+  spec.authors       = ["Kouhei Sutou"]
+  spec.email         = ["kou@cozmixng.org"]
 
   spec.summary       = %q{An XML toolkit for Ruby}
   spec.description   = %q{An XML toolkit for Ruby}
