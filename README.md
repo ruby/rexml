@@ -1,8 +1,8 @@
-# Rexml
+# REXML
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/rexml`. To experiment with that code, run `bin/console` for an interactive prompt.
+REXML was inspired by the Electric XML library for Java, which features an easy-to-use API, small size, and speed. Hopefully, REXML, designed with the same philosophy, has these same features. I've tried to keep the API as intuitive as possible, and have followed the Ruby methodology for method naming and code flow, rather than mirroring the Java API.
 
-TODO: Delete this and the text above, and describe your gem
+REXML supports both tree and stream document parsing. Stream parsing is faster (about 1.5 times as fast). However, with stream parsing, you don't get access to features such as XPath.
 
 ## Installation
 
@@ -22,7 +22,28 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+We'll start with parsing an XML document
+
+```
+require "rexml/document"
+file = File.new( "mydoc.xml" )
+doc = REXML::Document.new file
+```
+
+Line 3 creates a new document and parses the supplied file. You can also do the following
+
+```
+require "rexml/document"
+include REXML  # so that we don't have to prefix everything with REXML::...
+string = <<EOF
+  <mydoc>
+    <someelement attribute="nanoo">Text, text, text</someelement>
+  </mydoc>
+EOF
+doc = Document.new string
+```
+
+So parsing a string is just as easy as parsing a file.
 
 ## Development
 
