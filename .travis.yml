@@ -2,6 +2,8 @@ notifications:
   webhooks:
     - https://webhook.commit-email.info/
 rvm:
+  - 2.3
+  - 2.4.4
   - 2.5.1
   - ruby-head
 before_install:
