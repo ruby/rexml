@@ -96,27 +96,28 @@ module REXML
 
       @raw = false
       @parent = nil
+      @entity_filter = nil
 
       if parent
         super( parent )
         @raw = parent.raw
       end
 
-      @raw = raw unless raw.nil?
-      @entity_filter = entity_filter
-      clear_cache
-
       if arg.kind_of? String
         @string = arg.dup
-        @string.squeeze!(" \n\t") unless respect_whitespace
       elsif arg.kind_of? Text
-        @string = arg.to_s
+        @string = arg.instance_variable_get(:@string).dup
         @raw = arg.raw
+        @entity_filter = arg.instance_variable_get(:@entity_filter)
       elsif
         raise "Illegal argument of type #{arg.type} for Text constructor (#{arg})"
       end
 
-      @string.gsub!( /\r\n?/, "\n" )
+      @string.squeeze!(" \n\t") unless respect_whitespace
+      @string.gsub!(/\r\n?/, "\n")
+      @raw = raw unless raw.nil?
+      @entity_filter = entity_filter if entity_filter
+      clear_cache
 
       Text.check(@string, illegal, doctype) if @raw
     end
@@ -181,7 +182,7 @@ module REXML
 
 
     def clone
-      return Text.new(self)
+      return Text.new(self, true)
     end
 
 
