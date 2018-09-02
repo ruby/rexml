@@ -1,5 +1,8 @@
 sudo: false
 language: ruby
+notifications:
+  webhooks:
+    - https://webhook.commit-email.info/
 rvm:
   - 2.5.1
   - ruby-head
