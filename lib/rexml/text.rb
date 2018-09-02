@@ -226,9 +226,7 @@ module REXML
     #   u.to_s   #-> "sean russell"
     def to_s
       return @string if @raw
-      return @normalized if @normalized
-
-      @normalized = Text::normalize( @string, doctype, @entity_filter )
+      @normalized ||= Text::normalize( @string, doctype, @entity_filter )
     end
 
     def inspect
@@ -249,8 +247,7 @@ module REXML
     #   u = Text.new( "sean russell", false, nil, true )
     #   u.value   #-> "sean russell"
     def value
-      return @unnormalized if @unnormalized
-      @unnormalized = Text::unnormalize( @string, doctype )
+      @unnormalized ||= Text::unnormalize( @string, doctype )
     end
 
     # Sets the contents of this text node.  This expects the text to be
