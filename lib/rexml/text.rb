@@ -264,16 +264,16 @@ module REXML
       @raw = false
     end
 
-     def wrap(string, width, addnewline=false)
-       # Recursively wrap string at width.
-       return string if string.length <= width
-       place = string.rindex(' ', width) # Position in string with last ' ' before cutoff
-       if addnewline then
-         return "\n" + string[0,place] + "\n" + wrap(string[place+1..-1], width)
-       else
-         return string[0,place] + "\n" + wrap(string[place+1..-1], width)
-       end
-     end
+    def wrap(string, width, addnewline=false)
+      # Recursively wrap string at width.
+      return string if string.length <= width
+      place = string.rindex(' ', width) # Position in string with last ' ' before cutoff
+      if addnewline then
+        return "\n" + string[0,place] + "\n" + wrap(string[place+1..-1], width)
+      else
+        return string[0,place] + "\n" + wrap(string[place+1..-1], width)
+      end
+    end
 
     def indent_text(string, level=1, style="\t", indentfirstline=true)
       return string if level < 0
