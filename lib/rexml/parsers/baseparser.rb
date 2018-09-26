@@ -224,7 +224,10 @@ module REXML
             standalone = standalone[1] unless standalone.nil?
             return [ :xmldecl, version, encoding, standalone ]
           when INSTRUCTION_START
-            return [ :processing_instruction, *@source.match(INSTRUCTION_PATTERN, true)[1,2] ]
+            if (pi = @source.match(INSTRUCTION_PATTERN, true)).nil?
+              raise REXML::ParseException.new("Incomplete processing instruction node")
+            end
+            return [ :processing_instruction, *pi[1,2] ]
           when DOCTYPE_START
             md = @source.match( DOCTYPE_PATTERN, true )
             @nsstack.unshift(curr_ns=Set.new)
