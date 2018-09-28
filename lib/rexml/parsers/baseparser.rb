@@ -55,7 +55,7 @@ module REXML
       XMLDECL_START = /\A<\?xml\s/u;
       XMLDECL_PATTERN = /<\?xml\s+(.*?)\?>/um
       INSTRUCTION_START = /\A<\?/u
-      INSTRUCTION_PATTERN = /<\?(.*?)(\s+.*?)?\?>/um
+      INSTRUCTION_PATTERN = /<\?(#{NAME_STR})(\s+.*?)?\?>/um
       TAG_MATCH = /^<((?>#{NAME_STR}))\s*((?>\s+#{UNAME_STR}\s*=\s*(["']).*?\5)*)\s*(\/)?>/um
       CLOSE_MATCH = /^\s*<\/(#{NAME_STR})\s*>/um
 
@@ -224,10 +224,7 @@ module REXML
             standalone = standalone[1] unless standalone.nil?
             return [ :xmldecl, version, encoding, standalone ]
           when INSTRUCTION_START
-            if (pi = @source.match(INSTRUCTION_PATTERN, true)).nil?
-              raise REXML::ParseException.new("Incomplete processing instruction node")
-            end
-            return [ :processing_instruction, *pi[1,2] ]
+            return process_instruction
           when DOCTYPE_START
             md = @source.match( DOCTYPE_PATTERN, true )
             @nsstack.unshift(curr_ns=Set.new)
@@ -365,10 +362,7 @@ module REXML
               raise REXML::ParseException.new( "Declarations can only occur "+
                 "in the doctype declaration.", @source)
             elsif @source.buffer[1] == ??
-              md = @source.match( INSTRUCTION_PATTERN, true )
-              return [ :processing_instruction, md[1], md[2] ] if md
-              raise REXML::ParseException.new( "Bad instruction declaration",
-                @source)
+              return process_instruction
             else
               # Get the next tag
               md = @source.match(TAG_MATCH, true)
@@ -510,6 +504,15 @@ module REXML
         return false if xml_declaration_encoding.nil?
         return false if /\AUTF-16\z/i =~ xml_declaration_encoding
         true
+      end
+
+      def process_instruction
+        match_data = @source.match(INSTRUCTION_PATTERN, true)
+        unless match_data
+          message = "Invalid processing instruction node"
+          raise REXML::ParseException.new(message, @source)
+        end
+        [:processing_instruction, match_data[1], match_data[4]]
       end
     end
   end
