@@ -336,11 +336,12 @@ module REXML
             if @source.buffer[1] == ?/
               @nsstack.shift
               last_tag = @tags.pop
-              #md = @source.match_to_consume( '>', CLOSE_MATCH)
               md = @source.match( CLOSE_MATCH, true )
-              raise REXML::ParseException.new( "Missing end tag for "+
-                "'#{last_tag}'" + (md.nil? ? "" : " (got \"#{md[1]}\")"),
-                @source) if md.nil? or last_tag != md[1]
+              if md.nil? or last_tag != md[1]
+                message = "Missing end tag for '#{last_tag}'"
+                message << " (got '#{md[1]}')" if md
+                raise REXML::ParseException.new(message, @source)
+              end
               return [ :end_element, last_tag ]
             elsif @source.buffer[1] == ?!
               md = @source.match(/\A(\s*[^>]*>)/um)
