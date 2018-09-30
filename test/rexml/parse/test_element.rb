@@ -20,6 +20,19 @@ Last 80 unconsumed characters:
 </
         DETAIL
       end
+
+      def test_empty_namespace_attribute_name
+        exception = assert_raise(REXML::ParseException) do
+          parse("<x :a=\"\"></x>")
+        end
+        assert_equal(<<-DETAIL.chomp, exception.to_s)
+Invalid attribute name: <:a="">
+Line: 1
+Position: 9
+Last 80 unconsumed characters:
+
+        DETAIL
+      end
     end
   end
 end
