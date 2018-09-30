@@ -66,7 +66,7 @@ module REXML
 
         node.attributes.to_a.map { |a|
           Hash === a ? a.values : a
-        }.flatten.sort_by {|attr| attr.name}.each do |attr|
+        }.flatten.sort_by {|attr| attr.name || '' }.each do |attr|
           output << " "
           attr.write( output )
         end unless node.attributes.empty?
@@ -102,9 +102,9 @@ module REXML
 
       def write_instruction( node, output )
         output << Instruction::START.sub(/\\/u, '')
-        output << node.target
+        output << (node.target || '')
         output << ' '
-        output << node.content
+        output << (node.content || '')
         output << Instruction::STOP.sub(/\\/u, '')
       end
     end
