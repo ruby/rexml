@@ -108,9 +108,21 @@ module REXML
 
     private
     def content(enc)
-      rv = "version='#@version'"
-      rv << " encoding='#{enc}'" if @writeencoding || enc !~ /\Autf-8\z/i
-      rv << " standalone='#@standalone'" if @standalone
+      context = nil
+      context = parent.context if parent
+      if context and context[:prologue_quote] == :quote
+        quote = "\""
+      else
+        quote = "'"
+      end
+
+      rv = "version=#{quote}#{@version}#{quote}"
+      if @writeencoding or enc !~ /\Autf-8\z/i
+        rv << " encoding=#{quote}#{enc}#{quote}"
+      end
+      if @standalone
+        rv << " standalone=#{quote}#{@standalone}#{quote}"
+      end
       rv
     end
   end

@@ -44,6 +44,17 @@ module REXMLTests
                    ])
     end
 
+    def test_to_s
+      assert_equal("<!DOCTYPE root PUBLIC \"#{@pubid}\" \"#{@sysid}\">",
+                   @doc_type_public_system.to_s)
+    end
+
+    def test_to_s_apostrophe
+      @doc_type_public_system.parent.context[:prologue_quote] = :apostrophe
+      assert_equal("<!DOCTYPE root PUBLIC '#{@pubid}' '#{@sysid}'>",
+                   @doc_type_public_system.to_s)
+    end
+
     def test_system
       assert_equal([
                      @sysid,
@@ -95,6 +106,19 @@ module REXMLTests
                    decl(@id, @uri).to_s)
     end
 
+    def test_to_s_apostrophe
+      document = REXML::Document.new(<<-XML)
+      <!DOCTYPE root SYSTEM "urn:x-test:sysid" [
+        #{decl(@id, @uri).to_s}
+      ]>
+      <root/>
+      XML
+      document.context[:prologue_quote] = :apostrophe
+      notation = document.doctype.notations[0]
+      assert_equal("<!NOTATION #{@name} PUBLIC '#{@id}' '#{@uri}'>",
+                   notation.to_s)
+    end
+
     private
     def decl(id, uri)
       REXML::NotationDecl.new(@name, "PUBLIC", id, uri)
@@ -110,6 +134,19 @@ module REXMLTests
     def test_to_s
       assert_equal("<!NOTATION #{@name} SYSTEM \"#{@id}\">",
                    decl(@id).to_s)
+    end
+
+    def test_to_s_apostrophe
+      document = REXML::Document.new(<<-XML)
+      <!DOCTYPE root SYSTEM "urn:x-test:sysid" [
+        #{decl(@id).to_s}
+      ]>
+      <root/>
+      XML
+      document.context[:prologue_quote] = :apostrophe
+      notation = document.doctype.notations[0]
+      assert_equal("<!NOTATION #{@name} SYSTEM '#{@id}'>",
+                   notation.to_s)
     end
 
     private
