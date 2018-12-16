@@ -1,4 +1,5 @@
 # frozen_string_literal: false
+
 require_relative "child"
 require_relative "source"
 
@@ -17,20 +18,25 @@ module REXML
     # @param target can be one of a number of things.  If String, then
     # the target of this instruction is set to this.  If an Instruction,
     # then the Instruction is shallowly cloned (target and content are
-    # copied).  If a Source, then the source is scanned and parsed for
-    # an Instruction declaration.
+    # copied).
     # @param content Must be either a String, or a Parent.  Can only
     # be a Parent if the target argument is a Source.  Otherwise, this
     # String is set as the content of this instruction.
     def initialize(target, content=nil)
-      if target.kind_of? String
+      case target
+      when String
         super()
         @target = target
         @content = content
-      elsif target.kind_of? Instruction
+      when Instruction
         super(content)
         @target = target.target
         @content = target.content
+      else
+        message =
+          "processing instruction target must be String or REXML::Instruction: "
+        message << "<#{target.inspect}>"
+        raise ArgumentError, message
       end
       @content.strip! if @content
     end
@@ -47,8 +53,10 @@ module REXML
       indent(writer, indent)
       writer << START.sub(/\\/u, '')
       writer << @target
-      writer << ' '
-      writer << @content
+      if @content
+        writer << ' '
+        writer << @content
+      end
       writer << STOP.sub(/\\/u, '')
     end
 
