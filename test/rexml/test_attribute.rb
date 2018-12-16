@@ -1,3 +1,5 @@
+require_relative "rexml_test_utils"
+
 module REXMLTests
   class AttributeTest < Test::Unit::TestCase
     def test_empty_prefix
