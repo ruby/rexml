@@ -11,8 +11,8 @@ module REXML
     DEFAULT_VERSION = "1.0"
     DEFAULT_ENCODING = "UTF-8"
     DEFAULT_STANDALONE = "no"
-    START = '<\?xml'
-    STOP = '\?>'
+    START = "<?xml"
+    STOP = "?>"
 
     attr_accessor :version, :standalone
     attr_reader :writeencoding, :writethis
@@ -47,9 +47,9 @@ module REXML
     #   Ignored
     def write(writer, indent=-1, transitive=false, ie_hack=false)
       return nil unless @writethis or writer.kind_of? Output
-      writer << START.sub(/\\/u, '')
+      writer << START
       writer << " #{content encoding}"
-      writer << STOP.sub(/\\/u, '')
+      writer << STOP
     end
 
     def ==( other )
@@ -103,7 +103,7 @@ module REXML
     end
 
     def inspect
-      START.sub(/\\/u, '') + " ... " + STOP.sub(/\\/u, '')
+      "#{START} ... #{STOP}"
     end
 
     private
