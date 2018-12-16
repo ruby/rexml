@@ -1,4 +1,5 @@
 # frozen_string_literal: false
+
 module REXML
   module Formatters
     class Default
@@ -66,7 +67,7 @@ module REXML
 
         node.attributes.to_a.map { |a|
           Hash === a ? a.values : a
-        }.flatten.sort_by {|attr| attr.name || '' }.each do |attr|
+        }.flatten.sort_by {|attr| attr.name}.each do |attr|
           output << " "
           attr.write( output )
         end unless node.attributes.empty?
