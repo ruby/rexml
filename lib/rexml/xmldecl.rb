@@ -1,4 +1,5 @@
 # frozen_string_literal: false
+
 require_relative 'encoding'
 require_relative 'source'
 
@@ -7,11 +8,11 @@ module REXML
   class XMLDecl < Child
     include Encoding
 
-    DEFAULT_VERSION = "1.0";
-    DEFAULT_ENCODING = "UTF-8";
-    DEFAULT_STANDALONE = "no";
-    START = '<\?xml';
-    STOP = '\?>';
+    DEFAULT_VERSION = "1.0"
+    DEFAULT_ENCODING = "UTF-8"
+    DEFAULT_STANDALONE = "no"
+    START = '<\?xml'
+    STOP = '\?>'
 
     attr_accessor :version, :standalone
     attr_reader :writeencoding, :writethis
