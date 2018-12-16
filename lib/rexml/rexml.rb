@@ -1,4 +1,4 @@
-# -*- encoding: utf-8 -*-
+# -*- coding: utf-8 -*-
 # frozen_string_literal: false
 # REXML is an XML toolkit for Ruby[http://www.ruby-lang.org], in Ruby.
 #
