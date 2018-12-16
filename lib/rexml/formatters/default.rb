@@ -104,8 +104,11 @@ module REXML
       def write_instruction( node, output )
         output << Instruction::START.sub(/\\/u, '')
         output << node.target
-        output << ' '
-        output << (node.content || '')
+        content = node.content
+        if content
+          output << ' '
+          output << content
+        end
         output << Instruction::STOP.sub(/\\/u, '')
       end
     end
