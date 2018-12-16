@@ -7,8 +7,8 @@ module REXML
   # Represents an XML Instruction; IE, <? ... ?>
   # TODO: Add parent arg (3rd arg) to constructor
   class Instruction < Child
-    START = '<\?'
-    STOP = '\?>'
+    START = "<?"
+    STOP = "?>"
 
     # target is the "name" of the Instruction; IE, the "tag" in <?tag ...?>
     # content is everything else.
@@ -51,13 +51,13 @@ module REXML
     def write writer, indent=-1, transitive=false, ie_hack=false
       Kernel.warn( "#{self.class.name}.write is deprecated", uplevel: 1)
       indent(writer, indent)
-      writer << START.sub(/\\/u, '')
+      writer << START
       writer << @target
       if @content
         writer << ' '
         writer << @content
       end
-      writer << STOP.sub(/\\/u, '')
+      writer << STOP
     end
 
     # @return true if other is an Instruction, and the content and target
