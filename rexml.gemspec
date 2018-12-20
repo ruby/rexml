@@ -23,8 +23,6 @@ Gem::Specification.new do |spec|
     "LICENSE.txt",
     "README.md",
     "Rakefile",
-    "bin/console",
-    "bin/setup",
     "lib/rexml/attlistdecl.rb",
     "lib/rexml/attribute.rb",
     "lib/rexml/cdata.rb",
