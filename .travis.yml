@@ -15,8 +15,7 @@ matrix:
       rvm: ruby-head
     - name: "gem"
       install:
-        - rake build
-        - gem install pkg/*.gem
+        - rake install
       script:
         - mkdir -p tmp
         - cd tmp
