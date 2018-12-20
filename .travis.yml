@@ -13,5 +13,13 @@ matrix:
       rvm: 2.6.0-rc2
     - name: "trunk"
       rvm: ruby-head
-before_install:
-  - gem update bundler
+    - name: "gem"
+      rvm: ruby-head
+      install:
+        - rake build
+        - gem install pkg/*.gem
+      test:
+        - mkdir -p tmp
+        - cd tmp
+        - cp -a ../test/ ./
+        - ../run-test.rb

@@ -75,7 +75,8 @@ Gem::Specification.new do |spec|
     "lib/rexml/xmltokens.rb",
     "lib/rexml/xpath.rb",
     "lib/rexml/xpath_parser.rb",
-    "rexml.gemspec"
+    "rexml.gemspec",
+    "run-test.rb",
   ]
   spec.bindir        = "exe"
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
