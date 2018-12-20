@@ -1,10 +1,17 @@
 notifications:
   webhooks:
     - https://webhook.commit-email.info/
-rvm:
-  - 2.3
-  - 2.4.4
-  - 2.5.1
-  - ruby-head
+matrix:
+  include:
+    - name: "2.3"
+      rvm: 2.3
+    - name: "2.4"
+      rvm: 2.4.5
+    - name: "2.5"
+      rvm: 2.5.2
+    - name: "2.6"
+      rvm: 2.6.0-rc2
+    - name: "trunk"
+      rvm: ruby-head
 before_install:
   - gem update bundler
