@@ -1,5 +1,14 @@
 # News
 
+## 3.1.9 - 2018-12-20 {#version-3-1-9}
+
+### Improvements
+
+  * Improved backward compatibility.
+
+    Restored `REXML::Parsers::BaseParser::UNQME_STR` because it's used
+    by kramdown.
+
 ## 3.1.8 - 2018-12-20 {#version-3-1-8}
 
 ### Improvements
