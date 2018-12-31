@@ -1,5 +1,26 @@
 # News
 
+## 3.2.0 - 2018-01-01 {#version-3-2-0}
+
+### Fixes
+
+  * Fixed a bug that no namespace attribute isn't matched with prefix.
+
+    [ruby-list:50731][Reported by Yasuhiro KIMURA]
+
+  * Fixed a bug that the default namespace is applied to attribute names.
+
+    NOTE: It's a backward incompatible change. If your program has any
+    problem with this change, please report it. We may revert this fix.
+
+    * `REXML::Attribute#prefix` returns `""` for no namespace attribute.
+
+    * `REXML::Attribute#namespace` returns `""` for no namespace attribute.
+
+### Thanks
+
+  * Yasuhiro KIMURA
+
 ## 3.1.9 - 2018-12-20 {#version-3-1-9}
 
 ### Improvements
