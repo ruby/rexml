@@ -24,7 +24,7 @@ Or install it yourself as:
 
 We'll start with parsing an XML document
 
-```
+```ruby
 require "rexml/document"
 file = File.new( "mydoc.xml" )
 doc = REXML::Document.new file
@@ -32,7 +32,7 @@ doc = REXML::Document.new file
 
 Line 3 creates a new document and parses the supplied file. You can also do the following
 
-```
+```ruby
 require "rexml/document"
 include REXML  # so that we don't have to prefix everything with REXML::...
 string = <<EOF
