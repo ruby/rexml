@@ -165,8 +165,6 @@ module REXML
               object.to_s
             end
           end
-        when nil
-          ""
         else
           object.to_s
         end
