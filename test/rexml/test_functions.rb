@@ -222,6 +222,22 @@ module REXMLTests
       assert_equal( [REXML::Comment.new("COMMENT A")], m )
     end
 
+    def test_string_nil_without_context
+      # Reset to default value
+      REXML::Functions.class_variable_set(:@@context, nil)
+
+      doc = REXML::Document.new(<<-XML)
+      <?xml version="1.0" encoding="UTF-8"?>
+      <root>
+      <foo bar="baz"/>
+      <foo bar=""/>
+      </root>
+      XML
+
+      m = REXML::XPath.match(doc, "//foo[@bar=$n]", nil, { "n" => nil })
+      assert_equal( 1, m.size )
+    end
+
     def test_unregistered_method
       doc = Document.new("<root/>")
       assert_nil(XPath::first(doc.root, "to_s()"))
