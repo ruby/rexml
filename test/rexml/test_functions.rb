@@ -6,6 +6,12 @@ require "rexml/document"
 module REXMLTests
   class FunctionsTester < Test::Unit::TestCase
     include REXML
+
+    def setup
+      super
+      REXML::Functions.context = nil
+    end
+
     def test_functions
       # trivial text() test
       # confuse-a-function
@@ -223,9 +229,6 @@ module REXMLTests
     end
 
     def test_string_nil_without_context
-      # Reset to default value
-      REXML::Functions.class_variable_set(:@@context, nil)
-
       doc = REXML::Document.new(<<-XML)
       <?xml version="1.0" encoding="UTF-8"?>
       <root>
