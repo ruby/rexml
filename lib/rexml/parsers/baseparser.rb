@@ -335,6 +335,11 @@ module REXML
               @nsstack.shift
               last_tag = @tags.pop
               md = @source.match( CLOSE_MATCH, true )
+              if md and !last_tag
+                message = "Unexpected top-level end tag"
+                message << " (got '#{md[1]}')" if md
+                raise REXML::ParseException.new(message, @source)
+              end
               if md.nil? or last_tag != md[1]
                 message = "Missing end tag for '#{last_tag}'"
                 message << " (got '#{md[1]}')" if md
