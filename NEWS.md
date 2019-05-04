@@ -1,6 +1,32 @@
 # News
 
-## 3.2.0 - 2018-01-01 {#version-3-2-0}
+## 3.2.1 - 2019-05-04 {#version-3-2-1}
+
+### Improvements
+
+  * Improved error message.
+    [GitHub#12][Patch by FUJI Goro]
+
+  * Improved error message.
+    [GitHub#16][Patch by ujihisa]
+
+  * Improved documentation markup.
+    [GitHub#14][Patch by Alyssa Ross]
+
+### Fixes
+
+  * Fixed a bug that `nil` variable value raises an unexpected exception.
+    [GitHub#13][Patch by Alyssa Ross]
+
+### Thanks
+
+  * FUJI Goro
+
+  * Alyssa Ross
+
+  * ujihisa
+
+## 3.2.0 - 2019-01-01 {#version-3-2-0}
 
 ### Fixes
 
