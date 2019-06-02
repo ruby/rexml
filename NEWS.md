@@ -1,5 +1,23 @@
 # News
 
+## 3.2.2 - 2019-06-03 {#version-3-2-2}
+
+### Fixes
+
+  * xpath: Fixed a bug for equality and relational expressions.
+    [GitHub#17][Reported by Mirko Budszuhn]
+
+  * xpath: Fixed `boolean()` implementation.
+
+  * xpath: Fixed `local_name()` with nonexistent node.
+
+  * xpath: Fixed `number()` implementation with node set.
+    [GitHub#18][Reported by Mirko Budszuhn]
+
+### Thanks
+
+  * Mirko Budszuhn
+
 ## 3.2.1 - 2019-05-04 {#version-3-2-1}
 
 ### Improvements
