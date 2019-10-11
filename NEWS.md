@@ -1,5 +1,16 @@
 # News
 
+## 3.2.3 - 2019-10-12 {#version-3-2-3}
+
+### Fixes
+
+  * Fixed a bug that `REXML::XMLDecl#close` doesn't copy `@writethis`.
+    [GitHub#20][Patch by hirura]
+
+### Thanks
+
+  * hirura
+
 ## 3.2.2 - 2019-06-03 {#version-3-2-2}
 
 ### Fixes
