@@ -1,0 +1,28 @@
+name: CI
+on: [push, pull_request]
+jobs:
+  build:
+    strategy:
+      matrix:
+        ruby: [2.4, 2.5, 2.6, 2.7, jruby]
+        platform: [ubuntu-latest, macos-latest, windows-latest]
+        exclude:
+          # eregon/use-ruby-action doesn't support JRuby on Windows
+          - ruby: jruby
+            platform: windows-latest
+      # TODO: Remove this after fixing all tests
+      fail-fast: false
+    runs-on: ${{ matrix.platform }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Setup Ruby
+        uses: eregon/use-ruby-action@master
+        with:
+          ruby-version: ${{ matrix.ruby }}
+      - name: Build and Test
+        shell: bash
+        run: |
+          gem install bundler
+          bundle install --jobs=4 --retry=3
+          bundle exec rake
