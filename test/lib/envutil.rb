@@ -291,7 +291,7 @@ if defined?(RbConfig)
     end
     dir = File.dirname(ruby)
     CONFIG['bindir'] = dir
-    Gem::ConfigMap[:bindir] = dir if defined?(Gem::ConfigMap)
+    Gem::ConfigMap[:bindir] = dir if Gem::VERSION < '3.1' and defined?(Gem::ConfigMap)
   end
 end
 

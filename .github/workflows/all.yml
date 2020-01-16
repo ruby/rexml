@@ -1,0 +1,34 @@
+name: rexml
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    name: >-
+      ${{ matrix.os }}  Ruby: ${{ matrix.ruby }}
+    env:
+      CI: true
+      TESTOPTS: -v
+
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ ubuntu-18.04, macos, windows-latest ]
+        ruby: [ 2.3, 2.4, 2.5, 2.6, 2.7 ]
+        exclude:
+          - os: windows-latest
+            ruby: 2.3
+
+    steps:
+    - name: repo checkout
+      uses: actions/checkout@v2
+
+    - name: load ruby
+      uses: eregon/use-ruby-action@master
+      with:
+        ruby-version: ${{ matrix.ruby }}
+
+    - name: test
+      run:  ruby run-test.rb
+      timeout-minutes: 5

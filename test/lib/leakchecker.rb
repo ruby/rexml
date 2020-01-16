@@ -23,6 +23,7 @@ class LeakChecker
   end
 
   def check_safe test_name
+    return nil if RUBY_VERSION >= "2.7" # stop warnings
     puts "#{test_name}: $SAFE == #{$SAFE}" unless $SAFE == 0
   end
 
