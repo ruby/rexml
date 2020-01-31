@@ -1,5 +1,23 @@
 # News
 
+## 3.2.4 - 2020-01-31 {#version-3-2-4}
+
+### Improvements
+
+  * Don't use `taint` with Ruby 2.7 or later.
+    [GitHub#21][Patch by Jeremy Evans]
+
+### Fixes
+
+  * Fixed a `elsif` typo.
+    [GitHub#22][Patch by Nobuyoshi Nakada]
+
+### Thanks
+
+  * Jeremy Evans
+
+  * Nobuyoshi Nakada
+
 ## 3.2.3 - 2019-10-12 {#version-3-2-3}
 
 ### Fixes
