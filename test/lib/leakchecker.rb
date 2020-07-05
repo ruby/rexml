@@ -23,7 +23,11 @@ class LeakChecker
   end
 
   def check_safe test_name
+    verbose, $VERBOSE = $VERBOSE, nil
+    return unless defined?($SAFE)
     puts "#{test_name}: $SAFE == #{$SAFE}" unless $SAFE == 0
+  ensure
+    $VERBOSE = verbose
   end
 
   def check_verbose test_name
