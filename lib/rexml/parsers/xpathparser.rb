@@ -22,7 +22,13 @@ module REXML
         path.gsub!(/([\(\[])\s+/, '\1') # Strip ignorable spaces
         path.gsub!( /\s+([\]\)])/, '\1')
         parsed = []
-        OrExpr(path, parsed)
+        rest = OrExpr(path, parsed)
+        if rest
+          unless rest.strip.empty?
+            raise ParseException.new("Garbage component exists at the end: " +
+                                     "<#{rest}>: <#{path}>")
+          end
+        end
         parsed
       end
 
@@ -301,7 +307,9 @@ module REXML
         when PI
           path = $'
           literal = nil
-          if path !~ /^\s*\)/
+          if path =~ /^\s*\)/
+            path = $'
+          else
             path =~ LITERAL
             literal = $1
             path = $'
