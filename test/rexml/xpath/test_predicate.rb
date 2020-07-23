@@ -29,6 +29,15 @@ module REXMLTests
 
     end
 
+    def test_predicate_only
+      error = assert_raise(REXML::ParseException) do
+        do_path("[article]")
+      end
+      assert_equal("Garbage component exists at the end: " +
+                   "<[article]>: <[article]>",
+                   error.message)
+    end
+
     def test_predicates_parent
       path = '//section[../self::section[@role="division"]]'
       m = do_path( path )
