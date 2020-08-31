@@ -24,6 +24,7 @@ Gem::Specification.new do |spec|
     "NEWS.md",
     "README.md",
     "Rakefile",
+    "lib/rexml.rb",
     "lib/rexml/attlistdecl.rb",
     "lib/rexml/attribute.rb",
     "lib/rexml/cdata.rb",
