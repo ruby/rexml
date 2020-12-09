@@ -7,38 +7,44 @@ require_relative 'xmltokens'
 require_relative 'attribute'
 require_relative 'parsers/xpathparser'
 
-class Object
-  # provides a unified +clone+ operation, for REXML::XPathParser
-  # to use across multiple Object types
-  def dclone
-    clone
+module REXML
+  module DClonable
+    refine Object do
+      # provides a unified +clone+ operation, for REXML::XPathParser
+      # to use across multiple Object types
+      def dclone
+        clone
+      end
+    end
+    refine Symbol do
+      # provides a unified +clone+ operation, for REXML::XPathParser
+      # to use across multiple Object types
+      def dclone ; self ; end
+    end
+    refine Integer do
+      # provides a unified +clone+ operation, for REXML::XPathParser
+      # to use across multiple Object types
+      def dclone ; self ; end
+    end
+    refine Float do
+      # provides a unified +clone+ operation, for REXML::XPathParser
+      # to use across multiple Object types
+      def dclone ; self ; end
+    end
+    refine Array do
+      # provides a unified +clone+ operation, for REXML::XPathParser
+      # to use across multiple Object+ types
+      def dclone
+        klone = self.clone
+        klone.clear
+        self.each{|v| klone << v.dclone}
+        klone
+      end
+    end
   end
 end
-class Symbol
-  # provides a unified +clone+ operation, for REXML::XPathParser
-  # to use across multiple Object types
-  def dclone ; self ; end
-end
-class Integer
-  # provides a unified +clone+ operation, for REXML::XPathParser
-  # to use across multiple Object types
-  def dclone ; self ; end
-end
-class Float
-  # provides a unified +clone+ operation, for REXML::XPathParser
-  # to use across multiple Object types
-  def dclone ; self ; end
-end
-class Array
-  # provides a unified +clone+ operation, for REXML::XPathParser
-  # to use across multiple Object+ types
-  def dclone
-    klone = self.clone
-    klone.clear
-    self.each{|v| klone << v.dclone}
-    klone
-  end
-end
+
+using REXML::DClonable
 
 module REXML
   # You don't want to use this class.  Really.  Use XPath, which is a wrapper
