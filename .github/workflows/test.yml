@@ -18,6 +18,9 @@ jobs:
           - "2.6"
           - "2.7"
           - jruby
+        exclude:
+          - runs-on: windows-latest
+            ruby-version: jruby
         include:
           - runs-on: ubuntu-latest
             ruby-version: truffleruby
