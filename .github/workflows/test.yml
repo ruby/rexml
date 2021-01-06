@@ -21,9 +21,9 @@ jobs:
         exclude:
           - runs-on: windows-latest
             ruby-version: jruby
-        include:
-          - runs-on: ubuntu-latest
-            ruby-version: truffleruby
+        # include:
+        #   - runs-on: ubuntu-latest
+        #     ruby-version: truffleruby
     steps:
       - uses: actions/checkout@v2
       - uses: ruby/setup-ruby@v1
