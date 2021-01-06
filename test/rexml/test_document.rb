@@ -1,8 +1,7 @@
 # -*- coding: utf-8 -*-
 # frozen_string_literal: false
 
-require "rexml/document"
-require "test/unit"
+require_relative "rexml_test_utils"
 
 module REXMLTests
   class TestDocument < Test::Unit::TestCase

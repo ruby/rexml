@@ -1,5 +1,6 @@
 # frozen_string_literal: false
-require "test/unit/testcase"
+
+require_relative "rexml_test_utils"
 
 require 'rexml/parsers/pullparser'
 

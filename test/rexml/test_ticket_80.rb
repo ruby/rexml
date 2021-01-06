@@ -7,8 +7,7 @@
 # copy: (C) CopyLoose 2006 Bib Development Team <bib-devel>at<uberdev>dot<org>
 #------------------------------------------------------------------------------
 
-require 'test/unit'
-require 'rexml/document'
+require_relative "rexml_test_utils"
 
 module REXMLTests
   class Ticket80 < Test::Unit::TestCase

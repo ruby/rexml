@@ -1,7 +1,6 @@
 # frozen_string_literal: false
-require_relative "../rexml_test_utils"
 
-require "rexml/document"
+require_relative "../rexml_test_utils"
 
 module REXMLTests
   class TestXPathBase < Test::Unit::TestCase

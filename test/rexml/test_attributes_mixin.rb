@@ -1,6 +1,6 @@
 # frozen_string_literal: false
-require 'test/unit'
-require 'rexml/document'
+
+require_relative "rexml_test_utils"
 
 module REXMLTests
   class TestAttributes < Test::Unit::TestCase

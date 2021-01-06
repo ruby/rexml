@@ -1,7 +1,7 @@
 # frozen_string_literal: false
 # ISSUE 32
-require 'test/unit'
-require 'rexml/document'
+
+require_relative "rexml_test_utils"
 
 module REXMLTests
   # daz - for report by Dan Kohn in:

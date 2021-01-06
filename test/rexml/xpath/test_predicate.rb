@@ -1,6 +1,7 @@
 # frozen_string_literal: false
-require "test/unit/testcase"
-require "rexml/document"
+
+require_relative "../rexml_test_utils"
+
 require "rexml/xpath"
 require "rexml/parsers/xpathparser"
 

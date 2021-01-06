@@ -3,8 +3,7 @@
 #  Created by Henrik Mårtensson on 2007-02-18.
 #  Copyright (c) 2007. All rights reserved.
 
-require "rexml/document"
-require "test/unit"
+require_relative "rexml_test_utils"
 
 module REXMLTests
   class TestXmlDeclaration < Test::Unit::TestCase

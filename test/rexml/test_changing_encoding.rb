@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 # frozen_string_literal: false
 
+require_relative "rexml_test_utils"
 require 'rexml/encoding'
 
 module REXMLTests

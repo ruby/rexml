@@ -3,8 +3,6 @@
 
 require_relative "../rexml_test_utils"
 
-require "rexml/document"
-
 module REXMLTests
   class TestXPathNode < Test::Unit::TestCase
     def matches(xml, xpath)

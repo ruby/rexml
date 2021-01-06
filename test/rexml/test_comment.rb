@@ -1,7 +1,6 @@
 # frozen_string_literal: false
-require "test/unit/testcase"
 
-require 'rexml/document'
+require_relative "rexml_test_utils"
 
 module REXMLTests
   class CommentTester < Test::Unit::TestCase
