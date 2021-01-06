@@ -21,7 +21,6 @@ Gem::Specification.new do |spec|
     "LICENSE.txt",
     "NEWS.md",
     "README.md",
-    "Rakefile",
     "lib/rexml.rb",
     "lib/rexml/attlistdecl.rb",
     "lib/rexml/attribute.rb",
