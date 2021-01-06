@@ -11,6 +11,8 @@ matrix:
       rvm: 2.6
     - name: "2.7"
       rvm: 2.7
+    - name: "3.0"
+      rvm: 3.0
     - name: "trunk"
       rvm: ruby-head
     - name: "gem"
