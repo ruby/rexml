@@ -54,4 +54,4 @@ jobs:
           ruby -run -e mkdir -- tmp
           ruby -run -e cp -- -p -r test tmp
           cd tmp
-          ruby ../run-test.rb
+          ruby test/run.rb
