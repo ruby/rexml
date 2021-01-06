@@ -17,13 +17,9 @@ Gem::Specification.new do |spec|
   spec.license       = "BSD-2-Clause"
 
   spec.files         = [
-    ".gitignore",
-    ".travis.yml",
-    "Gemfile",
     "LICENSE.txt",
     "NEWS.md",
     "README.md",
-    "Rakefile",
     "lib/rexml.rb",
     "lib/rexml/attlistdecl.rb",
     "lib/rexml/attribute.rb",
@@ -74,7 +70,6 @@ Gem::Specification.new do |spec|
     "lib/rexml/xmltokens.rb",
     "lib/rexml/xpath.rb",
     "lib/rexml/xpath_parser.rb",
-    "rexml.gemspec",
   ]
   spec.bindir        = "exe"
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
