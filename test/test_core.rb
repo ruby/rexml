@@ -1499,8 +1499,10 @@ ENDXML
           "" => attribute("version", "1.0"),
         },
       }
-      assert_equal(expected, doc.root.attributes)
-      assert_equal(expected, REXML::Document.new(doc.root.to_s).root.attributes)
+      assert_equal(expected,
+                   doc.root.attributes.to_h)
+      assert_equal(expected,
+                   REXML::Document.new(doc.root.to_s).root.attributes.to_h)
     end
 
     def test_empty_doc
