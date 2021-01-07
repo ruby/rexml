@@ -18,9 +18,6 @@ jobs:
           - "2.6"
           - "2.7"
           - jruby
-        exclude:
-          - runs-on: windows-latest
-            ruby-version: jruby
         # include:
         #   - runs-on: ubuntu-latest
         #     ruby-version: truffleruby
@@ -31,7 +28,7 @@ jobs:
           ruby-version: ${{ matrix.ruby-version }}
           bundler-cache: true
       - name: Test
-        run: bundle exec rake
+        run: bundle exec rake test
 
   gem:
     name: ${{ matrix.ruby-version }} on ${{ matrix.runs-on }}
