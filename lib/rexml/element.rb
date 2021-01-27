@@ -62,18 +62,18 @@ module REXML
     # When argument +context+ is also given, it must be a hash
     # that may contain the following entries:
     #
-    # <tt>'respect_whitespace'</tt>::
+    # :respect_whitespace::
     #   +:all+ (default) or an array of names of elements
     #   whose whitespace is to be respected.
-    # <tt>'compress_whitespace'</tt>::
+    # :compress_whitespace::
     #   +:all+ or an array of names of elements
     #   whose whitespace is to be ignored.
     #   Overrides :+respect_whitespace+.
-    # <tt>'ignore_whitespace_nodes'</tt>::
+    # :ignore_whitespace_nodes::
     #   +:all+ or an array of names of elements
     #   to be ignored if whitespace-only;
     #   "ignored" here means "not added to the document tree."
-    # <tt>'raw'</tt>::
+    # :raw::
     #   +:all+, or an array names of elements to be processed in raw mode.
     #   In raw mode, special characters in text are not converted to or from entities.
     #
