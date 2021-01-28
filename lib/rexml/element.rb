@@ -30,32 +30,62 @@ module REXML
     # whitespace handling.
     attr_accessor :context
 
-    # Constructor
-    # arg::
-    #   if not supplied, will be set to the default value.
-    #   If a String, the name of this object will be set to the argument.
-    #   If an Element, the object will be shallowly cloned; name,
-    #   attributes, and namespaces will be copied.  Children will +not+ be
-    #   copied.
-    # parent::
-    #   if supplied, must be a Parent, and will be used as
-    #   the parent of this object.
-    # context::
-    #   If supplied, must be a hash containing context items.  Context items
-    #   include:
-    # * <tt>:respect_whitespace</tt> the value of this is :+all+ or an array of
-    #   strings being the names of the elements to respect
-    #   whitespace for.  Defaults to :+all+.
-    # * <tt>:compress_whitespace</tt> the value can be :+all+ or an array of
-    #   strings being the names of the elements to ignore whitespace on.
+    # :call-seq:
+    #   Element.new(name = 'UNDEFINED', parent = nil, context = nil) -> new_element
+    #   Element.new(element, parent = nil, context = nil) -> new_element
+    #
+    # Returns a new \REXML::Element object.
+    #
+    # When no arguments are given,
+    # returns an element with name <tt>'UNDEFINED'</tt>:
+    #
+    #   e = Element.new # => <UNDEFINED/>
+    #   e.class         # => REXML::Element
+    #   e.name          # => "UNDEFINED"
+    #
+    # When only argument +name+ is given,
+    # returns an element of the given name:
+    #
+    #   Element.new('foo') # => <foo/>
+    #
+    # When only argument +element+ is given, it must be an \Element object;
+    # returns a shallow copy of the given element:
+    #
+    #   e0 = Element.new('foo')
+    #   Element.new(e0) # => <foo/>
+    #
+    # When argument +parent+ is also given, it must be a Parent object:
+    #
+    #   e = Element.new('foo', Parent.new)
+    #   e.parent # => #<REXML::Parent @parent=nil, @children=[<foo/>]>
+    #
+    # When argument +context+ is also given, it must be a hash
+    # that may contain the following entries:
+    #
+    # :respect_whitespace::
+    #   +:all+ (default) or an array of names of elements
+    #   whose whitespace is to be respected.
+    # :compress_whitespace::
+    #   +:all+ or an array of names of elements
+    #   whose whitespace is to be ignored.
     #   Overrides :+respect_whitespace+.
-    # * <tt>:ignore_whitespace_nodes</tt> the value can be :+all+ or an array
-    #   of strings being the names of the elements in which to ignore
-    #   whitespace-only nodes.  If this is set, Text nodes which contain only
-    #   whitespace will not be added to the document tree.
-    # * <tt>:raw</tt> can be :+all+, or an array of strings being the names of
-    #   the elements to process in raw mode.  In raw mode, special
-    #   characters in text is not converted to or from entities.
+    # :ignore_whitespace_nodes::
+    #   +:all+ or an array of names of elements
+    #   to be ignored if whitespace-only;
+    #   "ignored" here means "not added to the document tree."
+    # :raw::
+    #   +:all+, or an array names of elements to be processed in raw mode.
+    #   In raw mode, special characters in text are not converted to or from entities.
+    #
+    # Example:
+    #
+    #   context = {
+    #     respect_whitespace: :all,
+    #     raw: :all
+    #   }
+    #   e = Element.new('foo', Parent.new, context)
+    #   e.context # => {:respect_whitespace=>:all, :raw=>:all}
+    #
     def initialize( arg = UNDEFINED, parent=nil, context=nil )
       super(parent)
 
@@ -74,6 +104,27 @@ module REXML
       end
     end
 
+    # :call-seq:
+    #   inspect -> string
+    #
+    # Returns a string representation of the element.
+    #
+    # For an element with no attributes and no children, shows the element name:
+    #
+    #   Element.new.inspect # => "<UNDEFINED/>"
+    #
+    # Shows attributes, if any:
+    #
+    #   e = Element.new('foo')
+    #   e.add_attributes({'bar' => 0, 'baz' => 1})
+    #   e.inspect # => "<foo bar='0' baz='1'/>"
+    #
+    # Shows an ellipsis (<tt>...</tt>), if there are child elements:
+    #
+    #   e.add_element(Element.new('bar'))
+    #   e.add_element(Element.new('baz'))
+    #   e.inspect # => "<foo bar='0' baz='1'> ... </>"
+    #
     def inspect
       rv = "<#@expanded_name"
 
@@ -89,46 +140,103 @@ module REXML
       end
     end
 
-
-    # Creates a shallow copy of self.
-    #   d = Document.new "<a><b/><b/><c><d/></c></a>"
-    #   new_a = d.root.clone
-    #   puts new_a  # => "<a/>"
+    # :call-seq:
+    #   clone -> new_element
+    #
+    # Returns a shallow copy of the element, containing the name and attributes,
+    # but not the parent or children:
+    #
+    #   e = Element.new('foo')
+    #   e.add_attributes({'bar' => 0, 'baz' => 1})
+    #   e.clone # => <foo bar='0' baz='1'/>
+    #
     def clone
       self.class.new self
     end
 
-    # Evaluates to the root node of the document that this element
-    # belongs to. If this element doesn't belong to a document, but does
-    # belong to another Element, the parent's root will be returned, until the
-    # earliest ancestor is found.
+    # :call-seq:
+    #   root_node -> document or element
     #
-    # Note that this is not the same as the document element.
-    # In the following example, <a> is the document element, and the root
-    # node is the parent node of the document element.  You may ask yourself
-    # why the root node is useful: consider the doctype and XML declaration,
-    # and any processing instructions before the document element... they
-    # are children of the root node, or siblings of the document element.
-    # The only time this isn't true is when an Element is created that is
-    # not part of any Document.  In this case, the ancestor that has no
-    # parent acts as the root node.
-    #  d = Document.new '<a><b><c/></b></a>'
-    #  a = d[1] ; c = a[1][1]
-    #  d.root_node == d   # TRUE
-    #  a.root_node        # namely, d
-    #  c.root_node        # again, d
+    # Returns the most distant ancestor of +self+.
+    #
+    # When the element is part of a document,
+    # returns the root node of the document.
+    # Note that the root node is different from the document element;
+    # in this example +a+ is document element and the root node is its parent:
+    #
+    #   d = Document.new('<a><b><c/></b></a>')
+    #   top_element = d.first      # => <a> ... </>
+    #   child = top_element.first  # => <b> ... </>
+    #   d.root_node == d           # => true
+    #   top_element.root_node == d # => true
+    #   child.root_node == d       # => true
+    #
+    # When the element is not part of a document, but does have ancestor elements,
+    # returns the most distant ancestor element:
+    #
+    #   e0 = Element.new('foo')
+    #   e1 = Element.new('bar')
+    #   e1.parent = e0
+    #   e2 = Element.new('baz')
+    #   e2.parent = e1
+    #   e2.root_node == e0 # => true
+    #
+    # When the element has no ancestor elements,
+    # returns +self+:
+    #
+    #   e = Element.new('foo')
+    #   e.root_node == e # => true
+    #
+    # Related: #root, #document.
+    #
     def root_node
       parent.nil? ? self : parent.root_node
     end
 
+    # :call-seq:
+    #   root -> element
+    #
+    # Returns the most distant _element_ (not document) ancestor of the element:
+    #
+    #   d = Document.new('<a><b><c/></b></a>')
+    #   top_element = d.first
+    #   child = top_element.first
+    #   top_element.root == top_element # => true
+    #   child.root == top_element       # => true
+    #
+    # For a document, returns the topmost element:
+    #
+    #   d.root == top_element # => true
+    #
+    # Related: #root_node, #document.
+    #
     def root
       return elements[1] if self.kind_of? Document
       return self if parent.kind_of? Document or parent.nil?
       return parent.root
     end
 
-    # Evaluates to the document to which this element belongs, or nil if this
-    # element doesn't belong to a document.
+    # :call-seq:
+    #   document -> document or nil
+    #
+    # If the element is part of a document, returns that document:
+    #
+    #   d = Document.new('<a><b><c/></b></a>')
+    #   top_element = d.first
+    #   child = top_element.first
+    #   top_element.document == d # => true
+    #   child.document == d       # => true
+    #
+    # If the element is not part of a document, returns +nil+:
+    #
+    #   Element.new.document # => nil
+    #
+    # For a document, returns +self+:
+    #
+    #   d.document == d           # => true
+    #
+    # Related: #root, #root_node..
+    #
     def document
       rt = root
       rt.parent if rt
