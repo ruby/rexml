@@ -288,7 +288,7 @@ module REXML
       @raw = (@context and @context[:raw] and
               (@context[:raw] == :all or
                @context[:raw].include? expanded_name))
-               @raw
+      @raw
     end
 
     #once :whitespace, :raw, :ignore_whitespace_nodes
