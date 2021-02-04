@@ -4,10 +4,9 @@ Notes:
 - All code on this page presupposes that the following has been executed:
 
     require 'rexml/document'
-    include REXML
 
-- For convenience, examples on this page use +Document.new+, not +Element.new+.
-  This is completely valid, because \Document is a subclass of \Element.
+- For convenience, examples on this page use +REXML::Document.new+, not +REXML::Element.new+.
+  This is completely valid, because REXML::Document is a subclass of REXML::Element.
 
 The context for an element is a hash of processing directives
 that influence the way \XML is read, stored, and written.
@@ -21,7 +20,7 @@ The context entries are:
 The default context for a new element is <tt>{}</tt>.
 You can set the context at element-creation time:
 
-  d = Document.new('', {compress_whitespace: :all, raw: :all})
+  d = REXML::Document.new('', {compress_whitespace: :all, raw: :all})
   d.context # => {:compress_whitespace=>:all, :raw=>:all}
 
 You can reset the entire context by assigning a new hash:
@@ -36,12 +35,12 @@ Or you can create or modify an individual entry:
 
 === +:respect_whitespace+
 
-Affects: +Element.new+, +Element.text=+.
+Affects: +REXML::Element.new+, +REXML::Element.text=+.
 
 By default, all parsed whitespace is respected (that is, stored whitespace not compressed):
 
   xml_string = '<root><foo>a   b</foo>    <bar>c   d</bar>   <baz>e   f</baz></root>'
-  d = Document.new(xml_string)
+  d = REXML::Document.new(xml_string)
   d.to_s # => "<root><foo>a   b</foo>    <bar>c   d</bar>   <baz>e   f</baz></root>"
 
 Use +:respect_whitespace+ with an array of element names
@@ -51,7 +50,7 @@ other elements' whitespace, and whitespace between elements, will be compressed.
 In this example: +foo+ and +baz+ will have their whitespace respected;
 +bar+ and the space between elements will have their whitespace compressed:
 
-  d = Document.new(xml_string, {respect_whitespace: ['foo', 'baz']})
+  d = REXML::Document.new(xml_string, {respect_whitespace: ['foo', 'baz']})
   d.to_s # => "<root><foo>a   b</foo> <bar>c d</bar> <baz>e   f</baz></root>"
   bar = d.root[2] # => <bar> ... </>
   bar.text = 'X   Y'
@@ -59,13 +58,13 @@ In this example: +foo+ and +baz+ will have their whitespace respected;
 
 === +:compress_whitespace+
 
-Affects: +Element.new+, +Element.text=+.
+Affects: +REXML::Element.new+, +REXML::Element.text=+.
 
 Use <tt>compress_whitespace: :all</tt>
 to compress whitespace both within and between elements:
 
   xml_string = '<root><foo>a   b</foo>    <bar>c   d</bar>   <baz>e   f</baz></root>'
-  d = Document.new(xml_string, {compress_whitespace: :all})
+  d = REXML::Document.new(xml_string, {compress_whitespace: :all})
   d.to_s # => "<root><foo>a b</foo> <bar>c d</bar> <baz>e f</baz></root>"
 
 Use +:compress_whitespace+ with an array of element names
@@ -75,7 +74,7 @@ but not in other elements nor between elements.
 In this example, +foo+ and +baz+ will have their whitespace compressed;
 +bar+ and the space between elements will not:
 
-  d = Document.new(xml_string, {compress_whitespace: ['foo', 'baz']})
+  d = REXML::Document.new(xml_string, {compress_whitespace: ['foo', 'baz']})
   d.to_s # => "<root><foo>a b</foo>    <bar>c   d</bar>   <baz>e f</baz></root>"
   foo = d.root[0] # => <foo> ... </>
   foo.text= 'X   Y'
@@ -83,14 +82,14 @@ In this example, +foo+ and +baz+ will have their whitespace compressed;
 
 === +:ignore_whitespace_nodes+
 
-Affects: +Element.new+.
+Affects: +REXML::Element.new+.
 
 Use <tt>ignore_whitespace_nodes: :all</tt> to omit all whitespace-only elements.
 
 In this example, +bar+ has a text node, while nodes +foo+ and +baz+ do not:
 
   xml_string = '<root><foo>   </foo><bar> BAR </bar><baz>   </baz></root>'
-  d = Document.new(xml_string, {ignore_whitespace_nodes: :all})
+  d = REXML::Document.new(xml_string, {ignore_whitespace_nodes: :all})
   d.to_s # => "<root><foo> FOO </foo><bar/><baz> BAZ </baz></root>"
   root = d.root   # => <root> ... </>
   foo = root[0]   # => <foo/>
@@ -106,7 +105,7 @@ to specify the elements that are to have whitespace nodes ignored.
 In this example, +bar+ and +baz+ have text nodes, while node +foo+ does not.
 
   xml_string = '<root><foo>   </foo><bar> BAR </bar><baz>   </baz></root>'
-  d = Document.new(xml_string, {ignore_whitespace_nodes: ['foo']})
+  d = REXML::Document.new(xml_string, {ignore_whitespace_nodes: ['foo']})
   d.to_s # => "<root><foo/><bar> BAR </bar><baz>   </baz></root>"
   root = d.root   # => <root> ... </>
   foo = root[0]   # => <foo/>
@@ -120,21 +119,25 @@ In this example, +bar+ and +baz+ have text nodes, while node +foo+ does not.
 
 Affects:  +Element.text=+, +Element.add_text+, +Text.to_s+.
 
+Parsing of +a+ elements is not affected by +raw+:
+
   xml_string = '<root><a>0 &lt; 1</a><b>1 &gt; 0</b></root>'
-  # Parsing of +a+ elements is not affected by +raw+.
-  doc = Document.new(xml_string, {:raw => ['a']})
-  doc.root.to_s # => "<root><a>0 &lt; 1</a><b>1 &gt; 0</b></root>"
-  a, b = *doc.root.elements
+  d = REXML::Document.new(xml_string, {:raw => ['a']})
+  d.root.to_s # => "<root><a>0 &lt; 1</a><b>1 &gt; 0</b></root>"
+  a, b = *d.root.elements
   a.to_s # => "<a>0 &lt; 1</a>"
   b.to_s # => "<b>1 &gt; 0</b>"
-  # But Element#text= is affected.
+
+But Element#text= is affected:
+
   a.text = '0 &lt; 1'
   b.text = '1 &gt; 0'
   a.to_s # => "<a>0 &lt; 1</a>"
   b.to_s # => "<b>1 &amp;gt; 0</b>"
-  # As is Element.add_text.
+
+As is Element.add_text:
+
   a.add_text(' so 1 &gt; 0')
   b.add_text(' so 0 &lt; 1')
   a.to_s # => "<a>0 &lt; 1 so 1 &gt; 0</a>"
   b.to_s # => "<b>1 &amp;gt; 0 so 0 &amp;lt; 1</b>"
-
