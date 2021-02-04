@@ -1,4 +1,4 @@
-== Context
+== Element Context
 
 Notes:
 - All code on this page presupposes that the following has been executed:
@@ -36,7 +36,7 @@ Or you can create or modify an individual entry:
 
 === +:respect_whitespace+
 
-Affects: +Element.new+, +Element.text=+:
+Affects: +Element.new+, +Element.text=+.
 
 By default, all parsed whitespace is respected (that is, stored whitespace not compressed):
 
@@ -59,7 +59,7 @@ In this example: +foo+ and +baz+ will have their whitespace respected;
 
 === +:compress_whitespace+
 
-Affects: +Element.new+, +Element.text=+:
+Affects: +Element.new+, +Element.text=+.
 
 Use <tt>compress_whitespace: :all</tt>
 to compress whitespace both within and between elements:
@@ -83,7 +83,7 @@ In this example, +foo+ and +baz+ will have their whitespace compressed;
 
 === +:ignore_whitespace_nodes+
 
-Affects: +Element.new+:
+Affects: +Element.new+.
 
 Use <tt>ignore_whitespace_nodes: :all</tt> to omit all whitespace-only elements.
 
@@ -92,7 +92,7 @@ In this example, +bar+ has a text node, while nodes +foo+ and +baz+ do not:
   xml_string = '<root><foo>   </foo><bar> BAR </bar><baz>   </baz></root>'
   d = Document.new(xml_string, {ignore_whitespace_nodes: :all})
   d.to_s # => "<root><foo> FOO </foo><bar/><baz> BAZ </baz></root>"
-  root = d.root
+  root = d.root   # => <root> ... </>
   foo = root[0]   # => <foo/>
   bar = root[1]   # => <bar> ... </>
   baz = root[2]   # => <baz/>
@@ -108,7 +108,7 @@ In this example, +bar+ and +baz+ have text nodes, while node +foo+ does not.
   xml_string = '<root><foo>   </foo><bar> BAR </bar><baz>   </baz></root>'
   d = Document.new(xml_string, {ignore_whitespace_nodes: ['foo']})
   d.to_s # => "<root><foo/><bar> BAR </bar><baz>   </baz></root>"
-  root = d.root
+  root = d.root   # => <root> ... </>
   foo = root[0]   # => <foo/>
   bar = root[1]   # => <bar> ... </>
   baz = root[2]   # => <baz> ... </>
@@ -118,48 +118,23 @@ In this example, +bar+ and +baz+ have text nodes, while node +foo+ does not.
 
 === +:raw+
 
-By default, entities are converted to characters:
+Affects:  +Element.text=+, +Element.add_text+, +Text.to_s+.
 
-  xml_string = '<root><foo>&amp;</foo><bar>&lt;</bar><baz>&gt;</baz><bat>&quot;</bat></root>'
-  d = Document.new(xml_string)
-  d.to_s
-  root = d.root
-  foo = root[0]
-  bar = root[1]
-  baz = root[2]
-  bat = root[3]
-  foo.text # => "&"
-  bar.text # => "<"
-  baz.text # => ">"
-  bat.text # => "\""
+  xml_string = '<root><a>0 &lt; 1</a><b>1 &gt; 0</b></root>'
+  # Parsing of +a+ elements is not affected by +raw+.
+  doc = Document.new(xml_string, {:raw => ['a']})
+  doc.root.to_s # => "<root><a>0 &lt; 1</a><b>1 &gt; 0</b></root>"
+  a, b = *doc.root.elements
+  a.to_s # => "<a>0 &lt; 1</a>"
+  b.to_s # => "<b>1 &gt; 0</b>"
+  # But Element#text= is affected.
+  a.text = '0 &lt; 1'
+  b.text = '1 &gt; 0'
+  a.to_s # => "<a>0 &lt; 1</a>"
+  b.to_s # => "<b>1 &amp;gt; 0</b>"
+  # As is Element.add_text.
+  a.add_text(' so 1 &gt; 0')
+  b.add_text(' so 0 &lt; 1')
+  a.to_s # => "<a>0 &lt; 1 so 1 &gt; 0</a>"
+  b.to_s # => "<b>1 &amp;gt; 0 so 0 &amp;lt; 1</b>"
 
-  root = d.root
-  foo = root[0]
-  bar = root[1]
-  baz = root[2]
-  bat = root[3]
-  foo.text
-  bar.text
-  baz.text
-  bat.text
-
-  :raw is one of the most mysterious (?) features in REXML.
-
-  :raw isn't used with REXML::Document.new. It's used with REXML::Element#text=, REXML::Element#add_text and REXML::Text#to_s:
-
-  xml_string = '<root><foo>&amp;</foo><bar>&lt;</bar><baz>&gt;</baz><bat>&quot;</bat></root>'
-  d = REXML::Document.new(xml_string, {raw: ['foo', 'baz']})
-  d.to_s # => "<root><foo>&amp;</foo><bar>&lt;</bar><baz>&gt;</baz><bat>&quot;</bat></root>"
-  root = d.root
-  foo = root[0]
-  bar = root[1]
-  baz = root[2]
-  bat = root[3]
-  foo.children[0].to_s # => "&"
-  bar.children[0].to_s # => "<"
-  baz.children[0].to_s # => ">"
-  bat.children[0].to_s # => "\""
-  foo.text = "&amp;"
-  foo.children[0].to_s # => "&amp;"
-  bar.text = "&lt;"
-  bar.children[0].to_s # => "&amp;lt;"
