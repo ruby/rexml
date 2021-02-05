@@ -39,52 +39,32 @@ module REXML
     # When no arguments are given,
     # returns an element with name <tt>'UNDEFINED'</tt>:
     #
-    #   e = Element.new # => <UNDEFINED/>
-    #   e.class         # => REXML::Element
-    #   e.name          # => "UNDEFINED"
+    #   e = REXML::Element.new # => <UNDEFINED/>
+    #   e.class                # => REXML::Element
+    #   e.name                 # => "UNDEFINED"
     #
     # When only argument +name+ is given,
     # returns an element of the given name:
     #
-    #   Element.new('foo') # => <foo/>
+    #   REXML::Element.new('foo') # => <foo/>
     #
-    # When only argument +element+ is given, it must be an \Element object;
+    # When only argument +element+ is given, it must be an \REXML::Element object;
     # returns a shallow copy of the given element:
     #
-    #   e0 = Element.new('foo')
-    #   Element.new(e0) # => <foo/>
+    #   e0 = REXML::Element.new('foo')
+    #   e1 = REXML::Element.new(e0) # => <foo/>
     #
-    # When argument +parent+ is also given, it must be a Parent object:
+    # When argument +parent+ is also given, it must be an REXML::Parent object:
     #
-    #   e = Element.new('foo', Parent.new)
+    #   e = REXML::Element.new('foo', REXML::Parent.new)
     #   e.parent # => #<REXML::Parent @parent=nil, @children=[<foo/>]>
     #
     # When argument +context+ is also given, it must be a hash
-    # that may contain the following entries:
+    # representing the context for the element;
+    # see {Element Context}[../doc/rexml/context_rdoc.html]:
     #
-    # :respect_whitespace::
-    #   +:all+ (default) or an array of names of elements
-    #   whose whitespace is to be respected.
-    # :compress_whitespace::
-    #   +:all+ or an array of names of elements
-    #   whose whitespace is to be ignored.
-    #   Overrides :+respect_whitespace+.
-    # :ignore_whitespace_nodes::
-    #   +:all+ or an array of names of elements
-    #   to be ignored if whitespace-only;
-    #   "ignored" here means "not added to the document tree."
-    # :raw::
-    #   +:all+, or an array names of elements to be processed in raw mode.
-    #   In raw mode, special characters in text are not converted to or from entities.
-    #
-    # Example:
-    #
-    #   context = {
-    #     respect_whitespace: :all,
-    #     raw: :all
-    #   }
-    #   e = Element.new('foo', Parent.new, context)
-    #   e.context # => {:respect_whitespace=>:all, :raw=>:all}
+    #   e = REXML::Element.new('foo', nil, {raw: :all})
+    #   e.context # => {:raw=>:all}
     #
     def initialize( arg = UNDEFINED, parent=nil, context=nil )
       super(parent)
@@ -111,18 +91,18 @@ module REXML
     #
     # For an element with no attributes and no children, shows the element name:
     #
-    #   Element.new.inspect # => "<UNDEFINED/>"
+    #   REXML::Element.new.inspect # => "<UNDEFINED/>"
     #
     # Shows attributes, if any:
     #
-    #   e = Element.new('foo')
+    #   e = REXML::Element.new('foo')
     #   e.add_attributes({'bar' => 0, 'baz' => 1})
     #   e.inspect # => "<foo bar='0' baz='1'/>"
     #
     # Shows an ellipsis (<tt>...</tt>), if there are child elements:
     #
-    #   e.add_element(Element.new('bar'))
-    #   e.add_element(Element.new('baz'))
+    #   e.add_element(REXML::Element.new('bar'))
+    #   e.add_element(REXML::Element.new('baz'))
     #   e.inspect # => "<foo bar='0' baz='1'> ... </>"
     #
     def inspect
@@ -146,7 +126,7 @@ module REXML
     # Returns a shallow copy of the element, containing the name and attributes,
     # but not the parent or children:
     #
-    #   e = Element.new('foo')
+    #   e = REXML::Element.new('foo')
     #   e.add_attributes({'bar' => 0, 'baz' => 1})
     #   e.clone # => <foo bar='0' baz='1'/>
     #
@@ -164,7 +144,7 @@ module REXML
     # Note that the root node is different from the document element;
     # in this example +a+ is document element and the root node is its parent:
     #
-    #   d = Document.new('<a><b><c/></b></a>')
+    #   d = REXML::Document.new('<a><b><c/></b></a>')
     #   top_element = d.first      # => <a> ... </>
     #   child = top_element.first  # => <b> ... </>
     #   d.root_node == d           # => true
@@ -174,17 +154,17 @@ module REXML
     # When the element is not part of a document, but does have ancestor elements,
     # returns the most distant ancestor element:
     #
-    #   e0 = Element.new('foo')
-    #   e1 = Element.new('bar')
+    #   e0 = REXML::Element.new('foo')
+    #   e1 = REXML::Element.new('bar')
     #   e1.parent = e0
-    #   e2 = Element.new('baz')
+    #   e2 = REXML::Element.new('baz')
     #   e2.parent = e1
     #   e2.root_node == e0 # => true
     #
     # When the element has no ancestor elements,
     # returns +self+:
     #
-    #   e = Element.new('foo')
+    #   e = REXML::Element.new('foo')
     #   e.root_node == e # => true
     #
     # Related: #root, #document.
@@ -198,7 +178,7 @@ module REXML
     #
     # Returns the most distant _element_ (not document) ancestor of the element:
     #
-    #   d = Document.new('<a><b><c/></b></a>')
+    #   d = REXML::Document.new('<a><b><c/></b></a>')
     #   top_element = d.first
     #   child = top_element.first
     #   top_element.root == top_element # => true
@@ -221,7 +201,7 @@ module REXML
     #
     # If the element is part of a document, returns that document:
     #
-    #   d = Document.new('<a><b><c/></b></a>')
+    #   d = REXML::Document.new('<a><b><c/></b></a>')
     #   top_element = d.first
     #   child = top_element.first
     #   top_element.document == d # => true
@@ -229,13 +209,13 @@ module REXML
     #
     # If the element is not part of a document, returns +nil+:
     #
-    #   Element.new.document # => nil
+    #   REXML::Element.new.document # => nil
     #
     # For a document, returns +self+:
     #
     #   d.document == d           # => true
     #
-    # Related: #root, #root_node..
+    # Related: #root, #root_node.
     #
     def document
       rt = root
