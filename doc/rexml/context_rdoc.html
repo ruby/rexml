@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>context - RDoc Documentation</title>
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "../../";
+  var index_rel_prefix = "../../";
+</script>
+
+<script src="../../js/navigation.js" defer></script>
+<script src="../../js/search.js" defer></script>
+<script src="../../js/search_index.js" defer></script>
+<script src="../../js/searcher.js" defer></script>
+<script src="../../js/darkfish.js" defer></script>
+
+<link href="../../css/fonts.css" rel="stylesheet">
+<link href="../../css/rdoc.css" rel="stylesheet">
+
+
+<body id="top" role="document" class="file">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="../../index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="../../table_of_contents.html#pages">Pages</a>
+    <a href="../../table_of_contents.html#classes">Classes</a>
+    <a href="../../table_of_contents.html#methods">Methods</a>
+  </div>
+</div>
+
+    <div id="search-section" role="search" class="project-section initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search" spellcheck="false"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </div>
+
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
+  </form>
+</div>
+
+  </div>
+
+  
+<div class="nav-section">
+  <h3>Table of Contents</h3>
+
+  <ul class="link-list" role="directory">
+    <li><a href="#label-Element+Context">Element Context</a>
+    <li><a href="#label-3Arespect_whitespace"><code>:respect_whitespace</code></a>
+    <li><a href="#label-3Acompress_whitespace"><code>:compress_whitespace</code></a>
+    <li><a href="#label-3Aignore_whitespace_nodes"><code>:ignore_whitespace_nodes</code></a>
+    <li><a href="#label-3Araw"><code>:raw</code></a>
+  </ul>
+</div>
+
+
+  <div id="project-metadata">
+    
+<div id="fileindex-section" class="nav-section">
+  <h3>Pages</h3>
+
+  <ul class="link-list">
+    <li><a href="../../LICENSE_txt.html">LICENSE</a>
+    <li><a href="../../NEWS_md.html">NEWS</a>
+    <li><a href="../../README_md.html">README</a>
+    <li><a href="../../doc/rexml/context_rdoc.html">context</a>
+  </ul>
+</div>
+
+  </div>
+</nav>
+
+<main role="main" aria-label="Page doc/rexml/context.rdoc">
+
+<h2 id="label-Element+Context">Element Context<span><a href="#label-Element+Context">&para;</a> <a href="#top">&uarr;</a></span></h2>
+
+<p>Notes:</p>
+<ul><li>
+<p>All code on this page presupposes that the following has been executed:</p>
+
+<pre class="ruby"><span class="ruby-identifier">require</span> <span class="ruby-string">&#39;rexml/document&#39;</span>
+</pre>
+</li><li>
+<p>For convenience, examples on this page use <code>REXML::Document.new</code>, not <code>REXML::Element.new</code>. This is completely valid, because <a href="../../REXML/Document.html"><code>REXML::Document</code></a> is a subclass of <a href="../../REXML/Element.html"><code>REXML::Element</code></a>.</p>
+</li></ul>
+
+<p>The context for an element is a hash of processing directives that influence the way XML is read, stored, and written. The context entries are:</p>
+<ul><li>
+<p><code>:respect_whitespace</code>: controls treatment of whitespace.</p>
+</li><li>
+<p><code>:compress_whitespace</code>: determines whether whitespace is compressed.</p>
+</li><li>
+<p><code>:ignore_whitespace_nodes</code>: determines whether whitespace-only nodes are to be ignored.</p>
+</li><li>
+<p><code>:raw</code>: controls treatment of special characters and entities.</p>
+</li></ul>
+
+<p>The default context for a new element is <code>{}</code>. You can set the context at element-creation time:</p>
+
+<pre class="ruby"><span class="ruby-identifier">d</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;&#39;</span>, {<span class="ruby-value">compress_whitespace:</span> <span class="ruby-value">:all</span>, <span class="ruby-value">raw:</span> <span class="ruby-value">:all</span>})
+<span class="ruby-identifier">d</span>.<span class="ruby-identifier">context</span> <span class="ruby-comment"># =&gt; {:compress_whitespace=&gt;:all, :raw=&gt;:all}</span>
+</pre>
+
+<p>You can reset the entire context by assigning a new hash:</p>
+
+<pre class="ruby"><span class="ruby-identifier">d</span>.<span class="ruby-identifier">context</span> = {<span class="ruby-value">ignore_whitespace_nodes:</span> <span class="ruby-value">:all</span>}
+<span class="ruby-identifier">d</span>.<span class="ruby-identifier">context</span> <span class="ruby-comment"># =&gt; {:ignore_whitespace_nodes=&gt;:all}</span>
+</pre>
+
+<p>Or you can create or modify an individual entry:</p>
+
+<pre class="ruby"><span class="ruby-identifier">d</span>.<span class="ruby-identifier">context</span>[<span class="ruby-value">:raw</span>] = <span class="ruby-value">:all</span>
+<span class="ruby-identifier">d</span>.<span class="ruby-identifier">context</span> <span class="ruby-comment"># =&gt; {:ignore_whitespace_nodes=&gt;:all, :raw=&gt;:all}</span>
+</pre>
+
+<h3 id="label-3Arespect_whitespace"><code>:respect_whitespace</code><span><a href="#label-3Arespect_whitespace">&para;</a> <a href="#top">&uarr;</a></span></h3>
+
+<p>Affects: <code>REXML::Element.new</code>, <code>REXML::Element.text=</code>.</p>
+
+<p>By default, all parsed whitespace is respected (that is, stored whitespace not compressed):</p>
+
+<pre class="ruby"><span class="ruby-identifier">xml_string</span> = <span class="ruby-string">&#39;&lt;root&gt;&lt;foo&gt;a   b&lt;/foo&gt;    &lt;bar&gt;c   d&lt;/bar&gt;   &lt;baz&gt;e   f&lt;/baz&gt;&lt;/root&gt;&#39;</span>
+<span class="ruby-identifier">d</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">xml_string</span>)
+<span class="ruby-identifier">d</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-comment"># =&gt; &quot;&lt;root&gt;&lt;foo&gt;a   b&lt;/foo&gt;    &lt;bar&gt;c   d&lt;/bar&gt;   &lt;baz&gt;e   f&lt;/baz&gt;&lt;/root&gt;&quot;</span>
+</pre>
+
+<p>Use <code>:respect_whitespace</code> with an array of element names to specify the elements that <em>are</em> to have their whitespace respected; other elements&#39; whitespace, and whitespace between elements, will be compressed.</p>
+
+<p>In this example: <code>foo</code> and <code>baz</code> will have their whitespace respected; <code>bar</code> and the space between elements will have their whitespace compressed:</p>
+
+<pre class="ruby"><span class="ruby-identifier">d</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">xml_string</span>, {<span class="ruby-value">respect_whitespace:</span> [<span class="ruby-string">&#39;foo&#39;</span>, <span class="ruby-string">&#39;baz&#39;</span>]})
+<span class="ruby-identifier">d</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-comment"># =&gt; &quot;&lt;root&gt;&lt;foo&gt;a   b&lt;/foo&gt; &lt;bar&gt;c d&lt;/bar&gt; &lt;baz&gt;e   f&lt;/baz&gt;&lt;/root&gt;&quot;</span>
+<span class="ruby-identifier">bar</span> = <span class="ruby-identifier">d</span>.<span class="ruby-identifier">root</span>[<span class="ruby-value">2</span>] <span class="ruby-comment"># =&gt; &lt;bar&gt; ... &lt;/&gt;</span>
+<span class="ruby-identifier">bar</span>.<span class="ruby-identifier">text</span> = <span class="ruby-string">&#39;X   Y&#39;</span>
+<span class="ruby-identifier">d</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-comment"># =&gt; &quot;&lt;root&gt;&lt;foo&gt;a   b&lt;/foo&gt; &lt;bar&gt;X Y&lt;/bar&gt; &lt;baz&gt;e   f&lt;/baz&gt;&lt;/root&gt;&quot;</span>
+</pre>
+
+<h3 id="label-3Acompress_whitespace"><code>:compress_whitespace</code><span><a href="#label-3Acompress_whitespace">&para;</a> <a href="#top">&uarr;</a></span></h3>
+
+<p>Affects: <code>REXML::Element.new</code>, <code>REXML::Element.text=</code>.</p>
+
+<p>Use <code>compress_whitespace: :all</code> to compress whitespace both within and between elements:</p>
+
+<pre class="ruby"><span class="ruby-identifier">xml_string</span> = <span class="ruby-string">&#39;&lt;root&gt;&lt;foo&gt;a   b&lt;/foo&gt;    &lt;bar&gt;c   d&lt;/bar&gt;   &lt;baz&gt;e   f&lt;/baz&gt;&lt;/root&gt;&#39;</span>
+<span class="ruby-identifier">d</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">xml_string</span>, {<span class="ruby-value">compress_whitespace:</span> <span class="ruby-value">:all</span>})
+<span class="ruby-identifier">d</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-comment"># =&gt; &quot;&lt;root&gt;&lt;foo&gt;a b&lt;/foo&gt; &lt;bar&gt;c d&lt;/bar&gt; &lt;baz&gt;e f&lt;/baz&gt;&lt;/root&gt;&quot;</span>
+</pre>
+
+<p>Use <code>:compress_whitespace</code> with an array of element names to compress whitespace in those elements, but not in other elements nor between elements.</p>
+
+<p>In this example, <code>foo</code> and <code>baz</code> will have their whitespace compressed; <code>bar</code> and the space between elements will not:</p>
+
+<pre class="ruby"><span class="ruby-identifier">d</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">xml_string</span>, {<span class="ruby-value">compress_whitespace:</span> [<span class="ruby-string">&#39;foo&#39;</span>, <span class="ruby-string">&#39;baz&#39;</span>]})
+<span class="ruby-identifier">d</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-comment"># =&gt; &quot;&lt;root&gt;&lt;foo&gt;a b&lt;/foo&gt;    &lt;bar&gt;c   d&lt;/bar&gt;   &lt;baz&gt;e f&lt;/baz&gt;&lt;/root&gt;&quot;</span>
+<span class="ruby-identifier">foo</span> = <span class="ruby-identifier">d</span>.<span class="ruby-identifier">root</span>[<span class="ruby-value">0</span>] <span class="ruby-comment"># =&gt; &lt;foo&gt; ... &lt;/&gt;</span>
+<span class="ruby-identifier">foo</span>.<span class="ruby-identifier">text</span>= <span class="ruby-string">&#39;X   Y&#39;</span>
+<span class="ruby-identifier">d</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-comment"># =&gt; &quot;&lt;root&gt;&lt;foo&gt;X Y&lt;/foo&gt;    &lt;bar&gt;c   d&lt;/bar&gt;   &lt;baz&gt;e f&lt;/baz&gt;&lt;/root&gt;&quot;</span>
+</pre>
+
+<h3 id="label-3Aignore_whitespace_nodes"><code>:ignore_whitespace_nodes</code><span><a href="#label-3Aignore_whitespace_nodes">&para;</a> <a href="#top">&uarr;</a></span></h3>
+
+<p>Affects: <code>REXML::Element.new</code>.</p>
+
+<p>Use <code>ignore_whitespace_nodes: :all</code> to omit all whitespace-only elements.</p>
+
+<p>In this example, <code>bar</code> has a text node, while nodes <code>foo</code> and <code>baz</code> do not:</p>
+
+<pre class="ruby"><span class="ruby-identifier">xml_string</span> = <span class="ruby-string">&#39;&lt;root&gt;&lt;foo&gt;   &lt;/foo&gt;&lt;bar&gt; BAR &lt;/bar&gt;&lt;baz&gt;   &lt;/baz&gt;&lt;/root&gt;&#39;</span>
+<span class="ruby-identifier">d</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">xml_string</span>, {<span class="ruby-value">ignore_whitespace_nodes:</span> <span class="ruby-value">:all</span>})
+<span class="ruby-identifier">d</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-comment"># =&gt; &quot;&lt;root&gt;&lt;foo&gt; FOO &lt;/foo&gt;&lt;bar/&gt;&lt;baz&gt; BAZ &lt;/baz&gt;&lt;/root&gt;&quot;</span>
+<span class="ruby-identifier">root</span> = <span class="ruby-identifier">d</span>.<span class="ruby-identifier">root</span>   <span class="ruby-comment"># =&gt; &lt;root&gt; ... &lt;/&gt;</span>
+<span class="ruby-identifier">foo</span> = <span class="ruby-identifier">root</span>[<span class="ruby-value">0</span>]   <span class="ruby-comment"># =&gt; &lt;foo/&gt;</span>
+<span class="ruby-identifier">bar</span> = <span class="ruby-identifier">root</span>[<span class="ruby-value">1</span>]   <span class="ruby-comment"># =&gt; &lt;bar&gt; ... &lt;/&gt;</span>
+<span class="ruby-identifier">baz</span> = <span class="ruby-identifier">root</span>[<span class="ruby-value">2</span>]   <span class="ruby-comment"># =&gt; &lt;baz/&gt;</span>
+<span class="ruby-identifier">foo</span>.<span class="ruby-identifier">first</span>.<span class="ruby-identifier">class</span> <span class="ruby-comment"># =&gt; NilClass</span>
+<span class="ruby-identifier">bar</span>.<span class="ruby-identifier">first</span>.<span class="ruby-identifier">class</span> <span class="ruby-comment"># =&gt; REXML::Text</span>
+<span class="ruby-identifier">baz</span>.<span class="ruby-identifier">first</span>.<span class="ruby-identifier">class</span> <span class="ruby-comment"># =&gt; NilClass</span>
+</pre>
+
+<p>Use <code>:ignore_whitespace_nodes</code> with an array of element names to specify the elements that are to have whitespace nodes ignored.</p>
+
+<p>In this example, <code>bar</code> and <code>baz</code> have text nodes, while node <code>foo</code> does not.</p>
+
+<pre class="ruby"><span class="ruby-identifier">xml_string</span> = <span class="ruby-string">&#39;&lt;root&gt;&lt;foo&gt;   &lt;/foo&gt;&lt;bar&gt; BAR &lt;/bar&gt;&lt;baz&gt;   &lt;/baz&gt;&lt;/root&gt;&#39;</span>
+<span class="ruby-identifier">d</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">xml_string</span>, {<span class="ruby-value">ignore_whitespace_nodes:</span> [<span class="ruby-string">&#39;foo&#39;</span>]})
+<span class="ruby-identifier">d</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-comment"># =&gt; &quot;&lt;root&gt;&lt;foo/&gt;&lt;bar&gt; BAR &lt;/bar&gt;&lt;baz&gt;   &lt;/baz&gt;&lt;/root&gt;&quot;</span>
+<span class="ruby-identifier">root</span> = <span class="ruby-identifier">d</span>.<span class="ruby-identifier">root</span>   <span class="ruby-comment"># =&gt; &lt;root&gt; ... &lt;/&gt;</span>
+<span class="ruby-identifier">foo</span> = <span class="ruby-identifier">root</span>[<span class="ruby-value">0</span>]   <span class="ruby-comment"># =&gt; &lt;foo/&gt;</span>
+<span class="ruby-identifier">bar</span> = <span class="ruby-identifier">root</span>[<span class="ruby-value">1</span>]   <span class="ruby-comment"># =&gt; &lt;bar&gt; ... &lt;/&gt;</span>
+<span class="ruby-identifier">baz</span> = <span class="ruby-identifier">root</span>[<span class="ruby-value">2</span>]   <span class="ruby-comment"># =&gt; &lt;baz&gt; ... &lt;/&gt;</span>
+<span class="ruby-identifier">foo</span>.<span class="ruby-identifier">first</span>.<span class="ruby-identifier">class</span> <span class="ruby-comment"># =&gt; NilClass</span>
+<span class="ruby-identifier">bar</span>.<span class="ruby-identifier">first</span>.<span class="ruby-identifier">class</span> <span class="ruby-comment"># =&gt; REXML::Text</span>
+<span class="ruby-identifier">baz</span>.<span class="ruby-identifier">first</span>.<span class="ruby-identifier">class</span> <span class="ruby-comment"># =&gt; REXML::Text</span>
+</pre>
+
+<h3 id="label-3Araw"><code>:raw</code><span><a href="#label-3Araw">&para;</a> <a href="#top">&uarr;</a></span></h3>
+
+<p>Affects:  <code>Element.text=</code>, <code>Element.add_text</code>, <code>Text.to_s</code>.</p>
+
+<p>Parsing of <code>a</code> elements is not affected by <code>raw</code>:</p>
+
+<pre class="ruby"><span class="ruby-identifier">xml_string</span> = <span class="ruby-string">&#39;&lt;root&gt;&lt;a&gt;0 &amp;lt; 1&lt;/a&gt;&lt;b&gt;1 &amp;gt; 0&lt;/b&gt;&lt;/root&gt;&#39;</span>
+<span class="ruby-identifier">d</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">xml_string</span>, {<span class="ruby-value">:raw</span> <span class="ruby-operator">=&gt;</span> [<span class="ruby-string">&#39;a&#39;</span>]})
+<span class="ruby-identifier">d</span>.<span class="ruby-identifier">root</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-comment"># =&gt; &quot;&lt;root&gt;&lt;a&gt;0 &amp;lt; 1&lt;/a&gt;&lt;b&gt;1 &amp;gt; 0&lt;/b&gt;&lt;/root&gt;&quot;</span>
+<span class="ruby-identifier">a</span>, <span class="ruby-identifier">b</span> = <span class="ruby-operator">*</span><span class="ruby-identifier">d</span>.<span class="ruby-identifier">root</span>.<span class="ruby-identifier">elements</span>
+<span class="ruby-identifier">a</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-comment"># =&gt; &quot;&lt;a&gt;0 &amp;lt; 1&lt;/a&gt;&quot;</span>
+<span class="ruby-identifier">b</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-comment"># =&gt; &quot;&lt;b&gt;1 &amp;gt; 0&lt;/b&gt;&quot;</span>
+</pre>
+
+<p>But Element#text= is affected:</p>
+
+<pre class="ruby"><span class="ruby-identifier">a</span>.<span class="ruby-identifier">text</span> = <span class="ruby-string">&#39;0 &amp;lt; 1&#39;</span>
+<span class="ruby-identifier">b</span>.<span class="ruby-identifier">text</span> = <span class="ruby-string">&#39;1 &amp;gt; 0&#39;</span>
+<span class="ruby-identifier">a</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-comment"># =&gt; &quot;&lt;a&gt;0 &amp;lt; 1&lt;/a&gt;&quot;</span>
+<span class="ruby-identifier">b</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-comment"># =&gt; &quot;&lt;b&gt;1 &amp;amp;gt; 0&lt;/b&gt;&quot;</span>
+</pre>
+
+<p>As is Element.add_text:</p>
+
+<pre class="ruby"><span class="ruby-identifier">a</span>.<span class="ruby-identifier">add_text</span>(<span class="ruby-string">&#39; so 1 &amp;gt; 0&#39;</span>)
+<span class="ruby-identifier">b</span>.<span class="ruby-identifier">add_text</span>(<span class="ruby-string">&#39; so 0 &amp;lt; 1&#39;</span>)
+<span class="ruby-identifier">a</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-comment"># =&gt; &quot;&lt;a&gt;0 &amp;lt; 1 so 1 &amp;gt; 0&lt;/a&gt;&quot;</span>
+<span class="ruby-identifier">b</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-comment"># =&gt; &quot;&lt;b&gt;1 &amp;amp;gt; 0 so 0 &amp;amp;lt; 1&lt;/b&gt;&quot;</span>
+</pre>
+
+</main>
+
+
+
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="https://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.3.0.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+</footer>
+

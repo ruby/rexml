@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>class REXML::Attributes - RDoc Documentation</title>
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "../";
+  var index_rel_prefix = "../";
+</script>
+
+<script src="../js/navigation.js" defer></script>
+<script src="../js/search.js" defer></script>
+<script src="../js/search_index.js" defer></script>
+<script src="../js/searcher.js" defer></script>
+<script src="../js/darkfish.js" defer></script>
+
+<link href="../css/fonts.css" rel="stylesheet">
+<link href="../css/rdoc.css" rel="stylesheet">
+
+
+<body id="top" role="document" class="class">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="../index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="../table_of_contents.html#pages">Pages</a>
+    <a href="../table_of_contents.html#classes">Classes</a>
+    <a href="../table_of_contents.html#methods">Methods</a>
+  </div>
+</div>
+
+    <div id="search-section" role="search" class="project-section initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search" spellcheck="false"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </div>
+
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
+  </form>
+</div>
+
+  </div>
+
+  
+
+  <div id="class-metadata">
+    
+    
+<div id="parent-class-section" class="nav-section">
+  <h3>Parent</h3>
+
+  <p class="link">Hash
+</div>
+
+    
+    
+    
+<!-- Method Quickref -->
+<div id="method-list-section" class="nav-section">
+  <h3>Methods</h3>
+
+  <ul class="link-list" role="directory">
+    <li ><a href="#method-c-new">::new</a>
+    <li ><a href="#method-i-3C-3C">#&lt;&lt;</a>
+    <li ><a href="#method-i-5B-5D">#[]</a>
+    <li ><a href="#method-i-5B-5D-3D">#[]=</a>
+    <li ><a href="#method-i-add">#add</a>
+    <li class="calls-super" ><a href="#method-i-delete">#delete</a>
+    <li ><a href="#method-i-delete_all">#delete_all</a>
+    <li ><a href="#method-i-each">#each</a>
+    <li ><a href="#method-i-each_attribute">#each_attribute</a>
+    <li ><a href="#method-i-get_attribute">#get_attribute</a>
+    <li ><a href="#method-i-get_attribute_ns">#get_attribute_ns</a>
+    <li ><a href="#method-i-length">#length</a>
+    <li ><a href="#method-i-namespaces">#namespaces</a>
+    <li ><a href="#method-i-prefixes">#prefixes</a>
+    <li ><a href="#method-i-size">#size</a>
+    <li ><a href="#method-i-to_a">#to_a</a>
+  </ul>
+</div>
+
+  </div>
+</nav>
+
+<main role="main" aria-labelledby="class-REXML::Attributes">
+  <h1 id="class-REXML::Attributes" class="class">
+    class REXML::Attributes
+  </h1>
+
+  <section class="description">
+    
+<p>A class that defines the set of <a href="Attributes.html"><code>Attributes</code></a> of an <a href="Element.html"><code>Element</code></a> and provides operations for accessing elements in that set.</p>
+
+  </section>
+
+  <section id="5Buntitled-5D" class="documentation-section">
+
+
+
+
+
+     <section id="public-class-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Class Methods</h3>
+       </header>
+
+      <div id="method-c-new" class="method-detail ">
+        <div class="method-heading">
+          <span class="method-name">new</span><span
+            class="method-args">(element)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+
+        <div class="method-description">
+          <p>Constructor</p>
+<dl class="rdoc-list note-list"><dt>element
+<dd>
+<p>the <a href="Element.html"><code>Element</code></a> of which this is an <a href="Attribute.html"><code>Attribute</code></a></p>
+</dd></dl>
+
+          <div class="method-source-code" id="new-source">
+            <pre><span class="ruby-comment"># File lib/rexml/element.rb, line 1081</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span> <span class="ruby-identifier">element</span>
+  <span class="ruby-ivar">@element</span> = <span class="ruby-identifier">element</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+        </div>
+
+
+      </div>
+
+    </section>
+
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Instance Methods</h3>
+       </header>
+
+      <div id="method-i-3C-3C" class="method-detail method-alias">
+        <div class="method-heading">
+          <span class="method-name">&lt;&lt;</span><span
+            class="method-args">( attribute )</span>
+        </div>
+
+        <div class="method-description">
+          
+
+        </div>
+
+
+        <div class="aliases">
+          Alias for: <a href="Attributes.html#method-i-add">add</a>
+        </div>
+      </div>
+
+      <div id="method-i-5B-5D" class="method-detail ">
+        <div class="method-heading">
+          <span class="method-name">[]</span><span
+            class="method-args">(name)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+
+        <div class="method-description">
+          <p>Fetches an attribute value.  If you want to get the <a href="Attribute.html"><code>Attribute</code></a> itself, use <a href="Attributes.html#method-i-get_attribute"><code>get_attribute</code></a>()</p>
+<dl class="rdoc-list note-list"><dt>name
+<dd>
+<p>an <a href="XPath.html"><code>XPath</code></a> attribute name.  Namespaces are relevant here.</p>
+</dd><dt>Returns
+<dd>
+<p>the String value of the matching attribute, or <code>nil</code> if no matching attribute was found.  This is the unnormalized value (with entities expanded).</p>
+</dd></dl>
+
+<pre class="ruby"><span class="ruby-identifier">doc</span> = <span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span> <span class="ruby-string">&quot;&lt;a foo:att=&#39;1&#39; bar:att=&#39;2&#39; att=&#39;&amp;lt;&#39;/&gt;&quot;</span>
+<span class="ruby-identifier">doc</span>.<span class="ruby-identifier">root</span>.<span class="ruby-identifier">attributes</span>[<span class="ruby-string">&#39;att&#39;</span>]         <span class="ruby-comment">#-&gt; &#39;&lt;&#39;</span>
+<span class="ruby-identifier">doc</span>.<span class="ruby-identifier">root</span>.<span class="ruby-identifier">attributes</span>[<span class="ruby-string">&#39;bar:att&#39;</span>]     <span class="ruby-comment">#-&gt; &#39;2&#39;</span>
+</pre>
+
+          <div class="method-source-code" id="5B-5D-source">
+            <pre><span class="ruby-comment"># File lib/rexml/element.rb, line 1096</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">[]</span>(<span class="ruby-identifier">name</span>)
+  <span class="ruby-identifier">attr</span> = <span class="ruby-identifier">get_attribute</span>(<span class="ruby-identifier">name</span>)
+  <span class="ruby-keyword">return</span> <span class="ruby-identifier">attr</span>.<span class="ruby-identifier">value</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">attr</span>.<span class="ruby-identifier">nil?</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+        </div>
+
+
+      </div>
+
+      <div id="method-i-5B-5D-3D" class="method-detail ">
+        <div class="method-heading">
+          <span class="method-name">[]=</span><span
+            class="method-args">( name, value )</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+
+        <div class="method-description">
+          <p>Sets an attribute, overwriting any existing attribute value by the same name.  <a href="Namespace.html"><code>Namespace</code></a> is significant.</p>
+<dl class="rdoc-list note-list"><dt>name
+<dd>
+<p>the name of the attribute</p>
+</dd><dt>value
+<dd>
+<p>(optional) If supplied, the value of the attribute.  If nil, any existing matching attribute is deleted.</p>
+</dd><dt>Returns
+<dd>
+<p>Owning element</p>
+</dd></dl>
+
+<pre class="ruby"><span class="ruby-identifier">doc</span> = <span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span> <span class="ruby-string">&quot;&lt;a x:foo=&#39;1&#39; foo=&#39;3&#39;/&gt;&quot;</span>
+<span class="ruby-identifier">doc</span>.<span class="ruby-identifier">root</span>.<span class="ruby-identifier">attributes</span>[<span class="ruby-string">&#39;y:foo&#39;</span>] = <span class="ruby-string">&#39;2&#39;</span>
+<span class="ruby-identifier">doc</span>.<span class="ruby-identifier">root</span>.<span class="ruby-identifier">attributes</span>[<span class="ruby-string">&#39;foo&#39;</span>] = <span class="ruby-string">&#39;4&#39;</span>
+<span class="ruby-identifier">doc</span>.<span class="ruby-identifier">root</span>.<span class="ruby-identifier">attributes</span>[<span class="ruby-string">&#39;x:foo&#39;</span>] = <span class="ruby-keyword">nil</span>
+</pre>
+
+          <div class="method-source-code" id="5B-5D-3D-source">
+            <pre><span class="ruby-comment"># File lib/rexml/element.rb, line 1200</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">[]=</span>( <span class="ruby-identifier">name</span>, <span class="ruby-identifier">value</span> )
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">value</span>.<span class="ruby-identifier">nil?</span>             <span class="ruby-comment"># Delete the named attribute</span>
+    <span class="ruby-identifier">attr</span> = <span class="ruby-identifier">get_attribute</span>(<span class="ruby-identifier">name</span>)
+    <span class="ruby-identifier">delete</span> <span class="ruby-identifier">attr</span>
+    <span class="ruby-keyword">return</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-keyword">unless</span> <span class="ruby-identifier">value</span>.<span class="ruby-identifier">kind_of?</span> <span class="ruby-constant">Attribute</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-ivar">@element</span>.<span class="ruby-identifier">document</span> <span class="ruby-keyword">and</span> <span class="ruby-ivar">@element</span>.<span class="ruby-identifier">document</span>.<span class="ruby-identifier">doctype</span>
+      <span class="ruby-identifier">value</span> = <span class="ruby-constant">Text</span><span class="ruby-operator">::</span><span class="ruby-identifier">normalize</span>( <span class="ruby-identifier">value</span>, <span class="ruby-ivar">@element</span>.<span class="ruby-identifier">document</span>.<span class="ruby-identifier">doctype</span> )
+    <span class="ruby-keyword">else</span>
+      <span class="ruby-identifier">value</span> = <span class="ruby-constant">Text</span><span class="ruby-operator">::</span><span class="ruby-identifier">normalize</span>( <span class="ruby-identifier">value</span>, <span class="ruby-keyword">nil</span> )
+    <span class="ruby-keyword">end</span>
+    <span class="ruby-identifier">value</span> = <span class="ruby-constant">Attribute</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">name</span>, <span class="ruby-identifier">value</span>)
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-identifier">value</span>.<span class="ruby-identifier">element</span> = <span class="ruby-ivar">@element</span>
+  <span class="ruby-identifier">old_attr</span> = <span class="ruby-identifier">fetch</span>(<span class="ruby-identifier">value</span>.<span class="ruby-identifier">name</span>, <span class="ruby-keyword">nil</span>)
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">old_attr</span>.<span class="ruby-identifier">nil?</span>
+    <span class="ruby-identifier">store</span>(<span class="ruby-identifier">value</span>.<span class="ruby-identifier">name</span>, <span class="ruby-identifier">value</span>)
+  <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">old_attr</span>.<span class="ruby-identifier">kind_of?</span> <span class="ruby-constant">Hash</span>
+    <span class="ruby-identifier">old_attr</span>[<span class="ruby-identifier">value</span>.<span class="ruby-identifier">prefix</span>] = <span class="ruby-identifier">value</span>
+  <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">old_attr</span>.<span class="ruby-identifier">prefix</span> <span class="ruby-operator">!=</span> <span class="ruby-identifier">value</span>.<span class="ruby-identifier">prefix</span>
+    <span class="ruby-comment"># Check for conflicting namespaces</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">value</span>.<span class="ruby-identifier">prefix</span> <span class="ruby-operator">!=</span> <span class="ruby-string">&quot;xmlns&quot;</span> <span class="ruby-keyword">and</span> <span class="ruby-identifier">old_attr</span>.<span class="ruby-identifier">prefix</span> <span class="ruby-operator">!=</span> <span class="ruby-string">&quot;xmlns&quot;</span>
+      <span class="ruby-identifier">old_namespace</span> = <span class="ruby-identifier">old_attr</span>.<span class="ruby-identifier">namespace</span>
+      <span class="ruby-identifier">new_namespace</span> = <span class="ruby-identifier">value</span>.<span class="ruby-identifier">namespace</span>
+      <span class="ruby-keyword">if</span> <span class="ruby-identifier">old_namespace</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">new_namespace</span>
+        <span class="ruby-identifier">raise</span> <span class="ruby-constant">ParseException</span>.<span class="ruby-identifier">new</span>(
+                <span class="ruby-node">&quot;Namespace conflict in adding attribute \&quot;#{value.name}\&quot;: &quot;</span><span class="ruby-operator">+</span>
+                <span class="ruby-node">&quot;Prefix \&quot;#{old_attr.prefix}\&quot; = \&quot;#{old_namespace}\&quot; and &quot;</span><span class="ruby-operator">+</span>
+                <span class="ruby-node">&quot;prefix \&quot;#{value.prefix}\&quot; = \&quot;#{new_namespace}\&quot;&quot;</span>)
+      <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">end</span>
+    <span class="ruby-identifier">store</span> <span class="ruby-identifier">value</span>.<span class="ruby-identifier">name</span>, {<span class="ruby-identifier">old_attr</span>.<span class="ruby-identifier">prefix</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-identifier">old_attr</span>,
+                       <span class="ruby-identifier">value</span>.<span class="ruby-identifier">prefix</span>    <span class="ruby-operator">=&gt;</span> <span class="ruby-identifier">value</span>}
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-identifier">store</span> <span class="ruby-identifier">value</span>.<span class="ruby-identifier">name</span>, <span class="ruby-identifier">value</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-ivar">@element</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+        </div>
+
+
+      </div>
+
+      <div id="method-i-add" class="method-detail ">
+        <div class="method-heading">
+          <span class="method-name">add</span><span
+            class="method-args">( attribute )</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+
+        <div class="method-description">
+          <p>Adds an attribute, overriding any existing attribute by the same name.  Namespaces are significant.</p>
+<dl class="rdoc-list note-list"><dt>attribute
+<dd>
+<p>An <a href="Attribute.html"><code>Attribute</code></a></p>
+</dd></dl>
+
+          <div class="method-source-code" id="add-source">
+            <pre><span class="ruby-comment"># File lib/rexml/element.rb, line 1319</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">add</span>( <span class="ruby-identifier">attribute</span> )
+  <span class="ruby-keyword">self</span>[<span class="ruby-identifier">attribute</span>.<span class="ruby-identifier">name</span>] = <span class="ruby-identifier">attribute</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+        </div>
+
+        <div class="aliases">
+          Also aliased as: <a href="Attributes.html#method-i-3C-3C">&lt;&lt;</a>
+        </div>
+
+      </div>
+
+      <div id="method-i-delete" class="method-detail ">
+        <div class="method-heading">
+          <span class="method-name">delete</span><span
+            class="method-args">( attribute )</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+
+        <div class="method-description">
+          <p>Removes an attribute</p>
+<dl class="rdoc-list note-list"><dt>attribute
+<dd>
+<p>either a String, which is the name of the attribute to remove – namespaces are significant here – or the attribute to remove.</p>
+</dd><dt>Returns
+<dd>
+<p>the owning element</p>
+</dd></dl>
+
+<pre class="ruby"><span class="ruby-identifier">doc</span> = <span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span> <span class="ruby-string">&quot;&lt;a y:foo=&#39;0&#39; x:foo=&#39;1&#39; foo=&#39;3&#39; z:foo=&#39;4&#39;/&gt;&quot;</span>
+<span class="ruby-identifier">doc</span>.<span class="ruby-identifier">root</span>.<span class="ruby-identifier">attributes</span>.<span class="ruby-identifier">delete</span> <span class="ruby-string">&#39;foo&#39;</span>   <span class="ruby-comment">#-&gt; &lt;a y:foo=&#39;0&#39; x:foo=&#39;1&#39; z:foo=&#39;4&#39;/&gt;&quot;</span>
+<span class="ruby-identifier">doc</span>.<span class="ruby-identifier">root</span>.<span class="ruby-identifier">attributes</span>.<span class="ruby-identifier">delete</span> <span class="ruby-string">&#39;x:foo&#39;</span> <span class="ruby-comment">#-&gt; &lt;a y:foo=&#39;0&#39; z:foo=&#39;4&#39;/&gt;&quot;</span>
+<span class="ruby-identifier">attr</span> = <span class="ruby-identifier">doc</span>.<span class="ruby-identifier">root</span>.<span class="ruby-identifier">attributes</span>.<span class="ruby-identifier">get_attribute</span>(<span class="ruby-string">&#39;y:foo&#39;</span>)
+<span class="ruby-identifier">doc</span>.<span class="ruby-identifier">root</span>.<span class="ruby-identifier">attributes</span>.<span class="ruby-identifier">delete</span> <span class="ruby-identifier">attr</span>    <span class="ruby-comment">#-&gt; &lt;a z:foo=&#39;4&#39;/&gt;&quot;</span>
+</pre>
+            <div class="method-calls-super">
+              Calls superclass method
+              
+            </div>
+
+          <div class="method-source-code" id="delete-source">
+            <pre><span class="ruby-comment"># File lib/rexml/element.rb, line 1289</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">delete</span>( <span class="ruby-identifier">attribute</span> )
+  <span class="ruby-identifier">name</span> = <span class="ruby-keyword">nil</span>
+  <span class="ruby-identifier">prefix</span> = <span class="ruby-keyword">nil</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">attribute</span>.<span class="ruby-identifier">kind_of?</span> <span class="ruby-constant">Attribute</span>
+    <span class="ruby-identifier">name</span> = <span class="ruby-identifier">attribute</span>.<span class="ruby-identifier">name</span>
+    <span class="ruby-identifier">prefix</span> = <span class="ruby-identifier">attribute</span>.<span class="ruby-identifier">prefix</span>
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-identifier">attribute</span> <span class="ruby-operator">=~</span> <span class="ruby-constant">Namespace</span><span class="ruby-operator">::</span><span class="ruby-constant">NAMESPLIT</span>
+    <span class="ruby-identifier">prefix</span>, <span class="ruby-identifier">name</span> = <span class="ruby-node">$1</span>, <span class="ruby-node">$2</span>
+    <span class="ruby-identifier">prefix</span> = <span class="ruby-string">&#39;&#39;</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">prefix</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-identifier">old</span> = <span class="ruby-identifier">fetch</span>(<span class="ruby-identifier">name</span>, <span class="ruby-keyword">nil</span>)
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">old</span>.<span class="ruby-identifier">kind_of?</span> <span class="ruby-constant">Hash</span> <span class="ruby-comment"># the supplied attribute is one of many</span>
+    <span class="ruby-identifier">old</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-identifier">prefix</span>)
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">old</span>.<span class="ruby-identifier">size</span> <span class="ruby-operator">==</span> <span class="ruby-value">1</span>
+      <span class="ruby-identifier">repl</span> = <span class="ruby-keyword">nil</span>
+      <span class="ruby-identifier">old</span>.<span class="ruby-identifier">each_value</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">v</span><span class="ruby-operator">|</span> <span class="ruby-identifier">repl</span> = <span class="ruby-identifier">v</span>}
+      <span class="ruby-identifier">store</span> <span class="ruby-identifier">name</span>, <span class="ruby-identifier">repl</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">old</span>.<span class="ruby-identifier">nil?</span>
+    <span class="ruby-keyword">return</span> <span class="ruby-ivar">@element</span>
+  <span class="ruby-keyword">else</span> <span class="ruby-comment"># the supplied attribute is a top-level one</span>
+    <span class="ruby-keyword">super</span>(<span class="ruby-identifier">name</span>)
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-ivar">@element</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+        </div>
+
+
+      </div>
+
+      <div id="method-i-delete_all" class="method-detail ">
+        <div class="method-heading">
+          <span class="method-name">delete_all</span><span
+            class="method-args">( name )</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+
+        <div class="method-description">
+          <p>Deletes all attributes matching a name.  Namespaces are significant.</p>
+<dl class="rdoc-list note-list"><dt>name
+<dd>
+<p>A String; all attributes that match this path will be removed</p>
+</dd><dt>Returns
+<dd>
+<p>an Array of the <a href="Attributes.html"><code>Attributes</code></a> that were removed</p>
+</dd></dl>
+
+          <div class="method-source-code" id="delete_all-source">
+            <pre><span class="ruby-comment"># File lib/rexml/element.rb, line 1329</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">delete_all</span>( <span class="ruby-identifier">name</span> )
+  <span class="ruby-identifier">rv</span> = []
+  <span class="ruby-identifier">each_attribute</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">attribute</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">rv</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">attribute</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">attribute</span>.<span class="ruby-identifier">expanded_name</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">name</span>
+  }
+  <span class="ruby-identifier">rv</span>.<span class="ruby-identifier">each</span>{ <span class="ruby-operator">|</span><span class="ruby-identifier">attr</span><span class="ruby-operator">|</span> <span class="ruby-identifier">attr</span>.<span class="ruby-identifier">remove</span> }
+  <span class="ruby-keyword">return</span> <span class="ruby-identifier">rv</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+        </div>
+
+
+      </div>
+
+      <div id="method-i-each" class="method-detail ">
+        <div class="method-heading">
+          <span class="method-name">each</span><span
+            class="method-args">() { |expanded_name, value| ... }</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+
+        <div class="method-description">
+          <p>Iterates over each attribute of an <a href="Element.html"><code>Element</code></a>, yielding the expanded name and value as a pair of Strings.</p>
+
+<pre class="ruby"><span class="ruby-identifier">doc</span> = <span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span> <span class="ruby-string">&#39;&lt;a x=&quot;1&quot; y=&quot;2&quot;/&gt;&#39;</span>
+<span class="ruby-identifier">doc</span>.<span class="ruby-identifier">root</span>.<span class="ruby-identifier">attributes</span>.<span class="ruby-identifier">each</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">name</span>, <span class="ruby-identifier">value</span><span class="ruby-operator">|</span> <span class="ruby-identifier">p</span> <span class="ruby-identifier">name</span><span class="ruby-string">+&quot; =&gt; &quot;</span><span class="ruby-operator">+</span><span class="ruby-identifier">value</span> }
+</pre>
+
+          <div class="method-source-code" id="each-source">
+            <pre><span class="ruby-comment"># File lib/rexml/element.rb, line 1139</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">each</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-identifier">to_enum</span>(<span class="ruby-identifier">__method__</span>) <span class="ruby-keyword">unless</span> <span class="ruby-identifier">block_given?</span>
+  <span class="ruby-identifier">each_attribute</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">attr</span><span class="ruby-operator">|</span>
+    <span class="ruby-keyword">yield</span> [<span class="ruby-identifier">attr</span>.<span class="ruby-identifier">expanded_name</span>, <span class="ruby-identifier">attr</span>.<span class="ruby-identifier">value</span>]
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+        </div>
+
+
+      </div>
+
+      <div id="method-i-each_attribute" class="method-detail ">
+        <div class="method-heading">
+          <span class="method-name">each_attribute</span><span
+            class="method-args">() { |attribute| ... }</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+
+        <div class="method-description">
+          <p>Iterates over the attributes of an <a href="Element.html"><code>Element</code></a>.  Yields actual <a href="Attribute.html"><code>Attribute</code></a> nodes, not String values.</p>
+
+<pre class="ruby"><span class="ruby-identifier">doc</span> = <span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span> <span class="ruby-string">&#39;&lt;a x=&quot;1&quot; y=&quot;2&quot;/&gt;&#39;</span>
+<span class="ruby-identifier">doc</span>.<span class="ruby-identifier">root</span>.<span class="ruby-identifier">attributes</span>.<span class="ruby-identifier">each_attribute</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">attr</span><span class="ruby-operator">|</span>
+  <span class="ruby-identifier">p</span> <span class="ruby-identifier">attr</span>.<span class="ruby-identifier">expanded_name</span><span class="ruby-string">+&quot; =&gt; &quot;</span><span class="ruby-operator">+</span><span class="ruby-identifier">attr</span>.<span class="ruby-identifier">value</span>
+}
+</pre>
+
+          <div class="method-source-code" id="each_attribute-source">
+            <pre><span class="ruby-comment"># File lib/rexml/element.rb, line 1123</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">each_attribute</span> <span class="ruby-comment"># :yields: attribute</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-identifier">to_enum</span>(<span class="ruby-identifier">__method__</span>) <span class="ruby-keyword">unless</span> <span class="ruby-identifier">block_given?</span>
+  <span class="ruby-identifier">each_value</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">val</span><span class="ruby-operator">|</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">val</span>.<span class="ruby-identifier">kind_of?</span> <span class="ruby-constant">Attribute</span>
+      <span class="ruby-keyword">yield</span> <span class="ruby-identifier">val</span>
+    <span class="ruby-keyword">else</span>
+      <span class="ruby-identifier">val</span>.<span class="ruby-identifier">each_value</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">atr</span><span class="ruby-operator">|</span> <span class="ruby-keyword">yield</span> <span class="ruby-identifier">atr</span> }
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+        </div>
+
+
+      </div>
+
+      <div id="method-i-get_attribute" class="method-detail ">
+        <div class="method-heading">
+          <span class="method-name">get_attribute</span><span
+            class="method-args">( name )</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+
+        <div class="method-description">
+          <p>Fetches an attribute</p>
+<dl class="rdoc-list note-list"><dt>name
+<dd>
+<p>the name by which to search for the attribute.  Can be a <code>prefix:name</code> namespace name.</p>
+</dd><dt>Returns
+<dd>
+<p>The first matching attribute, or nil if there was none.  This</p>
+</dd></dl>
+
+<p>value is an <a href="Attribute.html"><code>Attribute</code></a> node, not the String value of the attribute.</p>
+
+<pre class="ruby"><span class="ruby-identifier">doc</span> = <span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span> <span class="ruby-string">&#39;&lt;a x:foo=&quot;1&quot; foo=&quot;2&quot; bar=&quot;3&quot;/&gt;&#39;</span>
+<span class="ruby-identifier">doc</span>.<span class="ruby-identifier">root</span>.<span class="ruby-identifier">attributes</span>.<span class="ruby-identifier">get_attribute</span>(<span class="ruby-string">&quot;foo&quot;</span>).<span class="ruby-identifier">value</span>    <span class="ruby-comment">#-&gt; &quot;2&quot;</span>
+<span class="ruby-identifier">doc</span>.<span class="ruby-identifier">root</span>.<span class="ruby-identifier">attributes</span>.<span class="ruby-identifier">get_attribute</span>(<span class="ruby-string">&quot;x:foo&quot;</span>).<span class="ruby-identifier">value</span>  <span class="ruby-comment">#-&gt; &quot;1&quot;</span>
+</pre>
+
+          <div class="method-source-code" id="get_attribute-source">
+            <pre><span class="ruby-comment"># File lib/rexml/element.rb, line 1155</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">get_attribute</span>( <span class="ruby-identifier">name</span> )
+  <span class="ruby-identifier">attr</span> = <span class="ruby-identifier">fetch</span>( <span class="ruby-identifier">name</span>, <span class="ruby-keyword">nil</span> )
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">attr</span>.<span class="ruby-identifier">nil?</span>
+    <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">name</span>.<span class="ruby-identifier">nil?</span>
+    <span class="ruby-comment"># Look for prefix</span>
+    <span class="ruby-identifier">name</span> <span class="ruby-operator">=~</span> <span class="ruby-constant">Namespace</span><span class="ruby-operator">::</span><span class="ruby-constant">NAMESPLIT</span>
+    <span class="ruby-identifier">prefix</span>, <span class="ruby-identifier">n</span> = <span class="ruby-node">$1</span>, <span class="ruby-node">$2</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">prefix</span>
+      <span class="ruby-identifier">attr</span> = <span class="ruby-identifier">fetch</span>( <span class="ruby-identifier">n</span>, <span class="ruby-keyword">nil</span> )
+      <span class="ruby-comment"># check prefix</span>
+      <span class="ruby-keyword">if</span> <span class="ruby-identifier">attr</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
+      <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">attr</span>.<span class="ruby-identifier">kind_of?</span> <span class="ruby-constant">Attribute</span>
+        <span class="ruby-keyword">return</span> <span class="ruby-identifier">attr</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">prefix</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">attr</span>.<span class="ruby-identifier">prefix</span>
+      <span class="ruby-keyword">else</span>
+        <span class="ruby-identifier">attr</span> = <span class="ruby-identifier">attr</span>[ <span class="ruby-identifier">prefix</span> ]
+        <span class="ruby-keyword">return</span> <span class="ruby-identifier">attr</span>
+      <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">end</span>
+    <span class="ruby-identifier">element_document</span> = <span class="ruby-ivar">@element</span>.<span class="ruby-identifier">document</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">element_document</span> <span class="ruby-keyword">and</span> <span class="ruby-identifier">element_document</span>.<span class="ruby-identifier">doctype</span>
+      <span class="ruby-identifier">expn</span> = <span class="ruby-ivar">@element</span>.<span class="ruby-identifier">expanded_name</span>
+      <span class="ruby-identifier">expn</span> = <span class="ruby-identifier">element_document</span>.<span class="ruby-identifier">doctype</span>.<span class="ruby-identifier">name</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">expn</span>.<span class="ruby-identifier">size</span> <span class="ruby-operator">==</span> <span class="ruby-value">0</span>
+      <span class="ruby-identifier">attr_val</span> = <span class="ruby-identifier">element_document</span>.<span class="ruby-identifier">doctype</span>.<span class="ruby-identifier">attribute_of</span>(<span class="ruby-identifier">expn</span>, <span class="ruby-identifier">name</span>)
+      <span class="ruby-keyword">return</span> <span class="ruby-constant">Attribute</span>.<span class="ruby-identifier">new</span>( <span class="ruby-identifier">name</span>, <span class="ruby-identifier">attr_val</span> ) <span class="ruby-keyword">if</span> <span class="ruby-identifier">attr_val</span>
+    <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">attr</span>.<span class="ruby-identifier">kind_of?</span> <span class="ruby-constant">Hash</span>
+    <span class="ruby-identifier">attr</span> = <span class="ruby-identifier">attr</span>[ <span class="ruby-ivar">@element</span>.<span class="ruby-identifier">prefix</span> ]
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-identifier">attr</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+        </div>
+
+
+      </div>
+
+      <div id="method-i-get_attribute_ns" class="method-detail ">
+        <div class="method-heading">
+          <span class="method-name">get_attribute_ns</span><span
+            class="method-args">(namespace, name)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+
+        <div class="method-description">
+          <p>The <code>get_attribute_ns</code> method retrieves a method by its namespace and name. Thus it is possible to reliably identify an attribute even if an XML processor has changed the prefix.</p>
+
+<p>Method contributed by Henrik Martensson</p>
+
+          <div class="method-source-code" id="get_attribute_ns-source">
+            <pre><span class="ruby-comment"># File lib/rexml/element.rb, line 1343</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">get_attribute_ns</span>(<span class="ruby-identifier">namespace</span>, <span class="ruby-identifier">name</span>)
+  <span class="ruby-identifier">result</span> = <span class="ruby-keyword">nil</span>
+  <span class="ruby-identifier">each_attribute</span>() { <span class="ruby-operator">|</span><span class="ruby-identifier">attribute</span><span class="ruby-operator">|</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">name</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">attribute</span>.<span class="ruby-identifier">name</span> <span class="ruby-operator">&amp;&amp;</span>
+      <span class="ruby-identifier">namespace</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">attribute</span>.<span class="ruby-identifier">namespace</span>() <span class="ruby-operator">&amp;&amp;</span>
+      ( <span class="ruby-operator">!</span><span class="ruby-identifier">namespace</span>.<span class="ruby-identifier">empty?</span> <span class="ruby-operator">||</span> <span class="ruby-operator">!</span><span class="ruby-identifier">attribute</span>.<span class="ruby-identifier">fully_expanded_name</span>.<span class="ruby-identifier">index</span>(<span class="ruby-string">&#39;:&#39;</span>) )
+      <span class="ruby-comment"># foo will match xmlns:foo, but only if foo isn&#39;t also an attribute</span>
+      <span class="ruby-identifier">result</span> = <span class="ruby-identifier">attribute</span> <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span><span class="ruby-identifier">result</span> <span class="ruby-keyword">or</span> <span class="ruby-operator">!</span><span class="ruby-identifier">namespace</span>.<span class="ruby-identifier">empty?</span> <span class="ruby-keyword">or</span>
+                            <span class="ruby-operator">!</span><span class="ruby-identifier">attribute</span>.<span class="ruby-identifier">fully_expanded_name</span>.<span class="ruby-identifier">index</span>(<span class="ruby-string">&#39;:&#39;</span>)
+    <span class="ruby-keyword">end</span>
+  }
+  <span class="ruby-identifier">result</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+        </div>
+
+
+      </div>
+
+      <div id="method-i-length" class="method-detail ">
+        <div class="method-heading">
+          <span class="method-name">length</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+
+        <div class="method-description">
+          <p>Returns the number of attributes the owning <a href="Element.html"><code>Element</code></a> contains.</p>
+
+<pre class="ruby"><span class="ruby-identifier">doc</span> = <span class="ruby-constant">Document</span> <span class="ruby-string">&quot;&lt;a x=&#39;1&#39; y=&#39;2&#39; foo:x=&#39;3&#39;/&gt;&quot;</span>
+<span class="ruby-identifier">doc</span>.<span class="ruby-identifier">root</span>.<span class="ruby-identifier">attributes</span>.<span class="ruby-identifier">length</span>        <span class="ruby-comment">#-&gt; 3</span>
+</pre>
+
+          <div class="method-source-code" id="length-source">
+            <pre><span class="ruby-comment"># File lib/rexml/element.rb, line 1109</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">length</span>
+  <span class="ruby-identifier">c</span> = <span class="ruby-value">0</span>
+  <span class="ruby-identifier">each_attribute</span> { <span class="ruby-identifier">c</span><span class="ruby-operator">+=</span><span class="ruby-value">1</span> }
+  <span class="ruby-identifier">c</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+        </div>
+
+        <div class="aliases">
+          Also aliased as: <a href="Attributes.html#method-i-size">size</a>
+        </div>
+
+      </div>
+
+      <div id="method-i-namespaces" class="method-detail ">
+        <div class="method-heading">
+          <span class="method-name">namespaces</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+
+        <div class="method-description">
+          
+
+          <div class="method-source-code" id="namespaces-source">
+            <pre><span class="ruby-comment"># File lib/rexml/element.rb, line 1263</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">namespaces</span>
+  <span class="ruby-identifier">namespaces</span> = {}
+  <span class="ruby-identifier">each_attribute</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">attribute</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">namespaces</span>[<span class="ruby-identifier">attribute</span>.<span class="ruby-identifier">name</span>] = <span class="ruby-identifier">attribute</span>.<span class="ruby-identifier">value</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">attribute</span>.<span class="ruby-identifier">prefix</span> <span class="ruby-operator">==</span> <span class="ruby-string">&#39;xmlns&#39;</span> <span class="ruby-keyword">or</span> <span class="ruby-identifier">attribute</span>.<span class="ruby-identifier">name</span> <span class="ruby-operator">==</span> <span class="ruby-string">&#39;xmlns&#39;</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-ivar">@element</span>.<span class="ruby-identifier">document</span> <span class="ruby-keyword">and</span> <span class="ruby-ivar">@element</span>.<span class="ruby-identifier">document</span>.<span class="ruby-identifier">doctype</span>
+    <span class="ruby-identifier">expn</span> = <span class="ruby-ivar">@element</span>.<span class="ruby-identifier">expanded_name</span>
+    <span class="ruby-identifier">expn</span> = <span class="ruby-ivar">@element</span>.<span class="ruby-identifier">document</span>.<span class="ruby-identifier">doctype</span>.<span class="ruby-identifier">name</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">expn</span>.<span class="ruby-identifier">size</span> <span class="ruby-operator">==</span> <span class="ruby-value">0</span>
+    <span class="ruby-ivar">@element</span>.<span class="ruby-identifier">document</span>.<span class="ruby-identifier">doctype</span>.<span class="ruby-identifier">attributes_of</span>(<span class="ruby-identifier">expn</span>).<span class="ruby-identifier">each</span> {
+      <span class="ruby-operator">|</span><span class="ruby-identifier">attribute</span><span class="ruby-operator">|</span>
+      <span class="ruby-identifier">namespaces</span>[<span class="ruby-identifier">attribute</span>.<span class="ruby-identifier">name</span>] = <span class="ruby-identifier">attribute</span>.<span class="ruby-identifier">value</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">attribute</span>.<span class="ruby-identifier">prefix</span> <span class="ruby-operator">==</span> <span class="ruby-string">&#39;xmlns&#39;</span> <span class="ruby-keyword">or</span> <span class="ruby-identifier">attribute</span>.<span class="ruby-identifier">name</span> <span class="ruby-operator">==</span> <span class="ruby-string">&#39;xmlns&#39;</span>
+    }
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-identifier">namespaces</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+        </div>
+
+
+      </div>
+
+      <div id="method-i-prefixes" class="method-detail ">
+        <div class="method-heading">
+          <span class="method-name">prefixes</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+
+        <div class="method-description">
+          <p>Returns an array of Strings containing all of the prefixes declared by this set of # attributes.  The array does not include the default namespace declaration, if one exists.</p>
+
+<pre class="ruby"><span class="ruby-identifier">doc</span> = <span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&quot;&lt;a xmlns=&#39;foo&#39; xmlns:x=&#39;bar&#39; xmlns:y=&#39;twee&#39; &quot;</span><span class="ruby-operator">+</span>
+      <span class="ruby-string">&quot;z=&#39;glorp&#39; p:k=&#39;gru&#39;/&gt;&quot;</span>)
+<span class="ruby-identifier">prefixes</span> = <span class="ruby-identifier">doc</span>.<span class="ruby-identifier">root</span>.<span class="ruby-identifier">attributes</span>.<span class="ruby-identifier">prefixes</span>    <span class="ruby-comment">#-&gt; [&#39;x&#39;, &#39;y&#39;]</span>
+</pre>
+
+          <div class="method-source-code" id="prefixes-source">
+            <pre><span class="ruby-comment"># File lib/rexml/element.rb, line 1247</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">prefixes</span>
+  <span class="ruby-identifier">ns</span> = []
+  <span class="ruby-identifier">each_attribute</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">attribute</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">ns</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">attribute</span>.<span class="ruby-identifier">name</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">attribute</span>.<span class="ruby-identifier">prefix</span> <span class="ruby-operator">==</span> <span class="ruby-string">&#39;xmlns&#39;</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-ivar">@element</span>.<span class="ruby-identifier">document</span> <span class="ruby-keyword">and</span> <span class="ruby-ivar">@element</span>.<span class="ruby-identifier">document</span>.<span class="ruby-identifier">doctype</span>
+    <span class="ruby-identifier">expn</span> = <span class="ruby-ivar">@element</span>.<span class="ruby-identifier">expanded_name</span>
+    <span class="ruby-identifier">expn</span> = <span class="ruby-ivar">@element</span>.<span class="ruby-identifier">document</span>.<span class="ruby-identifier">doctype</span>.<span class="ruby-identifier">name</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">expn</span>.<span class="ruby-identifier">size</span> <span class="ruby-operator">==</span> <span class="ruby-value">0</span>
+    <span class="ruby-ivar">@element</span>.<span class="ruby-identifier">document</span>.<span class="ruby-identifier">doctype</span>.<span class="ruby-identifier">attributes_of</span>(<span class="ruby-identifier">expn</span>).<span class="ruby-identifier">each</span> {
+      <span class="ruby-operator">|</span><span class="ruby-identifier">attribute</span><span class="ruby-operator">|</span>
+      <span class="ruby-identifier">ns</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">attribute</span>.<span class="ruby-identifier">name</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">attribute</span>.<span class="ruby-identifier">prefix</span> <span class="ruby-operator">==</span> <span class="ruby-string">&#39;xmlns&#39;</span>
+    }
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-identifier">ns</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+        </div>
+
+
+      </div>
+
+      <div id="method-i-size" class="method-detail method-alias">
+        <div class="method-heading">
+          <span class="method-name">size</span><span
+            class="method-args">()</span>
+        </div>
+
+        <div class="method-description">
+          
+
+        </div>
+
+
+        <div class="aliases">
+          Alias for: <a href="Attributes.html#method-i-length">length</a>
+        </div>
+      </div>
+
+      <div id="method-i-to_a" class="method-detail ">
+        <div class="method-heading">
+          <span class="method-name">to_a</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+
+        <div class="method-description">
+          
+
+          <div class="method-source-code" id="to_a-source">
+            <pre><span class="ruby-comment"># File lib/rexml/element.rb, line 1102</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">to_a</span>
+  <span class="ruby-identifier">enum_for</span>(<span class="ruby-value">:each_attribute</span>).<span class="ruby-identifier">to_a</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+        </div>
+
+
+      </div>
+
+    </section>
+
+  </section>
+</main>
+
+
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="https://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.3.0.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+</footer>
+
