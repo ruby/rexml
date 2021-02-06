@@ -4,7 +4,7 @@ on:
   - pull_request
 jobs:
   inplace:
-    name: ${{ matrix.ruby-version }} on ${{ matrix.runs-on }}
+    name: "Inplace: ${{ matrix.ruby-version }} on ${{ matrix.runs-on }}"
     runs-on: ${{ matrix.runs-on }}
     strategy:
       fail-fast: false
@@ -31,7 +31,7 @@ jobs:
         run: bundle exec rake test
 
   gem:
-    name: ${{ matrix.ruby-version }} on ${{ matrix.runs-on }}
+    name: "Gem: ${{ matrix.ruby-version }} on ${{ matrix.runs-on }}"
     runs-on: ${{ matrix.runs-on }}
     strategy:
       fail-fast: false
@@ -57,3 +57,44 @@ jobs:
           ruby -run -e cp -- -p -r test tmp
           cd tmp
           ruby test/run.rb
+
+  document:
+    name: "Document"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: ${{ matrix.ruby-version }}
+      - name: Install dependencies
+        run: |
+          bundle install
+      - name: Build document
+        run: |
+          bundle exec rake warning:error rdoc
+      - uses: actions/checkout@v2
+        if: |
+          github.event_name == 'push'
+        with:
+          ref: gh-pages
+          path: gh-pages
+      - name: Deploy
+        if: |
+          github.event_name == 'push'
+        run: |
+          rm html/created.rid
+          touch html/.nojekyll
+          cd gh-pages
+          rsync \
+            -a \
+            --delete \
+            --exclude "/.git/" \
+            ../html/ \
+            ./
+          if [ "$(git status --porcelain)" != "" ]; then
+            git add --all
+            git config user.name github-actions
+            git config user.email github-actions@github.com
+            git commit -m "Generate (${GITHUB_SHA})"
+            git push
+          fi
