@@ -222,15 +222,16 @@ module REXML
       rt.parent if rt
     end
 
-    # Evaluates to +true+ if whitespace is respected for this element.  This
-    # is the case if:
-    # 1. Neither :+respect_whitespace+ nor :+compress_whitespace+ has any value
-    # 2. The context has :+respect_whitespace+ set to :+all+ or
-    #    an array containing the name of this element, and
-    #    :+compress_whitespace+ isn't set to :+all+ or an array containing the
-    #    name of this element.
-    # The evaluation is tested against +expanded_name+, and so is namespace
-    # sensitive.
+    # :call-seq:
+    #   whitespace
+    #
+    # Returns +true+ if whitespace is respected for this element,
+    # +false+ otherwise.
+    #
+    # See {Element Context}[../doc/rexml/context_rdoc.html].
+    #
+    # The evaluation is tested against the element's +expanded_name+,
+    # and so is namespace-sensitive.
     def whitespace
       @whitespace = nil
       if @context
@@ -247,6 +248,13 @@ module REXML
       @whitespace
     end
 
+    # :call-seq:
+    #   ignore_whitespace_nodes
+    #
+    # Returns +true+ if whitespace nodes are ignored for the element.
+    #
+    # See {Element Context}[../doc/rexml/context_rdoc.html].
+    #
     def ignore_whitespace_nodes
       @ignore_whitespace_nodes = false
       if @context
@@ -258,9 +266,12 @@ module REXML
       end
     end
 
-    # Evaluates to +true+ if raw mode is set for this element.  This
-    # is the case if the context has :+raw+ set to :+all+ or
-    # an array containing the name of this element.
+    # :call-seq:
+    #   raw
+    #
+    # Returns +true+ if raw mode is set for the element.
+    #
+    # See {Element Context}[../doc/rexml/context_rdoc.html].
     #
     # The evaluation is tested against +expanded_name+, and so is namespace
     # sensitive.
