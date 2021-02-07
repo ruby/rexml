@@ -112,6 +112,9 @@ module REXML
       Document.new self
     end
 
+    # :call-seq:
+    #   expanded_name -> empty_string
+    #
     # Returns an empty string.
     #
     def expanded_name
