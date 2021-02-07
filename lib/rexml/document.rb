@@ -99,49 +99,108 @@ module REXML
     end
     alias :<< :add
 
+    # :call-seq:
+    #   add_element(name_or_element = nil, attributes = nil) -> new_element
+    #
+    # Adds an element to the document by calling REXML::Element.add_element:
+    #
+    #   REXML::Element.add_element(name_or_element, attributes)
     def add_element(arg=nil, arg2=nil)
       rv = super
       raise "attempted adding second root element to document" if @elements.size > 1
       rv
     end
 
-    # @return the root Element of the document, or nil if this document
-    # has no children.
+    # :call-seq:
+    #   root -> root_element or nil
+    #
+    # Returns the root element of the document, if it exists, otherwise +nil+:
+    #
+    #   d = REXML::Document.new('<root></root>')
+    #   d.root # => <root/>
+    #   d = REXML::Document.new('')
+    #   d.root # => nil
+    #
     def root
       elements[1]
       #self
       #@children.find { |item| item.kind_of? Element }
     end
 
-    # @return the DocType child of the document, if one exists,
-    # and nil otherwise.
+    # :call-seq:
+    #   doctype -> doc_type or nil
+    #
+    # Returns the DocType object for the document, if it exists, otherwise +nil+:
+    #
+    #   d = REXML::Document.new('<!DOCTYPE document SYSTEM "subjects.dtd">')
+    #   d.doctype.class # => REXML::DocType
+    #   d = REXML::Document.new('')
+    #   d.doctype.class # => nil
+    #
     def doctype
       @children.find { |item| item.kind_of? DocType }
     end
 
-    # @return the XMLDecl of this document; if no XMLDecl has been
-    # set, the default declaration is returned.
+    # :call-seq:
+    #   xml_decl -> xml_decl
+    #
+    # Returns the XMLDecl object for the document, if it exists,
+    # otherwise the default XMLDecl object:
+    #
+    #   d = REXML::Document.new('<?xml version="1.0" encoding="UTF-8"?>')
+    #   d.xml_decl.class # => REXML::XMLDecl
+    #   d.xml_decl.to_s  # => "<?xml version='1.0' encoding='UTF-8'?>"
+    #   d = REXML::Document.new('')
+    #   d.xml_decl.class # => REXML::XMLDecl
+    #   d.xml_decl.to_s  # => ""
+    #
     def xml_decl
       rv = @children[0]
       return rv if rv.kind_of? XMLDecl
       @children.unshift(XMLDecl.default)[0]
     end
 
-    # @return the XMLDecl version of this document as a String.
-    # If no XMLDecl has been set, returns the default version.
+    # :call-seq:
+    #   version -> version_string
+    #
+    # Returns the XMLDecl version of this document as a string,
+    # if it has been set, otherwise the default version:
+    #
+    #   d = REXML::Document.new('<?xml version="2.0" encoding="UTF-8"?>')
+    #   d.version # => "2.0"
+    #   d = REXML::Document.new('')
+    #   d.version # => "1.0"
+    #
     def version
       xml_decl().version
     end
 
-    # @return the XMLDecl encoding of this document as an
-    # Encoding object.
-    # If no XMLDecl has been set, returns the default encoding.
+    # :call-seq:
+    #   encoding -> encoding_string
+    #
+    # Returns the XMLDecl encoding of the document,
+    # if it has been set, otherwise the default encoding:
+    #
+    #   d = REXML::Document.new('<?xml version="1.0" encoding="UTF-16"?>')
+    #   d.encoding # => "UTF-16"
+    #   d = REXML::Document.new('')
+    #   d.encoding # => "UTF-8"
+    #
     def encoding
       xml_decl().encoding
     end
 
-    # @return the XMLDecl standalone value of this document as a String.
-    # If no XMLDecl has been set, returns the default setting.
+    # :call-seq:
+    #   stand_alone?
+    #
+    # Returns the XMLDecl standalone value of the document as a string,
+    # if it has been set, otherwise the default standalone value:
+    #
+    #   d = REXML::Document.new('<?xml standalone="yes"?>')
+    #   d.stand_alone? # => "yes"
+    #   d = REXML::Document.new('')
+    #   d.stand_alone? # => nil
+    #
     def stand_alone?
       xml_decl().stand_alone?
     end
