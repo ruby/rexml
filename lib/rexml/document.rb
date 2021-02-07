@@ -14,25 +14,72 @@ require_relative "parsers/streamparser"
 require_relative "parsers/treeparser"
 
 module REXML
-  # Represents a full XML document, including PIs, a doctype, etc.  A
-  # Document has a single child that can be accessed by root().
-  # Note that if you want to have an XML declaration written for a document
-  # you create, you must add one; REXML documents do not write a default
-  # declaration for you.  See |DECLARATION| and |write|.
+  # Represents an XML document.
+  #
+  # A document may have:
+  #
+  # - A single child that may be accessed via method #root.
+  # - An XML declaration.
+  # - A document type.
+  # - Processing instructions.
+  #
   class Document < Element
-    # A convenient default XML declaration.  If you want an XML declaration,
-    # the easiest way to add one is mydoc << Document::DECLARATION
-    # +DEPRECATED+
-    # Use: mydoc << XMLDecl.default
+    # A convenient default XML declaration. Use:
+    #
+    #   mydoc << XMLDecl.default
+    #
     DECLARATION = XMLDecl.default
 
-    # Constructor
-    # @param source if supplied, must be a Document, String, or IO.
-    # Documents have their context and Element attributes cloned.
-    # Strings are expected to be valid XML documents.  IOs are expected
-    # to be sources of valid XML documents.
-    # @param context if supplied, contains the context of the document;
-    # this should be a Hash.
+    # :call-seq:
+    #   new(string = nil, context = {}) -> new_document
+    #   new(io_stream = nil, context = {}) -> new_document
+    #   new(document = nil, context = {}) -> new_document
+    #
+    # Returns a new \REXML::Document object.
+    #
+    # When no arguments are given,
+    # returns an empty document:
+    #
+    #   d = REXML::Document.new
+    #   d.to_s # => ""
+    #
+    # When argument +string+ is given, it must be a string
+    # containing a valid XML document:
+    #
+    #   xml_string = '<root><foo>Foo</foo><bar>Bar</bar></root>'
+    #   d = REXML::Document.new(xml_string)
+    #   d.to_s # => "<root><foo>Foo</foo><bar>Bar</bar></root>"
+    #
+    # When argument +io_stream+ is given, it must be an \IO object
+    # that is opened for reading, and when read must return a valid XML document:
+    #
+    #   File.write('t.xml', xml_string)
+    #   d = File.open('t.xml', 'r') do |io|
+    #     REXML::Document.new(io)
+    #   end
+    #   d.to_s # => "<root><foo>Foo</foo><bar>Bar</bar></root>"
+    #
+    # When argument +document+ is given, it must be an existing
+    # document object, whose context and attributes (but not chidren)
+    # are cloned into the new document:
+    #
+    #   d = REXML::Document.new(xml_string)
+    #   d.children    # => [<root> ... </>]
+    #   d.context = {raw: :all, compress_whitespace: :all}
+    #   d.add_attributes({'bar' => 0, 'baz' => 1})
+    #   d1 = REXML::Document.new(d)
+    #   d1.children   # => []
+    #   d1.context    # => {:raw=>:all, :compress_whitespace=>:all}
+    #   d1.attributes # => {"bar"=>bar='0', "baz"=>baz='1'}
+    #
+    # When argument +context+ is given, it must be a hash
+    # containing context entries for the document;
+    # see {Element Context}[../doc/rexml/context_rdoc.html]:
+    #
+    #   context = {raw: :all, compress_whitespace: :all}
+    #   d = REXML::Document.new(xml_string, context)
+    #   d.context # => {:raw=>:all, :compress_whitespace=>:all}
+    #
     def initialize( source = nil, context = {} )
       @entity_expansion_count = 0
       super()
@@ -46,26 +93,71 @@ module REXML
       end
     end
 
+    # :call-seq:
+    #   node_type -> :document
+    #
+    # Returns the symbol +:document+.
+    #
     def node_type
       :document
     end
 
-    # Should be obvious
+    # :call-seq:
+    #   clone -> new_document
+    #
+    # Returns the new document resulting from executing
+    # <tt>Document.new(self)</tt>.  See Document.new.
+    #
     def clone
       Document.new self
     end
 
-    # According to the XML spec, a root node has no expanded name
+    # :call-seq:
+    #   expanded_name -> empty_string
+    #
+    # Returns an empty string.
+    #
     def expanded_name
       ''
       #d = doc_type
       #d ? d.name : "UNDEFINED"
     end
-
     alias :name :expanded_name
 
-    # We override this, because XMLDecls and DocTypes must go at the start
-    # of the document
+    # :call-seq:
+    #   add(xml_decl) -> self
+    #   add(doc_type) -> self
+    #   add(object) -> self
+    #
+    # Adds an object to the document; returns +self+.
+    #
+    # When argument +xml_decl+ is given,
+    # it must be an REXML::XMLDecl object,
+    # which becomes the XML declaration for the document,
+    # replacing the previous XML declaration if any:
+    #
+    #   d = REXML::Document.new
+    #   d.xml_decl.to_s # => ""
+    #   d.add(REXML::XMLDecl.new('2.0'))
+    #   d.xml_decl.to_s # => "<?xml version='2.0'?>"
+    #
+    # When argument +doc_type+ is given,
+    # it must be an REXML::DocType object,
+    # which becomes the document type for the document,
+    # replacing the previous document type, if any:
+    #
+    #   d = REXML::Document.new
+    #   d.doctype.to_s # => ""
+    #   d.add(REXML::DocType.new('foo'))
+    #   d.doctype.to_s # => "<!DOCTYPE foo>"
+    #
+    # When argument +object+ (not an REXML::XMLDecl or REXML::DocType object)
+    # is given it is added as the last child:
+    #
+    #   d = REXML::Document.new
+    #   d.add(REXML::Element.new('foo'))
+    #   d.to_s # => "<foo/>"
+    #
     def add( child )
       if child.kind_of? XMLDecl
         if @children[0].kind_of? XMLDecl
