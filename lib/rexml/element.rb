@@ -1131,17 +1131,47 @@ module REXML
       return -1
     end
 
-    # Deletes a child Element
-    # element::
-    #   Either an Element, which is removed directly; an
-    #   xpath, where the first matching child is removed; or an Integer,
-    #   where the n'th Element is removed.
-    # Returns:: the removed child
-    #  doc = Document.new '<a><b/><c/><c id="1"/></a>'
-    #  b = doc.root.elements[1]
-    #  doc.root.elements.delete b           #-> <a><c/><c id="1"/></a>
-    #  doc.elements.delete("a/c[@id='1']")  #-> <a><c/></a>
-    #  doc.root.elements.delete 1           #-> <a/>
+    # :call-seq:
+    #   delete(index) -> removed_element or nil
+    #   delete(element) -> removed_element or nil
+    #   delete(xpath) -> removed_element or nil
+    #
+    # Removes an element; returns the removed element, or +nil+ if none removed.
+    #
+    # With integer argument +index+ given,
+    # removes the child element at that offset:
+    #
+    #   d = REXML::Document.new(xml_string)
+    #   elements = d.root.elements
+    #   elements.size # => 4
+    #   elements[2] # => <book category='children'> ... </>
+    #   elements.delete(2) # => <book category='children'> ... </>
+    #   elements.size # => 3
+    #   elements[2] # => <book category='web'> ... </>
+    #   elements.delete(50) # => nil
+    #
+    # With element argument +element+ given,
+    # removes that child element:
+    #
+    #   d = REXML::Document.new(xml_string)
+    #   elements = d.root.elements
+    #   ele_1, ele_2, ele_3, ele_4 = *elements
+    #   elements.size # => 4
+    #   elements[2] # => <book category='children'> ... </>
+    #   elements.delete(ele_2) # => <book category='children'> ... </>
+    #   elements.size # => 3
+    #   elements[2] # => <book category='web'> ... </>
+    #   elements.delete(ele_2) # => nil
+    #
+    # With string argument +xpath+ given,
+    # removes the first element found via that xpath:
+    #
+    #   d = REXML::Document.new(xml_string)
+    #   elements = d.root.elements
+    #   elements.delete('//book') # => <book category='cooking'> ... </>
+    #   elements.delete('//book [@category="children"]') # => <book category='children'> ... </>
+    #   elements.delete('//nosuch') # => nil
+    #
     def delete element
       if element.kind_of? Element
         @element.delete element
@@ -1151,12 +1181,22 @@ module REXML
       end
     end
 
-    # Removes multiple elements.  Filters for Element children, regardless of
-    # XPath matching.
-    # xpath:: all elements matching this String path are removed.
-    # Returns:: an Array of Elements that have been removed
-    #  doc = Document.new '<a><c/><c/><c/><c/></a>'
-    #  deleted = doc.elements.delete_all 'a/c' #-> [<c/>, <c/>, <c/>, <c/>]
+    # :call-seq:
+    #   delete_all(xpath)
+    #
+    # Removes all elements found via the given +xpath+;
+    # returns the array of removed elements, if any, else +nil+.
+    #
+    #   d = REXML::Document.new(xml_string)
+    #   elements = d.root.elements
+    #   elements.size # => 4
+    #   deleted_elements = elements.delete_all('//book [@category="children"]')
+    #   deleted_elements # => [<book category='children'> ... </>]
+    #   deleted_elements = elements.delete_all('//book')
+    #   deleted_elements.size # => 3
+    #   elements.size # => 0
+    #   elements.delete_all('//book') # => []
+    #
     def delete_all( xpath )
       rv = []
       XPath::each( @element, xpath) {|element|
