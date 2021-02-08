@@ -288,10 +288,25 @@ module REXML
     # Namespaces                                    #
     #################################################
 
-    # Evaluates to an +Array+ containing the prefixes (names) of all defined
-    # namespaces at this context node.
-    #  doc = Document.new("<a xmlns:x='1' xmlns:y='2'><b/><c xmlns:z='3'/></a>")
-    #  doc.elements['//b'].prefixes # -> ['x', 'y']
+    # :call-seq:
+    #   prefixes -> array_of_namespace_prefixes
+    #
+    # Returns an array of the string prefixes (names) of all defined namespaces
+    # in the element and its ancestors:
+    #
+    #   xml_string = <<-EOT
+    #     <root>
+    #        <a xmlns:x='1' xmlns:y='2'>
+    #          <b/>
+    #          <c xmlns:z='3'/>
+    #        </a>
+    #     </root>
+    #   EOT
+    #   d = REXML::Document.new(xml_string, {compress_whitespace: :all})
+    #   d.elements['//a'].prefixes # => ["x", "y"]
+    #   d.elements['//b'].prefixes # => ["x", "y"]
+    #   d.elements['//c'].prefixes # => ["x", "y", "z"]
+    #
     def prefixes
       prefixes = []
       prefixes = parent.prefixes if parent
@@ -299,6 +314,25 @@ module REXML
       return prefixes
     end
 
+    # :call-seq:
+    #    namespaces -> array_of_namespace_names
+    #
+    # Returns a hash of all defined namespaces
+    # in the element and its ancestors:
+    #
+    #   xml_string = <<-EOT
+    #     <root>
+    #        <a xmlns:x='1' xmlns:y='2'>
+    #          <b/>
+    #          <c xmlns:z='3'/>
+    #        </a>
+    #     </root>
+    #   EOT
+    #   d = REXML::Document.new(xml_string)
+    #   d.elements['//a'].namespaces # => {"x"=>"1", "y"=>"2"}
+    #   d.elements['//b'].namespaces # => {"x"=>"1", "y"=>"2"}
+    #   d.elements['//c'].namespaces # => {"x"=>"1", "y"=>"2", "z"=>"3"}
+    #
     def namespaces
       namespaces = {}
       namespaces = parent.namespaces if parent
@@ -306,19 +340,26 @@ module REXML
       return namespaces
     end
 
-    # Evaluates to the URI for a prefix, or the empty string if no such
-    # namespace is declared for this element. Evaluates recursively for
-    # ancestors.  Returns the default namespace, if there is one.
-    # prefix::
-    #   the prefix to search for.  If not supplied, returns the default
-    #   namespace if one exists
-    # Returns::
-    #   the namespace URI as a String, or nil if no such namespace
-    #   exists.  If the namespace is undefined, returns an empty string
-    #  doc = Document.new("<a xmlns='1' xmlns:y='2'><b/><c xmlns:z='3'/></a>")
-    #  b = doc.elements['//b']
-    #  b.namespace           # -> '1'
-    #  b.namespace("y")      # -> '2'
+    # :call-seq:
+    #   namespace(prefix = nil) -> string_uri or nil
+    #
+    # Returns the string namespace URI for the element,
+    # possibly deriving from one of its ancestors.
+    #
+    #   xml_string = <<-EOT
+    #     <root>
+    #        <a xmlns='1' xmlns:y='2'>
+    #          <b/>
+    #          <c xmlns:z='3'/>
+    #        </a>
+    #     </root>
+    #   EOT
+    #   d = REXML::Document.new(xml_string)
+    #   b = d.elements['//b']
+    #   b.namespace      # => "1"
+    #   b.namespace('y') # => "2"
+    #   b.namespace('nosuch') # => nil
+    #
     def namespace(prefix=nil)
       if prefix.nil?
         prefix = prefix()
@@ -334,19 +375,24 @@ module REXML
       return ns
     end
 
-    # Adds a namespace to this element.
-    # prefix::
-    #   the prefix string, or the namespace URI if +uri+ is not
-    #   supplied
-    # uri::
-    #   the namespace URI.  May be nil, in which +prefix+ is used as
-    #   the URI
-    # Evaluates to: this Element
-    #  a = Element.new("a")
-    #  a.add_namespace("xmlns:foo", "bar" )
-    #  a.add_namespace("foo", "bar")  # shorthand for previous line
-    #  a.add_namespace("twiddle")
-    #  puts a   #-> <a xmlns:foo='bar' xmlns='twiddle'/>
+    # :call-seq:
+    #   add_namespace(prefix, uri = nil) -> self
+    #
+    # Adds a namespace to the element; returns +self+.
+    #
+    # With the single argument +prefix+,
+    # adds a namespace using the given +prefix+ and the namespace URI:
+    #
+    #   e = REXML::Element.new('foo')
+    #   e.add_namespace('bar')
+    #   e.namespaces # => {"xmlns"=>"bar"}
+    #
+    # With both arguments +prefix+ and +uri+ given,
+    # adds a namespace using both arguments:
+    #
+    #   e.add_namespace('baz', 'bat')
+    #   e.namespaces # => {"xmlns"=>"bar", "baz"=>"bat"}
+    #
     def add_namespace( prefix, uri=nil )
       unless uri
         @attributes["xmlns"] = prefix
@@ -357,16 +403,28 @@ module REXML
       self
     end
 
-    # Removes a namespace from this node.  This only works if the namespace is
-    # actually declared in this node.  If no argument is passed, deletes the
-    # default namespace.
+    # :call-seq:
+    #   delete_namespace(namespace = 'xmlns') -> self
     #
-    # Evaluates to: this element
-    #  doc = Document.new "<a xmlns:foo='bar' xmlns='twiddle'/>"
-    #  doc.root.delete_namespace
-    #  puts doc     # -> <a xmlns:foo='bar'/>
-    #  doc.root.delete_namespace 'foo'
-    #  puts doc     # -> <a/>
+    # Removes a namespace from the element.
+    #
+    # With no argument, removes the default namespace:
+    #
+    #   d = REXML::Document.new "<a xmlns:foo='bar' xmlns='twiddle'/>"
+    #   d.to_s # => "<a xmlns:foo='bar' xmlns='twiddle'/>"
+    #   d.root.delete_namespace # => <a xmlns:foo='bar'/>
+    #   d.to_s # => "<a xmlns:foo='bar'/>"
+    #
+    # With argument +namespace+, removes the specified namespace:
+    #
+    #   d.root.delete_namespace('foo')
+    #   d.to_s # => "<a/>"
+    #
+    # Does nothing if no such namespace is found:
+    #
+    #   d.root.delete_namespace('nosuch')
+    #   d.to_s # => "<a/>"
+    #
     def delete_namespace namespace="xmlns"
       namespace = "xmlns:#{namespace}" unless namespace == 'xmlns'
       attribute = attributes.get_attribute(namespace)
