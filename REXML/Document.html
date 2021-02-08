@@ -174,7 +174,7 @@
 <p>Deprecated. Use <a href="Security.html#method-c-entity_expansion_limit-3D"><code>REXML::Security.entity_expansion_limit=</code></a> instead.</p>
 
           <div class="method-source-code" id="entity_expansion_limit-source">
-            <pre><span class="ruby-comment"># File lib/rexml/document.rb, line 347</span>
+            <pre><span class="ruby-comment"># File lib/rexml/document.rb, line 406</span>
 <span class="ruby-keyword">def</span> <span class="ruby-constant">Document</span><span class="ruby-operator">::</span><span class="ruby-identifier ruby-title">entity_expansion_limit</span>
   <span class="ruby-keyword">return</span> <span class="ruby-constant">Security</span>.<span class="ruby-identifier">entity_expansion_limit</span>
 <span class="ruby-keyword">end</span></pre>
@@ -197,7 +197,7 @@
 <p>Deprecated. Use <a href="Security.html#method-c-entity_expansion_limit-3D"><code>REXML::Security.entity_expansion_limit=</code></a> instead.</p>
 
           <div class="method-source-code" id="entity_expansion_limit-3D-source">
-            <pre><span class="ruby-comment"># File lib/rexml/document.rb, line 340</span>
+            <pre><span class="ruby-comment"># File lib/rexml/document.rb, line 399</span>
 <span class="ruby-keyword">def</span> <span class="ruby-constant">Document</span><span class="ruby-operator">::</span><span class="ruby-identifier ruby-title">entity_expansion_limit=</span>( <span class="ruby-identifier">val</span> )
   <span class="ruby-constant">Security</span>.<span class="ruby-identifier">entity_expansion_limit</span> = <span class="ruby-identifier">val</span>
 <span class="ruby-keyword">end</span></pre>
@@ -220,7 +220,7 @@
 <p>Deprecated. Use <a href="Security.html#method-c-entity_expansion_text_limit"><code>REXML::Security.entity_expansion_text_limit</code></a> instead.</p>
 
           <div class="method-source-code" id="entity_expansion_text_limit-source">
-            <pre><span class="ruby-comment"># File lib/rexml/document.rb, line 361</span>
+            <pre><span class="ruby-comment"># File lib/rexml/document.rb, line 420</span>
 <span class="ruby-keyword">def</span> <span class="ruby-constant">Document</span><span class="ruby-operator">::</span><span class="ruby-identifier ruby-title">entity_expansion_text_limit</span>
   <span class="ruby-keyword">return</span> <span class="ruby-constant">Security</span>.<span class="ruby-identifier">entity_expansion_text_limit</span>
 <span class="ruby-keyword">end</span></pre>
@@ -243,7 +243,7 @@
 <p>Deprecated. Use <a href="Security.html#method-c-entity_expansion_text_limit-3D"><code>REXML::Security.entity_expansion_text_limit=</code></a> instead.</p>
 
           <div class="method-source-code" id="entity_expansion_text_limit-3D-source">
-            <pre><span class="ruby-comment"># File lib/rexml/document.rb, line 354</span>
+            <pre><span class="ruby-comment"># File lib/rexml/document.rb, line 413</span>
 <span class="ruby-keyword">def</span> <span class="ruby-constant">Document</span><span class="ruby-operator">::</span><span class="ruby-identifier ruby-title">entity_expansion_text_limit=</span>( <span class="ruby-identifier">val</span> )
   <span class="ruby-constant">Security</span>.<span class="ruby-identifier">entity_expansion_text_limit</span> = <span class="ruby-identifier">val</span>
 <span class="ruby-keyword">end</span></pre>
@@ -350,7 +350,7 @@
           
 
           <div class="method-source-code" id="parse_stream-source">
-            <pre><span class="ruby-comment"># File lib/rexml/document.rb, line 333</span>
+            <pre><span class="ruby-comment"># File lib/rexml/document.rb, line 392</span>
 <span class="ruby-keyword">def</span> <span class="ruby-constant">Document</span><span class="ruby-operator">::</span><span class="ruby-identifier ruby-title">parse_stream</span>( <span class="ruby-identifier">source</span>, <span class="ruby-identifier">listener</span> )
   <span class="ruby-constant">Parsers</span><span class="ruby-operator">::</span><span class="ruby-constant">StreamParser</span>.<span class="ruby-identifier">new</span>( <span class="ruby-identifier">source</span>, <span class="ruby-identifier">listener</span> ).<span class="ruby-identifier">parse</span>
 <span class="ruby-keyword">end</span></pre>
@@ -472,20 +472,24 @@
 
       <div id="method-i-add_element" class="method-detail ">
         <div class="method-heading">
-          <span class="method-name">add_element</span><span
-            class="method-args">(arg=nil, arg2=nil)</span>
+          <span class="method-callseq">
+            add_element(name_or_element = nil, attributes = nil) &rarr; new_element
+          </span>
           <span class="method-click-advice">click to toggle source</span>
         </div>
 
         <div class="method-description">
-          
+          <p>Adds an element to the document by calling <a href="Element.html#method-i-add_element"><code>REXML::Element.add_element</code></a>:</p>
+
+<pre class="ruby"><span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Element</span>.<span class="ruby-identifier">add_element</span>(<span class="ruby-identifier">name_or_element</span>, <span class="ruby-identifier">attributes</span>)
+</pre>
             <div class="method-calls-super">
               Calls superclass method
               
             </div>
 
           <div class="method-source-code" id="add_element-source">
-            <pre><span class="ruby-comment"># File lib/rexml/document.rb, line 194</span>
+            <pre><span class="ruby-comment"># File lib/rexml/document.rb, line 200</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">add_element</span>(<span class="ruby-identifier">arg</span>=<span class="ruby-keyword">nil</span>, <span class="ruby-identifier">arg2</span>=<span class="ruby-keyword">nil</span>)
   <span class="ruby-identifier">rv</span> = <span class="ruby-keyword">super</span>
   <span class="ruby-identifier">raise</span> <span class="ruby-string">&quot;attempted adding second root element to document&quot;</span> <span class="ruby-keyword">if</span> <span class="ruby-ivar">@elements</span>.<span class="ruby-identifier">size</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">1</span>
@@ -521,16 +525,23 @@
 
       <div id="method-i-doctype" class="method-detail ">
         <div class="method-heading">
-          <span class="method-name">doctype</span><span
-            class="method-args">()</span>
+          <span class="method-callseq">
+            doctype &rarr; doc_type or nil
+          </span>
           <span class="method-click-advice">click to toggle source</span>
         </div>
 
         <div class="method-description">
-          <p>@return the <a href="DocType.html"><code>DocType</code></a> child of the document, if one exists, and nil otherwise.</p>
+          <p>Returns the <a href="DocType.html"><code>DocType</code></a> object for the document, if it exists, otherwise <code>nil</code>:</p>
+
+<pre class="ruby"><span class="ruby-identifier">d</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;&lt;!DOCTYPE document SYSTEM &quot;subjects.dtd&quot;&gt;&#39;</span>)
+<span class="ruby-identifier">d</span>.<span class="ruby-identifier">doctype</span>.<span class="ruby-identifier">class</span> <span class="ruby-comment"># =&gt; REXML::DocType</span>
+<span class="ruby-identifier">d</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;&#39;</span>)
+<span class="ruby-identifier">d</span>.<span class="ruby-identifier">doctype</span>.<span class="ruby-identifier">class</span> <span class="ruby-comment"># =&gt; nil</span>
+</pre>
 
           <div class="method-source-code" id="doctype-source">
-            <pre><span class="ruby-comment"># File lib/rexml/document.rb, line 210</span>
+            <pre><span class="ruby-comment"># File lib/rexml/document.rb, line 232</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">doctype</span>
   <span class="ruby-ivar">@children</span>.<span class="ruby-identifier">find</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">item</span><span class="ruby-operator">|</span> <span class="ruby-identifier">item</span>.<span class="ruby-identifier">kind_of?</span> <span class="ruby-constant">DocType</span> }
 <span class="ruby-keyword">end</span></pre>
@@ -551,7 +562,7 @@
           
 
           <div class="method-source-code" id="document-source">
-            <pre><span class="ruby-comment"># File lib/rexml/document.rb, line 374</span>
+            <pre><span class="ruby-comment"># File lib/rexml/document.rb, line 433</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">document</span>
   <span class="ruby-keyword">self</span>
 <span class="ruby-keyword">end</span></pre>
@@ -563,16 +574,23 @@
 
       <div id="method-i-encoding" class="method-detail ">
         <div class="method-heading">
-          <span class="method-name">encoding</span><span
-            class="method-args">()</span>
+          <span class="method-callseq">
+            encoding &rarr; encoding_string
+          </span>
           <span class="method-click-advice">click to toggle source</span>
         </div>
 
         <div class="method-description">
-          <p>@return the <a href="XMLDecl.html"><code>XMLDecl</code></a> encoding of this document as an <a href="Encoding.html"><code>Encoding</code></a> object. If no <a href="XMLDecl.html"><code>XMLDecl</code></a> has been set, returns the default encoding.</p>
+          <p>Returns the <a href="XMLDecl.html"><code>XMLDecl</code></a> encoding of the document, if it has been set, otherwise the default encoding:</p>
+
+<pre class="ruby"><span class="ruby-identifier">d</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-16&quot;?&gt;&#39;</span>)
+<span class="ruby-identifier">d</span>.<span class="ruby-identifier">encoding</span> <span class="ruby-comment"># =&gt; &quot;UTF-16&quot;</span>
+<span class="ruby-identifier">d</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;&#39;</span>)
+<span class="ruby-identifier">d</span>.<span class="ruby-identifier">encoding</span> <span class="ruby-comment"># =&gt; &quot;UTF-8&quot;</span>
+</pre>
 
           <div class="method-source-code" id="encoding-source">
-            <pre><span class="ruby-comment"># File lib/rexml/document.rb, line 231</span>
+            <pre><span class="ruby-comment"># File lib/rexml/document.rb, line 281</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">encoding</span>
   <span class="ruby-identifier">xml_decl</span>().<span class="ruby-identifier">encoding</span>
 <span class="ruby-keyword">end</span></pre>
@@ -649,7 +667,7 @@
           
 
           <div class="method-source-code" id="record_entity_expansion-source">
-            <pre><span class="ruby-comment"># File lib/rexml/document.rb, line 367</span>
+            <pre><span class="ruby-comment"># File lib/rexml/document.rb, line 426</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">record_entity_expansion</span>
   <span class="ruby-ivar">@entity_expansion_count</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
   <span class="ruby-keyword">if</span> <span class="ruby-ivar">@entity_expansion_count</span> <span class="ruby-operator">&gt;</span> <span class="ruby-constant">Security</span>.<span class="ruby-identifier">entity_expansion_limit</span>
@@ -664,16 +682,23 @@
 
       <div id="method-i-root" class="method-detail ">
         <div class="method-heading">
-          <span class="method-name">root</span><span
-            class="method-args">()</span>
+          <span class="method-callseq">
+            root &rarr; root_element or nil
+          </span>
           <span class="method-click-advice">click to toggle source</span>
         </div>
 
         <div class="method-description">
-          <p>@return the root <a href="Element.html"><code>Element</code></a> of the document, or nil if this document has no children.</p>
+          <p>Returns the root element of the document, if it exists, otherwise <code>nil</code>:</p>
+
+<pre class="ruby"><span class="ruby-identifier">d</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;&lt;root&gt;&lt;/root&gt;&#39;</span>)
+<span class="ruby-identifier">d</span>.<span class="ruby-identifier">root</span> <span class="ruby-comment"># =&gt; &lt;root/&gt;</span>
+<span class="ruby-identifier">d</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;&#39;</span>)
+<span class="ruby-identifier">d</span>.<span class="ruby-identifier">root</span> <span class="ruby-comment"># =&gt; nil</span>
+</pre>
 
           <div class="method-source-code" id="root-source">
-            <pre><span class="ruby-comment"># File lib/rexml/document.rb, line 202</span>
+            <pre><span class="ruby-comment"># File lib/rexml/document.rb, line 216</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">root</span>
   <span class="ruby-identifier">elements</span>[<span class="ruby-value">1</span>]
   <span class="ruby-comment">#self</span>
@@ -687,16 +712,23 @@
 
       <div id="method-i-stand_alone-3F" class="method-detail ">
         <div class="method-heading">
-          <span class="method-name">stand_alone?</span><span
-            class="method-args">()</span>
+          <span class="method-callseq">
+            stand_alone?
+          </span>
           <span class="method-click-advice">click to toggle source</span>
         </div>
 
         <div class="method-description">
-          <p>@return the <a href="XMLDecl.html"><code>XMLDecl</code></a> standalone value of this document as a String. If no <a href="XMLDecl.html"><code>XMLDecl</code></a> has been set, returns the default setting.</p>
+          <p>Returns the <a href="XMLDecl.html"><code>XMLDecl</code></a> standalone value of the document as a string, if it has been set, otherwise the default standalone value:</p>
+
+<pre class="ruby"><span class="ruby-identifier">d</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;&lt;?xml standalone=&quot;yes&quot;?&gt;&#39;</span>)
+<span class="ruby-identifier">d</span>.<span class="ruby-identifier">stand_alone?</span> <span class="ruby-comment"># =&gt; &quot;yes&quot;</span>
+<span class="ruby-identifier">d</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;&#39;</span>)
+<span class="ruby-identifier">d</span>.<span class="ruby-identifier">stand_alone?</span> <span class="ruby-comment"># =&gt; nil</span>
+</pre>
 
           <div class="method-source-code" id="stand_alone-3F-source">
-            <pre><span class="ruby-comment"># File lib/rexml/document.rb, line 237</span>
+            <pre><span class="ruby-comment"># File lib/rexml/document.rb, line 296</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">stand_alone?</span>
   <span class="ruby-identifier">xml_decl</span>().<span class="ruby-identifier">stand_alone?</span>
 <span class="ruby-keyword">end</span></pre>
@@ -708,16 +740,23 @@
 
       <div id="method-i-version" class="method-detail ">
         <div class="method-heading">
-          <span class="method-name">version</span><span
-            class="method-args">()</span>
+          <span class="method-callseq">
+            version &rarr; version_string
+          </span>
           <span class="method-click-advice">click to toggle source</span>
         </div>
 
         <div class="method-description">
-          <p>@return the <a href="XMLDecl.html"><code>XMLDecl</code></a> version of this document as a String. If no <a href="XMLDecl.html"><code>XMLDecl</code></a> has been set, returns the default version.</p>
+          <p>Returns the <a href="XMLDecl.html"><code>XMLDecl</code></a> version of this document as a string, if it has been set, otherwise the default version:</p>
+
+<pre class="ruby"><span class="ruby-identifier">d</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;&lt;?xml version=&quot;2.0&quot; encoding=&quot;UTF-8&quot;?&gt;&#39;</span>)
+<span class="ruby-identifier">d</span>.<span class="ruby-identifier">version</span> <span class="ruby-comment"># =&gt; &quot;2.0&quot;</span>
+<span class="ruby-identifier">d</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;&#39;</span>)
+<span class="ruby-identifier">d</span>.<span class="ruby-identifier">version</span> <span class="ruby-comment"># =&gt; &quot;1.0&quot;</span>
+</pre>
 
           <div class="method-source-code" id="version-source">
-            <pre><span class="ruby-comment"># File lib/rexml/document.rb, line 224</span>
+            <pre><span class="ruby-comment"># File lib/rexml/document.rb, line 266</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">version</span>
   <span class="ruby-identifier">xml_decl</span>().<span class="ruby-identifier">version</span>
 <span class="ruby-keyword">end</span></pre>
@@ -784,7 +823,7 @@
 </dd></dl>
 
           <div class="method-source-code" id="write-source">
-            <pre><span class="ruby-comment"># File lib/rexml/document.rb, line 297</span>
+            <pre><span class="ruby-comment"># File lib/rexml/document.rb, line 356</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">write</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">arguments</span>)
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">arguments</span>.<span class="ruby-identifier">size</span> <span class="ruby-operator">==</span> <span class="ruby-value">1</span> <span class="ruby-keyword">and</span> <span class="ruby-identifier">arguments</span>[<span class="ruby-value">0</span>].<span class="ruby-identifier">class</span> <span class="ruby-operator">==</span> <span class="ruby-constant">Hash</span>
     <span class="ruby-identifier">options</span> = <span class="ruby-identifier">arguments</span>[<span class="ruby-value">0</span>]
@@ -827,16 +866,25 @@
 
       <div id="method-i-xml_decl" class="method-detail ">
         <div class="method-heading">
-          <span class="method-name">xml_decl</span><span
-            class="method-args">()</span>
+          <span class="method-callseq">
+            xml_decl &rarr; xml_decl
+          </span>
           <span class="method-click-advice">click to toggle source</span>
         </div>
 
         <div class="method-description">
-          <p>@return the <a href="XMLDecl.html"><code>XMLDecl</code></a> of this document; if no <a href="XMLDecl.html"><code>XMLDecl</code></a> has been set, the default declaration is returned.</p>
+          <p>Returns the <a href="XMLDecl.html"><code>XMLDecl</code></a> object for the document, if it exists, otherwise the default <a href="XMLDecl.html"><code>XMLDecl</code></a> object:</p>
+
+<pre class="ruby"><span class="ruby-identifier">d</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&#39;</span>)
+<span class="ruby-identifier">d</span>.<span class="ruby-identifier">xml_decl</span>.<span class="ruby-identifier">class</span> <span class="ruby-comment"># =&gt; REXML::XMLDecl</span>
+<span class="ruby-identifier">d</span>.<span class="ruby-identifier">xml_decl</span>.<span class="ruby-identifier">to_s</span>  <span class="ruby-comment"># =&gt; &quot;&lt;?xml version=&#39;1.0&#39; encoding=&#39;UTF-8&#39;?&gt;&quot;</span>
+<span class="ruby-identifier">d</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;&#39;</span>)
+<span class="ruby-identifier">d</span>.<span class="ruby-identifier">xml_decl</span>.<span class="ruby-identifier">class</span> <span class="ruby-comment"># =&gt; REXML::XMLDecl</span>
+<span class="ruby-identifier">d</span>.<span class="ruby-identifier">xml_decl</span>.<span class="ruby-identifier">to_s</span>  <span class="ruby-comment"># =&gt; &quot;&quot;</span>
+</pre>
 
           <div class="method-source-code" id="xml_decl-source">
-            <pre><span class="ruby-comment"># File lib/rexml/document.rb, line 216</span>
+            <pre><span class="ruby-comment"># File lib/rexml/document.rb, line 249</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">xml_decl</span>
   <span class="ruby-identifier">rv</span> = <span class="ruby-ivar">@children</span>[<span class="ruby-value">0</span>]
   <span class="ruby-keyword">return</span> <span class="ruby-identifier">rv</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">rv</span>.<span class="ruby-identifier">kind_of?</span> <span class="ruby-constant">XMLDecl</span>
