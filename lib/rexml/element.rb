@@ -915,35 +915,118 @@ module REXML
   # XPath search support.  You are expected to only encounter this class as
   # the <tt>element.elements</tt> object.  Therefore, you are
   # _not_ expected to instantiate this yourself.
+  #
+  #   xml_string = <<-EOT
+  #   <?xml version="1.0" encoding="UTF-8"?>
+  #   <bookstore>
+  #     <book category="cooking">
+  #       <title lang="en">Everyday Italian</title>
+  #       <author>Giada De Laurentiis</author>
+  #       <year>2005</year>
+  #       <price>30.00</price>
+  #     </book>
+  #     <book category="children">
+  #       <title lang="en">Harry Potter</title>
+  #       <author>J K. Rowling</author>
+  #       <year>2005</year>
+  #       <price>29.99</price>
+  #     </book>
+  #     <book category="web">
+  #       <title lang="en">XQuery Kick Start</title>
+  #       <author>James McGovern</author>
+  #       <author>Per Bothner</author>
+  #       <author>Kurt Cagle</author>
+  #       <author>James Linn</author>
+  #       <author>Vaidyanathan Nagarajan</author>
+  #       <year>2003</year>
+  #       <price>49.99</price>
+  #     </book>
+  #     <book category="web" cover="paperback">
+  #       <title lang="en">Learning XML</title>
+  #       <author>Erik T. Ray</author>
+  #       <year>2003</year>
+  #       <price>39.95</price>
+  #     </book>
+  #   </bookstore>
+  #   EOT
+  #   d = REXML::Document.new(xml_string)
+  #   elements = d.root.elements
+  #   elements # => #<REXML::Elements @element=<bookstore> ... </>>
+  #
   class Elements
     include Enumerable
-    # Constructor
-    # parent:: the parent Element
+    # :call-seq:
+    #   new(base_element) -> new_elements_object
+    #
+    # Returns a new \Elements object with the given +base_element+.
+    # Does _not_ assign <tt>base_element.elements = self</tt>:
+    #
+    #   d = REXML::Document.new(xml_string)
+    #   eles = REXML::Elements.new(d.root)
+    #   eles # => #<REXML::Elements @element=<bookstore> ... </>>
+    #   eles == d.root.elements # => false
+    #
+    # To retrieve the given +base_element+:
+    #
+    #   eles['.'] # => <bookstore> ... </>
+    #
     def initialize parent
       @element = parent
     end
 
-    # Fetches a child element.  Filters only Element children, regardless of
-    # the XPath match.
-    # index::
-    #   the search parameter.  This is either an Integer, which
-    #   will be used to find the index'th child Element, or an XPath,
-    #   which will be used to search for the Element.  <em>Because
-    #   of the nature of XPath searches, any element in the connected XML
-    #   document can be fetched through any other element.</em>  <b>The
-    #   Integer index is 1-based, not 0-based.</b>  This means that the first
-    #   child element is at index 1, not 0, and the +n+th element is at index
-    #   +n+, not <tt>n-1</tt>.  This is because XPath indexes element children
-    #   starting from 1, not 0, and the indexes should be the same.
-    # name::
-    #   optional, and only used in the first argument is an
-    #   Integer.  In that case, the index'th child Element that has the
-    #   supplied name will be returned.  Note again that the indexes start at 1.
-    # Returns:: the first matching Element, or nil if no child matched
-    #  doc = Document.new '<a><b/><c id="1"/><c id="2"/><d/></a>'
-    #  doc.root.elements[1]       #-> <b/>
-    #  doc.root.elements['c']     #-> <c id="1"/>
-    #  doc.root.elements[2,'c']   #-> <c id="2"/>
+    # :call-seq:
+    #   elements[index] -> element or nil
+    #   elements[xpath] -> element or nil
+    #   elements[n, name] -> element or nil
+    #
+    # Returns the first \Element object selected by the arguments,
+    # if any found, or +nil+ if none found.
+    #
+    # Notes:
+    # - The +index+ is 1-based, not 0-based, so that:
+    #   - The first element has index <tt>1</tt>
+    #   - The _nth_ element has index +n+.
+    # - The selection ignores non-\Element nodes.
+    #
+    # When the single argument +index+ is given,
+    # returns the element given by the index, if any; otherwise, +nil+:
+    #
+    #   d = REXML::Document.new(xml_string)
+    #   eles = d.root.elements
+    #   eles # => #<REXML::Elements @element=<bookstore> ... </>>
+    #   eles[1] # => <book category='cooking'> ... </>
+    #   eles.size # => 4
+    #   eles[4] # => <book category='web' cover='paperback'> ... </>
+    #   eles[5] # => nil
+    #
+    # The node at this index is not an \Element, and so is not returned:
+    #
+    #   eles = d.root.first.first # => <title lang='en'> ... </>
+    #   eles.to_a # => ["Everyday Italian"]
+    #   eles[1] # => nil
+    #
+    # When the single argument +xpath+ is given,
+    # returns the first element found via that +xpath+, if any; otherwise, +nil+:
+    #
+    #   eles = d.root.elements # => #<REXML::Elements @element=<bookstore> ... </>>
+    #   eles['/bookstore']                    # => <bookstore> ... </>
+    #   eles['//book']                        # => <book category='cooking'> ... </>
+    #   eles['//book [@category="children"]'] # => <book category='children'> ... </>
+    #   eles['/nosuch']                       # => nil
+    #   eles['//nosuch']                      # => nil
+    #   eles['//book [@category="nosuch"]']   # => nil
+    #   eles['.']                             # => <bookstore> ... </>
+    #   eles['..'].class                      # => REXML::Document
+    #
+    # With arguments +n+ and +name+ given,
+    # returns the _nth_ found element that has the given +name+,
+    # or +nil+ if there is no such _nth_ element:
+    #
+    #   eles = d.root.elements # => #<REXML::Elements @element=<bookstore> ... </>>
+    #   eles[1, 'book'] # => <book category='cooking'> ... </>
+    #   eles[4, 'book'] # => <book category='web' cover='paperback'> ... </>
+    #   eles[5, 'book'] # => nil
+    #
     def []( index, name=nil)
       if index.kind_of? Integer
         raise "index (#{index}) must be >= 1" if index < 1
@@ -963,19 +1046,42 @@ module REXML
       end
     end
 
-    # Sets an element, replacing any previous matching element.  If no
-    # existing element is found ,the element is added.
-    # index:: Used to find a matching element to replace.  See []().
-    # element::
-    #   The element to replace the existing element with
-    #   the previous element
-    # Returns:: nil if no previous element was found.
+    # :call-seq:
+    #  elements[] = index, replacement_element -> replacement_element or nil
     #
-    #  doc = Document.new '<a/>'
-    #  doc.root.elements[10] = Element.new('b')    #-> <a><b/></a>
-    #  doc.root.elements[1]                        #-> <b/>
-    #  doc.root.elements[1] = Element.new('c')     #-> <a><c/></a>
-    #  doc.root.elements['c'] = Element.new('d')   #-> <a><d/></a>
+    # Replaces or adds an element.
+    #
+    # When <tt>eles[index]</tt> exists, replaces it with +replacement_element+
+    # and returns +replacement_element+:
+    #
+    #   d = REXML::Document.new(xml_string)
+    #   eles = d.root.elements # => #<REXML::Elements @element=<bookstore> ... </>>
+    #   eles[1] # => <book category='cooking'> ... </>
+    #   eles[1] = REXML::Element.new('foo')
+    #   eles[1] # => <foo/>
+    #
+    # Does nothing (or raises an exception)
+    # if +replacement_element+ is not an \Element:
+    #   eles[2] # => <book category='web' cover='paperback'> ... </>
+    #   eles[2] = REXML::Text.new('bar')
+    #   eles[2] # => <book category='web' cover='paperback'> ... </>
+    #
+    # When <tt>eles[index]</tt> does not exist,
+    # adds +replacement_element+ to the element and returns
+    #
+    #   d = REXML::Document.new(xml_string)
+    #   eles = d.root.elements # => #<REXML::Elements @element=<bookstore> ... </>>
+    #   eles.size # => 4
+    #   eles[50] = REXML::Element.new('foo') # => <foo/>
+    #   eles.size # => 5
+    #   eles[5] # => <foo/>
+    #
+    # Does nothing (or raises an exception)
+    # if +replacement_element+ is not an \Element:
+    #
+    #   eles[50] = REXML::Text.new('bar') # => "bar"
+    #   eles.size # => 5
+    #
     def []=( index, element )
       previous = self[index]
       if previous.nil?
@@ -986,14 +1092,34 @@ module REXML
       return previous
     end
 
-    # Returns +true+ if there are no +Element+ children, +false+ otherwise
+    # :call-seq:
+    #   empty? -> true or false
+    #
+    # Returns +true+ if there are no children, +false+ otherwise.
+    #
+    #   d = REXML::Document.new('')
+    #   d.elements.empty? # => true
+    #   d = REXML::Document.new(xml_string)
+    #   d.elements.empty? # => false
+    #
     def empty?
       @element.find{ |child| child.kind_of? Element}.nil?
     end
 
-    # Returns the index of the supplied child (starting at 1), or -1 if
-    # the element is not a child
-    # element:: an +Element+ child
+    # :call-seq:
+    #   index(element)
+    #
+    # Returns the 1-based index of the given +element+, if found;
+    # otherwise, returns -1:
+    #
+    #   d = REXML::Document.new(xml_string)
+    #   elements = d.root.elements
+    #   ele_1, ele_2, ele_3, ele_4 = *elements
+    #   elements.index(ele_4) # => 4
+    #   elements.delete(ele_3)
+    #   elements.index(ele_4) # => 3
+    #   elements.index(ele_3) # => -1
+    #
     def index element
       rv = 0
       found = @element.find do |child|
