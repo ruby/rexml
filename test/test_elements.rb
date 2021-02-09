@@ -113,5 +113,10 @@ module REXMLTests
       }
       assert_equal 6, r
     end
+
+    def test_base_element
+      doc = Document.new( "<a><b id='1'/><b id='2'/></a>" )
+      assert_equal('a', doc.root.elements.base_element.name)
+    end
   end
 end

@@ -966,12 +966,19 @@ module REXML
     #   eles # => #<REXML::Elements @element=<bookstore> ... </>>
     #   eles == d.root.elements # => false
     #
-    # To retrieve the given +base_element+:
-    #
-    #   eles['.'] # => <bookstore> ... </>
-    #
     def initialize parent
       @element = parent
+    end
+
+    # :call-seq:
+    #   base_element
+    #
+    #   d = REXML::Document.new(xml_string)
+    #   elements = REXML::Elements.new(d.root)
+    #   elements.base_element == d.root # => true
+    #
+    def base_element
+      @element
     end
 
     # :call-seq:
