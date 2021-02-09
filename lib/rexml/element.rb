@@ -975,6 +975,21 @@ module REXML
     end
 
     # :call-seq:
+    #   base_element
+    #
+    # Returns the base element cited in creating the \Elements object.
+    # This element is also the default base, starting point, for searching
+    # in the \Elements object.
+    #
+    #   d = REXML::Document.new(xml_string)
+    #   elements = REXML::Elements.new(d.root)
+    #   elements.base_element == d.root # => true
+    #
+    def base_element
+      @element
+    end
+
+    # :call-seq:
     #   elements[index] -> element or nil
     #   elements[xpath] -> element or nil
     #   elements[n, name] -> element or nil
