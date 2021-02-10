@@ -956,22 +956,33 @@ module REXML
   class Elements
     include Enumerable
     # :call-seq:
-    #   new(base_element) -> new_elements_object
+    #   new(parent) -> new_elements_object
     #
-    # Returns a new \Elements object with the given +base_element+.
-    # Does _not_ assign <tt>base_element.elements = self</tt>:
+    # Returns a new \Elements object with the given +parent+.
+    # Does _not_ assign <tt>parent.elements = self</tt>:
     #
     #   d = REXML::Document.new(xml_string)
     #   eles = REXML::Elements.new(d.root)
     #   eles # => #<REXML::Elements @element=<bookstore> ... </>>
     #   eles == d.root.elements # => false
     #
-    # To retrieve the given +base_element+:
-    #
-    #   eles['.'] # => <bookstore> ... </>
-    #
     def initialize parent
       @element = parent
+    end
+
+    # :call-seq:
+    #   parent
+    #
+    # Returns the parent element cited in creating the \Elements object.
+    # This element is also the default starting point for searching
+    # in the \Elements object.
+    #
+    #   d = REXML::Document.new(xml_string)
+    #   elements = REXML::Elements.new(d.root)
+    #   elements.parent == d.root # => true
+    #
+    def parent
+      @element
     end
 
     # :call-seq:
