@@ -985,7 +985,7 @@ module REXML
     #   elements = REXML::Elements.new(d.root)
     #   elements.base_element == d.root # => true
     #
-    def base_element
+    def parent
       @element
     end
 
