@@ -973,8 +973,8 @@ module REXML
     # :call-seq:
     #   parent
     #
-    # Returns the base element cited in creating the \Elements object.
-    # This element is also the default base, starting point, for searching
+    # Returns the parent element cited in creating the \Elements object.
+    # This element is also the default starting point for searching
     # in the \Elements object.
     #
     #   d = REXML::Document.new(xml_string)
