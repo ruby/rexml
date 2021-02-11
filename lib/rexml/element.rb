@@ -1201,10 +1201,11 @@ module REXML
     #   d = REXML::Document.new(xml_string)
     #   elements = d.root.elements
     #   elements.size # => 4
-    #   deleted_elements = elements.delete_all('//book [@category="children"]')
-    #   deleted_elements # => [<book category='children'> ... </>]
+    #   deleted_elements = elements.delete_all('//book [@category="web"]')
+    #   deleted_elements.size # => 2
+    #   elements.size # => 2
     #   deleted_elements = elements.delete_all('//book')
-    #   deleted_elements.size # => 3
+    #   deleted_elements.size # => 2
     #   elements.size # => 0
     #   elements.delete_all('//book') # => []
     #
@@ -1220,15 +1221,68 @@ module REXML
       return rv
     end
 
-    # Adds an element
-    # element::
-    #   if supplied, is either an Element, String, or
-    #   Source (see Element.initialize).  If not supplied or nil, a
-    #   new, default Element will be constructed
-    # Returns:: the added Element
-    #  a = Element.new('a')
-    #  a.elements.add(Element.new('b'))  #-> <a><b/></a>
-    #  a.elements.add('c')               #-> <a><b/><c/></a>
+    # :call-seq:
+    #   add -> new_element
+    #   add(name) -> new_element
+    #   add(element) -> element
+    #
+    # Adds an element; returns the element added.
+    #
+    # With no argument, creates and adds a new element.
+    # The new element has:
+    #
+    # - No name.
+    # - \Parent from the \Elements object.
+    # - Context from the that parent.
+    #
+    # Example:
+    #
+    #   d = REXML::Document.new(xml_string)
+    #   elements = d.root.elements
+    #   parent = elements.parent     # => <bookstore> ... </>
+    #   parent.context = {raw: :all}
+    #   elements.size                # => 4
+    #   new_element = elements.add   # => </>
+    #   elements.size                # => 5
+    #   new_element.name             # => nil
+    #   new_element.parent           # => <bookstore> ... </>
+    #   new_element.context          # => {:raw=>:all}
+    #
+    # With string argument +name+, creates and adds a new element.
+    # The new element has:
+    #
+    # - Name +name+.
+    # - \Parent from the \Elements object.
+    # - Context from the that parent.
+    #
+    # Example:
+    #
+    #   d = REXML::Document.new(xml_string)
+    #   elements = d.root.elements
+    #   parent = elements.parent          # => <bookstore> ... </>
+    #   parent.context = {raw: :all}
+    #   elements.size                     # => 4
+    #   new_element = elements.add('foo') # => <foo/>
+    #   elements.size                     # => 5
+    #   new_element.name                  # => "foo"
+    #   new_element.parent                # => <bookstore> ... </>
+    #   new_element.context               # => {:raw=>:all}
+    #
+    # With argument +element+,
+    # creates and adds a clone of the given +element+.
+    # The new element has name, parent, and context from the given +element+.
+    #
+    #   d = REXML::Document.new(xml_string)
+    #   elements = d.root.elements
+    #   elements.size                 # => 4
+    #   e0 = REXML::Element.new('foo')
+    #   e1 = REXML::Element.new('bar', e0, {raw: :all})
+    #   element = elements.add(e1) # => <bar/>
+    #   elements.size                 # => 5
+    #   element.name                  # => "bar"
+    #   element.parent                # => <bookstore> ... </>
+    #   element.context               # => {:raw=>:all}
+    #
     def add element=nil
       if element.nil?
         Element.new("", self, @element.context)
@@ -1243,24 +1297,55 @@ module REXML
 
     alias :<< :add
 
-    # Iterates through all of the child Elements, optionally filtering
-    # them by a given XPath
-    # xpath::
-    #   optional.  If supplied, this is a String XPath, and is used to
-    #   filter the children, so that only matching children are yielded.  Note
-    #   that XPaths are automatically filtered for Elements, so that
-    #   non-Element children will not be yielded
-    #  doc = Document.new '<a><b/><c/><d/>sean<b/><c/><d/></a>'
-    #  doc.root.elements.each {|e|p e}       #-> Yields b, c, d, b, c, d elements
-    #  doc.root.elements.each('b') {|e|p e}  #-> Yields b, b elements
-    #  doc.root.elements.each('child::node()')  {|e|p e}
-    #  #-> Yields <b/>, <c/>, <d/>, <b/>, <c/>, <d/>
-    #  XPath.each(doc.root, 'child::node()', &block)
-    #  #-> Yields <b/>, <c/>, <d/>, sean, <b/>, <c/>, <d/>
+    # :call-seq:
+    #    each(xpath = nil) {|element| ... } -> self
+    #
+    # Iterates over the elements.
+    #
+    # With no argument, calls the block with each element:
+    #
+    #   d = REXML::Document.new(xml_string)
+    #   elements = d.root.elements
+    #   elements.each {|element| p element }
+    #
+    # Output:
+    #
+    #   <book category='cooking'> ... </>
+    #   <book category='children'> ... </>
+    #   <book category='web'> ... </>
+    #   <book category='web' cover='paperback'> ... </>
+    #
+    # With argument +xpath+, calls the block with each element
+    # that matches the given +xpath+:
+    #
+    #   elements.each('//book [@category="web"]') {|element| p element }
+    #
+    # Output:
+    #
+    #   <book category='web'> ... </>
+    #   <book category='web' cover='paperback'> ... </>
+    #
     def each( xpath=nil )
       XPath::each( @element, xpath ) {|e| yield e if e.kind_of? Element }
     end
 
+    # :call-seq:
+    #   collect(xpath = nil) {|element| ... } -> array
+    #
+    # Iterates over the elements; returns the array of block return values.
+    #
+    # With no argument, iterates over all elements:
+    #
+    #   d = REXML::Document.new(xml_string)
+    #   elements = d.root.elements
+    #   elements.collect {|element| element.size } # => [9, 9, 17, 9]
+    #
+    # With argument +xpath+, iterates over elements that match
+    # the given +xpath+:
+    #
+    #   xpath = '//book [@category="web"]'
+    #   elements.collect(xpath) {|element| element.size } # => [17, 9]
+    #
     def collect( xpath=nil )
       collection = []
       XPath::each( @element, xpath ) {|e|
@@ -1269,6 +1354,83 @@ module REXML
       collection
     end
 
+    # :call-seq:
+    #   inject(xpath = nil, initial = nil) -> object
+    #
+    # Calls the block with elements; returns the last block return value.
+    #
+    # With no argument, iterates over the elements, calling the block
+    # <tt>elements.size - 1</tt> times.
+    #
+    # - The first call passes the first and second elements.
+    # - The second call passes the first block return value and the third element.
+    # - The third call passes the second block return value and the fourth element.
+    # - And so on.
+    #
+    # In this example, the block returns the passed element,
+    # which is then the object argument to the next call:
+    #
+    #   d = REXML::Document.new(xml_string)
+    #   elements = d.root.elements
+    #   elements.inject do |object, element|
+    #     p [elements.index(object), elements.index(element)]
+    #     element
+    #   end
+    #
+    # Output:
+    #
+    #   [1, 2]
+    #   [2, 3]
+    #   [3, 4]
+    #
+    # With the single argument +xpath+, calls the block only with
+    # elements matching that xpath:
+    #
+    #   elements.inject('//book [@category="web"]') do |object, element|
+    #     p [elements.index(object), elements.index(element)]
+    #     element
+    #   end
+    #
+    # Output:
+    #
+    #  [3, 4]
+    #
+    # With argument +xpath+ given as +nil+
+    # and argument +initial+ also given,
+    # calls the block once for each element.
+    #
+    # - The first call passes the +initial+ and the first element.
+    # - The second call passes the first block return value and the second element.
+    # - The third call passes the second block return value and the third element.
+    # - And so on.
+    #
+    # In this example, the first object index is <tt>-1</tt>
+    #
+    #   elements.inject(nil, 'Initial') do |object, element|
+    #     p [elements.index(object), elements.index(element)]
+    #     element
+    #   end
+    #
+    # Output:
+    #
+    #   [-1, 1]
+    #   [1, 2]
+    #   [2, 3]
+    #   [3, 4]
+    #
+    # In this form the passed object can be used as an accumulator:
+    #
+    #   elements.inject(nil, 0) do |total, element|
+    #     total += element.size
+    #   end # => 44
+    #
+    # With both arguments +xpath+ and +initial+ are given,
+    # calls the block only with elements matching that xpath:
+    #
+    #   elements.inject('//book [@category="web"]', 0) do |total, element|
+    #     total += element.size
+    #   end # => 26
+    #
     def inject( xpath=nil, initial=nil )
       first = true
       XPath::each( @element, xpath ) {|e|
@@ -1284,23 +1446,39 @@ module REXML
       initial
     end
 
-    # Returns the number of +Element+ children of the parent object.
-    #  doc = Document.new '<a>sean<b/>elliott<b/>russell<b/></a>'
-    #  doc.root.size            #-> 6, 3 element and 3 text nodes
-    #  doc.root.elements.size   #-> 3
+    # :call-seq:
+    #   size -> integer
+    #
+    # Returns the count of \Element children:
+    #
+    #   d = REXML::Document.new '<a>sean<b/>elliott<b/>russell<b/></a>'
+    #   d.root.elements.size # => 3 # Three elements.
+    #   d.root.size          # => 6 # Three elements plus three text nodes..
+    #
     def size
       count = 0
       @element.each {|child| count+=1 if child.kind_of? Element }
       count
     end
 
-    # Returns an Array of Element children.  An XPath may be supplied to
-    # filter the children.  Only Element children are returned, even if the
-    # supplied XPath matches non-Element children.
-    #  doc = Document.new '<a>sean<b/>elliott<c/></a>'
-    #  doc.root.elements.to_a                  #-> [ <b/>, <c/> ]
-    #  doc.root.elements.to_a("child::node()") #-> [ <b/>, <c/> ]
-    #  XPath.match(doc.root, "child::node()")  #-> [ sean, <b/>, elliott, <c/> ]
+    # :call-seq:
+    #   to_a(xpath = nil) -> array_of_elements
+    #
+    # Returns an array of element children (not including non-element children).
+    #
+    # With no argument, returns an array of all element children:
+    #
+    #   d = REXML::Document.new '<a>sean<b/>elliott<c/></a>'
+    #   elements = d.root.elements
+    #   elements.to_a # => [<b/>, <c/>]               # Omits non-element children.
+    #   children = d.root.children
+    #   children # => ["sean", <b/>, "elliott", <c/>] # Includes non-element children.
+    #
+    # With argument +xpath+, returns an array of element children
+    # that match the xpath:
+    #
+    #   elements.to_a('//c') # => [<c/>]
+    #
     def to_a( xpath=nil )
       rv = XPath.match( @element, xpath )
       return rv.find_all{|e| e.kind_of? Element} if xpath
