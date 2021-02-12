@@ -1500,36 +1500,89 @@ module REXML
   # A class that defines the set of Attributes of an Element and provides
   # operations for accessing elements in that set.
   class Attributes < Hash
-    # Constructor
-    # element:: the Element of which this is an Attribute
+
+    # :call-seq:
+    #   new(element)
+    #
+    # Creates and returns a new \REXML::Attributes object.
+    # The element given by argument +element+ is stored,
+    # but its own attributes are not modified:
+    #
+    #   ele = REXML::Element.new('foo')
+    #   attrs = REXML::Attributes.new(ele)
+    #   attrs.object_id == ele.attributes.object_id # => false
+    #
+    # Other instance methods in class \REXML::Attributes may refer to:
+    #
+    # - +element.document+.
+    # - +element.prefix+.
+    # - +element.expanded_name+.
+    #
     def initialize element
       @element = element
     end
 
-    # Fetches an attribute value.  If you want to get the Attribute itself,
-    # use get_attribute()
-    # name:: an XPath attribute name.  Namespaces are relevant here.
-    # Returns::
-    #   the String value of the matching attribute, or +nil+ if no
-    #   matching attribute was found.  This is the unnormalized value
-    #   (with entities expanded).
+    # :call-seq:
+    #   [name] -> attribute_value or nil
     #
-    #  doc = Document.new "<a foo:att='1' bar:att='2' att='&lt;'/>"
-    #  doc.root.attributes['att']         #-> '<'
-    #  doc.root.attributes['bar:att']     #-> '2'
+    # Returns the value for the attribute given by +name+,
+    # if it exists; otherwise +nil+.
+    # The value returned is the unnormalized attribute value,
+    # with entities expanded:
+    #
+    #   xml_string = <<-EOT
+    #     <root xmlns:foo="http://foo" xmlns:bar="http://bar">
+    #        <ele foo:att='1' bar:att='2' att='&lt;'/>
+    #     </root>
+    #   EOT
+    #   d = REXML::Document.new(xml_string)
+    #   ele = d.elements['//ele'] # => <a foo:att='1' bar:att='2' att='&lt;'/>
+    #   ele.attributes['att']     # => "<"
+    #   ele.attributes['bar:att'] # => "2"
+    #   ele.attributes['nosuch']  # => nil
+    #
+    # Related: get_attribute (returns an \Attribute object).
+    #
     def [](name)
       attr = get_attribute(name)
       return attr.value unless attr.nil?
       return nil
     end
 
+    # :call-seq:
+    #   to_a -> array_of_attribute_objects
+    #
+    # Returns an array of \REXML::Attribute objects representing
+    # the attributes:
+    #
+    #   xml_string = <<-EOT
+    #     <root xmlns:foo="http://foo" xmlns:bar="http://bar">
+    #        <ele foo:att='1' bar:att='2' att='&lt;'/>
+    #     </root>
+    #   EOT
+    #   d = REXML::Document.new(xml_string)
+    #   ele = d.root.elements['//ele']   # => <a foo:att='1' bar:att='2' att='&lt;'/>
+    #   attrs = ele.attributes.to_a      # => [foo:att='1', bar:att='2', att='&lt;']
+    #   attrs.first.class                # => REXML::Attribute
+    #
     def to_a
       enum_for(:each_attribute).to_a
     end
 
-    # Returns the number of attributes the owning Element contains.
-    #  doc = Document "<a x='1' y='2' foo:x='3'/>"
-    #  doc.root.attributes.length        #-> 3
+    # :call-seq:
+    #   length
+    #
+    # Returns the count of attributes:
+    #
+    #   xml_string = <<-EOT
+    #     <root xmlns:foo="http://foo" xmlns:bar="http://bar">
+    #        <ele foo:att='1' bar:att='2' att='&lt;'/>
+    #     </root>
+    #   EOT
+    #   d = REXML::Document.new(xml_string)
+    #   ele = d.root.elements['//ele']   # => <a foo:att='1' bar:att='2' att='&lt;'/>
+    #   ele.attributes.length # => 3
+    #
     def length
       c = 0
       each_attribute { c+=1 }
@@ -1537,13 +1590,28 @@ module REXML
     end
     alias :size :length
 
-    # Iterates over the attributes of an Element.  Yields actual Attribute
-    # nodes, not String values.
+    # :call-seq:
+    #   each_attribute {|attr| ... }
     #
-    #  doc = Document.new '<a x="1" y="2"/>'
-    #  doc.root.attributes.each_attribute {|attr|
-    #    p attr.expanded_name+" => "+attr.value
-    #  }
+    # Calls the given block with each \REXML::Attribute object:
+    #
+    #   xml_string = <<-EOT
+    #     <root xmlns:foo="http://foo" xmlns:bar="http://bar">
+    #        <ele foo:att='1' bar:att='2' att='&lt;'/>
+    #     </root>
+    #   EOT
+    #   d = REXML::Document.new(xml_string)
+    #   ele = d.root.elements['//ele']   # => <a foo:att='1' bar:att='2' att='&lt;'/>
+    #   ele.attributes.each_attribute do |attr|
+    #     p [attr.class, attr]
+    #   end
+    #
+    # Output:
+    #
+    #   [REXML::Attribute, foo:att='1']
+    #   [REXML::Attribute, bar:att='2']
+    #   [REXML::Attribute, att='&lt;']
+    #
     def each_attribute # :yields: attribute
       return to_enum(__method__) unless block_given?
       each_value do |val|
@@ -1555,11 +1623,28 @@ module REXML
       end
     end
 
-    # Iterates over each attribute of an Element, yielding the expanded name
-    # and value as a pair of Strings.
+    # :call-seq:
+    #   each {|expanded_name, value| ... }
     #
-    #  doc = Document.new '<a x="1" y="2"/>'
-    #  doc.root.attributes.each {|name, value| p name+" => "+value }
+    # Calls the given block with each expanded-name/value pair:
+    #
+    #   xml_string = <<-EOT
+    #     <root xmlns:foo="http://foo" xmlns:bar="http://bar">
+    #        <ele foo:att='1' bar:att='2' att='&lt;'/>
+    #     </root>
+    #   EOT
+    #   d = REXML::Document.new(xml_string)
+    #   ele = d.root.elements['//ele']   # => <a foo:att='1' bar:att='2' att='&lt;'/>
+    #   ele.attributes.each do |expanded_name, value|
+    #     p [expanded_name, value]
+    #   end
+    #
+    # Output:
+    #
+    #   ["foo:att", "1"]
+    #   ["bar:att", "2"]
+    #   ["att", "<"]
+    #
     def each
       return to_enum(__method__) unless block_given?
       each_attribute do |attr|
@@ -1567,15 +1652,25 @@ module REXML
       end
     end
 
-    # Fetches an attribute
-    # name::
-    #   the name by which to search for the attribute.  Can be a
-    #   <tt>prefix:name</tt> namespace name.
-    # Returns:: The first matching attribute, or nil if there was none.  This
-    # value is an Attribute node, not the String value of the attribute.
-    #  doc = Document.new '<a x:foo="1" foo="2" bar="3"/>'
-    #  doc.root.attributes.get_attribute("foo").value    #-> "2"
-    #  doc.root.attributes.get_attribute("x:foo").value  #-> "1"
+    # :call-seq:
+    #   get_attribute(name) -> attribute_object or nil
+    #
+    # Returns the \REXML::Attribute object for the given +name+:
+    #
+    #   xml_string = <<-EOT
+    #     <root xmlns:foo="http://foo" xmlns:bar="http://bar">
+    #        <ele foo:att='1' bar:att='2' att='&lt;'/>
+    #     </root>
+    #   EOT
+    #   d = REXML::Document.new(xml_string)
+    #   ele = d.root.elements['//ele'] # => <a foo:att='1' bar:att='2' att='&lt;'/>
+    #   attrs = ele.attributes
+    #   attrs.get_attribute('foo:att')       # => foo:att='1'
+    #   attrs.get_attribute('foo:att').class # => REXML::Attribute
+    #   attrs.get_attribute('bar:att')       # => bar:att='2'
+    #   attrs.get_attribute('att')           # => att='&lt;'
+    #   attrs.get_attribute('nosuch')        # => nil
+    #
     def get_attribute( name )
       attr = fetch( name, nil )
       if attr.nil?
@@ -1609,18 +1704,29 @@ module REXML
       return attr
     end
 
-    # Sets an attribute, overwriting any existing attribute value by the
-    # same name.  Namespace is significant.
-    # name:: the name of the attribute
-    # value::
-    #   (optional) If supplied, the value of the attribute.  If
-    #   nil, any existing matching attribute is deleted.
-    # Returns::
-    #   Owning element
-    #  doc = Document.new "<a x:foo='1' foo='3'/>"
-    #  doc.root.attributes['y:foo'] = '2'
-    #  doc.root.attributes['foo'] = '4'
-    #  doc.root.attributes['x:foo'] = nil
+    # :call-seq:
+    #   [name] = value -> value
+    #
+    # When +value+ is non-+nil+,
+    # assigns that to the attribute for the given +name+,
+    # overwriting the previous value if it exists:
+    #
+    #   xml_string = <<-EOT
+    #     <root xmlns:foo="http://foo" xmlns:bar="http://bar">
+    #        <ele foo:att='1' bar:att='2' att='&lt;'/>
+    #     </root>
+    #   EOT
+    #   d = REXML::Document.new(xml_string)
+    #   ele = d.root.elements['//ele'] # => <a foo:att='1' bar:att='2' att='&lt;'/>
+    #   attrs = ele.attributes
+    #   attrs['foo:att'] = '2' # => "2"
+    #   attrs['baz:att'] = '3' # => "3"
+    #
+    # When +value+ is +nil+, deletes the attribute if it exists:
+    #
+    #   attrs['baz:att'] = nil
+    #   attrs.include?('baz:att') # => false
+    #
     def []=( name, value )
       if value.nil?             # Delete the named attribute
         attr = get_attribute(name)
@@ -1662,12 +1768,17 @@ module REXML
       return @element
     end
 
-    # Returns an array of Strings containing all of the prefixes declared
-    # by this set of # attributes.  The array does not include the default
+    # :call-seq:
+    #   prefixes -> array_of_prefix_strings
+    #
+    # Returns an array of prefix strings in the attributes.
+    # The array does not include the default
     # namespace declaration, if one exists.
-    #  doc = Document.new("<a xmlns='foo' xmlns:x='bar' xmlns:y='twee' "+
-    #        "z='glorp' p:k='gru'/>")
-    #  prefixes = doc.root.attributes.prefixes    #-> ['x', 'y']
+    #
+    #   xml_string = '<a xmlns="foo" xmlns:x="bar" xmlns:y="twee" z="glorp"/>'
+    #   d = REXML::Document.new(xml_string)
+    #   d.root.attributes.prefixes # => ["x", "y"]
+    #
     def prefixes
       ns = []
       each_attribute do |attribute|
@@ -1684,6 +1795,15 @@ module REXML
       ns
     end
 
+    # :call-seq:
+    #   namespaces
+    #
+    # Returns a hash of name/value pairs for the namespaces:
+    #
+    #   xml_string = '<a xmlns="foo" xmlns:x="bar" xmlns:y="twee" z="glorp"/>'
+    #   d = REXML::Document.new(xml_string)
+    #   d.root.attributes.namespaces # => {"xmlns"=>"foo", "x"=>"bar", "y"=>"twee"}
+    #
     def namespaces
       namespaces = {}
       each_attribute do |attribute|
@@ -1700,16 +1820,34 @@ module REXML
       namespaces
     end
 
-    # Removes an attribute
-    # attribute::
-    #   either a String, which is the name of the attribute to remove --
-    #   namespaces are significant here -- or the attribute to remove.
-    # Returns:: the owning element
-    #  doc = Document.new "<a y:foo='0' x:foo='1' foo='3' z:foo='4'/>"
-    #  doc.root.attributes.delete 'foo'   #-> <a y:foo='0' x:foo='1' z:foo='4'/>"
-    #  doc.root.attributes.delete 'x:foo' #-> <a y:foo='0' z:foo='4'/>"
-    #  attr = doc.root.attributes.get_attribute('y:foo')
-    #  doc.root.attributes.delete attr    #-> <a z:foo='4'/>"
+    # :call-seq:
+    #    delete(name) -> element
+    #    delete(attribute) -> element
+    #
+    # Removes a specified attribute if it exists;
+    # returns the attributes' element.
+    #
+    # When string argument +name+ is given,
+    # removes the attribute of that name if it exists:
+    #
+    #   xml_string = <<-EOT
+    #     <root xmlns:foo="http://foo" xmlns:bar="http://bar">
+    #        <ele foo:att='1' bar:att='2' att='&lt;'/>
+    #     </root>
+    #   EOT
+    #   d = REXML::Document.new(xml_string)
+    #   ele = d.root.elements['//ele'] # => <a foo:att='1' bar:att='2' att='&lt;'/>
+    #   attrs = ele.attributes
+    #   attrs.delete('foo:att') # => <ele bar:att='2' att='&lt;'/>
+    #   attrs.delete('foo:att') # => <ele bar:att='2' att='&lt;'/>
+    #
+    # When attribute argument +attribute+ is given,
+    # removes that attribute if it exists:
+    #
+    #   attr = REXML::Attribute.new('bar:att', '2')
+    #   attrs.delete(attr) # => <ele att='&lt;'/> # => <ele att='&lt;'/>
+    #   attrs.delete(attr) # => <ele att='&lt;'/> # => <ele/>
+    #
     def delete( attribute )
       name = nil
       prefix = nil
@@ -1737,19 +1875,48 @@ module REXML
       @element
     end
 
-    # Adds an attribute, overriding any existing attribute by the
-    # same name.  Namespaces are significant.
-    # attribute:: An Attribute
+    # :call-seq:
+    #   add(attribute) -> attribute
+    #
+    # Adds attribute +attribute+, replacing the previous
+    # attribute of the same name if it exists;
+    # returns +attribute+:
+    #
+    #   xml_string = <<-EOT
+    #     <root xmlns:foo="http://foo" xmlns:bar="http://bar">
+    #        <ele foo:att='1' bar:att='2' att='&lt;'/>
+    #     </root>
+    #   EOT
+    #   d = REXML::Document.new(xml_string)
+    #   ele = d.root.elements['//ele'] # => <a foo:att='1' bar:att='2' att='&lt;'/>
+    #   attrs = ele.attributes
+    #   attrs # => {"att"=>{"foo"=>foo:att='1', "bar"=>bar:att='2', ""=>att='&lt;'}}
+    #   attrs.add(REXML::Attribute.new('foo:att', '2')) # => foo:att='2'
+    #   attrs.add(REXML::Attribute.new('baz', '3')) # => baz='3'
+    #   attrs.include?('baz') # => true
+    #
     def add( attribute )
       self[attribute.name] = attribute
     end
 
     alias :<< :add
 
-    # Deletes all attributes matching a name.  Namespaces are significant.
-    # name::
-    #   A String; all attributes that match this path will be removed
-    # Returns:: an Array of the Attributes that were removed
+    # :call-seq:
+    #   delete_all(name) -> array_of_removed_attributes
+    #
+    # Removes all attributes matching the given +name+;
+    # returns an array of the removed attributes:
+    #
+    #   xml_string = <<-EOT
+    #     <root xmlns:foo="http://foo" xmlns:bar="http://bar">
+    #        <ele foo:att='1' bar:att='2' att='&lt;'/>
+    #     </root>
+    #   EOT
+    #   d = REXML::Document.new(xml_string)
+    #   ele = d.root.elements['//ele'] # => <a foo:att='1' bar:att='2' att='&lt;'/>
+    #   attrs = ele.attributes
+    #   attrs.delete_all('att') # => [att='&lt;']
+    #
     def delete_all( name )
       rv = []
       each_attribute { |attribute|
@@ -1759,11 +1926,23 @@ module REXML
       return rv
     end
 
-    # The +get_attribute_ns+ method retrieves a method by its namespace
-    # and name. Thus it is possible to reliably identify an attribute
-    # even if an XML processor has changed the prefix.
+    # :call-seq:
+    #   get_attribute_ns(namespace, name)
     #
-    # Method contributed by Henrik Martensson
+    # Returns the \REXML::Attribute object among the attributes
+    # that matches the given +namespace+ and +name+:
+    #
+    #   xml_string = <<-EOT
+    #     <root xmlns:foo="http://foo" xmlns:bar="http://bar">
+    #        <ele foo:att='1' bar:att='2' att='&lt;'/>
+    #     </root>
+    #   EOT
+    #   d = REXML::Document.new(xml_string)
+    #   ele = d.root.elements['//ele'] # => <a foo:att='1' bar:att='2' att='&lt;'/>
+    #   attrs = ele.attributes
+    #   attrs.get_attribute_ns('http://foo', 'att')    # => foo:att='1'
+    #   attrs.get_attribute_ns('http://foo', 'nosuch') # => nil
+    #
     def get_attribute_ns(namespace, name)
       result = nil
       each_attribute() { |attribute|
