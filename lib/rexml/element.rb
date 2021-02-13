@@ -436,20 +436,40 @@ module REXML
     # Elements                                      #
     #################################################
 
-    # Adds a child to this element, optionally setting attributes in
-    # the element.
-    # element::
-    #   optional.  If Element, the element is added.
-    #   Otherwise, a new Element is constructed with the argument (see
-    #   Element.initialize).
-    # attrs::
-    #   If supplied, must be a Hash containing String name,value
-    #   pairs, which will be used to set the attributes of the new Element.
-    # Returns:: the Element that was added
-    #  el = doc.add_element 'my-tag'
-    #  el = doc.add_element 'my-tag', {'attr1'=>'val1', 'attr2'=>'val2'}
-    #  el = Element.new 'my-tag'
-    #  doc.add_element el
+    # :call-seq:
+    #   add_element(name, attributes = nil) -> new_element
+    #   add_element(element, attributes = nil) -> element
+    #
+    # Adds a child element, optionally setting attributes
+    # on the added element; returns the added element.
+    #
+    # With string argument +name+, creates a new element with that name
+    # and adds the new element as a child:
+    #
+    #   e0 = REXML::Element.new('foo')
+    #   e0.add_element('bar')
+    #   e0[0] # => <bar/>
+    #
+    #
+    # With argument +name+ and hash argument +attributes+,
+    # sets attributes on the new element:
+    #
+    #   e0.add_element('baz', {'bat' => '0', 'bam' => '1'})
+    #   e0[1] # => <baz bat='0' bam='1'/>
+    #
+    # With element argument +element+, adds that element as a child:
+    #
+    #   e0 = REXML::Element.new('foo')
+    #   e1 = REXML::Element.new('bar')
+    #   e0.add_element(e1)
+    #   e0[0] # => <bar/>
+    #
+    # With argument +element+ and hash argument +attributes+,
+    # sets attributes on the added element:
+    #
+    #   e0.add_element(e1, {'bat' => '0', 'bam' => '1'})
+    #   e0[1] # => <bar bat='0' bam='1'/>
+    #
     def add_element element, attrs=nil
       raise "First argument must be either an element name, or an Element object" if element.nil?
       el = @elements.add(element)
@@ -459,52 +479,112 @@ module REXML
       el
     end
 
+    # :call-seq:
+    #   delete_element(index) -> removed_element or nil
+    #   delete_element(element) -> removed_element or nil
+    #   delete_element(xpath) -> removed_element or nil
+    #
     # Deletes a child element.
-    # element::
-    #   Must be an +Element+, +String+, or +Integer+.  If Element,
-    #   the element is removed.  If String, the element is found (via XPath)
-    #   and removed.  <em>This means that any parent can remove any
-    #   descendant.<em>  If Integer, the Element indexed by that number will be
-    #   removed.
-    # Returns:: the element that was removed.
-    #  doc.delete_element "/a/b/c[@id='4']"
-    #  doc.delete_element doc.elements["//k"]
-    #  doc.delete_element 1
+    #
+    # When 1-based integer argument +index+ is given,
+    # removes and returns the child element at that offset if it exists;
+    # indexing does not include text nodes;
+    # returns +nil+ if the element does not exist:
+    #
+    #   d = REXML::Document.new '<a><b/>text<c/></a>'
+    #   a = d.root          # => <a> ... </>
+    #   a.delete_element(1) # => <b/>
+    #   a.delete_element(1) # => <c/>
+    #   a.delete_element(1) # => nil
+    #
+    # When element argument +element+ is given,
+    # removes and returns that child element if it exists,
+    # otherwise returns +nil+:
+    #
+    #   d = REXML::Document.new '<a><b/>text<c/></a>'
+    #   a = d.root          # => <a> ... </>
+    #   c = a[2]            # => <c/>
+    #   a.delete_element(c) # => <c/>
+    #   a.delete_element(c) # => nil
+    #
+    # When xpath argument +xpath+ is given,
+    # removes and returns the element at xpath if it exists,
+    # otherwise returns +nil+:
+    #
+    #   d = REXML::Document.new '<a><b/>text<c/></a>'
+    #   a = d.root              # => <a> ... </>
+    #   a.delete_element('//c') # => <c/>
+    #   a.delete_element('//c') # => nil
+    #
     def delete_element element
       @elements.delete element
     end
 
-    # Evaluates to +true+ if this element has at least one child Element
-    #  doc = Document.new "<a><b/><c>Text</c></a>"
-    #  doc.root.has_elements               # -> true
-    #  doc.elements["/a/b"].has_elements   # -> false
-    #  doc.elements["/a/c"].has_elements   # -> false
+    # :call-seq:
+    #   has_elements?
+    #
+    # Returns +true+ if the element has one or more element children,
+    # +false+ otherwise:
+    #
+    #   d = REXML::Document.new '<a><b/>text<c/></a>'
+    #   a = d.root              # => <a> ... </>
+    #   a.has_elements? # => true
+    #   b = a[0]        # => <b/>
+    #   b.has_elements? # => false
+    #
     def has_elements?
       !@elements.empty?
     end
 
-    # Iterates through the child elements, yielding for each Element that
-    # has a particular attribute set.
-    # key::
-    #   the name of the attribute to search for
-    # value::
-    #   the value of the attribute
-    # max::
-    #   (optional) causes this method to return after yielding
-    #   for this number of matching children
-    # name::
-    #   (optional) if supplied, this is an XPath that filters
-    #   the children to check.
+    # :call-seq:
+    #   each_element_with_attribute(attr_name, value = nil, max = 0, xpath = nil) {|e| ... }
     #
-    #  doc = Document.new "<a><b @id='1'/><c @id='2'/><d @id='1'/><e/></a>"
-    #  # Yields b, c, d
-    #  doc.root.each_element_with_attribute( 'id' ) {|e| p e}
-    #  # Yields b, d
-    #  doc.root.each_element_with_attribute( 'id', '1' ) {|e| p e}
-    #  # Yields b
-    #  doc.root.each_element_with_attribute( 'id', '1', 1 ) {|e| p e}
-    #  # Yields d
-    #  doc.root.each_element_with_attribute( 'id', '1', 0, 'd' ) {|e| p e}
+    # Calls the given block with each child element that meets given criteria.
+    #
+    # When only string argument +attr_name+ is given,
+    # calls the block with each child element that has that attribute:
+    #
+    #   d = REXML::Document.new '<a><b id="1"/><c id="2"/><d id="1"/><e/></a>'
+    #   a = d.root
+    #   a.each_element_with_attribute('id') {|e| p e }
+    #
+    # Output:
+    #
+    #   <b id='1'/>
+    #   <c id='2'/>
+    #   <d id='1'/>
+    #
+    # With argument +attr_name+ and string argument +value+ given,
+    # calls the block with each child element that has that attribute
+    # with that value:
+    #
+    #   a.each_element_with_attribute('id', '1') {|e| p e }
+    #
+    # Output:
+    #
+    #   <b id='1'/>
+    #   <d id='1'/>
+    #
+    # With arguments +attr_name+, +value+, and integer argument +max+ given,
+    # calls the block with at most +max+ child elements:
+    #
+    #   a.each_element_with_attribute('id', '1', 1) {|e| p e }
+    #
+    # Output:
+    #
+    #   <b id='1'/>
+    #
+    # With all arguments given, including +xpath+,
+    # calls the block with only those child elements
+    # that meet the first three criteria,
+    # and also match the given +xpath+:
+    #
+    #   a.each_element_with_attribute('id', '1', 2, '//d') {|e| p e }
+    #
+    # Output:
+    #
+    #   <d id='1'/>
+    #
     def each_element_with_attribute( key, value=nil, max=0, name=nil, &block ) # :yields: Element
       each_with_something( proc {|child|
         if value.nil?
@@ -515,27 +595,53 @@ module REXML
       }, max, name, &block )
     end
 
-    # Iterates through the children, yielding for each Element that
-    # has a particular text set.
-    # text::
-    #   the text to search for.  If nil, or not supplied, will iterate
-    #   over all +Element+ children that contain at least one +Text+ node.
-    # max::
-    #   (optional) causes this method to return after yielding
-    #   for this number of matching children
-    # name::
-    #   (optional) if supplied, this is an XPath that filters
-    #   the children to check.
+    # :call-seq:
+    #   each_element_with_text(text = nil, max = 0, xpath = nil) {|e| ... }
     #
-    #  doc = Document.new '<a><b>b</b><c>b</c><d>d</d><e/></a>'
-    #  # Yields b, c, d
-    #  doc.each_element_with_text {|e|p e}
-    #  # Yields b, c
-    #  doc.each_element_with_text('b'){|e|p e}
-    #  # Yields b
-    #  doc.each_element_with_text('b', 1){|e|p e}
-    #  # Yields d
-    #  doc.each_element_with_text(nil, 0, 'd'){|e|p e}
+    # Calls the given block with each child element that meets given criteria.
+    #
+    # With no arguments, calls the block with each child element that has text:
+    #
+    #   d = REXML::Document.new '<a><b>b</b><c>b</c><d>d</d><e/></a>'
+    #   a = d.root
+    #   a.each_element_with_text {|e| p e }
+    #
+    # Output:
+    #
+    #   <b> ... </>
+    #   <c> ... </>
+    #   <d> ... </>
+    #
+    # With the single string argument +text+,
+    # calls the block with each element that has exactly that text:
+    #
+    #   a.each_element_with_text('b') {|e| p e }
+    #
+    # Output:
+    #
+    #   <b> ... </>
+    #   <c> ... </>
+    #
+    # With argument +text+ and integer argument +max+,
+    # calls the block with at most +max+ elements:
+    #
+    #   a.each_element_with_text('b', 1) {|e| p e }
+    #
+    # Output:
+    #
+    #   <b> ... </>
+    #
+    # With all arguments given, including +xpath+,
+    # calls the block with only those child elements
+    # that meet the first two criteria,
+    # and also match the given +xpath+:
+    #
+    #   a.each_element_with_text('b', 2, '//c') {|e| p e }
+    #
+    # Output:
+    #
+    #   <c> ... </>
+    #
     def each_element_with_text( text=nil, max=0, name=nil, &block ) # :yields: Element
       each_with_something( proc {|child|
         if text.nil?
@@ -546,35 +652,71 @@ module REXML
       }, max, name, &block )
     end
 
-    # Synonym for Element.elements.each
+    # :call-seq:
+    #   each_element {|e| ... }
+    #
+    # Calls the given block with each child element:
+    #
+    #   d = REXML::Document.new '<a><b>b</b><c>b</c><d>d</d><e/></a>'
+    #   a = d.root
+    #   a.each_element {|e| p e }
+    #
+    # Output:
+    #
+    #   <b> ... </>
+    #   <c> ... </>
+    #   <d> ... </>
+    #   <e/>
+    #
     def each_element( xpath=nil, &block ) # :yields: Element
       @elements.each( xpath, &block )
     end
 
-    # Synonym for Element.to_a
-    # This is a little slower than calling elements.each directly.
-    # xpath:: any XPath by which to search for elements in the tree
-    # Returns:: an array of Elements that match the supplied path
+    # :call-seq:
+    #   get_elements(xpath)
+    #
+    # Returns an array of the elements that match the given +xpath+:
+    #
+    #   xml_string = <<-EOT
+    #   <root>
+    #     <a level='1'>
+    #       <a level='2'/>
+    #     </a>
+    #   </root>
+    #   EOT
+    #   d = REXML::Document.new(xml_string)
+    #   d.root.get_elements('//a') # => [<a level='1'> ... </>, <a level='2'/>]
+    #
     def get_elements( xpath )
       @elements.to_a( xpath )
     end
 
-    # Returns the next sibling that is an element, or nil if there is
-    # no Element sibling after this one
-    #  doc = Document.new '<a><b/>text<c/></a>'
-    #  doc.root.elements['b'].next_element          #-> <c/>
-    #  doc.root.elements['c'].next_element          #-> nil
+    # :call-seq:
+    #   next_element
+    #
+    # Returns the next sibling that is an element if it exists,
+    # +niL+ otherwise:
+    #
+    #   d = REXML::Document.new '<a><b/>text<c/></a>'
+    #   d.root.elements['b'].next_element #-> <c/>
+    #   d.root.elements['c'].next_element #-> nil
+    #
     def next_element
       element = next_sibling
       element = element.next_sibling until element.nil? or element.kind_of? Element
       return element
     end
 
-    # Returns the previous sibling that is an element, or nil if there is
-    # no Element sibling prior to this one
-    #  doc = Document.new '<a><b/>text<c/></a>'
-    #  doc.root.elements['c'].previous_element          #-> <b/>
-    #  doc.root.elements['b'].previous_element          #-> nil
+    # :call-seq:
+    #   previous_element
+    #
+    # Returns the previous sibling that is an element if it exists,
+    # +niL+ otherwise:
+    #
+    #   d = REXML::Document.new '<a><b/>text<c/></a>'
+    #   d.root.elements['c'].previous_element #-> <b/>
+    #   d.root.elements['b'].previous_element #-> nil
+    #
     def previous_element
       element = previous_sibling
       element = element.previous_sibling until element.nil? or element.kind_of? Element
