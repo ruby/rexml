@@ -728,36 +728,69 @@ module REXML
     # Text                                          #
     #################################################
 
-    # Evaluates to +true+ if this element has at least one Text child
+    # :call-seq:
+    #   has_text? -> true or false
+    #
+    # Returns +true if the element has one or more text noded,
+    # +false+ otherwise:
+    #
+    #   d = REXML::Document.new '<a><b/>text<c/></a>'
+    #   a = d.root
+    #   a.has_text? # => true
+    #   b = a[0]
+    #   b.has_text? # => false
+    #
     def has_text?
       not text().nil?
     end
 
-    # A convenience method which returns the String value of the _first_
-    # child text element, if one exists, and +nil+ otherwise.
+    # :call-seq:
+    #   text(xpath = nil) -> text_string or nil
     #
-    # <em>Note that an element may have multiple Text elements, perhaps
-    # separated by other children</em>.  Be aware that this method only returns
-    # the first Text node.
+    # Returns the text string from the first text node child
+    # in a specified element, if it exists, # +nil+ otherwise.
     #
-    # This method returns the +value+ of the first text child node, which
-    # ignores the +raw+ setting, so always returns normalized text. See
-    # the Text::value documentation.
+    # With no argument, returns the text from the first text node in +self+:
     #
-    #  doc = Document.new "<p>some text <b>this is bold!</b> more text</p>"
-    #  # The element 'p' has two text elements, "some text " and " more text".
-    #  doc.root.text              #-> "some text "
+    #   d = REXML::Document.new "<p>some text <b>this is bold!</b> more text</p>"
+    #   d.root.text.class # => String
+    #   d.root.text       # => "some text "
+    #
+    # With argument +xpath+, returns text from the the first text node
+    # in the element that matches +xpath+:
+    #
+    #   d.root.text(1) # => "this is bold!"
+    #
+    # Note that an element may have multiple text nodes,
+    # possibly separated by other non-text children, as above.
+    # Even so, the returned value is the string text from the first such node.
+    #
+    # Note also that the text note is retrieved by method get_text,
+    # and so is always normalized text.
+    #
     def text( path = nil )
       rv = get_text(path)
       return rv.value unless rv.nil?
       nil
     end
 
-    # Returns the first child Text node, if any, or +nil+ otherwise.
-    # This method returns the actual +Text+ node, rather than the String content.
-    #  doc = Document.new "<p>some text <b>this is bold!</b> more text</p>"
-    #  # The element 'p' has two text elements, "some text " and " more text".
-    #  doc.root.get_text.value            #-> "some text "
+    # :call-seq:
+    #   get_text(xpath = nil) -> text_node or nil
+    #
+    # Returns the first text node child in a specified element, if it exists,
+    # +nil+ otherwise.
+    #
+    # With no argument, returns the first text node from +self+:
+    #
+    #   d = REXML::Document.new "<p>some text <b>this is bold!</b> more text</p>"
+    #   d.root.get_text.class # => REXML::Text
+    #   d.root.get_text       # => "some text "
+    #
+    # With argument +xpath+, returns the first text node from the element
+    # that matches +xpath+:
+    #
+    #   d.root.get_text(1) # => "this is bold!"
+    #
     def get_text path = nil
       rv = nil
       if path
@@ -769,26 +802,31 @@ module REXML
       return rv
     end
 
-    # Sets the first Text child of this object.  See text() for a
-    # discussion about Text children.
+    # :call-seq:
+    #   text = string -> string
+    #   text = nil -> nil
     #
-    # If a Text child already exists, the child is replaced by this
-    # content.  This means that Text content can be deleted by calling
-    # this method with a nil argument.  In this case, the next Text
-    # child becomes the first Text child.  In no case is the order of
-    # any siblings disturbed.
-    # text::
-    #   If a String, a new Text child is created and added to
-    #   this Element as the first Text child.  If Text, the text is set
-    #   as the first Child element.  If nil, then any existing first Text
-    #   child is removed.
-    # Returns:: this Element.
-    #  doc = Document.new '<a><b/></a>'
-    #  doc.root.text = 'Sean'      #-> '<a><b/>Sean</a>'
-    #  doc.root.text = 'Elliott'   #-> '<a><b/>Elliott</a>'
-    #  doc.root.add_element 'c'    #-> '<a><b/>Elliott<c/></a>'
-    #  doc.root.text = 'Russell'   #-> '<a><b/>Russell<c/></a>'
-    #  doc.root.text = nil         #-> '<a><b/><c/></a>'
+    # Adds, replaces, or removes the first text node child in the element.
+    #
+    # With string argument +string+,
+    # creates a new \REXML::Text node containing that string,
+    # honoring the current settings for whitespace and row,
+    # then places the node as the first text child in the element;
+    # returns +string+.
+    #
+    # If the element has no text child, the text node is added:
+    #
+    #   d = REXML::Document.new '<a><b/></a>'
+    #   d.root.text = 'foo' #-> '<a><b/>foo</a>'
+    #
+    # If the element has a text child, it is replaced:
+    #
+    #   d.root.text = 'bar' #-> '<a><b/>bar</a>'
+    #
+    # With argument +nil+, removes the first text child:
+    #
+    #   d.root.text = nil   #-> '<a><b/><c/></a>'
+    #
     def text=( text )
       if text.kind_of? String
         text = Text.new( text, whitespace(), nil, raw() )
@@ -808,17 +846,45 @@ module REXML
       return self
     end
 
-    # A helper method to add a Text child.  Actual Text instances can
-    # be added with regular Parent methods, such as add() and <<()
-    # text::
-    #   if a String, a new Text instance is created and added
-    #   to the parent.  If Text, the object is added directly.
-    # Returns:: this Element
-    #  e = Element.new('a')          #-> <e/>
-    #  e.add_text 'foo'              #-> <e>foo</e>
-    #  e.add_text Text.new(' bar')    #-> <e>foo bar</e>
-    # Note that at the end of this example, the branch has <b>3</b> nodes; the 'e'
-    # element and <b>2</b> Text node children.
+    # :call-seq:
+    #   add_text(string) -> nil
+    #   add_text(text_node) -> self
+    #
+    # Adds text to the element.
+    #
+    # When string argument +string+ is given, returns +nil+.
+    #
+    # If the element has no child text node,
+    # creates a \REXML::Text object using the string,
+    # honoring the current settings for whitespace and raw,
+    # then adds that node to the element:
+    #
+    #   d = REXML::Document.new('<a><b/></a>')
+    #   a = d.root
+    #   a.add_text('foo')
+    #   a.to_a # => [<b/>, "foo"]
+    #
+    # If the element has child text nodes,
+    # appends the string to the _last_ text node:
+    #
+    #   d = REXML::Document.new('<a>foo<b/>bar</a>')
+    #   a = d.root
+    #   a.add_text('baz')
+    #   a.to_a # => ["foo", <b/>, "barbaz"]
+    #   a.add_text('baz')
+    #   a.to_a # => ["foo", <b/>, "barbazbaz"]
+    #
+    # When text node argument +text_node+ is given,
+    # appends the node as the last text node in the element;
+    # returns +self+:
+    #
+    #   d = REXML::Document.new('<a>foo<b/>bar</a>')
+    #   a = d.root
+    #   a.add_text(REXML::Text.new('baz'))
+    #   a.to_a # => ["foo", <b/>, "bar", "baz"]
+    #   a.add_text(REXML::Text.new('baz'))
+    #   a.to_a # => ["foo", <b/>, "bar", "baz", "baz"]
+    #
     def add_text( text )
       if text.kind_of? String
         if @children[-1].kind_of? Text
@@ -831,10 +897,39 @@ module REXML
       return self
     end
 
+    # :call-seq:
+    #   node_type -> :element
+    #
+    # Returns symbol <tt>:element</tt>:
+    #
+    #   d = REXML::Document.new('<a/>')
+    #   a = d.root  # => <a/>
+    #   a.node_type # => :element
+    #
     def node_type
       :element
     end
 
+    # :call-seq:
+    #   xpath -> string_xpath
+    #
+    # Returns the string xpath to the element
+    # relative to the most distant parent:
+    #
+    #   d = REXML::Document.new('<a><b><c/></b></a>')
+    #   a = d.root # => <a> ... </>
+    #   b = a[0]   # => <b> ... </>
+    #   c = b[0]   # => <c/>
+    #   d.xpath    # => ""
+    #   a.xpath    # => "/a"
+    #   b.xpath    # => "/a/b"
+    #   c.xpath    # => "/a/b/c"
+    #
+    # If there is no parent, returns the expanded name of the element:
+    #
+    #   e = REXML::Element.new('foo')
+    #   e.xpath    # => "foo"
+    #
     def xpath
       path_elements = []
       cur = self
