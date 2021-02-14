@@ -301,7 +301,7 @@
             </div>
 
           <div class="method-source-code" id="5B-5D-source">
-            <pre><span class="ruby-comment"># File lib/rexml/element.rb, line 866</span>
+            <pre><span class="ruby-comment"># File lib/rexml/element.rb, line 961</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">[]</span>(<span class="ruby-identifier">name_or_index</span>)
   <span class="ruby-keyword">case</span> <span class="ruby-identifier">name_or_index</span>
   <span class="ruby-keyword">when</span> <span class="ruby-constant">String</span>
@@ -345,7 +345,7 @@
 </pre>
 
           <div class="method-source-code" id="add_attribute-source">
-            <pre><span class="ruby-comment"># File lib/rexml/element.rb, line 923</span>
+            <pre><span class="ruby-comment"># File lib/rexml/element.rb, line 1018</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">add_attribute</span>( <span class="ruby-identifier">key</span>, <span class="ruby-identifier">value</span>=<span class="ruby-keyword">nil</span> )
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">key</span>.<span class="ruby-identifier">kind_of?</span> <span class="ruby-constant">Attribute</span>
     <span class="ruby-ivar">@attributes</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">key</span>
@@ -378,7 +378,7 @@
 </pre>
 
           <div class="method-source-code" id="add_attributes-source">
-            <pre><span class="ruby-comment"># File lib/rexml/element.rb, line 935</span>
+            <pre><span class="ruby-comment"># File lib/rexml/element.rb, line 1030</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">add_attributes</span> <span class="ruby-identifier">hash</span>
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">hash</span>.<span class="ruby-identifier">kind_of?</span> <span class="ruby-constant">Hash</span>
     <span class="ruby-identifier">hash</span>.<span class="ruby-identifier">each_pair</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">key</span>, <span class="ruby-identifier">value</span><span class="ruby-operator">|</span> <span class="ruby-ivar">@attributes</span>[<span class="ruby-identifier">key</span>] = <span class="ruby-identifier">value</span> }
@@ -494,30 +494,52 @@
 
       <div id="method-i-add_text" class="method-detail ">
         <div class="method-heading">
-          <span class="method-name">add_text</span><span
-            class="method-args">( text )</span>
+          <span class="method-callseq">
+            add_text(string) &rarr; nil
+          </span>
           <span class="method-click-advice">click to toggle source</span>
+        </div>
+        <div class="method-heading">
+          <span class="method-callseq">
+            add_text(text_node) &rarr; self
+          </span>
         </div>
 
         <div class="method-description">
-          <p>A helper method to add a <a href="Text.html"><code>Text</code></a> child.  Actual <a href="Text.html"><code>Text</code></a> instances can be added with regular <a href="Parent.html"><code>Parent</code></a> methods, such as add() and &lt;&lt;()</p>
-<dl class="rdoc-list note-list"><dt>text
-<dd>
-<p>if a String, a new <a href="Text.html"><code>Text</code></a> instance is created and added to the parent.  If <a href="Text.html"><code>Text</code></a>, the object is added directly.</p>
-</dd><dt>Returns
-<dd>
-<p>this <a href="Element.html"><code>Element</code></a></p>
-</dd></dl>
+          <p>Adds text to the element.</p>
 
-<pre class="ruby"><span class="ruby-identifier">e</span> = <span class="ruby-constant">Element</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;a&#39;</span>)          <span class="ruby-comment">#-&gt; &lt;e/&gt;</span>
-<span class="ruby-identifier">e</span>.<span class="ruby-identifier">add_text</span> <span class="ruby-string">&#39;foo&#39;</span>              <span class="ruby-comment">#-&gt; &lt;e&gt;foo&lt;/e&gt;</span>
-<span class="ruby-identifier">e</span>.<span class="ruby-identifier">add_text</span> <span class="ruby-constant">Text</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39; bar&#39;</span>)    <span class="ruby-comment">#-&gt; &lt;e&gt;foo bar&lt;/e&gt;</span>
+<p>When string argument <code>string</code> is given, returns <code>nil</code>.</p>
+
+<p>If the element has no child text node, creates a REXML::Text object using the string, honoring the current settings for whitespace and raw, then adds that node to the element:</p>
+
+<pre class="ruby"><span class="ruby-identifier">d</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;&lt;a&gt;&lt;b/&gt;&lt;/a&gt;&#39;</span>)
+<span class="ruby-identifier">a</span> = <span class="ruby-identifier">d</span>.<span class="ruby-identifier">root</span>
+<span class="ruby-identifier">a</span>.<span class="ruby-identifier">add_text</span>(<span class="ruby-string">&#39;foo&#39;</span>)
+<span class="ruby-identifier">a</span>.<span class="ruby-identifier">to_a</span> <span class="ruby-comment"># =&gt; [&lt;b/&gt;, &quot;foo&quot;]</span>
 </pre>
 
-<p>Note that at the end of this example, the branch has <strong>3</strong> nodes; the &#39;e&#39; element and <strong>2</strong> <a href="Text.html"><code>Text</code></a> node children.</p>
+<p>If the element has child text nodes, appends the string to the <em>last</em> text node:</p>
+
+<pre class="ruby"><span class="ruby-identifier">d</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;&lt;a&gt;foo&lt;b/&gt;bar&lt;/a&gt;&#39;</span>)
+<span class="ruby-identifier">a</span> = <span class="ruby-identifier">d</span>.<span class="ruby-identifier">root</span>
+<span class="ruby-identifier">a</span>.<span class="ruby-identifier">add_text</span>(<span class="ruby-string">&#39;baz&#39;</span>)
+<span class="ruby-identifier">a</span>.<span class="ruby-identifier">to_a</span> <span class="ruby-comment"># =&gt; [&quot;foo&quot;, &lt;b/&gt;, &quot;barbaz&quot;]</span>
+<span class="ruby-identifier">a</span>.<span class="ruby-identifier">add_text</span>(<span class="ruby-string">&#39;baz&#39;</span>)
+<span class="ruby-identifier">a</span>.<span class="ruby-identifier">to_a</span> <span class="ruby-comment"># =&gt; [&quot;foo&quot;, &lt;b/&gt;, &quot;barbazbaz&quot;]</span>
+</pre>
+
+<p>When text node argument <code>text_node</code> is given, appends the node as the last text node in the element; returns <code>self</code>:</p>
+
+<pre class="ruby"><span class="ruby-identifier">d</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;&lt;a&gt;foo&lt;b/&gt;bar&lt;/a&gt;&#39;</span>)
+<span class="ruby-identifier">a</span> = <span class="ruby-identifier">d</span>.<span class="ruby-identifier">root</span>
+<span class="ruby-identifier">a</span>.<span class="ruby-identifier">add_text</span>(<span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Text</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;baz&#39;</span>))
+<span class="ruby-identifier">a</span>.<span class="ruby-identifier">to_a</span> <span class="ruby-comment"># =&gt; [&quot;foo&quot;, &lt;b/&gt;, &quot;bar&quot;, &quot;baz&quot;]</span>
+<span class="ruby-identifier">a</span>.<span class="ruby-identifier">add_text</span>(<span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Text</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;baz&#39;</span>))
+<span class="ruby-identifier">a</span>.<span class="ruby-identifier">to_a</span> <span class="ruby-comment"># =&gt; [&quot;foo&quot;, &lt;b/&gt;, &quot;bar&quot;, &quot;baz&quot;, &quot;baz&quot;]</span>
+</pre>
 
           <div class="method-source-code" id="add_text-source">
-            <pre><span class="ruby-comment"># File lib/rexml/element.rb, line 822</span>
+            <pre><span class="ruby-comment"># File lib/rexml/element.rb, line 888</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">add_text</span>( <span class="ruby-identifier">text</span> )
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">text</span>.<span class="ruby-identifier">kind_of?</span> <span class="ruby-constant">String</span>
     <span class="ruby-keyword">if</span> <span class="ruby-ivar">@children</span>[<span class="ruby-value">-1</span>].<span class="ruby-identifier">kind_of?</span> <span class="ruby-constant">Text</span>
@@ -546,7 +568,7 @@
           
 
           <div class="method-source-code" id="attribute-source">
-            <pre><span class="ruby-comment"># File lib/rexml/element.rb, line 877</span>
+            <pre><span class="ruby-comment"># File lib/rexml/element.rb, line 972</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">attribute</span>( <span class="ruby-identifier">name</span>, <span class="ruby-identifier">namespace</span>=<span class="ruby-keyword">nil</span> )
   <span class="ruby-identifier">prefix</span> = <span class="ruby-keyword">nil</span>
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">namespaces</span>.<span class="ruby-identifier">respond_to?</span> <span class="ruby-value">:key</span>
@@ -586,7 +608,7 @@
           <p>Get an array of all <a href="CData.html"><code>CData</code></a> children. IMMUTABLE</p>
 
           <div class="method-source-code" id="cdatas-source">
-            <pre><span class="ruby-comment"># File lib/rexml/element.rb, line 967</span>
+            <pre><span class="ruby-comment"># File lib/rexml/element.rb, line 1062</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">cdatas</span>
   <span class="ruby-identifier">find_all</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">child</span><span class="ruby-operator">|</span> <span class="ruby-identifier">child</span>.<span class="ruby-identifier">kind_of?</span> <span class="ruby-constant">CData</span> }.<span class="ruby-identifier">freeze</span>
 <span class="ruby-keyword">end</span></pre>
@@ -634,7 +656,7 @@
           <p>Get an array of all <a href="Comment.html"><code>Comment</code></a> children. IMMUTABLE</p>
 
           <div class="method-source-code" id="comments-source">
-            <pre><span class="ruby-comment"># File lib/rexml/element.rb, line 973</span>
+            <pre><span class="ruby-comment"># File lib/rexml/element.rb, line 1068</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">comments</span>
   <span class="ruby-identifier">find_all</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">child</span><span class="ruby-operator">|</span> <span class="ruby-identifier">child</span>.<span class="ruby-identifier">kind_of?</span> <span class="ruby-constant">Comment</span> }.<span class="ruby-identifier">freeze</span>
 <span class="ruby-keyword">end</span></pre>
@@ -669,7 +691,7 @@
 </pre>
 
           <div class="method-source-code" id="delete_attribute-source">
-            <pre><span class="ruby-comment"># File lib/rexml/element.rb, line 956</span>
+            <pre><span class="ruby-comment"># File lib/rexml/element.rb, line 1051</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">delete_attribute</span>(<span class="ruby-identifier">key</span>)
   <span class="ruby-identifier">attr</span> = <span class="ruby-ivar">@attributes</span>.<span class="ruby-identifier">get_attribute</span>(<span class="ruby-identifier">key</span>)
   <span class="ruby-identifier">attr</span>.<span class="ruby-identifier">remove</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">attr</span>.<span class="ruby-identifier">nil?</span>
@@ -1032,21 +1054,29 @@
 
       <div id="method-i-get_text" class="method-detail ">
         <div class="method-heading">
-          <span class="method-name">get_text</span><span
-            class="method-args">(path = nil)</span>
+          <span class="method-callseq">
+            get_text(xpath = nil) &rarr; text_node or nil
+          </span>
           <span class="method-click-advice">click to toggle source</span>
         </div>
 
         <div class="method-description">
-          <p>Returns the first child <a href="Text.html"><code>Text</code></a> node, if any, or <code>nil</code> otherwise. This method returns the actual <code>Text</code> node, rather than the String content.</p>
+          <p>Returns the first text node child in a specified element, if it exists, <code>nil</code> otherwise.</p>
 
-<pre class="ruby"><span class="ruby-identifier">doc</span> = <span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span> <span class="ruby-string">&quot;&lt;p&gt;some text &lt;b&gt;this is bold!&lt;/b&gt; more text&lt;/p&gt;&quot;</span>
-<span class="ruby-comment"># The element &#39;p&#39; has two text elements, &quot;some text &quot; and &quot; more text&quot;.</span>
-<span class="ruby-identifier">doc</span>.<span class="ruby-identifier">root</span>.<span class="ruby-identifier">get_text</span>.<span class="ruby-identifier">value</span>            <span class="ruby-comment">#-&gt; &quot;some text &quot;</span>
+<p>With no argument, returns the first text node from <code>self</code>:</p>
+
+<pre class="ruby"><span class="ruby-identifier">d</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span> <span class="ruby-string">&quot;&lt;p&gt;some text &lt;b&gt;this is bold!&lt;/b&gt; more text&lt;/p&gt;&quot;</span>
+<span class="ruby-identifier">d</span>.<span class="ruby-identifier">root</span>.<span class="ruby-identifier">get_text</span>.<span class="ruby-identifier">class</span> <span class="ruby-comment"># =&gt; REXML::Text</span>
+<span class="ruby-identifier">d</span>.<span class="ruby-identifier">root</span>.<span class="ruby-identifier">get_text</span>       <span class="ruby-comment"># =&gt; &quot;some text &quot;</span>
+</pre>
+
+<p>With argument <code>xpath</code>, returns the first text node from the element that matches <code>xpath</code>:</p>
+
+<pre class="ruby"><span class="ruby-identifier">d</span>.<span class="ruby-identifier">root</span>.<span class="ruby-identifier">get_text</span>(<span class="ruby-value">1</span>) <span class="ruby-comment"># =&gt; &quot;this is bold!&quot;</span>
 </pre>
 
           <div class="method-source-code" id="get_text-source">
-            <pre><span class="ruby-comment"># File lib/rexml/element.rb, line 761</span>
+            <pre><span class="ruby-comment"># File lib/rexml/element.rb, line 794</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">get_text</span> <span class="ruby-identifier">path</span> = <span class="ruby-keyword">nil</span>
   <span class="ruby-identifier">rv</span> = <span class="ruby-keyword">nil</span>
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">path</span>
@@ -1074,7 +1104,7 @@
           <p>Evaluates to <code>true</code> if this element has any attributes set, false otherwise.</p>
 
           <div class="method-source-code" id="has_attributes-3F-source">
-            <pre><span class="ruby-comment"># File lib/rexml/element.rb, line 902</span>
+            <pre><span class="ruby-comment"># File lib/rexml/element.rb, line 997</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">has_attributes?</span>
   <span class="ruby-keyword">return</span> <span class="ruby-operator">!</span><span class="ruby-ivar">@attributes</span>.<span class="ruby-identifier">empty?</span>
 <span class="ruby-keyword">end</span></pre>
@@ -1115,16 +1145,24 @@
 
       <div id="method-i-has_text-3F" class="method-detail ">
         <div class="method-heading">
-          <span class="method-name">has_text?</span><span
-            class="method-args">()</span>
+          <span class="method-callseq">
+            has_text? &rarr; true or false
+          </span>
           <span class="method-click-advice">click to toggle source</span>
         </div>
 
         <div class="method-description">
-          <p>Evaluates to <code>true</code> if this element has at least one <a href="Text.html"><code>Text</code></a> child</p>
+          <p>Returns +true if the element has one or more text noded, <code>false</code> otherwise:</p>
+
+<pre class="ruby"><span class="ruby-identifier">d</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span> <span class="ruby-string">&#39;&lt;a&gt;&lt;b/&gt;text&lt;c/&gt;&lt;/a&gt;&#39;</span>
+<span class="ruby-identifier">a</span> = <span class="ruby-identifier">d</span>.<span class="ruby-identifier">root</span>
+<span class="ruby-identifier">a</span>.<span class="ruby-identifier">has_text?</span> <span class="ruby-comment"># =&gt; true</span>
+<span class="ruby-identifier">b</span> = <span class="ruby-identifier">a</span>[<span class="ruby-value">0</span>]
+<span class="ruby-identifier">b</span>.<span class="ruby-identifier">has_text?</span> <span class="ruby-comment"># =&gt; false</span>
+</pre>
 
           <div class="method-source-code" id="has_text-3F-source">
-            <pre><span class="ruby-comment"># File lib/rexml/element.rb, line 732</span>
+            <pre><span class="ruby-comment"># File lib/rexml/element.rb, line 743</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">has_text?</span>
   <span class="ruby-keyword">not</span> <span class="ruby-identifier">text</span>().<span class="ruby-identifier">nil?</span>
 <span class="ruby-keyword">end</span></pre>
@@ -1228,7 +1266,7 @@
           <p>Get an array of all <a href="Instruction.html"><code>Instruction</code></a> children. IMMUTABLE</p>
 
           <div class="method-source-code" id="instructions-source">
-            <pre><span class="ruby-comment"># File lib/rexml/element.rb, line 979</span>
+            <pre><span class="ruby-comment"># File lib/rexml/element.rb, line 1074</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">instructions</span>
   <span class="ruby-identifier">find_all</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">child</span><span class="ruby-operator">|</span> <span class="ruby-identifier">child</span>.<span class="ruby-identifier">kind_of?</span> <span class="ruby-constant">Instruction</span> }.<span class="ruby-identifier">freeze</span>
 <span class="ruby-keyword">end</span></pre>
@@ -1356,16 +1394,22 @@
 
       <div id="method-i-node_type" class="method-detail ">
         <div class="method-heading">
-          <span class="method-name">node_type</span><span
-            class="method-args">()</span>
+          <span class="method-callseq">
+            node_type &rarr; :element
+          </span>
           <span class="method-click-advice">click to toggle source</span>
         </div>
 
         <div class="method-description">
-          
+          <p>Returns symbol <code>:element</code>:</p>
+
+<pre class="ruby"><span class="ruby-identifier">d</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;&lt;a/&gt;&#39;</span>)
+<span class="ruby-identifier">a</span> = <span class="ruby-identifier">d</span>.<span class="ruby-identifier">root</span>  <span class="ruby-comment"># =&gt; &lt;a/&gt;</span>
+<span class="ruby-identifier">a</span>.<span class="ruby-identifier">node_type</span> <span class="ruby-comment"># =&gt; :element</span>
+</pre>
 
           <div class="method-source-code" id="node_type-source">
-            <pre><span class="ruby-comment"># File lib/rexml/element.rb, line 834</span>
+            <pre><span class="ruby-comment"># File lib/rexml/element.rb, line 909</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">node_type</span>
   <span class="ruby-value">:element</span>
 <span class="ruby-keyword">end</span></pre>
@@ -1562,25 +1606,33 @@
 
       <div id="method-i-text" class="method-detail ">
         <div class="method-heading">
-          <span class="method-name">text</span><span
-            class="method-args">( path = nil )</span>
+          <span class="method-callseq">
+            text(xpath = nil) &rarr; text_string or nil
+          </span>
           <span class="method-click-advice">click to toggle source</span>
         </div>
 
         <div class="method-description">
-          <p>A convenience method which returns the String value of the <em>first</em> child text element, if one exists, and <code>nil</code> otherwise.</p>
+          <p>Returns the text string from the first text node child in a specified element, if it exists, # <code>nil</code> otherwise.</p>
 
-<p><em>Note that an element may have multiple <a href="Text.html"><code>Text</code></a> elements, perhaps separated by other children</em>.  Be aware that this method only returns the first <a href="Text.html"><code>Text</code></a> node.</p>
+<p>With no argument, returns the text from the first text node in <code>self</code>:</p>
 
-<p>This method returns the <code>value</code> of the first text child node, which ignores the <code>raw</code> setting, so always returns normalized text. See the Text::value documentation.</p>
-
-<pre class="ruby"><span class="ruby-identifier">doc</span> = <span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span> <span class="ruby-string">&quot;&lt;p&gt;some text &lt;b&gt;this is bold!&lt;/b&gt; more text&lt;/p&gt;&quot;</span>
-<span class="ruby-comment"># The element &#39;p&#39; has two text elements, &quot;some text &quot; and &quot; more text&quot;.</span>
-<span class="ruby-identifier">doc</span>.<span class="ruby-identifier">root</span>.<span class="ruby-identifier">text</span>              <span class="ruby-comment">#-&gt; &quot;some text &quot;</span>
+<pre class="ruby"><span class="ruby-identifier">d</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span> <span class="ruby-string">&quot;&lt;p&gt;some text &lt;b&gt;this is bold!&lt;/b&gt; more text&lt;/p&gt;&quot;</span>
+<span class="ruby-identifier">d</span>.<span class="ruby-identifier">root</span>.<span class="ruby-identifier">text</span>.<span class="ruby-identifier">class</span> <span class="ruby-comment"># =&gt; String</span>
+<span class="ruby-identifier">d</span>.<span class="ruby-identifier">root</span>.<span class="ruby-identifier">text</span>       <span class="ruby-comment"># =&gt; &quot;some text &quot;</span>
 </pre>
 
+<p>With argument <code>xpath</code>, returns text from the the first text node in the element that matches <code>xpath</code>:</p>
+
+<pre class="ruby"><span class="ruby-identifier">d</span>.<span class="ruby-identifier">root</span>.<span class="ruby-identifier">text</span>(<span class="ruby-value">1</span>) <span class="ruby-comment"># =&gt; &quot;this is bold!&quot;</span>
+</pre>
+
+<p>Note that an element may have multiple text nodes, possibly separated by other non-text children, as above. Even so, the returned value is the string text from the first such node.</p>
+
+<p>Note also that the text note is retrieved by method <a href="Element.html#method-i-get_text"><code>get_text</code></a>, and so is always normalized text.</p>
+
           <div class="method-source-code" id="text-source">
-            <pre><span class="ruby-comment"># File lib/rexml/element.rb, line 750</span>
+            <pre><span class="ruby-comment"># File lib/rexml/element.rb, line 771</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">text</span>( <span class="ruby-identifier">path</span> = <span class="ruby-keyword">nil</span> )
   <span class="ruby-identifier">rv</span> = <span class="ruby-identifier">get_text</span>(<span class="ruby-identifier">path</span>)
   <span class="ruby-keyword">return</span> <span class="ruby-identifier">rv</span>.<span class="ruby-identifier">value</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">rv</span>.<span class="ruby-identifier">nil?</span>
@@ -1594,33 +1646,40 @@
 
       <div id="method-i-text-3D" class="method-detail ">
         <div class="method-heading">
-          <span class="method-name">text=</span><span
-            class="method-args">( text )</span>
+          <span class="method-callseq">
+            text = string &rarr; string
+          </span>
           <span class="method-click-advice">click to toggle source</span>
+        </div>
+        <div class="method-heading">
+          <span class="method-callseq">
+            text = nil &rarr; nil
+          </span>
         </div>
 
         <div class="method-description">
-          <p>Sets the first <a href="Text.html"><code>Text</code></a> child of this object.  See text() for a discussion about <a href="Text.html"><code>Text</code></a> children.</p>
+          <p>Adds, replaces, or removes the first text node child in the element.</p>
 
-<p>If a <a href="Text.html"><code>Text</code></a> child already exists, the child is replaced by this content.  This means that <a href="Text.html"><code>Text</code></a> content can be deleted by calling this method with a nil argument.  In this case, the next <a href="Text.html"><code>Text</code></a> child becomes the first <a href="Text.html"><code>Text</code></a> child.  In no case is the order of any siblings disturbed.</p>
-<dl class="rdoc-list note-list"><dt>text
-<dd>
-<p>If a String, a new <a href="Text.html"><code>Text</code></a> child is created and added to this <a href="Element.html"><code>Element</code></a> as the first <a href="Text.html"><code>Text</code></a> child.  If <a href="Text.html"><code>Text</code></a>, the text is set as the first <a href="Child.html"><code>Child</code></a> element.  If nil, then any existing first <a href="Text.html"><code>Text</code></a> child is removed.</p>
-</dd><dt>Returns
-<dd>
-<p>this <a href="Element.html"><code>Element</code></a>.</p>
-</dd></dl>
+<p>With string argument <code>string</code>, creates a new REXML::Text node containing that string, honoring the current settings for whitespace and row, then places the node as the first text child in the element; returns <code>string</code>.</p>
 
-<pre class="ruby"><span class="ruby-identifier">doc</span> = <span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span> <span class="ruby-string">&#39;&lt;a&gt;&lt;b/&gt;&lt;/a&gt;&#39;</span>
-<span class="ruby-identifier">doc</span>.<span class="ruby-identifier">root</span>.<span class="ruby-identifier">text</span> = <span class="ruby-string">&#39;Sean&#39;</span>      <span class="ruby-comment">#-&gt; &#39;&lt;a&gt;&lt;b/&gt;Sean&lt;/a&gt;&#39;</span>
-<span class="ruby-identifier">doc</span>.<span class="ruby-identifier">root</span>.<span class="ruby-identifier">text</span> = <span class="ruby-string">&#39;Elliott&#39;</span>   <span class="ruby-comment">#-&gt; &#39;&lt;a&gt;&lt;b/&gt;Elliott&lt;/a&gt;&#39;</span>
-<span class="ruby-identifier">doc</span>.<span class="ruby-identifier">root</span>.<span class="ruby-identifier">add_element</span> <span class="ruby-string">&#39;c&#39;</span>    <span class="ruby-comment">#-&gt; &#39;&lt;a&gt;&lt;b/&gt;Elliott&lt;c/&gt;&lt;/a&gt;&#39;</span>
-<span class="ruby-identifier">doc</span>.<span class="ruby-identifier">root</span>.<span class="ruby-identifier">text</span> = <span class="ruby-string">&#39;Russell&#39;</span>   <span class="ruby-comment">#-&gt; &#39;&lt;a&gt;&lt;b/&gt;Russell&lt;c/&gt;&lt;/a&gt;&#39;</span>
-<span class="ruby-identifier">doc</span>.<span class="ruby-identifier">root</span>.<span class="ruby-identifier">text</span> = <span class="ruby-keyword">nil</span>         <span class="ruby-comment">#-&gt; &#39;&lt;a&gt;&lt;b/&gt;&lt;c/&gt;&lt;/a&gt;&#39;</span>
+<p>If the element has no text child, the text node is added:</p>
+
+<pre class="ruby"><span class="ruby-identifier">d</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span> <span class="ruby-string">&#39;&lt;a&gt;&lt;b/&gt;&lt;/a&gt;&#39;</span>
+<span class="ruby-identifier">d</span>.<span class="ruby-identifier">root</span>.<span class="ruby-identifier">text</span> = <span class="ruby-string">&#39;foo&#39;</span> <span class="ruby-comment">#-&gt; &#39;&lt;a&gt;&lt;b/&gt;foo&lt;/a&gt;&#39;</span>
+</pre>
+
+<p>If the element has a text child, it is replaced:</p>
+
+<pre class="ruby"><span class="ruby-identifier">d</span>.<span class="ruby-identifier">root</span>.<span class="ruby-identifier">text</span> = <span class="ruby-string">&#39;bar&#39;</span> <span class="ruby-comment">#-&gt; &#39;&lt;a&gt;&lt;b/&gt;bar&lt;/a&gt;&#39;</span>
+</pre>
+
+<p>With argument <code>nil</code>, removes the first text child:</p>
+
+<pre class="ruby"><span class="ruby-identifier">d</span>.<span class="ruby-identifier">root</span>.<span class="ruby-identifier">text</span> = <span class="ruby-keyword">nil</span>   <span class="ruby-comment">#-&gt; &#39;&lt;a&gt;&lt;b/&gt;&lt;c/&gt;&lt;/a&gt;&#39;</span>
 </pre>
 
           <div class="method-source-code" id="text-3D-source">
-            <pre><span class="ruby-comment"># File lib/rexml/element.rb, line 792</span>
+            <pre><span class="ruby-comment"># File lib/rexml/element.rb, line 830</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">text=</span>( <span class="ruby-identifier">text</span> )
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">text</span>.<span class="ruby-identifier">kind_of?</span> <span class="ruby-constant">String</span>
     <span class="ruby-identifier">text</span> = <span class="ruby-constant">Text</span>.<span class="ruby-identifier">new</span>( <span class="ruby-identifier">text</span>, <span class="ruby-identifier">whitespace</span>(), <span class="ruby-keyword">nil</span>, <span class="ruby-identifier">raw</span>() )
@@ -1656,7 +1715,7 @@
           <p>Get an array of all <a href="Text.html"><code>Text</code></a> children. IMMUTABLE</p>
 
           <div class="method-source-code" id="texts-source">
-            <pre><span class="ruby-comment"># File lib/rexml/element.rb, line 985</span>
+            <pre><span class="ruby-comment"># File lib/rexml/element.rb, line 1080</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">texts</span>
   <span class="ruby-identifier">find_all</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">child</span><span class="ruby-operator">|</span> <span class="ruby-identifier">child</span>.<span class="ruby-identifier">kind_of?</span> <span class="ruby-constant">Text</span> }.<span class="ruby-identifier">freeze</span>
 <span class="ruby-keyword">end</span></pre>
@@ -1740,7 +1799,7 @@
 </pre>
 
           <div class="method-source-code" id="write-source">
-            <pre><span class="ruby-comment"># File lib/rexml/element.rb, line 1011</span>
+            <pre><span class="ruby-comment"># File lib/rexml/element.rb, line 1106</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">write</span>(<span class="ruby-identifier">output</span>=<span class="ruby-identifier">$stdout</span>, <span class="ruby-identifier">indent</span>=<span class="ruby-value">-1</span>, <span class="ruby-identifier">transitive</span>=<span class="ruby-keyword">false</span>, <span class="ruby-identifier">ie_hack</span>=<span class="ruby-keyword">false</span>)
   <span class="ruby-constant">Kernel</span>.<span class="ruby-identifier">warn</span>(<span class="ruby-node">&quot;#{self.class.name}.write is deprecated.  See REXML::Formatters&quot;</span>, <span class="ruby-value">uplevel:</span> <span class="ruby-value">1</span>)
   <span class="ruby-identifier">formatter</span> = <span class="ruby-keyword">if</span> <span class="ruby-identifier">indent</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">-1</span>
@@ -1763,16 +1822,33 @@
 
       <div id="method-i-xpath" class="method-detail ">
         <div class="method-heading">
-          <span class="method-name">xpath</span><span
-            class="method-args">()</span>
+          <span class="method-callseq">
+            xpath &rarr; string_xpath
+          </span>
           <span class="method-click-advice">click to toggle source</span>
         </div>
 
         <div class="method-description">
-          
+          <p>Returns the string xpath to the element relative to the most distant parent:</p>
+
+<pre class="ruby"><span class="ruby-identifier">d</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;&lt;a&gt;&lt;b&gt;&lt;c/&gt;&lt;/b&gt;&lt;/a&gt;&#39;</span>)
+<span class="ruby-identifier">a</span> = <span class="ruby-identifier">d</span>.<span class="ruby-identifier">root</span> <span class="ruby-comment"># =&gt; &lt;a&gt; ... &lt;/&gt;</span>
+<span class="ruby-identifier">b</span> = <span class="ruby-identifier">a</span>[<span class="ruby-value">0</span>]   <span class="ruby-comment"># =&gt; &lt;b&gt; ... &lt;/&gt;</span>
+<span class="ruby-identifier">c</span> = <span class="ruby-identifier">b</span>[<span class="ruby-value">0</span>]   <span class="ruby-comment"># =&gt; &lt;c/&gt;</span>
+<span class="ruby-identifier">d</span>.<span class="ruby-identifier">xpath</span>    <span class="ruby-comment"># =&gt; &quot;&quot;</span>
+<span class="ruby-identifier">a</span>.<span class="ruby-identifier">xpath</span>    <span class="ruby-comment"># =&gt; &quot;/a&quot;</span>
+<span class="ruby-identifier">b</span>.<span class="ruby-identifier">xpath</span>    <span class="ruby-comment"># =&gt; &quot;/a/b&quot;</span>
+<span class="ruby-identifier">c</span>.<span class="ruby-identifier">xpath</span>    <span class="ruby-comment"># =&gt; &quot;/a/b/c&quot;</span>
+</pre>
+
+<p>If there is no parent, returns the expanded name of the element:</p>
+
+<pre class="ruby"><span class="ruby-identifier">e</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Element</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;foo&#39;</span>)
+<span class="ruby-identifier">e</span>.<span class="ruby-identifier">xpath</span>    <span class="ruby-comment"># =&gt; &quot;foo&quot;</span>
+</pre>
 
           <div class="method-source-code" id="xpath-source">
-            <pre><span class="ruby-comment"># File lib/rexml/element.rb, line 838</span>
+            <pre><span class="ruby-comment"># File lib/rexml/element.rb, line 933</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">xpath</span>
   <span class="ruby-identifier">path_elements</span> = []
   <span class="ruby-identifier">cur</span> = <span class="ruby-keyword">self</span>
