@@ -116,14 +116,23 @@ module REXML
       @children.dup
     end
 
-    # Fetches the index of a given child
-    # @param child the child to get the index of
-    # @return the index of the child, or nil if the object is not a child
-    # of this parent.
-    def index( child )
+    # :call-seq:
+    #   index(child) -> integer or nil
+    #
+    # Returns the index of the given +child+ if it exists,
+    # +nil+ otherwise:
+    #
+    #   d = REXML::Document.new('<root><a/><b/><c/><d/></root>')
+    #   root = d.root               # => <root> ... </>
+    #   a, b, c, d = *root.children # => [<a/>, <b/>, <c/>, <d/>]
+    #   root.index(a)               # => 0
+    #   root.delete(a)              # => <a/>
+    #   root.index(a)               # => nil
+    #
+    def index(child)
       count = -1
-      @children.find { |i| count += 1 ; i.hash == child.hash }
-      count
+      @children.find { |i| count += 1 ; return count if i.hash == child.hash }
+      return nil
     end
 
     # @return the number of children of this parent
