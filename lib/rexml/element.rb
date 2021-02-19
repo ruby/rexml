@@ -945,19 +945,45 @@ module REXML
     # Attributes                                    #
     #################################################
 
-    # Fetches an attribute value or a child.
+    # :call-seq:
+    #   [index] -> object
+    #   [attr_name] -> attr_value
+    #   [attr_sym] -> attr_value
     #
-    # If String or Symbol is specified, it's treated as attribute
-    # name. Attribute value as String or +nil+ is returned. This case
-    # is shortcut of +attributes[name]+.
+    # With integer argument +index+ given,
+    # returns the child at offset +index+, or +nil+ if none:
     #
-    # If Integer is specified, it's treated as the index of
-    # child. It returns Nth child.
+    #   d = REXML::Document.new '><root><a/>text<b/>more<c/></root>'
+    #   root = d.root
+    #   (0..root.size).each do |index|
+    #     node = root[index]
+    #     p "#{index}: #{node} (#{node.class})"
+    #   end
     #
-    #   doc = REXML::Document.new("<a attr='1'><b/><c/></a>")
-    #   doc.root["attr"]             # => "1"
-    #   doc.root.attributes["attr"]  # => "1"
-    #   doc.root[1]                  # => <c/>
+    # Output:
+    #
+    #   "0: <a/> (REXML::Element)"
+    #   "1: text (REXML::Text)"
+    #   "2: <b/> (REXML::Element)"
+    #   "3: more (REXML::Text)"
+    #   "4: <c/> (REXML::Element)"
+    #   "5:  (NilClass)"
+    #
+    # With string argument +attr_name+ given,
+    # returns the string value for the given attribute name if it exists,
+    # otherwise +nil+:
+    #
+    #   d = REXML::Document.new('<root attr="value"></root>')
+    #   root = d.root
+    #   root['attr']   # => "value"
+    #   root['nosuch'] # => nil
+    #
+    # With symbol argument +attr_sym+ given,
+    # returns <tt>[attr_sym.to_s]</tt>:
+    #
+    #   root[:attr]   # => "value"
+    #   root[:nosuch] # => nil
+    #
     def [](name_or_index)
       case name_or_index
       when String
@@ -969,6 +995,30 @@ module REXML
       end
     end
 
+
+    # :call-seq:
+    #   attribute(name, namespace = nil)
+    #
+    # Returns the string value for the given attribute name.
+    #
+    # With only argument +name+ given,
+    # returns the value of the named attribute if it exists, otherwise +nil+:
+    #
+    #   xml_string = <<-EOT
+    #     <root xmlns="ns0">
+    #       <a xmlns="ns1" attr="value"></a>
+    #       <b xmlns="ns2" attr="value"></b>
+    #       <c attr="value"/>
+    #    </root>
+    #   EOT
+    #   d = REXML::Document.new(xml_string)
+    #   root = d.root
+    #   a = root[1] # => <a xmlns='ns1' attr='value'/>
+    #   a.attribute('attr') # => attr='value'
+    #   a.attribute('nope') # => nil
+    #
+    # TODO:  Make sensible examples using both arguments.
+    #
     def attribute( name, namespace=nil )
       prefix = nil
       if namespaces.respond_to? :key
@@ -992,29 +1042,46 @@ module REXML
 
     end
 
-    # Evaluates to +true+ if this element has any attributes set, false
-    # otherwise.
+    # :call-seq:
+    #   has_attributes? -> true or false
+    #
+    # Returns +true+ if the element has attributes, +false+ otherwise:
+    #
+    #   d = REXML::Document.new('<root><a attr="val"/><b/></root>')
+    #   a, b = *d.root
+    #   a.has_attributes? # => true
+    #   b.has_attributes? # => false
+    #
     def has_attributes?
       return !@attributes.empty?
     end
 
+    # :call-seq:
+    #   add_attribute(name, value) -> value
+    #   add_attribute(attribute) -> attribute
+    #
     # Adds an attribute to this element, overwriting any existing attribute
     # by the same name.
-    # key::
-    #   can be either an Attribute or a String.  If an Attribute,
-    #   the attribute is added to the list of Element attributes.  If String,
-    #   the argument is used as the name of the new attribute, and the value
-    #   parameter must be supplied.
-    # value::
-    #   Required if +key+ is a String, and ignored if the first argument is
-    #   an Attribute.  This is a String, and is used as the value
-    #   of the new Attribute.  This should be the unnormalized value of the
-    #   attribute (without entities).
-    # Returns:: the Attribute added
-    #  e = Element.new 'e'
-    #  e.add_attribute( 'a', 'b' )               #-> <e a='b'/>
-    #  e.add_attribute( 'x:a', 'c' )             #-> <e a='b' x:a='c'/>
-    #  e.add_attribute Attribute.new('b', 'd')   #-> <e a='b' x:a='c' b='d'/>
+    #
+    # With string argument +name+ and object +value+ are given,
+    # adds the attribute created with that name and value:
+    #
+    #   e = REXML::Element.new
+    #   e.add_attribute('attr', 'value') # => "value"
+    #   e['attr'] # => "value"
+    #   e.add_attribute('attr', 'VALUE') # => "VALUE"
+    #   e['attr'] # => "VALUE"
+    #
+    # With only attribute object +attribute+ given,
+    # adds the given attribute:
+    #
+    #   a = REXML::Attribute.new('attr', 'value')
+    #   e.add_attribute(a) # => attr='value'
+    #   e['attr'] # => "value"
+    #   a = REXML::Attribute.new('attr', 'VALUE')
+    #   e.add_attribute(a) # => attr='VALUE'
+    #   e['attr'] # => "VALUE"
+    #
     def add_attribute( key, value=nil )
       if key.kind_of? Attribute
         @attributes << key
@@ -1023,10 +1090,29 @@ module REXML
       end
     end
 
-    # Add multiple attributes to this element.
-    # hash:: is either a hash, or array of arrays
-    #  el.add_attributes( {"name1"=>"value1", "name2"=>"value2"} )
-    #  el.add_attributes( [ ["name1","value1"], ["name2"=>"value2"] ] )
+    # :call-seq:
+    #   add_attributes(hash) -> hash
+    #   add_attributes(array)
+    #
+    # Adds zero or more attributes to the element;
+    # returns the argument.
+    #
+    # If hash argument +hash+ is given,
+    # each key must be a string;
+    # adds each attribute created with the key/value pair:
+    #
+    #   e = REXML::Element.new
+    #   h = {'foo' => 'bar', 'baz' => 'bat'}
+    #   e.add_attributes(h)
+    #
+    # If argument +array+ is given,
+    # each array member must be a 2-element array <tt>[name, value];
+    # each name must be a string:
+    #
+    #   e = REXML::Element.new
+    #   a = [['foo' => 'bar'], ['baz' => 'bat']]
+    #   e.add_attributes(a)
+    #
     def add_attributes hash
       if hash.kind_of? Hash
         hash.each_pair {|key, value| @attributes[key] = value }
@@ -1035,19 +1121,19 @@ module REXML
       end
     end
 
-    # Removes an attribute
-    # key::
-    #   either an Attribute or a String.  In either case, the
-    #   attribute is found by matching the attribute name to the argument,
-    #   and then removed.  If no attribute is found, no action is taken.
-    # Returns::
-    #   the attribute removed, or nil if this Element did not contain
-    #   a matching attribute
-    #  e = Element.new('E')
-    #  e.add_attribute( 'name', 'Sean' )             #-> <E name='Sean'/>
-    #  r = e.add_attribute( 'sur:name', 'Russell' )  #-> <E name='Sean' sur:name='Russell'/>
-    #  e.delete_attribute( 'name' )                  #-> <E sur:name='Russell'/>
-    #  e.delete_attribute( r )                       #-> <E/>
+    # :call-seq:
+    #   delete_attribute(name) -> removed_attribute or nil
+    #
+    # Removes a named attribute if it exists;
+    # returns the removed attribute if found, otherwise +nil+:
+    #
+    #   e = REXML::Element.new('foo')
+    #   e.add_attribute('bar', 'baz')
+    #   e.delete_attribute('bar') # => <bar/>
+    #   e.delete_attribute('bar') # => nil
+    #
+    # TODO: Determine whether delete_attribute(attribute) actually works.
+    #
     def delete_attribute(key)
       attr = @attributes.get_attribute(key)
       attr.remove unless attr.nil?
@@ -1057,26 +1143,80 @@ module REXML
     # Other Utilities                               #
     #################################################
 
-    # Get an array of all CData children.
-    # IMMUTABLE
+    # :call-seq:
+    #   cdatas -> array_of_cdata_children
+    #
+    # Returns a frozen array of the REXML::CData children of the element:
+    #
+    #   xml_string = <<-EOT
+    #     <root>
+    #       <![CDATA[foo]]>
+    #       <![CDATA[bar]]>
+    #     </root>
+    #   EOT
+    #   d = REXML::Document.new(xml_string)
+    #   cds = d.root.cdatas      # => ["foo", "bar"]
+    #   cds.frozen?              # => true
+    #   cds.map {|cd| cd.class } # => [REXML::CData, REXML::CData]
+    #
     def cdatas
       find_all { |child| child.kind_of? CData }.freeze
     end
 
-    # Get an array of all Comment children.
-    # IMMUTABLE
+    # :call-seq:
+    #   comments -> array_of_comment_children
+    #
+    # Returns a frozen array of the REXML::Comment children of the element:
+    #
+    #   xml_string = <<-EOT
+    #     <root>
+    #       <!--foo-->
+    #       <!--bar-->
+    #     </root>
+    #   EOT
+    #   d = REXML::Document.new(xml_string)
+    #   cs = d.root.comments
+    #   cs.frozen?            # => true
+    #   cs.map {|c| c.class } # => [REXML::Comment, REXML::Comment]
+    #   cs.map {|c| c.to_s }  # => ["foo", "bar"]
+    #
     def comments
       find_all { |child| child.kind_of? Comment }.freeze
     end
 
-    # Get an array of all Instruction children.
-    # IMMUTABLE
+    # :call-seq:
+    #   instructions -> array_of_instruction_children
+    #
+    # Returns a frozen array of the REXML::Instruction children of the element:
+    #
+    #   xml_string = <<-EOT
+    #     <root>
+    #       <?target0 foo?>
+    #       <?target1 bar?>
+    #     </root>
+    #   EOT
+    #   d = REXML::Document.new(xml_string)
+    #   is = d.root.instructions
+    #   is.frozen?             # => true
+    #   is.map {|i| i.class } # => [REXML::Instruction, REXML::Instruction]
+    #   is.map {|i| i.to_s }  # => ["<?target0 foo?>", "<?target1 bar?>"]
+    #
     def instructions
       find_all { |child| child.kind_of? Instruction }.freeze
     end
 
-    # Get an array of all Text children.
-    # IMMUTABLE
+    # :call-seq:
+    #   texts -> array_of_text_children
+    #
+    # Returns a frozen array of the REXML::Text children of the element:
+    #
+    #   xml_string = '<root><a/>text<b/>more<c/></root>'
+    #   d = REXML::Document.new(xml_string)
+    #   ts = d.root.texts
+    #   ts.frozen?            # => true
+    #   ts.map {|t| t.class } # => [REXML::Text, REXML::Text]
+    #   ts.map {|t| t.to_s }  # => ["text", "more"]
+    #
     def texts
       find_all { |child| child.kind_of? Text }.freeze
     end
