@@ -83,9 +83,6 @@ module REXML
       ATTDEF_RE = /#{ATTDEF}/
       ATTLISTDECL_START = /\A\s*<!ATTLIST/um
       ATTLISTDECL_PATTERN = /\A\s*<!ATTLIST\s+#{NAME}(?:#{ATTDEF})*\s*>/um
-      NOTATIONDECL_START = /\A\s*<!NOTATION/um
-      PUBLIC = /\A\s*<!NOTATION\s+(\w[\-\w]*)\s+(PUBLIC)\s+(["'])(.*?)\3(?:\s+(["'])(.*?)\5)?\s*>/um
-      SYSTEM = /\A\s*<!NOTATION\s+(\w[\-\w]*)\s+(SYSTEM)\s+(["'])(.*?)\3\s*>/um
 
       TEXT_PATTERN = /\A([^<]*)/um
 
@@ -102,6 +99,10 @@ module REXML
       PEDECL = "<!ENTITY\\s+(%)\\s+#{NAME}\\s+#{PEDEF}\\s*>"
       GEDECL = "<!ENTITY\\s+#{NAME}\\s+#{ENTITYDEF}\\s*>"
       ENTITYDECL = /\s*(?:#{GEDECL})|(?:#{PEDECL})/um
+
+      NOTATIONDECL_START = /\A\s*<!NOTATION/um
+      PUBLIC = /\A\s*<!NOTATION\s+#{NAME}\s+(PUBLIC)\s+#{PUBIDLITERAL}(?:\s+#{SYSTEMLITERAL})?\s*>/um
+      SYSTEM = /\A\s*<!NOTATION\s+#{NAME}\s+(SYSTEM)\s+#{SYSTEMLITERAL}\s*>/um
 
       EREFERENCE = /&(?!#{NAME};)/
 
@@ -315,12 +316,22 @@ module REXML
             md = nil
             if @source.match( PUBLIC )
               md = @source.match( PUBLIC, true )
-              vals = [md[1],md[2],md[4],md[6]]
+              pubid = system = nil
+              pubid_literal = md[3]
+              pubid = pubid_literal[1..-2] if pubid_literal # Remove quote
+              system_literal = md[4]
+              system = system_literal[1..-2] if system_literal # Remove quote
+              vals = [md[1], md[2], pubid, system]
             elsif @source.match( SYSTEM )
               md = @source.match( SYSTEM, true )
-              vals = [md[1],md[2],nil,md[4]]
+              system = nil
+              system_literal = md[3]
+              system = system_literal[1..-2] if system_literal # Remove quote
+              vals = [md[1], md[2], nil, system]
             else
-              raise REXML::ParseException.new( "error parsing notation: no matching pattern", @source )
+              details = notation_decl_invalid_details
+              message = "Malformed notation declaration: #{details}"
+              raise REXML::ParseException.new(message, @source)
             end
             return [ :notationdecl, *vals ]
           when DOCTYPE_END
@@ -568,6 +579,42 @@ module REXML
           attributes[name] = value
         end
         return attributes, closed
+      end
+
+      def notation_decl_invalid_details
+        name = /#{NOTATIONDECL_START}\s+#{NAME}/um
+        public = /#{name}\s+PUBLIC/um
+        system = /#{name}\s+SYSTEM/um
+        if @source.match(/#{NOTATIONDECL_START}\s*>/um)
+          return "name is missing"
+        elsif not @source.match(/#{name}[\s>]/um)
+          return "invalid name"
+        elsif @source.match(/#{name}\s*>/um)
+          return "ID type is missing"
+        elsif not @source.match(/#{name}\s+(?:PUBLIC|SYSTEM)[\s>]/um)
+          return "invalid ID type"
+        elsif @source.match(/#{public}/um)
+          if @source.match(/#{public}\s*>/um)
+            return "public ID literal is missing"
+          elsif not @source.match(/#{public}\s+#{PUBIDLITERAL}/um)
+            return "invalid public ID literal"
+          elsif @source.match(/#{public}\s+#{PUBIDLITERAL}[^\s>]/um)
+            return "garbage after public ID literal"
+          elsif not @source.match(/#{public}\s+#{PUBIDLITERAL}\s+#{SYSTEMLITERAL}/um)
+            return "invalid system literal"
+          elsif not @source.match(/#{public}\s+#{PUBIDLITERAL}\s+#{SYSTEMLITERAL}\s*>/um)
+            return "garbage after system literal"
+          end
+        elsif @source.match(/#{system}/um)
+          if @source.match(/#{system}\s*>/um)
+            return "system literal is missing"
+          elsif not @source.match(/#{system}\s+#{SYSTEMLITERAL}/um)
+            return "invalid system literal"
+          elsif not @source.match(/#{system}\s+#{SYSTEMLITERAL}\s*>/um)
+            return "garbage after system literal"
+          end
+        end
+        "end > is missing"
       end
     end
   end
