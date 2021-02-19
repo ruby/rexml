@@ -255,13 +255,29 @@ module REXML
       c = nil
       c = parent.context if parent
       if c and c[:prologue_quote] == :apostrophe
-        quote = "'"
+        default_quote = "'"
       else
-        quote = "\""
+        default_quote = "\""
       end
       notation = "<!NOTATION #{@name} #{@middle}"
-      notation << " #{quote}#{@public}#{quote}" if @public
-      notation << " #{quote}#{@system}#{quote}" if @system
+      if @public
+        if @public.include?("'")
+          quote = "\""
+        else
+          quote = default_quote
+        end
+        notation << " #{quote}#{@public}#{quote}"
+      end
+      if @system
+        if @system.include?("'")
+          quote = "\""
+        elsif @system.include?("\"")
+          quote = "'"
+        else
+          quote = default_quote
+        end
+        notation << " #{quote}#{@system}#{quote}"
+      end
       notation << ">"
       notation
     end

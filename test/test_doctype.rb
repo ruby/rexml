@@ -89,9 +89,24 @@ module REXMLTests
                    decl(@id, nil).to_s)
     end
 
+    def test_to_s_pubid_literal_include_apostrophe
+      assert_equal("<!NOTATION #{@name} PUBLIC \"#{@id}'\">",
+                   decl("#{@id}'", nil).to_s)
+    end
+
     def test_to_s_with_uri
       assert_equal("<!NOTATION #{@name} PUBLIC \"#{@id}\" \"#{@uri}\">",
                    decl(@id, @uri).to_s)
+    end
+
+    def test_to_s_system_literal_include_apostrophe
+      assert_equal("<!NOTATION #{@name} PUBLIC \"#{@id}\" \"system'literal\">",
+                   decl(@id, "system'literal").to_s)
+    end
+
+    def test_to_s_system_literal_include_double_quote
+      assert_equal("<!NOTATION #{@name} PUBLIC \"#{@id}\" 'system\"literal'>",
+                   decl(@id, "system\"literal").to_s)
     end
 
     def test_to_s_apostrophe
@@ -104,6 +119,49 @@ module REXMLTests
       document.context[:prologue_quote] = :apostrophe
       notation = document.doctype.notations[0]
       assert_equal("<!NOTATION #{@name} PUBLIC '#{@id}' '#{@uri}'>",
+                   notation.to_s)
+    end
+
+    def test_to_s_apostrophe_pubid_literal_include_apostrophe
+      document = REXML::Document.new(<<-XML)
+      <!DOCTYPE root SYSTEM "urn:x-test:sysid" [
+        #{decl("#{@id}'", @uri).to_s}
+      ]>
+      <root/>
+      XML
+      # This isn't used for PubidLiteral because PubidChar includes '.
+      document.context[:prologue_quote] = :apostrophe
+      notation = document.doctype.notations[0]
+      assert_equal("<!NOTATION #{@name} PUBLIC \"#{@id}'\" '#{@uri}'>",
+                   notation.to_s)
+    end
+
+    def test_to_s_apostrophe_system_literal_include_apostrophe
+      document = REXML::Document.new(<<-XML)
+      <!DOCTYPE root SYSTEM "urn:x-test:sysid" [
+        #{decl(@id, "system'literal").to_s}
+      ]>
+      <root/>
+      XML
+      # This isn't used for SystemLiteral because SystemLiteral includes '.
+      document.context[:prologue_quote] = :apostrophe
+      notation = document.doctype.notations[0]
+      assert_equal("<!NOTATION #{@name} PUBLIC '#{@id}' \"system'literal\">",
+                   notation.to_s)
+    end
+
+    def test_to_s_apostrophe_system_literal_include_double_quote
+      document = REXML::Document.new(<<-XML)
+      <!DOCTYPE root SYSTEM "urn:x-test:sysid" [
+        #{decl(@id, "system\"literal").to_s}
+      ]>
+      <root/>
+      XML
+      # This isn't used for SystemLiteral because SystemLiteral includes ".
+      # But quoted by ' because SystemLiteral includes ".
+      document.context[:prologue_quote] = :apostrophe
+      notation = document.doctype.notations[0]
+      assert_equal("<!NOTATION #{@name} PUBLIC '#{@id}' 'system\"literal'>",
                    notation.to_s)
     end
 
@@ -124,6 +182,16 @@ module REXMLTests
                    decl(@id).to_s)
     end
 
+    def test_to_s_include_apostrophe
+      assert_equal("<!NOTATION #{@name} SYSTEM \"#{@id}'\">",
+                   decl("#{@id}'").to_s)
+    end
+
+    def test_to_s_include_double_quote
+      assert_equal("<!NOTATION #{@name} SYSTEM '#{@id}\"'>",
+                   decl("#{@id}\"").to_s)
+    end
+
     def test_to_s_apostrophe
       document = REXML::Document.new(<<-XML)
       <!DOCTYPE root SYSTEM "urn:x-test:sysid" [
@@ -137,9 +205,38 @@ module REXMLTests
                    notation.to_s)
     end
 
+    def test_to_s_apostrophe_include_apostrophe
+      document = REXML::Document.new(<<-XML)
+      <!DOCTYPE root SYSTEM "urn:x-test:sysid" [
+        #{decl("#{@id}'").to_s}
+      ]>
+      <root/>
+      XML
+      # This isn't used for SystemLiteral because SystemLiteral includes '.
+      document.context[:prologue_quote] = :apostrophe
+      notation = document.doctype.notations[0]
+      assert_equal("<!NOTATION #{@name} SYSTEM \"#{@id}'\">",
+                   notation.to_s)
+    end
+
+    def test_to_s_apostrophe_include_double_quote
+      document = REXML::Document.new(<<-XML)
+      <!DOCTYPE root SYSTEM "urn:x-test:sysid" [
+        #{decl("#{@id}\"").to_s}
+      ]>
+      <root/>
+      XML
+      # This isn't used for SystemLiteral because SystemLiteral includes ".
+      # But quoted by ' because SystemLiteral includes ".
+      document.context[:prologue_quote] = :apostrophe
+      notation = document.doctype.notations[0]
+      assert_equal("<!NOTATION #{@name} SYSTEM '#{@id}\"'>",
+                   notation.to_s)
+    end
+
     private
     def decl(id)
-      REXML::NotationDecl.new(@name, "SYSTEM", id, nil)
+      REXML::NotationDecl.new(@name, "SYSTEM", nil, id)
     end
   end
 end
