@@ -1017,7 +1017,13 @@ module REXML
     #   a.attribute('attr') # => attr='value'
     #   a.attribute('nope') # => nil
     #
-    # TODO:  Make sensible examples using both arguments.
+    # With arguments +name+ and +namespace+ given,
+    # returns the value of the named attribute if it exists, otherwise +nil+:
+    #
+    #   xml_string = "<root xmlns:a='a' a:x='a:x' x='x'/>"
+    #   document = REXML::Document.new(xml_string)
+    #   document.root.attribute("x")      # => x='x'
+    #   document.root.attribute("x", "a") # => a:x='a:x'
     #
     def attribute( name, namespace=nil )
       prefix = nil
