@@ -492,7 +492,7 @@
   <span class="ruby-keyword">when</span> <span class="ruby-string">&quot;SYSTEM&quot;</span>
     <span class="ruby-keyword">nil</span>
   <span class="ruby-keyword">when</span> <span class="ruby-string">&quot;PUBLIC&quot;</span>
-    <span class="ruby-identifier">strip_quotes</span>(<span class="ruby-ivar">@long_name</span>)
+    <span class="ruby-ivar">@long_name</span>
   <span class="ruby-keyword">end</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
@@ -518,9 +518,9 @@
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">system</span>
   <span class="ruby-keyword">case</span> <span class="ruby-ivar">@external_id</span>
   <span class="ruby-keyword">when</span> <span class="ruby-string">&quot;SYSTEM&quot;</span>
-    <span class="ruby-identifier">strip_quotes</span>(<span class="ruby-ivar">@long_name</span>)
+    <span class="ruby-ivar">@long_name</span>
   <span class="ruby-keyword">when</span> <span class="ruby-string">&quot;PUBLIC&quot;</span>
-    <span class="ruby-ivar">@uri</span>.<span class="ruby-identifier">kind_of?</span>(<span class="ruby-constant">String</span>) <span class="ruby-operator">?</span> <span class="ruby-identifier">strip_quotes</span>(<span class="ruby-ivar">@uri</span>) <span class="ruby-operator">:</span> <span class="ruby-keyword">nil</span>
+    <span class="ruby-ivar">@uri</span>.<span class="ruby-identifier">kind_of?</span>(<span class="ruby-constant">String</span>) <span class="ruby-operator">?</span> <span class="ruby-ivar">@uri</span> <span class="ruby-operator">:</span> <span class="ruby-keyword">nil</span>
   <span class="ruby-keyword">end</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
