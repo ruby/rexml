@@ -50,7 +50,7 @@ Malformed notation declaration: invalid name
 Line: 5
 Position: 74
 Last 80 unconsumed characters:
- <!NOTATION '>  ]> <r/> 
+'>  ]> <r/> 
         DETAIL
       end
 
@@ -61,11 +61,11 @@ Last 80 unconsumed characters:
           INTERNAL_SUBSET
         end
         assert_equal(<<-DETAIL.chomp, exception.to_s)
-Malformed notation declaration: ID type is missing
+Malformed notation declaration: invalid ID type
 Line: 5
 Position: 77
 Last 80 unconsumed characters:
- <!NOTATION name>  ]> <r/> 
+>  ]> <r/> 
         DETAIL
       end
 
@@ -80,7 +80,7 @@ Malformed notation declaration: invalid ID type
 Line: 5
 Position: 85
 Last 80 unconsumed characters:
- <!NOTATION name INVALID>  ]> <r/> 
+ INVALID>  ]> <r/> 
         DETAIL
       end
     end
@@ -98,7 +98,7 @@ Malformed notation declaration: system literal is missing
 Line: 5
 Position: 84
 Last 80 unconsumed characters:
- <!NOTATION name SYSTEM>  ]> <r/> 
+ SYSTEM>  ]> <r/> 
           DETAIL
         end
 
@@ -109,11 +109,11 @@ Last 80 unconsumed characters:
             INTERNAL_SUBSET
           end
           assert_equal(<<-DETAIL.chomp, exception.to_s)
-Malformed notation declaration: garbage after system literal
+Malformed notation declaration: garbage before end >
 Line: 5
 Position: 103
 Last 80 unconsumed characters:
- <!NOTATION name SYSTEM 'system-literal'x'>  ]> <r/> 
+x'>  ]> <r/> 
           DETAIL
         end
 
@@ -145,7 +145,7 @@ Malformed notation declaration: invalid public ID literal
 Line: 5
 Position: 129
 Last 80 unconsumed characters:
- <!NOTATION name PUBLIC 'double quote " is invalid' "system-literal">  ]> <r/> 
+ PUBLIC 'double quote " is invalid' "system-literal">  ]> <r/> 
             DETAIL
           end
 
@@ -172,11 +172,11 @@ Last 80 unconsumed characters:
               INTERNAL_SUBSET
             end
             assert_equal(<<-DETAIL.chomp, exception.to_s)
-Malformed notation declaration: garbage after system literal
+Malformed notation declaration: garbage before end >
 Line: 5
 Position: 123
 Last 80 unconsumed characters:
- <!NOTATION name PUBLIC 'public-id-literal' 'system-literal'x'>  ]> <r/> 
+x'>  ]> <r/> 
            DETAIL
           end
 
@@ -229,7 +229,7 @@ Malformed notation declaration: public ID literal is missing
 Line: 5
 Position: 84
 Last 80 unconsumed characters:
- <!NOTATION name PUBLIC>  ]> <r/> 
+ PUBLIC>  ]> <r/> 
         DETAIL
       end
 
@@ -244,7 +244,7 @@ Malformed notation declaration: invalid public ID literal
 Line: 5
 Position: 128
 Last 80 unconsumed characters:
- <!NOTATION name PUBLIC 'double quote \" is invalid in PubidLiteral'>  ]> <r/> 
+ PUBLIC 'double quote \" is invalid in PubidLiteral'>  ]> <r/> 
         DETAIL
       end
 
@@ -255,11 +255,11 @@ Last 80 unconsumed characters:
           INTERNAL_SUBSET
         end
         assert_equal(<<-DETAIL.chomp, exception.to_s)
-Malformed notation declaration: garbage after public ID literal
+Malformed notation declaration: garbage before end >
 Line: 5
 Position: 106
 Last 80 unconsumed characters:
- <!NOTATION name PUBLIC 'public-id-literal'x'>  ]> <r/> 
+x'>  ]> <r/> 
         DETAIL
       end
 
