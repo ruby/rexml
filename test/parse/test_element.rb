@@ -46,6 +46,19 @@ Last 80 unconsumed characters:
 
         DETAIL
       end
+
+      def test_garbage_less_than_before_root_element_at_line_start
+        exception = assert_raise(REXML::ParseException) do
+          parse("<\n<x/>")
+        end
+        assert_equal(<<-DETAIL.chomp, exception.to_s)
+malformed XML: missing tag start
+Line: 2
+Position: 6
+Last 80 unconsumed characters:
+< <x/>
+        DETAIL
+      end
     end
   end
 end

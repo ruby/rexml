@@ -61,7 +61,7 @@ module REXML
       XMLDECL_PATTERN = /<\?xml\s+(.*?)\?>/um
       INSTRUCTION_START = /\A<\?/u
       INSTRUCTION_PATTERN = /<\?#{NAME}(\s+.*?)?\?>/um
-      TAG_MATCH = /^<((?>#{QNAME_STR}))/um
+      TAG_MATCH = /\A<((?>#{QNAME_STR}))/um
       CLOSE_MATCH = /^\s*<\/(#{QNAME_STR})\s*>/um
 
       VERSION = /\bversion\s*=\s*["'](.*?)['"]/um
