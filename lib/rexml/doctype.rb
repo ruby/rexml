@@ -50,6 +50,8 @@ module REXML
         super( parent )
         @name = first.name
         @external_id = first.external_id
+        @long_name = first.instance_variable_get(:@long_name)
+        @uri = first.instance_variable_get(:@uri)
       elsif first.kind_of? Array
         super( parent )
         @name = first[0]
