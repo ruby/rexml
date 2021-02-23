@@ -1041,7 +1041,7 @@ EOL
       document.write(s)
 
       ## XML Doctype
-      str = '<!DOCTYPE foo "bar">'
+      str = '<!DOCTYPE foo SYSTEM "bar">'
       source  = REXML::Source.new(str)
       doctype = REXML::DocType.new(source)
       document.add(doctype)
