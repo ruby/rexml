@@ -62,7 +62,7 @@ module REXML
       INSTRUCTION_START = /\A<\?/u
       INSTRUCTION_PATTERN = /<\?#{NAME}(\s+.*?)?\?>/um
       TAG_MATCH = /\A<((?>#{QNAME_STR}))/um
-      CLOSE_MATCH = /^\s*<\/(#{QNAME_STR})\s*>/um
+      CLOSE_MATCH = /\A\s*<\/(#{QNAME_STR})\s*>/um
 
       VERSION = /\bversion\s*=\s*["'](.*?)['"]/um
       ENCODING = /\bencoding\s*=\s*["'](.*?)['"]/um
