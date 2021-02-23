@@ -9,10 +9,10 @@ module REXMLTests
     include REXML::Light
 
     def test_parse_large
-      xml_string = fixture_path("documentation.xml")
+      xml_string = File.read(fixture_path("documentation.xml"))
       parser = REXML::Parsers::LightParser.new(xml_string)
       tag, content = parser.parse
-      assert_equal([:document, :text], [tag, content.first])
+      assert_equal([:document, :xmldecl], [tag, content.first])
     end
 
     # FIXME INCOMPLETE
