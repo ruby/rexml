@@ -70,6 +70,7 @@ DELIMITER
          >
          ]
        >
+       <svg/>
       EOF
       doc = REXML::Document.new source
       doc.write(out="")
