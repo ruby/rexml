@@ -77,6 +77,111 @@ module REXMLTests
     end
   end
 
+  class TestDocType < Test::Unit::TestCase
+    class TestExternalID < self
+      class TestSystem < self
+        class TestSystemLiteral < self
+          def test_to_s
+            doctype = REXML::DocType.new(["root", "SYSTEM", nil, "root.dtd"])
+            assert_equal("<!DOCTYPE root SYSTEM \"root.dtd\">",
+                         doctype.to_s)
+          end
+
+          def test_to_s_apostrophe
+            doctype = REXML::DocType.new(["root", "SYSTEM", nil, "root.dtd"])
+            doc = REXML::Document.new
+            doc << doctype
+            doctype.parent.context[:prologue_quote] = :apostrophe
+            assert_equal("<!DOCTYPE root SYSTEM 'root.dtd'>",
+                         doctype.to_s)
+          end
+
+          def test_to_s_single_quote_apostrophe
+            doctype = REXML::DocType.new(["root", "SYSTEM", nil, "root'.dtd"])
+            doc = REXML::Document.new
+            doc << doctype
+            # This isn't used.
+            doctype.parent.context[:prologue_quote] = :apostrophe
+            assert_equal("<!DOCTYPE root SYSTEM \"root'.dtd\">",
+                         doctype.to_s)
+          end
+
+          def test_to_s_double_quote
+            doctype = REXML::DocType.new(["root", "SYSTEM", nil, "root\".dtd"])
+            doc = REXML::Document.new
+            doc << doctype
+            # This isn't used.
+            doctype.parent.context[:prologue_quote] = :apostrophe
+            assert_equal("<!DOCTYPE root SYSTEM 'root\".dtd'>",
+                         doctype.to_s)
+          end
+        end
+      end
+
+      class TestPublic < self
+        class TestPublicIDLiteral < self
+          def test_to_s
+            doctype = REXML::DocType.new(["root", "PUBLIC", "pub", "root.dtd"])
+            assert_equal("<!DOCTYPE root PUBLIC \"pub\" \"root.dtd\">",
+                         doctype.to_s)
+          end
+
+          def test_to_s_apostrophe
+            doctype = REXML::DocType.new(["root", "PUBLIC", "pub", "root.dtd"])
+            doc = REXML::Document.new
+            doc << doctype
+            doctype.parent.context[:prologue_quote] = :apostrophe
+            assert_equal("<!DOCTYPE root PUBLIC 'pub' 'root.dtd'>",
+                         doctype.to_s)
+          end
+
+          def test_to_s_apostrophe_include_apostrophe
+            doctype = REXML::DocType.new(["root", "PUBLIC", "pub'", "root.dtd"])
+            doc = REXML::Document.new
+            doc << doctype
+            # This isn't used.
+            doctype.parent.context[:prologue_quote] = :apostrophe
+            assert_equal("<!DOCTYPE root PUBLIC \"pub'\" 'root.dtd'>",
+                         doctype.to_s)
+          end
+        end
+
+        class TestSystemLiteral < self
+          def test_to_s
+            doctype = REXML::DocType.new(["root", "PUBLIC", "pub", "root.dtd"])
+            assert_equal("<!DOCTYPE root PUBLIC \"pub\" \"root.dtd\">",
+                         doctype.to_s)
+          end
+
+          def test_to_s_apostrophe
+            doctype = REXML::DocType.new(["root", "PUBLIC", "pub", "root.dtd"])
+            doc = REXML::Document.new
+            doc << doctype
+            doctype.parent.context[:prologue_quote] = :apostrophe
+            assert_equal("<!DOCTYPE root PUBLIC 'pub' 'root.dtd'>",
+                         doctype.to_s)
+          end
+
+          def test_to_s_apostrophe_include_apostrophe
+            doctype = REXML::DocType.new(["root", "PUBLIC", "pub", "root'.dtd"])
+            doc = REXML::Document.new
+            doc << doctype
+            # This isn't used.
+            doctype.parent.context[:prologue_quote] = :apostrophe
+            assert_equal("<!DOCTYPE root PUBLIC 'pub' \"root'.dtd\">",
+                         doctype.to_s)
+          end
+
+          def test_to_s_double_quote
+            doctype = REXML::DocType.new(["root", "PUBLIC", "pub", "root\".dtd"])
+            assert_equal("<!DOCTYPE root PUBLIC \"pub\" 'root\".dtd'>",
+                         doctype.to_s)
+          end
+        end
+      end
+    end
+  end
+
   class TestNotationDeclPublic < Test::Unit::TestCase
     def setup
       @name = "vrml"

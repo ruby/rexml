@@ -7,6 +7,44 @@ require_relative 'attlistdecl'
 require_relative 'xmltokens'
 
 module REXML
+  class ReferenceWriter
+    def initialize(id_type,
+                   public_id_literal,
+                   system_literal,
+                   context=nil)
+      @id_type = id_type
+      @public_id_literal = public_id_literal
+      @system_literal = system_literal
+      if context and context[:prologue_quote] == :apostrophe
+        @default_quote = "'"
+      else
+        @default_quote = "\""
+      end
+    end
+
+    def write(output)
+      output << " #{@id_type}"
+      if @public_id_literal
+        if @public_id_literal.include?("'")
+          quote = "\""
+        else
+          quote = @default_quote
+        end
+        output << " #{quote}#{@public_id_literal}#{quote}"
+      end
+      if @system_literal
+        if @system_literal.include?("'")
+          quote = "\""
+        elsif @system_literal.include?("\"")
+          quote = "'"
+        else
+          quote = @default_quote
+        end
+        output << " #{quote}#{@system_literal}#{quote}"
+      end
+    end
+  end
+
   # Represents an XML DOCTYPE declaration; that is, the contents of <!DOCTYPE
   # ... >.  DOCTYPES can be used to declare the DTD of a document, as well as
   # being used to declare entities used in the document.
@@ -110,19 +148,17 @@ module REXML
     #   Ignored
     def write( output, indent=0, transitive=false, ie_hack=false )
       f = REXML::Formatters::Default.new
-      c = context
-      if c and c[:prologue_quote] == :apostrophe
-        quote = "'"
-      else
-        quote = "\""
-      end
       indent( output, indent )
       output << START
       output << ' '
       output << @name
-      output << " #{@external_id}" if @external_id
-      output << " #{quote}#{@long_name}#{quote}" if @long_name
-      output << " #{quote}#{@uri}#{quote}" if @uri
+      if @external_id
+        reference_writer = ReferenceWriter.new(@external_id,
+                                               @long_name,
+                                               @uri,
+                                               context)
+        reference_writer.write(output)
+      end
       unless @children.empty?
         output << ' ['
         @children.each { |child|
@@ -252,32 +288,11 @@ module REXML
     end
 
     def to_s
-      c = nil
-      c = parent.context if parent
-      if c and c[:prologue_quote] == :apostrophe
-        default_quote = "'"
-      else
-        default_quote = "\""
-      end
-      notation = "<!NOTATION #{@name} #{@middle}"
-      if @public
-        if @public.include?("'")
-          quote = "\""
-        else
-          quote = default_quote
-        end
-        notation << " #{quote}#{@public}#{quote}"
-      end
-      if @system
-        if @system.include?("'")
-          quote = "\""
-        elsif @system.include?("\"")
-          quote = "'"
-        else
-          quote = default_quote
-        end
-        notation << " #{quote}#{@system}#{quote}"
-      end
+      context = nil
+      context = parent.context if parent
+      notation = "<!NOTATION #{@name}"
+      reference_writer = ReferenceWriter.new(@middle, @public, @system, context)
+      reference_writer.write(notation)
       notation << ">"
       notation
     end
