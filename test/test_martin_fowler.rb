@@ -16,12 +16,12 @@ module REXMLTests
 </paper>
 END
 
-    def initialize n
+    def setup
       @doc = REXML::Document.new(DOC)
       @figs = REXML::XPath.match(@doc,'//figure')
       @names = @figs.collect {|f| f.attributes['src']}
-      super
     end
+
     def test_fig1
       assert_equal 'fig1', @figs[0].attributes['src']
     end
