@@ -195,11 +195,9 @@ module REXML
         return [ :end_document ] if empty?
         return @stack.shift if @stack.size > 0
         #STDERR.puts @source.encoding
-        @source.read if @source.buffer.size<2
         #STDERR.puts "BUFFER = #{@source.buffer.inspect}"
         if @document_status == nil
-          #@source.consume( /^\s*/um )
-          word = @source.match( /^((?:\s+)|(?:<[^>]*>))/um )
+          word = @source.match( /\A((?:\s+)|(?:<[^>]*>))/um )
           word = word[1] unless word.nil?
           #STDERR.puts "WORD = #{word.inspect}"
           case word
@@ -257,18 +255,16 @@ module REXML
               @stack << [ :end_doctype ]
             end
             return args
-          when /^\s+/
+          when /\A\s+/
           else
             @document_status = :after_doctype
-            @source.read if @source.buffer.size<2
-            md = @source.match(/\s*/um, true)
             if @source.encoding == "UTF-8"
               @source.buffer.force_encoding(::Encoding::UTF_8)
             end
           end
         end
         if @document_status == :in_doctype
-          md = @source.match(/\s*(.*?>)/um)
+          md = @source.match(/\A\s*(.*?>)/um)
           case md[1]
           when SYSTEMENTITY
             match = @source.match( SYSTEMENTITY, true )[1]
@@ -349,7 +345,11 @@ module REXML
             return [ :end_doctype ]
           end
         end
+        if @document_status == :after_doctype
+          @source.match(/\A\s*/um, true)
+        end
         begin
+          @source.read if @source.buffer.size<2
           if @source.buffer[0] == ?<
             if @source.buffer[1] == ?/
               @nsstack.shift
@@ -392,6 +392,7 @@ module REXML
               unless md
                 raise REXML::ParseException.new("malformed XML: missing tag start", @source)
               end
+              @document_status = :in_element
               prefixes = Set.new
               prefixes << md[2] if md[2]
               @nsstack.unshift(curr_ns=Set.new)
