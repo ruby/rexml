@@ -1138,8 +1138,6 @@ module REXML
     #   e.delete_attribute('bar') # => <bar/>
     #   e.delete_attribute('bar') # => nil
     #
-    # TODO: Determine whether delete_attribute(attribute) actually works.
-    #
     def delete_attribute(key)
       attr = @attributes.get_attribute(key)
       attr.remove unless attr.nil?
