@@ -15,9 +15,256 @@ module REXML
   # context node and convert it back when we write it.
   @@namespaces = {}
 
-  # Represents a tagged XML element.  Elements are characterized by
-  # having children, attributes, and names, and can themselves be
-  # children.
+  # An \REXML::Element object represents an XML element.
+  #
+  # An element:
+  #
+  # - Has a name (string).
+  # - May have a parent (another element).
+  # - Has zero or more children (other elements, text, CDATA, and comments).
+  # - Has zero or more siblings (other elements, text, CDATA, and comments).
+  # - Has zero or more named attributes.
+  #
+  # === Name
+  #
+  # An element has a name, which is initially set when the element is created:
+  #
+  #   e = REXML::Element.new('foo')
+  #   e.name # => "foo"
+  #
+  # The name may be changed:
+  #
+  #   e.name = 'bar'
+  #   e.name # => "bar"
+  #
+  #
+  # === \Parent
+  #
+  # An element may have a parent.
+  #
+  # Its parent may be assigned explicitly when the element is created:
+  #
+  #   e0 = REXML::Element.new('foo')
+  #   e1 = REXML::Element.new('bar', e0)
+  #   e1.parent # => <foo> ... </>
+  #
+  # Note: the representation of an element always shows the element's name.
+  # If the element has children, the representation indicates that
+  # by including an ellipsis (<tt>...</tt>).
+  #
+  # The parent may be assigned explicitly at any time:
+  #
+  #   e2 = REXML::Element.new('baz')
+  #   e1.parent = e2
+  #   e1.parent # => <baz/>
+  #
+  # When an element is added as a child, its parent is set automatically:
+  #
+  #   e1.add_element(e0)
+  #   e0.parent # => <bar> ... </>
+  #
+  # For an element that has no parent, method +parent+ returns +nil+.
+  #
+  # === Children
+  #
+  # An element has zero or more children.
+  # The children are an ordered collection
+  # of all objects whose parent is the element itself.
+  #
+  # The children may include any combination of elements, text, comments,
+  # processing instructions, and CDATA.
+  # (This example keeps things clean by controlling whitespace
+  # via a +context+ setting.)
+  #
+  #    xml_string = <<-EOT
+  #    <root>
+  #      <ele_0/>
+  #      text 0
+  #      <!--comment 0-->
+  #      <?target_0 pi_0?>
+  #      <![CDATA[cdata 0]]>
+  #      <ele_1/>
+  #      text 1
+  #      <!--comment 1-->
+  #      <?target_0 pi_1?>
+  #      <![CDATA[cdata 1]]>
+  #    </root>
+  #    EOT
+  #    context = {ignore_whitespace_nodes: :all, compress_whitespace: :all}
+  #    d = REXML::Document.new(xml_string, context)
+  #    root = d.root
+  #    root.children.size # => 10
+  #    root.each {|child| p "#{child.class}: #{child}" }
+  #
+  # Output:
+  #
+  #   "REXML::Element: <ele_0/>"
+  #   "REXML::Text: \n text 0\n "
+  #   "REXML::Comment: comment 0"
+  #   "REXML::Instruction: <?target_0 pi_0?>"
+  #   "REXML::CData: cdata 0"
+  #   "REXML::Element: <ele_1/>"
+  #   "REXML::Text: \n text 1\n "
+  #   "REXML::Comment: comment 1"
+  #   "REXML::Instruction: <?target_0 pi_1?>"
+  #   "REXML::CData: cdata 1"
+  #
+  # A child may be added using inherited methods
+  # Parent#insert_before or Parent#insert_after:
+  #
+  #   xml_string = '<root><a/><c/><d/></root>'
+  #   d = REXML::Document.new(xml_string)
+  #   root = d.root
+  #   c = d.root[1] # => <c/>
+  #   root.insert_before(c, REXML::Element.new('b'))
+  #   root.to_a # => [<a/>, <b/>, <c/>, <d/>]
+  #
+  # A child may be replaced using Parent#replace_child:
+  #
+  #   root.replace_child(c, REXML::Element.new('x'))
+  #   root.to_a # => [<a/>, <b/>, <x/>, <d/>]
+  #
+  # A child may be removed using Parent#delete:
+  #
+  #   x = root[2] # => <x/>
+  #   root.delete(x)
+  #   root.to_a # => [<a/>, <b/>, <d/>]
+  #
+  # === Siblings
+  #
+  # An element has zero or more siblings,
+  # which are the other children of the element's parent.
+  #
+  # In the example above, element +ele_1+ is between a CDATA sibling
+  # and a text sibling:
+  #
+  #   ele_1 = root[5]        # => <ele_1/>
+  #   ele_1.previous_sibling # => "cdata 0"
+  #   ele_1.next_sibling     # => "\n text 1\n "
+  #
+  # === \Attributes
+  #
+  # An element has zero or more named attributes.
+  #
+  # A new element has no attributes:
+  #
+  #   e = REXML::Element.new('foo')
+  #   e.attributes      # => {}
+  #
+  # Attributes may be added:
+  #
+  #   e.add_attribute('bar', 'baz')
+  #   e.add_attribute('bat', 'bam')
+  #   e.attributes.size # => 2
+  #   e['bar']          # => "baz"
+  #   e['bat']          # => "bam"
+  #
+  # An existing attribute may be modified:
+  #
+  #   e.add_attribute('bar', 'bad')
+  #   e.attributes.size # => 2
+  #   e['bar']          # => "bad"
+  #
+  # An existing attribute may be deleted:
+  #
+  #   e.delete_attribute('bar')
+  #   e.attributes.size # => 1
+  #   e['bar']          # => nil
+  #
+  # == What's Here
+  #
+  # To begin with, what's elsewhere?
+  #
+  # \Class \REXML::Element inherits from its ancestor classes:
+  #
+  # - REXML::Child
+  # - REXML::Parent
+  #
+  # \REXML::Element itself and its ancestors also include modules:
+  #
+  # - {Enumerable}[https://docs.ruby-lang.org/en/master/Enumerable.html]
+  # - REXML::Namespace
+  # - REXML::Node
+  # - REXML::XMLTokens
+  #
+  # === Methods for Creating an \Element
+  #
+  # ::new:: Returns a new empty element.
+  # #clone:: Returns a clone of another element.
+  #
+  # === Methods for Attributes
+  #
+  # {[attribute_name]}[#method-i-5B-5D]:: Returns an attribute value.
+  # #add_attribute:: Adds a new attribute.
+  # #add_attributes:: Adds multiple new attributes.
+  # #attribute:: Returns the attribute value for a given name and optional namespace.
+  # #delete_attribute:: Removes an attribute.
+  #
+  # === Methods for Children
+  #
+  # {[index]}[#method-i-5B-5D]:: Returns the child at the given offset.
+  # #add_element:: Adds an element as the last child.
+  # #delete_element:: Deletes a child element.
+  # #each_element:: Calls the given block with each child element.
+  # #each_element_with_attribute:: Calls the given block with each child element
+  #                                that meets given criteria,
+  #                                which can include the attribute name.
+  # #each_element_with_text:: Calls the given block with each child element
+  #                           that meets given criteria,
+  #                           which can include text.
+  # #get_elements:: Returns an array of element children that match a given xpath.
+  #
+  # === Methods for \Text Children
+  #
+  # #add_text:: Adds a text node to the element.
+  # #get_text:: Returns a text node that meets specified criteria.
+  # #text:: Returns the text string from the first node that meets specified criteria.
+  # #texts:: Returns an array of the text children of the element.
+  # #text=:: Adds, removes, or replaces the first text child of the element
+  #
+  # === Methods for Other Children
+  #
+  # #cdatas:: Returns an array of the cdata children of the element.
+  # #comments:: Returns an array of the comment children of the element.
+  # #instructions:: Returns an array of the instruction children of the element.
+  #
+  # === Methods for Namespaces
+  #
+  # #add_namespace:: Adds a namespace to the element.
+  # #delete_namespace:: Removes a namespace from the element.
+  # #namespace:: Returns the string namespace URI for the element.
+  # #namespaces:: Returns a hash of all defined namespaces in the element.
+  # #prefixes:: Returns an array of the string prefixes (names)
+  #             of all defined namespaces in the element
+  #
+  # === Methods for Querying
+  #
+  # #document:: Returns the document, if any, that the element belongs to.
+  # #root:: Returns the most distant element (not document) ancestor of the element.
+  # #root_node:: Returns the most distant ancestor of the element.
+  # #xpath:: Returns the string xpath to the element
+  #          relative to the most distant parent
+  # #has_attributes?:: Returns whether the element has attributes.
+  # #has_elements?:: Returns whether the element has elements.
+  # #has_text?:: Returns whether the element has text.
+  # #next_element:: Returns the next sibling that is an element.
+  # #previous_element:: Returns the previous sibling that is an element.
+  # #raw:: Returns whether raw mode is set for the element.
+  # #whitespace:: Returns whether whitespace is respected for the element.
+  # #ignore_whitespace_nodes:: Returns whether whitespace nodes
+  #                            are to be ignored for the element.
+  # #node_type:: Returns symbol <tt>:element</tt>.
+  #
+  # === One More Method
+  #
+  # #inspect:: Returns a string representation of the element.
+  #
+  # === Accessors
+  #
+  # #elements:: Returns the REXML::Elements object for the element.
+  # #attributes:: Returns the REXML::Attributes object for the element.
+  # #context:: Returns or sets the context hash for the element.
+  #
   class Element < Parent
     include Namespace
 
