@@ -21,8 +21,10 @@ module REXML
   #
   # - Has a name (string).
   # - May have a parent (another element).
-  # - Has zero or more children (other elements, text, CDATA, and comments).
-  # - Has zero or more siblings (other elements, text, CDATA, and comments).
+  # - Has zero or more children
+  #   (other elements, text, CDATA, processing instructions, and comments).
+  # - Has zero or more siblings
+  #   (other elements, text, CDATA, processing instructions, and comments).
   # - Has zero or more named attributes.
   #
   # === Name
