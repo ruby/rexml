@@ -1,0 +1,143 @@
+== Class Element
+
+Class Element has methods from its superclasses and included modules;
+see:
+
+- {Tasks for Parent}[parent_rdoc.html].
+- {Tasks for Child}[child_rdoc.html].
+- {Tasks for Node}[node_rdoc.html].
+- {Module Enumerable}[https://docs.ruby-lang.org/en/master/Enumerable.html].
+
+:include: ../tocs/element_toc.rdoc
+
+=== New Element
+
+==== Task: Create a Default Element
+
+Use method REXML::Element.new with no arguments to create a default element:
+
+  e = REXML::Element.new
+  e.name    # => "UNDEFINED"
+  e.parent  # => nil
+  e.context # => nil
+
+==== Task: Create a Named Element
+
+Use method REXML::Element.new with a string name argument
+to create a named element:
+
+  e = REXML::Element.new('foo')
+  e.name    # => "foo"
+  e.parent  # => nil
+  e.context # => nil
+
+==== Task: Create an Element with Name and Parent
+
+Use method REXML::Element.new with name and parent arguments
+to create an element with name and parent:
+
+  p = REXML::Parent.new
+  e = REXML::Element.new('foo', p)
+  e.name    # => "foo"
+  e.parent  # => #<REXML::Parent @parent=nil, @children=[<foo/>]>
+  e.context # => nil
+
+==== Task: Create an Element with Name, Parent, and Context
+
+Use method REXML::Element.new with name, parent, and context arguments
+to create an element with name, parent, and context:
+
+  p = REXML::Parent.new
+  e = REXML::Element.new('foo', p, {compress_whitespace: :all})
+  e.name    # => "foo"
+  e.parent  # => #<REXML::Parent @parent=nil, @children=[<foo/>]>
+  e.context # => {:compress_whitespace=>:all}
+
+==== Task: Create a Shallow Clone
+
+Use method REXML#clone to create a shallow clone of an element,
+copying only the name, attributes, and context:
+
+  e0 = REXML::Element.new('foo', nil, {compress_whitespace: :all})
+  e0.add_attribute(REXML::Attribute.new('bar', 'baz'))
+  e0.context = {compress_whitespace: :all}
+  e1 = e0.clone # => <foo bar='baz'/>
+  e1.name # => "foo"
+  e1.context # => {:compress_whitespace=>:all}
+
+=== Attributes
+
+==== Task: Create and Add an Attribute
+
+Use
+#add_attribute
+
+==== Task: Add an Existing Attribute
+
+==== Task: Add Multiple Attributes from a Hash
+#add_attributes
+
+==== Task: Add Multiple Attributes from an Array
+
+==== Task: Retrieve the Attribute Value for a Name
+#[name]
+
+==== Task: Retrieve the Attribute Value for a Name and Namespace
+#attribute
+
+==== Task: Remove an Attribute
+#delete_attribute
+
+==== Task: Determine Whether the Element Has Attributes
+#has_attributes?
+
+=== Children
+
+#[index]
+#add_element
+#add_text
+#cdatas
+#comments
+#instructions
+#delete_element
+#get_elements
+#get_text
+#has_elements?
+#has_text?
+#next_element
+#previous_element
+#text
+#text=
+#cdatas
+#comments
+#instructions
+#texts
+
+=== Namespaces
+
+#add_namespace
+#delete_namespace
+#namespace
+#namespaces
+#prefixes
+
+=== Iteration
+
+#each_element
+#each_element_with_attribute
+#each_element_with_text
+
+=== Context
+
+#whitespace
+#ignore_whitespace_nodes
+#raw
+
+
+
+#document
+#node_type
+#root
+#root_node
+#xpath
+#inspect

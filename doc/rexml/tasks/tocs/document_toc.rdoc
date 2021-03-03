@@ -1,0 +1,18 @@
+Tasks on this page:
+
+- {New Document}[#label-New+Document]
+  - {Task: Create an Empty Document}[#label-Task-3A+Create+an+Empty+Document]
+  - {Task: Parse a String into a New Document}[#label-Task-3A+Parse+a+String+into+a+New+Document]
+  - {Task: Parse an IO Stream into a New Document}[#label-Task-3A+Parse+an+IO+Stream+into+a+New+Document]
+  - {Task: Create a Document from an Existing Document}[#label-Task-3A+Create+a+Document+from+an+Existing+Document]
+  - {Task: Clone a Document}[#label-Task-3A+Clone+a+Document]
+- {Document Type}[#label-Document+Type]
+  - {Task: Get the Document Type}[#label-Task-3A+Get+the+Document+Type]
+  - {Task: Set the Document Type}[#label-Task-3A+Set+the+Document+Type]
+- {XML Declaration}[#label-XML+Declaration]
+  - {Task: Get the XML Declaration}[#label-Task-3A+Get+the+XML+Declaration]
+  - {Task: Set the XML Declaration}[#label-Task-3A+Set+the+XML+Declaration]
+- {Children}[#label-Children]
+  - {Task: Add an Element Child}[#label-Task-3A+Add+an+Element+Child]
+  - {Task: Add a Non-Element Child}[#label-Task-3A+Add+a+Non-Element+Child]
+

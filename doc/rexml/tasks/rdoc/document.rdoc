@@ -1,0 +1,187 @@
+== Class Document
+
+:include: ../tocs/document_toc.rdoc
+
+=== New Document
+
+==== Task: Create an Empty Document
+
+Use method {Document::new}[../../../../REXML/Document.html#method-c-new]
+to create an empty document.
+
+  d = REXML::Document.new
+
+==== Task: Parse a \String into a New Document
+
+Use method {Document::new}[../../../../REXML/Document.html#method-c-new]
+to parse an XML string into a new document:
+
+  xml_string = '<root><a/>text<b/>more<c/></root>'
+  d = REXML::Document.new(xml_string)
+  d.root # => <root> ... </>
+
+==== Task: Parse an \IO Stream into a New Document
+
+Use method {Document::new}[../../../../REXML/Document.html#method-c-new]
+to parse an XML \IO stream into a new document:
+
+  xml_string = '<root><a/>text<b/>more<c/></root>'
+  File.write('t.xml', xml_string)
+  d = File.open('t.xml', 'r') do |file|
+    REXML::Document.new(file)
+  end
+  d.root # => <root> ... </>
+
+==== Task: Create a Document from an Existing Document
+
+Use method {Document::new}[../../../../REXML/Document.html#method-c-new]
+to create a document from an existing document.
+The context and attributes are copied to the new document,
+but not the children:
+
+  xml_string = '<root><a/>text<b/>more<c/></root>'
+  d = REXML::Document.new(xml_string)
+  d.children    # => [<root> ... </>]
+  d.context = {raw: :all, compress_whitespace: :all}
+  d.add_attributes({'bar' => 0, 'baz' => 1})
+  d1 = REXML::Document.new(d)
+  d1.context    # => {:raw=>:all, :compress_whitespace=>:all}
+  d1.attributes # => {"bar"=>bar='0', "baz"=>baz='1'}
+  d1.children   # => []
+
+==== Task: Clone a Document
+
+Use method {Document#clone}[../../../../REXML/Document.html#method-i-clone]
+to clone a document.
+The context and attributes are copied to the new document,
+but not the children:
+
+  xml_string = '<root><a/>text<b/>more<c/></root>'
+  d = REXML::Document.new(xml_string)
+  d.children    # => [<root> ... </>]
+  d.context = {raw: :all, compress_whitespace: :all}
+  d.add_attributes({'bar' => 0, 'baz' => 1})
+  d1 = d.clone  # => < bar='0' baz='1'/>
+  d1.context    # => {:raw=>:all, :compress_whitespace=>:all}
+  d1.attributes # => {"bar"=>bar='0', "baz"=>baz='1'}
+  d1.children   # => []
+
+=== Document Type
+
+==== Task: Get the Document Type
+
+Use method {Document#doctype}[../../../../REXML/Document.html#method-i-doctype]
+to get the document type:
+
+  d = REXML::Document.new('<!DOCTYPE document SYSTEM "subjects.dtd">')
+  d.doctype.class # => REXML::DocType
+  d = REXML::Document.new('')
+  d.doctype.class # => nil
+
+==== Task: Set the Document Type
+
+Use method {Document.add}[../../../../REXML/Document.html#method-i-add]
+to add or replace the document type:
+
+  d = REXML::Document.new('')
+  d.doctype.class # => nil
+  d.add(REXML::DocType.new('foo'))
+  d.doctype.class # => REXML::DocType
+
+=== XML Declaration
+
+==== Task: Get the XML Declaration
+
+Use method {Document.xml_decl}[../../../../REXML/Document.html#method-i-xml_decl]
+to get the XML declaration:
+
+  d = REXML::Document.new('<!DOCTYPE document SYSTEM "subjects.dtd">')
+  d.xml_decl.class # => REXML::XMLDecl
+  d.xml_decl       # => <?xml ... ?>
+  d = REXML::Document.new('')
+  d.xml_decl.class # => REXML::XMLDecl
+  d.xml_decl       # => <?xml ... ?>
+
+==== Task: Set the XML Declaration
+
+Use method {Document.add}[../../../../REXML/Document.html#method-i-add]
+to replace the XML declaration:
+
+  d = REXML::Document.new('<!DOCTYPE document SYSTEM "subjects.dtd">')
+  d.add(REXML::XMLDecl.new)
+
+=== Children
+
+==== Task: Add an Element Child
+
+Use method
+{Document.add_element}[../../../../REXML/Document.html#method-i-add_element]
+to add an element to the document:
+
+  d = REXML::Document.new('')
+  d.add_element(REXML::Element.new('root'))
+  d.children # => [<root/>]
+
+==== Task: Add a Non-Element Child
+
+Use method
+{Document.add}[../../../../REXML/Document.html#method-i-add]
+to add a non-element to the document:
+
+  xml_string = '<root><a/>text<b/>more<c/></root>'
+  d = REXML::Document.new(xml_string)
+  d.add(REXML::Text.new('foo'))
+  d.children # => [<root> ... </>, "foo"]
+
+=== Writing
+
+==== Task: Write to $stdout
+
+==== Task: Write to File
+
+==== Task: Write to IO Stream
+
+==== Task: Write All on One Line
+
+==== Task: Write with No Indentation
+
+==== Task: Write with Specified Indentation
+
+==== Task: Write Preserving Text Whitespace
+
+==== Task: Write with IE Hack
+
+==== Task: Write with Specified Encoding
+
+write(output=$stdout, indent=-1, transtive=false, ie_hack=false, encoding=nil)
+write(options={:output => $stdout, :indent => -1, :transtive => false, :ie_hack => false, :encoding → nil})
+
+=== Querying
+
+==== Task: Get the Document
+
+document
+
+==== Task: Get the Encoding
+
+encoding → encoding_string
+
+==== Task: Get the Expanded Name
+
+expanded_name -> empty_string
+
+==== Task: Get the Node Type
+
+node_type → :document
+
+==== Task: Get the Root Element
+
+root → root_element or nil
+
+==== Task: Determine Whether Stand-Alone
+
+stand_alone?
+
+==== Task: Get the Version
+
+version → version_string
