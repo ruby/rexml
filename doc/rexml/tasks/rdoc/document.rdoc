@@ -80,7 +80,7 @@ to get the document type:
 
 ==== Task: Set the Document Type
 
-Use method {Document.add}[../../../../REXML/Document.html#method-i-add]
+Use method {document#add}[../../../../REXML/Document.html#method-i-add]
 to add or replace the document type:
 
   d = REXML::Document.new('')
@@ -92,7 +92,7 @@ to add or replace the document type:
 
 ==== Task: Get the XML Declaration
 
-Use method {Document.xml_decl}[../../../../REXML/Document.html#method-i-xml_decl]
+Use method {document#xml_decl}[../../../../REXML/Document.html#method-i-xml_decl]
 to get the XML declaration:
 
   d = REXML::Document.new('<!DOCTYPE document SYSTEM "subjects.dtd">')
@@ -104,7 +104,7 @@ to get the XML declaration:
 
 ==== Task: Set the XML Declaration
 
-Use method {Document.add}[../../../../REXML/Document.html#method-i-add]
+Use method {document#add}[../../../../REXML/Document.html#method-i-add]
 to replace the XML declaration:
 
   d = REXML::Document.new('<!DOCTYPE document SYSTEM "subjects.dtd">')
@@ -115,7 +115,7 @@ to replace the XML declaration:
 ==== Task: Add an Element Child
 
 Use method
-{Document.add_element}[../../../../REXML/Document.html#method-i-add_element]
+{document#add_element}[../../../../REXML/Document.html#method-i-add_element]
 to add an element to the document:
 
   d = REXML::Document.new('')
@@ -125,7 +125,7 @@ to add an element to the document:
 ==== Task: Add a Non-Element Child
 
 Use method
-{Document.add}[../../../../REXML/Document.html#method-i-add]
+{document#add}[../../../../REXML/Document.html#method-i-add]
 to add a non-element to the document:
 
   xml_string = '<root><a/>text<b/>more<c/></root>'
@@ -137,51 +137,131 @@ to add a non-element to the document:
 
 ==== Task: Write to $stdout
 
-==== Task: Write to File
+Use method
+{document#write}[../../../../REXML/Document.html#method-i-write]
+to write the document to <tt>$stdout</tt>:
+
+  xml_string = '<root><a/>text<b/>more<c/></root>'
+  d = REXML::Document.new(xml_string)
+  d.write
+
+Output:
+
+  <root><a/>text<b/>more<c/></root>
 
 ==== Task: Write to IO Stream
 
-==== Task: Write All on One Line
+Use method
+{document#write}[../../../../REXML/Document.html#method-i-write]
+to write the document to <tt>$stdout</tt>:
+
+  xml_string = '<root><a/>text<b/>more<c/></root>'
+  d = REXML::Document.new(xml_string)
+  File.open('t.xml', 'w') do |file|
+    d.write(file)
+  end
+  p File.read('t.xml')
+
+Output:
+
+  "<root><a/>text<b/>more<c/></root>"
 
 ==== Task: Write with No Indentation
 
+Use method
+{document#write}[../../../../REXML/Document.html#method-i-write]
+to write the document with no indentation:
+
+  xml_string = '<root><a><b><c></c></b></a></root>'
+  d = REXML::Document.new(xml_string)
+  d.write({indent: 0})
+
+Output:
+
+  <root>
+  <a>
+  <b>
+  <c/>
+  </b>
+  </a>
+  </root>
+
 ==== Task: Write with Specified Indentation
 
-==== Task: Write Preserving Text Whitespace
+Use method
+{document#write}[../../../../REXML/Document.html#method-i-write]
+to write the document with a specified indentation:
 
-==== Task: Write with IE Hack
+  xml_string = '<root><a><b><c></c></b></a></root>'
+  d = REXML::Document.new(xml_string)
+  d.write({indent: 2})
 
-==== Task: Write with Specified Encoding
+Output:
 
-write(output=$stdout, indent=-1, transtive=false, ie_hack=false, encoding=nil)
-write(options={:output => $stdout, :indent => -1, :transtive => false, :ie_hack => false, :encoding → nil})
+  <root>
+    <a>
+      <b>
+        <c/>
+      </b>
+    </a>
+  </root>
 
 === Querying
 
 ==== Task: Get the Document
 
-document
+Use method
+{document#document}[../../../../REXML/Document.html#method-i-document]
+to get the document (+self+); overrides <tt>Element#document</tt>:
+
+  xml_string = '<root><a><b><c></c></b></a></root>'
+  d = REXML::Document.new(xml_string)
+  d.document == d # => true
 
 ==== Task: Get the Encoding
 
-encoding → encoding_string
+Use method
+{document#document}[../../../../REXML/Document.html#method-i-document]
+to get the document (+self+); overrides <tt>Element#document</tt>:
 
-==== Task: Get the Expanded Name
-
-expanded_name -> empty_string
+  xml_string = '<root><a><b><c></c></b></a></root>'
+  d = REXML::Document.new(xml_string)
+  d.encoding # => "UTF-8"
 
 ==== Task: Get the Node Type
 
-node_type → :document
+Use method
+{document#node_type}[../../../../REXML/Document.html#method-i-node_type]
+to get the node type (+:document+); overrides <tt>Element#node_type</tt>:
+
+  xml_string = '<root><a><b><c></c></b></a></root>'
+  d = REXML::Document.new(xml_string)
+  d.node_type # => :document
 
 ==== Task: Get the Root Element
 
-root → root_element or nil
+Use method
+{document#root}[../../../../REXML/Document.html#method-i-root]
+to get the root element:
+
+  xml_string = '<root><a><b><c></c></b></a></root>'
+  d = REXML::Document.new(xml_string)
+  d.root # => <root> ... </>
 
 ==== Task: Determine Whether Stand-Alone
 
-stand_alone?
+Use method
+{document#stand_alone?}[../../../../REXML/Document.html#method-i-stand_alone-3F]
+to get the stand-alone value:
+
+  d = REXML::Document.new('<?xml standalone="yes"?>')
+  d.stand_alone? # => "yes"
 
 ==== Task: Get the Version
 
-version → version_string
+Use method
+{document#version}[../../../../REXML/Document.html#method-i-version]
+to get the version:
+
+  d = REXML::Document.new('<?xml version="2.0" encoding="UTF-8"?>')
+  d.version # => "2.0"
