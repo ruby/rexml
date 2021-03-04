@@ -33,8 +33,12 @@ Dir.chdir(File.dirname(__FILE__)) do
   File.open('tocs/master_toc.rdoc', 'w') do |master_toc_file|
     master_toc_file.write("== Table of Contents\n\n")
     Dir.chdir('tocs') do
+      entries = Dir.entries('.')
+      entries.delete_if {|entry| entry.start_with?('.') }
+      entries.delete_if {|entry| entry == 'master_toc.rdoc' }
       toc_lis_by_name.each_pair do |name, lis|
         toc_file_name = name + '_toc.rdoc'
+        entries.delete(toc_file_name)
         File.open(toc_file_name, 'w') do |class_file|
           class_file.write("Tasks on this page:\n\n")
           lis.each_with_index do |li, i|
@@ -46,7 +50,6 @@ Dir.chdir(File.dirname(__FILE__)) do
             if i == 0
               text = text.split(' ')[1]
               link = "../../tasks/rdoc/#{text.downcase}_rdoc.html"
-              p link
               master_toc_file.write("=== {#{text}}[#{link}]\n")
               next
             end
@@ -58,6 +61,10 @@ Dir.chdir(File.dirname(__FILE__)) do
           master_toc_file.write("\n")
           class_file.write("\n")
         end
+      end
+      unless entries.empty?
+        message = "Some entries not updated: #{entries}"
+        fail message
       end
     end
   end
