@@ -14,7 +14,9 @@ see:
 
 ==== Task: Create a Default Element
 
-Use method REXML::Element.new with no arguments to create a default element:
+Use method
+{Element::new}[../../../../REXML/Element.html#method-c-new]
+with no arguments to create a default element:
 
   e = REXML::Element.new
   e.name    # => "UNDEFINED"
@@ -23,7 +25,9 @@ Use method REXML::Element.new with no arguments to create a default element:
 
 ==== Task: Create a Named Element
 
-Use method REXML::Element.new with a string name argument
+Use method
+{Element::new}[../../../../REXML/Element.html#method-c-new]
+with a string name argument
 to create a named element:
 
   e = REXML::Element.new('foo')
@@ -33,7 +37,9 @@ to create a named element:
 
 ==== Task: Create an Element with Name and Parent
 
-Use method REXML::Element.new with name and parent arguments
+Use method
+{Element::new}[../../../../REXML/Element.html#method-c-new]
+with name and parent arguments
 to create an element with name and parent:
 
   p = REXML::Parent.new
@@ -44,7 +50,9 @@ to create an element with name and parent:
 
 ==== Task: Create an Element with Name, Parent, and Context
 
-Use method REXML::Element.new with name, parent, and context arguments
+Use method
+{Element::new}[../../../../REXML/Element.html#method-c-new]
+with name, parent, and context arguments
 to create an element with name, parent, and context:
 
   p = REXML::Parent.new
@@ -55,7 +63,9 @@ to create an element with name, parent, and context:
 
 ==== Task: Create a Shallow Clone
 
-Use method REXML#clone to create a shallow clone of an element,
+Use method
+{Element#clone}[../../../../REXML/Element.html#method-i-clone]
+to create a shallow clone of an element,
 copying only the name, attributes, and context:
 
   e0 = REXML::Element.new('foo', nil, {compress_whitespace: :all})
@@ -69,27 +79,98 @@ copying only the name, attributes, and context:
 
 ==== Task: Create and Add an Attribute
 
-Use
-#add_attribute
+Use method
+{Element#add_attribute}[../../../../REXML/Element.html#method-i-add_attribute]
+to create and add an attribute:
+
+  e = REXML::Element.new
+  e.add_attribute('attr', 'value') # => "value"
+  e['attr'] # => "value"
+  e.add_attribute('attr', 'VALUE') # => "VALUE"
+  e['attr'] # => "VALUE"
 
 ==== Task: Add an Existing Attribute
 
+Use method
+{Element#add_attribute}[../../../../REXML/Element.html#method-i-add_attribute]
+to add an existing attribute:
+
+  e = REXML::Element.new
+  a = REXML::Attribute.new('attr', 'value')
+  e.add_attribute(a)
+  e['attr'] # => "value"
+  a = REXML::Attribute.new('attr', 'VALUE')
+  e.add_attribute(a)
+  e['attr'] # => "VALUE"
+
 ==== Task: Add Multiple Attributes from a Hash
-#add_attributes
+
+Use method
+{Element#add_attributes}[../../../../REXML/Element.html#method-i-add_attributes]
+to add multiple attributes from a hash:
+
+  e = REXML::Element.new
+  h = {'foo' => 0, 'bar' => 1}
+  e.add_attributes(h)
+  e['foo'] # => "0"
+  e['bar'] # => "1"
 
 ==== Task: Add Multiple Attributes from an Array
 
-==== Task: Retrieve the Attribute Value for a Name
-#[name]
+Use method
+{Element#add_attributes}[../../../../REXML/Element.html#method-i-add_attributes]
+to add multiple attributes from an array:
+
+  e = REXML::Element.new
+  a = [['foo', 0], ['bar', 1]]
+  e.add_attributes(a)
+  e['foo'] # => "0"
+  e['bar'] # => "1"
+
+==== Task: Retrieve the Value for aa Attribute Name
+
+Use method
+{Element#[]}[../../../../REXML/Element.html#method-i-5B-5D]
+to retrieve the value for an attribute name:
+
+  e = REXML::Element.new
+  e.add_attribute('attr', 'value') # => "value"
+  e['attr'] # => "value"
 
 ==== Task: Retrieve the Attribute Value for a Name and Namespace
-#attribute
 
-==== Task: Remove an Attribute
-#delete_attribute
+Use method
+{Element#attribute}[../../../../REXML/Element.html#method-i-attribute]
+to retrieve the value for an attribute name:
+
+  xml_string = "<root xmlns:a='a' a:x='a:x' x='x'/>"
+  d = REXML::Document.new(xml_string)
+  e = d.root
+  e.attribute("x")      # => x='x'
+  e.attribute("x", "a") # => a:x='a:x'
+
+==== Task: Delete an Attribute
+
+Use method
+{Element#delete_attribute}[../../../../REXML/Element.html#method-i-delete_attribute]
+to remove an attribute:
+
+  e = REXML::Element.new('foo')
+  e.add_attribute('bar', 'baz')
+  e.delete_attribute('bar')
+  e.delete_attribute('bar')
+  e['bar'] # => nil
 
 ==== Task: Determine Whether the Element Has Attributes
-#has_attributes?
+
+Use method
+{Element#has_attributes?}[../../../../REXML/Element.html#method-i-has_attributes-3F]
+to determine whether the element has attributes:
+
+  e = REXML::Element.new('foo')
+  e.has_attributes? # => false
+  e.add_attribute('bar', 'baz')
+  e.has_attributes? # => true
 
 === Children
 
