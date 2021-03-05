@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>document - RDoc Documentation</title>
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "../../../../";
+  var index_rel_prefix = "../../../../";
+</script>
+
+<script src="../../../../js/navigation.js" defer></script>
+<script src="../../../../js/search.js" defer></script>
+<script src="../../../../js/search_index.js" defer></script>
+<script src="../../../../js/searcher.js" defer></script>
+<script src="../../../../js/darkfish.js" defer></script>
+
+<link href="../../../../css/fonts.css" rel="stylesheet">
+<link href="../../../../css/rdoc.css" rel="stylesheet">
+
+
+<body id="top" role="document" class="file">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="../../../../index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="../../../../table_of_contents.html#pages">Pages</a>
+    <a href="../../../../table_of_contents.html#classes">Classes</a>
+    <a href="../../../../table_of_contents.html#methods">Methods</a>
+  </div>
+</div>
+
+    <div id="search-section" role="search" class="project-section initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search" spellcheck="false"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </div>
+
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
+  </form>
+</div>
+
+  </div>
+
+  
+<div class="nav-section">
+  <h3>Table of Contents</h3>
+
+  <ul class="link-list" role="directory">
+    <li><a href="#label-Class+Document">Class Document</a>
+    <li><a href="#label-New+Document">New Document</a>
+    <li><a href="#label-Task-3A+Create+an+Empty+Document">Task: Create an Empty Document</a>
+    <li><a href="#label-Task-3A+Parse+a+String+into+a+New+Document">Task: Parse a String into a New Document</a>
+    <li><a href="#label-Task-3A+Parse+an+IO+Stream+into+a+New+Document">Task: Parse an IO Stream into a New Document</a>
+    <li><a href="#label-Task-3A+Create+a+Document+from+an+Existing+Document">Task: Create a Document from an Existing Document</a>
+    <li><a href="#label-Task-3A+Clone+a+Document">Task: Clone a Document</a>
+    <li><a href="#label-Document+Type">Document Type</a>
+    <li><a href="#label-Task-3A+Get+the+Document+Type">Task: Get the Document Type</a>
+    <li><a href="#label-Task-3A+Set+the+Document+Type">Task: Set the Document Type</a>
+    <li><a href="#label-XML+Declaration">XML Declaration</a>
+    <li><a href="#label-Task-3A+Get+the+XML+Declaration">Task: Get the XML Declaration</a>
+    <li><a href="#label-Task-3A+Set+the+XML+Declaration">Task: Set the XML Declaration</a>
+    <li><a href="#label-Children">Children</a>
+    <li><a href="#label-Task-3A+Add+an+Element+Child">Task: Add an Element Child</a>
+    <li><a href="#label-Task-3A+Add+a+Non-Element+Child">Task: Add a Non-Element Child</a>
+    <li><a href="#label-Writing">Writing</a>
+    <li><a href="#label-Task-3A+Write+to+-24stdout">Task: Write to $stdout</a>
+    <li><a href="#label-Task-3A+Write+to+IO+Stream">Task: Write to IO Stream</a>
+    <li><a href="#label-Task-3A+Write+with+No+Indentation">Task: Write with No Indentation</a>
+    <li><a href="#label-Task-3A+Write+with+Specified+Indentation">Task: Write with Specified Indentation</a>
+    <li><a href="#label-Querying">Querying</a>
+    <li><a href="#label-Task-3A+Get+the+Document">Task: Get the Document</a>
+    <li><a href="#label-Task-3A+Get+the+Encoding">Task: Get the Encoding</a>
+    <li><a href="#label-Task-3A+Get+the+Node+Type">Task: Get the Node Type</a>
+    <li><a href="#label-Task-3A+Get+the+Root+Element">Task: Get the Root Element</a>
+    <li><a href="#label-Task-3A+Determine+Whether+Stand-Alone">Task: Determine Whether Stand-Alone</a>
+    <li><a href="#label-Task-3A+Get+the+Version">Task: Get the Version</a>
+  </ul>
+</div>
+
+
+  <div id="project-metadata">
+    
+<div id="fileindex-section" class="nav-section">
+  <h3>Pages</h3>
+
+  <ul class="link-list">
+    <li><a href="../../../../doc/rexml/context_rdoc.html">context</a>
+    <li><a href="../../../../doc/rexml/tasks/rdoc/child_rdoc.html">child</a>
+    <li><a href="../../../../doc/rexml/tasks/rdoc/document_rdoc.html">document</a>
+    <li><a href="../../../../doc/rexml/tasks/rdoc/element_rdoc.html">element</a>
+    <li><a href="../../../../doc/rexml/tasks/rdoc/node_rdoc.html">node</a>
+    <li><a href="../../../../doc/rexml/tasks/rdoc/parent_rdoc.html">parent</a>
+    <li><a href="../../../../doc/rexml/tasks/tocs/child_toc_rdoc.html">child_toc</a>
+    <li><a href="../../../../doc/rexml/tasks/tocs/document_toc_rdoc.html">document_toc</a>
+    <li><a href="../../../../doc/rexml/tasks/tocs/element_toc_rdoc.html">element_toc</a>
+    <li><a href="../../../../doc/rexml/tasks/tocs/master_toc_rdoc.html">master_toc</a>
+    <li><a href="../../../../doc/rexml/tasks/tocs/node_toc_rdoc.html">node_toc</a>
+    <li><a href="../../../../doc/rexml/tasks/tocs/parent_toc_rdoc.html">parent_toc</a>
+  </ul>
+</div>
+
+  </div>
+</nav>
+
+<main role="main" aria-label="Page doc/rexml/tasks/rdoc/document.rdoc">
+
+<h2 id="label-Class+Document">Class Document<span><a href="#label-Class+Document">&para;</a> <a href="#top">&uarr;</a></span></h2>
+
+<p>Tasks on this page:</p>
+<ul><li>
+<p><a href="#label-New+Document">New Document</a></p>
+<ul><li>
+<p><a href="#label-Task-3A+Create+an+Empty+Document">Task: Create an Empty Document</a></p>
+</li><li>
+<p><a href="#label-Task-3A+Parse+a+String+into+a+New+Document">Task: Parse a String into a New Document</a></p>
+</li><li>
+<p><a href="#label-Task-3A+Parse+an+IO+Stream+into+a+New+Document">Task: Parse an IO Stream into a New Document</a></p>
+</li><li>
+<p><a href="#label-Task-3A+Create+a+Document+from+an+Existing+Document">Task: Create a Document from an Existing Document</a></p>
+</li><li>
+<p><a href="#label-Task-3A+Clone+a+Document">Task: Clone a Document</a></p>
+</li></ul>
+</li><li>
+<p><a href="#label-Document+Type">Document Type</a></p>
+<ul><li>
+<p><a href="#label-Task-3A+Get+the+Document+Type">Task: Get the Document Type</a></p>
+</li><li>
+<p><a href="#label-Task-3A+Set+the+Document+Type">Task: Set the Document Type</a></p>
+</li></ul>
+</li><li>
+<p><a href="#label-XML+Declaration">XML Declaration</a></p>
+<ul><li>
+<p><a href="#label-Task-3A+Get+the+XML+Declaration">Task: Get the XML Declaration</a></p>
+</li><li>
+<p><a href="#label-Task-3A+Set+the+XML+Declaration">Task: Set the XML Declaration</a></p>
+</li></ul>
+</li><li>
+<p><a href="#label-Children">Children</a></p>
+<ul><li>
+<p><a href="#label-Task-3A+Add+an+Element+Child">Task: Add an Element Child</a></p>
+</li><li>
+<p><a href="#label-Task-3A+Add+a+Non-Element+Child">Task: Add a Non-Element Child</a></p>
+</li></ul>
+</li><li>
+<p><a href="#label-Writing">Writing</a></p>
+<ul><li>
+<p><a href="#label-Task-3A+Write+to+-24stdout">Task: Write to $stdout</a></p>
+</li><li>
+<p><a href="#label-Task-3A+Write+to+IO+Stream">Task: Write to IO Stream</a></p>
+</li><li>
+<p><a href="#label-Task-3A+Write+with+No+Indentation">Task: Write with No Indentation</a></p>
+</li><li>
+<p><a href="#label-Task-3A+Write+with+Specified+Indentation">Task: Write with Specified Indentation</a></p>
+</li></ul>
+</li><li>
+<p><a href="#label-Querying">Querying</a></p>
+<ul><li>
+<p><a href="#label-Task-3A+Get+the+Document">Task: Get the Document</a></p>
+</li><li>
+<p><a href="#label-Task-3A+Get+the+Encoding">Task: Get the Encoding</a></p>
+</li><li>
+<p><a href="#label-Task-3A+Get+the+Node+Type">Task: Get the Node Type</a></p>
+</li><li>
+<p><a href="#label-Task-3A+Get+the+Root+Element">Task: Get the Root Element</a></p>
+</li><li>
+<p><a href="#label-Task-3A+Determine+Whether+Stand-Alone">Task: Determine Whether Stand-Alone</a></p>
+</li><li>
+<p><a href="#label-Task-3A+Get+the+Version">Task: Get the Version</a></p>
+</li></ul>
+</li></ul>
+
+<h3 id="label-New+Document">New Document<span><a href="#label-New+Document">&para;</a> <a href="#top">&uarr;</a></span></h3>
+
+<h4 id="label-Task-3A+Create+an+Empty+Document">Task: Create an Empty Document<span><a href="#label-Task-3A+Create+an+Empty+Document">&para;</a> <a href="#top">&uarr;</a></span></h4>
+
+<p>Use method <a href="../../../../REXML/Document.html#method-c-new">Document::new</a> to create an empty document.</p>
+
+<pre class="ruby"><span class="ruby-identifier">d</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span>
+</pre>
+
+<h4 id="label-Task-3A+Parse+a+String+into+a+New+Document">Task: Parse a String into a New Document<span><a href="#label-Task-3A+Parse+a+String+into+a+New+Document">&para;</a> <a href="#top">&uarr;</a></span></h4>
+
+<p>Use method <a href="../../../../REXML/Document.html#method-c-new">Document::new</a> to parse an XML string into a new document:</p>
+
+<pre class="ruby"><span class="ruby-identifier">xml_string</span> = <span class="ruby-string">&#39;&lt;root&gt;&lt;a/&gt;text&lt;b/&gt;more&lt;c/&gt;&lt;/root&gt;&#39;</span>
+<span class="ruby-identifier">d</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">xml_string</span>)
+<span class="ruby-identifier">d</span>.<span class="ruby-identifier">root</span> <span class="ruby-comment"># =&gt; &lt;root&gt; ... &lt;/&gt;</span>
+</pre>
+
+<h4 id="label-Task-3A+Parse+an+IO+Stream+into+a+New+Document">Task: Parse an IO Stream into a New Document<span><a href="#label-Task-3A+Parse+an+IO+Stream+into+a+New+Document">&para;</a> <a href="#top">&uarr;</a></span></h4>
+
+<p>Use method <a href="../../../../REXML/Document.html#method-c-new">Document::new</a> to parse an XML IO stream into a new document:</p>
+
+<pre class="ruby"><span class="ruby-identifier">xml_string</span> = <span class="ruby-string">&#39;&lt;root&gt;&lt;a/&gt;text&lt;b/&gt;more&lt;c/&gt;&lt;/root&gt;&#39;</span>
+<span class="ruby-constant">File</span>.<span class="ruby-identifier">write</span>(<span class="ruby-string">&#39;t.xml&#39;</span>, <span class="ruby-identifier">xml_string</span>)
+<span class="ruby-identifier">d</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">open</span>(<span class="ruby-string">&#39;t.xml&#39;</span>, <span class="ruby-string">&#39;r&#39;</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">file</span><span class="ruby-operator">|</span>
+  <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">file</span>)
+<span class="ruby-keyword">end</span>
+<span class="ruby-identifier">d</span>.<span class="ruby-identifier">root</span> <span class="ruby-comment"># =&gt; &lt;root&gt; ... &lt;/&gt;</span>
+</pre>
+
+<h4 id="label-Task-3A+Create+a+Document+from+an+Existing+Document">Task: Create a Document from an Existing Document<span><a href="#label-Task-3A+Create+a+Document+from+an+Existing+Document">&para;</a> <a href="#top">&uarr;</a></span></h4>
+
+<p>Use method <a href="../../../../REXML/Document.html#method-c-new">Document::new</a> to create a document from an existing document. The context and attributes are copied to the new document, but not the children:</p>
+
+<pre class="ruby"><span class="ruby-identifier">xml_string</span> = <span class="ruby-string">&#39;&lt;root&gt;&lt;a/&gt;text&lt;b/&gt;more&lt;c/&gt;&lt;/root&gt;&#39;</span>
+<span class="ruby-identifier">d</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">xml_string</span>)
+<span class="ruby-identifier">d</span>.<span class="ruby-identifier">children</span>    <span class="ruby-comment"># =&gt; [&lt;root&gt; ... &lt;/&gt;]</span>
+<span class="ruby-identifier">d</span>.<span class="ruby-identifier">context</span> = {<span class="ruby-value">raw:</span> <span class="ruby-value">:all</span>, <span class="ruby-value">compress_whitespace:</span> <span class="ruby-value">:all</span>}
+<span class="ruby-identifier">d</span>.<span class="ruby-identifier">add_attributes</span>({<span class="ruby-string">&#39;bar&#39;</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-value">0</span>, <span class="ruby-string">&#39;baz&#39;</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-value">1</span>})
+<span class="ruby-identifier">d1</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">d</span>)
+<span class="ruby-identifier">d1</span>.<span class="ruby-identifier">context</span>    <span class="ruby-comment"># =&gt; {:raw=&gt;:all, :compress_whitespace=&gt;:all}</span>
+<span class="ruby-identifier">d1</span>.<span class="ruby-identifier">attributes</span> <span class="ruby-comment"># =&gt; {&quot;bar&quot;=&gt;bar=&#39;0&#39;, &quot;baz&quot;=&gt;baz=&#39;1&#39;}</span>
+<span class="ruby-identifier">d1</span>.<span class="ruby-identifier">children</span>   <span class="ruby-comment"># =&gt; []</span>
+</pre>
+
+<h4 id="label-Task-3A+Clone+a+Document">Task: Clone a Document<span><a href="#label-Task-3A+Clone+a+Document">&para;</a> <a href="#top">&uarr;</a></span></h4>
+
+<p>Use method <a href="../../../../REXML/Document.html#method-i-clone">Document#clone</a> to clone a document. The context and attributes are copied to the new document, but not the children:</p>
+
+<pre class="ruby"><span class="ruby-identifier">xml_string</span> = <span class="ruby-string">&#39;&lt;root&gt;&lt;a/&gt;text&lt;b/&gt;more&lt;c/&gt;&lt;/root&gt;&#39;</span>
+<span class="ruby-identifier">d</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">xml_string</span>)
+<span class="ruby-identifier">d</span>.<span class="ruby-identifier">children</span>    <span class="ruby-comment"># =&gt; [&lt;root&gt; ... &lt;/&gt;]</span>
+<span class="ruby-identifier">d</span>.<span class="ruby-identifier">context</span> = {<span class="ruby-value">raw:</span> <span class="ruby-value">:all</span>, <span class="ruby-value">compress_whitespace:</span> <span class="ruby-value">:all</span>}
+<span class="ruby-identifier">d</span>.<span class="ruby-identifier">add_attributes</span>({<span class="ruby-string">&#39;bar&#39;</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-value">0</span>, <span class="ruby-string">&#39;baz&#39;</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-value">1</span>})
+<span class="ruby-identifier">d1</span> = <span class="ruby-identifier">d</span>.<span class="ruby-identifier">clone</span>  <span class="ruby-comment"># =&gt; &lt; bar=&#39;0&#39; baz=&#39;1&#39;/&gt;</span>
+<span class="ruby-identifier">d1</span>.<span class="ruby-identifier">context</span>    <span class="ruby-comment"># =&gt; {:raw=&gt;:all, :compress_whitespace=&gt;:all}</span>
+<span class="ruby-identifier">d1</span>.<span class="ruby-identifier">attributes</span> <span class="ruby-comment"># =&gt; {&quot;bar&quot;=&gt;bar=&#39;0&#39;, &quot;baz&quot;=&gt;baz=&#39;1&#39;}</span>
+<span class="ruby-identifier">d1</span>.<span class="ruby-identifier">children</span>   <span class="ruby-comment"># =&gt; []</span>
+</pre>
+
+<h3 id="label-Document+Type">Document Type<span><a href="#label-Document+Type">&para;</a> <a href="#top">&uarr;</a></span></h3>
+
+<h4 id="label-Task-3A+Get+the+Document+Type">Task: Get the Document Type<span><a href="#label-Task-3A+Get+the+Document+Type">&para;</a> <a href="#top">&uarr;</a></span></h4>
+
+<p>Use method <a href="../../../../REXML/Document.html#method-i-doctype">Document#doctype</a> to get the document type:</p>
+
+<pre class="ruby"><span class="ruby-identifier">d</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;&lt;!DOCTYPE document SYSTEM &quot;subjects.dtd&quot;&gt;&#39;</span>)
+<span class="ruby-identifier">d</span>.<span class="ruby-identifier">doctype</span>.<span class="ruby-identifier">class</span> <span class="ruby-comment"># =&gt; REXML::DocType</span>
+<span class="ruby-identifier">d</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;&#39;</span>)
+<span class="ruby-identifier">d</span>.<span class="ruby-identifier">doctype</span>.<span class="ruby-identifier">class</span> <span class="ruby-comment"># =&gt; nil</span>
+</pre>
+
+<h4 id="label-Task-3A+Set+the+Document+Type">Task: Set the Document Type<span><a href="#label-Task-3A+Set+the+Document+Type">&para;</a> <a href="#top">&uarr;</a></span></h4>
+
+<p>Use method <a href="../../../../REXML/Document.html#method-i-add">document#add</a> to add or replace the document type:</p>
+
+<pre class="ruby"><span class="ruby-identifier">d</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;&#39;</span>)
+<span class="ruby-identifier">d</span>.<span class="ruby-identifier">doctype</span>.<span class="ruby-identifier">class</span> <span class="ruby-comment"># =&gt; nil</span>
+<span class="ruby-identifier">d</span>.<span class="ruby-identifier">add</span>(<span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">DocType</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;foo&#39;</span>))
+<span class="ruby-identifier">d</span>.<span class="ruby-identifier">doctype</span>.<span class="ruby-identifier">class</span> <span class="ruby-comment"># =&gt; REXML::DocType</span>
+</pre>
+
+<h3 id="label-XML+Declaration">XML Declaration<span><a href="#label-XML+Declaration">&para;</a> <a href="#top">&uarr;</a></span></h3>
+
+<h4 id="label-Task-3A+Get+the+XML+Declaration">Task: Get the XML Declaration<span><a href="#label-Task-3A+Get+the+XML+Declaration">&para;</a> <a href="#top">&uarr;</a></span></h4>
+
+<p>Use method <a href="../../../../REXML/Document.html#method-i-xml_decl">document#xml_decl</a> to get the XML declaration:</p>
+
+<pre class="ruby"><span class="ruby-identifier">d</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;&lt;!DOCTYPE document SYSTEM &quot;subjects.dtd&quot;&gt;&#39;</span>)
+<span class="ruby-identifier">d</span>.<span class="ruby-identifier">xml_decl</span>.<span class="ruby-identifier">class</span> <span class="ruby-comment"># =&gt; REXML::XMLDecl</span>
+<span class="ruby-identifier">d</span>.<span class="ruby-identifier">xml_decl</span>       <span class="ruby-comment"># =&gt; &lt;?xml ... ?&gt;</span>
+<span class="ruby-identifier">d</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;&#39;</span>)
+<span class="ruby-identifier">d</span>.<span class="ruby-identifier">xml_decl</span>.<span class="ruby-identifier">class</span> <span class="ruby-comment"># =&gt; REXML::XMLDecl</span>
+<span class="ruby-identifier">d</span>.<span class="ruby-identifier">xml_decl</span>       <span class="ruby-comment"># =&gt; &lt;?xml ... ?&gt;</span>
+</pre>
+
+<h4 id="label-Task-3A+Set+the+XML+Declaration">Task: Set the XML Declaration<span><a href="#label-Task-3A+Set+the+XML+Declaration">&para;</a> <a href="#top">&uarr;</a></span></h4>
+
+<p>Use method <a href="../../../../REXML/Document.html#method-i-add">document#add</a> to replace the XML declaration:</p>
+
+<pre class="ruby"><span class="ruby-identifier">d</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;&lt;!DOCTYPE document SYSTEM &quot;subjects.dtd&quot;&gt;&#39;</span>)
+<span class="ruby-identifier">d</span>.<span class="ruby-identifier">add</span>(<span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">XMLDecl</span>.<span class="ruby-identifier">new</span>)
+</pre>
+
+<h3 id="label-Children">Children<span><a href="#label-Children">&para;</a> <a href="#top">&uarr;</a></span></h3>
+
+<h4 id="label-Task-3A+Add+an+Element+Child">Task: Add an Element Child<span><a href="#label-Task-3A+Add+an+Element+Child">&para;</a> <a href="#top">&uarr;</a></span></h4>
+
+<p>Use method <a href="../../../../REXML/Document.html#method-i-add_element">document#add_element</a> to add an element to the document:</p>
+
+<pre class="ruby"><span class="ruby-identifier">d</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;&#39;</span>)
+<span class="ruby-identifier">d</span>.<span class="ruby-identifier">add_element</span>(<span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Element</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;root&#39;</span>))
+<span class="ruby-identifier">d</span>.<span class="ruby-identifier">children</span> <span class="ruby-comment"># =&gt; [&lt;root/&gt;]</span>
+</pre>
+
+<h4 id="label-Task-3A+Add+a+Non-Element+Child">Task: Add a Non-Element Child<span><a href="#label-Task-3A+Add+a+Non-Element+Child">&para;</a> <a href="#top">&uarr;</a></span></h4>
+
+<p>Use method <a href="../../../../REXML/Document.html#method-i-add">document#add</a> to add a non-element to the document:</p>
+
+<pre class="ruby"><span class="ruby-identifier">xml_string</span> = <span class="ruby-string">&#39;&lt;root&gt;&lt;a/&gt;text&lt;b/&gt;more&lt;c/&gt;&lt;/root&gt;&#39;</span>
+<span class="ruby-identifier">d</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">xml_string</span>)
+<span class="ruby-identifier">d</span>.<span class="ruby-identifier">add</span>(<span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Text</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;foo&#39;</span>))
+<span class="ruby-identifier">d</span>.<span class="ruby-identifier">children</span> <span class="ruby-comment"># =&gt; [&lt;root&gt; ... &lt;/&gt;, &quot;foo&quot;]</span>
+</pre>
+
+<h3 id="label-Writing">Writing<span><a href="#label-Writing">&para;</a> <a href="#top">&uarr;</a></span></h3>
+
+<h4 id="label-Task-3A+Write+to+-24stdout">Task: Write to $stdout<span><a href="#label-Task-3A+Write+to+-24stdout">&para;</a> <a href="#top">&uarr;</a></span></h4>
+
+<p>Use method <a href="../../../../REXML/Document.html#method-i-write">document#write</a> to write the document to <code>$stdout</code>:</p>
+
+<pre class="ruby"><span class="ruby-identifier">xml_string</span> = <span class="ruby-string">&#39;&lt;root&gt;&lt;a/&gt;text&lt;b/&gt;more&lt;c/&gt;&lt;/root&gt;&#39;</span>
+<span class="ruby-identifier">d</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">xml_string</span>)
+<span class="ruby-identifier">d</span>.<span class="ruby-identifier">write</span>
+</pre>
+
+<p>Output:</p>
+
+<pre>&lt;root&gt;&lt;a/&gt;text&lt;b/&gt;more&lt;c/&gt;&lt;/root&gt;</pre>
+
+<h4 id="label-Task-3A+Write+to+IO+Stream">Task: Write to IO Stream<span><a href="#label-Task-3A+Write+to+IO+Stream">&para;</a> <a href="#top">&uarr;</a></span></h4>
+
+<p>Use method <a href="../../../../REXML/Document.html#method-i-write">document#write</a> to write the document to <code>$stdout</code>:</p>
+
+<pre class="ruby"><span class="ruby-identifier">xml_string</span> = <span class="ruby-string">&#39;&lt;root&gt;&lt;a/&gt;text&lt;b/&gt;more&lt;c/&gt;&lt;/root&gt;&#39;</span>
+<span class="ruby-identifier">d</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">xml_string</span>)
+<span class="ruby-constant">File</span>.<span class="ruby-identifier">open</span>(<span class="ruby-string">&#39;t.xml&#39;</span>, <span class="ruby-string">&#39;w&#39;</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">file</span><span class="ruby-operator">|</span>
+  <span class="ruby-identifier">d</span>.<span class="ruby-identifier">write</span>(<span class="ruby-identifier">file</span>)
+<span class="ruby-keyword">end</span>
+<span class="ruby-identifier">p</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">read</span>(<span class="ruby-string">&#39;t.xml&#39;</span>)
+</pre>
+
+<p>Output:</p>
+
+<pre class="ruby"><span class="ruby-string">&quot;&lt;root&gt;&lt;a/&gt;text&lt;b/&gt;more&lt;c/&gt;&lt;/root&gt;&quot;</span>
+</pre>
+
+<h4 id="label-Task-3A+Write+with+No+Indentation">Task: Write with No Indentation<span><a href="#label-Task-3A+Write+with+No+Indentation">&para;</a> <a href="#top">&uarr;</a></span></h4>
+
+<p>Use method <a href="../../../../REXML/Document.html#method-i-write">document#write</a> to write the document with no indentation:</p>
+
+<pre class="ruby"><span class="ruby-identifier">xml_string</span> = <span class="ruby-string">&#39;&lt;root&gt;&lt;a&gt;&lt;b&gt;&lt;c&gt;&lt;/c&gt;&lt;/b&gt;&lt;/a&gt;&lt;/root&gt;&#39;</span>
+<span class="ruby-identifier">d</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">xml_string</span>)
+<span class="ruby-identifier">d</span>.<span class="ruby-identifier">write</span>({<span class="ruby-value">indent:</span> <span class="ruby-value">0</span>})
+</pre>
+
+<p>Output:</p>
+
+<pre>&lt;root&gt;
+&lt;a&gt;
+&lt;b&gt;
+&lt;c/&gt;
+&lt;/b&gt;
+&lt;/a&gt;
+&lt;/root&gt;</pre>
+
+<h4 id="label-Task-3A+Write+with+Specified+Indentation">Task: Write with Specified Indentation<span><a href="#label-Task-3A+Write+with+Specified+Indentation">&para;</a> <a href="#top">&uarr;</a></span></h4>
+
+<p>Use method <a href="../../../../REXML/Document.html#method-i-write">document#write</a> to write the document with a specified indentation:</p>
+
+<pre class="ruby"><span class="ruby-identifier">xml_string</span> = <span class="ruby-string">&#39;&lt;root&gt;&lt;a&gt;&lt;b&gt;&lt;c&gt;&lt;/c&gt;&lt;/b&gt;&lt;/a&gt;&lt;/root&gt;&#39;</span>
+<span class="ruby-identifier">d</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">xml_string</span>)
+<span class="ruby-identifier">d</span>.<span class="ruby-identifier">write</span>({<span class="ruby-value">indent:</span> <span class="ruby-value">2</span>})
+</pre>
+
+<p>Output:</p>
+
+<pre>&lt;root&gt;
+  &lt;a&gt;
+    &lt;b&gt;
+      &lt;c/&gt;
+    &lt;/b&gt;
+  &lt;/a&gt;
+&lt;/root&gt;</pre>
+
+<h3 id="label-Querying">Querying<span><a href="#label-Querying">&para;</a> <a href="#top">&uarr;</a></span></h3>
+
+<h4 id="label-Task-3A+Get+the+Document">Task: Get the Document<span><a href="#label-Task-3A+Get+the+Document">&para;</a> <a href="#top">&uarr;</a></span></h4>
+
+<p>Use method <a href="../../../../REXML/Document.html#method-i-document">document#document</a> to get the document (<code>self</code>); overrides <code>Element#document</code>:</p>
+
+<pre class="ruby"><span class="ruby-identifier">xml_string</span> = <span class="ruby-string">&#39;&lt;root&gt;&lt;a&gt;&lt;b&gt;&lt;c&gt;&lt;/c&gt;&lt;/b&gt;&lt;/a&gt;&lt;/root&gt;&#39;</span>
+<span class="ruby-identifier">d</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">xml_string</span>)
+<span class="ruby-identifier">d</span>.<span class="ruby-identifier">document</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">d</span> <span class="ruby-comment"># =&gt; true</span>
+</pre>
+
+<h4 id="label-Task-3A+Get+the+Encoding">Task: Get the Encoding<span><a href="#label-Task-3A+Get+the+Encoding">&para;</a> <a href="#top">&uarr;</a></span></h4>
+
+<p>Use method <a href="../../../../REXML/Document.html#method-i-document">document#document</a> to get the document (<code>self</code>); overrides <code>Element#document</code>:</p>
+
+<pre class="ruby"><span class="ruby-identifier">xml_string</span> = <span class="ruby-string">&#39;&lt;root&gt;&lt;a&gt;&lt;b&gt;&lt;c&gt;&lt;/c&gt;&lt;/b&gt;&lt;/a&gt;&lt;/root&gt;&#39;</span>
+<span class="ruby-identifier">d</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">xml_string</span>)
+<span class="ruby-identifier">d</span>.<span class="ruby-identifier">encoding</span> <span class="ruby-comment"># =&gt; &quot;UTF-8&quot;</span>
+</pre>
+
+<h4 id="label-Task-3A+Get+the+Node+Type">Task: Get the Node Type<span><a href="#label-Task-3A+Get+the+Node+Type">&para;</a> <a href="#top">&uarr;</a></span></h4>
+
+<p>Use method <a href="../../../../REXML/Document.html#method-i-node_type">document#node_type</a> to get the node type (<code>:document</code>); overrides <code>Element#node_type</code>:</p>
+
+<pre class="ruby"><span class="ruby-identifier">xml_string</span> = <span class="ruby-string">&#39;&lt;root&gt;&lt;a&gt;&lt;b&gt;&lt;c&gt;&lt;/c&gt;&lt;/b&gt;&lt;/a&gt;&lt;/root&gt;&#39;</span>
+<span class="ruby-identifier">d</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">xml_string</span>)
+<span class="ruby-identifier">d</span>.<span class="ruby-identifier">node_type</span> <span class="ruby-comment"># =&gt; :document</span>
+</pre>
+
+<h4 id="label-Task-3A+Get+the+Root+Element">Task: Get the Root Element<span><a href="#label-Task-3A+Get+the+Root+Element">&para;</a> <a href="#top">&uarr;</a></span></h4>
+
+<p>Use method <a href="../../../../REXML/Document.html#method-i-root">document#root</a> to get the root element:</p>
+
+<pre class="ruby"><span class="ruby-identifier">xml_string</span> = <span class="ruby-string">&#39;&lt;root&gt;&lt;a&gt;&lt;b&gt;&lt;c&gt;&lt;/c&gt;&lt;/b&gt;&lt;/a&gt;&lt;/root&gt;&#39;</span>
+<span class="ruby-identifier">d</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">xml_string</span>)
+<span class="ruby-identifier">d</span>.<span class="ruby-identifier">root</span> <span class="ruby-comment"># =&gt; &lt;root&gt; ... &lt;/&gt;</span>
+</pre>
+
+<h4 id="label-Task-3A+Determine+Whether+Stand-Alone">Task: Determine Whether Stand-Alone<span><a href="#label-Task-3A+Determine+Whether+Stand-Alone">&para;</a> <a href="#top">&uarr;</a></span></h4>
+
+<p>Use method <a href="../../../../REXML/Document.html#method-i-stand_alone-3F">document#stand_alone?</a> to get the stand-alone value:</p>
+
+<pre class="ruby"><span class="ruby-identifier">d</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;&lt;?xml standalone=&quot;yes&quot;?&gt;&#39;</span>)
+<span class="ruby-identifier">d</span>.<span class="ruby-identifier">stand_alone?</span> <span class="ruby-comment"># =&gt; &quot;yes&quot;</span>
+</pre>
+
+<h4 id="label-Task-3A+Get+the+Version">Task: Get the Version<span><a href="#label-Task-3A+Get+the+Version">&para;</a> <a href="#top">&uarr;</a></span></h4>
+
+<p>Use method <a href="../../../../REXML/Document.html#method-i-version">document#version</a> to get the version:</p>
+
+<pre class="ruby"><span class="ruby-identifier">d</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;&lt;?xml version=&quot;2.0&quot; encoding=&quot;UTF-8&quot;?&gt;&#39;</span>)
+<span class="ruby-identifier">d</span>.<span class="ruby-identifier">version</span> <span class="ruby-comment"># =&gt; &quot;2.0&quot;</span>
+</pre>
+
+</main>
+
+
+
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="https://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.3.0.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+</footer>
+
