@@ -174,21 +174,147 @@ to determine whether the element has attributes:
 
 === Children
 
-#[index]
-#add_element
+<em>Element Children</em>
+
+==== Task: Create and Add an Element
+
+Use method
+{Element#add_element}[../../../../REXML/Element.html#method-i-add_element]
+to create a new element and add it to this element:
+
+  e0 = REXML::Element.new('foo')
+  e0.add_element('bar')
+  e0.children # => [<bar/>]
+
+==== Task: Add an Existing Element
+
+Use method
+{Element#add_element}[../../../../REXML/Element.html#method-i-add_element]
+to add an element to this element:
+
+  e0 = REXML::Element.new('foo')
+  e1 = REXML::Element.new('bar')
+  e0.add_element(e1)
+  e0.children # => [<bar/>]
+
+==== Task: Create and Add an Element with Attributes
+
+Use method
+{Element#add_element}[../../../../REXML/Element.html#method-i-add_element]
+to create a new element with attributes, and add it to this element:
+
+  e0 = REXML::Element.new('foo')
+  e0.add_element('bar', {'name' => 'value'})
+  e0.children # => [<bar name='value'/>]
+
+==== Task: Add an Existing Element with Added Attributes
+
+Use method
+{Element#add_element}[../../../../REXML/Element.html#method-i-add_element]
+to add an element to this element:
+
+  e0 = REXML::Element.new('foo')
+  e1 = REXML::Element.new('bar')
+  e0.add_element(e1, {'name' => 'value'})
+  e0.children # => [<bar name='value'/>]
+
+==== Task: Delete a Specified Element
+
+Use method
+{Element#delete_element}[../../../../REXML/Element.html#method-i-delete_element]
+to remove a specified element from this element:
+
+  e0 = REXML::Element.new('foo')
+  e1 = REXML::Element.new('bar')
+  e0.add_element(e1)
+  e0.children # => [<bar/>]
+  e0.delete_element(e1)
+  e0.children # => []
+
+==== Task: Delete an Element by Index
+
+Use method
+{Element#delete_element}[../../../../REXML/Element.html#method-i-delete_element]
+to remove an element from this element by index:
+
+  e0 = REXML::Element.new('foo')
+  e1 = REXML::Element.new('bar')
+  e0.add_element(e1)
+  e0.children # => [<bar/>]
+  e0.delete_element(1)
+  e0.children # => []
+
+==== Task: Delete an Element by XPath
+
+Use method
+{Element#delete_element}[../../../../REXML/Element.html#method-i-delete_element]
+to remove an element from this element by XPath:
+
+  e0 = REXML::Element.new('foo')
+  e1 = REXML::Element.new('bar')
+  e0.add_element(e1)
+  e0.children # => [<bar/>]
+  e0.delete_element('//bar/')
+  e0.children # => []
+
+==== Task: Determine Whether Element Children
+
+Use method
+{Element#has_elements?}[../../../../REXML/Element.html#method-i-has_elements-3F]
+to determine whether the element has element children:
+
+  e0 = REXML::Element.new('foo')
+  e0.has_elements? # => false
+  e0.add_element(REXML::Element.new('bar'))
+  e0.has_elements? # => true
+
+==== Task: Get Element Descendants by XPath
+
+Use method
+{Element#get_elements}[../../../../REXML/Element.html#method-i-get_elements]
+to fetch all element descendant children by XPath:
+
+  xml_string = <<-EOT
+  <root>
+    <a level='1'>
+      <a level='2'/>
+    </a>
+  </root>
+  EOT
+  d = REXML::Document.new(xml_string)
+  d.root.get_elements('//a') # => [<a level='1'> ... </>, <a level='2'/>]
+
+==== Task: Get Next Element Sibling
+
+Use method
+{Element#next_element}[../../../../REXML/Element.html#method-i-next_element]
+to retrieve the next element sibling:
+
+  d = REXML::Document.new '<a><b/>text<c/></a>'
+  d.root.elements['b'].next_element #-> <c/>
+  d.root.elements['c'].next_element #-> nil
+
+==== Task: Get Previous Element Sibling
+
+Use method
+{Element#previous_element}[../../../../REXML/Element.html#method-i-previous_element]
+to retrieve the previous element sibling:
+
+  d = REXML::Document.new '<a><b/>text<c/></a>'
+  d.root.elements['c'].previous_element #-> <b/>
+  d.root.elements['b'].previous_element #-> nil
+
+<em>Text Children</em>
+
 #add_text
-#cdatas
-#comments
-#instructions
-#delete_element
-#get_elements
-#get_text
-#has_elements?
-#has_text?
-#next_element
-#previous_element
-#text
 #text=
+#get_text
+#has_text?
+#text
+
+<em>Other Children</em>
+
+#[index]
 #cdatas
 #comments
 #instructions
@@ -214,11 +340,11 @@ to determine whether the element has attributes:
 #ignore_whitespace_nodes
 #raw
 
-
+=== Other Getters
 
 #document
-#node_type
 #root
 #root_node
+#node_type
 #xpath
 #inspect
