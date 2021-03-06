@@ -306,11 +306,75 @@ to retrieve the previous element sibling:
 
 <em>Text Children</em>
 
-#add_text
-#text=
-#get_text
-#has_text?
-#text
+==== Task: Add a Text Node
+
+Use method
+{Element#add_text}[../../../../REXML/Element.html#method-i-add_text]
+to add a text node to the element:
+
+  d = REXML::Document.new('<a>foo<b/>bar</a>')
+  e = d.root
+  e.add_text(REXML::Text.new('baz'))
+  e.to_a # => ["foo", <b/>, "bar", "baz"]
+  e.add_text(REXML::Text.new('baz'))
+  e.to_a # => ["foo", <b/>, "bar", "baz", "baz"]
+
+==== Task: Replace the First Text Node
+
+Use method
+{Element#text=}[../../../../REXML/Element.html#method-i-text-3D]
+to replace the first text node in the element:
+
+  d = REXML::Document.new('<root><a/>text<b/>more<c/></root>')
+  e = d.root
+  e.to_a # => [<a/>, "text", <b/>, "more", <c/>]
+  e.text = 'oops'
+  e.to_a # => [<a/>, "oops", <b/>, "more", <c/>]
+
+==== Task: Remove the First Text Node
+
+Use method
+{Element#text=}[../../../../REXML/Element.html#method-i-text-3D]
+to remove the first text node in the element:
+
+  d = REXML::Document.new('<root><a/>text<b/>more<c/></root>')
+  e = d.root
+  e.to_a # => [<a/>, "text", <b/>, "more", <c/>]
+  e.text = nil
+  e.to_a # => [<a/>, <b/>, "more", <c/>]
+
+==== Task: Retrieve the First Text Node
+
+Use method
+{Element#get_text}[../../../../REXML/Element.html#method-i-get_text]
+to retrieve the first text node in the element:
+
+  d = REXML::Document.new('<root><a/>text<b/>more<c/></root>')
+  e = d.root
+  e.to_a # => [<a/>, "text", <b/>, "more", <c/>]
+  e.get_text # => "text"
+
+==== Task: Retrieve a Specific Text Node
+
+Use method
+{Element#get_text}[../../../../REXML/Element.html#method-i-get_text]
+to retrieve the first text node in a specified element:
+
+  d = REXML::Document.new "<root>some text <b>this is bold!</b> more text</root>"
+  e = d.root
+  e.get_text('//root') # => "some text "
+  e.get_text('//b')    # => "this is bold!"
+
+==== Task: Determine Whether the Element has Text Nodes
+
+Use method
+{Element#has_text?}[../../../../REXML/Element.html#method-i-has_text-3F]
+to determine whethe the element has text:
+
+  e = REXML::Element.new('foo')
+  e.has_text? # => false
+  e.add_text('bar')
+  e.has_text? # => true
 
 <em>Other Children</em>
 
