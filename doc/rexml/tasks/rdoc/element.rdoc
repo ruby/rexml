@@ -127,7 +127,7 @@ to add multiple attributes from an array:
   e['foo'] # => "0"
   e['bar'] # => "1"
 
-==== Task: Retrieve the Value for aa Attribute Name
+==== Task: Retrieve the Value for an Attribute Name
 
 Use method
 {Element#[]}[../../../../REXML/Element.html#method-i-5B-5D]
@@ -378,11 +378,73 @@ to determine whethe the element has text:
 
 <em>Other Children</em>
 
-#[index]
-#cdatas
-#comments
-#instructions
-#texts
+==== Task: Get the Child at a Given Index
+
+Use method
+{Element#[]}[../../../../REXML/Element.html#method-i-5B-5D]
+to retrieve the child at a given index:
+
+  d = REXML::Document.new '><root><a/>text<b/>more<c/></root>'
+  e = d.root
+  e[0] # => <a/>
+  e[1] # => "text"
+  e[2] # => <b/>
+
+==== Task: Get All CDATA Children
+
+Use method
+{Element#cdatas}[../../../../REXML/Element.html#method-i-cdatas]
+to retrieve all CDATA children:
+
+  xml_string = <<-EOT
+    <root>
+      <![CDATA[foo]]>
+      <![CDATA[bar]]>
+    </root>
+  EOT
+  d = REXML::Document.new(xml_string)
+  d.root.cdatas # => ["foo", "bar"]
+
+==== Task: Get All Comment Children
+
+Use method
+{Element#comments}[../../../../REXML/Element.html#method-i-comments]
+to retrieve all comment children:
+
+  xml_string = <<-EOT
+    <root>
+      <!--foo-->
+      <!--bar-->
+    </root>
+  EOT
+  d = REXML::Document.new(xml_string)
+  d.root.comments.map {|comment| comment.to_s } # => ["foo", "bar"]
+
+==== Task: Get All Processing Instruction Children
+
+Use method
+{Element#instructions}[../../../../REXML/Element.html#method-i-instructions]
+to retrieve all processing instruction children:
+
+  xml_string = <<-EOT
+    <root>
+      <?target0 foo?>
+      <?target1 bar?>
+    </root>
+  EOT
+  d = REXML::Document.new(xml_string)
+  instructions = d.root.instructions.map {|instruction| instruction.to_s }
+  instructions # => ["<?target0 foo?>", "<?target1 bar?>"]
+
+==== Task: Get All Text Children
+
+Use method
+{Element#texts}[../../../../REXML/Element.html#method-i-texts]
+to retrieve all text children:
+
+  xml_string = '<root><a/>text<b/>more<c/></root>'
+  d = REXML::Document.new(xml_string)
+  d.root.texts # => ["text", "more"]
 
 === Namespaces
 
