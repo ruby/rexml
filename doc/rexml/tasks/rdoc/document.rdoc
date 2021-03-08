@@ -1,5 +1,14 @@
 == Class Document
 
+Class Element has methods from its superclasses and included modules;
+see:
+
+- {Tasks for Element}[element_rdoc.html].
+- {Tasks for Parent}[parent_rdoc.html].
+- {Tasks for Child}[child_rdoc.html].
+- {Tasks for Node}[node_rdoc.html].
+- {Module Enumerable}[https://docs.ruby-lang.org/en/master/Enumerable.html].
+
 :include: ../tocs/document_toc.rdoc
 
 === New Document

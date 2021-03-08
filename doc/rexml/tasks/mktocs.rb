@@ -30,6 +30,7 @@ Dir.chdir(File.dirname(__FILE__)) do
     end
   end
 
+  # Write the TOC files.
   File.open('tocs/master_toc.rdoc', 'w') do |master_toc_file|
     master_toc_file.write("== Table of Contents\n\n")
     Dir.chdir('tocs') do
