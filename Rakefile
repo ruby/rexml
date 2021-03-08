@@ -11,6 +11,13 @@ end
 
 task :default => :test
 
+namespace :tocs do
+  desc "Generate TOCs"
+  task :generate do
+    ruby 'doc/rexml/tasks/mktocs.rb'
+  end
+end
+
 namespace :warning do
   desc "Treat warning as error"
   task :error do
