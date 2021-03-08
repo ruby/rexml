@@ -1,6 +1,6 @@
 == Class Document
 
-Class Element has methods from its superclasses and included modules;
+Class Document has methods from its superclasses and included modules;
 see:
 
 - {Tasks for Element}[element_rdoc.html].
