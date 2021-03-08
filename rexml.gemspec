@@ -42,6 +42,13 @@ Gem::Specification.new do |spec|
       end
     end
   end
+  tasks_path = "tasks"
+  tasks_dir = File.join(__dir__, tasks_path)
+  Dir.chdir(doc_dir) do
+    Dir.glob("**/*.rake").each do |task_file|
+      files << "#{tasks_path}/#{task_file}"
+    end
+  end
   spec.files = files
   spec.rdoc_options.concat(["--main", "README.md"])
   spec.extra_rdoc_files = rdoc_files
