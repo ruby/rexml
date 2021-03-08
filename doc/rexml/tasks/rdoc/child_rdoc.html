@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>child - RDoc Documentation</title>
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "../../../../";
+  var index_rel_prefix = "../../../../";
+</script>
+
+<script src="../../../../js/navigation.js" defer></script>
+<script src="../../../../js/search.js" defer></script>
+<script src="../../../../js/search_index.js" defer></script>
+<script src="../../../../js/searcher.js" defer></script>
+<script src="../../../../js/darkfish.js" defer></script>
+
+<link href="../../../../css/fonts.css" rel="stylesheet">
+<link href="../../../../css/rdoc.css" rel="stylesheet">
+
+
+<body id="top" role="document" class="file">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="../../../../index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="../../../../table_of_contents.html#pages">Pages</a>
+    <a href="../../../../table_of_contents.html#classes">Classes</a>
+    <a href="../../../../table_of_contents.html#methods">Methods</a>
+  </div>
+</div>
+
+    <div id="search-section" role="search" class="project-section initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search" spellcheck="false"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </div>
+
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
+  </form>
+</div>
+
+  </div>
+
+  
+<div class="nav-section">
+  <h3>Table of Contents</h3>
+
+  <ul class="link-list" role="directory">
+    <li><a href="#label-Class+Child">Class Child</a>
+    <li><a href="#label-Relationships">Relationships</a>
+    <li><a href="#label-Task-3A+Set+the+Parent">Task: Set the Parent</a>
+    <li><a href="#label-Task-3A+Insert+Previous+Sibling">Task: Insert Previous Sibling</a>
+    <li><a href="#label-Task-3A+Insert+Next+Sibling">Task: Insert Next Sibling</a>
+    <li><a href="#label-Removal+or+Replacement">Removal or Replacement</a>
+    <li><a href="#label-Task-3A+Remove+Child+from+Parent">Task: Remove Child from Parent</a>
+    <li><a href="#label-Task-3A+Replace+Child">Task: Replace Child</a>
+    <li><a href="#label-Document">Document</a>
+    <li><a href="#label-Task-3A+Get+the+Document">Task: Get the Document</a>
+  </ul>
+</div>
+
+
+  <div id="project-metadata">
+    
+<div id="fileindex-section" class="nav-section">
+  <h3>Pages</h3>
+
+  <ul class="link-list">
+    <li><a href="../../../../LICENSE_txt.html">LICENSE</a>
+    <li><a href="../../../../NEWS_md.html">NEWS</a>
+    <li><a href="../../../../README_md.html">README</a>
+    <li><a href="../../../../doc/rexml/context_rdoc.html">context</a>
+    <li><a href="../../../../doc/rexml/tasks/rdoc/child_rdoc.html">child</a>
+    <li><a href="../../../../doc/rexml/tasks/rdoc/document_rdoc.html">document</a>
+    <li><a href="../../../../doc/rexml/tasks/rdoc/element_rdoc.html">element</a>
+    <li><a href="../../../../doc/rexml/tasks/rdoc/node_rdoc.html">node</a>
+    <li><a href="../../../../doc/rexml/tasks/rdoc/parent_rdoc.html">parent</a>
+    <li><a href="../../../../doc/rexml/tasks/tocs/child_toc_rdoc.html">child_toc</a>
+    <li><a href="../../../../doc/rexml/tasks/tocs/document_toc_rdoc.html">document_toc</a>
+    <li><a href="../../../../doc/rexml/tasks/tocs/element_toc_rdoc.html">element_toc</a>
+    <li><a href="../../../../doc/rexml/tasks/tocs/master_toc_rdoc.html">master_toc</a>
+    <li><a href="../../../../doc/rexml/tasks/tocs/node_toc_rdoc.html">node_toc</a>
+    <li><a href="../../../../doc/rexml/tasks/tocs/parent_toc_rdoc.html">parent_toc</a>
+  </ul>
+</div>
+
+  </div>
+</nav>
+
+<main role="main" aria-label="Page doc/rexml/tasks/rdoc/child.rdoc">
+
+<h2 id="label-Class+Child">Class Child<span><a href="#label-Class+Child">&para;</a> <a href="#top">&uarr;</a></span></h2>
+
+<p>Class Child includes module Node; see <a href="node_rdoc.html">Tasks for Node</a>.</p>
+
+<p>Tasks on this page:</p>
+<ul><li>
+<p><a href="#label-Relationships">Relationships</a></p>
+<ul><li>
+<p><a href="#label-Task-3A+Set+the+Parent">Task: Set the Parent</a></p>
+</li><li>
+<p><a href="#label-Task-3A+Insert+Previous+Sibling">Task: Insert Previous Sibling</a></p>
+</li><li>
+<p><a href="#label-Task-3A+Insert+Next+Sibling">Task: Insert Next Sibling</a></p>
+</li></ul>
+</li><li>
+<p><a href="#label-Removal+or+Replacement">Removal or Replacement</a></p>
+<ul><li>
+<p><a href="#label-Task-3A+Remove+Child+from+Parent">Task: Remove Child from Parent</a></p>
+</li><li>
+<p><a href="#label-Task-3A+Replace+Child">Task: Replace Child</a></p>
+</li></ul>
+</li><li>
+<p><a href="#label-Document">Document</a></p>
+<ul><li>
+<p><a href="#label-Task-3A+Get+the+Document">Task: Get the Document</a></p>
+</li></ul>
+</li></ul>
+
+<h3 id="label-Relationships">Relationships<span><a href="#label-Relationships">&para;</a> <a href="#top">&uarr;</a></span></h3>
+
+<h4 id="label-Task-3A+Set+the+Parent">Task: Set the Parent<span><a href="#label-Task-3A+Set+the+Parent">&para;</a> <a href="#top">&uarr;</a></span></h4>
+
+<p>Use method <a href="../../../../REXML/Parent.html#method-i-parent-3D">Child#parent=</a> to set the parent:</p>
+
+<pre class="ruby"><span class="ruby-identifier">e0</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Element</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;foo&#39;</span>)
+<span class="ruby-identifier">e1</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Element</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;bar&#39;</span>)
+<span class="ruby-identifier">e1</span>.<span class="ruby-identifier">parent</span> <span class="ruby-comment"># =&gt; nil</span>
+<span class="ruby-identifier">e1</span>.<span class="ruby-identifier">parent</span> = <span class="ruby-identifier">e0</span>
+<span class="ruby-identifier">e1</span>.<span class="ruby-identifier">parent</span> <span class="ruby-comment"># =&gt; &lt;foo/&gt;</span>
+</pre>
+
+<h4 id="label-Task-3A+Insert+Previous+Sibling">Task: Insert Previous Sibling<span><a href="#label-Task-3A+Insert+Previous+Sibling">&para;</a> <a href="#top">&uarr;</a></span></h4>
+
+<p>Use method <a href="../../../../REXML/Parent.html#method-i-previous_sibling-3D">Child#previous_sibling=</a> to insert a previous sibling:</p>
+
+<pre class="ruby"><span class="ruby-identifier">xml_string</span> = <span class="ruby-string">&#39;&lt;root&gt;&lt;a/&gt;&lt;c/&gt;&lt;/root&gt;&#39;</span>
+<span class="ruby-identifier">d</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">xml_string</span>)
+<span class="ruby-identifier">d</span>.<span class="ruby-identifier">root</span>.<span class="ruby-identifier">to_a</span>   <span class="ruby-comment"># =&gt; [&lt;a/&gt;, &lt;c/&gt;]</span>
+<span class="ruby-identifier">c</span> = <span class="ruby-identifier">d</span>.<span class="ruby-identifier">root</span>[<span class="ruby-value">1</span>] <span class="ruby-comment"># =&gt; &lt;c/&gt;</span>
+<span class="ruby-identifier">b</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Element</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;b&#39;</span>)
+<span class="ruby-identifier">c</span>.<span class="ruby-identifier">previous_sibling</span> = <span class="ruby-identifier">b</span>
+<span class="ruby-identifier">d</span>.<span class="ruby-identifier">root</span>.<span class="ruby-identifier">to_a</span>   <span class="ruby-comment"># =&gt; [&lt;a/&gt;, &lt;b/&gt;, &lt;c/&gt;]</span>
+</pre>
+
+<h4 id="label-Task-3A+Insert+Next+Sibling">Task: Insert Next Sibling<span><a href="#label-Task-3A+Insert+Next+Sibling">&para;</a> <a href="#top">&uarr;</a></span></h4>
+
+<p>Use method <a href="../../../../REXML/Parent.html#method-i-next-sibling-3D">Child#next_sibling=</a> to insert a previous sibling:</p>
+
+<pre class="ruby"><span class="ruby-identifier">xml_string</span> = <span class="ruby-string">&#39;&lt;root&gt;&lt;a/&gt;&lt;c/&gt;&lt;/root&gt;&#39;</span>
+<span class="ruby-identifier">d</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">xml_string</span>)
+<span class="ruby-identifier">d</span>.<span class="ruby-identifier">root</span>.<span class="ruby-identifier">to_a</span>   <span class="ruby-comment"># =&gt; [&lt;a/&gt;, &lt;c/&gt;]</span>
+<span class="ruby-identifier">a</span> = <span class="ruby-identifier">d</span>.<span class="ruby-identifier">root</span>[<span class="ruby-value">0</span>] <span class="ruby-comment"># =&gt; &lt;a/&gt;</span>
+<span class="ruby-identifier">b</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Element</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;b&#39;</span>)
+<span class="ruby-identifier">a</span>.<span class="ruby-identifier">next_sibling</span> = <span class="ruby-identifier">b</span>
+<span class="ruby-identifier">d</span>.<span class="ruby-identifier">root</span>.<span class="ruby-identifier">to_a</span>   <span class="ruby-comment"># =&gt; [&lt;a/&gt;, &lt;b/&gt;, &lt;c/&gt;]</span>
+</pre>
+
+<h3 id="label-Removal+or+Replacement">Removal or Replacement<span><a href="#label-Removal+or+Replacement">&para;</a> <a href="#top">&uarr;</a></span></h3>
+
+<h4 id="label-Task-3A+Remove+Child+from+Parent">Task: Remove Child from Parent<span><a href="#label-Task-3A+Remove+Child+from+Parent">&para;</a> <a href="#top">&uarr;</a></span></h4>
+
+<p>Use method <a href="../../../../REXML/Parent.html#method-i-remove">Child#remove</a> to remove a child from its parent; returns the removed child:</p>
+
+<pre class="ruby"><span class="ruby-identifier">xml_string</span> = <span class="ruby-string">&#39;&lt;root&gt;&lt;a/&gt;&lt;b/&gt;&lt;c/&gt;&lt;/root&gt;&#39;</span>
+<span class="ruby-identifier">d</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">xml_string</span>)
+<span class="ruby-identifier">d</span>.<span class="ruby-identifier">root</span>.<span class="ruby-identifier">to_a</span>   <span class="ruby-comment"># =&gt; [&lt;a/&gt;, &lt;b/&gt;, &lt;c/&gt;]</span>
+<span class="ruby-identifier">b</span> = <span class="ruby-identifier">d</span>.<span class="ruby-identifier">root</span>[<span class="ruby-value">1</span>] <span class="ruby-comment"># =&gt; &lt;b/&gt;</span>
+<span class="ruby-identifier">b</span>.<span class="ruby-identifier">remove</span>      <span class="ruby-comment"># =&gt; &lt;b/&gt;</span>
+<span class="ruby-identifier">d</span>.<span class="ruby-identifier">root</span>.<span class="ruby-identifier">to_a</span>   <span class="ruby-comment"># =&gt; [&lt;a/&gt;, &lt;c/&gt;]</span>
+</pre>
+
+<h4 id="label-Task-3A+Replace+Child">Task: Replace Child<span><a href="#label-Task-3A+Replace+Child">&para;</a> <a href="#top">&uarr;</a></span></h4>
+
+<p>Use method <a href="../../../../REXML/Parent.html#method-i-replace">Child#replace_with</a> to replace a child; returns the replaced child:</p>
+
+<pre class="ruby"><span class="ruby-identifier">xml_string</span> = <span class="ruby-string">&#39;&lt;root&gt;&lt;a/&gt;&lt;b/&gt;&lt;c/&gt;&lt;/root&gt;&#39;</span>
+<span class="ruby-identifier">d</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">xml_string</span>)
+<span class="ruby-identifier">d</span>.<span class="ruby-identifier">root</span>.<span class="ruby-identifier">to_a</span>       <span class="ruby-comment"># =&gt; [&lt;a/&gt;, &lt;b/&gt;, &lt;c/&gt;]</span>
+<span class="ruby-identifier">b</span> = <span class="ruby-identifier">d</span>.<span class="ruby-identifier">root</span>[<span class="ruby-value">1</span>]     <span class="ruby-comment"># =&gt; &lt;b/&gt;</span>
+<span class="ruby-identifier">d</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Element</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;d&#39;</span>)
+<span class="ruby-identifier">b</span>.<span class="ruby-identifier">replace_with</span>(<span class="ruby-identifier">d</span>) <span class="ruby-comment"># =&gt; &lt;b/&gt;</span>
+<span class="ruby-identifier">d</span>.<span class="ruby-identifier">root</span>.<span class="ruby-identifier">to_a</span>       <span class="ruby-comment"># =&gt; [&lt;a/&gt;, &lt;d/&gt;, &lt;c/&gt;]</span>
+</pre>
+
+<h3 id="label-Document">Document<span><a href="#label-Document">&para;</a> <a href="#top">&uarr;</a></span></h3>
+
+<h4 id="label-Task-3A+Get+the+Document">Task: Get the Document<span><a href="#label-Task-3A+Get+the+Document">&para;</a> <a href="#top">&uarr;</a></span></h4>
+
+<p>Use method <a href="../../../../REXML/Parent.html#method-i-document">Child#document</a> to get the document for the child:</p>
+
+<pre class="ruby"><span class="ruby-identifier">xml_string</span> = <span class="ruby-string">&#39;&lt;root&gt;&lt;a/&gt;&lt;b/&gt;&lt;c/&gt;&lt;/root&gt;&#39;</span>
+<span class="ruby-identifier">d</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">xml_string</span>)
+<span class="ruby-identifier">d</span>.<span class="ruby-identifier">root</span>.<span class="ruby-identifier">to_a</span>     <span class="ruby-comment"># =&gt; [&lt;a/&gt;, &lt;b/&gt;, &lt;c/&gt;]</span>
+<span class="ruby-identifier">b</span> = <span class="ruby-identifier">d</span>.<span class="ruby-identifier">root</span>[<span class="ruby-value">1</span>]   <span class="ruby-comment"># =&gt; &lt;b/&gt;</span>
+<span class="ruby-identifier">b</span>.<span class="ruby-identifier">document</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">d</span> <span class="ruby-comment"># =&gt; true</span>
+<span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Child</span>.<span class="ruby-identifier">new</span>.<span class="ruby-identifier">document</span> <span class="ruby-comment"># =&gt; nil</span>
+</pre>
+
+</main>
+
+
+
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="https://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.3.0.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+</footer>
+
