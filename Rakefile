@@ -26,3 +26,5 @@ RDoc::Task.new do |rdoc|
   rdoc.rdoc_files.include(*spec.source_paths)
   rdoc.rdoc_files.include(*spec.extra_rdoc_files)
 end
+
+load "#{__dir__}/tasks/tocs.rake"
