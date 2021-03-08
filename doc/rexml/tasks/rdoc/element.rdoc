@@ -448,17 +448,143 @@ to retrieve all text children:
 
 === Namespaces
 
-#add_namespace
-#delete_namespace
-#namespace
-#namespaces
-#prefixes
+==== Task: Add a Namespace
+
+Use method
+{Element#add_namespace}[../../../../REXML/Element.html#method-i-add_namespace]
+to add a namespace to the element:
+
+  e = REXML::Element.new('foo')
+  e.add_namespace('bar')
+  e.namespaces # => {"xmlns"=>"bar"}
+
+==== Task: Delete the Default Namespace
+
+Use method
+{Element#delete_namespace}[../../../../REXML/Element.html#method-i-delete_namespace]
+to remove the default namespace from the element:
+
+  d = REXML::Document.new "<a xmlns:foo='bar' xmlns='twiddle'/>"
+  d.to_s # => "<a xmlns:foo='bar' xmlns='twiddle'/>"
+  d.root.delete_namespace # => <a xmlns:foo='bar'/>
+  d.to_s # => "<a xmlns:foo='bar'/>"
+
+==== Task: Delete a Specific Namespace
+
+Use method
+{Element#delete_namespace}[../../../../REXML/Element.html#method-i-delete_namespace]
+to remove a specific namespace from the element:
+
+  d = REXML::Document.new "<a xmlns:foo='bar' xmlns='twiddle'/>"
+  d.to_s # => "<a xmlns:foo='bar' xmlns='twiddle'/>"
+  d.root.delete_namespace # => <a xmlns:foo='bar'/>
+  d.to_s # => "<a xmlns:foo='bar'/>"
+  d.root.delete_namespace('foo')
+  d.to_s # => "<a/>"
+
+==== Task: Get a Namespace URI
+
+Use method
+{Element#namespace}[../../../../REXML/Element.html#method-i-namespace]
+to retrieve a speficic namespace URI for the element:
+
+  xml_string = <<-EOT
+    <root>
+       <a xmlns='1' xmlns:y='2'>
+         <b/>
+         <c xmlns:z='3'/>
+       </a>
+    </root>
+  EOT
+  d = REXML::Document.new(xml_string)
+  b = d.elements['//b']
+  b.namespace      # => "1"
+  b.namespace('y') # => "2"
+
+==== Task: Retrieve Namespaces
+
+Use method
+{Element#namespaces}[../../../../REXML/Element.html#method-i-namespaces]
+to retrieve all namespaces for the element:
+
+  xml_string = '<a xmlns="foo" xmlns:x="bar" xmlns:y="twee" z="glorp"/>'
+  d = REXML::Document.new(xml_string)
+  d.root.attributes.namespaces # => {"xmlns"=>"foo", "x"=>"bar", "y"=>"twee"}
+
+==== Task: Retrieve Namespace Prefixes
+
+Use method
+{Element#prefixes}[../../../../REXML/Element.html#method-i-prefixes]
+to retrieve all prefixes (namespace names) for the element:
+
+  xml_string = <<-EOT
+    <root>
+       <a xmlns:x='1' xmlns:y='2'>
+         <b/>
+         <c xmlns:z='3'/>
+       </a>
+    </root>
+  EOT
+  d = REXML::Document.new(xml_string, {compress_whitespace: :all})
+  d.elements['//a'].prefixes # => ["x", "y"]
+  d.elements['//b'].prefixes # => ["x", "y"]
+  d.elements['//c'].prefixes # => ["x", "y", "z"]
 
 === Iteration
 
-#each_element
-#each_element_with_attribute
-#each_element_with_text
+==== Task: Iterate Over Elements
+
+Use method
+{Element#each_element}[../../../../REXML/Element.html#method-i-each_element]
+to iterate over element children:
+
+  d = REXML::Document.new '<a><b>b</b><c>b</c><d>d</d><e/></a>'
+  d.root.each_element {|e| p e }
+
+Output:
+
+  <b> ... </>
+  <c> ... </>
+  <d> ... </>
+  <e/>
+
+==== Task: Iterate Over Elements Having a Specified Attribute
+
+Use method
+{Element#each_element_with_attribute}[../../../../REXML/Element.html#method-i-each_element_with_attribute]
+to iterate over element children that have a specified attribute:
+
+  d = REXML::Document.new '<a><b id="1"/><c id="2"/><d id="1"/><e/></a>'
+  a = d.root
+  a.each_element_with_attribute('id') {|e| p e }
+
+Output:
+
+  <b id='1'/>
+  <c id='2'/>
+  <d id='1'/>
+
+==== Task: Iterate Over Elements Having a Specified Attribute and Value
+
+Use method
+{Element#each_element_with_attribute}[../../../../REXML/Element.html#method-i-each_element_with_attribute]
+to iterate over element children that have a specified attribute and value:
+
+  d = REXML::Document.new '<a><b id="1"/><c id="2"/><d id="1"/><e/></a>'
+  a = d.root
+  a.each_element_with_attribute('id', '1') {|e| p e }
+
+Output:
+
+  <b id='1'/>
+  <d id='1'/>
+
+==== Task: Iterate Over Elements Having Specified Text
+
+Use method
+{Element#each_element_with_text}[../../../../REXML/Element.html#method-i-each_element_with_text]
+to iterate over element children that have specified text:
+
 
 === Context
 
