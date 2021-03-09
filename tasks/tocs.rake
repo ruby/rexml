@@ -45,7 +45,7 @@ class TOCsGenerator
 
   def generate_files(lis_by_name)
     File.open('tocs/master_toc.rdoc', 'w') do |master_toc_file|
-      master_toc_file.write("== Table of Contents\n\n")
+      master_toc_file.write("== Tasks\n\n")
       cd('tocs') do
         entries = Dir.entries('.')
         entries.delete_if {|entry| entry.start_with?('.') }
