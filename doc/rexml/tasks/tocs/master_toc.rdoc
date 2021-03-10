@@ -1,4 +1,4 @@
-== Table of Contents
+== Tasks
 
 === {Child}[../../tasks/rdoc/child_rdoc.html]
 - {Relationships}[../../tasks/rdoc/child_rdoc.html#label-Relationships]

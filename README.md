@@ -4,21 +4,9 @@ REXML was inspired by the Electric XML library for Java, which features an easy-
 
 REXML supports both tree and stream document parsing. Stream parsing is faster (about 1.5 times as fast). However, with stream parsing, you don't get access to features such as XPath.
 
-## Installation
+## API
 
-Add this line to your application's Gemfile:
-
-```ruby
-gem 'rexml'
-```
-
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
-
-    $ gem install rexml
+See the {API documentation}[https://ruby.github.io/rexml/]
 
 ## Usage
 

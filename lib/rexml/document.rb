@@ -23,6 +23,15 @@ module REXML
   # - A document type.
   # - Processing instructions.
   #
+  # == In a Hurry?
+  #
+  # If you're somewhat familiar with XML
+  # and have a particular task in mind,
+  # you may want to see the
+  # {tasks pages}[../doc/rexml/tasks/tocs/master_toc_rdoc.html],
+  # and in particular, the
+  # {tasks page for documents}[../doc/rexml/tasks/tocs/document_toc_rdoc.html].
+  #
   class Document < Element
     # A convenient default XML declaration. Use:
     #
