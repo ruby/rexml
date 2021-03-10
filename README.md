@@ -6,7 +6,8 @@ REXML supports both tree and stream document parsing. Stream parsing is faster (
 
 ## API
 
-See the {API documentation}[REXML.html]
+See the {API documentation}[https://ruby.github.io/rexml/]
+
 ## Usage
 
 We'll start with parsing an XML document
