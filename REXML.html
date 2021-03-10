@@ -54,6 +54,16 @@
   </div>
 
   
+<div class="nav-section">
+  <h3>Table of Contents</h3>
+
+  <ul class="link-list" role="directory">
+    <li><a href="#module-REXML-label-Implementation">Implementation</a>
+    <li><a href="#module-REXML-label-In+a+Hurry-3F">In a Hurry?</a>
+    <li><a href="#module-REXML-label-API">API</a>
+  </ul>
+</div>
+
 
   <div id="class-metadata">
     
@@ -70,31 +80,38 @@
   </h1>
 
   <section class="description">
-    <dl class="rdoc-list label-list"><dt> :element, parent, name, attributes, children* 
-<dd>
-<p>a = Node.new a &lt;&lt; “B”            # =&gt; &lt;a&gt;B&lt;/a&gt; a.b                 # =&gt; &lt;a&gt;B&lt;b/&gt;&lt;/a&gt; <a href="1">a.b</a>                      # =&gt; &lt;a&gt;B&lt;b/&gt;&lt;b/&gt;&lt;a&gt; <a href="1">a.b</a>[“x”] = “y”   # =&gt; &lt;a&gt;B&lt;b/&gt;&lt;b x=“y”/&gt;&lt;/a&gt; <a href="0">a.b</a>.c            # =&gt; &lt;a&gt;B<strong>&lt;c/&gt;</strong>&lt;b x=“y”/&gt;&lt;/a&gt; a.b.c &lt;&lt; “D”                # =&gt; &lt;a&gt;B<strong>&lt;c&gt;D&lt;/c&gt;</strong>&lt;b x=“y”/&gt;&lt;/a&gt;</p>
-</dd></dl>
+    
+<p>Module REXML provides classes and methods for parsing, editing, and generating XML.</p>
 
-<p><a href="REXML.html"><code>REXML</code></a> is an XML toolkit for <a href="http://www.ruby-lang.org">Ruby</a>, in Ruby.</p>
+<h2 id="module-REXML-label-Implementation">Implementation<span><a href="#module-REXML-label-Implementation">&para;</a> <a href="#top">&uarr;</a></span></h2>
 
-<p><a href="REXML.html"><code>REXML</code></a> is a <em>pure</em> Ruby, XML 1.0 conforming, <a href="http://www.w3.org/TR/2004/REC-xml-20040204/#sec-conformance">non-validating</a> toolkit with an intuitive API.  <a href="REXML.html"><code>REXML</code></a> passes 100% of the non-validating Oasis <a href="http://www.oasis-open.org/committees/xml-conformance/xml-test-suite.shtml">tests</a>, and provides tree, stream, SAX2, pull, and lightweight APIs.  <a href="REXML.html"><code>REXML</code></a> also includes a full <a href="http://www.w3c.org/tr/xpath">XPath</a> 1.0 implementation. Since Ruby 1.8, <a href="REXML.html"><code>REXML</code></a> is included in the standard Ruby distribution.</p>
-<dl class="rdoc-list note-list"><dt>Main page
-<dd>
-<p><a href="http://www.germane-software.com/software/rexml">www.germane-software.com/software/rexml</a></p>
-</dd><dt>Author
-<dd>
-<p>Sean Russell &lt;serATgermaneHYPHENsoftwareDOTcom&gt;</p>
-</dd><dt>Date
-<dd>
-<p>2008/019</p>
-</dd><dt><a href="REXML.html#Version"><code>Version</code></a>
-<dd>
-<p>3.1.7.3</p>
-</dd></dl>
+<p>REXML:</p>
+<ul><li>
+<p>Is pure Ruby.</p>
+</li><li>
+<p>Provides tree, stream, SAX2, pull, and lightweight APIs.</p>
+</li><li>
+<p>Conforms to <a href="https://www.w3.org/TR/REC-xml/">XML version 1.0</a>.</p>
+</li><li>
+<p>Fully implements <a href="http://www.w3c.org/tr/xpath">XPath version 1.0</a>.</p>
+</li><li>
+<p>Is <a href="https://www.w3.org/TR/xml/">non-validating</a>.</p>
+</li><li>
+<p>Passes 100% of the non-validating <a href="http://www.oasis-open.org/committees/xml-conformance/xml-test-suite.shtml">Oasis tests</a>.</p>
+</li></ul>
 
-<p>This API documentation can be downloaded from the <a href="REXML.html"><code>REXML</code></a> home page, or can be accessed <a href="http://www.germane-software.com/software/rexml_doc">online</a></p>
+<h2 id="module-REXML-label-In+a+Hurry-3F">In a Hurry?<span><a href="#module-REXML-label-In+a+Hurry-3F">&para;</a> <a href="#top">&uarr;</a></span></h2>
 
-<p>A tutorial is available in the <a href="REXML.html"><code>REXML</code></a> distribution in docs/tutorial.html, or can be accessed <a href="http://www.germane-software.com/software/rexml/docs/tutorial.html">online</a></p>
+<p>If you&#39;re somewhat familiar with XML and have a particular task in mind, you may want to see <a href="doc/rexml/tasks/tocs/master_toc_rdoc.html">the tasks pages</a>.</p>
+
+<h2 id="module-REXML-label-API">API<span><a href="#module-REXML-label-API">&para;</a> <a href="#top">&uarr;</a></span></h2>
+
+<p>Among the most important classes for using REXML are:</p>
+<ul><li>
+<p><a href="REXML/Document.html"><code>REXML::Document</code></a>.</p>
+</li><li>
+<p><a href="REXML/Element.html"><code>REXML::Element</code></a>.</p>
+</li></ul>
 
   </section>
 

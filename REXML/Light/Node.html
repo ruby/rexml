@@ -144,7 +144,7 @@
           <p>Create a new element.</p>
 
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File lib/rexml/light/node.rb, line 21</span>
+            <pre><span class="ruby-comment"># File lib/rexml/light/node.rb, line 13</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span> <span class="ruby-identifier">node</span>=<span class="ruby-keyword">nil</span>
   <span class="ruby-ivar">@node</span> = <span class="ruby-identifier">node</span>
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">node</span>.<span class="ruby-identifier">kind_of?</span> <span class="ruby-constant">String</span>
@@ -183,7 +183,7 @@
           <p>Append a child to this element, optionally under a provided namespace. The namespace argument is ignored if the element argument is an <a href="../Element.html"><code>Element</code></a> object.  Otherwise, the element argument is a string, the namespace (if provided) is the namespace the element is created in.</p>
 
           <div class="method-source-code" id="3C-3C-source">
-            <pre><span class="ruby-comment"># File lib/rexml/light/node.rb, line 122</span>
+            <pre><span class="ruby-comment"># File lib/rexml/light/node.rb, line 114</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">&lt;&lt;</span> <span class="ruby-identifier">element</span>
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">node_type</span>() <span class="ruby-operator">==</span> <span class="ruby-value">:text</span>
     <span class="ruby-identifier">at</span>(<span class="ruby-value">-1</span>) <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">element</span>
@@ -211,7 +211,7 @@
           
 
           <div class="method-source-code" id="3D~-source">
-            <pre><span class="ruby-comment"># File lib/rexml/light/node.rb, line 98</span>
+            <pre><span class="ruby-comment"># File lib/rexml/light/node.rb, line 90</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">=~</span>( <span class="ruby-identifier">path</span> )
   <span class="ruby-constant">XPath</span>.<span class="ruby-identifier">match</span>( <span class="ruby-keyword">self</span>, <span class="ruby-identifier">path</span> )
 <span class="ruby-keyword">end</span></pre>
@@ -232,7 +232,7 @@
           
 
           <div class="method-source-code" id="5B-5D-source">
-            <pre><span class="ruby-comment"># File lib/rexml/light/node.rb, line 86</span>
+            <pre><span class="ruby-comment"># File lib/rexml/light/node.rb, line 78</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">[]</span>( <span class="ruby-identifier">reference</span>, <span class="ruby-identifier">ns</span>=<span class="ruby-keyword">nil</span> )
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">reference</span>.<span class="ruby-identifier">kind_of?</span> <span class="ruby-constant">String</span>
     <span class="ruby-identifier">pfx</span> = <span class="ruby-string">&#39;&#39;</span>
@@ -261,7 +261,7 @@
           <p>Doesn&#39;t handle namespaces yet</p>
 
           <div class="method-source-code" id="5B-5D-3D-source">
-            <pre><span class="ruby-comment"># File lib/rexml/light/node.rb, line 103</span>
+            <pre><span class="ruby-comment"># File lib/rexml/light/node.rb, line 95</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">[]=</span>( <span class="ruby-identifier">reference</span>, <span class="ruby-identifier">ns</span>, <span class="ruby-identifier">value</span>=<span class="ruby-keyword">nil</span> )
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">reference</span>.<span class="ruby-identifier">kind_of?</span> <span class="ruby-constant">String</span>
     <span class="ruby-identifier">value</span> = <span class="ruby-identifier">ns</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">value</span>
@@ -293,7 +293,7 @@
           
 
           <div class="method-source-code" id="children-source">
-            <pre><span class="ruby-comment"># File lib/rexml/light/node.rb, line 151</span>
+            <pre><span class="ruby-comment"># File lib/rexml/light/node.rb, line 143</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">children</span>
   <span class="ruby-keyword">self</span>
 <span class="ruby-keyword">end</span></pre>
@@ -314,7 +314,7 @@
           
 
           <div class="method-source-code" id="each-source">
-            <pre><span class="ruby-comment"># File lib/rexml/light/node.rb, line 44</span>
+            <pre><span class="ruby-comment"># File lib/rexml/light/node.rb, line 36</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">each</span>
   <span class="ruby-identifier">size</span>.<span class="ruby-identifier">times</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">x</span><span class="ruby-operator">|</span> <span class="ruby-keyword">yield</span>( <span class="ruby-identifier">at</span>(<span class="ruby-identifier">x</span><span class="ruby-value">+4</span>) ) }
 <span class="ruby-keyword">end</span></pre>
@@ -335,7 +335,7 @@
           
 
           <div class="method-source-code" id="has_name-3F-source">
-            <pre><span class="ruby-comment"># File lib/rexml/light/node.rb, line 147</span>
+            <pre><span class="ruby-comment"># File lib/rexml/light/node.rb, line 139</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">has_name?</span>( <span class="ruby-identifier">name</span>, <span class="ruby-identifier">namespace</span> = <span class="ruby-string">&#39;&#39;</span> )
   <span class="ruby-identifier">at</span>(<span class="ruby-value">3</span>) <span class="ruby-operator">==</span> <span class="ruby-identifier">name</span> <span class="ruby-keyword">and</span> <span class="ruby-identifier">namespace</span>() <span class="ruby-operator">==</span> <span class="ruby-identifier">namespace</span>
 <span class="ruby-keyword">end</span></pre>
@@ -356,7 +356,7 @@
           
 
           <div class="method-source-code" id="local_name-source">
-            <pre><span class="ruby-comment"># File lib/rexml/light/node.rb, line 62</span>
+            <pre><span class="ruby-comment"># File lib/rexml/light/node.rb, line 54</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">local_name</span>
   <span class="ruby-identifier">namesplit</span>
   <span class="ruby-ivar">@name</span>
@@ -378,7 +378,7 @@
           
 
           <div class="method-source-code" id="local_name-3D-source">
-            <pre><span class="ruby-comment"># File lib/rexml/light/node.rb, line 67</span>
+            <pre><span class="ruby-comment"># File lib/rexml/light/node.rb, line 59</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">local_name=</span>( <span class="ruby-identifier">name_str</span> )
   <span class="ruby-identifier">_old_put</span>( <span class="ruby-value">1</span>, <span class="ruby-node">&quot;#@prefix:#{name_str}&quot;</span> )
 <span class="ruby-keyword">end</span></pre>
@@ -399,7 +399,7 @@
           
 
           <div class="method-source-code" id="name-source">
-            <pre><span class="ruby-comment"># File lib/rexml/light/node.rb, line 48</span>
+            <pre><span class="ruby-comment"># File lib/rexml/light/node.rb, line 40</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">name</span>
   <span class="ruby-identifier">at</span>(<span class="ruby-value">2</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -420,7 +420,7 @@
           
 
           <div class="method-source-code" id="name-3D-source">
-            <pre><span class="ruby-comment"># File lib/rexml/light/node.rb, line 52</span>
+            <pre><span class="ruby-comment"># File lib/rexml/light/node.rb, line 44</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">name=</span>( <span class="ruby-identifier">name_str</span>, <span class="ruby-identifier">ns</span>=<span class="ruby-keyword">nil</span> )
   <span class="ruby-identifier">pfx</span> = <span class="ruby-string">&#39;&#39;</span>
   <span class="ruby-identifier">pfx</span> = <span class="ruby-node">&quot;#{prefix(ns)}:&quot;</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">ns</span>
@@ -443,7 +443,7 @@
           
 
           <div class="method-source-code" id="namespace-source">
-            <pre><span class="ruby-comment"># File lib/rexml/light/node.rb, line 75</span>
+            <pre><span class="ruby-comment"># File lib/rexml/light/node.rb, line 67</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">namespace</span>( <span class="ruby-identifier">prefix</span>=<span class="ruby-identifier">prefix</span>() )
   <span class="ruby-identifier">namespace_of</span>( <span class="ruby-keyword">self</span>, <span class="ruby-identifier">prefix</span> )
 <span class="ruby-keyword">end</span></pre>
@@ -464,7 +464,7 @@
           
 
           <div class="method-source-code" id="namespace-3D-source">
-            <pre><span class="ruby-comment"># File lib/rexml/light/node.rb, line 79</span>
+            <pre><span class="ruby-comment"># File lib/rexml/light/node.rb, line 71</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">namespace=</span>( <span class="ruby-identifier">namespace</span> )
   <span class="ruby-ivar">@prefix</span> = <span class="ruby-identifier">prefix</span>( <span class="ruby-identifier">namespace</span> )
   <span class="ruby-identifier">pfx</span> = <span class="ruby-string">&#39;&#39;</span>
@@ -488,7 +488,7 @@
           
 
           <div class="method-source-code" id="node_type-source">
-            <pre><span class="ruby-comment"># File lib/rexml/light/node.rb, line 133</span>
+            <pre><span class="ruby-comment"># File lib/rexml/light/node.rb, line 125</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">node_type</span>
   <span class="ruby-identifier">_old_get</span>(<span class="ruby-value">0</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -509,7 +509,7 @@
           
 
           <div class="method-source-code" id="parent-source">
-            <pre><span class="ruby-comment"># File lib/rexml/light/node.rb, line 155</span>
+            <pre><span class="ruby-comment"># File lib/rexml/light/node.rb, line 147</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">parent</span>
   <span class="ruby-identifier">at</span>(<span class="ruby-value">1</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -530,7 +530,7 @@
           
 
           <div class="method-source-code" id="parent-3D-source">
-            <pre><span class="ruby-comment"># File lib/rexml/light/node.rb, line 58</span>
+            <pre><span class="ruby-comment"># File lib/rexml/light/node.rb, line 50</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">parent=</span>( <span class="ruby-identifier">node</span> )
   <span class="ruby-identifier">_old_put</span>(<span class="ruby-value">1</span>,<span class="ruby-identifier">node</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -551,7 +551,7 @@
           
 
           <div class="method-source-code" id="prefix-source">
-            <pre><span class="ruby-comment"># File lib/rexml/light/node.rb, line 71</span>
+            <pre><span class="ruby-comment"># File lib/rexml/light/node.rb, line 63</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">prefix</span>( <span class="ruby-identifier">namespace</span>=<span class="ruby-keyword">nil</span> )
   <span class="ruby-identifier">prefix_of</span>( <span class="ruby-keyword">self</span>, <span class="ruby-identifier">namespace</span> )
 <span class="ruby-keyword">end</span></pre>
@@ -572,7 +572,7 @@
           
 
           <div class="method-source-code" id="root-source">
-            <pre><span class="ruby-comment"># File lib/rexml/light/node.rb, line 142</span>
+            <pre><span class="ruby-comment"># File lib/rexml/light/node.rb, line 134</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">root</span>
   <span class="ruby-identifier">context</span> = <span class="ruby-keyword">self</span>
   <span class="ruby-identifier">context</span> = <span class="ruby-identifier">context</span>.<span class="ruby-identifier">at</span>(<span class="ruby-value">1</span>) <span class="ruby-keyword">while</span> <span class="ruby-identifier">context</span>.<span class="ruby-identifier">at</span>(<span class="ruby-value">1</span>)
@@ -594,7 +594,7 @@
           
 
           <div class="method-source-code" id="size-source">
-            <pre><span class="ruby-comment"># File lib/rexml/light/node.rb, line 36</span>
+            <pre><span class="ruby-comment"># File lib/rexml/light/node.rb, line 28</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">size</span>
   <span class="ruby-keyword">if</span> <span class="ruby-constant">PARENTS</span>.<span class="ruby-identifier">include?</span> <span class="ruby-ivar">@node</span>[<span class="ruby-value">0</span>]
     <span class="ruby-ivar">@node</span>[<span class="ruby-value">-1</span>].<span class="ruby-identifier">size</span>
@@ -619,7 +619,7 @@
           
 
           <div class="method-source-code" id="text-3D-source">
-            <pre><span class="ruby-comment"># File lib/rexml/light/node.rb, line 137</span>
+            <pre><span class="ruby-comment"># File lib/rexml/light/node.rb, line 129</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">text=</span>( <span class="ruby-identifier">foo</span> )
   <span class="ruby-identifier">replace</span> = <span class="ruby-identifier">at</span>(<span class="ruby-value">4</span>).<span class="ruby-identifier">kind_of?</span>(<span class="ruby-constant">String</span>)<span class="ruby-operator">?</span> <span class="ruby-value">1</span> <span class="ruby-operator">:</span> <span class="ruby-value">0</span>
   <span class="ruby-keyword">self</span>.<span class="ruby-identifier">_old_put</span>(<span class="ruby-value">4</span>,<span class="ruby-identifier">replace</span>, <span class="ruby-identifier">normalizefoo</span>)
@@ -641,7 +641,7 @@
           
 
           <div class="method-source-code" id="to_s-source">
-            <pre><span class="ruby-comment"># File lib/rexml/light/node.rb, line 159</span>
+            <pre><span class="ruby-comment"># File lib/rexml/light/node.rb, line 151</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">to_s</span>
 
 <span class="ruby-keyword">end</span></pre>
