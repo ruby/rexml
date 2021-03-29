@@ -21,6 +21,8 @@
 <link href="../../css/rdoc.css" rel="stylesheet">
 
 
+
+
 <body id="top" role="document" class="class">
 <nav role="navigation">
   <div id="project-navigation">
@@ -57,43 +59,66 @@
 
   <div id="class-metadata">
     
-    
-<div id="parent-class-section" class="nav-section">
+    <div id="parent-class-section" class="nav-section">
   <h3>Parent</h3>
 
+  
   <p class="link">Object
+  
 </div>
 
     
     
-    
-<!-- Method Quickref -->
+    <!-- Method Quickref -->
 <div id="method-list-section" class="nav-section">
   <h3>Methods</h3>
 
   <ul class="link-list" role="directory">
+    
     <li ><a href="#method-c-new">::new</a>
+    
     <li ><a href="#method-i-3C-3C">#&lt;&lt;</a>
+    
     <li ><a href="#method-i-3D~">#=~</a>
+    
     <li ><a href="#method-i-5B-5D">#[]</a>
+    
     <li ><a href="#method-i-5B-5D-3D">#[]=</a>
+    
     <li ><a href="#method-i-children">#children</a>
+    
     <li ><a href="#method-i-each">#each</a>
+    
     <li ><a href="#method-i-has_name-3F">#has_name?</a>
+    
     <li ><a href="#method-i-local_name">#local_name</a>
+    
     <li ><a href="#method-i-local_name-3D">#local_name=</a>
+    
     <li ><a href="#method-i-name">#name</a>
+    
     <li ><a href="#method-i-name-3D">#name=</a>
+    
     <li ><a href="#method-i-namespace">#namespace</a>
+    
     <li ><a href="#method-i-namespace-3D">#namespace=</a>
+    
     <li ><a href="#method-i-node_type">#node_type</a>
+    
     <li ><a href="#method-i-parent">#parent</a>
+    
     <li ><a href="#method-i-parent-3D">#parent=</a>
+    
     <li ><a href="#method-i-prefix">#prefix</a>
+    
     <li ><a href="#method-i-root">#root</a>
+    
     <li ><a href="#method-i-size">#size</a>
+    
     <li ><a href="#method-i-text-3D">#text=</a>
+    
     <li ><a href="#method-i-to_s">#to_s</a>
+    
   </ul>
 </div>
 
@@ -111,38 +136,60 @@
 
   </section>
 
+  
   <section id="5Buntitled-5D" class="documentation-section">
+    
 
+    
 
+    
     <section class="constants-list">
       <header>
         <h3>Constants</h3>
       </header>
       <dl>
+      
         <dt id="NAMESPLIT">NAMESPLIT
+        
         <dd>
+        
+      
         <dt id="PARENTS">PARENTS
+        
         <dd>
+        
+      
       </dl>
     </section>
+    
 
+    
 
-
+    
      <section id="public-class-5Buntitled-5D-method-details" class="method-section">
        <header>
          <h3>Public Class Methods</h3>
        </header>
 
+    
       <div id="method-c-new" class="method-detail ">
+        
         <div class="method-heading">
           <span class="method-name">new</span><span
             class="method-args">(node=nil)</span>
+          
           <span class="method-click-advice">click to toggle source</span>
+          
         </div>
+        
 
         <div class="method-description">
+          
           <p>Create a new element.</p>
+          
+          
 
+          
           <div class="method-source-code" id="new-source">
             <pre><span class="ruby-comment"># File lib/rexml/light/node.rb, line 13</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span> <span class="ruby-identifier">node</span>=<span class="ruby-keyword">nil</span>
@@ -160,28 +207,41 @@
   <span class="ruby-keyword">end</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
+          
         </div>
 
+        
 
+        
       </div>
 
+    
     </section>
-
+  
      <section id="public-instance-5Buntitled-5D-method-details" class="method-section">
        <header>
          <h3>Public Instance Methods</h3>
        </header>
 
+    
       <div id="method-i-3C-3C" class="method-detail ">
+        
         <div class="method-heading">
           <span class="method-name">&lt;&lt;</span><span
             class="method-args">(element)</span>
+          
           <span class="method-click-advice">click to toggle source</span>
+          
         </div>
+        
 
         <div class="method-description">
+          
           <p>Append a child to this element, optionally under a provided namespace. The namespace argument is ignored if the element argument is an <a href="../Element.html"><code>Element</code></a> object.  Otherwise, the element argument is a string, the namespace (if provided) is the namespace the element is created in.</p>
+          
+          
 
+          
           <div class="method-source-code" id="3C-3C-source">
             <pre><span class="ruby-comment"># File lib/rexml/light/node.rb, line 114</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">&lt;&lt;</span> <span class="ruby-identifier">element</span>
@@ -195,42 +255,66 @@
   <span class="ruby-identifier">at</span>(<span class="ruby-value">-1</span>)
 <span class="ruby-keyword">end</span></pre>
           </div>
+          
         </div>
 
+        
 
+        
       </div>
 
+    
       <div id="method-i-3D~" class="method-detail ">
+        
         <div class="method-heading">
           <span class="method-name">=~</span><span
             class="method-args">( path )</span>
+          
           <span class="method-click-advice">click to toggle source</span>
+          
         </div>
+        
 
         <div class="method-description">
           
+          
+          
+          
 
+          
           <div class="method-source-code" id="3D~-source">
             <pre><span class="ruby-comment"># File lib/rexml/light/node.rb, line 90</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">=~</span>( <span class="ruby-identifier">path</span> )
   <span class="ruby-constant">XPath</span>.<span class="ruby-identifier">match</span>( <span class="ruby-keyword">self</span>, <span class="ruby-identifier">path</span> )
 <span class="ruby-keyword">end</span></pre>
           </div>
+          
         </div>
 
+        
 
+        
       </div>
 
+    
       <div id="method-i-5B-5D" class="method-detail ">
+        
         <div class="method-heading">
           <span class="method-name">[]</span><span
             class="method-args">( reference, ns=nil )</span>
+          
           <span class="method-click-advice">click to toggle source</span>
+          
         </div>
+        
 
         <div class="method-description">
           
+          
+          
+          
 
+          
           <div class="method-source-code" id="5B-5D-source">
             <pre><span class="ruby-comment"># File lib/rexml/light/node.rb, line 78</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">[]</span>( <span class="ruby-identifier">reference</span>, <span class="ruby-identifier">ns</span>=<span class="ruby-keyword">nil</span> )
@@ -245,21 +329,33 @@
   <span class="ruby-keyword">end</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
+          
         </div>
 
+        
 
+        
       </div>
 
+    
       <div id="method-i-5B-5D-3D" class="method-detail ">
+        
         <div class="method-heading">
           <span class="method-name">[]=</span><span
             class="method-args">( reference, ns, value=nil )</span>
+          
           <span class="method-click-advice">click to toggle source</span>
+          
         </div>
+        
 
         <div class="method-description">
+          
           <p>Doesn&#39;t handle namespaces yet</p>
+          
+          
 
+          
           <div class="method-source-code" id="5B-5D-3D-source">
             <pre><span class="ruby-comment"># File lib/rexml/light/node.rb, line 95</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">[]=</span>( <span class="ruby-identifier">reference</span>, <span class="ruby-identifier">ns</span>, <span class="ruby-identifier">value</span>=<span class="ruby-keyword">nil</span> )
@@ -277,84 +373,132 @@
   <span class="ruby-keyword">end</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
+          
         </div>
 
+        
 
+        
       </div>
 
+    
       <div id="method-i-children" class="method-detail ">
+        
         <div class="method-heading">
           <span class="method-name">children</span><span
             class="method-args">()</span>
+          
           <span class="method-click-advice">click to toggle source</span>
+          
         </div>
+        
 
         <div class="method-description">
           
+          
+          
+          
 
+          
           <div class="method-source-code" id="children-source">
             <pre><span class="ruby-comment"># File lib/rexml/light/node.rb, line 143</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">children</span>
   <span class="ruby-keyword">self</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
+          
         </div>
 
+        
 
+        
       </div>
 
+    
       <div id="method-i-each" class="method-detail ">
+        
         <div class="method-heading">
           <span class="method-name">each</span><span
             class="method-args">() { |at(x+4)| ... }</span>
+          
           <span class="method-click-advice">click to toggle source</span>
+          
         </div>
+        
 
         <div class="method-description">
           
+          
+          
+          
 
+          
           <div class="method-source-code" id="each-source">
             <pre><span class="ruby-comment"># File lib/rexml/light/node.rb, line 36</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">each</span>
   <span class="ruby-identifier">size</span>.<span class="ruby-identifier">times</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">x</span><span class="ruby-operator">|</span> <span class="ruby-keyword">yield</span>( <span class="ruby-identifier">at</span>(<span class="ruby-identifier">x</span><span class="ruby-value">+4</span>) ) }
 <span class="ruby-keyword">end</span></pre>
           </div>
+          
         </div>
 
+        
 
+        
       </div>
 
+    
       <div id="method-i-has_name-3F" class="method-detail ">
+        
         <div class="method-heading">
           <span class="method-name">has_name?</span><span
             class="method-args">( name, namespace = &#39;&#39; )</span>
+          
           <span class="method-click-advice">click to toggle source</span>
+          
         </div>
+        
 
         <div class="method-description">
           
+          
+          
+          
 
+          
           <div class="method-source-code" id="has_name-3F-source">
             <pre><span class="ruby-comment"># File lib/rexml/light/node.rb, line 139</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">has_name?</span>( <span class="ruby-identifier">name</span>, <span class="ruby-identifier">namespace</span> = <span class="ruby-string">&#39;&#39;</span> )
   <span class="ruby-identifier">at</span>(<span class="ruby-value">3</span>) <span class="ruby-operator">==</span> <span class="ruby-identifier">name</span> <span class="ruby-keyword">and</span> <span class="ruby-identifier">namespace</span>() <span class="ruby-operator">==</span> <span class="ruby-identifier">namespace</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
+          
         </div>
 
+        
 
+        
       </div>
 
+    
       <div id="method-i-local_name" class="method-detail ">
+        
         <div class="method-heading">
           <span class="method-name">local_name</span><span
             class="method-args">()</span>
+          
           <span class="method-click-advice">click to toggle source</span>
+          
         </div>
+        
 
         <div class="method-description">
           
+          
+          
+          
 
+          
           <div class="method-source-code" id="local_name-source">
             <pre><span class="ruby-comment"># File lib/rexml/light/node.rb, line 54</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">local_name</span>
@@ -362,63 +506,99 @@
   <span class="ruby-ivar">@name</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
+          
         </div>
 
+        
 
+        
       </div>
 
+    
       <div id="method-i-local_name-3D" class="method-detail ">
+        
         <div class="method-heading">
           <span class="method-name">local_name=</span><span
             class="method-args">( name_str )</span>
+          
           <span class="method-click-advice">click to toggle source</span>
+          
         </div>
+        
 
         <div class="method-description">
           
+          
+          
+          
 
+          
           <div class="method-source-code" id="local_name-3D-source">
             <pre><span class="ruby-comment"># File lib/rexml/light/node.rb, line 59</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">local_name=</span>( <span class="ruby-identifier">name_str</span> )
   <span class="ruby-identifier">_old_put</span>( <span class="ruby-value">1</span>, <span class="ruby-node">&quot;#@prefix:#{name_str}&quot;</span> )
 <span class="ruby-keyword">end</span></pre>
           </div>
+          
         </div>
 
+        
 
+        
       </div>
 
+    
       <div id="method-i-name" class="method-detail ">
+        
         <div class="method-heading">
           <span class="method-name">name</span><span
             class="method-args">()</span>
+          
           <span class="method-click-advice">click to toggle source</span>
+          
         </div>
+        
 
         <div class="method-description">
           
+          
+          
+          
 
+          
           <div class="method-source-code" id="name-source">
             <pre><span class="ruby-comment"># File lib/rexml/light/node.rb, line 40</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">name</span>
   <span class="ruby-identifier">at</span>(<span class="ruby-value">2</span>)
 <span class="ruby-keyword">end</span></pre>
           </div>
+          
         </div>
 
+        
 
+        
       </div>
 
+    
       <div id="method-i-name-3D" class="method-detail ">
+        
         <div class="method-heading">
           <span class="method-name">name=</span><span
             class="method-args">( name_str, ns=nil )</span>
+          
           <span class="method-click-advice">click to toggle source</span>
+          
         </div>
+        
 
         <div class="method-description">
           
+          
+          
+          
 
+          
           <div class="method-source-code" id="name-3D-source">
             <pre><span class="ruby-comment"># File lib/rexml/light/node.rb, line 44</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">name=</span>( <span class="ruby-identifier">name_str</span>, <span class="ruby-identifier">ns</span>=<span class="ruby-keyword">nil</span> )
@@ -427,42 +607,66 @@
   <span class="ruby-identifier">_old_put</span>(<span class="ruby-value">2</span>, <span class="ruby-node">&quot;#{pfx}#{name_str}&quot;</span>)
 <span class="ruby-keyword">end</span></pre>
           </div>
+          
         </div>
 
+        
 
+        
       </div>
 
+    
       <div id="method-i-namespace" class="method-detail ">
+        
         <div class="method-heading">
           <span class="method-name">namespace</span><span
             class="method-args">( prefix=prefix() )</span>
+          
           <span class="method-click-advice">click to toggle source</span>
+          
         </div>
+        
 
         <div class="method-description">
           
+          
+          
+          
 
+          
           <div class="method-source-code" id="namespace-source">
             <pre><span class="ruby-comment"># File lib/rexml/light/node.rb, line 67</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">namespace</span>( <span class="ruby-identifier">prefix</span>=<span class="ruby-identifier">prefix</span>() )
   <span class="ruby-identifier">namespace_of</span>( <span class="ruby-keyword">self</span>, <span class="ruby-identifier">prefix</span> )
 <span class="ruby-keyword">end</span></pre>
           </div>
+          
         </div>
 
+        
 
+        
       </div>
 
+    
       <div id="method-i-namespace-3D" class="method-detail ">
+        
         <div class="method-heading">
           <span class="method-name">namespace=</span><span
             class="method-args">( namespace )</span>
+          
           <span class="method-click-advice">click to toggle source</span>
+          
         </div>
+        
 
         <div class="method-description">
           
+          
+          
+          
 
+          
           <div class="method-source-code" id="namespace-3D-source">
             <pre><span class="ruby-comment"># File lib/rexml/light/node.rb, line 71</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">namespace=</span>( <span class="ruby-identifier">namespace</span> )
@@ -472,105 +676,165 @@
   <span class="ruby-identifier">_old_put</span>(<span class="ruby-value">1</span>, <span class="ruby-node">&quot;#{pfx}#@name&quot;</span>)
 <span class="ruby-keyword">end</span></pre>
           </div>
+          
         </div>
 
+        
 
+        
       </div>
 
+    
       <div id="method-i-node_type" class="method-detail ">
+        
         <div class="method-heading">
           <span class="method-name">node_type</span><span
             class="method-args">()</span>
+          
           <span class="method-click-advice">click to toggle source</span>
+          
         </div>
+        
 
         <div class="method-description">
           
+          
+          
+          
 
+          
           <div class="method-source-code" id="node_type-source">
             <pre><span class="ruby-comment"># File lib/rexml/light/node.rb, line 125</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">node_type</span>
   <span class="ruby-identifier">_old_get</span>(<span class="ruby-value">0</span>)
 <span class="ruby-keyword">end</span></pre>
           </div>
+          
         </div>
 
+        
 
+        
       </div>
 
+    
       <div id="method-i-parent" class="method-detail ">
+        
         <div class="method-heading">
           <span class="method-name">parent</span><span
             class="method-args">()</span>
+          
           <span class="method-click-advice">click to toggle source</span>
+          
         </div>
+        
 
         <div class="method-description">
           
+          
+          
+          
 
+          
           <div class="method-source-code" id="parent-source">
             <pre><span class="ruby-comment"># File lib/rexml/light/node.rb, line 147</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">parent</span>
   <span class="ruby-identifier">at</span>(<span class="ruby-value">1</span>)
 <span class="ruby-keyword">end</span></pre>
           </div>
+          
         </div>
 
+        
 
+        
       </div>
 
+    
       <div id="method-i-parent-3D" class="method-detail ">
+        
         <div class="method-heading">
           <span class="method-name">parent=</span><span
             class="method-args">( node )</span>
+          
           <span class="method-click-advice">click to toggle source</span>
+          
         </div>
+        
 
         <div class="method-description">
           
+          
+          
+          
 
+          
           <div class="method-source-code" id="parent-3D-source">
             <pre><span class="ruby-comment"># File lib/rexml/light/node.rb, line 50</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">parent=</span>( <span class="ruby-identifier">node</span> )
   <span class="ruby-identifier">_old_put</span>(<span class="ruby-value">1</span>,<span class="ruby-identifier">node</span>)
 <span class="ruby-keyword">end</span></pre>
           </div>
+          
         </div>
 
+        
 
+        
       </div>
 
+    
       <div id="method-i-prefix" class="method-detail ">
+        
         <div class="method-heading">
           <span class="method-name">prefix</span><span
             class="method-args">( namespace=nil )</span>
+          
           <span class="method-click-advice">click to toggle source</span>
+          
         </div>
+        
 
         <div class="method-description">
           
+          
+          
+          
 
+          
           <div class="method-source-code" id="prefix-source">
             <pre><span class="ruby-comment"># File lib/rexml/light/node.rb, line 63</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">prefix</span>( <span class="ruby-identifier">namespace</span>=<span class="ruby-keyword">nil</span> )
   <span class="ruby-identifier">prefix_of</span>( <span class="ruby-keyword">self</span>, <span class="ruby-identifier">namespace</span> )
 <span class="ruby-keyword">end</span></pre>
           </div>
+          
         </div>
 
+        
 
+        
       </div>
 
+    
       <div id="method-i-root" class="method-detail ">
+        
         <div class="method-heading">
           <span class="method-name">root</span><span
             class="method-args">()</span>
+          
           <span class="method-click-advice">click to toggle source</span>
+          
         </div>
+        
 
         <div class="method-description">
           
+          
+          
+          
 
+          
           <div class="method-source-code" id="root-source">
             <pre><span class="ruby-comment"># File lib/rexml/light/node.rb, line 134</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">root</span>
@@ -578,21 +842,33 @@
   <span class="ruby-identifier">context</span> = <span class="ruby-identifier">context</span>.<span class="ruby-identifier">at</span>(<span class="ruby-value">1</span>) <span class="ruby-keyword">while</span> <span class="ruby-identifier">context</span>.<span class="ruby-identifier">at</span>(<span class="ruby-value">1</span>)
 <span class="ruby-keyword">end</span></pre>
           </div>
+          
         </div>
 
+        
 
+        
       </div>
 
+    
       <div id="method-i-size" class="method-detail ">
+        
         <div class="method-heading">
           <span class="method-name">size</span><span
             class="method-args">()</span>
+          
           <span class="method-click-advice">click to toggle source</span>
+          
         </div>
+        
 
         <div class="method-description">
           
+          
+          
+          
 
+          
           <div class="method-source-code" id="size-source">
             <pre><span class="ruby-comment"># File lib/rexml/light/node.rb, line 28</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">size</span>
@@ -603,21 +879,33 @@
   <span class="ruby-keyword">end</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
+          
         </div>
 
+        
 
+        
       </div>
 
+    
       <div id="method-i-text-3D" class="method-detail ">
+        
         <div class="method-heading">
           <span class="method-name">text=</span><span
             class="method-args">( foo )</span>
+          
           <span class="method-click-advice">click to toggle source</span>
+          
         </div>
+        
 
         <div class="method-description">
           
+          
+          
+          
 
+          
           <div class="method-source-code" id="text-3D-source">
             <pre><span class="ruby-comment"># File lib/rexml/light/node.rb, line 129</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">text=</span>( <span class="ruby-identifier">foo</span> )
@@ -625,41 +913,58 @@
   <span class="ruby-keyword">self</span>.<span class="ruby-identifier">_old_put</span>(<span class="ruby-value">4</span>,<span class="ruby-identifier">replace</span>, <span class="ruby-identifier">normalizefoo</span>)
 <span class="ruby-keyword">end</span></pre>
           </div>
+          
         </div>
 
+        
 
+        
       </div>
 
+    
       <div id="method-i-to_s" class="method-detail ">
+        
         <div class="method-heading">
           <span class="method-name">to_s</span><span
             class="method-args">()</span>
+          
           <span class="method-click-advice">click to toggle source</span>
+          
         </div>
+        
 
         <div class="method-description">
           
+          
+          
+          
 
+          
           <div class="method-source-code" id="to_s-source">
             <pre><span class="ruby-comment"># File lib/rexml/light/node.rb, line 151</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">to_s</span>
 
 <span class="ruby-keyword">end</span></pre>
           </div>
+          
         </div>
 
+        
 
+        
       </div>
 
+    
     </section>
-
+  
   </section>
+
 </main>
 
 
 <footer id="validator-badges" role="contentinfo">
   <p><a href="https://validator.w3.org/check/referer">Validate</a>
-  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.3.0.
+  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.2.1.
   <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
 </footer>
 

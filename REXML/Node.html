@@ -21,6 +21,8 @@
 <link href="../css/rdoc.css" rel="stylesheet">
 
 
+
+
 <body id="top" role="document" class="module">
 <nav role="navigation">
   <div id="project-navigation">
@@ -60,20 +62,28 @@
     
     
     
-    
-<!-- Method Quickref -->
+    <!-- Method Quickref -->
 <div id="method-list-section" class="nav-section">
   <h3>Methods</h3>
 
   <ul class="link-list" role="directory">
+    
     <li ><a href="#method-i-each_recursive">#each_recursive</a>
+    
     <li ><a href="#method-i-find_first_recursive">#find_first_recursive</a>
+    
     <li ><a href="#method-i-indent">#indent</a>
+    
     <li ><a href="#method-i-index_in_parent">#index_in_parent</a>
+    
     <li ><a href="#method-i-next_sibling_node">#next_sibling_node</a>
+    
     <li ><a href="#method-i-parent-3F">#parent?</a>
+    
     <li ><a href="#method-i-previous_sibling_node">#previous_sibling_node</a>
+    
     <li ><a href="#method-i-to_s">#to_s</a>
+    
   </ul>
 </div>
 
@@ -91,27 +101,41 @@
 
   </section>
 
+  
   <section id="5Buntitled-5D" class="documentation-section">
+    
 
+    
 
+    
 
+    
 
-
+    
      <section id="public-instance-5Buntitled-5D-method-details" class="method-section">
        <header>
          <h3>Public Instance Methods</h3>
        </header>
 
+    
       <div id="method-i-each_recursive" class="method-detail ">
+        
         <div class="method-heading">
           <span class="method-name">each_recursive</span><span
             class="method-args">() { |node| ... }</span>
+          
           <span class="method-click-advice">click to toggle source</span>
+          
         </div>
+        
 
         <div class="method-description">
+          
           <p>Visit all subnodes of <code>self</code> recursively</p>
+          
+          
 
+          
           <div class="method-source-code" id="each_recursive-source">
             <pre><span class="ruby-comment"># File lib/rexml/node.rb, line 54</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">each_recursive</span>(<span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>) <span class="ruby-comment"># :yields: node</span>
@@ -121,21 +145,33 @@
   }
 <span class="ruby-keyword">end</span></pre>
           </div>
+          
         </div>
 
+        
 
+        
       </div>
 
+    
       <div id="method-i-find_first_recursive" class="method-detail ">
+        
         <div class="method-heading">
           <span class="method-name">find_first_recursive</span><span
             class="method-args">() { |node| ... }</span>
+          
           <span class="method-click-advice">click to toggle source</span>
+          
         </div>
+        
 
         <div class="method-description">
+          
           <p>Find (and return) first subnode (recursively) for which the block evaluates to true. Returns <code>nil</code> if none was found.</p>
+          
+          
 
+          
           <div class="method-source-code" id="find_first_recursive-source">
             <pre><span class="ruby-comment"># File lib/rexml/node.rb, line 63</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">find_first_recursive</span>(<span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>) <span class="ruby-comment"># :yields: node</span>
@@ -145,21 +181,33 @@
   <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
+          
         </div>
 
+        
 
+        
       </div>
 
+    
       <div id="method-i-indent" class="method-detail ">
+        
         <div class="method-heading">
           <span class="method-name">indent</span><span
             class="method-args">(to, ind)</span>
+          
           <span class="method-click-advice">click to toggle source</span>
+          
         </div>
+        
 
         <div class="method-description">
           
+          
+          
+          
 
+          
           <div class="method-source-code" id="indent-source">
             <pre><span class="ruby-comment"># File lib/rexml/node.rb, line 39</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">indent</span> <span class="ruby-identifier">to</span>, <span class="ruby-identifier">ind</span>
@@ -171,42 +219,66 @@
                     <span class="ruby-identifier">to</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">indentstyle</span><span class="ruby-operator">*</span><span class="ruby-identifier">ind</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">ind</span><span class="ruby-operator">&lt;</span><span class="ruby-value">1</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
+          
         </div>
 
+        
 
+        
       </div>
 
+    
       <div id="method-i-index_in_parent" class="method-detail ">
+        
         <div class="method-heading">
           <span class="method-name">index_in_parent</span><span
             class="method-args">()</span>
+          
           <span class="method-click-advice">click to toggle source</span>
+          
         </div>
+        
 
         <div class="method-description">
+          
           <p>Returns the position that <code>self</code> holds in its parent&#39;s array, indexed from 1.</p>
+          
+          
 
+          
           <div class="method-source-code" id="index_in_parent-source">
             <pre><span class="ruby-comment"># File lib/rexml/node.rb, line 72</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">index_in_parent</span>
   <span class="ruby-identifier">parent</span>.<span class="ruby-identifier">index</span>(<span class="ruby-keyword">self</span>)<span class="ruby-value">+1</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
+          
         </div>
 
+        
 
+        
       </div>
 
+    
       <div id="method-i-next_sibling_node" class="method-detail ">
+        
         <div class="method-heading">
           <span class="method-name">next_sibling_node</span><span
             class="method-args">()</span>
+          
           <span class="method-click-advice">click to toggle source</span>
+          
         </div>
+        
 
         <div class="method-description">
+          
           <p>@return the next sibling (nil if unset)</p>
+          
+          
 
+          
           <div class="method-source-code" id="next_sibling_node-source">
             <pre><span class="ruby-comment"># File lib/rexml/node.rb, line 11</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">next_sibling_node</span>
@@ -214,42 +286,66 @@
   <span class="ruby-ivar">@parent</span>[ <span class="ruby-ivar">@parent</span>.<span class="ruby-identifier">index</span>(<span class="ruby-keyword">self</span>) <span class="ruby-operator">+</span> <span class="ruby-value">1</span> ]
 <span class="ruby-keyword">end</span></pre>
           </div>
+          
         </div>
 
+        
 
+        
       </div>
 
+    
       <div id="method-i-parent-3F" class="method-detail ">
+        
         <div class="method-heading">
           <span class="method-name">parent?</span><span
             class="method-args">()</span>
+          
           <span class="method-click-advice">click to toggle source</span>
+          
         </div>
+        
 
         <div class="method-description">
           
+          
+          
+          
 
+          
           <div class="method-source-code" id="parent-3F-source">
             <pre><span class="ruby-comment"># File lib/rexml/node.rb, line 48</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">parent?</span>
   <span class="ruby-keyword">false</span>;
 <span class="ruby-keyword">end</span></pre>
           </div>
+          
         </div>
 
+        
 
+        
       </div>
 
+    
       <div id="method-i-previous_sibling_node" class="method-detail ">
+        
         <div class="method-heading">
           <span class="method-name">previous_sibling_node</span><span
             class="method-args">()</span>
+          
           <span class="method-click-advice">click to toggle source</span>
+          
         </div>
+        
 
         <div class="method-description">
+          
           <p>@return the previous sibling (nil if unset)</p>
+          
+          
 
+          
           <div class="method-source-code" id="previous_sibling_node-source">
             <pre><span class="ruby-comment"># File lib/rexml/node.rb, line 17</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">previous_sibling_node</span>
@@ -259,24 +355,36 @@
   <span class="ruby-ivar">@parent</span>[ <span class="ruby-identifier">ind</span> <span class="ruby-operator">-</span> <span class="ruby-value">1</span> ]
 <span class="ruby-keyword">end</span></pre>
           </div>
+          
         </div>
 
+        
 
+        
       </div>
 
+    
       <div id="method-i-to_s" class="method-detail ">
+        
         <div class="method-heading">
           <span class="method-name">to_s</span><span
             class="method-args">(indent=nil)</span>
+          
           <span class="method-click-advice">click to toggle source</span>
+          
         </div>
+        
 
         <div class="method-description">
+          
           <dl class="rdoc-list note-list"><dt>indent
 <dd>
 <p><strong>DEPRECATED</strong> This parameter is now ignored.  See the formatters in the <a href="Formatters.html"><code>REXML::Formatters</code></a> package for changing the output style.</p>
 </dd></dl>
+          
+          
 
+          
           <div class="method-source-code" id="to_s-source">
             <pre><span class="ruby-comment"># File lib/rexml/node.rb, line 27</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">to_s</span> <span class="ruby-identifier">indent</span>=<span class="ruby-keyword">nil</span>
@@ -291,20 +399,25 @@
   <span class="ruby-keyword">return</span> <span class="ruby-identifier">rv</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
+          
         </div>
 
+        
 
+        
       </div>
 
+    
     </section>
-
+  
   </section>
+
 </main>
 
 
 <footer id="validator-badges" role="contentinfo">
   <p><a href="https://validator.w3.org/check/referer">Validate</a>
-  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.3.0.
+  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.2.1.
   <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
 </footer>
 

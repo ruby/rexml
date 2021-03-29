@@ -21,6 +21,8 @@
 <link href="../../css/rdoc.css" rel="stylesheet">
 
 
+
+
 <body id="top" role="document" class="class">
 <nav role="navigation">
   <div id="project-navigation">
@@ -57,28 +59,36 @@
 
   <div id="class-metadata">
     
-    
-<div id="parent-class-section" class="nav-section">
+    <div id="parent-class-section" class="nav-section">
   <h3>Parent</h3>
 
+  
   <p class="link"><a href="Choice.html">REXML::Validation::Choice</a>
+  
 </div>
 
     
     
-    
-<!-- Method Quickref -->
+    <!-- Method Quickref -->
 <div id="method-list-section" class="nav-section">
   <h3>Methods</h3>
 
   <ul class="link-list" role="directory">
+    
     <li class="calls-super" ><a href="#method-c-new">::new</a>
+    
     <li ><a href="#method-i-expected">#expected</a>
+    
     <li ><a href="#method-i-inspect">#inspect</a>
+    
     <li ><a href="#method-i-matches-3F">#matches?</a>
+    
     <li ><a href="#method-i-next">#next</a>
+    
     <li ><a href="#method-i-next_current">#next_current</a>
+    
     <li ><a href="#method-i-reset">#reset</a>
+    
   </ul>
 </div>
 
@@ -94,31 +104,46 @@
     
   </section>
 
+  
   <section id="5Buntitled-5D" class="documentation-section">
+    
 
+    
 
+    
 
+    
 
-
+    
      <section id="public-class-5Buntitled-5D-method-details" class="method-section">
        <header>
          <h3>Public Class Methods</h3>
        </header>
 
+    
       <div id="method-c-new" class="method-detail ">
+        
         <div class="method-heading">
           <span class="method-name">new</span><span
             class="method-args">(context)</span>
+          
           <span class="method-click-advice">click to toggle source</span>
+          
         </div>
+        
 
         <div class="method-description">
+          
+          
+          
           
             <div class="method-calls-super">
               Calls superclass method
               <a href="Choice.html#method-c-new"><code>REXML::Validation::Choice::new</code></a>
             </div>
+          
 
+          
           <div class="method-source-code" id="new-source">
             <pre><span class="ruby-comment"># File lib/rexml/validation/relaxng.rb, line 440</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span> <span class="ruby-identifier">context</span>
@@ -126,28 +151,41 @@
   <span class="ruby-ivar">@choice</span> = <span class="ruby-value">0</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
+          
         </div>
 
+        
 
+        
       </div>
 
+    
     </section>
-
+  
      <section id="public-instance-5Buntitled-5D-method-details" class="method-section">
        <header>
          <h3>Public Instance Methods</h3>
        </header>
 
+    
       <div id="method-i-expected" class="method-detail ">
+        
         <div class="method-heading">
           <span class="method-name">expected</span><span
             class="method-args">()</span>
+          
           <span class="method-click-advice">click to toggle source</span>
+          
         </div>
+        
 
         <div class="method-description">
           
+          
+          
+          
 
+          
           <div class="method-source-code" id="expected-source">
             <pre><span class="ruby-comment"># File lib/rexml/validation/relaxng.rb, line 511</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">expected</span>
@@ -161,42 +199,66 @@
   <span class="ruby-keyword">end</span>.<span class="ruby-identifier">flatten</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
+          
         </div>
 
+        
 
+        
       </div>
 
+    
       <div id="method-i-inspect" class="method-detail ">
+        
         <div class="method-heading">
           <span class="method-name">inspect</span><span
             class="method-args">()</span>
+          
           <span class="method-click-advice">click to toggle source</span>
+          
         </div>
+        
 
         <div class="method-description">
           
+          
+          
+          
 
+          
           <div class="method-source-code" id="inspect-source">
             <pre><span class="ruby-comment"># File lib/rexml/validation/relaxng.rb, line 522</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">inspect</span>
   <span class="ruby-node">&quot;&lt; #{to_s} #{@choices.collect{|e| e.collect{|f|f.to_s}.join(&#39;, &#39;)}.join(&#39; and &#39;)} &gt;&quot;</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
+          
         </div>
 
+        
 
+        
       </div>
 
+    
       <div id="method-i-matches-3F" class="method-detail ">
+        
         <div class="method-heading">
           <span class="method-name">matches?</span><span
             class="method-args">( event )</span>
+          
           <span class="method-click-advice">click to toggle source</span>
+          
         </div>
+        
 
         <div class="method-description">
           
+          
+          
+          
 
+          
           <div class="method-source-code" id="matches-3F-source">
             <pre><span class="ruby-comment"># File lib/rexml/validation/relaxng.rb, line 506</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">matches?</span>( <span class="ruby-identifier">event</span> )
@@ -204,21 +266,33 @@
   <span class="ruby-operator">!</span><span class="ruby-ivar">@choices</span>[<span class="ruby-ivar">@choice</span><span class="ruby-operator">..</span><span class="ruby-value">-1</span>].<span class="ruby-identifier">find</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">evt</span><span class="ruby-operator">|</span> <span class="ruby-identifier">evt</span>[<span class="ruby-value">0</span>].<span class="ruby-identifier">matches?</span>(<span class="ruby-identifier">event</span>)}.<span class="ruby-identifier">nil?</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
+          
         </div>
 
+        
 
+        
       </div>
 
+    
       <div id="method-i-next" class="method-detail ">
+        
         <div class="method-heading">
           <span class="method-name">next</span><span
             class="method-args">( event )</span>
+          
           <span class="method-click-advice">click to toggle source</span>
+          
         </div>
+        
 
         <div class="method-description">
           
+          
+          
+          
 
+          
           <div class="method-source-code" id="next-source">
             <pre><span class="ruby-comment"># File lib/rexml/validation/relaxng.rb, line 477</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">next</span>( <span class="ruby-identifier ruby-title">event</span> )
@@ -250,21 +324,33 @@
   <span class="ruby-keyword">end</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
+          
         </div>
 
+        
 
+        
       </div>
 
+    
       <div id="method-i-next_current" class="method-detail ">
+        
         <div class="method-heading">
           <span class="method-name">next_current</span><span
             class="method-args">( event )</span>
+          
           <span class="method-click-advice">click to toggle source</span>
+          
         </div>
+        
 
         <div class="method-description">
           
+          
+          
+          
 
+          
           <div class="method-source-code" id="next_current-source">
             <pre><span class="ruby-comment"># File lib/rexml/validation/relaxng.rb, line 449</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">next_current</span>( <span class="ruby-identifier">event</span> )
@@ -294,41 +380,58 @@
   <span class="ruby-ivar">@events</span> = [] <span class="ruby-keyword">unless</span> <span class="ruby-ivar">@events</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
+          
         </div>
 
+        
 
+        
       </div>
 
+    
       <div id="method-i-reset" class="method-detail ">
+        
         <div class="method-heading">
           <span class="method-name">reset</span><span
             class="method-args">()</span>
+          
           <span class="method-click-advice">click to toggle source</span>
+          
         </div>
+        
 
         <div class="method-description">
           
+          
+          
+          
 
+          
           <div class="method-source-code" id="reset-source">
             <pre><span class="ruby-comment"># File lib/rexml/validation/relaxng.rb, line 445</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">reset</span>
   <span class="ruby-ivar">@choice</span> = <span class="ruby-value">0</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
+          
         </div>
 
+        
 
+        
       </div>
 
+    
     </section>
-
+  
   </section>
+
 </main>
 
 
 <footer id="validator-badges" role="contentinfo">
   <p><a href="https://validator.w3.org/check/referer">Validate</a>
-  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.3.0.
+  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.2.1.
   <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
 </footer>
 

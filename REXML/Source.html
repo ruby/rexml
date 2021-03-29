@@ -21,6 +21,8 @@
 <link href="../css/rdoc.css" rel="stylesheet">
 
 
+
+
 <body id="top" role="document" class="class">
 <nav role="navigation">
   <div id="project-navigation">
@@ -57,40 +59,55 @@
 
   <div id="class-metadata">
     
-    
-<div id="parent-class-section" class="nav-section">
+    <div id="parent-class-section" class="nav-section">
   <h3>Parent</h3>
 
+  
   <p class="link">Object
+  
 </div>
 
-    
-<div id="includes-section" class="nav-section">
+    <div id="includes-section" class="nav-section">
   <h3>Included Modules</h3>
 
   <ul class="link-list">
+  
+  
     <li><a class="include" href="Encoding.html">REXML::Encoding</a>
+  
+  
   </ul>
 </div>
 
     
-    
-<!-- Method Quickref -->
+    <!-- Method Quickref -->
 <div id="method-list-section" class="nav-section">
   <h3>Methods</h3>
 
   <ul class="link-list" role="directory">
+    
     <li ><a href="#method-c-new">::new</a>
+    
     <li ><a href="#method-i-consume">#consume</a>
+    
     <li ><a href="#method-i-current_line">#current_line</a>
+    
     <li ><a href="#method-i-empty-3F">#empty?</a>
+    
     <li class="calls-super" ><a href="#method-i-encoding-3D">#encoding=</a>
+    
     <li ><a href="#method-i-match">#match</a>
+    
     <li ><a href="#method-i-match_to">#match_to</a>
+    
     <li ><a href="#method-i-match_to_consume">#match_to_consume</a>
+    
     <li ><a href="#method-i-position">#position</a>
+    
     <li ><a href="#method-i-read">#read</a>
+    
     <li ><a href="#method-i-scan">#scan</a>
+    
   </ul>
 </div>
 
@@ -108,15 +125,21 @@
 
   </section>
 
+  
   <section id="5Buntitled-5D" class="documentation-section">
+    
 
+    
 
+    
 
+    
     <section class="attribute-method-details" class="method-section">
       <header>
         <h3>Attributes</h3>
       </header>
 
+      
       <div id="attribute-i-buffer" class="method-detail">
         <div class="method-heading attribute-method-heading">
           <span class="method-name">buffer</span><span
@@ -124,9 +147,12 @@
         </div>
 
         <div class="method-description">
+        
         <p>The current buffer (what we&#39;re going to read next)</p>
+        
         </div>
       </div>
+      
       <div id="attribute-i-encoding" class="method-detail">
         <div class="method-heading attribute-method-heading">
           <span class="method-name">encoding</span><span
@@ -135,8 +161,11 @@
 
         <div class="method-description">
         
+        
+        
         </div>
       </div>
+      
       <div id="attribute-i-line" class="method-detail">
         <div class="method-heading attribute-method-heading">
           <span class="method-name">line</span><span
@@ -144,27 +173,40 @@
         </div>
 
         <div class="method-description">
+        
         <p>The line number of the last consumed text</p>
+        
         </div>
       </div>
+      
     </section>
+    
 
-
+    
      <section id="public-class-5Buntitled-5D-method-details" class="method-section">
        <header>
          <h3>Public Class Methods</h3>
        </header>
 
+    
       <div id="method-c-new" class="method-detail ">
+        
         <div class="method-heading">
           <span class="method-name">new</span><span
             class="method-args">(arg, encoding=nil)</span>
+          
           <span class="method-click-advice">click to toggle source</span>
+          
         </div>
+        
 
         <div class="method-description">
+          
           <p>Constructor @param arg must be a String, and should be a valid XML document @param encoding if non-null, sets the encoding of the source to this value, overriding all encoding detection</p>
+          
+          
 
+          
           <div class="method-source-code" id="new-source">
             <pre><span class="ruby-comment"># File lib/rexml/source.rb, line 43</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(<span class="ruby-identifier">arg</span>, <span class="ruby-identifier">encoding</span>=<span class="ruby-keyword">nil</span>)
@@ -177,49 +219,74 @@
   <span class="ruby-ivar">@line</span> = <span class="ruby-value">0</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
+          
         </div>
 
+        
 
+        
       </div>
 
+    
     </section>
-
+  
      <section id="public-instance-5Buntitled-5D-method-details" class="method-section">
        <header>
          <h3>Public Instance Methods</h3>
        </header>
 
+    
       <div id="method-i-consume" class="method-detail ">
+        
         <div class="method-heading">
           <span class="method-name">consume</span><span
             class="method-args">( pattern )</span>
+          
           <span class="method-click-advice">click to toggle source</span>
+          
         </div>
+        
 
         <div class="method-description">
           
+          
+          
+          
 
+          
           <div class="method-source-code" id="consume-source">
             <pre><span class="ruby-comment"># File lib/rexml/source.rb, line 87</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">consume</span>( <span class="ruby-identifier">pattern</span> )
   <span class="ruby-ivar">@buffer</span> = <span class="ruby-node">$&#39;</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">pattern</span>.<span class="ruby-identifier">match</span>( <span class="ruby-ivar">@buffer</span> )
 <span class="ruby-keyword">end</span></pre>
           </div>
+          
         </div>
 
+        
 
+        
       </div>
 
+    
       <div id="method-i-current_line" class="method-detail ">
+        
         <div class="method-heading">
           <span class="method-name">current_line</span><span
             class="method-args">()</span>
+          
           <span class="method-click-advice">click to toggle source</span>
+          
         </div>
+        
 
         <div class="method-description">
+          
           <p>@return the current line in the source</p>
+          
+          
 
+          
           <div class="method-source-code" id="current_line-source">
             <pre><span class="ruby-comment"># File lib/rexml/source.rb, line 117</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">current_line</span>
@@ -229,46 +296,71 @@
   <span class="ruby-identifier">lines</span>.<span class="ruby-identifier">index</span>( <span class="ruby-identifier">res</span> ) <span class="ruby-keyword">if</span> <span class="ruby-identifier">res</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
+          
         </div>
 
+        
 
+        
       </div>
 
+    
       <div id="method-i-empty-3F" class="method-detail ">
+        
         <div class="method-heading">
           <span class="method-name">empty?</span><span
             class="method-args">()</span>
+          
           <span class="method-click-advice">click to toggle source</span>
+          
         </div>
+        
 
         <div class="method-description">
+          
           <p>@return true if the <a href="Source.html"><code>Source</code></a> is exhausted</p>
+          
+          
 
+          
           <div class="method-source-code" id="empty-3F-source">
             <pre><span class="ruby-comment"># File lib/rexml/source.rb, line 108</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">empty?</span>
   <span class="ruby-ivar">@buffer</span> <span class="ruby-operator">==</span> <span class="ruby-string">&quot;&quot;</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
+          
         </div>
 
+        
 
+        
       </div>
 
+    
       <div id="method-i-encoding-3D" class="method-detail ">
+        
         <div class="method-heading">
           <span class="method-name">encoding=</span><span
             class="method-args">(enc)</span>
+          
           <span class="method-click-advice">click to toggle source</span>
+          
         </div>
+        
 
         <div class="method-description">
+          
           <p>Inherited from <a href="Encoding.html"><code>Encoding</code></a> Overridden to support optimized en/decoding</p>
+          
+          
             <div class="method-calls-super">
               Calls superclass method
               <a href="Encoding.html#method-i-encoding-3D"><code>REXML::Encoding#encoding=</code></a>
             </div>
+          
 
+          
           <div class="method-source-code" id="encoding-3D-source">
             <pre><span class="ruby-comment"># File lib/rexml/source.rb, line 56</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">encoding=</span>(<span class="ruby-identifier">enc</span>)
@@ -276,21 +368,33 @@
   <span class="ruby-identifier">encoding_updated</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
+          
         </div>
 
+        
 
+        
       </div>
 
+    
       <div id="method-i-match" class="method-detail ">
+        
         <div class="method-heading">
           <span class="method-name">match</span><span
             class="method-args">(pattern, cons=false)</span>
+          
           <span class="method-click-advice">click to toggle source</span>
+          
         </div>
+        
 
         <div class="method-description">
           
+          
+          
+          
 
+          
           <div class="method-source-code" id="match-source">
             <pre><span class="ruby-comment"># File lib/rexml/source.rb, line 101</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">match</span>(<span class="ruby-identifier">pattern</span>, <span class="ruby-identifier">cons</span>=<span class="ruby-keyword">false</span>)
@@ -299,42 +403,66 @@
   <span class="ruby-keyword">return</span> <span class="ruby-identifier">md</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
+          
         </div>
 
+        
 
+        
       </div>
 
+    
       <div id="method-i-match_to" class="method-detail ">
+        
         <div class="method-heading">
           <span class="method-name">match_to</span><span
             class="method-args">( char, pattern )</span>
+          
           <span class="method-click-advice">click to toggle source</span>
+          
         </div>
+        
 
         <div class="method-description">
           
+          
+          
+          
 
+          
           <div class="method-source-code" id="match_to-source">
             <pre><span class="ruby-comment"># File lib/rexml/source.rb, line 91</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">match_to</span>( <span class="ruby-identifier">char</span>, <span class="ruby-identifier">pattern</span> )
   <span class="ruby-keyword">return</span> <span class="ruby-identifier">pattern</span>.<span class="ruby-identifier">match</span>(<span class="ruby-ivar">@buffer</span>)
 <span class="ruby-keyword">end</span></pre>
           </div>
+          
         </div>
 
+        
 
+        
       </div>
 
+    
       <div id="method-i-match_to_consume" class="method-detail ">
+        
         <div class="method-heading">
           <span class="method-name">match_to_consume</span><span
             class="method-args">( char, pattern )</span>
+          
           <span class="method-click-advice">click to toggle source</span>
+          
         </div>
+        
 
         <div class="method-description">
           
+          
+          
+          
 
+          
           <div class="method-source-code" id="match_to_consume-source">
             <pre><span class="ruby-comment"># File lib/rexml/source.rb, line 95</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">match_to_consume</span>( <span class="ruby-identifier">char</span>, <span class="ruby-identifier">pattern</span> )
@@ -343,62 +471,98 @@
   <span class="ruby-keyword">return</span> <span class="ruby-identifier">md</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
+          
         </div>
 
+        
 
+        
       </div>
 
+    
       <div id="method-i-position" class="method-detail ">
+        
         <div class="method-heading">
           <span class="method-name">position</span><span
             class="method-args">()</span>
+          
           <span class="method-click-advice">click to toggle source</span>
+          
         </div>
+        
 
         <div class="method-description">
           
+          
+          
+          
 
+          
           <div class="method-source-code" id="position-source">
             <pre><span class="ruby-comment"># File lib/rexml/source.rb, line 112</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">position</span>
   <span class="ruby-ivar">@orig</span>.<span class="ruby-identifier">index</span>( <span class="ruby-ivar">@buffer</span> )
 <span class="ruby-keyword">end</span></pre>
           </div>
+          
         </div>
 
+        
 
+        
       </div>
 
+    
       <div id="method-i-read" class="method-detail ">
+        
         <div class="method-heading">
           <span class="method-name">read</span><span
             class="method-args">()</span>
+          
           <span class="method-click-advice">click to toggle source</span>
+          
         </div>
+        
 
         <div class="method-description">
           
+          
+          
+          
 
+          
           <div class="method-source-code" id="read-source">
             <pre><span class="ruby-comment"># File lib/rexml/source.rb, line 84</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">read</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
+          
         </div>
 
+        
 
+        
       </div>
 
+    
       <div id="method-i-scan" class="method-detail ">
+        
         <div class="method-heading">
           <span class="method-name">scan</span><span
             class="method-args">(pattern, cons=false)</span>
+          
           <span class="method-click-advice">click to toggle source</span>
+          
         </div>
+        
 
         <div class="method-description">
+          
           <p>Scans the source for a given pattern.  Note, that this is not your usual scan() method.  For one thing, the pattern argument has some requirements; for another, the source can be consumed.  You can easily confuse this method.  Originally, the patterns were easier to construct and this method more robust, because this method generated search regexps on the fly; however, this was computationally expensive and slowed down the entire <a href="../REXML.html"><code>REXML</code></a> package considerably, since this is by far the most commonly called method. @param pattern must be a Regexp, and must be in the form of /^s*(#{your pattern, with no groups})(.*)/.  The first group will be returned; the second group is used if the consume flag is set. @param consume if true, the pattern returned will be consumed, leaving everything after it in the <a href="Source.html"><code>Source</code></a>. @return the pattern, if found, or nil if the <a href="Source.html"><code>Source</code></a> is empty or the pattern is not found.</p>
+          
+          
 
+          
           <div class="method-source-code" id="scan-source">
             <pre><span class="ruby-comment"># File lib/rexml/source.rb, line 77</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">scan</span>(<span class="ruby-identifier">pattern</span>, <span class="ruby-identifier">cons</span>=<span class="ruby-keyword">false</span>)
@@ -408,20 +572,25 @@
   <span class="ruby-identifier">rv</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
+          
         </div>
 
+        
 
+        
       </div>
 
+    
     </section>
-
+  
   </section>
+
 </main>
 
 
 <footer id="validator-badges" role="contentinfo">
   <p><a href="https://validator.w3.org/check/referer">Validate</a>
-  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.3.0.
+  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.2.1.
   <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
 </footer>
 

@@ -21,6 +21,8 @@
 <link href="../../css/rdoc.css" rel="stylesheet">
 
 
+
+
 <body id="top" role="document" class="class">
 <nav role="navigation">
   <div id="project-navigation">
@@ -57,43 +59,56 @@
 
   <div id="class-metadata">
     
-    
-<div id="parent-class-section" class="nav-section">
+    <div id="parent-class-section" class="nav-section">
   <h3>Parent</h3>
 
+  
   <p class="link">Object
+  
 </div>
 
-    
-<div id="includes-section" class="nav-section">
+    <div id="includes-section" class="nav-section">
   <h3>Included Modules</h3>
 
   <ul class="link-list">
+  
+  
     <li><a class="include" href="../XMLTokens.html">REXML::XMLTokens</a>
+  
+  
   </ul>
 </div>
 
-    
-<div id="extends-section" class="nav-section">
+    <div id="extends-section" class="nav-section">
   <h3>Extended With Modules</h3>
 
   <ul class="link-list">
+    
+  
     <li><span class="extend">Forwardable</span>
+  
+  
   </ul>
 </div>
 
-    
-<!-- Method Quickref -->
+    <!-- Method Quickref -->
 <div id="method-list-section" class="nav-section">
   <h3>Methods</h3>
 
   <ul class="link-list" role="directory">
+    
     <li ><a href="#method-c-new">::new</a>
+    
     <li ><a href="#method-i-add_listener">#add_listener</a>
+    
     <li ><a href="#method-i-each">#each</a>
+    
     <li ><a href="#method-i-peek">#peek</a>
+    
     <li ><a href="#method-i-pull">#pull</a>
+    
     <li ><a href="#method-i-unshift">#unshift</a>
+    
   </ul>
 </div>
 
@@ -133,27 +148,41 @@
 
   </section>
 
+  
   <section id="5Buntitled-5D" class="documentation-section">
+    
 
+    
 
+    
 
+    
 
-
+    
      <section id="public-class-5Buntitled-5D-method-details" class="method-section">
        <header>
          <h3>Public Class Methods</h3>
        </header>
 
+    
       <div id="method-c-new" class="method-detail ">
+        
         <div class="method-heading">
           <span class="method-name">new</span><span
             class="method-args">(stream)</span>
+          
           <span class="method-click-advice">click to toggle source</span>
+          
         </div>
+        
 
         <div class="method-description">
           
+          
+          
+          
 
+          
           <div class="method-source-code" id="new-source">
             <pre><span class="ruby-comment"># File lib/rexml/parsers/pullparser.rb, line 38</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span> <span class="ruby-identifier">stream</span>
@@ -163,28 +192,41 @@
   <span class="ruby-ivar">@my_stack</span> = []
 <span class="ruby-keyword">end</span></pre>
           </div>
+          
         </div>
 
+        
 
+        
       </div>
 
+    
     </section>
-
+  
      <section id="public-instance-5Buntitled-5D-method-details" class="method-section">
        <header>
          <h3>Public Instance Methods</h3>
        </header>
 
+    
       <div id="method-i-add_listener" class="method-detail ">
+        
         <div class="method-heading">
           <span class="method-name">add_listener</span><span
             class="method-args">( listener )</span>
+          
           <span class="method-click-advice">click to toggle source</span>
+          
         </div>
+        
 
         <div class="method-description">
           
+          
+          
+          
 
+          
           <div class="method-source-code" id="add_listener-source">
             <pre><span class="ruby-comment"># File lib/rexml/parsers/pullparser.rb, line 45</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">add_listener</span>( <span class="ruby-identifier">listener</span> )
@@ -192,21 +234,33 @@
   <span class="ruby-ivar">@listeners</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">listener</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
+          
         </div>
 
+        
 
+        
       </div>
 
+    
       <div id="method-i-each" class="method-detail ">
+        
         <div class="method-heading">
           <span class="method-name">each</span><span
             class="method-args">() { |pull| ... }</span>
+          
           <span class="method-click-advice">click to toggle source</span>
+          
         </div>
+        
 
         <div class="method-description">
           
+          
+          
+          
 
+          
           <div class="method-source-code" id="each-source">
             <pre><span class="ruby-comment"># File lib/rexml/parsers/pullparser.rb, line 50</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">each</span>
@@ -215,21 +269,33 @@
   <span class="ruby-keyword">end</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
+          
         </div>
 
+        
 
+        
       </div>
 
+    
       <div id="method-i-peek" class="method-detail ">
+        
         <div class="method-heading">
           <span class="method-name">peek</span><span
             class="method-args">(depth=0)</span>
+          
           <span class="method-click-advice">click to toggle source</span>
+          
         </div>
+        
 
         <div class="method-description">
           
+          
+          
+          
 
+          
           <div class="method-source-code" id="peek-source">
             <pre><span class="ruby-comment"># File lib/rexml/parsers/pullparser.rb, line 56</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">peek</span> <span class="ruby-identifier">depth</span>=<span class="ruby-value">0</span>
@@ -242,21 +308,33 @@
   <span class="ruby-ivar">@my_stack</span>[<span class="ruby-identifier">depth</span>]
 <span class="ruby-keyword">end</span></pre>
           </div>
+          
         </div>
 
+        
 
+        
       </div>
 
+    
       <div id="method-i-pull" class="method-detail ">
+        
         <div class="method-heading">
           <span class="method-name">pull</span><span
             class="method-args">()</span>
+          
           <span class="method-click-advice">click to toggle source</span>
+          
         </div>
+        
 
         <div class="method-description">
           
+          
+          
+          
 
+          
           <div class="method-source-code" id="pull-source">
             <pre><span class="ruby-comment"># File lib/rexml/parsers/pullparser.rb, line 66</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">pull</span>
@@ -274,41 +352,58 @@
   <span class="ruby-constant">PullEvent</span>.<span class="ruby-identifier">new</span>( <span class="ruby-identifier">event</span> )
 <span class="ruby-keyword">end</span></pre>
           </div>
+          
         </div>
 
+        
 
+        
       </div>
 
+    
       <div id="method-i-unshift" class="method-detail ">
+        
         <div class="method-heading">
           <span class="method-name">unshift</span><span
             class="method-args">(token)</span>
+          
           <span class="method-click-advice">click to toggle source</span>
+          
         </div>
+        
 
         <div class="method-description">
           
+          
+          
+          
 
+          
           <div class="method-source-code" id="unshift-source">
             <pre><span class="ruby-comment"># File lib/rexml/parsers/pullparser.rb, line 81</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">unshift</span> <span class="ruby-identifier">token</span>
   <span class="ruby-ivar">@my_stack</span>.<span class="ruby-identifier">unshift</span> <span class="ruby-identifier">token</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
+          
         </div>
 
+        
 
+        
       </div>
 
+    
     </section>
-
+  
   </section>
+
 </main>
 
 
 <footer id="validator-badges" role="contentinfo">
   <p><a href="https://validator.w3.org/check/referer">Validate</a>
-  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.3.0.
+  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.2.1.
   <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
 </footer>
 
