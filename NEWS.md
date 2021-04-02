@@ -1,5 +1,42 @@
 # News
 
+## 3.2.5 - 2021-04-05 {#version-3-2-5}
+
+### Improvements
+
+  * Add more validations to XPath parser.
+
+  * `require "rexml/docuemnt"` by default.
+    [GitHub#36][Patch by Koichi ITO]
+
+  * Don't add `#dcloe` method to core classes globally.
+    [GitHub#37][Patch by Akira Matsuda]
+
+  * Add more documentations.
+    [Patch by Burdette Lamar]
+
+  * Added `REXML::Elements#parent`.
+    [GitHub#52][Patch by Burdette Lamar]
+
+### Fixes
+
+  * Fixed a bug that `REXML::DocType#clone` doesn't copy external ID
+    information.
+
+  * Fixed round-trip vulnerability bugs.
+    See also: https://www.ruby-lang.org/en/news/2021/04/05/xml-round-trip-vulnerability-in-rexml-cve-2021-28965/
+    [HackerOne#1104077][CVE-2021-28965][Reported by Juho Nurminen]
+
+### Thanks
+
+  * Koichi ITO
+
+  * Akira Matsuda
+
+  * Burdette Lamar
+
+  * Juho Nurminen
+
 ## 3.2.4 - 2020-01-31 {#version-3-2-4}
 
 ### Improvements
