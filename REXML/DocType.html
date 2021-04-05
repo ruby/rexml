@@ -277,7 +277,7 @@
 
           
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File lib/rexml/doctype.rb, line 42</span>
+            <pre><span class="ruby-comment"># File lib/rexml/doctype.rb, line 80</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>( <span class="ruby-identifier">first</span>, <span class="ruby-identifier">parent</span>=<span class="ruby-keyword">nil</span> )
   <span class="ruby-ivar">@entities</span> = <span class="ruby-constant">DEFAULT_ENTITIES</span>
   <span class="ruby-ivar">@long_name</span> = <span class="ruby-ivar">@uri</span> = <span class="ruby-keyword">nil</span>
@@ -350,7 +350,7 @@
 
           
           <div class="method-source-code" id="add-source">
-            <pre><span class="ruby-comment"># File lib/rexml/doctype.rb, line 149</span>
+            <pre><span class="ruby-comment"># File lib/rexml/doctype.rb, line 185</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">add</span> <span class="ruby-identifier">child</span>
   <span class="ruby-keyword">super</span>(<span class="ruby-identifier">child</span>)
   <span class="ruby-ivar">@entities</span> = <span class="ruby-constant">DEFAULT_ENTITIES</span>.<span class="ruby-identifier">clone</span> <span class="ruby-keyword">if</span> <span class="ruby-ivar">@entities</span> <span class="ruby-operator">==</span> <span class="ruby-constant">DEFAULT_ENTITIES</span>
@@ -385,7 +385,7 @@
 
           
           <div class="method-source-code" id="attribute_of-source">
-            <pre><span class="ruby-comment"># File lib/rexml/doctype.rb, line 87</span>
+            <pre><span class="ruby-comment"># File lib/rexml/doctype.rb, line 125</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">attribute_of</span> <span class="ruby-identifier">element</span>, <span class="ruby-identifier">attribute</span>
   <span class="ruby-identifier">att_decl</span> = <span class="ruby-identifier">find</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">child</span><span class="ruby-operator">|</span>
     <span class="ruby-identifier">child</span>.<span class="ruby-identifier">kind_of?</span> <span class="ruby-constant">AttlistDecl</span> <span class="ruby-keyword">and</span>
@@ -424,7 +424,7 @@
 
           
           <div class="method-source-code" id="attributes_of-source">
-            <pre><span class="ruby-comment"># File lib/rexml/doctype.rb, line 77</span>
+            <pre><span class="ruby-comment"># File lib/rexml/doctype.rb, line 115</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">attributes_of</span> <span class="ruby-identifier">element</span>
   <span class="ruby-identifier">rv</span> = []
   <span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">child</span><span class="ruby-operator">|</span>
@@ -463,7 +463,7 @@
 
           
           <div class="method-source-code" id="clone-source">
-            <pre><span class="ruby-comment"># File lib/rexml/doctype.rb, line 97</span>
+            <pre><span class="ruby-comment"># File lib/rexml/doctype.rb, line 135</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">clone</span>
   <span class="ruby-constant">DocType</span>.<span class="ruby-identifier">new</span> <span class="ruby-keyword">self</span>
 <span class="ruby-keyword">end</span></pre>
@@ -496,7 +496,7 @@
 
           
           <div class="method-source-code" id="context-source">
-            <pre><span class="ruby-comment"># File lib/rexml/doctype.rb, line 137</span>
+            <pre><span class="ruby-comment"># File lib/rexml/doctype.rb, line 173</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">context</span>
   <span class="ruby-keyword">if</span> <span class="ruby-ivar">@parent</span>
     <span class="ruby-ivar">@parent</span>.<span class="ruby-identifier">context</span>
@@ -533,7 +533,7 @@
 
           
           <div class="method-source-code" id="entity-source">
-            <pre><span class="ruby-comment"># File lib/rexml/doctype.rb, line 145</span>
+            <pre><span class="ruby-comment"># File lib/rexml/doctype.rb, line 181</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">entity</span>( <span class="ruby-identifier">name</span> )
   <span class="ruby-ivar">@entities</span>[<span class="ruby-identifier">name</span>].<span class="ruby-identifier">unnormalized</span> <span class="ruby-keyword">if</span> <span class="ruby-ivar">@entities</span>[<span class="ruby-identifier">name</span>]
 <span class="ruby-keyword">end</span></pre>
@@ -566,7 +566,7 @@
 
           
           <div class="method-source-code" id="node_type-source">
-            <pre><span class="ruby-comment"># File lib/rexml/doctype.rb, line 73</span>
+            <pre><span class="ruby-comment"># File lib/rexml/doctype.rb, line 111</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">node_type</span>
   <span class="ruby-value">:doctype</span>
 <span class="ruby-keyword">end</span></pre>
@@ -601,7 +601,7 @@
 
           
           <div class="method-source-code" id="notation-source">
-            <pre><span class="ruby-comment"># File lib/rexml/doctype.rb, line 193</span>
+            <pre><span class="ruby-comment"># File lib/rexml/doctype.rb, line 229</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">notation</span>(<span class="ruby-identifier">name</span>)
   <span class="ruby-identifier">notations</span>.<span class="ruby-identifier">find</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">notation_decl</span><span class="ruby-operator">|</span>
     <span class="ruby-identifier">notation_decl</span>.<span class="ruby-identifier">name</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">name</span>
@@ -638,7 +638,7 @@
 
           
           <div class="method-source-code" id="notations-source">
-            <pre><span class="ruby-comment"># File lib/rexml/doctype.rb, line 185</span>
+            <pre><span class="ruby-comment"># File lib/rexml/doctype.rb, line 221</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">notations</span>
   <span class="ruby-identifier">children</span>().<span class="ruby-identifier">select</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">node</span><span class="ruby-operator">|</span> <span class="ruby-identifier">node</span>.<span class="ruby-identifier">kind_of?</span>(<span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">NotationDecl</span>)}
 <span class="ruby-keyword">end</span></pre>
@@ -673,7 +673,7 @@
 
           
           <div class="method-source-code" id="public-source">
-            <pre><span class="ruby-comment"># File lib/rexml/doctype.rb, line 159</span>
+            <pre><span class="ruby-comment"># File lib/rexml/doctype.rb, line 195</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">public</span>
   <span class="ruby-keyword">case</span> <span class="ruby-ivar">@external_id</span>
   <span class="ruby-keyword">when</span> <span class="ruby-string">&quot;SYSTEM&quot;</span>
@@ -713,7 +713,7 @@
 
           
           <div class="method-source-code" id="system-source">
-            <pre><span class="ruby-comment"># File lib/rexml/doctype.rb, line 171</span>
+            <pre><span class="ruby-comment"># File lib/rexml/doctype.rb, line 207</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">system</span>
   <span class="ruby-keyword">case</span> <span class="ruby-ivar">@external_id</span>
   <span class="ruby-keyword">when</span> <span class="ruby-string">&quot;SYSTEM&quot;</span>
@@ -763,22 +763,20 @@
 
           
           <div class="method-source-code" id="write-source">
-            <pre><span class="ruby-comment"># File lib/rexml/doctype.rb, line 111</span>
+            <pre><span class="ruby-comment"># File lib/rexml/doctype.rb, line 149</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">write</span>( <span class="ruby-identifier">output</span>, <span class="ruby-identifier">indent</span>=<span class="ruby-value">0</span>, <span class="ruby-identifier">transitive</span>=<span class="ruby-keyword">false</span>, <span class="ruby-identifier">ie_hack</span>=<span class="ruby-keyword">false</span> )
   <span class="ruby-identifier">f</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Formatters</span><span class="ruby-operator">::</span><span class="ruby-constant">Default</span>.<span class="ruby-identifier">new</span>
-  <span class="ruby-identifier">c</span> = <span class="ruby-identifier">context</span>
-  <span class="ruby-keyword">if</span> <span class="ruby-identifier">c</span> <span class="ruby-keyword">and</span> <span class="ruby-identifier">c</span>[<span class="ruby-value">:prologue_quote</span>] <span class="ruby-operator">==</span> <span class="ruby-value">:apostrophe</span>
-    <span class="ruby-identifier">quote</span> = <span class="ruby-string">&quot;&#39;&quot;</span>
-  <span class="ruby-keyword">else</span>
-    <span class="ruby-identifier">quote</span> = <span class="ruby-string">&quot;\&quot;&quot;</span>
-  <span class="ruby-keyword">end</span>
   <span class="ruby-identifier">indent</span>( <span class="ruby-identifier">output</span>, <span class="ruby-identifier">indent</span> )
   <span class="ruby-identifier">output</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-constant">START</span>
   <span class="ruby-identifier">output</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-string">&#39; &#39;</span>
   <span class="ruby-identifier">output</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-ivar">@name</span>
-  <span class="ruby-identifier">output</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">&quot; #{@external_id}&quot;</span> <span class="ruby-keyword">if</span> <span class="ruby-ivar">@external_id</span>
-  <span class="ruby-identifier">output</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">&quot; #{quote}#{@long_name}#{quote}&quot;</span> <span class="ruby-keyword">if</span> <span class="ruby-ivar">@long_name</span>
-  <span class="ruby-identifier">output</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">&quot; #{quote}#{@uri}#{quote}&quot;</span> <span class="ruby-keyword">if</span> <span class="ruby-ivar">@uri</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-ivar">@external_id</span>
+    <span class="ruby-identifier">reference_writer</span> = <span class="ruby-constant">ReferenceWriter</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@external_id</span>,
+                                           <span class="ruby-ivar">@long_name</span>,
+                                           <span class="ruby-ivar">@uri</span>,
+                                           <span class="ruby-identifier">context</span>)
+    <span class="ruby-identifier">reference_writer</span>.<span class="ruby-identifier">write</span>(<span class="ruby-identifier">output</span>)
+  <span class="ruby-keyword">end</span>
   <span class="ruby-keyword">unless</span> <span class="ruby-ivar">@children</span>.<span class="ruby-identifier">empty?</span>
     <span class="ruby-identifier">output</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-string">&#39; [&#39;</span>
     <span class="ruby-ivar">@children</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">child</span><span class="ruby-operator">|</span>

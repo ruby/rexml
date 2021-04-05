@@ -4,7 +4,7 @@
 <head>
 <meta charset="UTF-8">
 
-<title>class REXML::ExternalEntity - RDoc Documentation</title>
+<title>class REXML::ReferenceWriter - RDoc Documentation</title>
 
 <script type="text/javascript">
   var rdoc_rel_prefix = "../";
@@ -63,7 +63,7 @@
   <h3>Parent</h3>
 
   
-  <p class="link"><a href="Child.html">REXML::Child</a>
+  <p class="link">Object
   
 </div>
 
@@ -75,9 +75,7 @@
 
   <ul class="link-list" role="directory">
     
-    <li class="calls-super" ><a href="#method-c-new">::new</a>
-    
-    <li ><a href="#method-i-to_s">#to_s</a>
+    <li ><a href="#method-c-new">::new</a>
     
     <li ><a href="#method-i-write">#write</a>
     
@@ -87,9 +85,9 @@
   </div>
 </nav>
 
-<main role="main" aria-labelledby="class-REXML::ExternalEntity">
-  <h1 id="class-REXML::ExternalEntity" class="class">
-    class REXML::ExternalEntity
+<main role="main" aria-labelledby="class-REXML::ReferenceWriter">
+  <h1 id="class-REXML::ReferenceWriter" class="class">
+    class REXML::ReferenceWriter
   </h1>
 
   <section class="description">
@@ -117,7 +115,7 @@
         
         <div class="method-heading">
           <span class="method-name">new</span><span
-            class="method-args">( src )</span>
+            class="method-args">(id_type, public_id_literal, system_literal, context=nil)</span>
           
           <span class="method-click-advice">click to toggle source</span>
           
@@ -129,18 +127,22 @@
           
           
           
-            <div class="method-calls-super">
-              Calls superclass method
-              <a href="Child.html#method-c-new"><code>REXML::Child::new</code></a>
-            </div>
-          
 
           
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File lib/rexml/doctype.rb, line 268</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>( <span class="ruby-identifier">src</span> )
-  <span class="ruby-keyword">super</span>()
-  <span class="ruby-ivar">@entity</span> = <span class="ruby-identifier">src</span>
+            <pre><span class="ruby-comment"># File lib/rexml/doctype.rb, line 11</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(<span class="ruby-identifier">id_type</span>,
+               <span class="ruby-identifier">public_id_literal</span>,
+               <span class="ruby-identifier">system_literal</span>,
+               <span class="ruby-identifier">context</span>=<span class="ruby-keyword">nil</span>)
+  <span class="ruby-ivar">@id_type</span> = <span class="ruby-identifier">id_type</span>
+  <span class="ruby-ivar">@public_id_literal</span> = <span class="ruby-identifier">public_id_literal</span>
+  <span class="ruby-ivar">@system_literal</span> = <span class="ruby-identifier">system_literal</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">context</span> <span class="ruby-keyword">and</span> <span class="ruby-identifier">context</span>[<span class="ruby-value">:prologue_quote</span>] <span class="ruby-operator">==</span> <span class="ruby-value">:apostrophe</span>
+    <span class="ruby-ivar">@default_quote</span> = <span class="ruby-string">&quot;&#39;&quot;</span>
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-ivar">@default_quote</span> = <span class="ruby-string">&quot;\&quot;&quot;</span>
+  <span class="ruby-keyword">end</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
           
@@ -160,44 +162,11 @@
        </header>
 
     
-      <div id="method-i-to_s" class="method-detail ">
-        
-        <div class="method-heading">
-          <span class="method-name">to_s</span><span
-            class="method-args">()</span>
-          
-          <span class="method-click-advice">click to toggle source</span>
-          
-        </div>
-        
-
-        <div class="method-description">
-          
-          
-          
-          
-
-          
-          <div class="method-source-code" id="to_s-source">
-            <pre><span class="ruby-comment"># File lib/rexml/doctype.rb, line 272</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">to_s</span>
-  <span class="ruby-ivar">@entity</span>
-<span class="ruby-keyword">end</span></pre>
-          </div>
-          
-        </div>
-
-        
-
-        
-      </div>
-
-    
       <div id="method-i-write" class="method-detail ">
         
         <div class="method-heading">
           <span class="method-name">write</span><span
-            class="method-args">( output, indent )</span>
+            class="method-args">(output)</span>
           
           <span class="method-click-advice">click to toggle source</span>
           
@@ -212,9 +181,27 @@
 
           
           <div class="method-source-code" id="write-source">
-            <pre><span class="ruby-comment"># File lib/rexml/doctype.rb, line 275</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">write</span>( <span class="ruby-identifier">output</span>, <span class="ruby-identifier">indent</span> )
-  <span class="ruby-identifier">output</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-ivar">@entity</span>
+            <pre><span class="ruby-comment"># File lib/rexml/doctype.rb, line 25</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">write</span>(<span class="ruby-identifier">output</span>)
+  <span class="ruby-identifier">output</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">&quot; #{@id_type}&quot;</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-ivar">@public_id_literal</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-ivar">@public_id_literal</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-string">&quot;&#39;&quot;</span>)
+      <span class="ruby-identifier">quote</span> = <span class="ruby-string">&quot;\&quot;&quot;</span>
+    <span class="ruby-keyword">else</span>
+      <span class="ruby-identifier">quote</span> = <span class="ruby-ivar">@default_quote</span>
+    <span class="ruby-keyword">end</span>
+    <span class="ruby-identifier">output</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">&quot; #{quote}#{@public_id_literal}#{quote}&quot;</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-ivar">@system_literal</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-ivar">@system_literal</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-string">&quot;&#39;&quot;</span>)
+      <span class="ruby-identifier">quote</span> = <span class="ruby-string">&quot;\&quot;&quot;</span>
+    <span class="ruby-keyword">elsif</span> <span class="ruby-ivar">@system_literal</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-string">&quot;\&quot;&quot;</span>)
+      <span class="ruby-identifier">quote</span> = <span class="ruby-string">&quot;&#39;&quot;</span>
+    <span class="ruby-keyword">else</span>
+      <span class="ruby-identifier">quote</span> = <span class="ruby-ivar">@default_quote</span>
+    <span class="ruby-keyword">end</span>
+    <span class="ruby-identifier">output</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">&quot; #{quote}#{@system_literal}#{quote}&quot;</span>
+  <span class="ruby-keyword">end</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
           
