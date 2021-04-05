@@ -29,7 +29,7 @@
 module REXML
   COPYRIGHT = "Copyright © 2001-2008 Sean Russell <ser@germane-software.com>"
   DATE = "2008/019"
-  VERSION = "3.2.5"
+  VERSION = "3.2.6"
   REVISION = ""
 
   Copyright = COPYRIGHT
