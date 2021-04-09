@@ -6,7 +6,7 @@ REXML supports both tree and stream document parsing. Stream parsing is faster (
 
 ## API
 
-See the {API documentation}[https://ruby.github.io/rexml/]
+See the [API documentation](https://ruby.github.io/rexml/).
 
 ## Usage
 
@@ -32,6 +32,15 @@ doc = Document.new string
 ```
 
 So parsing a string is just as easy as parsing a file.
+
+## Support
+
+REXML support follows the same maintenance cycle as Ruby releases, as shown on <https://www.ruby-lang.org/en/downloads/branches/>.
+
+If you are running on an end-of-life Ruby, do not expect modern REXML releases to be compatible with it; in fact, it's recommended that you DO NOT use this gem, and instead use the REXML version that came bundled with your end-of-life Ruby version.
+
+The `required_ruby_version` on the gemspec is kept updated on a [best-effort basis](https://github.com/ruby/rexml/pull/70) by the community.
+Up to version 3.2.5, this information was not set. That version [is known broken with at least Ruby < 2.3](https://github.com/ruby/rexml/issues/69).
 
 ## Development
 
