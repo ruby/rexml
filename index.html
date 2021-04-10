@@ -269,7 +269,7 @@
 
 <h2 id="label-API">API<span><a href="#label-API">&para;</a> <a href="#top">&uarr;</a></span></h2>
 
-<p>See the <a href="https://ruby.github.io/rexml/">API documentation</a></p>
+<p>See the <a href="https://ruby.github.io/rexml/">API documentation</a>.</p>
 
 <h2 id="label-Usage">Usage<span><a href="#label-Usage">&para;</a> <a href="#top">&uarr;</a></span></h2>
 
@@ -293,6 +293,14 @@
 </pre>
 
 <p>So parsing a string is just as easy as parsing a file.</p>
+
+<h2 id="label-Support">Support<span><a href="#label-Support">&para;</a> <a href="#top">&uarr;</a></span></h2>
+
+<p><a href="REXML.html"><code>REXML</code></a> support follows the same maintenance cycle as Ruby releases, as shown on <a href="https://www.ruby-lang.org/en/downloads/branches">www.ruby-lang.org/en/downloads/branches</a>/.</p>
+
+<p>If you are running on an end-of-life Ruby, do not expect modern <a href="REXML.html"><code>REXML</code></a> releases to be compatible with it; in fact, it&#39;s recommended that you DO NOT use this gem, and instead use the <a href="REXML.html"><code>REXML</code></a> version that came bundled with your end-of-life Ruby version.</p>
+
+<p>The <code>required_ruby_version</code> on the gemspec is kept updated on a <a href="https://github.com/ruby/rexml/pull/70">best-effort basis</a> by the community. Up to version 3.2.5, this information was not set. That version <a href="https://github.com/ruby/rexml/issues/69">is known broken with at least Ruby < 2.3</a>.</p>
 
 <h2 id="label-Development">Development<span><a href="#label-Development">&para;</a> <a href="#top">&uarr;</a></span></h2>
 
