@@ -6,7 +6,7 @@
 
   * Add more validations to XPath parser.
 
-  * `require "rexml/docuemnt"` by default.
+  * `require "rexml/document"` by default.
     [GitHub#36][Patch by Koichi ITO]
 
   * Don't add `#dcloe` method to core classes globally.
