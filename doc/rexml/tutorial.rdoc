@@ -438,12 +438,10 @@ An element may have:
 
   Output:
 
-        p ele
     [REXML::Element, <book category='cooking'> ... </>]
     [REXML::Element, <book category='children'> ... </>]
     [REXML::Element, <book category='web'> ... </>]
     [REXML::Element, <book category='web' cover='paperback'> ... </>]
-    nil
 
 [Previous Element]
 
@@ -463,7 +461,6 @@ An element may have:
     [REXML::Element, <book category='web'> ... </>]
     [REXML::Element, <book category='children'> ... </>]
     [REXML::Element, <book category='cooking'> ... </>]
-    nil
 
 [Next Node]
 
@@ -489,7 +486,6 @@ An element may have:
     [REXML::Text, "\n\n"]
     [REXML::Element, <book category='web' cover='paperback'> ... </>]
     [REXML::Text, "\n\n"]
-    nil
 
 [Previous Node]
 
@@ -515,7 +511,6 @@ An element may have:
     [REXML::Text, "\n\n"]
     [REXML::Element, <book category='cooking'> ... </>]
     [REXML::Text, "\n\n"]
-    nil
 
 ==== Children
 
