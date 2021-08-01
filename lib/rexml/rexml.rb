@@ -26,6 +26,8 @@
 # - REXML::Document.
 # - REXML::Element.
 #
+# There's also an {REXML tutorial}[doc/rexml/tutorial_rdoc.html].
+#
 module REXML
   COPYRIGHT = "Copyright © 2001-2008 Sean Russell <ser@germane-software.com>"
   DATE = "2008/019"
