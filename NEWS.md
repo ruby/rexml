@@ -1,5 +1,11 @@
 # News
 
+## 3.1.9.1 - 2021-09-02 {#version-3-1-9-1}
+
+### Fixes
+
+  * Backported the fix for CVE-2021-28965.
+
 ## 3.1.9 - 2018-12-20 {#version-3-1-9}
 
 ### Improvements
