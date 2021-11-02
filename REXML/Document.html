@@ -400,7 +400,7 @@
 <span class="ruby-identifier">d</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-comment"># =&gt; &quot;&lt;root&gt;&lt;foo&gt;Foo&lt;/foo&gt;&lt;bar&gt;Bar&lt;/bar&gt;&lt;/root&gt;&quot;</span>
 </pre>
 
-<p>When argument <code>document</code> is given, it must be an existing document object, whose context and attributes (but not chidren) are cloned into the new document:</p>
+<p>When argument <code>document</code> is given, it must be an existing document object, whose context and attributes (but not children) are cloned into the new document:</p>
 
 <pre class="ruby"><span class="ruby-identifier">d</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">xml_string</span>)
 <span class="ruby-identifier">d</span>.<span class="ruby-identifier">children</span>    <span class="ruby-comment"># =&gt; [&lt;root&gt; ... &lt;/&gt;]</span>
