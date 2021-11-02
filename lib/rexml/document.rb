@@ -69,7 +69,7 @@ module REXML
     #   d.to_s # => "<root><foo>Foo</foo><bar>Bar</bar></root>"
     #
     # When argument +document+ is given, it must be an existing
-    # document object, whose context and attributes (but not chidren)
+    # document object, whose context and attributes (but not children)
     # are cloned into the new document:
     #
     #   d = REXML::Document.new(xml_string)

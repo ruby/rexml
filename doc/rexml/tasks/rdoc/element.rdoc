@@ -369,7 +369,7 @@ to retrieve the first text node in a specified element:
 
 Use method
 {Element#has_text?}[../../../../REXML/Element.html#method-i-has_text-3F]
-to determine whethe the element has text:
+to determine whether the element has text:
 
   e = REXML::Element.new('foo')
   e.has_text? # => false
@@ -486,7 +486,7 @@ to remove a specific namespace from the element:
 
 Use method
 {Element#namespace}[../../../../REXML/Element.html#method-i-namespace]
-to retrieve a speficic namespace URI for the element:
+to retrieve a specific namespace URI for the element:
 
   xml_string = <<-EOT
     <root>

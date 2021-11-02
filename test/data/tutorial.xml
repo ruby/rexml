@@ -286,7 +286,7 @@ el1 &lt;&lt; Text.new(" cruel world")
         strings.</p>
 
         <p>I can't emphasize this enough, because people do have problems with
-        this. REXML can't possibly alway guess correctly how your text is
+        this. REXML can't possibly always guess correctly how your text is
         encoded, so it always assumes the text is UTF-8. It also does not warn
         you when you try to add text which isn't properly encoded, for the
         same reason. You must make sure that you are adding UTF-8 text.

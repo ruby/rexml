@@ -299,7 +299,7 @@
       <valueOf select="name(/.)"></valueOf>
       <valueOf select="name(/self::node())"></valueOf>
 
-      <!-- name of root elemet -->
+      <!-- name of root element -->
       <valueOf select="name(node())">web-app</valueOf>
       <valueOf select="name(/node())">web-app</valueOf>
       <valueOf select="name(/*)">web-app</valueOf>
@@ -318,7 +318,7 @@
       <valueOf select="name(parent::node())"></valueOf>
       <valueOf select="name(parent::*)"></valueOf>
 
-      <!-- name of root elemet -->
+      <!-- name of root element -->
       <valueOf select="name()">web-app</valueOf>
       <valueOf select="name(.)">web-app</valueOf>
       <valueOf select="name(../*)">web-app</valueOf>

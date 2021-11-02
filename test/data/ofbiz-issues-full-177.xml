@@ -152,8 +152,8 @@
           <!-- desc         : Short description for attachment.              -->
           <!-- ispatch      : Whether attachment is a patch file.            -->
           <!-- filename     : Filename of attachment.                        -->
-          <!-- submitter_id : Issuezilla ID of attachement submitter.        --> 
-          <!-- submitting_username    : username of attachement submitter.   --> 
+          <!-- submitter_id : Issuezilla ID of attachment submitter.        --> 
+          <!-- submitting_username    : username of attachment submitter.   --> 
           <!-- data         : Encoded attachment.                            --> 
           <!-- attachment_iz_url : URL to attachment in iz.                  --> 
     
