@@ -23,19 +23,19 @@ module REXML
         contents = Parent.new
         while input.size > 0
           case input
-          when ElementDecl.PATTERN_RE
+          when ElementDecl::PATTERN_RE
             match = $&
             contents << ElementDecl.new( match )
-          when AttlistDecl.PATTERN_RE
+          when AttlistDecl::PATTERN_RE
             matchdata = $~
             contents << AttlistDecl.new( matchdata )
-          when EntityDecl.PATTERN_RE
+          when EntityDecl::PATTERN_RE
             matchdata = $~
             contents << EntityDecl.new( matchdata )
-          when Comment.PATTERN_RE
+          when Comment::PATTERN_RE
             matchdata = $~
             contents << Comment.new( matchdata )
-          when NotationDecl.PATTERN_RE
+          when NotationDecl::PATTERN_RE
             matchdata = $~
             contents << NotationDecl.new( matchdata )
           end
