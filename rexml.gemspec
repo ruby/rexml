@@ -52,8 +52,6 @@ Gem::Specification.new do |spec|
   spec.files = files
   spec.rdoc_options.concat(["--main", "README.md"])
   spec.extra_rdoc_files = rdoc_files
-  spec.bindir        = "exe"
-  spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
 
   spec.required_ruby_version = '>= 2.5.0'
 
