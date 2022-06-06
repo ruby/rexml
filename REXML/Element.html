@@ -2034,7 +2034,7 @@
 
         <div class="method-description">
           
-          <p>Returns +true if the element has one or more text noded, <code>false</code> otherwise:</p>
+          <p>Returns <code>true</code> if the element has one or more text noded, <code>false</code> otherwise:</p>
 
 <pre class="ruby"><span class="ruby-identifier">d</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span> <span class="ruby-string">&#39;&lt;a&gt;&lt;b/&gt;text&lt;c/&gt;&lt;/a&gt;&#39;</span>
 <span class="ruby-identifier">a</span> = <span class="ruby-identifier">d</span>.<span class="ruby-identifier">root</span>
@@ -2691,7 +2691,7 @@
 
         <div class="method-description">
           
-          <p>Returns the text string from the first text node child in a specified element, if it exists, # <code>nil</code> otherwise.</p>
+          <p>Returns the text string from the first text node child in a specified element, if it exists, <code>nil</code> otherwise.</p>
 
 <p>With no argument, returns the text from the first text node in <code>self</code>:</p>
 
@@ -2700,7 +2700,7 @@
 <span class="ruby-identifier">d</span>.<span class="ruby-identifier">root</span>.<span class="ruby-identifier">text</span>       <span class="ruby-comment"># =&gt; &quot;some text &quot;</span>
 </pre>
 
-<p>With argument <code>xpath</code>, returns text from the the first text node in the element that matches <code>xpath</code>:</p>
+<p>With argument <code>xpath</code>, returns text from the first text node in the element that matches <code>xpath</code>:</p>
 
 <pre class="ruby"><span class="ruby-identifier">d</span>.<span class="ruby-identifier">root</span>.<span class="ruby-identifier">text</span>(<span class="ruby-value">1</span>) <span class="ruby-comment"># =&gt; &quot;this is bold!&quot;</span>
 </pre>
