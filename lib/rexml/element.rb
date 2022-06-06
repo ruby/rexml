@@ -989,7 +989,7 @@ module REXML
     # :call-seq:
     #   has_text? -> true or false
     #
-    # Returns +true if the element has one or more text noded,
+    # Returns +true+ if the element has one or more text noded,
     # +false+ otherwise:
     #
     #   d = REXML::Document.new '<a><b/>text<c/></a>'
@@ -1006,7 +1006,7 @@ module REXML
     #   text(xpath = nil) -> text_string or nil
     #
     # Returns the text string from the first text node child
-    # in a specified element, if it exists, # +nil+ otherwise.
+    # in a specified element, if it exists, +nil+ otherwise.
     #
     # With no argument, returns the text from the first text node in +self+:
     #
@@ -1014,7 +1014,7 @@ module REXML
     #   d.root.text.class # => String
     #   d.root.text       # => "some text "
     #
-    # With argument +xpath+, returns text from the the first text node
+    # With argument +xpath+, returns text from the first text node
     # in the element that matches +xpath+:
     #
     #   d.root.text(1) # => "this is bold!"
