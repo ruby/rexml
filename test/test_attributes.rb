@@ -178,16 +178,25 @@ module REXMLTests
       attr_test('name','value with LF &#x000a; &amp; ampersand')
     end
 
-    def test_quoting
+    def test_quote_root
       d = Document.new(%q{<a x='1' y="2"/>})
       assert_equal( %q{<a x='1' y='2'/>}, d.to_s )
       d.root.context[:attribute_quote] = :quote
       assert_equal( %q{<a x="1" y="2"/>}, d.to_s )
+    end
 
+    def test_quote_sub_element
       d = Document.new(%q{<a x='1' y="2"><b z='3'/></a>})
       assert_equal( %q{<a x='1' y='2'><b z='3'/></a>}, d.to_s )
       d.root.context[:attribute_quote] = :quote
       assert_equal( %q{<a x="1" y="2"><b z="3"/></a>}, d.to_s )
+    end
+
+    def test_quote_to_s_value
+      doc = Document.new(%q{<root a="'"/>}, {attribute_quote: :quote})
+      assert_equal(%q{<root a="'"/>}, doc.to_s)
+      assert_equal("'", doc.root.attribute("a").value)
+      assert_equal(%q{<root a="'"/>}, doc.to_s)
     end
 
     def test_ticket_127

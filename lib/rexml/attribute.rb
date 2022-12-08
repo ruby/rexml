@@ -13,9 +13,6 @@ module REXML
 
     # The element to which this attribute belongs
     attr_reader :element
-    # The normalized value of this attribute.  That is, the attribute with
-    # entities intact.
-    attr_writer :normalized
     PATTERN = /\s*(#{NAME_STR})\s*=\s*(["'])(.*?)\2/um
 
     NEEDS_A_SECOND_CHECK = /(<|&((#{Entity::NAME});|(#0*((?:\d+)|(?:x[a-fA-F0-9]+)));)?)/um
@@ -141,7 +138,6 @@ module REXML
       return @normalized if @normalized
 
       @normalized = Text::normalize( @unnormalized, doctype )
-      @unnormalized = nil
       @normalized
     end
 
@@ -150,8 +146,14 @@ module REXML
     def value
       return @unnormalized if @unnormalized
       @unnormalized = Text::unnormalize( @normalized, doctype )
-      @normalized = nil
       @unnormalized
+    end
+
+    # The normalized value of this attribute.  That is, the attribute with
+    # entities intact.
+    def normalized=(new_normalized)
+      @normalized = new_normalized
+      @unnormalized = nil
     end
 
     # Returns a copy of this attribute
