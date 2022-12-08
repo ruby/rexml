@@ -108,6 +108,8 @@
     
     <li ><a href="#method-i-node_type">#node_type</a>
     
+    <li ><a href="#method-i-normalized-3D">#normalized=</a>
+    
     <li class="calls-super" ><a href="#method-i-prefix">#prefix</a>
     
     <li ><a href="#method-i-remove">#remove</a>
@@ -186,19 +188,6 @@
         </div>
       </div>
       
-      <div id="attribute-i-normalized" class="method-detail">
-        <div class="method-heading attribute-method-heading">
-          <span class="method-name">normalized</span><span
-            class="attribute-access-type">[W]</span>
-        </div>
-
-        <div class="method-description">
-        
-        <p>The normalized value of this attribute.  That is, the attribute with entities intact.</p>
-        
-        </div>
-      </div>
-      
     </section>
     
 
@@ -244,7 +233,7 @@
 
           
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File lib/rexml/attribute.rb, line 45</span>
+            <pre><span class="ruby-comment"># File lib/rexml/attribute.rb, line 42</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>( <span class="ruby-identifier">first</span>, <span class="ruby-identifier">second</span>=<span class="ruby-keyword">nil</span>, <span class="ruby-identifier">parent</span>=<span class="ruby-keyword">nil</span> )
   <span class="ruby-ivar">@normalized</span> = <span class="ruby-ivar">@unnormalized</span> = <span class="ruby-ivar">@element</span> = <span class="ruby-keyword">nil</span>
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">first</span>.<span class="ruby-identifier">kind_of?</span> <span class="ruby-constant">Attribute</span>
@@ -300,7 +289,7 @@
 
           
           <div class="method-source-code" id="3D-3D-source">
-            <pre><span class="ruby-comment"># File lib/rexml/attribute.rb, line 109</span>
+            <pre><span class="ruby-comment"># File lib/rexml/attribute.rb, line 106</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">==</span>( <span class="ruby-identifier">other</span> )
   <span class="ruby-identifier">other</span>.<span class="ruby-identifier">kind_of?</span>(<span class="ruby-constant">Attribute</span>) <span class="ruby-keyword">and</span> <span class="ruby-identifier">other</span>.<span class="ruby-identifier">name</span><span class="ruby-operator">==</span><span class="ruby-identifier">name</span> <span class="ruby-keyword">and</span> <span class="ruby-identifier">other</span>.<span class="ruby-identifier">value</span><span class="ruby-operator">==</span><span class="ruby-identifier">value</span>
 <span class="ruby-keyword">end</span></pre>
@@ -333,7 +322,7 @@
 
           
           <div class="method-source-code" id="clone-source">
-            <pre><span class="ruby-comment"># File lib/rexml/attribute.rb, line 158</span>
+            <pre><span class="ruby-comment"># File lib/rexml/attribute.rb, line 160</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">clone</span>
   <span class="ruby-constant">Attribute</span>.<span class="ruby-identifier">new</span> <span class="ruby-keyword">self</span>
 <span class="ruby-keyword">end</span></pre>
@@ -366,7 +355,7 @@
 
           
           <div class="method-source-code" id="doctype-source">
-            <pre><span class="ruby-comment"># File lib/rexml/attribute.rb, line 132</span>
+            <pre><span class="ruby-comment"># File lib/rexml/attribute.rb, line 129</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">doctype</span>
   <span class="ruby-keyword">if</span> <span class="ruby-ivar">@element</span>
     <span class="ruby-identifier">doc</span> = <span class="ruby-ivar">@element</span>.<span class="ruby-identifier">document</span>
@@ -404,7 +393,7 @@
 
           
           <div class="method-source-code" id="element-3D-source">
-            <pre><span class="ruby-comment"># File lib/rexml/attribute.rb, line 166</span>
+            <pre><span class="ruby-comment"># File lib/rexml/attribute.rb, line 168</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">element=</span>( <span class="ruby-identifier">element</span> )
   <span class="ruby-ivar">@element</span> = <span class="ruby-identifier">element</span>
 
@@ -443,7 +432,7 @@
 
           
           <div class="method-source-code" id="hash-source">
-            <pre><span class="ruby-comment"># File lib/rexml/attribute.rb, line 114</span>
+            <pre><span class="ruby-comment"># File lib/rexml/attribute.rb, line 111</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">hash</span>
   <span class="ruby-identifier">name</span>.<span class="ruby-identifier">hash</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">value</span>.<span class="ruby-identifier">hash</span>
 <span class="ruby-keyword">end</span></pre>
@@ -476,7 +465,7 @@
 
           
           <div class="method-source-code" id="inspect-source">
-            <pre><span class="ruby-comment"># File lib/rexml/attribute.rb, line 192</span>
+            <pre><span class="ruby-comment"># File lib/rexml/attribute.rb, line 194</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">inspect</span>
   <span class="ruby-identifier">rv</span> = <span class="ruby-string">&quot;&quot;</span>
   <span class="ruby-identifier">write</span>( <span class="ruby-identifier">rv</span> )
@@ -532,7 +521,7 @@
 
           
           <div class="method-source-code" id="namespace-source">
-            <pre><span class="ruby-comment"># File lib/rexml/attribute.rb, line 98</span>
+            <pre><span class="ruby-comment"># File lib/rexml/attribute.rb, line 95</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">namespace</span> <span class="ruby-identifier">arg</span>=<span class="ruby-keyword">nil</span>
   <span class="ruby-identifier">arg</span> = <span class="ruby-identifier">prefix</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">arg</span>.<span class="ruby-identifier">nil?</span>
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">arg</span> <span class="ruby-operator">==</span> <span class="ruby-string">&quot;&quot;</span>
@@ -570,9 +559,43 @@
 
           
           <div class="method-source-code" id="node_type-source">
-            <pre><span class="ruby-comment"># File lib/rexml/attribute.rb, line 188</span>
+            <pre><span class="ruby-comment"># File lib/rexml/attribute.rb, line 190</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">node_type</span>
   <span class="ruby-value">:attribute</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-normalized-3D" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">normalized=</span><span
+            class="method-args">(new_normalized)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>The normalized value of this attribute.  That is, the attribute with entities intact.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="normalized-3D-source">
+            <pre><span class="ruby-comment"># File lib/rexml/attribute.rb, line 154</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">normalized=</span>(<span class="ruby-identifier">new_normalized</span>)
+  <span class="ruby-ivar">@normalized</span> = <span class="ruby-identifier">new_normalized</span>
+  <span class="ruby-ivar">@unnormalized</span> = <span class="ruby-keyword">nil</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
           
@@ -617,7 +640,7 @@
 
           
           <div class="method-source-code" id="prefix-source">
-            <pre><span class="ruby-comment"># File lib/rexml/attribute.rb, line 73</span>
+            <pre><span class="ruby-comment"># File lib/rexml/attribute.rb, line 70</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">prefix</span>
   <span class="ruby-keyword">super</span>
 <span class="ruby-keyword">end</span></pre>
@@ -652,7 +675,7 @@
 
           
           <div class="method-source-code" id="remove-source">
-            <pre><span class="ruby-comment"># File lib/rexml/attribute.rb, line 179</span>
+            <pre><span class="ruby-comment"># File lib/rexml/attribute.rb, line 181</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">remove</span>
   <span class="ruby-ivar">@element</span>.<span class="ruby-identifier">attributes</span>.<span class="ruby-identifier">delete</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">name</span> <span class="ruby-keyword">unless</span> <span class="ruby-ivar">@element</span>.<span class="ruby-identifier">nil?</span>
 <span class="ruby-keyword">end</span></pre>
@@ -685,12 +708,11 @@
 
           
           <div class="method-source-code" id="to_s-source">
-            <pre><span class="ruby-comment"># File lib/rexml/attribute.rb, line 140</span>
+            <pre><span class="ruby-comment"># File lib/rexml/attribute.rb, line 137</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">to_s</span>
   <span class="ruby-keyword">return</span> <span class="ruby-ivar">@normalized</span> <span class="ruby-keyword">if</span> <span class="ruby-ivar">@normalized</span>
 
   <span class="ruby-ivar">@normalized</span> = <span class="ruby-constant">Text</span><span class="ruby-operator">::</span><span class="ruby-identifier">normalize</span>( <span class="ruby-ivar">@unnormalized</span>, <span class="ruby-identifier">doctype</span> )
-  <span class="ruby-ivar">@unnormalized</span> = <span class="ruby-keyword">nil</span>
   <span class="ruby-ivar">@normalized</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
@@ -728,7 +750,7 @@
 
           
           <div class="method-source-code" id="to_string-source">
-            <pre><span class="ruby-comment"># File lib/rexml/attribute.rb, line 124</span>
+            <pre><span class="ruby-comment"># File lib/rexml/attribute.rb, line 121</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">to_string</span>
   <span class="ruby-keyword">if</span> <span class="ruby-ivar">@element</span> <span class="ruby-keyword">and</span> <span class="ruby-ivar">@element</span>.<span class="ruby-identifier">context</span> <span class="ruby-keyword">and</span> <span class="ruby-ivar">@element</span>.<span class="ruby-identifier">context</span>[<span class="ruby-value">:attribute_quote</span>] <span class="ruby-operator">==</span> <span class="ruby-value">:quote</span>
     <span class="ruby-node">%Q^#@expanded_name=&quot;#{to_s().gsub(/&quot;/, &#39;&amp;quot;&#39;)}&quot;^</span>
@@ -765,11 +787,10 @@
 
           
           <div class="method-source-code" id="value-source">
-            <pre><span class="ruby-comment"># File lib/rexml/attribute.rb, line 150</span>
+            <pre><span class="ruby-comment"># File lib/rexml/attribute.rb, line 146</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">value</span>
   <span class="ruby-keyword">return</span> <span class="ruby-ivar">@unnormalized</span> <span class="ruby-keyword">if</span> <span class="ruby-ivar">@unnormalized</span>
   <span class="ruby-ivar">@unnormalized</span> = <span class="ruby-constant">Text</span><span class="ruby-operator">::</span><span class="ruby-identifier">unnormalize</span>( <span class="ruby-ivar">@normalized</span>, <span class="ruby-identifier">doctype</span> )
-  <span class="ruby-ivar">@normalized</span> = <span class="ruby-keyword">nil</span>
   <span class="ruby-ivar">@unnormalized</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
@@ -801,7 +822,7 @@
 
           
           <div class="method-source-code" id="write-source">
-            <pre><span class="ruby-comment"># File lib/rexml/attribute.rb, line 184</span>
+            <pre><span class="ruby-comment"># File lib/rexml/attribute.rb, line 186</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">write</span>( <span class="ruby-identifier">output</span>, <span class="ruby-identifier">indent</span>=<span class="ruby-value">-1</span> )
   <span class="ruby-identifier">output</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">to_string</span>
 <span class="ruby-keyword">end</span></pre>
@@ -834,7 +855,7 @@
 
           
           <div class="method-source-code" id="xpath-source">
-            <pre><span class="ruby-comment"># File lib/rexml/attribute.rb, line 198</span>
+            <pre><span class="ruby-comment"># File lib/rexml/attribute.rb, line 200</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">xpath</span>
   <span class="ruby-identifier">path</span> = <span class="ruby-ivar">@element</span>.<span class="ruby-identifier">xpath</span>
   <span class="ruby-identifier">path</span> <span class="ruby-operator">+=</span> <span class="ruby-node">&quot;/@#{self.expanded_name}&quot;</span>
