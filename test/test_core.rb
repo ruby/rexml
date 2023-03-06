@@ -1423,7 +1423,7 @@ ENDXML
       d.root.add_element( "bah" )
       p=REXML::Formatters::Pretty.new(2)
       p.compact = true    # Don't add whitespace to text nodes unless necessary
-      p.write(d,out="")
+      p.write(d,out=+"")
       assert_equal( expected, out )
     end
 

@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+# frozen_string_literal: true
 require_relative "namespace"
 require_relative 'text'
 
@@ -119,10 +119,13 @@ module REXML
     #  b = Attribute.new( "ns:x", "y" )
     #  b.to_string     # -> "ns:x='y'"
     def to_string
+      value = to_s
       if @element and @element.context and @element.context[:attribute_quote] == :quote
-        %Q^#@expanded_name="#{to_s().gsub(/"/, '&quot;')}"^
+        value = value.gsub('"', '&quot;') if value.include?('"')
+        %Q^#@expanded_name="#{value}"^
       else
-        "#@expanded_name='#{to_s().gsub(/'/, '&apos;')}'"
+        value = value.gsub("'", '&apos;') if value.include?("'")
+        "#@expanded_name='#{value}'"
       end
     end
 
@@ -192,7 +195,7 @@ module REXML
     end
 
     def inspect
-      rv = ""
+      rv = +""
       write( rv )
       rv
     end

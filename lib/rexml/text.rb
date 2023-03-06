@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+# frozen_string_literal: true
 require_relative 'security'
 require_relative 'entity'
 require_relative 'doctype'
@@ -131,7 +131,7 @@ module REXML
     def Text.check string, pattern, doctype
 
       # illegal anywhere
-      if string !~ VALID_XML_CHARS
+      if !string.match?(VALID_XML_CHARS)
         if String.method_defined? :encode
           string.chars.each do |c|
             case c.ord
@@ -371,7 +371,7 @@ module REXML
       copy = input.to_s
       # Doing it like this rather than in a loop improves the speed
       #copy = copy.gsub( EREFERENCE, '&amp;' )
-      copy = copy.gsub( "&", "&amp;" )
+      copy = copy.gsub( "&", "&amp;" ) if copy.include?("&")
       if doctype
         # Replace all ampersands that aren't part of an entity
         doctype.entities.each_value do |entity|
@@ -382,7 +382,9 @@ module REXML
       else
         # Replace all ampersands that aren't part of an entity
         DocType::DEFAULT_ENTITIES.each_value do |entity|
-          copy = copy.gsub(entity.value, "&#{entity.name};" )
+          if copy.include?(entity.value)
+            copy = copy.gsub(entity.value, "&#{entity.name};" )
+          end
         end
       end
       copy

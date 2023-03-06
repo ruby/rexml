@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+# frozen_string_literal: true
 require_relative 'default'
 
 module REXML
@@ -58,7 +58,7 @@ module REXML
           skip = false
           if compact
             if node.children.inject(true) {|s,c| s & c.kind_of?(Text)}
-              string = ""
+              string = +""
               old_level = @level
               @level = 0
               node.children.each { |child| write( child, string ) }
