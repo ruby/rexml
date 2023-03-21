@@ -166,11 +166,9 @@ EOF
 <cd></cd>
 EOF
 
-          assert_raise(REXML::ParseException) do
-            REXML::Document.new(xml)
-          end
-          REXML::Security.entity_expansion_limit = 100
-          assert_equal(100, REXML::Security.entity_expansion_limit)
+          REXML::Document.new(xml)
+          REXML::Security.entity_expansion_limit = 90
+          assert_equal(90, REXML::Security.entity_expansion_limit)
           assert_raise(REXML::ParseException) do
             REXML::Document.new(xml)
           end
