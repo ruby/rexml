@@ -92,6 +92,8 @@
     
     <li ><a href="#method-i-normalized">#normalized</a>
     
+    <li class="calls-super" ><a href="#method-i-parent-3D">#parent=</a>
+    
     <li ><a href="#method-i-to_s">#to_s</a>
     
     <li ><a href="#method-i-unnormalized">#unnormalized</a>
@@ -421,6 +423,45 @@
       </div>
 
     
+      <div id="method-i-parent-3D" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">parent=</span><span
+            class="method-args">(other)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+            <div class="method-calls-super">
+              Calls superclass method
+              <a href="Child.html#method-i-parent-3D"><code>REXML::Child#parent=</code></a>
+            </div>
+          
+
+          
+          <div class="method-source-code" id="parent-3D-source">
+            <pre><span class="ruby-comment"># File lib/rexml/entity.rb, line 138</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">parent=</span>(<span class="ruby-identifier">other</span>)
+  <span class="ruby-ivar">@resolved_value</span> = <span class="ruby-keyword">nil</span>
+  <span class="ruby-keyword">super</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
       <div id="method-i-to_s" class="method-detail ">
         
         <div class="method-heading">
@@ -522,24 +563,7 @@
           <div class="method-source-code" id="value-source">
             <pre><span class="ruby-comment"># File lib/rexml/entity.rb, line 134</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">value</span>
-  <span class="ruby-keyword">if</span> <span class="ruby-ivar">@value</span>
-    <span class="ruby-identifier">matches</span> = <span class="ruby-ivar">@value</span>.<span class="ruby-identifier">scan</span>(<span class="ruby-constant">PEREFERENCE_RE</span>)
-    <span class="ruby-identifier">rv</span> = <span class="ruby-ivar">@value</span>.<span class="ruby-identifier">clone</span>
-    <span class="ruby-keyword">if</span> <span class="ruby-ivar">@parent</span>
-      <span class="ruby-identifier">sum</span> = <span class="ruby-value">0</span>
-      <span class="ruby-identifier">matches</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">entity_reference</span><span class="ruby-operator">|</span>
-        <span class="ruby-identifier">entity_value</span> = <span class="ruby-ivar">@parent</span>.<span class="ruby-identifier">entity</span>( <span class="ruby-identifier">entity_reference</span>[<span class="ruby-value">0</span>] )
-        <span class="ruby-keyword">if</span> <span class="ruby-identifier">sum</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">entity_value</span>.<span class="ruby-identifier">bytesize</span> <span class="ruby-operator">&gt;</span> <span class="ruby-constant">Security</span>.<span class="ruby-identifier">entity_expansion_text_limit</span>
-          <span class="ruby-identifier">raise</span> <span class="ruby-string">&quot;entity expansion has grown too large&quot;</span>
-        <span class="ruby-keyword">else</span>
-          <span class="ruby-identifier">sum</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">entity_value</span>.<span class="ruby-identifier">bytesize</span>
-        <span class="ruby-keyword">end</span>
-        <span class="ruby-identifier">rv</span>.<span class="ruby-identifier">gsub!</span>( <span class="ruby-regexp">/%#{entity_reference.join};/um</span>, <span class="ruby-identifier">entity_value</span> )
-      <span class="ruby-keyword">end</span>
-    <span class="ruby-keyword">end</span>
-    <span class="ruby-keyword">return</span> <span class="ruby-identifier">rv</span>
-  <span class="ruby-keyword">end</span>
-  <span class="ruby-keyword">nil</span>
+  <span class="ruby-ivar">@resolved_value</span> <span class="ruby-operator">||=</span> <span class="ruby-identifier">resolve_value</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
           

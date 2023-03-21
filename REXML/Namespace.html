@@ -120,6 +120,11 @@
         <dd>
         
       
+        <dt id="NAME_WITHOUT_NAMESPACE">NAME_WITHOUT_NAMESPACE
+        
+        <dd>
+        
+      
       </dl>
     </section>
     
@@ -212,7 +217,7 @@
 
           
           <div class="method-source-code" id="fully_expanded_name-source">
-            <pre><span class="ruby-comment"># File lib/rexml/namespace.rb, line 53</span>
+            <pre><span class="ruby-comment"># File lib/rexml/namespace.rb, line 57</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">fully_expanded_name</span>
   <span class="ruby-identifier">ns</span> = <span class="ruby-identifier">prefix</span>
   <span class="ruby-keyword">return</span> <span class="ruby-node">&quot;#{ns}:#@name&quot;</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">ns</span>.<span class="ruby-identifier">size</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">0</span>
@@ -247,7 +252,7 @@
 
           
           <div class="method-source-code" id="has_name-3F-source">
-            <pre><span class="ruby-comment"># File lib/rexml/namespace.rb, line 39</span>
+            <pre><span class="ruby-comment"># File lib/rexml/namespace.rb, line 43</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">has_name?</span>( <span class="ruby-identifier">other</span>, <span class="ruby-identifier">ns</span>=<span class="ruby-keyword">nil</span> )
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">ns</span>
     <span class="ruby-keyword">return</span> (<span class="ruby-identifier">namespace</span>() <span class="ruby-operator">==</span> <span class="ruby-identifier">ns</span> <span class="ruby-keyword">and</span> <span class="ruby-identifier">name</span>() <span class="ruby-operator">==</span> <span class="ruby-identifier">other</span>)
@@ -286,11 +291,14 @@
 
           
           <div class="method-source-code" id="name-3D-source">
-            <pre><span class="ruby-comment"># File lib/rexml/namespace.rb, line 16</span>
+            <pre><span class="ruby-comment"># File lib/rexml/namespace.rb, line 17</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">name=</span>( <span class="ruby-identifier">name</span> )
   <span class="ruby-ivar">@expanded_name</span> = <span class="ruby-identifier">name</span>
-  <span class="ruby-keyword">case</span> <span class="ruby-identifier">name</span>
-  <span class="ruby-keyword">when</span> <span class="ruby-constant">NAMESPLIT</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">name</span>.<span class="ruby-identifier">match?</span>(<span class="ruby-constant">NAME_WITHOUT_NAMESPACE</span>)
+    <span class="ruby-ivar">@prefix</span> = <span class="ruby-string">&quot;&quot;</span>
+    <span class="ruby-ivar">@namespace</span> = <span class="ruby-string">&quot;&quot;</span>
+    <span class="ruby-ivar">@name</span> = <span class="ruby-identifier">name</span>
+  <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">name</span> <span class="ruby-operator">=~</span> <span class="ruby-constant">NAMESPLIT</span>
     <span class="ruby-keyword">if</span> <span class="ruby-node">$1</span>
       <span class="ruby-ivar">@prefix</span> = <span class="ruby-node">$1</span>
     <span class="ruby-keyword">else</span>
@@ -298,7 +306,7 @@
       <span class="ruby-ivar">@namespace</span> = <span class="ruby-string">&quot;&quot;</span>
     <span class="ruby-keyword">end</span>
     <span class="ruby-ivar">@name</span> = <span class="ruby-node">$2</span>
-  <span class="ruby-keyword">when</span> <span class="ruby-string">&quot;&quot;</span>
+  <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">name</span> <span class="ruby-operator">==</span> <span class="ruby-string">&quot;&quot;</span>
     <span class="ruby-ivar">@prefix</span> = <span class="ruby-keyword">nil</span>
     <span class="ruby-ivar">@namespace</span> = <span class="ruby-keyword">nil</span>
     <span class="ruby-ivar">@name</span> = <span class="ruby-keyword">nil</span>

@@ -377,7 +377,7 @@
     <span class="ruby-identifier">skip</span> = <span class="ruby-keyword">false</span>
     <span class="ruby-keyword">if</span> <span class="ruby-identifier">compact</span>
       <span class="ruby-keyword">if</span> <span class="ruby-identifier">node</span>.<span class="ruby-identifier">children</span>.<span class="ruby-identifier">inject</span>(<span class="ruby-keyword">true</span>) {<span class="ruby-operator">|</span><span class="ruby-identifier">s</span>,<span class="ruby-identifier">c</span><span class="ruby-operator">|</span> <span class="ruby-identifier">s</span> <span class="ruby-operator">&amp;</span> <span class="ruby-identifier">c</span>.<span class="ruby-identifier">kind_of?</span>(<span class="ruby-constant">Text</span>)}
-        <span class="ruby-identifier">string</span> = <span class="ruby-string">&quot;&quot;</span>
+        <span class="ruby-identifier">string</span> = <span class="ruby-string">+&quot;&quot;</span>
         <span class="ruby-identifier">old_level</span> = <span class="ruby-ivar">@level</span>
         <span class="ruby-ivar">@level</span> = <span class="ruby-value">0</span>
         <span class="ruby-identifier">node</span>.<span class="ruby-identifier">children</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">child</span><span class="ruby-operator">|</span> <span class="ruby-identifier">write</span>( <span class="ruby-identifier">child</span>, <span class="ruby-identifier">string</span> ) }

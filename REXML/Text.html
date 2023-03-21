@@ -259,7 +259,7 @@
 <span class="ruby-keyword">def</span> <span class="ruby-constant">Text</span>.<span class="ruby-identifier ruby-title">check</span> <span class="ruby-identifier">string</span>, <span class="ruby-identifier">pattern</span>, <span class="ruby-identifier">doctype</span>
 
   <span class="ruby-comment"># illegal anywhere</span>
-  <span class="ruby-keyword">if</span> <span class="ruby-identifier">string</span> <span class="ruby-operator">!~</span> <span class="ruby-constant">VALID_XML_CHARS</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span><span class="ruby-identifier">string</span>.<span class="ruby-identifier">match?</span>(<span class="ruby-constant">VALID_XML_CHARS</span>)
     <span class="ruby-keyword">if</span> <span class="ruby-constant">String</span>.<span class="ruby-identifier">method_defined?</span> <span class="ruby-value">:encode</span>
       <span class="ruby-identifier">string</span>.<span class="ruby-identifier">chars</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">c</span><span class="ruby-operator">|</span>
         <span class="ruby-keyword">case</span> <span class="ruby-identifier">c</span>.<span class="ruby-identifier">ord</span>
