@@ -170,7 +170,10 @@ module REXML
           name = path.shift
           string << name
           string << "( "
-          string << predicate_to_string( path.shift, &block )
+          path.shift.each_with_index do |argument, i|
+            string << ", " if i > 0
+            string << predicate_to_string(argument, &block)
+          end
           string << " )"
         when :literal
           path.shift
