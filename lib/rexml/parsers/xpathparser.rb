@@ -178,7 +178,7 @@ module REXML
         when :literal
           path.shift
           string << " "
-          string << path.shift.inspect
+          string << QuoteLiteral(path.shift)
           string << " "
         else
           string << " "
@@ -361,6 +361,18 @@ module REXML
           OrExpr(pred, preds)
         }
         path
+      end
+
+      def QuoteLiteral literal
+        case literal
+        when String
+          # Xpath 1.0 does not support escape characters.
+          # Assumes literal does not contain both single and double quotes.
+          pattern = literal.include?('"') ? "'%s'" : '"%s"'
+          pattern % literal
+        else
+          literal.inspect
+        end
       end
 
       # The following return arrays of true/false, a 1-1 mapping of the
