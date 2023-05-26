@@ -541,7 +541,7 @@ The contents of the resulting array are either:
   <span class="ruby-keyword">when</span> <span class="ruby-value">:literal</span>
     <span class="ruby-identifier">path</span>.<span class="ruby-identifier">shift</span>
     <span class="ruby-identifier">string</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-string">&quot; &quot;</span>
-    <span class="ruby-identifier">string</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">path</span>.<span class="ruby-identifier">shift</span>.<span class="ruby-identifier">inspect</span>
+    <span class="ruby-identifier">string</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">quote_literal</span>(<span class="ruby-identifier">path</span>.<span class="ruby-identifier">shift</span>)
     <span class="ruby-identifier">string</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-string">&quot; &quot;</span>
   <span class="ruby-keyword">else</span>
     <span class="ruby-identifier">string</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-string">&quot; &quot;</span>
