@@ -188,6 +188,7 @@ module REXML
         return string.squeeze(" ")
       end
 
+      private
       def quote_literal( literal )
         case literal
         when String
@@ -203,7 +204,6 @@ module REXML
         end
       end
 
-      private
       #LocationPath
       #  | RelativeLocationPath
       #  | '/' RelativeLocationPath?
