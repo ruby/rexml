@@ -178,7 +178,7 @@ module REXML
         when :literal
           path.shift
           string << " "
-          string << path.shift.inspect
+          string << quote_literal(path.shift)
           string << " "
         else
           string << " "
@@ -189,6 +189,21 @@ module REXML
       end
 
       private
+      def quote_literal( literal )
+        case literal
+        when String
+          # XPath 1.0 does not support escape characters.
+          # Assumes literal does not contain both single and double quotes.
+          if literal.include?("'")
+            "\"#{literal}\""
+          else
+            "'#{literal}'"
+          end
+        else
+          literal.inspect
+        end
+      end
+
       #LocationPath
       #  | RelativeLocationPath
       #  | '/' RelativeLocationPath?
