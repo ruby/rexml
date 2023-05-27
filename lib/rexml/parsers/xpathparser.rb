@@ -54,8 +54,10 @@ module REXML
           when :descendant_or_self
             string << "/"
           when :self
+            string << "/" if string.size > 0
             string << "."
           when :parent
+            string << "/" if string.size > 0
             string << ".."
           when :any
             string << "*"
