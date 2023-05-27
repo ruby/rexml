@@ -52,11 +52,11 @@ module REXML
           when :child
             string << "/" if string.size > 0
           when :descendant_or_self
-            string << "//"
-          when :self
             string << "/"
+          when :self
+            string << "."
           when :parent
-            string << "/.."
+            string << ".."
           when :any
             string << "*"
           when :text
