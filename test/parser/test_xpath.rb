@@ -16,6 +16,11 @@ module REXMLTests
                      abbreviate("/"))
       end
 
+      def test_descendant_or_self_only
+        assert_equal("//",
+                     abbreviate("/descendant-or-self::node()/"))
+      end
+
       def test_descendant_or_self_absolute
         assert_equal("//a/b",
                      abbreviate("/descendant-or-self::node()/a/b"))

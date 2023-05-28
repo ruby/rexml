@@ -47,7 +47,6 @@ module REXML
         end
         components = []
         component = nil
-        previous_op = nil
         while parsed.size > 0
           op = parsed.shift
           case op
@@ -119,10 +118,12 @@ module REXML
             component << op.inspect
             component << ")"
           end
-          previous_op = op
         end
-        if components == [""]
+        case components
+        when [""]
           "/"
+        when ["", ""]
+          "//"
         else
           components.join("/")
         end
