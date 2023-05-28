@@ -1,4 +1,5 @@
 # frozen_string_literal: false
+
 require_relative '../namespace'
 require_relative '../xmltokens'
 
@@ -44,60 +45,87 @@ module REXML
         else
           parsed = path_or_parsed
         end
-        path = ""
-        document = false
+        components = []
+        component = nil
+        previous_op = nil
         while parsed.size > 0
           op = parsed.shift
           case op
           when :node
+            component << "node()"
           when :attribute
-            path << "/" if path.size > 0
-            path << "@"
+            component = "@"
+            components << component
           when :child
-            path << "/" if path.size > 0
+            component = ""
+            components << component
           when :descendant_or_self
-            path << "//"
+            next_op = parsed[0]
+            if next_op == :node
+              parsed.shift
+              component = ""
+              components << component
+            else
+              component = "descendant-or-self::"
+              components << component
+            end
           when :self
-            path << "/"
+            next_op = parsed[0]
+            if next_op == :node
+              parsed.shift
+              components << "."
+            else
+              component = "self::"
+              components << component
+            end
           when :parent
-            path << "/.."
+            next_op = parsed[0]
+            if next_op == :node
+              parsed.shift
+              components << ".."
+            else
+              component = "parent::"
+              components << component
+            end
           when :any
-            path << "*"
+            component << "*"
           when :text
-            path << "text()"
+            component << "text()"
           when :following, :following_sibling,
                 :ancestor, :ancestor_or_self, :descendant,
                 :namespace, :preceding, :preceding_sibling
-            path << "/" unless path.size == 0
-            path << op.to_s.tr("_", "-")
-            path << "::"
+            component = op.to_s.tr("_", "-") << "::"
+            components << component
           when :qname
             prefix = parsed.shift
             name = parsed.shift
-            path << prefix+":" if prefix.size > 0
-            path << name
+            component << prefix+":" if prefix.size > 0
+            component << name
           when :predicate
-            path << '['
-            path << predicate_to_path( parsed.shift ) {|x| abbreviate( x ) }
-            path << ']'
+            component << '['
+            component << predicate_to_path(parsed.shift) {|x| abbreviate(x)}
+            component << ']'
           when :document
-            document = true
+            components << ""
           when :function
-            path << parsed.shift
-            path << "( "
-            path << predicate_to_path( parsed.shift[0] ) {|x| abbreviate( x )}
-            path << " )"
+            component << parsed.shift
+            component << "( "
+            component << predicate_to_path(parsed.shift[0]) {|x| abbreviate(x)}
+            component << " )"
           when :literal
-            path << %Q{ "#{parsed.shift}" }
+            component << quote_literal(parsed.shift)
           else
-            path << "/" unless path.size == 0
-            path << "UNKNOWN("
-            path << op.inspect
-            path << ")"
+            component << "UNKNOWN("
+            component << op.inspect
+            component << ")"
           end
+          previous_op = op
         end
-        path = "/"+path if document
-        path
+        if components == [""]
+          "/"
+        else
+          components.join("/")
+        end
       end
 
       def expand(path_or_parsed)
@@ -133,7 +161,6 @@ module REXML
           when :document
             document = true
           else
-            path << "/" unless path.size == 0
             path << "UNKNOWN("
             path << op.inspect
             path << ")"
@@ -166,32 +193,26 @@ module REXML
           end
           left = predicate_to_path( parsed.shift, &block )
           right = predicate_to_path( parsed.shift, &block )
-          path << " "
           path << left
           path << " "
           path << op.to_s
           path << " "
           path << right
-          path << " "
         when :function
           parsed.shift
           name = parsed.shift
           path << name
-          path << "( "
+          path << "("
           parsed.shift.each_with_index do |argument, i|
             path << ", " if i > 0
             path << predicate_to_path(argument, &block)
           end
-          path << " )"
+          path << ")"
         when :literal
           parsed.shift
-          path << " "
           path << quote_literal(parsed.shift)
-          path << " "
         else
-          path << " "
           path << yield( parsed )
-          path << " "
         end
         return path.squeeze(" ")
       end
