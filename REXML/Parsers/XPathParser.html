@@ -240,7 +240,6 @@ The contents of the resulting array are either:
   <span class="ruby-keyword">end</span>
   <span class="ruby-identifier">components</span> = []
   <span class="ruby-identifier">component</span> = <span class="ruby-keyword">nil</span>
-  <span class="ruby-identifier">previous_op</span> = <span class="ruby-keyword">nil</span>
   <span class="ruby-keyword">while</span> <span class="ruby-identifier">parsed</span>.<span class="ruby-identifier">size</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">0</span>
     <span class="ruby-identifier">op</span> = <span class="ruby-identifier">parsed</span>.<span class="ruby-identifier">shift</span>
     <span class="ruby-keyword">case</span> <span class="ruby-identifier">op</span>
@@ -312,10 +311,12 @@ The contents of the resulting array are either:
       <span class="ruby-identifier">component</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">op</span>.<span class="ruby-identifier">inspect</span>
       <span class="ruby-identifier">component</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-string">&quot;)&quot;</span>
     <span class="ruby-keyword">end</span>
-    <span class="ruby-identifier">previous_op</span> = <span class="ruby-identifier">op</span>
   <span class="ruby-keyword">end</span>
-  <span class="ruby-keyword">if</span> <span class="ruby-identifier">components</span> <span class="ruby-operator">==</span> [<span class="ruby-string">&quot;&quot;</span>]
+  <span class="ruby-keyword">case</span> <span class="ruby-identifier">components</span>
+  <span class="ruby-keyword">when</span> [<span class="ruby-string">&quot;&quot;</span>]
     <span class="ruby-string">&quot;/&quot;</span>
+  <span class="ruby-keyword">when</span> [<span class="ruby-string">&quot;&quot;</span>, <span class="ruby-string">&quot;&quot;</span>]
+    <span class="ruby-string">&quot;//&quot;</span>
   <span class="ruby-keyword">else</span>
     <span class="ruby-identifier">components</span>.<span class="ruby-identifier">join</span>(<span class="ruby-string">&quot;/&quot;</span>)
   <span class="ruby-keyword">end</span>
@@ -349,7 +350,7 @@ The contents of the resulting array are either:
 
           
           <div class="method-source-code" id="expand-source">
-            <pre><span class="ruby-comment"># File lib/rexml/parsers/xpathparser.rb, line 131</span>
+            <pre><span class="ruby-comment"># File lib/rexml/parsers/xpathparser.rb, line 132</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">expand</span>(<span class="ruby-identifier">path_or_parsed</span>)
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">path_or_parsed</span>.<span class="ruby-identifier">kind_of?</span>(<span class="ruby-constant">String</span>)
     <span class="ruby-identifier">parsed</span> = <span class="ruby-identifier">parse</span>(<span class="ruby-identifier">path_or_parsed</span>)
@@ -561,7 +562,7 @@ The contents of the resulting array are either:
 
           
           <div class="method-source-code" id="predicate_to_path-source">
-            <pre><span class="ruby-comment"># File lib/rexml/parsers/xpathparser.rb, line 173</span>
+            <pre><span class="ruby-comment"># File lib/rexml/parsers/xpathparser.rb, line 174</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">predicate_to_path</span>(<span class="ruby-identifier">parsed</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
   <span class="ruby-identifier">path</span> = <span class="ruby-string">&quot;&quot;</span>
   <span class="ruby-keyword">case</span> <span class="ruby-identifier">parsed</span>[<span class="ruby-value">0</span>]
