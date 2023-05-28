@@ -38,108 +38,116 @@ module REXML
         parsed
       end
 
-      def abbreviate( path )
-        path = path.kind_of?(String) ? parse( path ) : path
-        string = ""
+      def abbreviate(path_or_parsed)
+        if path_or_parsed.kind_of?(String)
+          parsed = parse(path_or_parsed)
+        else
+          parsed = path_or_parsed
+        end
+        path = ""
         document = false
-        while path.size > 0
-          op = path.shift
+        while parsed.size > 0
+          op = parsed.shift
           case op
           when :node
           when :attribute
-            string << "/" if string.size > 0
-            string << "@"
+            path << "/" if path.size > 0
+            path << "@"
           when :child
-            string << "/" if string.size > 0
+            path << "/" if path.size > 0
           when :descendant_or_self
-            string << "//"
+            path << "//"
           when :self
-            string << "/"
+            path << "/"
           when :parent
-            string << "/.."
+            path << "/.."
           when :any
-            string << "*"
+            path << "*"
           when :text
-            string << "text()"
+            path << "text()"
           when :following, :following_sibling,
                 :ancestor, :ancestor_or_self, :descendant,
                 :namespace, :preceding, :preceding_sibling
-            string << "/" unless string.size == 0
-            string << op.to_s.tr("_", "-")
-            string << "::"
+            path << "/" unless path.size == 0
+            path << op.to_s.tr("_", "-")
+            path << "::"
           when :qname
-            prefix = path.shift
-            name = path.shift
-            string << prefix+":" if prefix.size > 0
-            string << name
+            prefix = parsed.shift
+            name = parsed.shift
+            path << prefix+":" if prefix.size > 0
+            path << name
           when :predicate
-            string << '['
-            string << predicate_to_string( path.shift ) {|x| abbreviate( x ) }
-            string << ']'
+            path << '['
+            path << predicate_to_path( parsed.shift ) {|x| abbreviate( x ) }
+            path << ']'
           when :document
             document = true
           when :function
-            string << path.shift
-            string << "( "
-            string << predicate_to_string( path.shift[0] ) {|x| abbreviate( x )}
-            string << " )"
+            path << parsed.shift
+            path << "( "
+            path << predicate_to_path( parsed.shift[0] ) {|x| abbreviate( x )}
+            path << " )"
           when :literal
-            string << %Q{ "#{path.shift}" }
+            path << %Q{ "#{parsed.shift}" }
           else
-            string << "/" unless string.size == 0
-            string << "UNKNOWN("
-            string << op.inspect
-            string << ")"
+            path << "/" unless path.size == 0
+            path << "UNKNOWN("
+            path << op.inspect
+            path << ")"
           end
         end
-        string = "/"+string if document
-        return string
+        path = "/"+path if document
+        path
       end
 
-      def expand( path )
-        path = path.kind_of?(String) ? parse( path ) : path
-        string = ""
+      def expand(path_or_parsed)
+        if path_or_parsed.kind_of?(String)
+          parsed = parse(path_or_parsed)
+        else
+          parsed = path_or_parsed
+        end
+        path = ""
         document = false
-        while path.size > 0
-          op = path.shift
+        while parsed.size > 0
+          op = parsed.shift
           case op
           when :node
-            string << "node()"
+            path << "node()"
           when :attribute, :child, :following, :following_sibling,
                 :ancestor, :ancestor_or_self, :descendant, :descendant_or_self,
                 :namespace, :preceding, :preceding_sibling, :self, :parent
-            string << "/" unless string.size == 0
-            string << op.to_s.tr("_", "-")
-            string << "::"
+            path << "/" unless path.size == 0
+            path << op.to_s.tr("_", "-")
+            path << "::"
           when :any
-            string << "*"
+            path << "*"
           when :qname
-            prefix = path.shift
-            name = path.shift
-            string << prefix+":" if prefix.size > 0
-            string << name
+            prefix = parsed.shift
+            name = parsed.shift
+            path << prefix+":" if prefix.size > 0
+            path << name
           when :predicate
-            string << '['
-            string << predicate_to_string( path.shift ) { |x| expand(x) }
-            string << ']'
+            path << '['
+            path << predicate_to_path( parsed.shift ) { |x| expand(x) }
+            path << ']'
           when :document
             document = true
           else
-            string << "/" unless string.size == 0
-            string << "UNKNOWN("
-            string << op.inspect
-            string << ")"
+            path << "/" unless path.size == 0
+            path << "UNKNOWN("
+            path << op.inspect
+            path << ")"
           end
         end
-        string = "/"+string if document
-        return string
+        path = "/"+path if document
+        path
       end
 
-      def predicate_to_string( path, &block )
-        string = ""
-        case path[0]
+      def predicate_to_path(parsed, &block)
+        path = ""
+        case parsed[0]
         when :and, :or, :mult, :plus, :minus, :neq, :eq, :lt, :gt, :lteq, :gteq, :div, :mod, :union
-          op = path.shift
+          op = parsed.shift
           case op
           when :eq
             op = "="
@@ -156,37 +164,39 @@ module REXML
           when :union
             op = "|"
           end
-          left = predicate_to_string( path.shift, &block )
-          right = predicate_to_string( path.shift, &block )
-          string << " "
-          string << left
-          string << " "
-          string << op.to_s
-          string << " "
-          string << right
-          string << " "
+          left = predicate_to_path( parsed.shift, &block )
+          right = predicate_to_path( parsed.shift, &block )
+          path << " "
+          path << left
+          path << " "
+          path << op.to_s
+          path << " "
+          path << right
+          path << " "
         when :function
-          path.shift
-          name = path.shift
-          string << name
-          string << "( "
-          path.shift.each_with_index do |argument, i|
-            string << ", " if i > 0
-            string << predicate_to_string(argument, &block)
+          parsed.shift
+          name = parsed.shift
+          path << name
+          path << "( "
+          parsed.shift.each_with_index do |argument, i|
+            path << ", " if i > 0
+            path << predicate_to_path(argument, &block)
           end
-          string << " )"
+          path << " )"
         when :literal
-          path.shift
-          string << " "
-          string << quote_literal(path.shift)
-          string << " "
+          parsed.shift
+          path << " "
+          path << quote_literal(parsed.shift)
+          path << " "
         else
-          string << " "
-          string << yield( path )
-          string << " "
+          path << " "
+          path << yield( parsed )
+          path << " "
         end
-        return string.squeeze(" ")
+        return path.squeeze(" ")
       end
+      # For backward compatibility
+      alias_method :preciate_to_string, :predicate_to_path
 
       private
       def quote_literal( literal )
