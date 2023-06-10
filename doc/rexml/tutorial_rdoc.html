@@ -714,7 +714,7 @@
 </pre>
 </dd><dt>Index of Child
 <dd>
-<p>Use method REXML::Element#index to retrieve the zero-based child index of the given object, or <code>#size - 1</code> if there is no such child:</p>
+<p>Use method <a href="../../REXML/Parent.html#method-i-index"><code>REXML::Parent#index</code></a> to retrieve the zero-based child index of the given object, or <code>#size - 1</code> if there is no such child:</p>
 
 <pre class="ruby"><span class="ruby-identifier">ele</span> = <span class="ruby-identifier">doc</span>.<span class="ruby-identifier">root</span>     <span class="ruby-comment"># =&gt; &lt;bookstore&gt; ... &lt;/&gt;</span>
 <span class="ruby-identifier">ele</span>.<span class="ruby-identifier">index</span>(<span class="ruby-identifier">ele</span>[<span class="ruby-value">0</span>])  <span class="ruby-comment"># =&gt; 0</span>
@@ -729,7 +729,7 @@
 </pre>
 </dd><dt>Element Children
 <dd>
-<p>Use method REXML::.has_elements? to retrieve whether the element has element children:</p>
+<p>Use method <a href="../../REXML/Element.html#method-i-has_elements-3F"><code>REXML::Element#has_elements?</code></a> to retrieve whether the element has element children:</p>
 
 <pre class="ruby"><span class="ruby-identifier">doc</span>.<span class="ruby-identifier">root</span>.<span class="ruby-identifier">has_elements?</span>                  <span class="ruby-comment"># =&gt; true</span>
 <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Element</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;foo&#39;</span>).<span class="ruby-identifier">has_elements?</span> <span class="ruby-comment"># =&gt; false</span>
@@ -1389,7 +1389,7 @@
 <span class="ruby-identifier">ele</span>.<span class="ruby-identifier">attributes</span>           <span class="ruby-comment"># =&gt; {&quot;bar&quot;=&gt;bar=&#39;baz&#39;}</span>
 </pre>
 
-<p>Delete a namespace with method REXML::delete_namespace:</p>
+<p>Delete a namespace with method <a href="../../REXML/Element.html#method-i-delete_namespace"><code>REXML::Element#delete_namespace</code></a>:</p>
 
 <pre class="ruby"><span class="ruby-identifier">ele</span> = <span class="ruby-constant">Element</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;foo&#39;</span>) <span class="ruby-comment"># =&gt; &lt;foo/&gt;</span>
 <span class="ruby-identifier">ele</span>.<span class="ruby-identifier">add_namespace</span>(<span class="ruby-string">&#39;bar&#39;</span>)
