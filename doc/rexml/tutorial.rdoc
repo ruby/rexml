@@ -554,7 +554,7 @@ An element may have:
 
 [Index of Child]
 
-  Use method REXML::Element#index to retrieve the zero-based child index
+  Use method REXML::Parent#index to retrieve the zero-based child index
   of the given object, or <tt>#size - 1</tt> if there is no such child:
 
     ele = doc.root     # => <bookstore> ... </>
@@ -570,7 +570,7 @@ An element may have:
 
 [Element Children]
 
-  Use method REXML::.has_elements? to retrieve whether the element
+  Use method REXML::Element#has_elements? to retrieve whether the element
   has element children:
 
     doc.root.has_elements?                  # => true
@@ -1222,7 +1222,7 @@ Delete an attribute by name with method REXML::Element#delete_attribute:
   ele.delete_attribute('bam')
   ele.attributes           # => {"bar"=>bar='baz'}
 
-Delete a namespace with method REXML::delete_namespace:
+Delete a namespace with method REXML::Element#delete_namespace:
 
   ele = Element.new('foo') # => <foo/>
   ele.add_namespace('bar')
