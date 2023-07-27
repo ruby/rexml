@@ -1,5 +1,103 @@
 # News
 
+## 3.2.6 - 2023-07-27 {#version-3-2-6}
+
+### Improvements
+
+  * Required Ruby 2.5 or later explicitly.
+    [GH-69][gh-69]
+    [Patch by Ivo Anjo]
+
+  * Added documentation for maintenance cycle.
+    [GH-71][gh-71]
+    [Patch by Ivo Anjo]
+
+  * Added tutorial.
+    [GH-77][gh-77]
+    [GH-78][gh-78]
+    [Patch by Burdette Lamar]
+
+  * Improved performance and memory usage.
+    [GH-94][gh-94]
+    [Patch by fatkodima]
+
+  * `REXML::Parsers::XPathParser#abbreviate`: Added support for
+    function arguments.
+    [GH-95][gh-95]
+    [Reported by pulver]
+
+  * `REXML::Parsers::XPathParser#abbreviate`: Added support for string
+    literal that contains double-quote.
+    [GH-96][gh-96]
+    [Patch by pulver]
+
+  * `REXML::Parsers::XPathParser#abbreviate`: Added missing `/` to
+    `:descendant_or_self/:self/:parent`.
+    [GH-97][gh-97]
+    [Reported by pulver]
+
+  * `REXML::Parsers::XPathParser#abbreviate`: Added support for more patterns.
+    [GH-97][gh-97]
+    [Reported by pulver]
+
+### Fixes
+
+  * Fixed a typo in NEWS.
+    [GH-72][gh-72]
+    [Patch by Spencer Goodman]
+
+  * Fixed a typo in NEWS.
+    [GH-75][gh-75]
+    [Patch by Andrew Bromwich]
+
+  * Fixed documents.
+    [GH-87][gh-87]
+    [Patch by Alexander Ilyin]
+
+  * Fixed a bug that `Attriute` convert `'` and `&apos;` even when
+    `attribute_quote: :quote` is used.
+    [GH-92][gh-92]
+    [Reported by Edouard Brière]
+
+  * Fixed links in tutorial.
+    [GH-99][gh-99]
+    [Patch by gemmaro]
+
+
+### Thanks
+
+  * Ivo Anjo
+
+  * Spencer Goodman
+
+  * Andrew Bromwich
+
+  * Burdette Lamar
+
+  * Alexander Ilyin
+
+  * Edouard Brière
+
+  * fatkodima
+
+  * pulver
+
+  * gemmaro
+
+[gh-69]:https://github.com/ruby/rexml/issues/69
+[gh-71]:https://github.com/ruby/rexml/issues/71
+[gh-72]:https://github.com/ruby/rexml/issues/72
+[gh-75]:https://github.com/ruby/rexml/issues/75
+[gh-77]:https://github.com/ruby/rexml/issues/77
+[gh-87]:https://github.com/ruby/rexml/issues/87
+[gh-92]:https://github.com/ruby/rexml/issues/92
+[gh-94]:https://github.com/ruby/rexml/issues/94
+[gh-95]:https://github.com/ruby/rexml/issues/95
+[gh-96]:https://github.com/ruby/rexml/issues/96
+[gh-97]:https://github.com/ruby/rexml/issues/97
+[gh-98]:https://github.com/ruby/rexml/issues/98
+[gh-99]:https://github.com/ruby/rexml/issues/99
+
 ## 3.2.5 - 2021-04-05 {#version-3-2-5}
 
 ### Improvements
