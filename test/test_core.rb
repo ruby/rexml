@@ -727,7 +727,7 @@ Last 80 unconsumed characters:
       koln_iso_8859_1 = "K\xF6ln"
       koln_utf8 = "K\xc3\xb6ln"
       source = Source.new( koln_iso_8859_1, 'iso-8859-1' )
-      results = source.scan(/.*/)[0]
+      results = source.match(/.*/)[0]
       koln_utf8.force_encoding('UTF-8') if koln_utf8.respond_to?(:force_encoding)
       assert_equal koln_utf8, results
       output << results

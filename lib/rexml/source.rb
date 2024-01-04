@@ -58,44 +58,7 @@ module REXML
       encoding_updated
     end
 
-    # Scans the source for a given pattern.  Note, that this is not your
-    # usual scan() method.  For one thing, the pattern argument has some
-    # requirements; for another, the source can be consumed.  You can easily
-    # confuse this method.  Originally, the patterns were easier
-    # to construct and this method more robust, because this method
-    # generated search regexps on the fly; however, this was
-    # computationally expensive and slowed down the entire REXML package
-    # considerably, since this is by far the most commonly called method.
-    # @param pattern must be a Regexp, and must be in the form of
-    # /^\s*(#{your pattern, with no groups})(.*)/.  The first group
-    # will be returned; the second group is used if the consume flag is
-    # set.
-    # @param consume if true, the pattern returned will be consumed, leaving
-    # everything after it in the Source.
-    # @return the pattern, if found, or nil if the Source is empty or the
-    # pattern is not found.
-    def scan(pattern, cons=false)
-      return nil if @buffer.nil?
-      rv = @buffer.scan(pattern)
-      @buffer = $' if cons and rv.size>0
-      rv
-    end
-
     def read
-    end
-
-    def consume( pattern )
-      @buffer = $' if pattern.match( @buffer )
-    end
-
-    def match_to( char, pattern )
-      return pattern.match(@buffer)
-    end
-
-    def match_to_consume( char, pattern )
-      md = pattern.match(@buffer)
-      @buffer = $'
-      return md
     end
 
     def match(pattern, cons=false)
@@ -107,10 +70,6 @@ module REXML
     # @return true if the Source is exhausted
     def empty?
       @buffer == ""
-    end
-
-    def position
-      @orig.index( @buffer )
     end
 
     # @return the current line in the source
@@ -181,39 +140,12 @@ module REXML
       end
     end
 
-    def scan(pattern, cons=false)
-      rv = super
-      # You'll notice that this next section is very similar to the same
-      # section in match(), but just a liiittle different.  This is
-      # because it is a touch faster to do it this way with scan()
-      # than the way match() does it; enough faster to warrant duplicating
-      # some code
-      if rv.size == 0
-        until @buffer =~ pattern or @source.nil?
-          begin
-            @buffer << readline
-          rescue Iconv::IllegalSequence
-            raise
-          rescue
-            @source = nil
-          end
-        end
-        rv = super
-      end
-      rv.taint if RUBY_VERSION < '2.7'
-      rv
-    end
-
     def read
       begin
         @buffer << readline
       rescue Exception, NameError
         @source = nil
       end
-    end
-
-    def consume( pattern )
-      match( pattern, true )
     end
 
     def match( pattern, cons=false )
@@ -234,10 +166,6 @@ module REXML
 
     def empty?
       super and ( @source.nil? || @source.eof? )
-    end
-
-    def position
-      @er_source.pos rescue 0
     end
 
     # @return the current line in the source
