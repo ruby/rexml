@@ -1,0 +1,29 @@
+name: Benchmark
+
+on:
+  - push
+  - pull_request
+
+jobs:
+  benchmark:
+    name: "Benchmark: Ruby ${{ matrix.ruby-version }}: ${{ matrix.runs-on }}"
+    strategy:
+      fail-fast: false
+      matrix:
+        ruby-version:
+          - '3.3'
+        runs-on:
+          - ubuntu-latest
+    runs-on: ${{ matrix.runs-on }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: ${{ matrix.ruby-version }}
+      - name: Install dependencies
+        run: |
+          bundle install
+          gem install rexml -v 3.2.6
+      - name: Benchmark
+        run: |
+          rake benchmark
