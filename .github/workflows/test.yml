@@ -20,7 +20,7 @@ jobs:
           - ubuntu-latest
           - macos-latest
           - windows-latest
-          ruby-version: ${{ fromJson(needs.ruby-versions.outputs.versions) }}
+        ruby-version: ${{ fromJson(needs.ruby-versions.outputs.versions) }}
         # include:
         #   - runs-on: ubuntu-latest
         #     ruby-version: truffleruby
