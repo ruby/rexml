@@ -28,3 +28,42 @@ RDoc::Task.new do |rdoc|
 end
 
 load "#{__dir__}/tasks/tocs.rake"
+
+benchmark_tasks = []
+namespace :benchmark do
+  Dir.glob("benchmark/*.yaml").sort.each do |yaml|
+    name = File.basename(yaml, ".*")
+    env = {
+      "RUBYLIB" => nil,
+      "BUNDLER_ORIG_RUBYLIB" => nil,
+    }
+    command_line = [
+      RbConfig.ruby, "-v", "-S", "benchmark-driver", File.expand_path(yaml),
+    ]
+
+    desc "Run #{name} benchmark"
+    task name do
+      puts("```")
+      sh(env, *command_line)
+      puts("```")
+    end
+    benchmark_tasks << "benchmark:#{name}"
+
+    case name
+    when /\Aparse/
+      namespace name do
+        desc "Run #{name} benchmark: small"
+        task :small do
+          puts("```")
+          sh(env.merge("N_ELEMENTS" => "500", "N_ATTRIBUTES" => "1"),
+             *command_line)
+          puts("```")
+        end
+        benchmark_tasks << "benchmark:#{name}:small"
+      end
+    end
+  end
+end
+
+desc "Run all benchmarks"
+task :benchmark => benchmark_tasks

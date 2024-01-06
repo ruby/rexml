@@ -1,0 +1,57 @@
+loop_count: 100
+contexts:
+  - gems:
+      rexml: 3.2.6
+    require: false
+    prelude: require 'rexml'
+  - name: master
+    prelude: |
+      $LOAD_PATH.unshift(File.expand_path("lib"))
+      require 'rexml'
+  - name: 3.2.6(YJIT)
+    gems:
+      rexml: 3.2.6
+    require: false
+    prelude: |
+      require 'rexml'
+      RubyVM::YJIT.enable
+  - name: master(YJIT)
+    prelude: |
+      $LOAD_PATH.unshift(File.expand_path("lib"))
+      require 'rexml'
+      RubyVM::YJIT.enable
+
+prelude: |
+  require 'rexml/document'
+  require 'rexml/parsers/sax2parser'
+  require 'rexml/parsers/pullparser'
+  require 'rexml/parsers/streamparser'
+  require 'rexml/streamlistener'
+
+  n_elements = Integer(ENV.fetch("N_ELEMENTS", "5000"), 10)
+  n_attributes = Integer(ENV.fetch("N_ATTRIBUTES", "2"), 10)
+
+  def build_xml(n_elements, n_attributes)
+    xml = '<?xml version="1.0"?><root>'
+    n_elements.times do |i|
+      xml << '<child '
+      n_attributes.times {|j| xml << "id#{j}=\"#{i}\" " }
+      xml << '/>'
+    end
+    xml << '</root>'
+  end
+  xml = build_xml(n_elements, n_attributes)
+
+  class Listener
+    include REXML::StreamListener
+  end
+
+benchmark:
+  'dom'        : REXML::Document.new(xml).elements.each("root/child") {|_|}
+  'sax'        : REXML::Parsers::SAX2Parser.new(xml).parse
+  'pull'       : |
+    parser = REXML::Parsers::PullParser.new(xml)
+    while parser.has_next?
+      parser.pull
+    end
+  'stream'     : REXML::Parsers::StreamParser.new(xml, Listener.new).parse
