@@ -62,9 +62,11 @@ module REXML
     end
 
     def match(pattern, cons=false)
-      md = pattern.match(@buffer)
-      @buffer = $' if cons and md
-      return md
+      @scanner = StringScanner.new(@buffer)
+      @scanner.scan(pattern)
+      @buffer = @scanner.rest if cons and @scanner.matched?
+
+      @scanner.matched? ? [@scanner.matched, *@scanner.captures] : nil
     end
 
     # @return true if the Source is exhausted
@@ -149,19 +151,21 @@ module REXML
     end
 
     def match( pattern, cons=false )
-      rv = pattern.match(@buffer)
-      @buffer = $' if cons and rv
-      while !rv and @source
+      @scanner = StringScanner.new(@buffer)
+      @scanner.scan(pattern)
+      @buffer = @scanner.rest if cons and @scanner.matched?
+      while !@scanner.matched? and @source
         begin
           @buffer << readline
-          rv = pattern.match(@buffer)
-          @buffer = $' if cons and rv
+          @scanner.string = @buffer
+          @scanner.scan(pattern)
+          @buffer = @scanner.rest if cons and @scanner.matched?
         rescue
           @source = nil
         end
       end
-      rv.taint if RUBY_VERSION < '2.7'
-      rv
+
+      @scanner.matched? ? [@scanner.matched, *@scanner.captures] : nil
     end
 
     def empty?

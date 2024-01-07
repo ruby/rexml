@@ -96,7 +96,7 @@ module REXML
       ENTITYDEF = "(?:#{ENTITYVALUE}|(?:#{EXTERNALID}(#{NDATADECL})?))"
       PEDECL = "<!ENTITY\\s+(%)\\s+#{NAME}\\s+#{PEDEF}\\s*>"
       GEDECL = "<!ENTITY\\s+#{NAME}\\s+#{ENTITYDEF}\\s*>"
-      ENTITYDECL = /\s*(?:#{GEDECL})|(?:#{PEDECL})/um
+      ENTITYDECL = /\s*(?:#{GEDECL})|\s*(?:#{PEDECL})/um
 
       NOTATIONDECL_START = /\A\s*<!NOTATION/um
       EXTERNAL_ID_PUBLIC = /\A\s*PUBLIC\s+#{PUBIDLITERAL}\s+#{SYSTEMLITERAL}\s*/um
@@ -274,7 +274,7 @@ module REXML
             return [ :elementdecl, @source.match( ELEMENTDECL_PATTERN, true )[1] ]
 
           when ENTITY_START
-            match = @source.match( ENTITYDECL, true ).to_a.compact
+            match = @source.match( ENTITYDECL, true ).compact
             match[0] = :entitydecl
             ref = false
             if match[1] == '%'
