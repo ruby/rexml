@@ -259,7 +259,7 @@ module REXML
           else
             @document_status = :after_doctype
             if @source.encoding == "UTF-8"
-              @source.buffer.force_encoding(::Encoding::UTF_8)
+              @source.buffer_encoding = ::Encoding::UTF_8
             end
           end
         end

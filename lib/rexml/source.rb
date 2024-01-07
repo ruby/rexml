@@ -30,8 +30,6 @@ module REXML
   # objects and provides consumption of text
   class Source
     include Encoding
-    # The current buffer (what we're going to read next)
-    attr_reader :buffer
     # The line number of the last consumed text
     attr_reader :line
     attr_reader :encoding
@@ -41,8 +39,8 @@ module REXML
     # @param encoding if non-null, sets the encoding of the source to this
     # value, overriding all encoding detection
     def initialize(arg, encoding=nil)
-      @orig = @buffer = arg
-      @scanner = StringScanner.new(@buffer)
+      @orig = arg
+      @scanner = StringScanner.new(@orig)
       if encoding
         self.encoding = encoding
       else
@@ -51,6 +49,14 @@ module REXML
       @line = 0
     end
 
+    # The current buffer (what we're going to read next)
+    def buffer
+      @scanner.rest
+    end
+
+    def buffer_encoding=(encoding)
+      @scanner.string.force_encoding(encoding)
+    end
 
     # Inherited from Encoding
     # Overridden to support optimized en/decoding
@@ -63,55 +69,54 @@ module REXML
     end
 
     def match(pattern, cons=false)
-      @scanner.string = @buffer
-      @scanner.scan(pattern)
-      @buffer = @scanner.rest if cons and @scanner.matched?
-
+      if cons
+        @scanner.scan(pattern)
+      else
+        @scanner.check(pattern)
+      end
       @scanner.matched? ? [@scanner.matched, *@scanner.captures] : nil
     end
 
     # @return true if the Source is exhausted
     def empty?
-      @buffer == ""
+      @scanner.eos?
     end
 
     # @return the current line in the source
     def current_line
       lines = @orig.split
-      res = lines.grep @buffer[0..30]
+      res = lines.grep @scanner.rest[0..30]
       res = res[-1] if res.kind_of? Array
       lines.index( res ) if res
     end
 
     private
+
     def detect_encoding
-      buffer_encoding = @buffer.encoding
+      scanner_encoding = @scanner.rest.encoding
       detected_encoding = "UTF-8"
       begin
-        @buffer.force_encoding("ASCII-8BIT")
-        if @buffer[0, 2] == "\xfe\xff"
-          @buffer[0, 2] = ""
+        @scanner.string.force_encoding("ASCII-8BIT")
+        if @scanner.scan(/\xfe\xff/n)
           detected_encoding = "UTF-16BE"
-        elsif @buffer[0, 2] == "\xff\xfe"
-          @buffer[0, 2] = ""
+        elsif @scanner.scan(/\xff\xfe/n)
           detected_encoding = "UTF-16LE"
-        elsif @buffer[0, 3] == "\xef\xbb\xbf"
-          @buffer[0, 3] = ""
+        elsif @scanner.scan(/\xef\xbb\xbf/n)
           detected_encoding = "UTF-8"
         end
       ensure
-        @buffer.force_encoding(buffer_encoding)
+        @scanner.string.force_encoding(scanner_encoding)
       end
       self.encoding = detected_encoding
     end
 
     def encoding_updated
       if @encoding != 'UTF-8'
-        @buffer = decode(@buffer)
+        @scanner.string = decode(@scanner.rest)
         @to_utf = true
       else
         @to_utf = false
-        @buffer.force_encoding ::Encoding::UTF_8
+        @scanner.string.force_encoding(::Encoding::UTF_8)
       end
     end
   end
@@ -134,7 +139,7 @@ module REXML
       end
 
       if !@to_utf and
-          @buffer.respond_to?(:force_encoding) and
+          @orig.respond_to?(:force_encoding) and
           @source.respond_to?(:external_encoding) and
           @source.external_encoding != ::Encoding::UTF_8
         @force_utf8 = true
@@ -145,22 +150,29 @@ module REXML
 
     def read
       begin
-        @buffer << readline
+        # NOTE: `@scanner << readline` does not free memory, so when parsing huge XML in JRuby's DOM,
+        # out-of-memory error `Java::JavaLang::OutOfMemoryError: Java heap space` occurs.
+        # `@scanner.string = @scanner.rest + readline` frees memory and avoids this problem.
+        @scanner.string = @scanner.rest + readline
       rescue Exception, NameError
         @source = nil
       end
     end
 
     def match( pattern, cons=false )
-      @scanner.string = @buffer
-      @scanner.scan(pattern)
-      @buffer = @scanner.rest if cons and @scanner.matched?
+      if cons
+        @scanner.scan(pattern)
+      else
+        @scanner.check(pattern)
+      end
       while !@scanner.matched? and @source
         begin
-          @buffer << readline
-          @scanner.string = @buffer
-          @scanner.scan(pattern)
-          @buffer = @scanner.rest if cons and @scanner.matched?
+          @scanner << readline
+          if cons
+            @scanner.scan(pattern)
+          else
+            @scanner.check(pattern)
+          end
         rescue
           @source = nil
         end
@@ -223,7 +235,7 @@ module REXML
         @source.set_encoding(@encoding, @encoding)
       end
       @line_break = encode(">")
-      @pending_buffer, @buffer = @buffer, ""
+      @pending_buffer, @scanner.string = @scanner.rest, ""
       @pending_buffer.force_encoding(@encoding)
       super
     end
