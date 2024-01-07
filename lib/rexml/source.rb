@@ -42,6 +42,7 @@ module REXML
     # value, overriding all encoding detection
     def initialize(arg, encoding=nil)
       @orig = @buffer = arg
+      @scanner = StringScanner.new(@buffer)
       if encoding
         self.encoding = encoding
       else
@@ -62,7 +63,7 @@ module REXML
     end
 
     def match(pattern, cons=false)
-      @scanner = StringScanner.new(@buffer)
+      @scanner.string = @buffer
       @scanner.scan(pattern)
       @buffer = @scanner.rest if cons and @scanner.matched?
 
@@ -151,7 +152,7 @@ module REXML
     end
 
     def match( pattern, cons=false )
-      @scanner = StringScanner.new(@buffer)
+      @scanner.string = @buffer
       @scanner.scan(pattern)
       @buffer = @scanner.rest if cons and @scanner.matched?
       while !@scanner.matched? and @source

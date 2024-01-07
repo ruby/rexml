@@ -392,6 +392,7 @@ module REXML
               unless md
                 raise REXML::ParseException.new("malformed XML: missing tag start", @source)
               end
+              tag = md[1]
               @document_status = :in_element
               prefixes = Set.new
               prefixes << md[2] if md[2]
@@ -405,23 +406,20 @@ module REXML
               end
 
               if closed
-                @closed = md[1]
+                @closed = tag
                 @nsstack.shift
               else
-                @tags.push( md[1] )
+                @tags.push( tag )
               end
-              return [ :start_element, md[1], attributes ]
+              return [ :start_element, tag, attributes ]
             end
           else
             md = @source.match( TEXT_PATTERN, true )
+            text = md[1]
             if md[0].length == 0
               @source.match( /(\s+)/, true )
             end
-            #STDERR.puts "GOT #{md[1].inspect}" unless md[0].length == 0
-            #return [ :text, "" ] if md[0].length == 0
-            # unnormalized = Text::unnormalize( md[1], self )
-            # return PullEvent.new( :text, md[1], unnormalized )
-            return [ :text, md[1] ]
+            return [ :text, text ]
           end
         rescue REXML::UndefinedNamespaceException
           raise
