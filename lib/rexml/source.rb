@@ -70,11 +70,10 @@ module REXML
 
     def match(pattern, cons=false)
       if cons
-        @scanner.scan(pattern)
+        @scanner.scan(pattern).nil? ? nil : @scanner
       else
-        @scanner.check(pattern)
+        @scanner.check(pattern).nil? ? nil : @scanner
       end
-      @scanner.matched? ? [@scanner.matched, *@scanner.captures] : nil
     end
 
     # @return true if the Source is exhausted
@@ -161,24 +160,24 @@ module REXML
 
     def match( pattern, cons=false )
       if cons
-        @scanner.scan(pattern)
+        md = @scanner.scan(pattern)
       else
-        @scanner.check(pattern)
+        md = @scanner.check(pattern)
       end
-      while !@scanner.matched? and @source
+      while md.nil? and @source
         begin
           @scanner << readline
           if cons
-            @scanner.scan(pattern)
+            md = @scanner.scan(pattern)
           else
-            @scanner.check(pattern)
+            md = @scanner.check(pattern)
           end
         rescue
           @source = nil
         end
       end
 
-      @scanner.matched? ? [@scanner.matched, *@scanner.captures] : nil
+      md.nil? ? nil : @scanner
     end
 
     def empty?

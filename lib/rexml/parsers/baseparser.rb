@@ -274,8 +274,7 @@ module REXML
             return [ :elementdecl, @source.match( ELEMENTDECL_PATTERN, true )[1] ]
 
           when ENTITY_START
-            match = @source.match( ENTITYDECL, true ).compact
-            match[0] = :entitydecl
+            match = [:entitydecl, *@source.match( ENTITYDECL, true ).captures.compact]
             ref = false
             if match[1] == '%'
               ref = true
