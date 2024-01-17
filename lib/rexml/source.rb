@@ -151,7 +151,8 @@ module REXML
       begin
         # NOTE: `@scanner << readline` does not free memory, so when parsing huge XML in JRuby's DOM,
         # out-of-memory error `Java::JavaLang::OutOfMemoryError: Java heap space` occurs.
-        # `@scanner.string = @scanner.rest + readline` frees memory and avoids this problem.
+        # `@scanner.string = @scanner.rest + readline` frees memory that is already consumed
+        # and avoids this problem.
         @scanner.string = @scanner.rest + readline
       rescue Exception, NameError
         @source = nil
