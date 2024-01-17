@@ -96,7 +96,7 @@ module REXML
       ENTITYDEF = "(?:#{ENTITYVALUE}|(?:#{EXTERNALID}(#{NDATADECL})?))"
       PEDECL = "<!ENTITY\\s+(%)\\s+#{NAME}\\s+#{PEDEF}\\s*>"
       GEDECL = "<!ENTITY\\s+#{NAME}\\s+#{ENTITYDEF}\\s*>"
-      ENTITYDECL = /\s*(?:#{GEDECL})|(?:#{PEDECL})/um
+      ENTITYDECL = /\s*(?:#{GEDECL})|\s*(?:#{PEDECL})/um
 
       NOTATIONDECL_START = /\A\s*<!NOTATION/um
       EXTERNAL_ID_PUBLIC = /\A\s*PUBLIC\s+#{PUBIDLITERAL}\s+#{SYSTEMLITERAL}\s*/um
@@ -259,7 +259,7 @@ module REXML
           else
             @document_status = :after_doctype
             if @source.encoding == "UTF-8"
-              @source.buffer.force_encoding(::Encoding::UTF_8)
+              @source.buffer_encoding = ::Encoding::UTF_8
             end
           end
         end
@@ -274,8 +274,7 @@ module REXML
             return [ :elementdecl, @source.match( ELEMENTDECL_PATTERN, true )[1] ]
 
           when ENTITY_START
-            match = @source.match( ENTITYDECL, true ).to_a.compact
-            match[0] = :entitydecl
+            match = [:entitydecl, *@source.match( ENTITYDECL, true ).captures.compact]
             ref = false
             if match[1] == '%'
               ref = true
@@ -392,6 +391,7 @@ module REXML
               unless md
                 raise REXML::ParseException.new("malformed XML: missing tag start", @source)
               end
+              tag = md[1]
               @document_status = :in_element
               prefixes = Set.new
               prefixes << md[2] if md[2]
@@ -405,23 +405,20 @@ module REXML
               end
 
               if closed
-                @closed = md[1]
+                @closed = tag
                 @nsstack.shift
               else
-                @tags.push( md[1] )
+                @tags.push( tag )
               end
-              return [ :start_element, md[1], attributes ]
+              return [ :start_element, tag, attributes ]
             end
           else
             md = @source.match( TEXT_PATTERN, true )
+            text = md[1]
             if md[0].length == 0
               @source.match( /(\s+)/, true )
             end
-            #STDERR.puts "GOT #{md[1].inspect}" unless md[0].length == 0
-            #return [ :text, "" ] if md[0].length == 0
-            # unnormalized = Text::unnormalize( md[1], self )
-            # return PullEvent.new( :text, md[1], unnormalized )
-            return [ :text, md[1] ]
+            return [ :text, text ]
           end
         rescue REXML::UndefinedNamespaceException
           raise
