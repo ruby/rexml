@@ -348,9 +348,13 @@ module REXML
           @source.match(/\A\s*/um, true)
         end
         begin
-          @source.read if @source.buffer.size<2
-          if @source.buffer[0] == ?<
-            if @source.buffer[1] == ?/
+          next_data = @source.buffer
+          if next_data.size < 2
+            @source.read
+            next_data = @source.buffer
+          end
+          if next_data[0] == ?<
+            if next_data[1] == ?/
               @nsstack.shift
               last_tag = @tags.pop
               md = @source.match( CLOSE_MATCH, true )
@@ -364,7 +368,7 @@ module REXML
                 raise REXML::ParseException.new(message, @source)
               end
               return [ :end_element, last_tag ]
-            elsif @source.buffer[1] == ?!
+            elsif next_data[1] == ?!
               md = @source.match(/\A(\s*[^>]*>)/um)
               #STDERR.puts "SOURCE BUFFER = #{source.buffer}, #{source.buffer.size}"
               raise REXML::ParseException.new("Malformed node", @source) unless md
@@ -383,7 +387,7 @@ module REXML
               end
               raise REXML::ParseException.new( "Declarations can only occur "+
                 "in the doctype declaration.", @source)
-            elsif @source.buffer[1] == ??
+            elsif next_data[1] == ??
               return process_instruction
             else
               # Get the next tag
