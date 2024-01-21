@@ -201,7 +201,7 @@
 
           
           <div class="method-source-code" id="current_line-source">
-            <pre><span class="ruby-comment"># File lib/rexml/source.rb, line 189</span>
+            <pre><span class="ruby-comment"># File lib/rexml/source.rb, line 185</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">current_line</span>
   <span class="ruby-keyword">begin</span>
     <span class="ruby-identifier">pos</span> = <span class="ruby-ivar">@er_source</span>.<span class="ruby-identifier">pos</span>        <span class="ruby-comment"># The byte position in the source</span>
@@ -256,7 +256,7 @@
 
           
           <div class="method-source-code" id="empty-3F-source">
-            <pre><span class="ruby-comment"># File lib/rexml/source.rb, line 184</span>
+            <pre><span class="ruby-comment"># File lib/rexml/source.rb, line 180</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">empty?</span>
   <span class="ruby-keyword">super</span> <span class="ruby-keyword">and</span> ( <span class="ruby-ivar">@source</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-operator">||</span> <span class="ruby-ivar">@source</span>.<span class="ruby-identifier">eof?</span> )
 <span class="ruby-keyword">end</span></pre>
@@ -289,7 +289,7 @@
 
           
           <div class="method-source-code" id="match-source">
-            <pre><span class="ruby-comment"># File lib/rexml/source.rb, line 162</span>
+            <pre><span class="ruby-comment"># File lib/rexml/source.rb, line 158</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">match</span>( <span class="ruby-identifier">pattern</span>, <span class="ruby-identifier">cons</span>=<span class="ruby-keyword">false</span> )
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">cons</span>
     <span class="ruby-identifier">md</span> = <span class="ruby-ivar">@scanner</span>.<span class="ruby-identifier">scan</span>(<span class="ruby-identifier">pattern</span>)
@@ -343,11 +343,7 @@
             <pre><span class="ruby-comment"># File lib/rexml/source.rb, line 150</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">read</span>
   <span class="ruby-keyword">begin</span>
-    <span class="ruby-comment"># NOTE: `@scanner &lt;&lt; readline` does not free memory, so when parsing huge XML in JRuby&#39;s DOM,</span>
-    <span class="ruby-comment"># out-of-memory error `Java::JavaLang::OutOfMemoryError: Java heap space` occurs.</span>
-    <span class="ruby-comment"># `@scanner.string = @scanner.rest + readline` frees memory that is already consumed</span>
-    <span class="ruby-comment"># and avoids this problem.</span>
-    <span class="ruby-ivar">@scanner</span>.<span class="ruby-identifier">string</span> = <span class="ruby-ivar">@scanner</span>.<span class="ruby-identifier">rest</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">readline</span>
+    <span class="ruby-ivar">@scanner</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">readline</span>
   <span class="ruby-keyword">rescue</span> <span class="ruby-constant">Exception</span>, <span class="ruby-constant">NameError</span>
     <span class="ruby-ivar">@source</span> = <span class="ruby-keyword">nil</span>
   <span class="ruby-keyword">end</span>
