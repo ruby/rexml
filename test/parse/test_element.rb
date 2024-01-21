@@ -41,9 +41,9 @@ Last 80 unconsumed characters:
         assert_equal(<<-DETAIL.chomp, exception.to_s)
 Invalid attribute name: <:a="">
 Line: 1
-Position: 9
+Position: 13
 Last 80 unconsumed characters:
-
+:a=""></x>
         DETAIL
       end
 

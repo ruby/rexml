@@ -116,11 +116,12 @@ module REXMLTests
 
     def test_attribute_namespace_conflict
       # https://www.w3.org/TR/xml-names/#uniqAttrs
-      message = <<-MESSAGE
+      message = <<-MESSAGE.chomp
 Duplicate attribute "a"
 Line: 4
 Position: 140
 Last 80 unconsumed characters:
+/>
       MESSAGE
       assert_raise(REXML::ParseException.new(message)) do
         Document.new(<<-XML)
@@ -1323,11 +1324,12 @@ EOL
       exception = assert_raise(ParseException) do
         Document.new(src)
       end
-      assert_equal(<<-DETAIL, exception.to_s)
+      assert_equal(<<-DETAIL.chomp, exception.to_s)
 Missing attribute value start quote: <bar>
 Line: 1
 Position: 16
 Last 80 unconsumed characters:
+value/>
       DETAIL
     end
 
@@ -1336,11 +1338,12 @@ Last 80 unconsumed characters:
       exception = assert_raise(ParseException) do
         Document.new(src)
       end
-      assert_equal(<<-DETAIL, exception.to_s)
+      assert_equal(<<-DETAIL.chomp, exception.to_s)
 Missing attribute value end quote: <bar>: <">
 Line: 1
 Position: 17
 Last 80 unconsumed characters:
+value/>
       DETAIL
     end
 
