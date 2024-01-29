@@ -115,6 +115,7 @@ module REXML
       def initialize( source )
         self.stream = source
         @listeners = []
+        @attributes_scanner = StringScanner.new('')
       end
 
       def add_listener( listener )
@@ -601,7 +602,8 @@ module REXML
         return attributes, closed if raw_attributes.nil?
         return attributes, closed if raw_attributes.empty?
 
-        scanner = StringScanner.new(raw_attributes)
+        @attributes_scanner.string = raw_attributes
+        scanner = @attributes_scanner
         until scanner.eos?
           if scanner.scan(/\s+/)
             break if scanner.eos?
