@@ -610,7 +610,7 @@ module REXML
           end
 
           pos = scanner.pos
-          loop do
+          while true
             break if scanner.scan(ATTRIBUTE_PATTERN)
             unless scanner.scan(QNAME)
               message = "Invalid attribute name: <#{scanner.rest}>"
