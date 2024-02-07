@@ -229,6 +229,25 @@ module REXMLTests
       assert_equal( [REXML::Comment.new("COMMENT A")], m )
     end
 
+    def test_normalize_space2
+      source1 = "<a><b>breakfast boosts concentration</b><c>Coffee beans aroma</c><d>Dessert after dinner</d></a>"
+      source2 = <<-XML
+<a><b>breakfast     boosts\t\t
+ 
+concentration   </b><c>
+Coffee beans
+ aroma
+
+
+
+</c><d>        Dessert
+ \t\t    after    dinner</d></a>
+      XML
+      ret1 = REXML::XPath.each(REXML::Document.new(source1), "//text()").to_a
+      ret2 = REXML::XPath.each(REXML::Document.new(source2), "normalize-space(//text())").to_a
+      assert_equal( ret1, ret2 )
+    end
+
     def test_string_nil_without_context
       doc = REXML::Document.new(<<-XML)
       <?xml version="1.0" encoding="UTF-8"?>
