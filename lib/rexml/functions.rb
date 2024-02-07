@@ -262,7 +262,6 @@ module REXML
       string(string).length
     end
 
-    # UNTESTED
     def Functions::normalize_space( string=nil )
       string = string(@@context[:node]) if string.nil?
       if string.kind_of? Array
