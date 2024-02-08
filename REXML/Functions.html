@@ -223,7 +223,7 @@
 
           
           <div class="method-source-code" id="boolean-source">
-            <pre><span class="ruby-comment"># File lib/rexml/functions.rb, line 318</span>
+            <pre><span class="ruby-comment"># File lib/rexml/functions.rb, line 317</span>
 <span class="ruby-keyword">def</span> <span class="ruby-constant">Functions</span><span class="ruby-operator">::</span><span class="ruby-identifier ruby-title">boolean</span>(<span class="ruby-identifier">object</span>=<span class="ruby-identifier">@@context</span>[<span class="ruby-value">:node</span>])
   <span class="ruby-keyword">case</span> <span class="ruby-identifier">object</span>
   <span class="ruby-keyword">when</span> <span class="ruby-keyword">true</span>, <span class="ruby-keyword">false</span>
@@ -271,7 +271,7 @@
 
           
           <div class="method-source-code" id="ceiling-source">
-            <pre><span class="ruby-comment"># File lib/rexml/functions.rb, line 418</span>
+            <pre><span class="ruby-comment"># File lib/rexml/functions.rb, line 417</span>
 <span class="ruby-keyword">def</span> <span class="ruby-constant">Functions</span><span class="ruby-operator">::</span><span class="ruby-identifier ruby-title">ceiling</span>( <span class="ruby-identifier">number</span> )
   <span class="ruby-identifier">number</span>(<span class="ruby-identifier">number</span>).<span class="ruby-identifier">ceil</span>
 <span class="ruby-keyword">end</span></pre>
@@ -304,7 +304,7 @@
 
           
           <div class="method-source-code" id="compare_language-source">
-            <pre><span class="ruby-comment"># File lib/rexml/functions.rb, line 371</span>
+            <pre><span class="ruby-comment"># File lib/rexml/functions.rb, line 370</span>
 <span class="ruby-keyword">def</span> <span class="ruby-constant">Functions</span><span class="ruby-operator">::</span><span class="ruby-identifier ruby-title">compare_language</span> <span class="ruby-identifier">lang1</span>, <span class="ruby-identifier">lang2</span>
   <span class="ruby-identifier">lang2</span>.<span class="ruby-identifier">downcase</span>.<span class="ruby-identifier">index</span>(<span class="ruby-identifier">lang1</span>.<span class="ruby-identifier">downcase</span>) <span class="ruby-operator">==</span> <span class="ruby-value">0</span>
 <span class="ruby-keyword">end</span></pre>
@@ -471,7 +471,7 @@
 
           
           <div class="method-source-code" id="false-source">
-            <pre><span class="ruby-comment"># File lib/rexml/functions.rb, line 348</span>
+            <pre><span class="ruby-comment"># File lib/rexml/functions.rb, line 347</span>
 <span class="ruby-keyword">def</span> <span class="ruby-constant">Functions</span><span class="ruby-operator">::</span><span class="ruby-keyword">false</span>(  )
   <span class="ruby-keyword">false</span>
 <span class="ruby-keyword">end</span></pre>
@@ -504,7 +504,7 @@
 
           
           <div class="method-source-code" id="floor-source">
-            <pre><span class="ruby-comment"># File lib/rexml/functions.rb, line 414</span>
+            <pre><span class="ruby-comment"># File lib/rexml/functions.rb, line 413</span>
 <span class="ruby-keyword">def</span> <span class="ruby-constant">Functions</span><span class="ruby-operator">::</span><span class="ruby-identifier ruby-title">floor</span>( <span class="ruby-identifier">number</span> )
   <span class="ruby-identifier">number</span>(<span class="ruby-identifier">number</span>).<span class="ruby-identifier">floor</span>
 <span class="ruby-keyword">end</span></pre>
@@ -614,7 +614,7 @@
 
           
           <div class="method-source-code" id="lang-source">
-            <pre><span class="ruby-comment"># File lib/rexml/functions.rb, line 353</span>
+            <pre><span class="ruby-comment"># File lib/rexml/functions.rb, line 352</span>
 <span class="ruby-keyword">def</span> <span class="ruby-constant">Functions</span><span class="ruby-operator">::</span><span class="ruby-identifier ruby-title">lang</span>( <span class="ruby-identifier">language</span> )
   <span class="ruby-identifier">lang</span> = <span class="ruby-keyword">false</span>
   <span class="ruby-identifier">node</span> = <span class="ruby-identifier">@@context</span>[<span class="ruby-value">:node</span>]
@@ -854,17 +854,17 @@
 
         <div class="method-description">
           
-          <p>UNTESTED</p>
+          
           
           
 
           
           <div class="method-source-code" id="normalize_space-source">
-            <pre><span class="ruby-comment"># File lib/rexml/functions.rb, line 266</span>
+            <pre><span class="ruby-comment"># File lib/rexml/functions.rb, line 265</span>
 <span class="ruby-keyword">def</span> <span class="ruby-constant">Functions</span><span class="ruby-operator">::</span><span class="ruby-identifier ruby-title">normalize_space</span>( <span class="ruby-identifier">string</span>=<span class="ruby-keyword">nil</span> )
   <span class="ruby-identifier">string</span> = <span class="ruby-identifier">string</span>(<span class="ruby-identifier">@@context</span>[<span class="ruby-value">:node</span>]) <span class="ruby-keyword">if</span> <span class="ruby-identifier">string</span>.<span class="ruby-identifier">nil?</span>
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">string</span>.<span class="ruby-identifier">kind_of?</span> <span class="ruby-constant">Array</span>
-    <span class="ruby-identifier">string</span>.<span class="ruby-identifier">collect</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">x</span><span class="ruby-operator">|</span> <span class="ruby-identifier">string</span>.<span class="ruby-identifier">to_s</span>.<span class="ruby-identifier">strip</span>.<span class="ruby-identifier">gsub</span>(<span class="ruby-regexp">/\s+/um</span>, <span class="ruby-string">&#39; &#39;</span>) <span class="ruby-keyword">if</span> <span class="ruby-identifier">string</span>}
+    <span class="ruby-identifier">string</span>.<span class="ruby-identifier">collect</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">x</span><span class="ruby-operator">|</span> <span class="ruby-identifier">x</span>.<span class="ruby-identifier">to_s</span>.<span class="ruby-identifier">strip</span>.<span class="ruby-identifier">gsub</span>(<span class="ruby-regexp">/\s+/um</span>, <span class="ruby-string">&#39; &#39;</span>) <span class="ruby-keyword">if</span> <span class="ruby-identifier">x</span>}
   <span class="ruby-keyword">else</span>
     <span class="ruby-identifier">string</span>.<span class="ruby-identifier">to_s</span>.<span class="ruby-identifier">strip</span>.<span class="ruby-identifier">gsub</span>(<span class="ruby-regexp">/\s+/um</span>, <span class="ruby-string">&#39; &#39;</span>)
   <span class="ruby-keyword">end</span>
@@ -898,7 +898,7 @@
 
           
           <div class="method-source-code" id="not-source">
-            <pre><span class="ruby-comment"># File lib/rexml/functions.rb, line 338</span>
+            <pre><span class="ruby-comment"># File lib/rexml/functions.rb, line 337</span>
 <span class="ruby-keyword">def</span> <span class="ruby-constant">Functions</span><span class="ruby-operator">::</span><span class="ruby-keyword">not</span>( <span class="ruby-identifier ruby-title">object</span> )
   <span class="ruby-keyword">not</span> <span class="ruby-identifier">boolean</span>( <span class="ruby-identifier">object</span> )
 <span class="ruby-keyword">end</span></pre>
@@ -937,7 +937,7 @@
 
           
           <div class="method-source-code" id="number-source">
-            <pre><span class="ruby-comment"># File lib/rexml/functions.rb, line 388</span>
+            <pre><span class="ruby-comment"># File lib/rexml/functions.rb, line 387</span>
 <span class="ruby-keyword">def</span> <span class="ruby-constant">Functions</span><span class="ruby-operator">::</span><span class="ruby-identifier ruby-title">number</span>(<span class="ruby-identifier">object</span>=<span class="ruby-identifier">@@context</span>[<span class="ruby-value">:node</span>])
   <span class="ruby-keyword">case</span> <span class="ruby-identifier">object</span>
   <span class="ruby-keyword">when</span> <span class="ruby-keyword">true</span>
@@ -1020,7 +1020,7 @@
 
           
           <div class="method-source-code" id="processing_instruction-source">
-            <pre><span class="ruby-comment"># File lib/rexml/functions.rb, line 433</span>
+            <pre><span class="ruby-comment"># File lib/rexml/functions.rb, line 432</span>
 <span class="ruby-keyword">def</span> <span class="ruby-constant">Functions</span><span class="ruby-operator">::</span><span class="ruby-identifier ruby-title">processing_instruction</span>( <span class="ruby-identifier">node</span> )
   <span class="ruby-identifier">node</span>.<span class="ruby-identifier">node_type</span> <span class="ruby-operator">==</span> <span class="ruby-value">:processing_instruction</span>
 <span class="ruby-keyword">end</span></pre>
@@ -1053,7 +1053,7 @@
 
           
           <div class="method-source-code" id="round-source">
-            <pre><span class="ruby-comment"># File lib/rexml/functions.rb, line 422</span>
+            <pre><span class="ruby-comment"># File lib/rexml/functions.rb, line 421</span>
 <span class="ruby-keyword">def</span> <span class="ruby-constant">Functions</span><span class="ruby-operator">::</span><span class="ruby-identifier ruby-title">round</span>( <span class="ruby-identifier">number</span> )
   <span class="ruby-identifier">number</span> = <span class="ruby-identifier">number</span>(<span class="ruby-identifier">number</span>)
   <span class="ruby-keyword">begin</span>
@@ -1098,7 +1098,7 @@
 
           
           <div class="method-source-code" id="send-source">
-            <pre><span class="ruby-comment"># File lib/rexml/functions.rb, line 437</span>
+            <pre><span class="ruby-comment"># File lib/rexml/functions.rb, line 436</span>
 <span class="ruby-keyword">def</span> <span class="ruby-constant">Functions</span><span class="ruby-operator">::</span><span class="ruby-identifier ruby-title">send</span>(<span class="ruby-identifier">name</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">@@available_functions</span>[<span class="ruby-identifier">name</span>.<span class="ruby-identifier">to_sym</span>]
     <span class="ruby-keyword">super</span>
@@ -1498,7 +1498,7 @@
 
           
           <div class="method-source-code" id="sum-source">
-            <pre><span class="ruby-comment"># File lib/rexml/functions.rb, line 409</span>
+            <pre><span class="ruby-comment"># File lib/rexml/functions.rb, line 408</span>
 <span class="ruby-keyword">def</span> <span class="ruby-constant">Functions</span><span class="ruby-operator">::</span><span class="ruby-identifier ruby-title">sum</span>( <span class="ruby-identifier">nodes</span> )
   <span class="ruby-identifier">nodes</span> = [<span class="ruby-identifier">nodes</span>] <span class="ruby-keyword">unless</span> <span class="ruby-identifier">nodes</span>.<span class="ruby-identifier">kind_of?</span> <span class="ruby-constant">Array</span>
   <span class="ruby-identifier">nodes</span>.<span class="ruby-identifier">inject</span>(<span class="ruby-value">0</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">r</span>,<span class="ruby-identifier">n</span><span class="ruby-operator">|</span> <span class="ruby-identifier">r</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">number</span>(<span class="ruby-identifier">string</span>(<span class="ruby-identifier">n</span>)) }
@@ -1571,7 +1571,7 @@
 
           
           <div class="method-source-code" id="translate-source">
-            <pre><span class="ruby-comment"># File lib/rexml/functions.rb, line 276</span>
+            <pre><span class="ruby-comment"># File lib/rexml/functions.rb, line 275</span>
 <span class="ruby-keyword">def</span> <span class="ruby-constant">Functions</span><span class="ruby-operator">::</span><span class="ruby-identifier ruby-title">translate</span>( <span class="ruby-identifier">string</span>, <span class="ruby-identifier">tr1</span>, <span class="ruby-identifier">tr2</span> )
   <span class="ruby-identifier">from</span> = <span class="ruby-identifier">string</span>(<span class="ruby-identifier">tr1</span>)
   <span class="ruby-identifier">to</span> = <span class="ruby-identifier">string</span>(<span class="ruby-identifier">tr2</span>)
@@ -1642,7 +1642,7 @@
 
           
           <div class="method-source-code" id="true-source">
-            <pre><span class="ruby-comment"># File lib/rexml/functions.rb, line 343</span>
+            <pre><span class="ruby-comment"># File lib/rexml/functions.rb, line 342</span>
 <span class="ruby-keyword">def</span> <span class="ruby-constant">Functions</span><span class="ruby-operator">::</span><span class="ruby-keyword">true</span>( )
   <span class="ruby-keyword">true</span>
 <span class="ruby-keyword">end</span></pre>
