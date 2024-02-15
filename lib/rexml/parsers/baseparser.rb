@@ -420,9 +420,6 @@ module REXML
           else
             md = @source.match( TEXT_PATTERN, true )
             text = md[1]
-            if md[0].length == 0
-              @source.match( /(\s+)/, true )
-            end
             return [ :text, text ]
           end
         rescue REXML::UndefinedNamespaceException
