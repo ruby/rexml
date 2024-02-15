@@ -5,8 +5,6 @@ contexts:
     require: false
     prelude: require 'rexml'
   - name: master
-    gems:
-      strscan: 3.0.9
     prelude: |
       $LOAD_PATH.unshift(File.expand_path("lib"))
       require 'rexml'
@@ -18,8 +16,6 @@ contexts:
       require 'rexml'
       RubyVM::YJIT.enable
   - name: master(YJIT)
-    gems:
-      strscan: 3.0.9
     prelude: |
       $LOAD_PATH.unshift(File.expand_path("lib"))
       require 'rexml'
