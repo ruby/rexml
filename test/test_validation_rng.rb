@@ -7,7 +7,7 @@ module REXMLTests
     include REXML
 
     def test_validate
-      rng = %q{
+      rng = <<-XML
 <?xml version="1.0" encoding="UTF-8"?>
 <element name="A" xmlns="http://relaxng.org/ns/structure/1.0">
   <element name="B">
@@ -24,7 +24,7 @@ module REXMLTests
     </element>
   </element>
 </element>
-      }
+      XML
       validator = REXML::Validation::RelaxNG.new( rng )
 
       no_error( validator, %q{<A><B><C X="x"><E/><E/></C><D/></B></A>} )
@@ -33,7 +33,7 @@ module REXMLTests
 
 
     def test_sequence
-      rng = %q{
+      rng = <<-XML
 <?xml version="1.0" encoding="UTF-8"?>
 <element name="A" xmlns="http://relaxng.org/ns/structure/1.0">
   <element name="B">
@@ -45,7 +45,7 @@ module REXMLTests
     </element>
   </element>
 </element>
-      }
+      XML
       validator = REXML::Validation::RelaxNG.new( rng )
 
       error( validator, %q{<A><B><C/><C/><D/></B></A>} )
@@ -56,7 +56,7 @@ module REXMLTests
 
 
     def test_choice
-      rng = %q{
+      rng = <<-XML
 <?xml version="1.0" encoding="UTF-8"?>
 <element name="A" xmlns="http://relaxng.org/ns/structure/1.0">
   <element name="B">
@@ -70,7 +70,7 @@ module REXMLTests
     </choice>
   </element>
 </element>
-      }
+      XML
       validator = REXML::Validation::RelaxNG.new( rng )
 
       error( validator, %q{<A><B><C/><D/></B></A>} )
@@ -79,7 +79,7 @@ module REXMLTests
     end
 
     def test_optional
-      rng = %q{
+      rng = <<-XML
 <?xml version="1.0" encoding="UTF-8"?>
 <element name="A" xmlns="http://relaxng.org/ns/structure/1.0">
   <element name="B">
@@ -90,7 +90,7 @@ module REXMLTests
     </optional>
   </element>
 </element>
-      }
+      XML
       validator = REXML::Validation::RelaxNG.new( rng )
 
       no_error( validator, %q{<A><B/></A>} )
@@ -100,7 +100,7 @@ module REXMLTests
     end
 
     def test_zero_or_more
-      rng = %q{
+      rng = <<-XML
 <?xml version="1.0" encoding="UTF-8"?>
 <element name="A" xmlns="http://relaxng.org/ns/structure/1.0">
   <element name="B">
@@ -111,7 +111,7 @@ module REXMLTests
     </zeroOrMore>
   </element>
 </element>
-      }
+      XML
       validator = REXML::Validation::RelaxNG.new( rng )
       no_error( validator, %q{<A><B/></A>} )
       no_error( validator, %q{<A><B><C/></B></A>} )
@@ -119,7 +119,7 @@ module REXMLTests
       error( validator, %q{<A><B><D/></B></A>} )
       error( validator, %q{<A></A>} )
 
-      rng = %q{
+      rng = <<-XML
 <?xml version="1.0" encoding="UTF-8"?>
 <element name="A" xmlns="http://relaxng.org/ns/structure/1.0">
   <element name="B">
@@ -133,7 +133,7 @@ module REXMLTests
     </zeroOrMore>
   </element>
 </element>
-      }
+      XML
       validator = REXML::Validation::RelaxNG.new( rng )
 
       no_error( validator, %q{<A><B/></A>} )
@@ -143,7 +143,7 @@ module REXMLTests
     end
 
     def test_one_or_more
-      rng = %q{
+      rng = <<-XML
 <?xml version="1.0" encoding="UTF-8"?>
 <element name="A" xmlns="http://relaxng.org/ns/structure/1.0">
   <element name="B">
@@ -154,7 +154,7 @@ module REXMLTests
     </oneOrMore>
   </element>
 </element>
-      }
+      XML
       validator = REXML::Validation::RelaxNG.new( rng )
 
       error( validator, %q{<A><B/></A>} )
@@ -165,13 +165,13 @@ module REXMLTests
     end
 
     def test_attribute
-      rng = %q{
+      rng = <<-XML
 <?xml version="1.0" encoding="UTF-8"?>
 <element name="A" xmlns="http://relaxng.org/ns/structure/1.0">
   <attribute name="X"/>
   <attribute name="Y"/>
 </element>
-      }
+      XML
       validator = REXML::Validation::RelaxNG.new( rng )
 
       error( validator, %q{<A><B/></A>} )
@@ -181,7 +181,7 @@ module REXMLTests
     end
 
     def test_choice_attributes
-      rng = %q{
+      rng = <<-XML
 <?xml version="1.0" encoding="UTF-8"?>
 <element name="A" xmlns="http://relaxng.org/ns/structure/1.0">
   <choice>
@@ -189,7 +189,7 @@ module REXMLTests
     <attribute name="Y"/>
   </choice>
 </element>
-      }
+      XML
       validator = REXML::Validation::RelaxNG.new( rng )
 
       error( validator, %q{<A X="1" Y="1"/>} )
@@ -199,7 +199,7 @@ module REXMLTests
     end
 
     def test_choice_attribute_element
-      rng = %q{
+      rng = <<-XML
 <?xml version="1.0" encoding="UTF-8"?>
 <element name="A" xmlns="http://relaxng.org/ns/structure/1.0">
   <choice>
@@ -207,7 +207,7 @@ module REXMLTests
     <element name="B"/>
   </choice>
 </element>
-      }
+      XML
       validator = REXML::Validation::RelaxNG.new( rng )
 
       error( validator, %q{<A X="1"><B/></A>} )
@@ -217,12 +217,12 @@ module REXMLTests
     end
 
     def test_empty
-      rng = %q{
+      rng = <<-XML
 <?xml version="1.0" encoding="UTF-8"?>
 <element name="A" xmlns="http://relaxng.org/ns/structure/1.0">
   <empty/>
 </element>
-      }
+      XML
       validator = REXML::Validation::RelaxNG.new( rng )
 
       error( validator, %q{<A><B/></A>} )
@@ -231,12 +231,12 @@ module REXMLTests
     end
 
     def test_text_val
-      rng = %q{
+      rng = <<-XML
 <?xml version="1.0" encoding="UTF-8"?>
 <element name="A" xmlns="http://relaxng.org/ns/structure/1.0">
   <text/>
 </element>
-      }
+      XML
       validator = REXML::Validation::RelaxNG.new( rng )
 
       error( validator, %q{<A><B/></A>} )
@@ -245,7 +245,7 @@ module REXMLTests
     end
 
     def test_choice_text
-      rng = %q{
+      rng = <<-XML
 <?xml version="1.0" encoding="UTF-8"?>
 <element name="A" xmlns="http://relaxng.org/ns/structure/1.0">
   <choice>
@@ -253,7 +253,7 @@ module REXMLTests
     <text/>
   </choice>
 </element>
-      }
+      XML
       validator = REXML::Validation::RelaxNG.new( rng )
 
       error( validator, %q{<A><B/>Text</A>} )
@@ -263,7 +263,7 @@ module REXMLTests
     end
 
     def test_group
-      rng = %q{
+      rng = <<-XML
 <?xml version="1.0" encoding="UTF-8"?>
 <element name="A" xmlns="http://relaxng.org/ns/structure/1.0">
   <choice>
@@ -274,7 +274,7 @@ module REXMLTests
     </group>
   </choice>
 </element>
-      }
+      XML
       validator = REXML::Validation::RelaxNG.new( rng )
 
       error( validator, %q{<A><B/><C/></A>} )
@@ -282,7 +282,7 @@ module REXMLTests
       no_error( validator, %q{<A><B/></A>} )
       no_error( validator, %q{<A><C/><D/></A>} )
 
-      rng = %q{
+      rng = <<-XML
 <?xml version="1.0" encoding="UTF-8"?>
 <element name="A" xmlns="http://relaxng.org/ns/structure/1.0">
   <element name="B"/>
@@ -291,7 +291,7 @@ module REXMLTests
     <element name="D"/>
   </group>
 </element>
-      }
+      XML
       validator = REXML::Validation::RelaxNG.new( rng )
 
       error( validator, %q{<A><B/><C/></A>} )
@@ -302,14 +302,14 @@ module REXMLTests
 
     def test_value
       # Values as text nodes
-      rng = %q{
+      rng = <<-XML
 <?xml version="1.0" encoding="UTF-8"?>
 <element name="A" xmlns="http://relaxng.org/ns/structure/1.0">
   <element name="B">
     <value>VaLuE</value>
   </element>
 </element>
-      }
+      XML
       validator = REXML::Validation::RelaxNG.new( rng )
 
       error( validator, %q{<A><B>X</B></A>} )
@@ -317,7 +317,7 @@ module REXMLTests
       no_error( validator, %q{<A><B>VaLuE</B></A>} )
 
       # Values as text nodes, via choice
-      rng = %q{
+      rng = <<-XML
 <?xml version="1.0" encoding="UTF-8"?>
 <element name="A" xmlns="http://relaxng.org/ns/structure/1.0">
   <element name="B">
@@ -327,7 +327,7 @@ module REXMLTests
     </choice>
   </element>
 </element>
-      }
+      XML
       validator = REXML::Validation::RelaxNG.new( rng )
 
       error( validator, %q{<A><B/></A>} )
@@ -336,14 +336,14 @@ module REXMLTests
       no_error( validator, %q{<A><B>Option 2</B></A>} )
 
       # Attribute values
-      rng = %q{
+      rng = <<-XML
 <?xml version="1.0" encoding="UTF-8"?>
 <element name="A" xmlns="http://relaxng.org/ns/structure/1.0">
   <attribute name="B">
     <value>VaLuE</value>
   </attribute>
 </element>
-      }
+      XML
       validator = REXML::Validation::RelaxNG.new( rng )
 
       error( validator, %q{<A/>} )
@@ -352,7 +352,7 @@ module REXMLTests
       no_error( validator, %q{<A B="VaLuE"/>} )
 
       # Attribute values via choice
-      rng = %q{
+      rng = <<-XML
 <?xml version="1.0" encoding="UTF-8"?>
 <element name="A" xmlns="http://relaxng.org/ns/structure/1.0">
   <attribute name="B">
@@ -362,7 +362,7 @@ module REXMLTests
     </choice>
   </attribute>
 </element>
-      }
+      XML
       validator = REXML::Validation::RelaxNG.new( rng )
 
       error( validator, %q{<A B=""/>} )
@@ -372,7 +372,7 @@ module REXMLTests
     end
 
     def test_interleave
-      rng = %q{
+      rng = <<-XML
 <?xml version="1.0" encoding="UTF-8"?>
 <element name="A" xmlns="http://relaxng.org/ns/structure/1.0">
   <element name="B">
@@ -383,7 +383,7 @@ module REXMLTests
     </interleave>
   </element>
 </element>
-      }
+      XML
       validator = REXML::Validation::RelaxNG.new( rng )
 
       error( validator, %q{<A><B><C/></B></A>} )
@@ -396,7 +396,7 @@ module REXMLTests
     end
 
     def test_mixed
-      rng = %q{
+      rng = <<-XML
 <?xml version="1.0" encoding="UTF-8"?>
 <element name="A" xmlns="http://relaxng.org/ns/structure/1.0">
   <element name="B">
@@ -405,7 +405,7 @@ module REXMLTests
     </mixed>
   </element>
 </element>
-      }
+      XML
       validator = REXML::Validation::RelaxNG.new( rng )
 
       no_error( validator, %q{<A><B>Text<D/></B></A>} )
@@ -413,7 +413,7 @@ module REXMLTests
     end
 
     def test_ref_sequence
-      rng = %q{
+      rng = <<-XML
 <?xml version="1.0" encoding="UTF-8"?>
 <grammar xmlns="http://relaxng.org/ns/structure/1.0">
   <start>
@@ -429,7 +429,7 @@ module REXMLTests
     </element>
   </define>
 </grammar>
-      }
+      XML
       validator = REXML::Validation::RelaxNG.new( rng )
 
       no_error( validator, %q{<A><B X=''/><B X=''/></A>} )
@@ -437,7 +437,7 @@ module REXMLTests
     end
 
     def test_ref_choice
-      rng = %q{
+      rng = <<-XML
 <?xml version="1.0" encoding="UTF-8"?>
 <grammar xmlns="http://relaxng.org/ns/structure/1.0">
   <start>
@@ -453,7 +453,7 @@ module REXMLTests
     <element name="C"/>
   </define>
 </grammar>
-      }
+      XML
       validator = REXML::Validation::RelaxNG.new( rng )
 
       error( validator, %q{<A><D/></A>} )
@@ -461,7 +461,7 @@ module REXMLTests
       no_error( validator, %q{<A><B/></A>} )
       no_error( validator, %q{<A><C/></A>} )
 
-      rng = %q{
+      rng = <<-XML
 <?xml version="1.0" encoding="UTF-8"?>
 <grammar xmlns="http://relaxng.org/ns/structure/1.0">
   <start>
@@ -477,7 +477,7 @@ module REXMLTests
     </choice>
   </define>
 </grammar>
-      }
+      XML
       validator = REXML::Validation::RelaxNG.new( rng )
 
       error( validator, %q{<A><D/></A>} )
@@ -485,7 +485,7 @@ module REXMLTests
       no_error( validator, %q{<A><B/></A>} )
       no_error( validator, %q{<A><C/></A>} )
 
-      rng = %q{
+      rng = <<-XML
 <?xml version="1.0" encoding="UTF-8"?>
 <grammar xmlns="http://relaxng.org/ns/structure/1.0">
   <start>
@@ -502,7 +502,7 @@ module REXMLTests
     <element name="C"/>
   </define>
 </grammar>
-      }
+      XML
       validator = REXML::Validation::RelaxNG.new( rng )
 
       error( validator, %q{<A><B/><C/></A>} )
@@ -513,7 +513,7 @@ module REXMLTests
 
 
     def test_ref_zero_plus
-      rng = %q{
+      rng = <<-XML
 <?xml version="1.0" encoding="UTF-8"?>
 <grammar xmlns="http://relaxng.org/ns/structure/1.0">
   <start>
@@ -530,7 +530,7 @@ module REXMLTests
     </element>
   </define>
 </grammar>
-      }
+      XML
       validator = REXML::Validation::RelaxNG.new( rng )
 
       error( validator, %q{<A><B/></A>} )
@@ -538,7 +538,7 @@ module REXMLTests
       no_error( validator, %q{<A><B X=''/></A>} )
       no_error( validator, %q{<A><B X=''/><B X=''/><B X=''/></A>} )
 
-      rng = %q{
+      rng = <<-XML
 <?xml version="1.0" encoding="UTF-8"?>
 <grammar xmlns="http://relaxng.org/ns/structure/1.0">
   <start>
@@ -555,7 +555,7 @@ module REXMLTests
     </zeroOrMore>
   </define>
 </grammar>
-      }
+      XML
       validator = REXML::Validation::RelaxNG.new( rng )
 
       error( validator, %q{<A><B/></A>} )
@@ -566,7 +566,7 @@ module REXMLTests
 
 
     def test_ref_one_plus
-      rng = %q{
+      rng = <<-XML
 <?xml version="1.0" encoding="UTF-8"?>
 <grammar xmlns="http://relaxng.org/ns/structure/1.0">
   <start>
@@ -583,7 +583,7 @@ module REXMLTests
     </element>
   </define>
 </grammar>
-      }
+      XML
       validator = REXML::Validation::RelaxNG.new( rng )
 
       error( validator, %q{<A><B/></A>} )
@@ -591,7 +591,7 @@ module REXMLTests
       no_error( validator, %q{<A><B X=''/></A>} )
       no_error( validator, %q{<A><B X=''/><B X=''/><B X=''/></A>} )
 
-      rng = %q{
+      rng = <<-XML
 <?xml version="1.0" encoding="UTF-8"?>
 <grammar xmlns="http://relaxng.org/ns/structure/1.0">
   <start>
@@ -608,7 +608,7 @@ module REXMLTests
     </oneOrMore>
   </define>
 </grammar>
-      }
+      XML
       validator = REXML::Validation::RelaxNG.new( rng )
 
       error( validator, %q{<A><B/></A>} )
@@ -618,7 +618,7 @@ module REXMLTests
     end
 
     def test_ref_interleave
-      rng = %q{
+      rng = <<-XML
 <?xml version="1.0" encoding="UTF-8"?>
 <grammar xmlns="http://relaxng.org/ns/structure/1.0">
   <start>
@@ -634,7 +634,7 @@ module REXMLTests
     <element name="C"/>
   </define>
 </grammar>
-      }
+      XML
       validator = REXML::Validation::RelaxNG.new( rng )
 
       error( validator, %q{<A><B/></A>} )
@@ -643,7 +643,7 @@ module REXMLTests
       no_error( validator, %q{<A><B/><C/></A>} )
       no_error( validator, %q{<A><C/><B/></A>} )
 
-      rng = %q{
+      rng = <<-XML
 <?xml version="1.0" encoding="UTF-8"?>
 <grammar xmlns="http://relaxng.org/ns/structure/1.0">
   <start>
@@ -659,7 +659,7 @@ module REXMLTests
     </interleave>
   </define>
 </grammar>
-      }
+      XML
       validator = REXML::Validation::RelaxNG.new( rng )
 
       error( validator, %q{<A><B/></A>} )
@@ -668,7 +668,7 @@ module REXMLTests
       no_error( validator, %q{<A><B/><C/></A>} )
       no_error( validator, %q{<A><C/><B/></A>} )
 
-      rng = %q{
+      rng = <<-XML
 <?xml version="1.0" encoding="UTF-8"?>
 <grammar xmlns="http://relaxng.org/ns/structure/1.0">
   <start>
@@ -687,7 +687,7 @@ module REXMLTests
     <element name="C"/>
   </define>
 </grammar>
-      }
+      XML
       validator = REXML::Validation::RelaxNG.new( rng )
 
       error( validator, %q{<A><B/></A>} )
@@ -698,7 +698,7 @@ module REXMLTests
     end
 
     def test_ref_recurse
-      rng = %q{
+      rng = <<-XML
 <?xml version="1.0" encoding="UTF-8"?>
 <grammar xmlns="http://relaxng.org/ns/structure/1.0">
   <start>
@@ -715,7 +715,7 @@ module REXMLTests
     </element>
   </define>
 </grammar>
-      }
+      XML
       validator = REXML::Validation::RelaxNG.new( rng )
 
       error( validator, %q{<A></A>} )
@@ -724,7 +724,7 @@ module REXMLTests
     end
 
     def test_ref_optional
-      rng = %q{
+      rng = <<-XML
 <?xml version="1.0" encoding="UTF-8"?>
 <grammar xmlns="http://relaxng.org/ns/structure/1.0">
   <start>
@@ -740,7 +740,7 @@ module REXMLTests
     </element>
   </define>
 </grammar>
-      }
+      XML
       validator = REXML::Validation::RelaxNG.new( rng )
 
       no_error( validator, %q{<A></A>} )
@@ -748,7 +748,7 @@ module REXMLTests
       error( validator, %q{<A><B/><B/></A>} )
       error( validator, %q{<A><C/></A>} )
 
-      rng = %q{
+      rng = <<-XML
 <?xml version="1.0" encoding="UTF-8"?>
 <grammar xmlns="http://relaxng.org/ns/structure/1.0">
   <start>
@@ -764,7 +764,7 @@ module REXMLTests
     </optional>
   </define>
 </grammar>
-      }
+      XML
       validator = REXML::Validation::RelaxNG.new( rng )
 
       no_error( validator, %q{<A></A>} )

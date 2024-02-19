@@ -109,7 +109,7 @@ module REXMLTests
     # test simple non-entity doctype in sax listener
     # submitted by Jeff Barczewski
     def test_simple_doctype_listener
-      xml = <<-END
+      xml = <<~END
         <?xml version="1.0"?>
         <!DOCTYPE greeting PUBLIC "Hello Greeting DTD" "http://foo/hello.dtd">
         <greeting>Hello, world!</greeting>
@@ -141,7 +141,7 @@ module REXMLTests
     # test doctype with missing name, should throw ParseException
     # submitted by Jeff Barczewseki
     def test_doctype_with_mising_name_throws_exception
-      xml = <<-END
+      xml = <<~END
         <?xml version="1.0"?>
         <!DOCTYPE >
         <greeting>Hello, world!</greeting>

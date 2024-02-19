@@ -67,7 +67,7 @@ module REXMLTests
     # * Given an encoded document, accessing text and attribute nodes
     #   should provide UTF-8 text.
     def test_in_different_access
-      doc = Document.new <<-EOL
+      doc = Document.new <<~EOL
       <?xml version='1.0' encoding='ISO-8859-1'?>
       <a a="\xFF">\xFF</a>
       EOL
@@ -79,7 +79,7 @@ module REXMLTests
 
 
     def test_ticket_89
-      doc = Document.new <<-EOL
+      doc = Document.new <<~EOL
          <?xml version="1.0" encoding="CP-1252" ?>
          <xml><foo></foo></xml>
          EOL

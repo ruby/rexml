@@ -4,7 +4,7 @@
 module REXMLTests
   class TestDocument < Test::Unit::TestCase
     def test_version_attributes_to_s
-      doc = REXML::Document.new(<<-eoxml)
+      doc = REXML::Document.new(<<~eoxml)
         <?xml version="1.0" encoding="UTF-8" standalone="no"?>
         <svg  id="svg2"
               xmlns:sodipodi="foo"
