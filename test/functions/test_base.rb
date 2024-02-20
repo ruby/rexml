@@ -252,7 +252,7 @@ Coffee beans
     end
 
     def test_string_nil_without_context
-      doc = REXML::Document.new(<<-XML)
+      doc = REXML::Document.new(<<~XML)
       <?xml version="1.0" encoding="UTF-8"?>
       <root>
       <foo bar="baz"/>

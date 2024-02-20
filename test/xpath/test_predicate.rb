@@ -6,7 +6,7 @@ require "rexml/parsers/xpathparser"
 module REXMLTests
   class TestXPathPredicate < Test::Unit::TestCase
     include REXML
-    SRC=<<-EOL
+    SRC=<<~EOL
     <article>
        <section role="subdivision" id="1">
           <para>free flowing text.</para>

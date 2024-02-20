@@ -80,7 +80,7 @@ DELIMITER
 
     # Peter Verhage
     def test_namespace_Peter
-      source = <<-EOF
+      source = <<~EOF
       <?xml version="1.0"?>
       <config:myprog-config xmlns:config="http://someurl/program/version">
       <!-- main options -->
@@ -377,7 +377,7 @@ EOF
     end
 
     def test_entities_Holden_Glova
-      document = <<-EOL
+      document = <<~EOL
       <?xml version="1.0" encoding="UTF-8"?>
       <!DOCTYPE rubynet [
       <!ENTITY rbconfig.MAJOR "1">

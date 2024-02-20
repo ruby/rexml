@@ -15,7 +15,7 @@ module REXMLTests
     include Helper::Fixture
     include REXML
     def setup
-      @xsa_source = <<-EOL
+      @xsa_source = <<~EOL
         <?xml version="1.0"?>
         <?xsl stylesheet="blah.xsl"?>
         <!-- The first line tests the XMLDecl, the second tests PI.
@@ -89,7 +89,7 @@ module REXMLTests
 
       # Bryan Murphy <murphybryanp@yahoo.com>
       text = "this is a {target[@name='test']/@value} test"
-      source = <<-EOL
+      source = <<~EOL
       <?xml version="1.0"?>
       <doc search="#{text}"/>
       EOL
@@ -869,7 +869,7 @@ EOL
       assert_equal 'two', doc.root.elements[1].namespace
       assert_equal 'foo', doc.root.namespace
 
-      doc = Document.new <<-EOL
+      doc = Document.new <<~EOL
       <?xml version="1.0"?>
       <!DOCTYPE schema SYSTEM "XMLSchema.dtd" [
       <!ENTITY % p ''>
@@ -946,7 +946,7 @@ EOL
     end
 
     def test_oses_with_bad_EOLs
-      Document.new("\n\n\n<?xml version='1.0'?>\n\n\n<a/>\n\n")
+      Document.new("<?xml version='1.0'?>\n\n\n<a/>\n\n")
     end
 
     # Contributed (with patch to fix bug) by Kouhei
@@ -973,7 +973,7 @@ EOL
     end
 
     def test_hyphens_in_doctype
-      doc = REXML::Document.new <<-EOQ
+      doc = REXML::Document.new <<~EOQ
        <?xml version="1.0"?>
        <!DOCTYPE a-b-c>
        <a-b-c>
@@ -1089,7 +1089,7 @@ EOL
     def test_text_raw
       # From the REXML tutorial
       # (http://www.germane-software.com/software/rexml/test/data/tutorial.html)
-      doc = Document.new <<-EOL
+      doc = Document.new <<~EOL
       <?xml version="1.0"?>
       <!DOCTYPE schema SYSTEM "XMLSchema.dtd" [
       <!ENTITY % s 'Sean'>
