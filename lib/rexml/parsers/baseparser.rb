@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+# frozen_string_literal: true
 require_relative '../parseexception'
 require_relative '../undefinednamespaceexception'
 require_relative '../source'
@@ -365,7 +365,7 @@ module REXML
               end
               if md.nil? or last_tag != md[1]
                 message = "Missing end tag for '#{last_tag}'"
-                message << " (got '#{md[1]}')" if md
+                message += " (got '#{md[1]}')" if md
                 raise REXML::ParseException.new(message, @source)
               end
               return [ :end_element, last_tag ]
@@ -462,8 +462,7 @@ module REXML
 
       # Unescapes all possible entities
       def unnormalize( string, entities=nil, filter=nil )
-        rv = string.clone
-        rv.gsub!( /\r\n?/, "\n" )
+        rv = string.gsub( /\r\n?/, "\n" )
         matches = rv.scan( REFERENCE_RE )
         return rv if matches.size == 0
         rv.gsub!( /&#0*((?:\d+)|(?:x[a-fA-F0-9]+));/ ) {
