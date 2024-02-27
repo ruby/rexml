@@ -76,6 +76,10 @@ module REXML
       end
     end
 
+    def string=(string)
+      @scanner.string = string
+    end
+
     # @return true if the Source is exhausted
     def empty?
       @scanner.eos?
@@ -150,28 +154,25 @@ module REXML
     def read
       begin
         @scanner << readline
+        true
       rescue Exception, NameError
         @source = nil
+        false
       end
     end
 
     def match( pattern, cons=false )
-      if cons
-        md = @scanner.scan(pattern)
-      else
-        md = @scanner.check(pattern)
-      end
-      while md.nil? and @source
-        begin
-          @scanner << readline
-          if cons
-            md = @scanner.scan(pattern)
-          else
-            md = @scanner.check(pattern)
-          end
-        rescue
-          @source = nil
+      read if @scanner.eos? && @source
+      while true
+        if cons
+          md = @scanner.scan(pattern)
+        else
+          md = @scanner.check(pattern)
         end
+        break if md
+        return nil if pattern.is_a?(String) && pattern.bytesize <= @scanner.rest_size
+        return nil if @source.nil?
+        return nil unless read
       end
 
       md.nil? ? nil : @scanner

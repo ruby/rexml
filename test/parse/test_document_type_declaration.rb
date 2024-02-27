@@ -36,6 +36,21 @@ Last 80 unconsumed characters:
 + r SYSTEM "urn:x-rexml:test" [ ]>  <r/> 
         DETAIL
       end
+
+      def test_no_name
+        exception = assert_raise(REXML::ParseException) do
+          parse(<<-DOCTYPE)
+<!DOCTYPE>
+          DOCTYPE
+        end
+        assert_equal(<<-DETAIL.chomp, exception.to_s)
+Malformed DOCTYPE: name is missing
+Line: 3
+Position: 17
+Last 80 unconsumed characters:
+<!DOCTYPE>  <r/> 
+        DETAIL
+      end
     end
 
     class TestExternalID < self
