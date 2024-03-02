@@ -76,8 +76,12 @@ module REXML
       end
     end
 
-    def string=(string)
-      @scanner.string = string
+    def position
+      @scanner.pos
+    end
+
+    def position=(pos)
+      @scanner.pos = pos
     end
 
     # @return true if the Source is exhausted

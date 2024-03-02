@@ -211,8 +211,9 @@ module REXML
         #STDERR.puts @source.encoding
         #STDERR.puts "BUFFER = #{@source.buffer.inspect}"
         if @document_status == nil
+          start_position = @source.position
           if @source.match("<?", true)
-            return process_instruction
+            return process_instruction(start_position)
           elsif @source.match("<!", true)
             if @source.match("--", true)
               return [ :comment, @source.match(/(.*?)-->/um, true)[1] ]
@@ -224,7 +225,7 @@ module REXML
                 else
                   message = "#{base_error_message}: invalid name"
                 end
-                @source.string = "<!DOCTYPE" + @source.buffer
+                @source.position = start_position
                 raise REXML::ParseException.new(message, @source)
               end
               @nsstack.unshift(curr_ns=Set.new)
@@ -266,6 +267,7 @@ module REXML
         end
         if @document_status == :in_doctype
           @source.match(/\s*/um, true) # skip spaces
+          start_position = @source.position
           if @source.match("<!", true)
             if @source.match("ELEMENT", true)
               md = @source.match(/(.*?)>/um, true)
@@ -325,7 +327,7 @@ module REXML
                 else
                   message = "#{base_error_message}: invalid name"
                 end
-                @source.string = " <!NOTATION" + @source.buffer
+                @source.position = start_position
                 raise REXML::ParseException.new(message, @source)
               end
               name = parse_name(base_error_message)
@@ -355,6 +357,7 @@ module REXML
           @source.match(/\s*/um, true)
         end
         begin
+          start_position = @source.position
           if @source.match("<", true)
             if @source.match("/", true)
               @nsstack.shift
@@ -367,7 +370,7 @@ module REXML
               if md.nil? or last_tag != md[1]
                 message = "Missing end tag for '#{last_tag}'"
                 message += " (got '#{md[1]}')" if md
-                @source.string = "</" + @source.buffer if md.nil?
+                @source.position = start_position if md.nil?
                 raise REXML::ParseException.new(message, @source)
               end
               return [ :end_element, last_tag ]
@@ -391,12 +394,12 @@ module REXML
               raise REXML::ParseException.new( "Declarations can only occur "+
                 "in the doctype declaration.", @source)
             elsif @source.match("?", true)
-              return process_instruction
+              return process_instruction(start_position)
             else
               # Get the next tag
               md = @source.match(TAG_PATTERN, true)
               unless md
-                @source.string = "<" + @source.buffer
+                @source.position = start_position
                 raise REXML::ParseException.new("malformed XML: missing tag start", @source)
               end
               tag = md[1]
@@ -578,11 +581,11 @@ module REXML
         end
       end
 
-      def process_instruction
+      def process_instruction(start_position)
         match_data = @source.match(INSTRUCTION_END, true)
         unless match_data
           message = "Invalid processing instruction node"
-          @source.string = "<?" + @source.buffer
+          @source.position = start_position
           raise REXML::ParseException.new(message, @source)
         end
         if @document_status.nil? and match_data[1] == "xml"
@@ -625,7 +628,7 @@ module REXML
             break if scanner.eos?
           end
 
-          pos = scanner.pos
+          start_position = scanner.pos
           while true
             break if scanner.scan(ATTRIBUTE_PATTERN)
             unless scanner.scan(QNAME)
@@ -648,7 +651,7 @@ module REXML
                 scanner << "/" if closed
                 scanner << ">"
                 scanner << match_data[1]
-                scanner.pos = pos
+                scanner.pos = start_position
                 closed = !match_data[2].nil?
                 next
               end
