@@ -644,7 +644,7 @@
 
           
           <div class="method-source-code" id="entity-source">
-            <pre><span class="ruby-comment"># File lib/rexml/parsers/baseparser.rb, line 440</span>
+            <pre><span class="ruby-comment"># File lib/rexml/parsers/baseparser.rb, line 443</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">entity</span>( <span class="ruby-identifier">reference</span>, <span class="ruby-identifier">entities</span> )
   <span class="ruby-identifier">value</span> = <span class="ruby-keyword">nil</span>
   <span class="ruby-identifier">value</span> = <span class="ruby-identifier">entities</span>[ <span class="ruby-identifier">reference</span> ] <span class="ruby-keyword">if</span> <span class="ruby-identifier">entities</span>
@@ -716,7 +716,7 @@
 
           
           <div class="method-source-code" id="normalize-source">
-            <pre><span class="ruby-comment"># File lib/rexml/parsers/baseparser.rb, line 451</span>
+            <pre><span class="ruby-comment"># File lib/rexml/parsers/baseparser.rb, line 454</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">normalize</span>( <span class="ruby-identifier">input</span>, <span class="ruby-identifier">entities</span>=<span class="ruby-keyword">nil</span>, <span class="ruby-identifier">entity_filter</span>=<span class="ruby-keyword">nil</span> )
   <span class="ruby-identifier">copy</span> = <span class="ruby-identifier">input</span>.<span class="ruby-identifier">clone</span>
   <span class="ruby-comment"># Doing it like this rather than in a loop improves the speed</span>
@@ -917,7 +917,7 @@
 
           
           <div class="method-source-code" id="unnormalize-source">
-            <pre><span class="ruby-comment"># File lib/rexml/parsers/baseparser.rb, line 467</span>
+            <pre><span class="ruby-comment"># File lib/rexml/parsers/baseparser.rb, line 470</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">unnormalize</span>( <span class="ruby-identifier">string</span>, <span class="ruby-identifier">entities</span>=<span class="ruby-keyword">nil</span>, <span class="ruby-identifier">filter</span>=<span class="ruby-keyword">nil</span> )
   <span class="ruby-identifier">rv</span> = <span class="ruby-identifier">string</span>.<span class="ruby-identifier">gsub</span>( <span class="ruby-regexp">/\r\n?/</span>, <span class="ruby-string">&quot;\n&quot;</span> )
   <span class="ruby-identifier">matches</span> = <span class="ruby-identifier">rv</span>.<span class="ruby-identifier">scan</span>( <span class="ruby-constant">REFERENCE_RE</span> )

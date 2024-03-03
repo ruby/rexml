@@ -100,9 +100,11 @@
     
     <li ><a href="#method-i-match">#match</a>
     
-    <li ><a href="#method-i-read">#read</a>
+    <li ><a href="#method-i-position">#position</a>
     
-    <li ><a href="#method-i-string-3D">#string=</a>
+    <li ><a href="#method-i-position-3D">#position=</a>
+    
+    <li ><a href="#method-i-read">#read</a>
     
   </ul>
 </div>
@@ -305,7 +307,7 @@
 
           
           <div class="method-source-code" id="current_line-source">
-            <pre><span class="ruby-comment"># File lib/rexml/source.rb, line 89</span>
+            <pre><span class="ruby-comment"># File lib/rexml/source.rb, line 93</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">current_line</span>
   <span class="ruby-identifier">lines</span> = <span class="ruby-ivar">@orig</span>.<span class="ruby-identifier">split</span>
   <span class="ruby-identifier">res</span> = <span class="ruby-identifier">lines</span>.<span class="ruby-identifier">grep</span> <span class="ruby-ivar">@scanner</span>.<span class="ruby-identifier">rest</span>[<span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-value">30</span>]
@@ -341,7 +343,7 @@
 
           
           <div class="method-source-code" id="empty-3F-source">
-            <pre><span class="ruby-comment"># File lib/rexml/source.rb, line 84</span>
+            <pre><span class="ruby-comment"># File lib/rexml/source.rb, line 88</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">empty?</span>
   <span class="ruby-ivar">@scanner</span>.<span class="ruby-identifier">eos?</span>
 <span class="ruby-keyword">end</span></pre>
@@ -431,6 +433,72 @@
       </div>
 
     
+      <div id="method-i-position" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">position</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="position-source">
+            <pre><span class="ruby-comment"># File lib/rexml/source.rb, line 79</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">position</span>
+  <span class="ruby-ivar">@scanner</span>.<span class="ruby-identifier">pos</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-position-3D" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">position=</span><span
+            class="method-args">(pos)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="position-3D-source">
+            <pre><span class="ruby-comment"># File lib/rexml/source.rb, line 83</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">position=</span>(<span class="ruby-identifier">pos</span>)
+  <span class="ruby-ivar">@scanner</span>.<span class="ruby-identifier">pos</span> = <span class="ruby-identifier">pos</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
       <div id="method-i-read" class="method-detail ">
         
         <div class="method-heading">
@@ -452,39 +520,6 @@
           <div class="method-source-code" id="read-source">
             <pre><span class="ruby-comment"># File lib/rexml/source.rb, line 68</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">read</span>
-<span class="ruby-keyword">end</span></pre>
-          </div>
-          
-        </div>
-
-        
-
-        
-      </div>
-
-    
-      <div id="method-i-string-3D" class="method-detail ">
-        
-        <div class="method-heading">
-          <span class="method-name">string=</span><span
-            class="method-args">(string)</span>
-          
-          <span class="method-click-advice">click to toggle source</span>
-          
-        </div>
-        
-
-        <div class="method-description">
-          
-          
-          
-          
-
-          
-          <div class="method-source-code" id="string-3D-source">
-            <pre><span class="ruby-comment"># File lib/rexml/source.rb, line 79</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">string=</span>(<span class="ruby-identifier">string</span>)
-  <span class="ruby-ivar">@scanner</span>.<span class="ruby-identifier">string</span> = <span class="ruby-identifier">string</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
           
