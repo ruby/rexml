@@ -35,7 +35,7 @@ Malformed notation declaration: name is missing
 Line: 5
 Position: 72
 Last 80 unconsumed characters:
- <!NOTATION>  ]> <r/> 
+<!NOTATION>  ]> <r/> 
         DETAIL
       end
 
