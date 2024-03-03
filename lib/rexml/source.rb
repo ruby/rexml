@@ -161,6 +161,9 @@ module REXML
       end
     end
 
+    # Note: When specifying a string for 'pattern', it must not include '>' except in the following formats:
+    # - ">"
+    # - "XXX>" (X is any string excluding '>')
     def match( pattern, cons=false )
       read if @scanner.eos? && @source
       while true
@@ -170,7 +173,7 @@ module REXML
           md = @scanner.check(pattern)
         end
         break if md
-        return nil if pattern.is_a?(String) && pattern.bytesize <= @scanner.rest_size
+        return nil if pattern.is_a?(String)
         return nil if @source.nil?
         return nil unless read
       end
