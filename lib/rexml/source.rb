@@ -68,6 +68,9 @@ module REXML
     def read
     end
 
+    def ensure_buffer
+    end
+
     def match(pattern, cons=false)
       if cons
         @scanner.scan(pattern).nil? ? nil : @scanner
@@ -165,11 +168,14 @@ module REXML
       end
     end
 
+    def ensure_buffer
+      read if @scanner.eos? && @source
+    end
+
     # Note: When specifying a string for 'pattern', it must not include '>' except in the following formats:
     # - ">"
     # - "XXX>" (X is any string excluding '>')
     def match( pattern, cons=false )
-      read if @scanner.eos? && @source
       while true
         if cons
           md = @scanner.scan(pattern)

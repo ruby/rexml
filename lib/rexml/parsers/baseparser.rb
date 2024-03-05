@@ -210,6 +210,8 @@ module REXML
         return @stack.shift if @stack.size > 0
         #STDERR.puts @source.encoding
         #STDERR.puts "BUFFER = #{@source.buffer.inspect}"
+
+        @source.ensure_buffer
         if @document_status == nil
           start_position = @source.position
           if @source.match("<?", true)
@@ -236,6 +238,7 @@ module REXML
               elsif @source.match(/\s*>/um, true)
                 id = [nil, nil, nil]
                 @document_status = :after_doctype
+                @source.ensure_buffer
               else
                 id = parse_id(base_error_message,
                               accept_external_id: true,
@@ -248,6 +251,7 @@ module REXML
                   @document_status = :in_doctype
                 elsif @source.match(/\s*>/um, true)
                   @document_status = :after_doctype
+                  @source.ensure_buffer
                 else
                   message = "#{base_error_message}: garbage after external ID"
                   raise REXML::ParseException.new(message, @source)
@@ -646,6 +650,7 @@ module REXML
               raise REXML::ParseException.new(message, @source)
             end
             unless scanner.scan(/.*#{Regexp.escape(quote)}/um)
+              @source.ensure_buffer
               match_data = @source.match(/^(.*?)(\/)?>/um, true)
               if match_data
                 scanner << "/" if closed
