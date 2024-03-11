@@ -1331,6 +1331,19 @@ Last 80 unconsumed characters:
       DETAIL
     end
 
+    def test_parse_exception_on_missing_attribute_end_quote
+      src = '<foo bar="value/>'
+      exception = assert_raise(ParseException) do
+        Document.new(src)
+      end
+      assert_equal(<<-DETAIL, exception.to_s)
+Missing attribute value end quote: <bar>: <">
+Line: 1
+Position: 17
+Last 80 unconsumed characters:
+      DETAIL
+    end
+
     def test_ticket_63
       File.open(fixture_path("t63-1.xml")) {|f| Document.new(f) }
     end
