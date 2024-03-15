@@ -33,6 +33,18 @@ jobs:
       - name: Test
         run: bundle exec rake test
 
+  frozen-string-literal:
+    name: frozen-string-literal
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: ruby
+          bundler-cache: true
+      - name: Test
+        run: bundle exec rake test RUBYOPT="--enable-frozen-string-literal"
+
   gem:
     name: "Gem: ${{ matrix.ruby-version }} on ${{ matrix.runs-on }}"
     runs-on: ${{ matrix.runs-on }}

@@ -2,7 +2,7 @@ module REXMLTests
   class DefaultFormatterTest < Test::Unit::TestCase
     def format(node)
       formatter = REXML::Formatters::Default.new
-      output = ""
+      output = +""
       formatter.write(node, output)
       output
     end
