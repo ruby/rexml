@@ -114,7 +114,7 @@ module REXML
 
       module Private
         INSTRUCTION_END = /#{NAME}(\s+.*?)?\?>/um
-        TAG_PATTERN = /((?>#{QNAME_STR}))/um
+        TAG_PATTERN = /((?>#{QNAME_STR}))\s*/um
         CLOSE_PATTERN = /(#{QNAME_STR})\s*>/um
         ATTLISTDECL_END = /\s+#{NAME}(?:#{ATTDEF})*\s*>/um
         NAME_PATTERN = /\s*#{NAME}/um
@@ -128,7 +128,6 @@ module REXML
       def initialize( source )
         self.stream = source
         @listeners = []
-        @attributes_scanner = StringScanner.new('')
       end
 
       def add_listener( listener )
@@ -614,87 +613,60 @@ module REXML
       def parse_attributes(prefixes, curr_ns)
         attributes = {}
         closed = false
-        match_data = @source.match(/^(.*?)(\/)?>/um, true)
-        if match_data.nil?
-          message = "Start tag isn't ended"
-          raise REXML::ParseException.new(message, @source)
-        end
+        while true
+          if @source.match(">", true)
+            return attributes, closed
+          elsif @source.match("/>", true)
+            closed = true
+            return attributes, closed
+          elsif match = @source.match(QNAME, true)
+            name = match[1]
+            prefix = match[2]
+            local_part = match[3]
 
-        raw_attributes = match_data[1]
-        closed = !match_data[2].nil?
-        return attributes, closed if raw_attributes.nil?
-        return attributes, closed if raw_attributes.empty?
-
-        @attributes_scanner.string = raw_attributes
-        scanner = @attributes_scanner
-        until scanner.eos?
-          if scanner.scan(/\s+/)
-            break if scanner.eos?
-          end
-
-          start_position = scanner.pos
-          while true
-            break if scanner.scan(ATTRIBUTE_PATTERN)
-            unless scanner.scan(QNAME)
-              message = "Invalid attribute name: <#{scanner.rest}>"
-              raise REXML::ParseException.new(message, @source)
-            end
-            name = scanner[0]
-            unless scanner.scan(/\s*=\s*/um)
+            unless @source.match(/\s*=\s*/um, true)
               message = "Missing attribute equal: <#{name}>"
               raise REXML::ParseException.new(message, @source)
             end
-            quote = scanner.scan(/['"]/)
-            unless quote
-              message = "Missing attribute value start quote: <#{name}>"
-              raise REXML::ParseException.new(message, @source)
-            end
-            unless scanner.scan(/.*#{Regexp.escape(quote)}/um)
-              @source.ensure_buffer
-              match_data = @source.match(/^(.*?)(\/)?>/um, true)
-              if match_data
-                scanner << "/" if closed
-                scanner << ">"
-                scanner << match_data[1]
-                scanner.pos = start_position
-                closed = !match_data[2].nil?
-                next
+            unless match = @source.match(/(['"])(.*?)\1\s*/um, true)
+              if match = @source.match(/(['"])/, true)
+                message =
+                  "Missing attribute value end quote: <#{name}>: <#{match[1]}>"
+                raise REXML::ParseException.new(message, @source)
+              else
+                message = "Missing attribute value start quote: <#{name}>"
+                raise REXML::ParseException.new(message, @source)
               end
-              message =
-                "Missing attribute value end quote: <#{name}>: <#{quote}>"
-              raise REXML::ParseException.new(message, @source)
             end
-          end
-          name = scanner[1]
-          prefix = scanner[2]
-          local_part = scanner[3]
-          # quote = scanner[4]
-          value = scanner[5]
-          if prefix == "xmlns"
-            if local_part == "xml"
-              if value != "http://www.w3.org/XML/1998/namespace"
-                msg = "The 'xml' prefix must not be bound to any other namespace "+
+            value = match[2]
+            if prefix == "xmlns"
+              if local_part == "xml"
+                if value != "http://www.w3.org/XML/1998/namespace"
+                  msg = "The 'xml' prefix must not be bound to any other namespace "+
+                    "(http://www.w3.org/TR/REC-xml-names/#ns-decl)"
+                  raise REXML::ParseException.new( msg, @source, self )
+                end
+              elsif local_part == "xmlns"
+                msg = "The 'xmlns' prefix must not be declared "+
                   "(http://www.w3.org/TR/REC-xml-names/#ns-decl)"
-                raise REXML::ParseException.new( msg, @source, self )
+                raise REXML::ParseException.new( msg, @source, self)
               end
-            elsif local_part == "xmlns"
-              msg = "The 'xmlns' prefix must not be declared "+
-                "(http://www.w3.org/TR/REC-xml-names/#ns-decl)"
-              raise REXML::ParseException.new( msg, @source, self)
+              curr_ns << local_part
+            elsif prefix
+              prefixes << prefix unless prefix == "xml"
             end
-            curr_ns << local_part
-          elsif prefix
-            prefixes << prefix unless prefix == "xml"
-          end
 
-          if attributes.has_key?(name)
-            msg = "Duplicate attribute #{name.inspect}"
-            raise REXML::ParseException.new(msg, @source, self)
-          end
+            if attributes.has_key?(name)
+              msg = "Duplicate attribute #{name.inspect}"
+              raise REXML::ParseException.new(msg, @source, self)
+            end
 
-          attributes[name] = value
+            attributes[name] = value
+          else
+            message = "Invalid attribute name: <#{@source.buffer.split(%r{[/>\s]}).first}>"
+            raise REXML::ParseException.new(message, @source)
+          end
         end
-        return attributes, closed
       end
     end
   end
