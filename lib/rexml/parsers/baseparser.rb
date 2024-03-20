@@ -656,7 +656,7 @@ module REXML
               prefixes << prefix unless prefix == "xml"
             end
 
-            if attributes.has_key?(name)
+            if attributes[name]
               msg = "Duplicate attribute #{name.inspect}"
               raise REXML::ParseException.new(msg, @source, self)
             end
