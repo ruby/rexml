@@ -590,6 +590,7 @@ module REXML
 
     def evaluate_predicate(expression, nodesets)
       enter(:predicate, expression, nodesets) if @debug
+      new_nodeset_count = 0
       new_nodesets = nodesets.collect do |nodeset|
         new_nodeset = []
         subcontext = { :size => nodeset.size }
@@ -606,17 +607,20 @@ module REXML
           result = result[0] if result.kind_of? Array and result.length == 1
           if result.kind_of? Numeric
             if result == node.position
-              new_nodeset << XPathNode.new(node, position: new_nodeset.size + 1)
+              new_nodeset_count += 1
+              new_nodeset << XPathNode.new(node, position: new_nodeset_count)
             end
           elsif result.instance_of? Array
             if result.size > 0 and result.inject(false) {|k,s| s or k}
               if result.size > 0
-                new_nodeset << XPathNode.new(node, position: new_nodeset.size + 1)
+                new_nodeset_count += 1
+                new_nodeset << XPathNode.new(node, position: new_nodeset_count)
               end
             end
           else
             if result
-              new_nodeset << XPathNode.new(node, position: new_nodeset.size + 1)
+              new_nodeset_count += 1
+              new_nodeset << XPathNode.new(node, position: new_nodeset_count)
             end
           end
         end
