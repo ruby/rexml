@@ -451,6 +451,46 @@ module REXMLTests
     #  puts results
     #end
 
+    def test_nested_predicates
+      doc = Document.new <<-EOF
+        <div>
+          <div>
+            <test>ab</test>
+            <test>cd</test>
+          </div>
+          <div>
+            <test>ef</test>
+            <test>gh</test>
+          </div>
+          <div>
+            <test>hi</test>
+          </div>
+        </div>
+      EOF
+
+      matches = XPath.match(doc, '(/div/div/test[0])').map(&:text)
+      assert_equal [], matches
+      matches = XPath.match(doc, '(/div/div/test[1])').map(&:text)
+      assert_equal ["ab", "ef", "hi"], matches
+      matches = XPath.match(doc, '(/div/div/test[2])').map(&:text)
+      assert_equal ["cd", "gh"], matches
+      matches = XPath.match(doc, '(/div/div/test[3])').map(&:text)
+      assert_equal [], matches
+
+      matches = XPath.match(doc, '(/div/div/test[1])[1]').map(&:text)
+      assert_equal ["ab"], matches
+      matches = XPath.match(doc, '(/div/div/test[1])[2]').map(&:text)
+      assert_equal ["ef"], matches
+      matches = XPath.match(doc, '(/div/div/test[1])[3]').map(&:text)
+      assert_equal ["hi"], matches
+      matches = XPath.match(doc, '(/div/div/test[2])[1]').map(&:text)
+      assert_equal ["cd"], matches
+      matches = XPath.match(doc, '(/div/div/test[2])[2]').map(&:text)
+      assert_equal ["gh"], matches
+      matches = XPath.match(doc, '(/div/div/test[2])[3]').map(&:text)
+      assert_equal [], matches
+    end
+
     # Contributed by Mike Stok
     def test_starts_with
       source = <<-EOF
