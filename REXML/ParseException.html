@@ -232,7 +232,7 @@
 
           
           <div class="method-source-code" id="context-source">
-            <pre><span class="ruby-comment"># File lib/rexml/parseexception.rb, line 48</span>
+            <pre><span class="ruby-comment"># File lib/rexml/parseexception.rb, line 49</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">context</span>
   <span class="ruby-ivar">@source</span>.<span class="ruby-identifier">current_line</span>
 <span class="ruby-keyword">end</span></pre>
@@ -265,7 +265,7 @@
 
           
           <div class="method-source-code" id="line-source">
-            <pre><span class="ruby-comment"># File lib/rexml/parseexception.rb, line 43</span>
+            <pre><span class="ruby-comment"># File lib/rexml/parseexception.rb, line 44</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">line</span>
   <span class="ruby-ivar">@source</span>.<span class="ruby-identifier">current_line</span>[<span class="ruby-value">2</span>] <span class="ruby-keyword">if</span> <span class="ruby-ivar">@source</span> <span class="ruby-keyword">and</span> <span class="ruby-keyword">defined?</span> <span class="ruby-ivar">@source</span>.<span class="ruby-identifier">current_line</span> <span class="ruby-keyword">and</span>
   <span class="ruby-ivar">@source</span>.<span class="ruby-identifier">current_line</span>
@@ -299,7 +299,7 @@
 
           
           <div class="method-source-code" id="position-source">
-            <pre><span class="ruby-comment"># File lib/rexml/parseexception.rb, line 38</span>
+            <pre><span class="ruby-comment"># File lib/rexml/parseexception.rb, line 39</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">position</span>
   <span class="ruby-ivar">@source</span>.<span class="ruby-identifier">current_line</span>[<span class="ruby-value">0</span>] <span class="ruby-keyword">if</span> <span class="ruby-ivar">@source</span> <span class="ruby-keyword">and</span> <span class="ruby-keyword">defined?</span> <span class="ruby-ivar">@source</span>.<span class="ruby-identifier">current_line</span> <span class="ruby-keyword">and</span>
   <span class="ruby-ivar">@source</span>.<span class="ruby-identifier">current_line</span>
@@ -358,6 +358,7 @@
     <span class="ruby-identifier">err</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">&quot;\nLine: #{line}\n&quot;</span>
     <span class="ruby-identifier">err</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">&quot;Position: #{position}\n&quot;</span>
     <span class="ruby-identifier">err</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-string">&quot;Last 80 unconsumed characters:\n&quot;</span>
+    <span class="ruby-identifier">err</span>.<span class="ruby-identifier">force_encoding</span>(<span class="ruby-string">&quot;ASCII-8BIT&quot;</span>)
     <span class="ruby-identifier">err</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-ivar">@source</span>.<span class="ruby-identifier">buffer</span>[<span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-value">80</span>].<span class="ruby-identifier">force_encoding</span>(<span class="ruby-string">&quot;ASCII-8BIT&quot;</span>).<span class="ruby-identifier">gsub</span>(<span class="ruby-regexp">/\n/</span>, <span class="ruby-string">&#39; &#39;</span>)
   <span class="ruby-keyword">end</span>
 
