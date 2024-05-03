@@ -49,7 +49,7 @@ Last 80 unconsumed characters:
 
       def test_empty_namespace_attribute_name_with_utf8_character
         exception = assert_raise(REXML::ParseException) do
-          parse("<x :\xE2\x80\x8B>")
+          parse("<x :\xE2\x80\x8B>") # U+200B ZERO WIDTH SPACE
         end
         assert_equal(<<-DETAIL.chomp.force_encoding("ASCII-8BIT"), exception.to_s)
 Invalid attribute name: <:\xE2\x80\x8B>
