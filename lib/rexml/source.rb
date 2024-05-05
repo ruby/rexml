@@ -65,7 +65,11 @@ module REXML
       encoding_updated
     end
 
-    def read
+    def read(term = nil)
+    end
+
+    def read_until(term)
+      @scanner.scan_until(Regexp.union(term)) or @scanner.rest
     end
 
     def ensure_buffer
@@ -158,13 +162,28 @@ module REXML
       end
     end
 
-    def read
+    def read(term = nil)
       begin
-        @scanner << readline
+        @scanner << readline(term)
         true
       rescue Exception, NameError
         @source = nil
         false
+      end
+    end
+
+    def read_until(term)
+      pattern = Regexp.union(term)
+      data = []
+      begin
+        until str = @scanner.scan_until(pattern)
+          @scanner << readline(term)
+        end
+      rescue EOFError
+        @scanner.rest
+      else
+        read if @scanner.eos? and !@source.eof?
+        str
       end
     end
 
@@ -218,8 +237,8 @@ module REXML
     end
 
     private
-    def readline
-      str = @source.readline(@line_break)
+    def readline(term = nil)
+      str = @source.readline(term || @line_break)
       if @pending_buffer
         if str.nil?
           str = @pending_buffer
