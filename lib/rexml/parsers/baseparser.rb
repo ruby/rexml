@@ -628,17 +628,17 @@ module REXML
               message = "Missing attribute equal: <#{name}>"
               raise REXML::ParseException.new(message, @source)
             end
-            unless match = @source.match(/(['"])(.*?)\1\s*/um, true)
-              if match = @source.match(/(['"])/, true)
-                message =
-                  "Missing attribute value end quote: <#{name}>: <#{match[1]}>"
-                raise REXML::ParseException.new(message, @source)
-              else
-                message = "Missing attribute value start quote: <#{name}>"
-                raise REXML::ParseException.new(message, @source)
-              end
+            unless match = @source.match(/(['"])/, true)
+              message = "Missing attribute value start quote: <#{name}>"
+              raise REXML::ParseException.new(message, @source)
             end
-            value = match[2]
+            quote = match[1]
+            value = @source.read_until(quote)
+            unless value.chomp!(quote)
+              message = "Missing attribute value end quote: <#{name}>: <#{quote}>"
+              raise REXML::ParseException.new(message, @source)
+            end
+            @source.match(/\s*/um, true)
             if prefix == "xmlns"
               if local_part == "xml"
                 if value != "http://www.w3.org/XML/1998/namespace"
