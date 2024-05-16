@@ -6,9 +6,15 @@ git_source(:github) {|repo_name| "https://github.com/#{repo_name}" }
 gemspec
 
 group :development do
-  gem "benchmark_driver"
   gem "bundler"
   gem "rake"
+end
+
+group :benchmark do
+  gem "benchmark_driver"
+end
+
+group :test do
   gem "test-unit"
   gem "test-unit-ruby-core"
 end
