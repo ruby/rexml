@@ -61,7 +61,9 @@
 
   <ul class="link-list" role="directory">
     <li><a href="#label-News">News</a>
-    <li><a href="#label-3.2.6+-+2023-07-27+-7B-23version-3-2-6-7D">3.2.6 - 2023-07-27 {#version-3-2-6}</a>
+    <li><a href="#label-3.2.7+-+2024-05-16+-7B-23version-3-2-7-7D">3.2.7 - 2024-05-16 {#version-3-2-7}</a>
+    <li><a href="#label-Improvements">Improvements</a>
+    <li><a href="#label-Fixes">Fixes</a>
     <li><a href="#label-Improvements">Improvements</a>
     <li><a href="#label-Fixes">Fixes</a>
     <li><a href="#label-Thanks">Thanks</a>
@@ -144,7 +146,82 @@
 
 <h1 id="label-News">News<span><a href="#label-News">&para;</a> <a href="#top">&uarr;</a></span></h1>
 
-<h2 id="label-3.2.6+-+2023-07-27+-7B-23version-3-2-6-7D">3.2.6 - 2023-07-27 {#version-3-2-6}<span><a href="#label-3.2.6+-+2023-07-27+-7B-23version-3-2-6-7D">&para;</a> <a href="#top">&uarr;</a></span></h2>
+<h2 id="label-3.2.7+-+2024-05-16+-7B-23version-3-2-7-7D">3.2.7 - 2024-05-16 {#version-3-2-7}<span><a href="#label-3.2.7+-+2024-05-16+-7B-23version-3-2-7-7D">&para;</a> <a href="#top">&uarr;</a></span></h2>
+
+<h3 id="label-Improvements">Improvements<span><a href="#label-Improvements">&para;</a> <a href="#top">&uarr;</a></span></h3>
+<ul><li>
+<p>Improve parse performance by using <code>StringScanner</code>.</p>
+<ul><li>
+<p>GH-106</p>
+</li><li>
+<p>GH-107</p>
+</li><li>
+<p>GH-108</p>
+</li><li>
+<p>GH-109</p>
+</li><li>
+<p>GH-112</p>
+</li><li>
+<p>GH-113</p>
+</li><li>
+<p>GH-114</p>
+</li><li>
+<p>GH-115</p>
+</li><li>
+<p>GH-116</p>
+</li><li>
+<p>GH-117</p>
+</li><li>
+<p>GH-118</p>
+</li><li>
+<p>GH-119</p>
+</li><li>
+<p>GH-121</p>
+</li><li>
+<p>Patch by NAITOH Jun.</p>
+</li></ul>
+</li><li>
+<p>Improved parse performance when an attribute has many <code>&lt;</code>s.</p>
+<ul><li>
+<p>GH-124</p>
+</li></ul>
+</li></ul>
+
+<h3 id="label-Fixes">Fixes<span><a href="#label-Fixes">&para;</a> <a href="#top">&uarr;</a></span></h3>
+<ul><li>
+<p>XPath: Fixed a bug of <code>normalize_space(array)</code>.</p>
+<ul><li>
+<p>GH-110</p>
+</li><li>
+<p>GH-111</p>
+</li><li>
+<p>Patch by flatisland.</p>
+</li></ul>
+</li><li>
+<p>XPath: Fixed a bug that wrong position is used with nested path.</p>
+<ul><li>
+<p>GH-110</p>
+</li><li>
+<p>GH-122</p>
+</li><li>
+<p>Reported by jcavalieri.</p>
+</li><li>
+<p>Patch by NAITOH Jun.</p>
+</li></ul>
+</li><li>
+<p>Fixed a bug that an exception message can&#39;t be generated for invalid encoding XML.</p>
+<ul><li>
+<p>GH-29</p>
+</li><li>
+<p>GH-123</p>
+</li><li>
+<p>Reported by DuKewu.</p>
+</li><li>
+<p>Patch by NAITOH Jun.</p>
+</li></ul>
+</li></ul>
+
+<p>w## 3.2.6 - 2023-07-27 {#version-3-2-6}</p>
 
 <h3 id="label-Improvements">Improvements<span><a href="#label-Improvements">&para;</a> <a href="#top">&uarr;</a></span></h3>
 <ul><li>
