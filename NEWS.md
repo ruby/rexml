@@ -1,6 +1,58 @@
 # News
 
-## 3.2.6 - 2023-07-27 {#version-3-2-6}
+## 3.2.7 - 2024-05-16 {#version-3-2-7}
+
+### Improvements
+
+  * Improve parse performance by using `StringScanner`.
+
+    * GH-106
+    * GH-107
+    * GH-108
+    * GH-109
+    * GH-112
+    * GH-113
+    * GH-114
+    * GH-115
+    * GH-116
+    * GH-117
+    * GH-118
+    * GH-119
+    * GH-121
+
+    * Patch by NAITOH Jun.
+
+  * Improved parse performance when an attribute has many `<`s.
+
+    * GH-124
+
+### Fixes
+
+  * XPath: Fixed a bug of `normalize_space(array)`.
+
+    * GH-110
+    * GH-111
+
+    * Patch by flatisland.
+
+  * XPath: Fixed a bug that wrong position is used with nested path.
+
+    * GH-110
+    * GH-122
+
+    * Reported by jcavalieri.
+    * Patch by NAITOH Jun.
+
+  * Fixed a bug that an exception message can't be generated for
+    invalid encoding XML.
+
+    * GH-29
+    * GH-123
+
+    * Reported by DuKewu.
+    * Patch by NAITOH Jun.
+
+w## 3.2.6 - 2023-07-27 {#version-3-2-6}
 
 ### Improvements
 
