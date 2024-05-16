@@ -52,7 +52,15 @@
     * Reported by DuKewu.
     * Patch by NAITOH Jun.
 
-w## 3.2.6 - 2023-07-27 {#version-3-2-6}
+### Thanks
+
+  * NAITOH Jun
+  * flatisland
+  * jcavalieri
+  * DuKewu
+
+
+## 3.2.6 - 2023-07-27 {#version-3-2-6}
 
 ### Improvements
 
