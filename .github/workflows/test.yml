@@ -66,8 +66,12 @@ jobs:
         with:
           ruby-version: ${{ matrix.ruby-version }}
       - name: Install as gem
+        env:
+          BUNDLE_PATH__SYSTEM: "true"
+          BUNDLE_WITHOUT: "benchmark:development"
         run: |
           rake install
+          bundle install
       - name: Test
         run: |
           ruby -run -e mkdir -- tmp
