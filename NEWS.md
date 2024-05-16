@@ -1,5 +1,11 @@
 # News
 
+## 3.2.8 - 2024-05-16 {#version-3-2-8}
+
+### Fixes
+
+  * Suppressed a warning
+
 ## 3.2.7 - 2024-05-16 {#version-3-2-7}
 
 ### Improvements
