@@ -174,7 +174,6 @@ module REXML
 
     def read_until(term)
       pattern = Regexp.union(term)
-      data = []
       begin
         until str = @scanner.scan_until(pattern)
           @scanner << readline(term)
