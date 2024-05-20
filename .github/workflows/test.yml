@@ -3,14 +3,14 @@ on:
   - push
   - pull_request
 jobs:
-  ruby-versions:
+  ruby-versions-inplace:
     uses: ruby/actions/.github/workflows/ruby_versions.yml@master
     with:
       engine: cruby-jruby
       min_version: 2.5
 
   inplace:
-    needs: ruby-versions
+    needs: ruby-versions-inplace
     name: "Inplace: ${{ matrix.ruby-version }} on ${{ matrix.runs-on }}"
     runs-on: ${{ matrix.runs-on }}
     strategy:
@@ -20,7 +20,7 @@ jobs:
           - ubuntu-latest
           - macos-latest
           - windows-latest
-        ruby-version: ${{ fromJson(needs.ruby-versions.outputs.versions) }}
+        ruby-version: ${{ fromJson(needs.ruby-versions-inplace.outputs.versions) }}
         exclude:
           - {runs-on: macos-latest, ruby-version: 2.5}
         # include:
@@ -47,7 +47,14 @@ jobs:
       - name: Test
         run: bundle exec rake test RUBYOPT="--enable-frozen-string-literal"
 
+  ruby-versions-gem:
+    uses: ruby/actions/.github/workflows/ruby_versions.yml@master
+    with:
+      engine: cruby-jruby
+      min_version: 3.0
+
   gem:
+    needs: ruby-versions-gem
     name: "Gem: ${{ matrix.ruby-version }} on ${{ matrix.runs-on }}"
     runs-on: ${{ matrix.runs-on }}
     strategy:
@@ -57,21 +64,26 @@ jobs:
           - ubuntu-latest
           - macos-latest
           - windows-latest
-        ruby-version:
-          - "3.0"
-          - head
+        ruby-version: ${{ fromJson(needs.ruby-versions-gem.outputs.versions) }}
     steps:
       - uses: actions/checkout@v4
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: ${{ matrix.ruby-version }}
       - name: Install as gem
-        env:
-          BUNDLE_PATH__SYSTEM: "true"
-          BUNDLE_WITHOUT: "benchmark:development"
         run: |
           rake install
-          bundle install
+      - name: Install test dependencies on non-Windows
+        if: matrix.runs-on != 'windows-latest'
+        run: |
+          for gem in $(ruby -e 'puts ARGF.read[/^group :test do(.*)^end/m, 1].scan(/"(.+?)"/)' Gemfile); do
+            gem install ${gem}
+          done
+      - name: Install test dependencies on Windows
+        if: matrix.runs-on == 'windows-latest'
+        run: |
+          gem install test-unit
+          gem install test-unit-ruby-core
       - name: Test
         run: |
           ruby -run -e mkdir -- tmp

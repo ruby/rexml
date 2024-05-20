@@ -7,6 +7,17 @@ require "strscan"
 
 module REXML
   module Parsers
+    if StringScanner::Version < "3.0.8"
+      module StringScannerCaptures
+        refine StringScanner do
+          def captures
+            values_at(*(1...size))
+          end
+        end
+      end
+      using StringScannerCaptures
+    end
+
     # = Using the Pull Parser
     # <em>This API is experimental, and subject to change.</em>
     #  parser = PullParser.new( "<a>text<b att='val'/>txet</a>" )
