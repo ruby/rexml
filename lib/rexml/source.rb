@@ -69,7 +69,7 @@ module REXML
     end
 
     def read_until(term)
-      @scanner.scan_until(Regexp.union(term)) or @scanner.rest
+      @scanner.scan_until(/#{Regexp.escape(term)}/) or @scanner.rest
     end
 
     def ensure_buffer
@@ -173,7 +173,7 @@ module REXML
     end
 
     def read_until(term)
-      pattern = Regexp.union(term)
+      pattern = /#{Regexp.escape(term)}/
       begin
         until str = @scanner.scan_until(pattern)
           @scanner << readline(term)
