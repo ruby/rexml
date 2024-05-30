@@ -588,7 +588,7 @@
           <div class="method-source-code" id="read_until-source">
             <pre><span class="ruby-comment"># File lib/rexml/source.rb, line 71</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">read_until</span>(<span class="ruby-identifier">term</span>)
-  <span class="ruby-ivar">@scanner</span>.<span class="ruby-identifier">scan_until</span>(<span class="ruby-constant">Regexp</span>.<span class="ruby-identifier">union</span>(<span class="ruby-identifier">term</span>)) <span class="ruby-keyword">or</span> <span class="ruby-ivar">@scanner</span>.<span class="ruby-identifier">rest</span>
+  <span class="ruby-ivar">@scanner</span>.<span class="ruby-identifier">scan_until</span>(<span class="ruby-regexp">/#{Regexp.escape(term)}/</span>) <span class="ruby-keyword">or</span> <span class="ruby-ivar">@scanner</span>.<span class="ruby-identifier">rest</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
           
