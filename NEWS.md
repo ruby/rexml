@@ -30,7 +30,7 @@
 
   * Improved parse performance when an attribute has many `<`s.
 
-    * GH-124
+    * GH-126
 
 ### Fixes
 
