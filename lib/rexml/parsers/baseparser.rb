@@ -644,8 +644,10 @@ module REXML
               raise REXML::ParseException.new(message, @source)
             end
             quote = match[1]
+            start_position = @source.position
             value = @source.read_until(quote)
             unless value.chomp!(quote)
+              @source.position = start_position
               message = "Missing attribute value end quote: <#{name}>: <#{quote}>"
               raise REXML::ParseException.new(message, @source)
             end

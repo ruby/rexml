@@ -69,7 +69,12 @@ module REXML
     end
 
     def read_until(term)
-      @scanner.scan_until(/#{Regexp.escape(term)}/) or @scanner.rest
+      data = @scanner.scan_until(/#{Regexp.escape(term)}/)
+      unless data
+        data = @scanner.rest
+        @scanner.pos = @scanner.string.bytesize
+      end
+      data
     end
 
     def ensure_buffer
@@ -181,7 +186,9 @@ module REXML
           @scanner << readline(term)
         end
       rescue EOFError
-        @scanner.rest
+        rest = @scanner.rest
+        @scanner.pos = @scanner.string.bytesize
+        rest
       else
         read if @scanner.eos? and !@source.eof?
         str
