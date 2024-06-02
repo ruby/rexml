@@ -163,6 +163,7 @@ module REXML
     end
 
     def read(term = nil)
+      term = encode(term) if term
       begin
         @scanner << readline(term)
         true
@@ -174,6 +175,7 @@ module REXML
 
     def read_until(term)
       pattern = /#{Regexp.escape(term)}/
+      term = encode(term)
       begin
         until str = @scanner.scan_until(pattern)
           @scanner << readline(term)
