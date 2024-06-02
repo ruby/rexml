@@ -311,7 +311,7 @@
 
           
           <div class="method-source-code" id="current_line-source">
-            <pre><span class="ruby-comment"># File lib/rexml/source.rb, line 100</span>
+            <pre><span class="ruby-comment"># File lib/rexml/source.rb, line 105</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">current_line</span>
   <span class="ruby-identifier">lines</span> = <span class="ruby-ivar">@orig</span>.<span class="ruby-identifier">split</span>
   <span class="ruby-identifier">res</span> = <span class="ruby-identifier">lines</span>.<span class="ruby-identifier">grep</span> <span class="ruby-ivar">@scanner</span>.<span class="ruby-identifier">rest</span>[<span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-value">30</span>]
@@ -347,7 +347,7 @@
 
           
           <div class="method-source-code" id="empty-3F-source">
-            <pre><span class="ruby-comment"># File lib/rexml/source.rb, line 95</span>
+            <pre><span class="ruby-comment"># File lib/rexml/source.rb, line 100</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">empty?</span>
   <span class="ruby-ivar">@scanner</span>.<span class="ruby-identifier">eos?</span>
 <span class="ruby-keyword">end</span></pre>
@@ -419,7 +419,7 @@
 
           
           <div class="method-source-code" id="ensure_buffer-source">
-            <pre><span class="ruby-comment"># File lib/rexml/source.rb, line 75</span>
+            <pre><span class="ruby-comment"># File lib/rexml/source.rb, line 80</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">ensure_buffer</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
@@ -451,7 +451,7 @@
 
           
           <div class="method-source-code" id="match-source">
-            <pre><span class="ruby-comment"># File lib/rexml/source.rb, line 78</span>
+            <pre><span class="ruby-comment"># File lib/rexml/source.rb, line 83</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">match</span>(<span class="ruby-identifier">pattern</span>, <span class="ruby-identifier">cons</span>=<span class="ruby-keyword">false</span>)
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">cons</span>
     <span class="ruby-ivar">@scanner</span>.<span class="ruby-identifier">scan</span>(<span class="ruby-identifier">pattern</span>).<span class="ruby-identifier">nil?</span> <span class="ruby-operator">?</span> <span class="ruby-keyword">nil</span> <span class="ruby-operator">:</span> <span class="ruby-ivar">@scanner</span>
@@ -488,7 +488,7 @@
 
           
           <div class="method-source-code" id="position-source">
-            <pre><span class="ruby-comment"># File lib/rexml/source.rb, line 86</span>
+            <pre><span class="ruby-comment"># File lib/rexml/source.rb, line 91</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">position</span>
   <span class="ruby-ivar">@scanner</span>.<span class="ruby-identifier">pos</span>
 <span class="ruby-keyword">end</span></pre>
@@ -521,7 +521,7 @@
 
           
           <div class="method-source-code" id="position-3D-source">
-            <pre><span class="ruby-comment"># File lib/rexml/source.rb, line 90</span>
+            <pre><span class="ruby-comment"># File lib/rexml/source.rb, line 95</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">position=</span>(<span class="ruby-identifier">pos</span>)
   <span class="ruby-ivar">@scanner</span>.<span class="ruby-identifier">pos</span> = <span class="ruby-identifier">pos</span>
 <span class="ruby-keyword">end</span></pre>
@@ -588,7 +588,12 @@
           <div class="method-source-code" id="read_until-source">
             <pre><span class="ruby-comment"># File lib/rexml/source.rb, line 71</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">read_until</span>(<span class="ruby-identifier">term</span>)
-  <span class="ruby-ivar">@scanner</span>.<span class="ruby-identifier">scan_until</span>(<span class="ruby-regexp">/#{Regexp.escape(term)}/</span>) <span class="ruby-keyword">or</span> <span class="ruby-ivar">@scanner</span>.<span class="ruby-identifier">rest</span>
+  <span class="ruby-identifier">data</span> = <span class="ruby-ivar">@scanner</span>.<span class="ruby-identifier">scan_until</span>(<span class="ruby-regexp">/#{Regexp.escape(term)}/</span>)
+  <span class="ruby-keyword">unless</span> <span class="ruby-identifier">data</span>
+    <span class="ruby-identifier">data</span> = <span class="ruby-ivar">@scanner</span>.<span class="ruby-identifier">rest</span>
+    <span class="ruby-ivar">@scanner</span>.<span class="ruby-identifier">pos</span> = <span class="ruby-ivar">@scanner</span>.<span class="ruby-identifier">string</span>.<span class="ruby-identifier">bytesize</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-identifier">data</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
           
