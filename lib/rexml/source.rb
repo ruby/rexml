@@ -34,6 +34,16 @@ module REXML
     attr_reader :line
     attr_reader :encoding
 
+    module Private
+      PRE_DEFINED_TERM_PATTERNS = {}
+      pre_defined_terms = ["'", '"']
+      pre_defined_terms.each do |term|
+        PRE_DEFINED_TERM_PATTERNS[term] = /#{Regexp.escape(term)}/
+      end
+    end
+    private_constant :Private
+    include Private
+
     # Constructor
     # @param arg must be a String, and should be a valid XML document
     # @param encoding if non-null, sets the encoding of the source to this
@@ -69,7 +79,8 @@ module REXML
     end
 
     def read_until(term)
-      data = @scanner.scan_until(/#{Regexp.escape(term)}/)
+      pattern = Private::PRE_DEFINED_TERM_PATTERNS[term] || /#{Regexp.escape(term)}/
+      data = @scanner.scan_until(pattern)
       unless data
         data = @scanner.rest
         @scanner.pos = @scanner.string.bytesize
@@ -179,7 +190,7 @@ module REXML
     end
 
     def read_until(term)
-      pattern = /#{Regexp.escape(term)}/
+      pattern = Private::PRE_DEFINED_TERM_PATTERNS[term] || /#{Regexp.escape(term)}/
       term = encode(term)
       begin
         until str = @scanner.scan_until(pattern)
