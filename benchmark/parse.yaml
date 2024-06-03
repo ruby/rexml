@@ -47,7 +47,7 @@ prelude: |
   end
 
 benchmark:
-  'dom'        : REXML::Document.new(xml).elements.each("root/child") {|_|}
+  'dom'        : REXML::Document.new(xml)
   'sax'        : REXML::Parsers::SAX2Parser.new(xml).parse
   'pull'       : |
     parser = REXML::Parsers::PullParser.new(xml)
