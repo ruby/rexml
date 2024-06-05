@@ -417,6 +417,34 @@ EOX
           assert_equal(expected_xml, actual_xml)
         end
       end
+
+      class EachRecursiveTest < Test::Unit::TestCase
+        def test_each_recursive
+          xml_source = +'<?xml version="1.0" encoding="UTF-8" standalone="yes"?>'
+          xml_source << '<root foo="bar">'
+
+          100.times do
+            x_node_source = ''
+            100.times do
+              x_node_source = "<x y='z'>#{x_node_source}</x>"
+            end
+            xml_source << x_node_source
+          end
+
+          xml_source << '<!-- comment -->'
+          xml_source << '<![CDATA[ cdata ]]>'
+
+          xml_source << '</root>'
+
+          document = REXML::Document.new(xml_source)        
+
+          count = 0
+          document.each_recursive { count += 1 }
+          # Node#each_recursive iterates elements only.
+          # This does not iterate XML declerations, comments, attributes, CDATA sections, etc.
+          assert_equal(100 * 100 + 1, count)
+        end
+      end
     end
   end
 end
