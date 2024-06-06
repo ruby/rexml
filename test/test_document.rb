@@ -420,29 +420,29 @@ EOX
 
       class EachRecursiveTest < Test::Unit::TestCase
         def test_each_recursive
-          xml_source = <<-XML
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<root name="root">
-  <x name="0_2">
-    <x name="0_1">
-      <x name="0_0"/>
-    </x>
-  </x>
-  <x name="1_2">
-    <x name="1_1">
-      <x name="1_0"/>
-    </x>
-  </x>
-  <!-- comment -->
-  <![CDATA[ cdata ]]>
-</root>
-          XML
+          xml_source = <<~XML
+            <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+            <root name="root">
+              <x name="1_1">
+                <x name="1_2">
+                  <x name="1_3" />
+                </x>
+              </x>
+              <x name="2_1">
+                <x name="2_2">
+                  <x name="2_3" />
+                </x>
+              </x>
+              <!-- comment -->
+              <![CDATA[ cdata ]]>
+            </root>
+            XML
 
-          expected_names = [
-            "root",
-            "0_2", "0_1", "0_0",
-            "1_2", "1_1", "1_0",
-          ]         
+          expected_names = %w[
+            root
+            1_1 1_2 1_3
+            2_1 2_2 2_3
+          ]
 
           document = REXML::Document.new(xml_source)        
 
