@@ -202,7 +202,7 @@ EOX
       assert_equal('no', doc.stand_alone?, bug2539)
     end
 
-    def test_gt_linear_performance
+    def test_gt_linear_performance_attribute_value
       seq = [10000, 50000, 100000, 150000, 200000]
       assert_linear_performance(seq) do |n|
         REXML::Document.new('<test testing="' + ">" * n + '"></test>')
