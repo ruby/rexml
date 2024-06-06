@@ -421,13 +421,19 @@ EOX
       class EachRecursiveTest < Test::Unit::TestCase
         def test_each_recursive
           xml_source = +'<?xml version="1.0" encoding="UTF-8" standalone="yes"?>'
-          xml_source << '<root foo="bar">'
+          xml_source << '<root name="root">'
 
-          100.times do
+          expected_names = ["root"]
+
+          2.times do |x|
             x_node_source = ''
-            100.times do
-              x_node_source = "<x y='z'>#{x_node_source}</x>"
+            inner_names = []
+            3.times do |y|
+              name = "#{x}_#{y}"
+              x_node_source = "<x name='#{name}'>#{x_node_source}</x>"
+              inner_names << name
             end
+            expected_names.concat(inner_names.reverse)
             xml_source << x_node_source
           end
 
@@ -438,11 +444,13 @@ EOX
 
           document = REXML::Document.new(xml_source)        
 
-          count = 0
-          document.each_recursive { count += 1 }
           # Node#each_recursive iterates elements only.
           # This does not iterate XML declerations, comments, attributes, CDATA sections, etc.
-          assert_equal(100 * 100 + 1, count)
+          actual_names = []
+          document.each_recursive do |element|
+            actual_names << element.attributes["name"]
+          end
+          assert_equal(expected_names, actual_names)
         end
       end
     end
