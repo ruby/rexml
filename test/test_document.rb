@@ -209,6 +209,42 @@ EOX
       end
     end
 
+    def test_each_recursive
+      xml_source = <<~XML
+        <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+        <root name="root">
+          <x name="1_1">
+            <x name="1_2">
+              <x name="1_3" />
+            </x>
+          </x>
+          <x name="2_1">
+            <x name="2_2">
+              <x name="2_3" />
+            </x>
+          </x>
+          <!-- comment -->
+          <![CDATA[ cdata ]]>
+        </root>
+      XML
+
+      expected_names = %w[
+        root
+        1_1 1_2 1_3
+        2_1 2_2 2_3
+      ]
+
+      document = REXML::Document.new(xml_source)
+
+      # Node#each_recursive iterates elements only.
+      # This does not iterate XML declerations, comments, attributes, CDATA sections, etc.
+      actual_names = []
+      document.each_recursive do |element|
+        actual_names << element.attributes["name"]
+      end
+      assert_equal(expected_names, actual_names)
+    end
+
     class WriteTest < Test::Unit::TestCase
       def setup
         @document = REXML::Document.new(<<-EOX)
@@ -415,44 +451,6 @@ EOX
 <message>Hello world!</message>
 EOX
           assert_equal(expected_xml, actual_xml)
-        end
-      end
-
-      class EachRecursiveTest < Test::Unit::TestCase
-        def test_each_recursive
-          xml_source = <<~XML
-            <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-            <root name="root">
-              <x name="1_1">
-                <x name="1_2">
-                  <x name="1_3" />
-                </x>
-              </x>
-              <x name="2_1">
-                <x name="2_2">
-                  <x name="2_3" />
-                </x>
-              </x>
-              <!-- comment -->
-              <![CDATA[ cdata ]]>
-            </root>
-            XML
-
-          expected_names = %w[
-            root
-            1_1 1_2 1_3
-            2_1 2_2 2_3
-          ]
-
-          document = REXML::Document.new(xml_source)        
-
-          # Node#each_recursive iterates elements only.
-          # This does not iterate XML declerations, comments, attributes, CDATA sections, etc.
-          actual_names = []
-          document.each_recursive do |element|
-            actual_names << element.attributes["name"]
-          end
-          assert_equal(expected_names, actual_names)
         end
       end
     end
