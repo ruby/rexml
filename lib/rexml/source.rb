@@ -36,7 +36,7 @@ module REXML
 
     module Private
       PRE_DEFINED_TERM_PATTERNS = {}
-      pre_defined_terms = ["'", '"']
+      pre_defined_terms = ["'", '"', "<"]
       pre_defined_terms.each do |term|
         PRE_DEFINED_TERM_PATTERNS[term] = /#{Regexp.escape(term)}/
       end
@@ -192,17 +192,18 @@ module REXML
     def read_until(term)
       pattern = Private::PRE_DEFINED_TERM_PATTERNS[term] || /#{Regexp.escape(term)}/
       term = encode(term)
-      begin
-        until str = @scanner.scan_until(pattern)
-          @scanner << readline(term)
-        end
-      rescue EOFError
+      until str = @scanner.scan_until(pattern)
+        break if @source.nil?
+        break if @source.eof?
+        @scanner << readline(term)
+      end
+      if str
+        read if @scanner.eos? and !@source.eof?
+        str
+      else
         rest = @scanner.rest
         @scanner.pos = @scanner.string.bytesize
         rest
-      else
-        read if @scanner.eos? and !@source.eof?
-        str
       end
     end
 

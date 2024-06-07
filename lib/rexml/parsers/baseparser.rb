@@ -373,6 +373,10 @@ module REXML
         begin
           start_position = @source.position
           if @source.match("<", true)
+            # :text's read_until may remain only "<" in buffer. In the
+            # case, buffer is empty here. So we need to fill buffer
+            # here explicitly.
+            @source.ensure_buffer
             if @source.match("/", true)
               @nsstack.shift
               last_tag = @tags.pop
@@ -438,8 +442,10 @@ module REXML
               return [ :start_element, tag, attributes ]
             end
           else
-            md = @source.match(/([^<]*)/um, true)
-            text = md[1]
+            text = @source.read_until("<")
+            if text.chomp!("<")
+              @source.position -= "<".bytesize
+            end
             return [ :text, text ]
           end
         rescue REXML::UndefinedNamespaceException

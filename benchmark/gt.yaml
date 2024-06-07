@@ -1,0 +1,34 @@
+loop_count: 10
+contexts:
+  - gems:
+      rexml: 3.2.6
+    require: false
+    prelude: require "rexml"
+  - name: master
+    prelude: |
+      $LOAD_PATH.unshift(File.expand_path("lib"))
+      require "rexml"
+  - name: 3.2.6(YJIT)
+    gems:
+      rexml: 3.2.6
+    require: false
+    prelude: |
+      require "rexml"
+      RubyVM::YJIT.enable
+  - name: master(YJIT)
+    prelude: |
+      $LOAD_PATH.unshift(File.expand_path("lib"))
+      require "rexml"
+      RubyVM::YJIT.enable
+
+prelude: |
+  require "rexml/document"
+
+  n = 10000
+  gts = ">" * n
+  in_attribute = "<test attribute=\"#{gts}\"></test>"
+  in_text = "<test>#{gts}</test>"
+
+benchmark:
+  "attribute": REXML::Document.new(in_attribute)
+  "text":      REXML::Document.new(in_text)
