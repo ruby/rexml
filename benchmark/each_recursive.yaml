@@ -1,0 +1,40 @@
+loop_count: 100
+contexts:
+  - gems:
+      rexml: 3.2.6
+    require: false
+    prelude: require 'rexml'
+  - name: master
+    prelude: |
+      $LOAD_PATH.unshift(File.expand_path("lib"))
+      require 'rexml'
+  - name: 3.2.6(YJIT)
+    gems:
+      rexml: 3.2.6
+    require: false
+    prelude: |
+      require 'rexml'
+      RubyVM::YJIT.enable
+  - name: master(YJIT)
+    prelude: |
+      $LOAD_PATH.unshift(File.expand_path("lib"))
+      require 'rexml'
+      RubyVM::YJIT.enable
+
+prelude: |
+  require 'rexml/document'
+
+  xml_source = +"<root>"
+  100.times do
+    x_node_source = ""
+    100.times do
+      x_node_source = "<x>#{x_node_source}</x>"
+    end
+    xml_source << x_node_source
+  end
+  xml_source << "</root>"
+
+  document = REXML::Document.new(xml_source)
+
+benchmark:
+  each_recursive: document.each_recursive { |_| }

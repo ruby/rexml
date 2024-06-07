@@ -52,10 +52,14 @@ module REXML
 
     # Visit all subnodes of +self+ recursively
     def each_recursive(&block) # :yields: node
-      self.elements.each {|node|
-        block.call(node)
-        node.each_recursive(&block)
-      }
+      stack = []
+      each { |child| stack.unshift child if child.node_type == :element }
+      until stack.empty?
+        child = stack.pop
+        yield child
+        n = stack.size
+        child.each { |grandchild| stack.insert n, grandchild if grandchild.node_type == :element }
+      end
     end
 
     # Find (and return) first subnode (recursively) for which the block
