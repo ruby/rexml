@@ -1,5 +1,32 @@
 # News
 
+## 3.2.9 - 2024-06-19 {#version-3-2-9}
+
+### Improvements
+
+  * Added support for old strscan.
+    * GH-132
+    * Reported by Adam
+
+  * Improved attribute value parse performance.
+    * GH-135
+    * Patch by NAITOH Jun.
+
+  * Improved `REXML::Node#each_recursive` performance.
+    * GH-134
+    * GH-139
+    * Patch by Hiroya Fujinami.
+
+  * Improved text parse performance.
+    * Reported by mprogrammer.
+
+### Thanks
+
+  * Adam
+  * NAITOH Jun
+  * Hiroya Fujinami
+  * mprogrammer
+
 ## 3.2.8 - 2024-05-16 {#version-3-2-8}
 
 ### Fixes
@@ -64,7 +91,6 @@
   * flatisland
   * jcavalieri
   * DuKewu
-
 
 ## 3.2.6 - 2023-07-27 {#version-3-2-6}
 
