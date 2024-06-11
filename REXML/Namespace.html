@@ -21,8 +21,6 @@
 <link href="../css/rdoc.css" rel="stylesheet">
 
 
-
-
 <body id="top" role="document" class="module">
 <nav role="navigation">
   <div id="project-navigation">
@@ -43,7 +41,7 @@
     <div id="search-field-wrapper">
       <input id="search-field" role="combobox" aria-label="Search"
              aria-autocomplete="list" aria-controls="search-results"
-             type="text" name="search" placeholder="Search" spellcheck="false"
+             type="text" name="search" placeholder="Search (/) for a class, method, ..." spellcheck="false"
              title="Type to search, Up and Down to navigate, Enter to load">
     </div>
 
@@ -60,31 +58,25 @@
   <div id="class-metadata">
     
     
-    <div id="includes-section" class="nav-section">
+    
+<div id="includes-section" class="nav-section">
   <h3>Included Modules</h3>
 
   <ul class="link-list">
-  
-  
     <li><a class="include" href="XMLTokens.html">REXML::XMLTokens</a>
-  
-  
   </ul>
 </div>
 
     
-    <!-- Method Quickref -->
+    
+<!-- Method Quickref -->
 <div id="method-list-section" class="nav-section">
   <h3>Methods</h3>
 
   <ul class="link-list" role="directory">
-    
     <li ><a href="#method-i-fully_expanded_name">#fully_expanded_name</a>
-    
     <li ><a href="#method-i-has_name-3F">#has_name?</a>
-    
     <li ><a href="#method-i-name-3D">#name=</a>
-    
   </ul>
 </div>
 
@@ -102,40 +94,26 @@
 
   </section>
 
-  
   <section id="5Buntitled-5D" class="documentation-section">
-    
 
-    
 
-    
     <section class="constants-list">
       <header>
         <h3>Constants</h3>
       </header>
       <dl>
-      
         <dt id="NAMESPLIT">NAMESPLIT
-        
         <dd>
-        
-      
         <dt id="NAME_WITHOUT_NAMESPACE">NAME_WITHOUT_NAMESPACE
-        
         <dd>
-        
-      
       </dl>
     </section>
-    
 
-    
     <section class="attribute-method-details" class="method-section">
       <header>
         <h3>Attributes</h3>
       </header>
 
-      
       <div id="attribute-i-expanded_name" class="method-detail">
         <div class="method-heading attribute-method-heading">
           <span class="method-name">expanded_name</span><span
@@ -143,12 +121,9 @@
         </div>
 
         <div class="method-description">
-        
         <p>The name of the object, valid if set</p>
-        
         </div>
       </div>
-      
       <div id="attribute-i-local_name" class="method-detail">
         <div class="method-heading attribute-method-heading">
           <span class="method-name">local_name</span><span
@@ -156,12 +131,9 @@
         </div>
 
         <div class="method-description">
-        
         <p>The name of the object, valid if set</p>
-        
         </div>
       </div>
-      
       <div id="attribute-i-name" class="method-detail">
         <div class="method-heading attribute-method-heading">
           <span class="method-name">name</span><span
@@ -169,12 +141,9 @@
         </div>
 
         <div class="method-description">
-        
         <p>The name of the object, valid if set</p>
-        
         </div>
       </div>
-      
       <div id="attribute-i-prefix" class="method-detail">
         <div class="method-heading attribute-method-heading">
           <span class="method-name">prefix</span><span
@@ -182,40 +151,29 @@
         </div>
 
         <div class="method-description">
-        
         <p>The expanded name of the object, valid if name is set</p>
-        
         </div>
       </div>
-      
     </section>
-    
 
-    
+
      <section id="public-instance-5Buntitled-5D-method-details" class="method-section">
        <header>
          <h3>Public Instance Methods</h3>
        </header>
 
-    
       <div id="method-i-fully_expanded_name" class="method-detail ">
-        
-        <div class="method-heading">
-          <span class="method-name">fully_expanded_name</span><span
-            class="method-args">()</span>
-          
-          <span class="method-click-advice">click to toggle source</span>
-          
+        <div class="method-header">
+          <div class="method-heading">
+            <span class="method-name">fully_expanded_name</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
         </div>
-        
 
         <div class="method-description">
-          
-          <p>Fully expand the name, even if the prefix wasn&#39;t specified in the source file.</p>
-          
-          
+          <p>Fully expand the name, even if the prefix wasn’t specified in the source file.</p>
 
-          
           <div class="method-source-code" id="fully_expanded_name-source">
             <pre><span class="ruby-comment"># File lib/rexml/namespace.rb, line 57</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">fully_expanded_name</span>
@@ -224,33 +182,23 @@
   <span class="ruby-keyword">return</span> <span class="ruby-ivar">@name</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
-          
         </div>
 
-        
 
-        
       </div>
 
-    
       <div id="method-i-has_name-3F" class="method-detail ">
-        
-        <div class="method-heading">
-          <span class="method-name">has_name?</span><span
-            class="method-args">( other, ns=nil )</span>
-          
-          <span class="method-click-advice">click to toggle source</span>
-          
+        <div class="method-header">
+          <div class="method-heading">
+            <span class="method-name">has_name?</span><span
+              class="method-args">( other, ns=nil )</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
         </div>
-        
 
         <div class="method-description">
-          
           <p>Compares names optionally WITH namespaces</p>
-          
-          
 
-          
           <div class="method-source-code" id="has_name-3F-source">
             <pre><span class="ruby-comment"># File lib/rexml/namespace.rb, line 43</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">has_name?</span>( <span class="ruby-identifier">other</span>, <span class="ruby-identifier">ns</span>=<span class="ruby-keyword">nil</span> )
@@ -263,33 +211,23 @@
   <span class="ruby-keyword">end</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
-          
         </div>
 
-        
 
-        
       </div>
 
-    
       <div id="method-i-name-3D" class="method-detail ">
-        
-        <div class="method-heading">
-          <span class="method-name">name=</span><span
-            class="method-args">( name )</span>
-          
-          <span class="method-click-advice">click to toggle source</span>
-          
+        <div class="method-header">
+          <div class="method-heading">
+            <span class="method-name">name=</span><span
+              class="method-args">( name )</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
         </div>
-        
 
         <div class="method-description">
-          
           <p>Sets the name and the expanded name</p>
-          
-          
 
-          
           <div class="method-source-code" id="name-3D-source">
             <pre><span class="ruby-comment"># File lib/rexml/namespace.rb, line 17</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">name=</span>( <span class="ruby-identifier">name</span> )
@@ -317,25 +255,20 @@
   <span class="ruby-keyword">end</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
-          
         </div>
 
-        
 
-        
       </div>
 
-    
     </section>
-  
-  </section>
 
+  </section>
 </main>
 
 
 <footer id="validator-badges" role="contentinfo">
   <p><a href="https://validator.w3.org/check/referer">Validate</a>
-  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.2.1.1.
+  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.6.3.1.
   <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
 </footer>
 

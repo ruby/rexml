@@ -21,8 +21,6 @@
 <link href="../css/rdoc.css" rel="stylesheet">
 
 
-
-
 <body id="top" role="document" class="class">
 <nav role="navigation">
   <div id="project-navigation">
@@ -43,7 +41,7 @@
     <div id="search-field-wrapper">
       <input id="search-field" role="combobox" aria-label="Search"
              aria-autocomplete="list" aria-controls="search-results"
-             type="text" name="search" placeholder="Search" spellcheck="false"
+             type="text" name="search" placeholder="Search (/) for a class, method, ..." spellcheck="false"
              title="Type to search, Up and Down to navigate, Enter to load">
     </div>
 
@@ -59,51 +57,38 @@
 
   <div id="class-metadata">
     
-    <div id="parent-class-section" class="nav-section">
+    
+<div id="parent-class-section" class="nav-section">
   <h3>Parent</h3>
 
-  
   <p class="link">Object
-  
 </div>
 
-    <div id="includes-section" class="nav-section">
+    
+<div id="includes-section" class="nav-section">
   <h3>Included Modules</h3>
 
   <ul class="link-list">
-  
-  
     <li><a class="include" href="XMLTokens.html">REXML::XMLTokens</a>
-  
-  
   </ul>
 </div>
 
     
-    <!-- Method Quickref -->
+    
+<!-- Method Quickref -->
 <div id="method-list-section" class="nav-section">
   <h3>Methods</h3>
 
   <ul class="link-list" role="directory">
-    
     <li ><a href="#method-c-new">::new</a>
-    
     <li ><a href="#method-i-5B-5D-3D">#[]=</a>
-    
     <li ><a href="#method-i-first">#first</a>
-    
     <li ><a href="#method-i-get_first">#get_first</a>
-    
     <li ><a href="#method-i-match">#match</a>
-    
     <li ><a href="#method-i-namespaces-3D">#namespaces=</a>
-    
     <li ><a href="#method-i-parse">#parse</a>
-    
     <li ><a href="#method-i-predicate">#predicate</a>
-    
     <li ><a href="#method-i-variables-3D">#variables=</a>
-    
   </ul>
 </div>
 
@@ -117,64 +102,44 @@
 
   <section class="description">
     
-<p>You don&#39;t want to use this class.  Really.  Use <a href="XPath.html"><code>XPath</code></a>, which is a wrapper for this class.  Believe me.  You don&#39;t want to poke around in here. There is strange, dark magic at work in this code.  Beware.  Go back!  Go back while you still can!</p>
+<p>You don’t want to use this class.  Really.  Use <a href="XPath.html"><code>XPath</code></a>, which is a wrapper for this class.  Believe me.  You don’t want to poke around in here. There is strange, dark magic at work in this code.  Beware.  Go back!  Go back while you still can!</p>
 
   </section>
 
-  
   <section id="5Buntitled-5D" class="documentation-section">
-    
 
-    
 
-    
     <section class="constants-list">
       <header>
         <h3>Constants</h3>
       </header>
       <dl>
-      
         <dt id="DEBUG">DEBUG
-        
         <dd>
-        
-      
         <dt id="LITERAL">LITERAL
-        
         <dd>
-        
-      
       </dl>
     </section>
-    
 
-    
 
-    
+
      <section id="public-class-5Buntitled-5D-method-details" class="method-section">
        <header>
          <h3>Public Class Methods</h3>
        </header>
 
-    
       <div id="method-c-new" class="method-detail ">
-        
-        <div class="method-heading">
-          <span class="method-name">new</span><span
-            class="method-args">(strict: false)</span>
-          
-          <span class="method-click-advice">click to toggle source</span>
-          
+        <div class="method-header">
+          <div class="method-heading">
+            <span class="method-name">new</span><span
+              class="method-args">(strict: false)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
         </div>
-        
 
         <div class="method-description">
           
-          
-          
-          
 
-          
           <div class="method-source-code" id="new-source">
             <pre><span class="ruby-comment"># File lib/rexml/xpath_parser.rb, line 60</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(<span class="ruby-value">strict:</span> <span class="ruby-keyword">false</span>)
@@ -186,76 +151,55 @@
   <span class="ruby-ivar">@strict</span> = <span class="ruby-identifier">strict</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
-          
         </div>
 
-        
 
-        
       </div>
 
-    
     </section>
-  
+
      <section id="public-instance-5Buntitled-5D-method-details" class="method-section">
        <header>
          <h3>Public Instance Methods</h3>
        </header>
 
-    
       <div id="method-i-5B-5D-3D" class="method-detail ">
-        
-        <div class="method-heading">
-          <span class="method-name">[]=</span><span
-            class="method-args">( variable_name, value )</span>
-          
-          <span class="method-click-advice">click to toggle source</span>
-          
+        <div class="method-header">
+          <div class="method-heading">
+            <span class="method-name">[]=</span><span
+              class="method-args">( variable_name, value )</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
         </div>
-        
 
         <div class="method-description">
           
-          
-          
-          
 
-          
           <div class="method-source-code" id="5B-5D-3D-source">
             <pre><span class="ruby-comment"># File lib/rexml/xpath_parser.rb, line 94</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">[]=</span>( <span class="ruby-identifier">variable_name</span>, <span class="ruby-identifier">value</span> )
   <span class="ruby-ivar">@variables</span>[ <span class="ruby-identifier">variable_name</span> ] = <span class="ruby-identifier">value</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
-          
         </div>
 
-        
 
-        
       </div>
 
-    
       <div id="method-i-first" class="method-detail ">
-        
-        <div class="method-heading">
-          <span class="method-name">first</span><span
-            class="method-args">( path_stack, node )</span>
-          
-          <span class="method-click-advice">click to toggle source</span>
-          
+        <div class="method-header">
+          <div class="method-heading">
+            <span class="method-name">first</span><span
+              class="method-args">( path_stack, node )</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
         </div>
-        
 
         <div class="method-description">
-          
           <p>Performs a depth-first (document order) <a href="XPath.html"><code>XPath</code></a> search, and returns the first match.  This is the fastest, lightest way to return a single result.</p>
 
 <p>FIXME: This method is incomplete!</p>
-          
-          
 
-          
           <div class="method-source-code" id="first-source">
             <pre><span class="ruby-comment"># File lib/rexml/xpath_parser.rb, line 103</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">first</span>( <span class="ruby-identifier">path_stack</span>, <span class="ruby-identifier">node</span> )
@@ -293,33 +237,23 @@
   <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
-          
         </div>
 
-        
 
-        
       </div>
 
-    
       <div id="method-i-get_first" class="method-detail ">
-        
-        <div class="method-heading">
-          <span class="method-name">get_first</span><span
-            class="method-args">(path, nodeset)</span>
-          
-          <span class="method-click-advice">click to toggle source</span>
-          
+        <div class="method-header">
+          <div class="method-heading">
+            <span class="method-name">get_first</span><span
+              class="method-args">(path, nodeset)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
         </div>
-        
 
         <div class="method-description">
           
-          
-          
-          
 
-          
           <div class="method-source-code" id="get_first-source">
             <pre><span class="ruby-comment"># File lib/rexml/xpath_parser.rb, line 84</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">get_first</span> <span class="ruby-identifier">path</span>, <span class="ruby-identifier">nodeset</span>
@@ -327,33 +261,23 @@
   <span class="ruby-identifier">first</span>( <span class="ruby-identifier">path_stack</span>, <span class="ruby-identifier">nodeset</span> )
 <span class="ruby-keyword">end</span></pre>
           </div>
-          
         </div>
 
-        
 
-        
       </div>
 
-    
       <div id="method-i-match" class="method-detail ">
-        
-        <div class="method-heading">
-          <span class="method-name">match</span><span
-            class="method-args">(path_stack, nodeset)</span>
-          
-          <span class="method-click-advice">click to toggle source</span>
-          
+        <div class="method-header">
+          <div class="method-heading">
+            <span class="method-name">match</span><span
+              class="method-args">(path_stack, nodeset)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
         </div>
-        
 
         <div class="method-description">
           
-          
-          
-          
 
-          
           <div class="method-source-code" id="match-source">
             <pre><span class="ruby-comment"># File lib/rexml/xpath_parser.rb, line 139</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">match</span>(<span class="ruby-identifier">path_stack</span>, <span class="ruby-identifier">nodeset</span>)
@@ -370,33 +294,23 @@
   <span class="ruby-keyword">end</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
-          
         </div>
 
-        
 
-        
       </div>
 
-    
       <div id="method-i-namespaces-3D" class="method-detail ">
-        
-        <div class="method-heading">
-          <span class="method-name">namespaces=</span><span
-            class="method-args">( namespaces={} )</span>
-          
-          <span class="method-click-advice">click to toggle source</span>
-          
+        <div class="method-header">
+          <div class="method-heading">
+            <span class="method-name">namespaces=</span><span
+              class="method-args">( namespaces={} )</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
         </div>
-        
 
         <div class="method-description">
           
-          
-          
-          
 
-          
           <div class="method-source-code" id="namespaces-3D-source">
             <pre><span class="ruby-comment"># File lib/rexml/xpath_parser.rb, line 69</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">namespaces=</span>( <span class="ruby-identifier">namespaces</span>={} )
@@ -404,33 +318,23 @@
   <span class="ruby-ivar">@namespaces</span> = <span class="ruby-identifier">namespaces</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
-          
         </div>
 
-        
 
-        
       </div>
 
-    
       <div id="method-i-parse" class="method-detail ">
-        
-        <div class="method-heading">
-          <span class="method-name">parse</span><span
-            class="method-args">(path, nodeset)</span>
-          
-          <span class="method-click-advice">click to toggle source</span>
-          
+        <div class="method-header">
+          <div class="method-heading">
+            <span class="method-name">parse</span><span
+              class="method-args">(path, nodeset)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
         </div>
-        
 
         <div class="method-description">
           
-          
-          
-          
 
-          
           <div class="method-source-code" id="parse-source">
             <pre><span class="ruby-comment"># File lib/rexml/xpath_parser.rb, line 79</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">parse</span> <span class="ruby-identifier">path</span>, <span class="ruby-identifier">nodeset</span>
@@ -438,33 +342,23 @@
   <span class="ruby-identifier">match</span>( <span class="ruby-identifier">path_stack</span>, <span class="ruby-identifier">nodeset</span> )
 <span class="ruby-keyword">end</span></pre>
           </div>
-          
         </div>
 
-        
 
-        
       </div>
 
-    
       <div id="method-i-predicate" class="method-detail ">
-        
-        <div class="method-heading">
-          <span class="method-name">predicate</span><span
-            class="method-args">(path, nodeset)</span>
-          
-          <span class="method-click-advice">click to toggle source</span>
-          
+        <div class="method-header">
+          <div class="method-heading">
+            <span class="method-name">predicate</span><span
+              class="method-args">(path, nodeset)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
         </div>
-        
 
         <div class="method-description">
           
-          
-          
-          
 
-          
           <div class="method-source-code" id="predicate-source">
             <pre><span class="ruby-comment"># File lib/rexml/xpath_parser.rb, line 89</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">predicate</span> <span class="ruby-identifier">path</span>, <span class="ruby-identifier">nodeset</span>
@@ -472,33 +366,23 @@
   <span class="ruby-identifier">match</span>( <span class="ruby-identifier">path_stack</span>, <span class="ruby-identifier">nodeset</span> )
 <span class="ruby-keyword">end</span></pre>
           </div>
-          
         </div>
 
-        
 
-        
       </div>
 
-    
       <div id="method-i-variables-3D" class="method-detail ">
-        
-        <div class="method-heading">
-          <span class="method-name">variables=</span><span
-            class="method-args">( vars={} )</span>
-          
-          <span class="method-click-advice">click to toggle source</span>
-          
+        <div class="method-header">
+          <div class="method-heading">
+            <span class="method-name">variables=</span><span
+              class="method-args">( vars={} )</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
         </div>
-        
 
         <div class="method-description">
           
-          
-          
-          
 
-          
           <div class="method-source-code" id="variables-3D-source">
             <pre><span class="ruby-comment"># File lib/rexml/xpath_parser.rb, line 74</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">variables=</span>( <span class="ruby-identifier">vars</span>={} )
@@ -506,25 +390,20 @@
   <span class="ruby-ivar">@variables</span> = <span class="ruby-identifier">vars</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
-          
         </div>
 
-        
 
-        
       </div>
 
-    
     </section>
-  
-  </section>
 
+  </section>
 </main>
 
 
 <footer id="validator-badges" role="contentinfo">
   <p><a href="https://validator.w3.org/check/referer">Validate</a>
-  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.2.1.1.
+  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.6.3.1.
   <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
 </footer>
 

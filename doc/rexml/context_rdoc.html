@@ -21,8 +21,6 @@
 <link href="../../css/rdoc.css" rel="stylesheet">
 
 
-
-
 <body id="top" role="document" class="file">
 <nav role="navigation">
   <div id="project-navigation">
@@ -43,7 +41,7 @@
     <div id="search-field-wrapper">
       <input id="search-field" role="combobox" aria-label="Search"
              aria-autocomplete="list" aria-controls="search-results"
-             type="text" name="search" placeholder="Search" spellcheck="false"
+             type="text" name="search" placeholder="Search (/) for a class, method, ..." spellcheck="false"
              title="Type to search, Up and Down to navigate, Enter to load">
     </div>
 
@@ -59,54 +57,52 @@
 <div class="nav-section">
   <h3>Table of Contents</h3>
 
+
+
   <ul class="link-list" role="directory">
-    <li><a href="#label-Element+Context">Element Context</a>
-    <li><a href="#label-3Arespect_whitespace"><code>:respect_whitespace</code></a>
-    <li><a href="#label-3Acompress_whitespace"><code>:compress_whitespace</code></a>
-    <li><a href="#label-3Aignore_whitespace_nodes"><code>:ignore_whitespace_nodes</code></a>
-    <li><a href="#label-3Araw"><code>:raw</code></a>
+              <li>
+            <details open>
+              <summary>      <a href="#label-Element+Context">Element Context</a>
+</summary>
+              <ul class="link-list" role="directory">
+                          <li>      <a href="#label-3Arespect_whitespace"><code>:respect_whitespace</code></a>
+          <li>      <a href="#label-3Acompress_whitespace"><code>:compress_whitespace</code></a>
+          <li>      <a href="#label-3Aignore_whitespace_nodes"><code>:ignore_whitespace_nodes</code></a>
+          <li>      <a href="#label-3Araw"><code>:raw</code></a>
+
+              </ul>
+            </details>
+          </li>
+
   </ul>
 </div>
 
 
   <div id="project-metadata">
-    <div id="fileindex-section" class="nav-section">
+    
+<div id="fileindex-section" class="nav-section">
   <h3>Pages</h3>
 
   <ul class="link-list">
-  
     <li><a href="../../LICENSE_txt.html">LICENSE</a>
-  
     <li><a href="../../NEWS_md.html">NEWS</a>
-  
     <li><a href="../../README_md.html">README</a>
-  
-    <li><a href="../../doc/rexml/context_rdoc.html">context</a>
-  
-    <li><a href="../../doc/rexml/tasks/rdoc/child_rdoc.html">child</a>
-  
-    <li><a href="../../doc/rexml/tasks/rdoc/document_rdoc.html">document</a>
-  
-    <li><a href="../../doc/rexml/tasks/rdoc/element_rdoc.html">element</a>
-  
-    <li><a href="../../doc/rexml/tasks/rdoc/node_rdoc.html">node</a>
-  
-    <li><a href="../../doc/rexml/tasks/rdoc/parent_rdoc.html">parent</a>
-  
-    <li><a href="../../doc/rexml/tasks/tocs/child_toc_rdoc.html">child_toc</a>
-  
-    <li><a href="../../doc/rexml/tasks/tocs/document_toc_rdoc.html">document_toc</a>
-  
-    <li><a href="../../doc/rexml/tasks/tocs/element_toc_rdoc.html">element_toc</a>
-  
-    <li><a href="../../doc/rexml/tasks/tocs/master_toc_rdoc.html">master_toc</a>
-  
-    <li><a href="../../doc/rexml/tasks/tocs/node_toc_rdoc.html">node_toc</a>
-  
-    <li><a href="../../doc/rexml/tasks/tocs/parent_toc_rdoc.html">parent_toc</a>
-  
-    <li><a href="../../doc/rexml/tutorial_rdoc.html">tutorial</a>
-  
+    <li><details open><summary>doc</summary>
+    <ul class="link-list">
+      <li><a href="../../doc/rexml/context_rdoc.html">context</a>
+      <li><a href="../../doc/rexml/tasks/rdoc/child_rdoc.html">child</a>
+      <li><a href="../../doc/rexml/tasks/rdoc/document_rdoc.html">document</a>
+      <li><a href="../../doc/rexml/tasks/rdoc/element_rdoc.html">element</a>
+      <li><a href="../../doc/rexml/tasks/rdoc/node_rdoc.html">node</a>
+      <li><a href="../../doc/rexml/tasks/rdoc/parent_rdoc.html">parent</a>
+      <li><a href="../../doc/rexml/tasks/tocs/child_toc_rdoc.html">child_toc</a>
+      <li><a href="../../doc/rexml/tasks/tocs/document_toc_rdoc.html">document_toc</a>
+      <li><a href="../../doc/rexml/tasks/tocs/element_toc_rdoc.html">element_toc</a>
+      <li><a href="../../doc/rexml/tasks/tocs/master_toc_rdoc.html">master_toc</a>
+      <li><a href="../../doc/rexml/tasks/tocs/node_toc_rdoc.html">node_toc</a>
+      <li><a href="../../doc/rexml/tasks/tocs/parent_toc_rdoc.html">parent_toc</a>
+      <li><a href="../../doc/rexml/tutorial_rdoc.html">tutorial</a>
+    </ul></details>
   </ul>
 </div>
 
@@ -167,7 +163,7 @@
 <span class="ruby-identifier">d</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-comment"># =&gt; &quot;&lt;root&gt;&lt;foo&gt;a   b&lt;/foo&gt;    &lt;bar&gt;c   d&lt;/bar&gt;   &lt;baz&gt;e   f&lt;/baz&gt;&lt;/root&gt;&quot;</span>
 </pre>
 
-<p>Use <code>:respect_whitespace</code> with an array of element names to specify the elements that <em>are</em> to have their whitespace respected; other elements&#39; whitespace, and whitespace between elements, will be compressed.</p>
+<p>Use <code>:respect_whitespace</code> with an array of element names to specify the elements that <em>are</em> to have their whitespace respected; other elements’ whitespace, and whitespace between elements, will be compressed.</p>
 
 <p>In this example: <code>foo</code> and <code>baz</code> will have their whitespace respected; <code>bar</code> and the space between elements will have their whitespace compressed:</p>
 
@@ -272,7 +268,7 @@
 
 <footer id="validator-badges" role="contentinfo">
   <p><a href="https://validator.w3.org/check/referer">Validate</a>
-  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.2.1.1.
+  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.6.3.1.
   <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
 </footer>
 

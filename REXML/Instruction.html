@@ -21,8 +21,6 @@
 <link href="../css/rdoc.css" rel="stylesheet">
 
 
-
-
 <body id="top" role="document" class="class">
 <nav role="navigation">
   <div id="project-navigation">
@@ -43,7 +41,7 @@
     <div id="search-field-wrapper">
       <input id="search-field" role="combobox" aria-label="Search"
              aria-autocomplete="list" aria-controls="search-results"
-             type="text" name="search" placeholder="Search" spellcheck="false"
+             type="text" name="search" placeholder="Search (/) for a class, method, ..." spellcheck="false"
              title="Type to search, Up and Down to navigate, Enter to load">
     </div>
 
@@ -59,34 +57,27 @@
 
   <div id="class-metadata">
     
-    <div id="parent-class-section" class="nav-section">
+    
+<div id="parent-class-section" class="nav-section">
   <h3>Parent</h3>
 
-  
   <p class="link"><a href="Child.html">REXML::Child</a>
-  
 </div>
 
     
     
-    <!-- Method Quickref -->
+    
+<!-- Method Quickref -->
 <div id="method-list-section" class="nav-section">
   <h3>Methods</h3>
 
   <ul class="link-list" role="directory">
-    
     <li class="calls-super" ><a href="#method-c-new">::new</a>
-    
     <li ><a href="#method-i-3D-3D">#==</a>
-    
     <li ><a href="#method-i-clone">#clone</a>
-    
     <li ><a href="#method-i-inspect">#inspect</a>
-    
     <li ><a href="#method-i-node_type">#node_type</a>
-    
     <li ><a href="#method-i-write">#write</a>
-    
   </ul>
 </div>
 
@@ -104,40 +95,26 @@
 
   </section>
 
-  
   <section id="5Buntitled-5D" class="documentation-section">
-    
 
-    
 
-    
     <section class="constants-list">
       <header>
         <h3>Constants</h3>
       </header>
       <dl>
-      
         <dt id="START">START
-        
         <dd>
-        
-      
         <dt id="STOP">STOP
-        
         <dd>
-        
-      
       </dl>
     </section>
-    
 
-    
     <section class="attribute-method-details" class="method-section">
       <header>
         <h3>Attributes</h3>
       </header>
 
-      
       <div id="attribute-i-content" class="method-detail">
         <div class="method-heading attribute-method-heading">
           <span class="method-name">content</span><span
@@ -145,12 +122,9 @@
         </div>
 
         <div class="method-description">
-        
         <p>target is the “name” of the <a href="Instruction.html"><code>Instruction</code></a>; IE, the “tag” in &lt;?tag …?&gt; content is everything else.</p>
-        
         </div>
       </div>
-      
       <div id="attribute-i-target" class="method-detail">
         <div class="method-heading attribute-method-heading">
           <span class="method-name">target</span><span
@@ -158,45 +132,33 @@
         </div>
 
         <div class="method-description">
-        
         <p>target is the “name” of the <a href="Instruction.html"><code>Instruction</code></a>; IE, the “tag” in &lt;?tag …?&gt; content is everything else.</p>
-        
         </div>
       </div>
-      
     </section>
-    
 
-    
+
      <section id="public-class-5Buntitled-5D-method-details" class="method-section">
        <header>
          <h3>Public Class Methods</h3>
        </header>
 
-    
       <div id="method-c-new" class="method-detail ">
-        
-        <div class="method-heading">
-          <span class="method-name">new</span><span
-            class="method-args">(target, content=nil)</span>
-          
-          <span class="method-click-advice">click to toggle source</span>
-          
+        <div class="method-header">
+          <div class="method-heading">
+            <span class="method-name">new</span><span
+              class="method-args">(target, content=nil)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
         </div>
-        
 
         <div class="method-description">
-          
           <p>Constructs a new <a href="Instruction.html"><code>Instruction</code></a> @param target can be one of a number of things.  If String, then the target of this instruction is set to this.  If an <a href="Instruction.html"><code>Instruction</code></a>, then the <a href="Instruction.html"><code>Instruction</code></a> is shallowly cloned (target and content are copied). @param content Must be either a String, or a <a href="Parent.html"><code>Parent</code></a>.  Can only be a <a href="Parent.html"><code>Parent</code></a> if the target argument is a <a href="Source.html"><code>Source</code></a>.  Otherwise, this String is set as the content of this instruction.</p>
-          
-          
             <div class="method-calls-super">
               Calls superclass method
               <a href="Child.html#method-c-new"><code>REXML::Child::new</code></a>
             </div>
-          
 
-          
           <div class="method-source-code" id="new-source">
             <pre><span class="ruby-comment"># File lib/rexml/instruction.rb, line 25</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(<span class="ruby-identifier">target</span>, <span class="ruby-identifier">content</span>=<span class="ruby-keyword">nil</span>)
@@ -218,41 +180,30 @@
   <span class="ruby-ivar">@content</span>.<span class="ruby-identifier">strip!</span> <span class="ruby-keyword">if</span> <span class="ruby-ivar">@content</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
-          
         </div>
 
-        
 
-        
       </div>
 
-    
     </section>
-  
+
      <section id="public-instance-5Buntitled-5D-method-details" class="method-section">
        <header>
          <h3>Public Instance Methods</h3>
        </header>
 
-    
       <div id="method-i-3D-3D" class="method-detail ">
-        
-        <div class="method-heading">
-          <span class="method-name">==</span><span
-            class="method-args">( other )</span>
-          
-          <span class="method-click-advice">click to toggle source</span>
-          
+        <div class="method-header">
+          <div class="method-heading">
+            <span class="method-name">==</span><span
+              class="method-args">( other )</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
         </div>
-        
 
         <div class="method-description">
-          
           <p>@return true if other is an <a href="Instruction.html"><code>Instruction</code></a>, and the content and target of the other matches the target and content of this object.</p>
-          
-          
 
-          
           <div class="method-source-code" id="3D-3D-source">
             <pre><span class="ruby-comment"># File lib/rexml/instruction.rb, line 65</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">==</span>( <span class="ruby-identifier">other</span> )
@@ -261,134 +212,94 @@
   <span class="ruby-identifier">other</span>.<span class="ruby-identifier">content</span> <span class="ruby-operator">==</span> <span class="ruby-ivar">@content</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
-          
         </div>
 
-        
 
-        
       </div>
 
-    
       <div id="method-i-clone" class="method-detail ">
-        
-        <div class="method-heading">
-          <span class="method-name">clone</span><span
-            class="method-args">()</span>
-          
-          <span class="method-click-advice">click to toggle source</span>
-          
+        <div class="method-header">
+          <div class="method-heading">
+            <span class="method-name">clone</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
         </div>
-        
 
         <div class="method-description">
           
-          
-          
-          
 
-          
           <div class="method-source-code" id="clone-source">
             <pre><span class="ruby-comment"># File lib/rexml/instruction.rb, line 44</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">clone</span>
   <span class="ruby-constant">Instruction</span>.<span class="ruby-identifier">new</span> <span class="ruby-keyword">self</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
-          
         </div>
 
-        
 
-        
       </div>
 
-    
       <div id="method-i-inspect" class="method-detail ">
-        
-        <div class="method-heading">
-          <span class="method-name">inspect</span><span
-            class="method-args">()</span>
-          
-          <span class="method-click-advice">click to toggle source</span>
-          
+        <div class="method-header">
+          <div class="method-heading">
+            <span class="method-name">inspect</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
         </div>
-        
 
         <div class="method-description">
           
-          
-          
-          
 
-          
           <div class="method-source-code" id="inspect-source">
             <pre><span class="ruby-comment"># File lib/rexml/instruction.rb, line 75</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">inspect</span>
   <span class="ruby-node">&quot;&lt;?p-i #{target} ...?&gt;&quot;</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
-          
         </div>
 
-        
 
-        
       </div>
 
-    
       <div id="method-i-node_type" class="method-detail ">
-        
-        <div class="method-heading">
-          <span class="method-name">node_type</span><span
-            class="method-args">()</span>
-          
-          <span class="method-click-advice">click to toggle source</span>
-          
+        <div class="method-header">
+          <div class="method-heading">
+            <span class="method-name">node_type</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
         </div>
-        
 
         <div class="method-description">
           
-          
-          
-          
 
-          
           <div class="method-source-code" id="node_type-source">
             <pre><span class="ruby-comment"># File lib/rexml/instruction.rb, line 71</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">node_type</span>
   <span class="ruby-value">:processing_instruction</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
-          
         </div>
 
-        
 
-        
       </div>
 
-    
       <div id="method-i-write" class="method-detail ">
-        
-        <div class="method-heading">
-          <span class="method-name">write</span><span
-            class="method-args">(writer, indent=-1, transitive=false, ie_hack=false)</span>
-          
-          <span class="method-click-advice">click to toggle source</span>
-          
+        <div class="method-header">
+          <div class="method-heading">
+            <span class="method-name">write</span><span
+              class="method-args">(writer, indent=-1, transitive=false, ie_hack=false)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
         </div>
-        
 
         <div class="method-description">
-          
           <h2 id="method-i-write-label-DEPRECATED">DEPRECATED<span><a href="#method-i-write-label-DEPRECATED">&para;</a> <a href="#top">&uarr;</a></span></h2>
 
 <p>See the rexml/formatters package</p>
-          
-          
 
-          
           <div class="method-source-code" id="write-source">
             <pre><span class="ruby-comment"># File lib/rexml/instruction.rb, line 51</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">write</span> <span class="ruby-identifier">writer</span>, <span class="ruby-identifier">indent</span>=<span class="ruby-value">-1</span>, <span class="ruby-identifier">transitive</span>=<span class="ruby-keyword">false</span>, <span class="ruby-identifier">ie_hack</span>=<span class="ruby-keyword">false</span>
@@ -403,25 +314,20 @@
   <span class="ruby-identifier">writer</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-constant">STOP</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
-          
         </div>
 
-        
 
-        
       </div>
 
-    
     </section>
-  
-  </section>
 
+  </section>
 </main>
 
 
 <footer id="validator-badges" role="contentinfo">
   <p><a href="https://validator.w3.org/check/referer">Validate</a>
-  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.2.1.1.
+  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.6.3.1.
   <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
 </footer>
 

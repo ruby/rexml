@@ -21,8 +21,6 @@
 <link href="../css/rdoc.css" rel="stylesheet">
 
 
-
-
 <body id="top" role="document" class="class">
 <nav role="navigation">
   <div id="project-navigation">
@@ -43,7 +41,7 @@
     <div id="search-field-wrapper">
       <input id="search-field" role="combobox" aria-label="Search"
              aria-autocomplete="list" aria-controls="search-results"
-             type="text" name="search" placeholder="Search" spellcheck="false"
+             type="text" name="search" placeholder="Search (/) for a class, method, ..." spellcheck="false"
              title="Type to search, Up and Down to navigate, Enter to load">
     </div>
 
@@ -59,39 +57,32 @@
 
   <div id="class-metadata">
     
-    <div id="parent-class-section" class="nav-section">
+    
+<div id="parent-class-section" class="nav-section">
   <h3>Parent</h3>
 
-  
   <p class="link">Object
-  
 </div>
 
-    <div id="includes-section" class="nav-section">
+    
+<div id="includes-section" class="nav-section">
   <h3>Included Modules</h3>
 
   <ul class="link-list">
-  
-  
     <li><a class="include" href="Functions.html">REXML::Functions</a>
-  
-  
   </ul>
 </div>
 
     
-    <!-- Method Quickref -->
+    
+<!-- Method Quickref -->
 <div id="method-list-section" class="nav-section">
   <h3>Methods</h3>
 
   <ul class="link-list" role="directory">
-    
     <li ><a href="#method-c-each">::each</a>
-    
     <li ><a href="#method-c-first">::first</a>
-    
     <li ><a href="#method-c-match">::match</a>
-    
   </ul>
 </div>
 
@@ -109,57 +100,43 @@
 
   </section>
 
-  
   <section id="5Buntitled-5D" class="documentation-section">
-    
 
-    
 
-    
     <section class="constants-list">
       <header>
         <h3>Constants</h3>
       </header>
       <dl>
-      
         <dt id="EMPTY_HASH">EMPTY_HASH
-        
         <dd><p>A base Hash object, supposing to be used when initializing a default empty namespaces set, but is currently unused. TODO: either set the namespaces=EMPTY_HASH, or deprecate this.</p>
-        
-      
       </dl>
     </section>
-    
 
-    
 
-    
+
      <section id="public-class-5Buntitled-5D-method-details" class="method-section">
        <header>
          <h3>Public Class Methods</h3>
        </header>
 
-    
       <div id="method-c-each" class="method-detail ">
-        
-        <div class="method-heading">
-          <span class="method-name">each</span><span
-            class="method-args">(element, path=nil, namespaces=nil, variables={}, options={}, &amp;block)</span>
-          
-          <span class="method-click-advice">click to toggle source</span>
-          
+        <div class="method-header">
+          <div class="method-heading">
+            <span class="method-name">each</span><span
+              class="method-args">(element, path=nil, namespaces=nil, variables={}, options={}, &amp;block)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
         </div>
-        
 
         <div class="method-description">
-          
           <p>Iterates over nodes that match the given path, calling the supplied block with the match.</p>
 <dl class="rdoc-list note-list"><dt>element
 <dd>
 <p>The context element</p>
 </dd><dt>path
 <dd>
-<p>The xpath to search for.  If not supplied or nil, defaults to &#39;*&#39;</p>
+<p>The xpath to search for.  If not supplied or nil, defaults to ‘*’</p>
 </dd><dt>namespaces
 <dd>
 <p>If supplied, a Hash which defines a namespace mapping</p>
@@ -173,10 +150,7 @@ XPath.each( node, &#39;/*[@attr=&#39;v&#39;]&#39; ) { |el| ... }
 XPath.each( node, &#39;ancestor::x&#39; ) { |el| ... }
 XPath.each( node, &#39;/book/publisher/text()=$publisher&#39;, {}, {&quot;publisher&quot;=&gt;&quot;O&#39;Reilly&quot;}) \
   {|el| ... }</pre>
-          
-          
 
-          
           <div class="method-source-code" id="each-source">
             <pre><span class="ruby-comment"># File lib/rexml/xpath.rb, line 60</span>
 <span class="ruby-keyword">def</span> <span class="ruby-constant">XPath</span><span class="ruby-operator">::</span><span class="ruby-identifier ruby-title">each</span>(<span class="ruby-identifier">element</span>, <span class="ruby-identifier">path</span>=<span class="ruby-keyword">nil</span>, <span class="ruby-identifier">namespaces</span>=<span class="ruby-keyword">nil</span>, <span class="ruby-identifier">variables</span>={}, <span class="ruby-identifier">options</span>={}, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
@@ -190,35 +164,28 @@ XPath.each( node, &#39;/book/publisher/text()=$publisher&#39;, {}, {&quot;publis
   <span class="ruby-identifier">parser</span>.<span class="ruby-identifier">parse</span>(<span class="ruby-identifier">path</span>, <span class="ruby-identifier">element</span>).<span class="ruby-identifier">each</span>( <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span> )
 <span class="ruby-keyword">end</span></pre>
           </div>
-          
         </div>
 
-        
 
-        
       </div>
 
-    
       <div id="method-c-first" class="method-detail ">
-        
-        <div class="method-heading">
-          <span class="method-name">first</span><span
-            class="method-args">(element, path=nil, namespaces=nil, variables={}, options={})</span>
-          
-          <span class="method-click-advice">click to toggle source</span>
-          
+        <div class="method-header">
+          <div class="method-heading">
+            <span class="method-name">first</span><span
+              class="method-args">(element, path=nil, namespaces=nil, variables={}, options={})</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
         </div>
-        
 
         <div class="method-description">
-          
           <p>Finds and returns the first node that matches the supplied xpath.</p>
 <dl class="rdoc-list note-list"><dt>element
 <dd>
 <p>The context element</p>
 </dd><dt>path
 <dd>
-<p>The xpath to search for.  If not supplied or nil, returns the first node matching &#39;*&#39;.</p>
+<p>The xpath to search for.  If not supplied or nil, returns the first node matching ‘*’.</p>
 </dd><dt>namespaces
 <dd>
 <p>If supplied, a Hash which defines a namespace mapping.</p>
@@ -231,10 +198,7 @@ XPath.each( node, &#39;/book/publisher/text()=$publisher&#39;, {}, {&quot;publis
 XPath.first( doc, &quot;//b&quot;} )
 XPath.first( node, &quot;a/x:b&quot;, { &quot;x&quot;=&gt;&quot;http://doofus&quot; } )
 XPath.first( node, &#39;/book/publisher/text()=$publisher&#39;, {}, {&quot;publisher&quot;=&gt;&quot;O&#39;Reilly&quot;})</pre>
-          
-          
 
-          
           <div class="method-source-code" id="first-source">
             <pre><span class="ruby-comment"># File lib/rexml/xpath.rb, line 31</span>
 <span class="ruby-keyword">def</span> <span class="ruby-constant">XPath</span><span class="ruby-operator">::</span><span class="ruby-identifier ruby-title">first</span>(<span class="ruby-identifier">element</span>, <span class="ruby-identifier">path</span>=<span class="ruby-keyword">nil</span>, <span class="ruby-identifier">namespaces</span>=<span class="ruby-keyword">nil</span>, <span class="ruby-identifier">variables</span>={}, <span class="ruby-identifier">options</span>={})
@@ -248,33 +212,23 @@ XPath.first( node, &#39;/book/publisher/text()=$publisher&#39;, {}, {&quot;publi
   <span class="ruby-identifier">parser</span>.<span class="ruby-identifier">parse</span>(<span class="ruby-identifier">path</span>, <span class="ruby-identifier">element</span>).<span class="ruby-identifier">flatten</span>[<span class="ruby-value">0</span>]
 <span class="ruby-keyword">end</span></pre>
           </div>
-          
         </div>
 
-        
 
-        
       </div>
 
-    
       <div id="method-c-match" class="method-detail ">
-        
-        <div class="method-heading">
-          <span class="method-name">match</span><span
-            class="method-args">(element, path=nil, namespaces=nil, variables={}, options={})</span>
-          
-          <span class="method-click-advice">click to toggle source</span>
-          
+        <div class="method-header">
+          <div class="method-heading">
+            <span class="method-name">match</span><span
+              class="method-args">(element, path=nil, namespaces=nil, variables={}, options={})</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
         </div>
-        
 
         <div class="method-description">
-          
           <p>Returns an array of nodes matching a given <a href="XPath.html"><code>XPath</code></a>.</p>
-          
-          
 
-          
           <div class="method-source-code" id="match-source">
             <pre><span class="ruby-comment"># File lib/rexml/xpath.rb, line 72</span>
 <span class="ruby-keyword">def</span> <span class="ruby-constant">XPath</span><span class="ruby-operator">::</span><span class="ruby-identifier ruby-title">match</span>(<span class="ruby-identifier">element</span>, <span class="ruby-identifier">path</span>=<span class="ruby-keyword">nil</span>, <span class="ruby-identifier">namespaces</span>=<span class="ruby-keyword">nil</span>, <span class="ruby-identifier">variables</span>={}, <span class="ruby-identifier">options</span>={})
@@ -286,25 +240,20 @@ XPath.first( node, &#39;/book/publisher/text()=$publisher&#39;, {}, {&quot;publi
   <span class="ruby-identifier">parser</span>.<span class="ruby-identifier">parse</span>(<span class="ruby-identifier">path</span>,<span class="ruby-identifier">element</span>)
 <span class="ruby-keyword">end</span></pre>
           </div>
-          
         </div>
 
-        
 
-        
       </div>
 
-    
     </section>
-  
-  </section>
 
+  </section>
 </main>
 
 
 <footer id="validator-badges" role="contentinfo">
   <p><a href="https://validator.w3.org/check/referer">Validate</a>
-  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.2.1.1.
+  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.6.3.1.
   <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
 </footer>
 

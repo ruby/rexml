@@ -21,8 +21,6 @@
 <link href="../../../../css/rdoc.css" rel="stylesheet">
 
 
-
-
 <body id="top" role="document" class="file">
 <nav role="navigation">
   <div id="project-navigation">
@@ -43,7 +41,7 @@
     <div id="search-field-wrapper">
       <input id="search-field" role="combobox" aria-label="Search"
              aria-autocomplete="list" aria-controls="search-results"
-             type="text" name="search" placeholder="Search" spellcheck="false"
+             type="text" name="search" placeholder="Search (/) for a class, method, ..." spellcheck="false"
              title="Type to search, Up and Down to navigate, Enter to load">
     </div>
 
@@ -59,102 +57,140 @@
 <div class="nav-section">
   <h3>Table of Contents</h3>
 
+
+
   <ul class="link-list" role="directory">
-    <li><a href="#label-Class+Element">Class Element</a>
-    <li><a href="#label-New+Element">New Element</a>
-    <li><a href="#label-Task-3A+Create+a+Default+Element">Task: Create a Default Element</a>
-    <li><a href="#label-Task-3A+Create+a+Named+Element">Task: Create a Named Element</a>
-    <li><a href="#label-Task-3A+Create+an+Element+with+Name+and+Parent">Task: Create an Element with Name and Parent</a>
-    <li><a href="#label-Task-3A+Create+an+Element+with+Name-2C+Parent-2C+and+Context">Task: Create an Element with Name, Parent, and Context</a>
-    <li><a href="#label-Task-3A+Create+a+Shallow+Clone">Task: Create a Shallow Clone</a>
-    <li><a href="#label-Attributes">Attributes</a>
-    <li><a href="#label-Task-3A+Create+and+Add+an+Attribute">Task: Create and Add an Attribute</a>
-    <li><a href="#label-Task-3A+Add+an+Existing+Attribute">Task: Add an Existing Attribute</a>
-    <li><a href="#label-Task-3A+Add+Multiple+Attributes+from+a+Hash">Task: Add Multiple Attributes from a Hash</a>
-    <li><a href="#label-Task-3A+Add+Multiple+Attributes+from+an+Array">Task: Add Multiple Attributes from an Array</a>
-    <li><a href="#label-Task-3A+Retrieve+the+Value+for+an+Attribute+Name">Task: Retrieve the Value for an Attribute Name</a>
-    <li><a href="#label-Task-3A+Retrieve+the+Attribute+Value+for+a+Name+and+Namespace">Task: Retrieve the Attribute Value for a Name and Namespace</a>
-    <li><a href="#label-Task-3A+Delete+an+Attribute">Task: Delete an Attribute</a>
-    <li><a href="#label-Task-3A+Determine+Whether+the+Element+Has+Attributes">Task: Determine Whether the Element Has Attributes</a>
-    <li><a href="#label-Children">Children</a>
-    <li><a href="#label-Task-3A+Create+and+Add+an+Element">Task: Create and Add an Element</a>
-    <li><a href="#label-Task-3A+Add+an+Existing+Element">Task: Add an Existing Element</a>
-    <li><a href="#label-Task-3A+Create+and+Add+an+Element+with+Attributes">Task: Create and Add an Element with Attributes</a>
-    <li><a href="#label-Task-3A+Add+an+Existing+Element+with+Added+Attributes">Task: Add an Existing Element with Added Attributes</a>
-    <li><a href="#label-Task-3A+Delete+a+Specified+Element">Task: Delete a Specified Element</a>
-    <li><a href="#label-Task-3A+Delete+an+Element+by+Index">Task: Delete an Element by Index</a>
-    <li><a href="#label-Task-3A+Delete+an+Element+by+XPath">Task: Delete an Element by XPath</a>
-    <li><a href="#label-Task-3A+Determine+Whether+Element+Children">Task: Determine Whether Element Children</a>
-    <li><a href="#label-Task-3A+Get+Element+Descendants+by+XPath">Task: Get Element Descendants by XPath</a>
-    <li><a href="#label-Task-3A+Get+Next+Element+Sibling">Task: Get Next Element Sibling</a>
-    <li><a href="#label-Task-3A+Get+Previous+Element+Sibling">Task: Get Previous Element Sibling</a>
-    <li><a href="#label-Task-3A+Add+a+Text+Node">Task: Add a Text Node</a>
-    <li><a href="#label-Task-3A+Replace+the+First+Text+Node">Task: Replace the First Text Node</a>
-    <li><a href="#label-Task-3A+Remove+the+First+Text+Node">Task: Remove the First Text Node</a>
-    <li><a href="#label-Task-3A+Retrieve+the+First+Text+Node">Task: Retrieve the First Text Node</a>
-    <li><a href="#label-Task-3A+Retrieve+a+Specific+Text+Node">Task: Retrieve a Specific Text Node</a>
-    <li><a href="#label-Task-3A+Determine+Whether+the+Element+has+Text+Nodes">Task: Determine Whether the Element has Text Nodes</a>
-    <li><a href="#label-Task-3A+Get+the+Child+at+a+Given+Index">Task: Get the Child at a Given Index</a>
-    <li><a href="#label-Task-3A+Get+All+CDATA+Children">Task: Get All CDATA Children</a>
-    <li><a href="#label-Task-3A+Get+All+Comment+Children">Task: Get All Comment Children</a>
-    <li><a href="#label-Task-3A+Get+All+Processing+Instruction+Children">Task: Get All Processing Instruction Children</a>
-    <li><a href="#label-Task-3A+Get+All+Text+Children">Task: Get All Text Children</a>
-    <li><a href="#label-Namespaces">Namespaces</a>
-    <li><a href="#label-Task-3A+Add+a+Namespace">Task: Add a Namespace</a>
-    <li><a href="#label-Task-3A+Delete+the+Default+Namespace">Task: Delete the Default Namespace</a>
-    <li><a href="#label-Task-3A+Delete+a+Specific+Namespace">Task: Delete a Specific Namespace</a>
-    <li><a href="#label-Task-3A+Get+a+Namespace+URI">Task: Get a Namespace URI</a>
-    <li><a href="#label-Task-3A+Retrieve+Namespaces">Task: Retrieve Namespaces</a>
-    <li><a href="#label-Task-3A+Retrieve+Namespace+Prefixes">Task: Retrieve Namespace Prefixes</a>
-    <li><a href="#label-Iteration">Iteration</a>
-    <li><a href="#label-Task-3A+Iterate+Over+Elements">Task: Iterate Over Elements</a>
-    <li><a href="#label-Task-3A+Iterate+Over+Elements+Having+a+Specified+Attribute">Task: Iterate Over Elements Having a Specified Attribute</a>
-    <li><a href="#label-Task-3A+Iterate+Over+Elements+Having+a+Specified+Attribute+and+Value">Task: Iterate Over Elements Having a Specified Attribute and Value</a>
-    <li><a href="#label-Task-3A+Iterate+Over+Elements+Having+Specified+Text">Task: Iterate Over Elements Having Specified Text</a>
-    <li><a href="#label-Context">Context</a>
-    <li><a href="#label-Other+Getters">Other Getters</a>
+              <li>
+            <details open>
+              <summary>      <a href="#label-Class+Element">Class Element</a>
+</summary>
+              <ul class="link-list" role="directory">
+                          <li>
+            <details open>
+              <summary>      <a href="#label-New+Element">New Element</a>
+</summary>
+              <ul class="link-list" role="directory">
+                          <li>      <a href="#label-Task-3A+Create+a+Default+Element">Task: Create a Default Element</a>
+          <li>      <a href="#label-Task-3A+Create+a+Named+Element">Task: Create a Named Element</a>
+          <li>      <a href="#label-Task-3A+Create+an+Element+with+Name+and+Parent">Task: Create an Element with Name and Parent</a>
+          <li>      <a href="#label-Task-3A+Create+an+Element+with+Name-2C+Parent-2C+and+Context">Task: Create an Element with Name, Parent, and Context</a>
+          <li>      <a href="#label-Task-3A+Create+a+Shallow+Clone">Task: Create a Shallow Clone</a>
+
+              </ul>
+            </details>
+          </li>
+          <li>
+            <details open>
+              <summary>      <a href="#label-Attributes">Attributes</a>
+</summary>
+              <ul class="link-list" role="directory">
+                          <li>      <a href="#label-Task-3A+Create+and+Add+an+Attribute">Task: Create and Add an Attribute</a>
+          <li>      <a href="#label-Task-3A+Add+an+Existing+Attribute">Task: Add an Existing Attribute</a>
+          <li>      <a href="#label-Task-3A+Add+Multiple+Attributes+from+a+Hash">Task: Add Multiple Attributes from a Hash</a>
+          <li>      <a href="#label-Task-3A+Add+Multiple+Attributes+from+an+Array">Task: Add Multiple Attributes from an Array</a>
+          <li>      <a href="#label-Task-3A+Retrieve+the+Value+for+an+Attribute+Name">Task: Retrieve the Value for an Attribute Name</a>
+          <li>      <a href="#label-Task-3A+Retrieve+the+Attribute+Value+for+a+Name+and+Namespace">Task: Retrieve the Attribute Value for a Name and Namespace</a>
+          <li>      <a href="#label-Task-3A+Delete+an+Attribute">Task: Delete an Attribute</a>
+          <li>      <a href="#label-Task-3A+Determine+Whether+the+Element+Has+Attributes">Task: Determine Whether the Element Has Attributes</a>
+
+              </ul>
+            </details>
+          </li>
+          <li>
+            <details open>
+              <summary>      <a href="#label-Children">Children</a>
+</summary>
+              <ul class="link-list" role="directory">
+                          <li>      <a href="#label-Task-3A+Create+and+Add+an+Element">Task: Create and Add an Element</a>
+          <li>      <a href="#label-Task-3A+Add+an+Existing+Element">Task: Add an Existing Element</a>
+          <li>      <a href="#label-Task-3A+Create+and+Add+an+Element+with+Attributes">Task: Create and Add an Element with Attributes</a>
+          <li>      <a href="#label-Task-3A+Add+an+Existing+Element+with+Added+Attributes">Task: Add an Existing Element with Added Attributes</a>
+          <li>      <a href="#label-Task-3A+Delete+a+Specified+Element">Task: Delete a Specified Element</a>
+          <li>      <a href="#label-Task-3A+Delete+an+Element+by+Index">Task: Delete an Element by Index</a>
+          <li>      <a href="#label-Task-3A+Delete+an+Element+by+XPath">Task: Delete an Element by XPath</a>
+          <li>      <a href="#label-Task-3A+Determine+Whether+Element+Children">Task: Determine Whether Element Children</a>
+          <li>      <a href="#label-Task-3A+Get+Element+Descendants+by+XPath">Task: Get Element Descendants by XPath</a>
+          <li>      <a href="#label-Task-3A+Get+Next+Element+Sibling">Task: Get Next Element Sibling</a>
+          <li>      <a href="#label-Task-3A+Get+Previous+Element+Sibling">Task: Get Previous Element Sibling</a>
+          <li>      <a href="#label-Task-3A+Add+a+Text+Node">Task: Add a Text Node</a>
+          <li>      <a href="#label-Task-3A+Replace+the+First+Text+Node">Task: Replace the First Text Node</a>
+          <li>      <a href="#label-Task-3A+Remove+the+First+Text+Node">Task: Remove the First Text Node</a>
+          <li>      <a href="#label-Task-3A+Retrieve+the+First+Text+Node">Task: Retrieve the First Text Node</a>
+          <li>      <a href="#label-Task-3A+Retrieve+a+Specific+Text+Node">Task: Retrieve a Specific Text Node</a>
+          <li>      <a href="#label-Task-3A+Determine+Whether+the+Element+has+Text+Nodes">Task: Determine Whether the Element has Text Nodes</a>
+          <li>      <a href="#label-Task-3A+Get+the+Child+at+a+Given+Index">Task: Get the Child at a Given Index</a>
+          <li>      <a href="#label-Task-3A+Get+All+CDATA+Children">Task: Get All CDATA Children</a>
+          <li>      <a href="#label-Task-3A+Get+All+Comment+Children">Task: Get All Comment Children</a>
+          <li>      <a href="#label-Task-3A+Get+All+Processing+Instruction+Children">Task: Get All Processing Instruction Children</a>
+          <li>      <a href="#label-Task-3A+Get+All+Text+Children">Task: Get All Text Children</a>
+
+              </ul>
+            </details>
+          </li>
+          <li>
+            <details open>
+              <summary>      <a href="#label-Namespaces">Namespaces</a>
+</summary>
+              <ul class="link-list" role="directory">
+                          <li>      <a href="#label-Task-3A+Add+a+Namespace">Task: Add a Namespace</a>
+          <li>      <a href="#label-Task-3A+Delete+the+Default+Namespace">Task: Delete the Default Namespace</a>
+          <li>      <a href="#label-Task-3A+Delete+a+Specific+Namespace">Task: Delete a Specific Namespace</a>
+          <li>      <a href="#label-Task-3A+Get+a+Namespace+URI">Task: Get a Namespace URI</a>
+          <li>      <a href="#label-Task-3A+Retrieve+Namespaces">Task: Retrieve Namespaces</a>
+          <li>      <a href="#label-Task-3A+Retrieve+Namespace+Prefixes">Task: Retrieve Namespace Prefixes</a>
+
+              </ul>
+            </details>
+          </li>
+          <li>
+            <details open>
+              <summary>      <a href="#label-Iteration">Iteration</a>
+</summary>
+              <ul class="link-list" role="directory">
+                          <li>      <a href="#label-Task-3A+Iterate+Over+Elements">Task: Iterate Over Elements</a>
+          <li>      <a href="#label-Task-3A+Iterate+Over+Elements+Having+a+Specified+Attribute">Task: Iterate Over Elements Having a Specified Attribute</a>
+          <li>      <a href="#label-Task-3A+Iterate+Over+Elements+Having+a+Specified+Attribute+and+Value">Task: Iterate Over Elements Having a Specified Attribute and Value</a>
+          <li>      <a href="#label-Task-3A+Iterate+Over+Elements+Having+Specified+Text">Task: Iterate Over Elements Having Specified Text</a>
+
+              </ul>
+            </details>
+          </li>
+          <li>      <a href="#label-Context">Context</a>
+          <li>      <a href="#label-Other+Getters">Other Getters</a>
+
+              </ul>
+            </details>
+          </li>
+
   </ul>
 </div>
 
 
   <div id="project-metadata">
-    <div id="fileindex-section" class="nav-section">
+    
+<div id="fileindex-section" class="nav-section">
   <h3>Pages</h3>
 
   <ul class="link-list">
-  
     <li><a href="../../../../LICENSE_txt.html">LICENSE</a>
-  
     <li><a href="../../../../NEWS_md.html">NEWS</a>
-  
     <li><a href="../../../../README_md.html">README</a>
-  
-    <li><a href="../../../../doc/rexml/context_rdoc.html">context</a>
-  
-    <li><a href="../../../../doc/rexml/tasks/rdoc/child_rdoc.html">child</a>
-  
-    <li><a href="../../../../doc/rexml/tasks/rdoc/document_rdoc.html">document</a>
-  
-    <li><a href="../../../../doc/rexml/tasks/rdoc/element_rdoc.html">element</a>
-  
-    <li><a href="../../../../doc/rexml/tasks/rdoc/node_rdoc.html">node</a>
-  
-    <li><a href="../../../../doc/rexml/tasks/rdoc/parent_rdoc.html">parent</a>
-  
-    <li><a href="../../../../doc/rexml/tasks/tocs/child_toc_rdoc.html">child_toc</a>
-  
-    <li><a href="../../../../doc/rexml/tasks/tocs/document_toc_rdoc.html">document_toc</a>
-  
-    <li><a href="../../../../doc/rexml/tasks/tocs/element_toc_rdoc.html">element_toc</a>
-  
-    <li><a href="../../../../doc/rexml/tasks/tocs/master_toc_rdoc.html">master_toc</a>
-  
-    <li><a href="../../../../doc/rexml/tasks/tocs/node_toc_rdoc.html">node_toc</a>
-  
-    <li><a href="../../../../doc/rexml/tasks/tocs/parent_toc_rdoc.html">parent_toc</a>
-  
-    <li><a href="../../../../doc/rexml/tutorial_rdoc.html">tutorial</a>
-  
+    <li><details open><summary>doc</summary>
+    <ul class="link-list">
+      <li><a href="../../../../doc/rexml/context_rdoc.html">context</a>
+      <li><a href="../../../../doc/rexml/tasks/rdoc/child_rdoc.html">child</a>
+      <li><a href="../../../../doc/rexml/tasks/rdoc/document_rdoc.html">document</a>
+      <li><a href="../../../../doc/rexml/tasks/rdoc/element_rdoc.html">element</a>
+      <li><a href="../../../../doc/rexml/tasks/rdoc/node_rdoc.html">node</a>
+      <li><a href="../../../../doc/rexml/tasks/rdoc/parent_rdoc.html">parent</a>
+      <li><a href="../../../../doc/rexml/tasks/tocs/child_toc_rdoc.html">child_toc</a>
+      <li><a href="../../../../doc/rexml/tasks/tocs/document_toc_rdoc.html">document_toc</a>
+      <li><a href="../../../../doc/rexml/tasks/tocs/element_toc_rdoc.html">element_toc</a>
+      <li><a href="../../../../doc/rexml/tasks/tocs/master_toc_rdoc.html">master_toc</a>
+      <li><a href="../../../../doc/rexml/tasks/tocs/node_toc_rdoc.html">node_toc</a>
+      <li><a href="../../../../doc/rexml/tasks/tocs/parent_toc_rdoc.html">parent_toc</a>
+      <li><a href="../../../../doc/rexml/tutorial_rdoc.html">tutorial</a>
+    </ul></details>
   </ul>
 </div>
 
@@ -827,7 +863,7 @@
 
 <footer id="validator-badges" role="contentinfo">
   <p><a href="https://validator.w3.org/check/referer">Validate</a>
-  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.2.1.1.
+  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.6.3.1.
   <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
 </footer>
 

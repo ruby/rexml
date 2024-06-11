@@ -21,8 +21,6 @@
 <link href="./css/rdoc.css" rel="stylesheet">
 
 
-
-
 <body id="top" role="document" class="file">
 <nav role="navigation">
   <div id="project-navigation">
@@ -43,7 +41,7 @@
     <div id="search-field-wrapper">
       <input id="search-field" role="combobox" aria-label="Search"
              aria-autocomplete="list" aria-controls="search-results"
-             type="text" name="search" placeholder="Search" spellcheck="false"
+             type="text" name="search" placeholder="Search (/) for a class, method, ..." spellcheck="false"
              title="Type to search, Up and Down to navigate, Enter to load">
     </div>
 
@@ -58,43 +56,30 @@
   
 
   <div id="project-metadata">
-    <div id="fileindex-section" class="nav-section">
+    
+<div id="fileindex-section" class="nav-section">
   <h3>Pages</h3>
 
   <ul class="link-list">
-  
     <li><a href="./LICENSE_txt.html">LICENSE</a>
-  
     <li><a href="./NEWS_md.html">NEWS</a>
-  
     <li><a href="./README_md.html">README</a>
-  
-    <li><a href="./doc/rexml/context_rdoc.html">context</a>
-  
-    <li><a href="./doc/rexml/tasks/rdoc/child_rdoc.html">child</a>
-  
-    <li><a href="./doc/rexml/tasks/rdoc/document_rdoc.html">document</a>
-  
-    <li><a href="./doc/rexml/tasks/rdoc/element_rdoc.html">element</a>
-  
-    <li><a href="./doc/rexml/tasks/rdoc/node_rdoc.html">node</a>
-  
-    <li><a href="./doc/rexml/tasks/rdoc/parent_rdoc.html">parent</a>
-  
-    <li><a href="./doc/rexml/tasks/tocs/child_toc_rdoc.html">child_toc</a>
-  
-    <li><a href="./doc/rexml/tasks/tocs/document_toc_rdoc.html">document_toc</a>
-  
-    <li><a href="./doc/rexml/tasks/tocs/element_toc_rdoc.html">element_toc</a>
-  
-    <li><a href="./doc/rexml/tasks/tocs/master_toc_rdoc.html">master_toc</a>
-  
-    <li><a href="./doc/rexml/tasks/tocs/node_toc_rdoc.html">node_toc</a>
-  
-    <li><a href="./doc/rexml/tasks/tocs/parent_toc_rdoc.html">parent_toc</a>
-  
-    <li><a href="./doc/rexml/tutorial_rdoc.html">tutorial</a>
-  
+    <li><details><summary>doc</summary>
+    <ul class="link-list">
+      <li><a href="./doc/rexml/context_rdoc.html">context</a>
+      <li><a href="./doc/rexml/tasks/rdoc/child_rdoc.html">child</a>
+      <li><a href="./doc/rexml/tasks/rdoc/document_rdoc.html">document</a>
+      <li><a href="./doc/rexml/tasks/rdoc/element_rdoc.html">element</a>
+      <li><a href="./doc/rexml/tasks/rdoc/node_rdoc.html">node</a>
+      <li><a href="./doc/rexml/tasks/rdoc/parent_rdoc.html">parent</a>
+      <li><a href="./doc/rexml/tasks/tocs/child_toc_rdoc.html">child_toc</a>
+      <li><a href="./doc/rexml/tasks/tocs/document_toc_rdoc.html">document_toc</a>
+      <li><a href="./doc/rexml/tasks/tocs/element_toc_rdoc.html">element_toc</a>
+      <li><a href="./doc/rexml/tasks/tocs/master_toc_rdoc.html">master_toc</a>
+      <li><a href="./doc/rexml/tasks/tocs/node_toc_rdoc.html">node_toc</a>
+      <li><a href="./doc/rexml/tasks/tocs/parent_toc_rdoc.html">parent_toc</a>
+      <li><a href="./doc/rexml/tutorial_rdoc.html">tutorial</a>
+    </ul></details>
   </ul>
 </div>
 
@@ -103,7 +88,7 @@
 
 <main role="main" aria-label="Page LICENSE.txt">
 
-<p>Copyright (C) 1993-2013 Yukihiro Matsumoto. All rights reserved.</p>
+<p>Copyright © 1993-2013 Yukihiro Matsumoto. All rights reserved.</p>
 
 <p>Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:</p>
 <ol><li>
@@ -117,7 +102,7 @@
 
 <p>notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.</p>
 
-<p>THIS SOFTWARE IS PROVIDED BY THE AUTHOR AND CONTRIBUTORS “AS IS&#39;&#39; AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE AUTHOR OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.</p>
+<p>THIS SOFTWARE IS PROVIDED BY THE AUTHOR AND CONTRIBUTORS “AS IS” AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE AUTHOR OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.</p>
 
 </main>
 
@@ -125,7 +110,7 @@
 
 <footer id="validator-badges" role="contentinfo">
   <p><a href="https://validator.w3.org/check/referer">Validate</a>
-  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.2.1.1.
+  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.6.3.1.
   <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
 </footer>
 

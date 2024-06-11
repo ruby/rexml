@@ -21,8 +21,6 @@
 <link href="../../css/rdoc.css" rel="stylesheet">
 
 
-
-
 <body id="top" role="document" class="class">
 <nav role="navigation">
   <div id="project-navigation">
@@ -43,7 +41,7 @@
     <div id="search-field-wrapper">
       <input id="search-field" role="combobox" aria-label="Search"
              aria-autocomplete="list" aria-controls="search-results"
-             type="text" name="search" placeholder="Search" spellcheck="false"
+             type="text" name="search" placeholder="Search (/) for a class, method, ..." spellcheck="false"
              title="Type to search, Up and Down to navigate, Enter to load">
     </div>
 
@@ -59,47 +57,36 @@
 
   <div id="class-metadata">
     
-    <div id="parent-class-section" class="nav-section">
+    
+<div id="parent-class-section" class="nav-section">
   <h3>Parent</h3>
 
-  
   <p class="link">Object
-  
 </div>
 
-    <div id="includes-section" class="nav-section">
+    
+<div id="includes-section" class="nav-section">
   <h3>Included Modules</h3>
 
   <ul class="link-list">
-  
-  
     <li><a class="include" href="../XMLTokens.html">REXML::XMLTokens</a>
-  
-  
   </ul>
 </div>
 
     
-    <!-- Method Quickref -->
+    
+<!-- Method Quickref -->
 <div id="method-list-section" class="nav-section">
   <h3>Methods</h3>
 
   <ul class="link-list" role="directory">
-    
     <li ><a href="#method-i-abbreviate">#abbreviate</a>
-    
     <li ><a href="#method-i-expand">#expand</a>
-    
     <li ><a href="#method-i-namespaces-3D">#namespaces=</a>
-    
     <li ><a href="#method-i-parse">#parse</a>
-    
     <li ><a href="#method-i-preciate_to_string">#preciate_to_string</a>
-    
     <li ><a href="#method-i-predicate">#predicate</a>
-    
     <li ><a href="#method-i-predicate_to_path">#predicate_to_path</a>
-    
   </ul>
 </div>
 
@@ -113,25 +100,19 @@
 
   <section class="description">
     
-<p>You don&#39;t want to use this class.  Really.  Use <a href="../XPath.html"><code>XPath</code></a>, which is a wrapper for this class.  Believe me.  You don&#39;t want to poke around in here. There is strange, dark magic at work in this code.  Beware.  Go back!  Go back while you still can!</p>
+<p>You don’t want to use this class.  Really.  Use <a href="../XPath.html"><code>XPath</code></a>, which is a wrapper for this class.  Believe me.  You don’t want to poke around in here. There is strange, dark magic at work in this code.  Beware.  Go back!  Go back while you still can!</p>
 
   </section>
 
-  
   <section id="5Buntitled-5D" class="documentation-section">
-    
 
-    
 
-    
     <section class="constants-list">
       <header>
         <h3>Constants</h3>
       </header>
       <dl>
-      
         <dt id="AXIS">AXIS
-        
         <dd><p>RelativeLocationPath</p>
 
 <pre>|                                                    Step
@@ -141,40 +122,19 @@
   | &#39;.&#39; | &#39;..&#39;                                      AbbreviatedStep
 |  RelativeLocationPath &#39;/&#39; Step
 | RelativeLocationPath &#39;//&#39; Step</pre>
-        
-      
         <dt id="LITERAL">LITERAL
-        
         <dd>
-        
-      
         <dt id="LOCAL_NAME_WILDCARD">LOCAL_NAME_WILDCARD
-        
         <dd>
-        
-      
         <dt id="NODE_TYPE">NODE_TYPE
-        
         <dd>
-        
-      
         <dt id="NT">NT
-        
         <dd>
-        
-      
         <dt id="NUMBER">NUMBER
-        
         <dd>
-        
-      
         <dt id="PI">PI
-        
         <dd>
-        
-      
         <dt id="PREFIX_WILDCARD">PREFIX_WILDCARD
-        
         <dd><pre>Returns a 1-1 map of the nodeset
 The contents of the resulting array are either:
   true/false, if a positive match
@@ -187,49 +147,32 @@ The contents of the resulting array are either:
 | NODE_TYPE &#39;(&#39; &#39;)&#39;                             NodeType
 | PI &#39;(&#39; LITERAL &#39;)&#39;                            PI
   | &#39;[&#39; expr &#39;]&#39;                                Predicate</pre>
-        
-      
         <dt id="QNAME">QNAME
-        
         <dd>
-        
-      
         <dt id="VARIABLE_REFERENCE">VARIABLE_REFERENCE
-        
-        <dd><p>| <a href="XPathParser.html#VARIABLE_REFERENCE"><code>VARIABLE_REFERENCE</code></a> | &#39;(&#39; expr &#39;)&#39; | <a href="XPathParser.html#LITERAL"><code>LITERAL</code></a> | <a href="XPathParser.html#NUMBER"><code>NUMBER</code></a> | FunctionCall</p>
-        
-      
+        <dd><p>| <a href="XPathParser.html#VARIABLE_REFERENCE"><code>VARIABLE_REFERENCE</code></a> | ‘(’ expr ‘)’ | <a href="XPathParser.html#LITERAL"><code>LITERAL</code></a> | <a href="XPathParser.html#NUMBER"><code>NUMBER</code></a> | FunctionCall</p>
       </dl>
     </section>
-    
 
-    
 
-    
+
      <section id="public-instance-5Buntitled-5D-method-details" class="method-section">
        <header>
          <h3>Public Instance Methods</h3>
        </header>
 
-    
       <div id="method-i-abbreviate" class="method-detail ">
-        
-        <div class="method-heading">
-          <span class="method-name">abbreviate</span><span
-            class="method-args">(path_or_parsed)</span>
-          
-          <span class="method-click-advice">click to toggle source</span>
-          
+        <div class="method-header">
+          <div class="method-heading">
+            <span class="method-name">abbreviate</span><span
+              class="method-args">(path_or_parsed)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
         </div>
-        
 
         <div class="method-description">
           
-          
-          
-          
 
-          
           <div class="method-source-code" id="abbreviate-source">
             <pre><span class="ruby-comment"># File lib/rexml/parsers/xpathparser.rb, line 42</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">abbreviate</span>(<span class="ruby-identifier">path_or_parsed</span>)
@@ -322,33 +265,23 @@ The contents of the resulting array are either:
   <span class="ruby-keyword">end</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
-          
         </div>
 
-        
 
-        
       </div>
 
-    
       <div id="method-i-expand" class="method-detail ">
-        
-        <div class="method-heading">
-          <span class="method-name">expand</span><span
-            class="method-args">(path_or_parsed)</span>
-          
-          <span class="method-click-advice">click to toggle source</span>
-          
+        <div class="method-header">
+          <div class="method-heading">
+            <span class="method-name">expand</span><span
+              class="method-args">(path_or_parsed)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
         </div>
-        
 
         <div class="method-description">
           
-          
-          
-          
 
-          
           <div class="method-source-code" id="expand-source">
             <pre><span class="ruby-comment"># File lib/rexml/parsers/xpathparser.rb, line 132</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">expand</span>(<span class="ruby-identifier">path_or_parsed</span>)
@@ -393,33 +326,23 @@ The contents of the resulting array are either:
   <span class="ruby-identifier">path</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
-          
         </div>
 
-        
 
-        
       </div>
 
-    
       <div id="method-i-namespaces-3D" class="method-detail ">
-        
-        <div class="method-heading">
-          <span class="method-name">namespaces=</span><span
-            class="method-args">( namespaces )</span>
-          
-          <span class="method-click-advice">click to toggle source</span>
-          
+        <div class="method-header">
+          <div class="method-heading">
+            <span class="method-name">namespaces=</span><span
+              class="method-args">( namespaces )</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
         </div>
-        
 
         <div class="method-description">
           
-          
-          
-          
 
-          
           <div class="method-source-code" id="namespaces-3D-source">
             <pre><span class="ruby-comment"># File lib/rexml/parsers/xpathparser.rb, line 16</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">namespaces=</span>( <span class="ruby-identifier">namespaces</span> )
@@ -427,33 +350,23 @@ The contents of the resulting array are either:
   <span class="ruby-ivar">@namespaces</span> = <span class="ruby-identifier">namespaces</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
-          
         </div>
 
-        
 
-        
       </div>
 
-    
       <div id="method-i-parse" class="method-detail ">
-        
-        <div class="method-heading">
-          <span class="method-name">parse</span><span
-            class="method-args">(path)</span>
-          
-          <span class="method-click-advice">click to toggle source</span>
-          
+        <div class="method-header">
+          <div class="method-heading">
+            <span class="method-name">parse</span><span
+              class="method-args">(path)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
         </div>
-        
 
         <div class="method-description">
           
-          
-          
-          
 
-          
           <div class="method-source-code" id="parse-source">
             <pre><span class="ruby-comment"># File lib/rexml/parsers/xpathparser.rb, line 21</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">parse</span> <span class="ruby-identifier">path</span>
@@ -471,61 +384,42 @@ The contents of the resulting array are either:
   <span class="ruby-identifier">parsed</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
-          
         </div>
 
-        
 
-        
       </div>
 
-    
       <div id="method-i-preciate_to_string" class="method-detail method-alias">
-        
-        <div class="method-heading">
-          <span class="method-name">preciate_to_string</span><span
-            class="method-args">(parsed, &amp;block)</span>
-          
+        <div class="method-header">
+          <div class="method-heading">
+            <span class="method-name">preciate_to_string</span><span
+              class="method-args">(parsed, &amp;block)</span>
+          </div>
         </div>
-        
 
         <div class="method-description">
-          
           <p>For backward compatibility</p>
-          
-          
 
-          
         </div>
 
-        
 
-        
         <div class="aliases">
           Alias for: <a href="XPathParser.html#method-i-predicate_to_path">predicate_to_path</a>
         </div>
-        
       </div>
 
-    
       <div id="method-i-predicate" class="method-detail ">
-        
-        <div class="method-heading">
-          <span class="method-name">predicate</span><span
-            class="method-args">(path)</span>
-          
-          <span class="method-click-advice">click to toggle source</span>
-          
+        <div class="method-header">
+          <div class="method-heading">
+            <span class="method-name">predicate</span><span
+              class="method-args">(path)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
         </div>
-        
 
         <div class="method-description">
           
-          
-          
-          
 
-          
           <div class="method-source-code" id="predicate-source">
             <pre><span class="ruby-comment"># File lib/rexml/parsers/xpathparser.rb, line 36</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">predicate</span> <span class="ruby-identifier">path</span>
@@ -534,33 +428,23 @@ The contents of the resulting array are either:
   <span class="ruby-identifier">parsed</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
-          
         </div>
 
-        
 
-        
       </div>
 
-    
       <div id="method-i-predicate_to_path" class="method-detail ">
-        
-        <div class="method-heading">
-          <span class="method-name">predicate_to_path</span><span
-            class="method-args">(parsed) { |parsed| ... }</span>
-          
-          <span class="method-click-advice">click to toggle source</span>
-          
+        <div class="method-header">
+          <div class="method-heading">
+            <span class="method-name">predicate_to_path</span><span
+              class="method-args">(parsed) { |parsed| ... }</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
         </div>
-        
 
         <div class="method-description">
           
-          
-          
-          
 
-          
           <div class="method-source-code" id="predicate_to_path-source">
             <pre><span class="ruby-comment"># File lib/rexml/parsers/xpathparser.rb, line 174</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">predicate_to_path</span>(<span class="ruby-identifier">parsed</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
@@ -610,29 +494,23 @@ The contents of the resulting array are either:
   <span class="ruby-keyword">return</span> <span class="ruby-identifier">path</span>.<span class="ruby-identifier">squeeze</span>(<span class="ruby-string">&quot; &quot;</span>)
 <span class="ruby-keyword">end</span></pre>
           </div>
-          
         </div>
 
-        
         <div class="aliases">
           Also aliased as: <a href="XPathParser.html#method-i-preciate_to_string">preciate_to_string</a>
         </div>
-        
 
-        
       </div>
 
-    
     </section>
-  
-  </section>
 
+  </section>
 </main>
 
 
 <footer id="validator-badges" role="contentinfo">
   <p><a href="https://validator.w3.org/check/referer">Validate</a>
-  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.2.1.1.
+  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.6.3.1.
   <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
 </footer>
 
