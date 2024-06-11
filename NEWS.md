@@ -1,12 +1,24 @@
 # News
 
+## 3.3.0 - 2024-06-11 {#version-3-3-0}
+
+### Improvements
+
+  * Added support for strscan 0.7.0 installed with Ruby 2.6.
+    * GH-142
+    * Reported by Fernando Trigoso.
+
+### Thanks
+
+  * Fernando Trigoso
+
 ## 3.2.9 - 2024-06-09 {#version-3-2-9}
 
 ### Improvements
 
   * Added support for old strscan.
     * GH-132
-    * Reported by Adam
+    * Reported by Adam.
 
   * Improved attribute value parse performance.
     * GH-135
