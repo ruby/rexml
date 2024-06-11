@@ -7,14 +7,6 @@ require_relative "xpath"
 require_relative "parseexception"
 
 module REXML
-  # An implementation note about namespaces:
-  # As we parse, when we find namespaces we put them in a hash and assign
-  # them a unique ID.  We then convert the namespace prefix for the node
-  # to the unique ID.  This makes namespace lookup much faster for the
-  # cost of extra memory use.  We save the namespace prefix for the
-  # context node and convert it back when we write it.
-  @@namespaces = {}
-
   # An \REXML::Element object represents an XML element.
   #
   # An element:
