@@ -1,8 +1,28 @@
 # coding: US-ASCII
 # frozen_string_literal: false
+
+require "strscan"
+
 require_relative 'encoding'
 
 module REXML
+  if StringScanner::Version < "1.0.0"
+    module StringScannerCheckScanString
+      refine StringScanner do
+        def check(pattern)
+          pattern = /#{Regexp.escape(pattern)}/ if pattern.is_a?(String)
+          super(pattern)
+        end
+
+        def scan(pattern)
+          pattern = /#{Regexp.escape(pattern)}/ if pattern.is_a?(String)
+          super(pattern)
+        end
+      end
+    end
+    using StringScannerCheckScanString
+  end
+
   # Generates Source-s.  USE THIS CLASS.
   class SourceFactory
     # Generates a Source object
