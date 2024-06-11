@@ -3,14 +3,14 @@ on:
   - push
   - pull_request
 jobs:
-  ruby-versions:
+  ruby-versions-inplace:
     uses: ruby/actions/.github/workflows/ruby_versions.yml@master
     with:
       engine: cruby-jruby
       min_version: 2.5
 
   inplace:
-    needs: ruby-versions
+    needs: ruby-versions-inplace
     name: "Inplace: ${{ matrix.ruby-version }} on ${{ matrix.runs-on }}"
     runs-on: ${{ matrix.runs-on }}
     strategy:
@@ -20,7 +20,7 @@ jobs:
           - ubuntu-latest
           - macos-latest
           - windows-latest
-        ruby-version: ${{ fromJson(needs.ruby-versions.outputs.versions) }}
+        ruby-version: ${{ fromJson(needs.ruby-versions-inplace.outputs.versions) }}
         exclude:
           - {runs-on: macos-latest, ruby-version: 2.5}
         # include:
@@ -47,8 +47,14 @@ jobs:
       - name: Test
         run: bundle exec rake test RUBYOPT="--enable-frozen-string-literal"
 
+  ruby-versions-gems:
+    uses: ruby/actions/.github/workflows/ruby_versions.yml@master
+    with:
+      engine: cruby-jruby
+      min_version: 2.6 # REXML is a default gem since Ruby 2.6
+
   gem:
-    needs: ruby-versions
+    needs: ruby-versions-gems
     name: "Gem: ${{ matrix.ruby-version }} on ${{ matrix.runs-on }}"
     runs-on: ${{ matrix.runs-on }}
     strategy:
@@ -58,9 +64,7 @@ jobs:
           - ubuntu-latest
           - macos-latest
           - windows-latest
-        exclude:
-          - {runs-on: macos-latest, ruby-version: 2.5}
-        ruby-version: ${{ fromJson(needs.ruby-versions.outputs.versions) }}
+        ruby-version: ${{ fromJson(needs.ruby-versions-gems.outputs.versions) }}
     steps:
       - uses: actions/checkout@v4
       - uses: ruby/setup-ruby@v1
