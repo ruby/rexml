@@ -232,7 +232,7 @@ module REXML
               if md.nil?
                 raise REXML::ParseException.new("Unclosed comment", @source)
               end
-              if md[1] =~ /--|-\z/
+              if /--|-\z/.match?(md[1])
                 raise REXML::ParseException.new("Malformed comment", @source)
               end
               return [ :comment, md[1] ]
