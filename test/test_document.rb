@@ -237,7 +237,7 @@ EOX
       document = REXML::Document.new(xml_source)
 
       # Node#each_recursive iterates elements only.
-      # This does not iterate XML declaration, comments, attributes, CDATA sections, etc.
+      # This does not iterate XML declarations, comments, attributes, CDATA sections, etc.
       actual_names = []
       document.each_recursive do |element|
         actual_names << element.attributes["name"]
