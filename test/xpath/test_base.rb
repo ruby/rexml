@@ -651,7 +651,7 @@ module REXMLTests
       source = "<a><b id='1'/><b id='2'/><b id='3'/></a>"
       doc = REXML::Document.new(source)
 
-      # NOTE: check that number() is required
+      # NOTE TO SER: check that number() is required
       assert_equal 2, REXML::XPath.match(doc, "//b[number(@id) > 1]").size
       assert_equal 3, REXML::XPath.match(doc, "//b[number(@id) >= 1]").size
       assert_equal 1, REXML::XPath.match(doc, "//b[number(@id) <= 1]").size
