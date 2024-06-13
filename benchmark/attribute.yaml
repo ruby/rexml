@@ -31,10 +31,7 @@ prelude: |
   xml_source = "<root xmlns:x='xyz'>#{xml_source}</root>"
 
   document = REXML::Document.new(xml_source)
-  deepest_node = document.root
-  until deepest_node.elements.size.zero?
-    deepest_node = deepest_node.elements.first
-  end
+  deepest_node = document.elements["//deepest"]
 
 benchmark:
   attribute_with_ns: |
