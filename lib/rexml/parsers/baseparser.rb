@@ -228,7 +228,14 @@ module REXML
             return process_instruction(start_position)
           elsif @source.match("<!", true)
             if @source.match("--", true)
-              return [ :comment, @source.match(/(.*?)-->/um, true)[1] ]
+              md = @source.match(/(.*?)-->/um, true)
+              if md.nil?
+                raise REXML::ParseException.new("Unclosed comment", @source)
+              end
+              if /--|-\z/.match?(md[1])
+                raise REXML::ParseException.new("Malformed comment", @source)
+              end
+              return [ :comment, md[1] ]
             elsif @source.match("DOCTYPE", true)
               base_error_message = "Malformed DOCTYPE"
               unless @source.match(/\s+/um, true)
