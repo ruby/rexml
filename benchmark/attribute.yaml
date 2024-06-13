@@ -34,7 +34,5 @@ prelude: |
   deepest_node = document.elements["//deepest"]
 
 benchmark:
-  attribute_with_ns: |
-    deepest_node.attribute("with_ns", "xyz")
-  attribute_without_ns: |
-    deepest_node.attribute("without_ns")
+  with_ns:    deepest_node.attribute("with_ns", "xyz")
+  without_ns: deepest_node.attribute("without_ns")
