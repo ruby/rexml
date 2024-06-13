@@ -1276,16 +1276,11 @@ module REXML
     #   document.root.attribute("x", "a") # => a:x='a:x'
     #
     def attribute( name, namespace=nil )
-      prefix = nil
-      if namespaces.respond_to? :key
-        prefix = namespaces.key(namespace) if namespace
-      else
-        prefix = namespaces.index(namespace) if namespace
-      end
+      prefix = namespaces.key(namespace) if namespace
       prefix = nil if prefix == 'xmlns'
 
       ret_val =
-        attributes.get_attribute( "#{prefix ? prefix + ':' : ''}#{name}" )
+        attributes.get_attribute( prefix ? "#{prefix}:#{name}" : name )
 
       return ret_val unless ret_val.nil?
       return nil if prefix.nil?

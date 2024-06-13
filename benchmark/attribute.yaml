@@ -1,0 +1,43 @@
+loop_count: 1000
+contexts:
+  - gems:
+      rexml: 3.2.6
+    require: false
+    prelude: require 'rexml'
+  - name: master
+    prelude: |
+      $LOAD_PATH.unshift(File.expand_path("lib"))
+      require 'rexml'
+  - name: 3.2.6(YJIT)
+    gems:
+      rexml: 3.2.6
+    require: false
+    prelude: |
+      require 'rexml'
+      RubyVM::YJIT.enable
+  - name: master(YJIT)
+    prelude: |
+      $LOAD_PATH.unshift(File.expand_path("lib"))
+      require 'rexml'
+      RubyVM::YJIT.enable
+
+prelude: |
+  require 'rexml/document'
+
+  xml_source = "<deepest x:with_ns='foo' without_ns='bar'></deepest>"
+  100.times do
+    xml_source = "<nest>#{xml_source}</nest>"
+  end
+  xml_source = "<root xmlns:x='xyz'>#{xml_source}</root>"
+
+  document = REXML::Document.new(xml_source)
+  deepest_node = document.root
+  until deepest_node.elements.size.zero?
+    deepest_node = deepest_node.elements.first
+  end
+
+benchmark:
+  attribute_with_ns: |
+    deepest_node.attribute("with_ns", "xyz")
+  attribute_without_ns: |
+    deepest_node.attribute("without_ns")
