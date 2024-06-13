@@ -406,12 +406,11 @@ module REXML
               if md[0][0] == ?-
                 md = @source.match(/--(.*?)-->/um, true)
 
-                case md[1]
-                when /--/, /-\z/
+                if md.nil? || /--|-\z/.match?(md[1])
                   raise REXML::ParseException.new("Malformed comment", @source)
                 end
 
-                return [ :comment, md[1] ] if md
+                return [ :comment, md[1] ]
               else
                 md = @source.match(/\[CDATA\[(.*?)\]\]>/um, true)
                 return [ :cdata, md[1] ] if md

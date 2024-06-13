@@ -68,6 +68,19 @@ module REXMLTests
         DETAIL
       end
 
+      def test_after_doctype_malformed_comment_short
+        exception = assert_raise(REXML::ParseException) do
+          parse("<a><!-->")
+        end
+        assert_equal(<<~DETAIL.chomp, exception.to_s)
+          Malformed comment
+          Line: 1
+          Position: 8
+          Last 80 unconsumed characters:
+          -->
+        DETAIL
+      end
+
       def test_after_doctype_malformed_comment_inner
         exception = assert_raise(REXML::ParseException) do
           parse("<a><!-- -- -->")
