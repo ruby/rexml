@@ -62,7 +62,7 @@ module REXMLTests
       assert_equal( 'c', a[1].name )
     end
 
-    def test_itterate_over_children
+    def test_iterate_over_children
       foo = make_small_document
       ctr = 0
       foo[0].each { ctr += 1 }

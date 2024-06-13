@@ -140,7 +140,7 @@ module REXMLTests
 
     # test doctype with missing name, should throw ParseException
     # submitted by Jeff Barczewseki
-    def test_doctype_with_mising_name_throws_exception
+    def test_doctype_with_missing_name_throws_exception
       xml = <<~END
         <?xml version="1.0"?>
         <!DOCTYPE >
