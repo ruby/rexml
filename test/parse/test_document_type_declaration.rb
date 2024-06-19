@@ -54,7 +54,7 @@ Last 80 unconsumed characters:
     end
 
     class TestUnclosed < self
-      def test_unclosed_doctype_only
+      def test_no_extra_node
         exception = assert_raise(REXML::ParseException) do
           REXML::Document.new(<<~DOCTYPE)
             <!DOCTYPE foo [
@@ -69,7 +69,7 @@ Last 80 unconsumed characters:
         DETAIL
       end
 
-      def test_unclosed_doctype_plus_start_element
+      def test_start_element
         exception = assert_raise(REXML::ParseException) do
           REXML::Document.new(<<~DOCTYPE)
             <!DOCTYPE foo [ <r>
@@ -84,7 +84,7 @@ Last 80 unconsumed characters:
         DETAIL
       end
 
-      def test_unclosed_doctype_plus_text
+      def test_text
         exception = assert_raise(REXML::ParseException) do
           REXML::Document.new(<<~DOCTYPE)
             <!DOCTYPE foo [ text
