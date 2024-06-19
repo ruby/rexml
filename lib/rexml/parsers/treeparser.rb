@@ -16,7 +16,6 @@ module REXML
 
       def parse
         tag_stack = []
-        in_doctype = false
         entities = nil
         begin
           while true
@@ -58,14 +57,12 @@ module REXML
             when :processing_instruction
               @build_context.add( Instruction.new( event[1], event[2] ) )
             when :end_doctype
-              in_doctype = false
               entities.each { |k,v| entities[k] = @build_context.entities[k].value }
               @build_context = @build_context.parent
             when :start_doctype
               doctype = DocType.new( event[1..-1], @build_context )
               @build_context = doctype
               entities = {}
-              in_doctype = true
             when :attlistdecl
               n = AttlistDecl.new( event[1..-1] )
               @build_context.add( n )
