@@ -24,20 +24,12 @@ module REXML
             #STDERR.puts "TREEPARSER GOT #{event.inspect}"
             case event[0]
             when :end_document
-              if in_doctype
-                raise ParseException.new("Malformed DOCTYPE: unclosed",
-                                         @parser.source, @parser)
-              end
               unless tag_stack.empty?
                 raise ParseException.new("No close tag for #{@build_context.xpath}",
                                          @parser.source, @parser)
               end
               return
             when :start_element
-              if in_doctype
-                raise ParseException.new("Malformed DOCTYPE: unclosed",
-                                         @parser.source, @parser)
-              end
               tag_stack.push(event[1])
               el = @build_context = @build_context.add_element( event[1] )
               event[2].each do |key, value|
@@ -47,10 +39,6 @@ module REXML
               tag_stack.pop
               @build_context = @build_context.parent
             when :text
-              if in_doctype
-                raise ParseException.new("Malformed DOCTYPE: unclosed",
-                                         @parser.source, @parser)
-              end
               if @build_context[-1].instance_of? Text
                 @build_context[-1] << event[1]
               else

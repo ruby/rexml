@@ -56,14 +56,12 @@ Last 80 unconsumed characters:
     class TestUnclosed < self
       def test_no_extra_node
         exception = assert_raise(REXML::ParseException) do
-          REXML::Document.new(<<~DOCTYPE)
-            <!DOCTYPE foo [
-          DOCTYPE
+          REXML::Document.new("<!DOCTYPE foo [")
         end
         assert_equal(<<~DETAIL.chomp, exception.to_s)
           Malformed DOCTYPE: unclosed
           Line: 1
-          Position: 16
+          Position: 15
           Last 80 unconsumed characters:
 
         DETAIL
@@ -76,11 +74,11 @@ Last 80 unconsumed characters:
           DOCTYPE
         end
         assert_equal(<<~DETAIL.chomp, exception.to_s)
-          Malformed DOCTYPE: unclosed
+          Malformed DOCTYPE: invalid declaration
           Line: 1
           Position: 20
           Last 80 unconsumed characters:
-          #{' '}
+          <r>#{' '}
         DETAIL
       end
 
@@ -91,11 +89,11 @@ Last 80 unconsumed characters:
           DOCTYPE
         end
         assert_equal(<<~DETAIL.chomp, exception.to_s)
-          Malformed DOCTYPE: unclosed
+          Malformed DOCTYPE: invalid declaration
           Line: 1
           Position: 21
           Last 80 unconsumed characters:
-          
+          text#{' '}
         DETAIL
       end
     end
