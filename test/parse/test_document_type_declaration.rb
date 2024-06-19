@@ -53,6 +53,51 @@ Last 80 unconsumed characters:
       end
     end
 
+    class TestUnclosed < self
+      def test_no_extra_node
+        exception = assert_raise(REXML::ParseException) do
+          REXML::Document.new("<!DOCTYPE foo [")
+        end
+        assert_equal(<<~DETAIL.chomp, exception.to_s)
+          Malformed DOCTYPE: unclosed
+          Line: 1
+          Position: 15
+          Last 80 unconsumed characters:
+
+        DETAIL
+      end
+
+      def test_start_element
+        exception = assert_raise(REXML::ParseException) do
+          REXML::Document.new(<<~DOCTYPE)
+            <!DOCTYPE foo [ <r>
+          DOCTYPE
+        end
+        assert_equal(<<~DETAIL.chomp, exception.to_s)
+          Malformed DOCTYPE: invalid declaration
+          Line: 1
+          Position: 20
+          Last 80 unconsumed characters:
+          <r>#{' '}
+        DETAIL
+      end
+
+      def test_text
+        exception = assert_raise(REXML::ParseException) do
+          REXML::Document.new(<<~DOCTYPE)
+            <!DOCTYPE foo [ text
+          DOCTYPE
+        end
+        assert_equal(<<~DETAIL.chomp, exception.to_s)
+          Malformed DOCTYPE: invalid declaration
+          Line: 1
+          Position: 21
+          Last 80 unconsumed characters:
+          text#{' '}
+        DETAIL
+      end
+    end
+
     class TestExternalID < self
       class TestSystem < self
         def test_left_bracket_in_system_literal

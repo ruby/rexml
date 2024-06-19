@@ -216,7 +216,12 @@ module REXML
           x, @closed = @closed, nil
           return [ :end_element, x ]
         end
-        return [ :end_document ] if empty?
+        if empty?
+          if @document_status == :in_doctype
+            raise ParseException.new("Malformed DOCTYPE: unclosed", @source)
+          end
+          return [ :end_document ]
+        end
         return @stack.shift if @stack.size > 0
         #STDERR.puts @source.encoding
         #STDERR.puts "BUFFER = #{@source.buffer.inspect}"
@@ -372,6 +377,9 @@ module REXML
           elsif @source.match(/\]\s*>/um, true)
             @document_status = :after_doctype
             return [ :end_doctype ]
+          end
+          if @document_status == :in_doctype
+            raise ParseException.new("Malformed DOCTYPE: invalid declaration", @source)
           end
         end
         if @document_status == :after_doctype
