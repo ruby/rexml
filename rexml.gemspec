@@ -16,6 +16,10 @@ Gem::Specification.new do |spec|
   spec.homepage      = "https://github.com/ruby/rexml"
   spec.license       = "BSD-2-Clause"
 
+  spec.metadata = {
+    "changelog_uri" => "#{spec.homepage}/releases/tag/v#{spec.version}"
+  }
+
   files = [
     "LICENSE.txt",
     "NEWS.md",
