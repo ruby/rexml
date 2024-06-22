@@ -85,6 +85,7 @@
     <li ><a href="#method-i-buffer">#buffer</a>
     <li ><a href="#method-i-buffer_encoding-3D">#buffer_encoding=</a>
     <li ><a href="#method-i-current_line">#current_line</a>
+    <li ><a href="#method-i-drop_parsed_content">#drop_parsed_content</a>
     <li ><a href="#method-i-empty-3F">#empty?</a>
     <li class="calls-super" ><a href="#method-i-encoding-3D">#encoding=</a>
     <li ><a href="#method-i-ensure_buffer">#ensure_buffer</a>
@@ -160,7 +161,7 @@
           <p>Constructor @param arg must be a String, and should be a valid XML document @param encoding if non-null, sets the encoding of the source to this value, overriding all encoding detection</p>
 
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File lib/rexml/source.rb, line 71</span>
+            <pre><span class="ruby-comment"># File lib/rexml/source.rb, line 72</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(<span class="ruby-identifier">arg</span>, <span class="ruby-identifier">encoding</span>=<span class="ruby-keyword">nil</span>)
   <span class="ruby-ivar">@orig</span> = <span class="ruby-identifier">arg</span>
   <span class="ruby-ivar">@scanner</span> = <span class="ruby-constant">StringScanner</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@orig</span>)
@@ -197,7 +198,7 @@
           <p>The current buffer (what we’re going to read next)</p>
 
           <div class="method-source-code" id="buffer-source">
-            <pre><span class="ruby-comment"># File lib/rexml/source.rb, line 83</span>
+            <pre><span class="ruby-comment"># File lib/rexml/source.rb, line 84</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">buffer</span>
   <span class="ruby-ivar">@scanner</span>.<span class="ruby-identifier">rest</span>
 <span class="ruby-keyword">end</span></pre>
@@ -220,7 +221,7 @@
           
 
           <div class="method-source-code" id="buffer_encoding-3D-source">
-            <pre><span class="ruby-comment"># File lib/rexml/source.rb, line 87</span>
+            <pre><span class="ruby-comment"># File lib/rexml/source.rb, line 94</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">buffer_encoding=</span>(<span class="ruby-identifier">encoding</span>)
   <span class="ruby-ivar">@scanner</span>.<span class="ruby-identifier">string</span>.<span class="ruby-identifier">force_encoding</span>(<span class="ruby-identifier">encoding</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -243,12 +244,37 @@
           <p>@return the current line in the source</p>
 
           <div class="method-source-code" id="current_line-source">
-            <pre><span class="ruby-comment"># File lib/rexml/source.rb, line 136</span>
+            <pre><span class="ruby-comment"># File lib/rexml/source.rb, line 143</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">current_line</span>
   <span class="ruby-identifier">lines</span> = <span class="ruby-ivar">@orig</span>.<span class="ruby-identifier">split</span>
   <span class="ruby-identifier">res</span> = <span class="ruby-identifier">lines</span>.<span class="ruby-identifier">grep</span> <span class="ruby-ivar">@scanner</span>.<span class="ruby-identifier">rest</span>[<span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-value">30</span>]
   <span class="ruby-identifier">res</span> = <span class="ruby-identifier">res</span>[<span class="ruby-value">-1</span>] <span class="ruby-keyword">if</span> <span class="ruby-identifier">res</span>.<span class="ruby-identifier">kind_of?</span> <span class="ruby-constant">Array</span>
   <span class="ruby-identifier">lines</span>.<span class="ruby-identifier">index</span>( <span class="ruby-identifier">res</span> ) <span class="ruby-keyword">if</span> <span class="ruby-identifier">res</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+        </div>
+
+
+      </div>
+
+      <div id="method-i-drop_parsed_content" class="method-detail ">
+        <div class="method-header">
+          <div class="method-heading">
+            <span class="method-name">drop_parsed_content</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+        </div>
+
+        <div class="method-description">
+          
+
+          <div class="method-source-code" id="drop_parsed_content-source">
+            <pre><span class="ruby-comment"># File lib/rexml/source.rb, line 88</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">drop_parsed_content</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-ivar">@scanner</span>.<span class="ruby-identifier">pos</span> <span class="ruby-operator">&gt;</span> <span class="ruby-constant">Private</span><span class="ruby-operator">::</span><span class="ruby-constant">SCANNER_RESET_SIZE</span>
+    <span class="ruby-ivar">@scanner</span>.<span class="ruby-identifier">string</span> = <span class="ruby-ivar">@scanner</span>.<span class="ruby-identifier">rest</span>
+  <span class="ruby-keyword">end</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
         </div>
@@ -269,7 +295,7 @@
           <p>@return true if the <a href="Source.html"><code>Source</code></a> is exhausted</p>
 
           <div class="method-source-code" id="empty-3F-source">
-            <pre><span class="ruby-comment"># File lib/rexml/source.rb, line 131</span>
+            <pre><span class="ruby-comment"># File lib/rexml/source.rb, line 138</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">empty?</span>
   <span class="ruby-ivar">@scanner</span>.<span class="ruby-identifier">eos?</span>
 <span class="ruby-keyword">end</span></pre>
@@ -296,7 +322,7 @@
             </div>
 
           <div class="method-source-code" id="encoding-3D-source">
-            <pre><span class="ruby-comment"># File lib/rexml/source.rb, line 93</span>
+            <pre><span class="ruby-comment"># File lib/rexml/source.rb, line 100</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">encoding=</span>(<span class="ruby-identifier">enc</span>)
   <span class="ruby-keyword">return</span> <span class="ruby-keyword">unless</span> <span class="ruby-keyword">super</span>
   <span class="ruby-identifier">encoding_updated</span>
@@ -320,7 +346,7 @@
           
 
           <div class="method-source-code" id="ensure_buffer-source">
-            <pre><span class="ruby-comment"># File lib/rexml/source.rb, line 111</span>
+            <pre><span class="ruby-comment"># File lib/rexml/source.rb, line 118</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">ensure_buffer</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
@@ -342,7 +368,7 @@
           
 
           <div class="method-source-code" id="match-source">
-            <pre><span class="ruby-comment"># File lib/rexml/source.rb, line 114</span>
+            <pre><span class="ruby-comment"># File lib/rexml/source.rb, line 121</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">match</span>(<span class="ruby-identifier">pattern</span>, <span class="ruby-identifier">cons</span>=<span class="ruby-keyword">false</span>)
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">cons</span>
     <span class="ruby-ivar">@scanner</span>.<span class="ruby-identifier">scan</span>(<span class="ruby-identifier">pattern</span>).<span class="ruby-identifier">nil?</span> <span class="ruby-operator">?</span> <span class="ruby-keyword">nil</span> <span class="ruby-operator">:</span> <span class="ruby-ivar">@scanner</span>
@@ -369,7 +395,7 @@
           
 
           <div class="method-source-code" id="position-source">
-            <pre><span class="ruby-comment"># File lib/rexml/source.rb, line 122</span>
+            <pre><span class="ruby-comment"># File lib/rexml/source.rb, line 129</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">position</span>
   <span class="ruby-ivar">@scanner</span>.<span class="ruby-identifier">pos</span>
 <span class="ruby-keyword">end</span></pre>
@@ -392,7 +418,7 @@
           
 
           <div class="method-source-code" id="position-3D-source">
-            <pre><span class="ruby-comment"># File lib/rexml/source.rb, line 126</span>
+            <pre><span class="ruby-comment"># File lib/rexml/source.rb, line 133</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">position=</span>(<span class="ruby-identifier">pos</span>)
   <span class="ruby-ivar">@scanner</span>.<span class="ruby-identifier">pos</span> = <span class="ruby-identifier">pos</span>
 <span class="ruby-keyword">end</span></pre>
@@ -415,7 +441,7 @@
           
 
           <div class="method-source-code" id="read-source">
-            <pre><span class="ruby-comment"># File lib/rexml/source.rb, line 98</span>
+            <pre><span class="ruby-comment"># File lib/rexml/source.rb, line 105</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">read</span>(<span class="ruby-identifier">term</span> = <span class="ruby-keyword">nil</span>)
 <span class="ruby-keyword">end</span></pre>
           </div>
@@ -437,7 +463,7 @@
           
 
           <div class="method-source-code" id="read_until-source">
-            <pre><span class="ruby-comment"># File lib/rexml/source.rb, line 101</span>
+            <pre><span class="ruby-comment"># File lib/rexml/source.rb, line 108</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">read_until</span>(<span class="ruby-identifier">term</span>)
   <span class="ruby-identifier">pattern</span> = <span class="ruby-constant">Private</span><span class="ruby-operator">::</span><span class="ruby-constant">PRE_DEFINED_TERM_PATTERNS</span>[<span class="ruby-identifier">term</span>] <span class="ruby-operator">||</span> <span class="ruby-regexp">/#{Regexp.escape(term)}/</span>
   <span class="ruby-identifier">data</span> = <span class="ruby-ivar">@scanner</span>.<span class="ruby-identifier">scan_until</span>(<span class="ruby-identifier">pattern</span>)
