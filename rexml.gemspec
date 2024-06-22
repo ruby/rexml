@@ -17,7 +17,7 @@ Gem::Specification.new do |spec|
   spec.license       = "BSD-2-Clause"
 
   spec.metadata = {
-    'changelog_uri' => "#{spec.homepage}/releases/tag/v#{spec.version}"
+    "changelog_uri" => "#{spec.homepage}/releases/tag/v#{spec.version}"
   }
 
   files = [
