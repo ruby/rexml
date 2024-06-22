@@ -134,7 +134,6 @@ module REXML
         ENTITYDECL_PATTERN = /(?:#{GEDECL_PATTERN})|(?:#{PEDECL_PATTERN})/um
       end
       private_constant :Private
-      include Private
 
       def initialize( source )
         self.stream = source
@@ -302,7 +301,7 @@ module REXML
               raise REXML::ParseException.new( "Bad ELEMENT declaration!", @source ) if md.nil?
               return [ :elementdecl, "<!ELEMENT" + md[1] ]
             elsif @source.match("ENTITY", true)
-              match = [:entitydecl, *@source.match(ENTITYDECL_PATTERN, true).captures.compact]
+              match = [:entitydecl, *@source.match(Private::ENTITYDECL_PATTERN, true).captures.compact]
               ref = false
               if match[1] == '%'
                 ref = true
@@ -328,7 +327,7 @@ module REXML
               match << '%' if ref
               return match
             elsif @source.match("ATTLIST", true)
-              md = @source.match(ATTLISTDECL_END, true)
+              md = @source.match(Private::ATTLISTDECL_END, true)
               raise REXML::ParseException.new( "Bad ATTLIST declaration!", @source ) if md.nil?
               element = md[1]
               contents = md[0]
@@ -397,7 +396,7 @@ module REXML
             if @source.match("/", true)
               @nsstack.shift
               last_tag = @tags.pop
-              md = @source.match(CLOSE_PATTERN, true)
+              md = @source.match(Private::CLOSE_PATTERN, true)
               if md and !last_tag
                 message = "Unexpected top-level end tag (got '#{md[1]}')"
                 raise REXML::ParseException.new(message, @source)
@@ -431,7 +430,7 @@ module REXML
               return process_instruction(start_position)
             else
               # Get the next tag
-              md = @source.match(TAG_PATTERN, true)
+              md = @source.match(Private::TAG_PATTERN, true)
               unless md
                 @source.position = start_position
                 raise REXML::ParseException.new("malformed XML: missing tag start", @source)
@@ -539,7 +538,7 @@ module REXML
       end
 
       def parse_name(base_error_message)
-        md = @source.match(NAME_PATTERN, true)
+        md = @source.match(Private::NAME_PATTERN, true)
         unless md
           if @source.match(/\s*\S/um)
             message = "#{base_error_message}: invalid name"
@@ -618,7 +617,7 @@ module REXML
       end
 
       def process_instruction(start_position)
-        match_data = @source.match(INSTRUCTION_END, true)
+        match_data = @source.match(Private::INSTRUCTION_END, true)
         unless match_data
           message = "Invalid processing instruction node"
           @source.position = start_position
