@@ -204,6 +204,8 @@ module REXML
 
       # Returns the next event.  This is a +PullEvent+ object.
       def pull
+        @source.drop_parsed_content
+
         pull_event.tap do |event|
           @listeners.each do |listener|
             listener.receive event
