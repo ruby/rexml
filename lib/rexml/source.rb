@@ -63,7 +63,6 @@ module REXML
       end
     end
     private_constant :Private
-    include Private
 
     # Constructor
     # @param arg must be a String, and should be a valid XML document
