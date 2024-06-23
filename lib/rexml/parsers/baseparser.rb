@@ -132,6 +132,13 @@ module REXML
         GEDECL_PATTERN = "\\s+#{NAME}\\s+#{ENTITYDEF}\\s*>"
         PEDECL_PATTERN = "\\s+(%)\\s+#{NAME}\\s+#{PEDEF}\\s*>"
         ENTITYDECL_PATTERN = /(?:#{GEDECL_PATTERN})|(?:#{PEDECL_PATTERN})/um
+        CARRIAGE_RETURN_NEWLINE_PATTERN = /\r\n?/
+        CHARACTER_REFERENCES = /&#0*((?:\d+)|(?:x[a-fA-F0-9]+));/
+        DEFAULT_ENTITIES_PATTERNS = {}
+        default_entities = ['gt', 'lt', 'quot', 'apos', 'amp']
+        default_entities.each do |term|
+          DEFAULT_ENTITIES_PATTERNS[term] = /&#{term};/
+        end
       end
       private_constant :Private
 
@@ -504,10 +511,10 @@ module REXML
 
       # Unescapes all possible entities
       def unnormalize( string, entities=nil, filter=nil )
-        rv = string.gsub( /\r\n?/, "\n" )
+        rv = string.gsub( Private::CARRIAGE_RETURN_NEWLINE_PATTERN, "\n" )
         matches = rv.scan( REFERENCE_RE )
         return rv if matches.size == 0
-        rv.gsub!( /&#0*((?:\d+)|(?:x[a-fA-F0-9]+));/ ) {
+        rv.gsub!( Private::CHARACTER_REFERENCES ) {
           m=$1
           m = "0#{m}" if m[0] == ?x
           [Integer(m)].pack('U*')
@@ -518,7 +525,7 @@ module REXML
             unless filter and filter.include?(entity_reference)
               entity_value = entity( entity_reference, entities )
               if entity_value
-                re = /&#{entity_reference};/
+                re = Private::DEFAULT_ENTITIES_PATTERNS[entity_reference] || /&#{entity_reference};/
                 rv.gsub!( re, entity_value )
               else
                 er = DEFAULT_ENTITIES[entity_reference]
@@ -526,7 +533,7 @@ module REXML
               end
             end
           end
-          rv.gsub!( /&amp;/, '&' )
+          rv.gsub!( Private::DEFAULT_ENTITIES_PATTERNS['amp'], '&' )
         end
         rv
       end
