@@ -138,6 +138,7 @@ module REXML
       def initialize( source )
         self.stream = source
         @listeners = []
+        @prefixes = Set.new
       end
 
       def add_listener( listener )
@@ -437,12 +438,12 @@ module REXML
               end
               tag = md[1]
               @document_status = :in_element
-              prefixes = Set.new
-              prefixes << md[2] if md[2]
+              @prefixes.clear
+              @prefixes << md[2] if md[2]
               @nsstack.unshift(curr_ns=Set.new)
-              attributes, closed = parse_attributes(prefixes, curr_ns)
+              attributes, closed = parse_attributes(@prefixes, curr_ns)
               # Verify that all of the prefixes have been defined
-              for prefix in prefixes
+              for prefix in @prefixes
                 unless @nsstack.find{|k| k.member?(prefix)}
                   raise UndefinedNamespaceException.new(prefix,@source,self)
                 end
