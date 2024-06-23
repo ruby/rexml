@@ -254,7 +254,7 @@ module REXML
                 @source.position = start_position
                 raise REXML::ParseException.new(message, @source)
               end
-              @nsstack.unshift(curr_ns=Set.new)
+              @nsstack.unshift(Set.new)
               name = parse_name(base_error_message)
               if @source.match(/\s*\[/um, true)
                 id = [nil, nil, nil]
