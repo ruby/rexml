@@ -62,6 +62,26 @@ module REXMLTests
       end
     end
 
+    def test_character_references
+      source = '<a>&#65;</a><b>&#x42;</b>'
+      parser = REXML::Parsers::PullParser.new( source )
+      element_name = ''
+      while parser.has_next?
+        event = parser.pull
+        case event.event_type
+        when :start_element
+          element_name = event[0]
+        when :text
+          case element_name
+          when 'a'
+            assert_equal('A', event[1])
+          when 'b'
+            assert_equal('B', event[1])
+          end
+        end
+      end
+    end
+
     def test_peek_unshift
       source = "<a><b/></a>"
       REXML::Parsers::PullParser.new(source)
