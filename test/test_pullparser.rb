@@ -82,6 +82,27 @@ module REXMLTests
       end
     end
 
+    def test_text_content_with_line_breaks
+      source = "<root><a>A</a><b>B\n</b><c>C\r\n</c></root>"
+      parser = REXML::Parsers::PullParser.new( source )
+
+      events = {}
+      element_name = ''
+      while parser.has_next?
+        event = parser.pull
+        case event.event_type
+        when :start_element
+          element_name = event[0]
+        when :text
+          events[element_name] = event[1]
+        end
+      end
+
+      assert_equal('A', events['a'])
+      assert_equal("B\n", events['b'])
+      assert_equal("C\n", events['c'])
+    end
+
     def test_peek_unshift
       source = "<a><b/></a>"
       REXML::Parsers::PullParser.new(source)
