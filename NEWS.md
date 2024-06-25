@@ -1,5 +1,52 @@
 # News
 
+## 3.3.1 - 2024-06-25 {#version-3-3-1}
+
+### Improvements
+
+  * Added support for detecting malformed top-level comments.
+    * GH-145
+    * Patch by Hiroya Fujinami.
+
+  * Improved `REXML::Element#attribute` performance.
+    * GH-146
+    * Patch by Hiroya Fujinami.
+
+  * Added support for detecting malformed `<!-->` comments.
+    * GH-147
+    * Patch by Hiroya Fujinami.
+
+  * Added support for detecting unclosed `DOCTYPE`.
+    * GH-152
+    * Patch by Hiroya Fujinami.
+
+  * Added `changlog_uri` metadata to gemspec.
+    * GH-156
+    * Patch by fynsta.
+
+  * Improved parse performance.
+    * GH-157
+    * GH-158
+    * Patch by NAITOH Jun.
+
+### Fixes
+
+  * Fixed a bug that large XML can't be parsed.
+    * GH-154
+    * Patch by NAITOH Jun.
+
+  * Fixed a bug that private constants are visible.
+    * GH-155
+    * Patch by NAITOH Jun.
+
+### Thanks
+
+  * Hiroya Fujinami
+
+  * NAITOH Jun
+
+  * fynsta
+
 ## 3.3.0 - 2024-06-11 {#version-3-3-0}
 
 ### Improvements
