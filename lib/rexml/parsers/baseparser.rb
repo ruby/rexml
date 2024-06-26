@@ -511,7 +511,11 @@ module REXML
 
       # Unescapes all possible entities
       def unnormalize( string, entities=nil, filter=nil )
-        rv = string.gsub( Private::CARRIAGE_RETURN_NEWLINE_PATTERN, "\n" )
+        if string.include?("\r")
+          rv = string.gsub( Private::CARRIAGE_RETURN_NEWLINE_PATTERN, "\n" )
+        else
+          rv = string.dup
+        end
         matches = rv.scan( REFERENCE_RE )
         return rv if matches.size == 0
         rv.gsub!( Private::CHARACTER_REFERENCES ) {
