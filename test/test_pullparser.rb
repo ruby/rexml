@@ -63,8 +63,10 @@ module REXMLTests
     end
 
     def test_character_references
-      source = '<a>&#65;</a><b>&#x42;</b>'
+      source = '<root><a>&#65;</a><b>&#x42;</b></root>'
       parser = REXML::Parsers::PullParser.new( source )
+
+      events = {}
       element_name = ''
       while parser.has_next?
         event = parser.pull
@@ -72,14 +74,12 @@ module REXMLTests
         when :start_element
           element_name = event[0]
         when :text
-          case element_name
-          when 'a'
-            assert_equal('A', event[1])
-          when 'b'
-            assert_equal('B', event[1])
-          end
+          events[element_name] = event[1]
         end
       end
+
+      assert_equal('A', events['a'])
+      assert_equal("B", events['b'])
     end
 
     def test_text_content_with_line_breaks
