@@ -85,6 +85,40 @@ Last 80 unconsumed characters:
 </ </x>
         DETAIL
       end
+
+      def test_after_root
+        exception = assert_raise(REXML::ParseException) do
+          parser = REXML::Parsers::BaseParser.new('<a></a><b>')
+          while parser.has_next?
+            parser.pull
+          end
+        end
+
+        assert_equal(<<~DETAIL.chomp, exception.to_s)
+          Malformed XML: Extra tag at the end of the document (got '<b')
+          Line: 1
+          Position: 10
+          Last 80 unconsumed characters:
+
+        DETAIL
+      end
+
+      def test_after_empty_element_tag_root
+        exception = assert_raise(REXML::ParseException) do
+          parser = REXML::Parsers::BaseParser.new('<a/><b>')
+          while parser.has_next?
+            parser.pull
+          end
+        end
+
+        assert_equal(<<~DETAIL.chomp, exception.to_s)
+          Malformed XML: Extra tag at the end of the document (got '<b')
+          Line: 1
+          Position: 7
+          Last 80 unconsumed characters:
+
+        DETAIL
+      end
     end
   end
 end
