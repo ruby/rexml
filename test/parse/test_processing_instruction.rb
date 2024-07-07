@@ -40,5 +40,17 @@ x<?x y
                      ])
       end
     end
+
+    def test_after_root
+      parser = REXML::Parsers::BaseParser.new('<a></a><?abc version="1.0" ?>')
+
+      events = {}
+      while parser.has_next?
+        event = parser.pull
+        events[event[0]] = event[1]
+      end
+
+      assert_equal("abc", events[:processing_instruction])
+    end
   end
 end

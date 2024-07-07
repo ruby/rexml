@@ -460,14 +460,23 @@ module REXML
                 @closed = tag
                 @nsstack.shift
               else
+                if @tags.empty? and @have_root
+                  raise ParseException.new("Malformed XML: Extra tag at the end of the document (got '<#{tag}')", @source)
+                end
                 @tags.push( tag )
               end
+              @have_root = true
               return [ :start_element, tag, attributes ]
             end
           else
             text = @source.read_until("<")
             if text.chomp!("<")
               @source.position -= "<".bytesize
+            end
+            if @tags.empty? and @have_root
+              unless /\A\s*\z/.match?(text)
+                raise ParseException.new("Malformed XML: Extra content at the end of the document (got '#{text}')", @source)
+              end
             end
             return [ :text, text ]
           end
