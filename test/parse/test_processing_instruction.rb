@@ -39,6 +39,23 @@ x<?x y
                        pi.content,
                      ])
       end
+
+      def test_xml_declaration_not_at_document_start
+        exception = assert_raise(REXML::ParseException) do
+          parser = REXML::Parsers::BaseParser.new('<a><?xml version="1.0" ?></a>')
+          while parser.has_next?
+            parser.pull
+          end
+        end
+
+        assert_equal(<<~DETAIL.chomp, exception.to_s)
+          Malformed XML: XML declaration is not at the start
+          Line: 1
+          Position: 25
+          Last 80 unconsumed characters:
+
+        DETAIL
+      end
     end
 
     def test_after_root

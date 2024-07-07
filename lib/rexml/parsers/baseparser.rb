@@ -644,7 +644,10 @@ module REXML
           @source.position = start_position
           raise REXML::ParseException.new(message, @source)
         end
-        if @document_status.nil? and match_data[1] == "xml"
+        if match_data[1] == "xml"
+          if @document_status
+            raise ParseException.new("Malformed XML: XML declaration is not at the start", @source)
+          end
           content = match_data[2]
           version = VERSION.match(content)
           version = version[1] unless version.nil?
