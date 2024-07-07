@@ -826,7 +826,7 @@ Last 80 unconsumed characters:
     end
 
     def test_whitespace_before_root
-      a = <<EOL
+      a = <<EOL.chomp
 <?xml version='1.0'?>
   <blo>
     <wak>

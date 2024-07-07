@@ -477,6 +477,7 @@ module REXML
               unless /\A\s*\z/.match?(text)
                 raise ParseException.new("Malformed XML: Extra content at the end of the document (got '#{text}')", @source)
               end
+              return pull_event
             end
             return [ :text, text ]
           end
