@@ -2,49 +2,73 @@
 
 module REXMLTests
   class TextCheckTester < Test::Unit::TestCase
-    include REXML
 
-    def test_valid_pattern
-      chars = ['&A;', '&:;', '&_;', '&:A;', '&AA.bb-00;']
-      chars.each do |token|
-        text = Text.new(token, false, nil, true)
-        assert_equal(token, text.to_s)
+    def check(string)
+      REXML::Text.check(string, REXML::Text::NEEDS_A_SECOND_CHECK, nil)
+    end
+
+    class TestValid < self
+      def test_entity_name_start_char_colon
+        string = '&:;'
+        text = check(string)
+        assert_equal(string, text.to_s)
       end
 
-      character_entities = ['&amp;', '&lt;', '&gt;', '&quot;', '&apos;', '&nbsp;', '&Psi;']
-      character_entities.each do |token|
-        text = Text.new(token, false, nil, true)
-        assert_equal(token, text.to_s)
+      def test_entity_name_start_char_under_score
+        string = '&_;'
+        text = check(string)
+        assert_equal(string, text.to_s)
       end
 
-      numeric_entities = ['&#13;', '&#34;', '&#9830;', '&#0000000013;', '&#0000000162;', '&#x10FFFF;', '&#1114111;']
-      numeric_entities.each do |token|
-        text = Text.new(token, false, nil, true)
-        assert_equal(token, text.to_s)
+      def test_entity_name_char
+        string = '&A.b-0123;'
+        text = check(string)
+        assert_equal(string, text.to_s)
       end
 
-      unicode_entities = ['&#x9;', '&#xa;', '&#xD;', '&#x84;', '&#x9F;', '&#xFDEF;', '&#x10FFFF;', '&#x000000007f;']
-      unicode_entities.each do |token|
-        text = Text.new(token, false, nil, true)
-        assert_equal(token, text.to_s)
+      def test_numeric_entity_decimal
+        string = '&#0162;'
+        text = check(string)
+        assert_equal(string, text.to_s)
       end
 
-      unicodes = ["&\u00C0;", "&\uFDF0;", "&\u{10000};", "&\u00D6\u0300\u0300;"]
-      unicodes.each do |token|
-        text = Text.new(token, false, nil, true)
-        assert_equal(token, text.to_s)
+      def test_numeric_entity_hex
+        string = '&#x10FFFF;'
+        text = check(string)
+        assert_equal(string, text.to_s)
+      end
+
+      def test_unicode_entity
+        string = "&\u00D6\u0300\u0300;"
+        text = check(string)
+        assert_equal(string, text.to_s)
       end
     end
 
-    def test_invalid_pattern
-      chars = ['<', '<;', '&amp', '&42;','&#A;', '&#8;', '&#xB;', '&#x1f;', '&#xD800;', '&#xFFFE;', '&#x110000;', '&#1114112;']
-      chars.each do |token|
-        assert_raise(RuntimeError) { Text.new(token, false, nil, true) }
+    class TestInvalid < self
+      def test_lt
+        string = "<;"
+        assert_raise(RuntimeError.new("Illegal character \"<\" in raw string #{string.inspect}")) { check(string) }
       end
 
-      unicodes = ["&\u00BF;", "&\u{F0000};"]
-      unicodes.each do |token|
-        assert_raise(RuntimeError) { Text.new(token, false, nil, true) }
+      def test_missing_colon
+        string = "&amp"
+        assert_raise(RuntimeError.new("Illegal character \"&\" in raw string #{string.inspect}")) { check(string) }
+      end
+
+      def test_invalid_numeric_entity_decimal
+        string = "&#8;"
+        assert_raise(RuntimeError.new("Illegal character #{string.inspect} in raw string #{string.inspect}")) { check(string) }
+      end
+
+      def test_invalid_numeric_entity_hex
+        string = "&#xD800;"
+        assert_raise(RuntimeError.new("Illegal character #{string.inspect} in raw string #{string.inspect}")) { check(string) }
+      end
+
+      def test_invalid_unicode
+        string = "&\u00BF;"
+        assert_raise(RuntimeError.new("Illegal character \"&\" in raw string #{string.inspect}")) { check(string) }
       end
     end
   end
