@@ -125,6 +125,7 @@ module REXML
 
       module Private
         INSTRUCTION_END = /#{NAME}(\s+.*?)?\?>/um
+        INSTRUCTION_TERM = "?>"
         TAG_PATTERN = /((?>#{QNAME_STR}))\s*/um
         CLOSE_PATTERN = /(#{QNAME_STR})\s*>/um
         ATTLISTDECL_END = /\s+#{NAME}(?:#{ATTDEF})*\s*>/um
@@ -639,7 +640,7 @@ module REXML
       end
 
       def process_instruction(start_position)
-        match_data = @source.match(Private::INSTRUCTION_END, true)
+        match_data = @source.match(Private::INSTRUCTION_END, true, term: Private::INSTRUCTION_TERM)
         unless match_data
           message = "Invalid processing instruction node"
           @source.position = start_position

@@ -1,8 +1,12 @@
 require "test/unit"
+require "core_assertions"
+
 require "rexml/document"
 
 module REXMLTests
   class TestParseProcessinInstruction < Test::Unit::TestCase
+    include Test::Unit::CoreAssertions
+
     def parse(xml)
       REXML::Document.new(xml)
     end
@@ -68,6 +72,13 @@ x<?x y
       end
 
       assert_equal("abc", events[:processing_instruction])
+    end
+
+    def test_gt_linear_performance_introduction
+      seq = [10000, 50000, 100000, 150000, 200000]
+      assert_linear_performance(seq, rehearsal: 10) do |n|
+        REXML::Document.new('<?xml version="1.0" ' + ">" * n + ' ?>')
+      end
     end
   end
 end
