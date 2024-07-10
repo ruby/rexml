@@ -128,6 +128,7 @@ module REXML
         INSTRUCTION_TERM = "?>"
         COMMENT_TERM = "-->"
         CDATA_TERM = "]]>"
+        DOCTYPE_TERM = "]>"
         TAG_PATTERN = /((?>#{QNAME_STR}))\s*/um
         CLOSE_PATTERN = /(#{QNAME_STR})\s*>/um
         ATTLISTDECL_END = /\s+#{NAME}(?:#{ATTDEF})*\s*>/um
@@ -384,7 +385,7 @@ module REXML
               end
               return [ :comment, md[1] ] if md
             end
-          elsif match = @source.match(/(%.*?;)\s*/um, true)
+          elsif match = @source.match(/(%.*?;)\s*/um, true, term: Private::DOCTYPE_TERM)
             return [ :externalentity, match[1] ]
           elsif @source.match(/\]\s*>/um, true)
             @document_status = :after_doctype
