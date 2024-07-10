@@ -1,8 +1,12 @@
 require "test/unit"
+require "core_assertions"
+
 require "rexml/document"
 
 module REXMLTests
   class TestParseElement < Test::Unit::TestCase
+    include Test::Unit::CoreAssertions
+
     def parse(xml)
       REXML::Document.new(xml)
     end
@@ -118,6 +122,13 @@ Last 80 unconsumed characters:
           Last 80 unconsumed characters:
 
         DETAIL
+      end
+    end
+
+    def test_gt_linear_performance_attribute_value
+      seq = [10000, 50000, 100000, 150000, 200000]
+      assert_linear_performance(seq, rehearsal: 10) do |n|
+        REXML::Document.new('<test testing="' + ">" * n + '"></test>')
       end
     end
   end

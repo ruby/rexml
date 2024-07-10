@@ -1,12 +1,8 @@
 # -*- coding: utf-8 -*-
 # frozen_string_literal: false
 
-require 'core_assertions'
-
 module REXMLTests
   class TestDocument < Test::Unit::TestCase
-    include Test::Unit::CoreAssertions
-
     def test_version_attributes_to_s
       doc = REXML::Document.new(<<~eoxml)
         <?xml version="1.0" encoding="UTF-8" standalone="no"?>
@@ -200,13 +196,6 @@ EOX
       assert_equal('no', doc.stand_alone?, bug2539)
       doc = REXML::Document.new('<?xml version="1.0" standalone=  "no" ?>')
       assert_equal('no', doc.stand_alone?, bug2539)
-    end
-
-    def test_gt_linear_performance_attribute_value
-      seq = [10000, 50000, 100000, 150000, 200000]
-      assert_linear_performance(seq, rehearsal: 10) do |n|
-        REXML::Document.new('<test testing="' + ">" * n + '"></test>')
-      end
     end
 
     def test_each_recursive
