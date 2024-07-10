@@ -126,6 +126,7 @@ module REXML
       module Private
         INSTRUCTION_END = /#{NAME}(\s+.*?)?\?>/um
         INSTRUCTION_TERM = "?>"
+        COMMENT_TERM = "-->"
         TAG_PATTERN = /((?>#{QNAME_STR}))\s*/um
         CLOSE_PATTERN = /(#{QNAME_STR})\s*>/um
         ATTLISTDECL_END = /\s+#{NAME}(?:#{ATTDEF})*\s*>/um
@@ -243,7 +244,7 @@ module REXML
             return process_instruction(start_position)
           elsif @source.match("<!", true)
             if @source.match("--", true)
-              md = @source.match(/(.*?)-->/um, true)
+              md = @source.match(/(.*?)-->/um, true, term: Private::COMMENT_TERM)
               if md.nil?
                 raise REXML::ParseException.new("Unclosed comment", @source)
               end
