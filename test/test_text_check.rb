@@ -7,6 +7,13 @@ module REXMLTests
       REXML::Text.check(string, REXML::Text::NEEDS_A_SECOND_CHECK, nil)
     end
 
+    def assert_check_failed(string, illegal_part)
+      message = "Illegal character #{illegal_part.inspect} in raw string #{string.inspect}"
+      assert_raise(RuntimeError.new(message)) do
+        check(string)
+      end
+    end
+
     class TestValid < self
       def test_entity_name_start_char_colon
         assert_nothing_raised { check('&:;') }
@@ -37,28 +44,23 @@ module REXMLTests
 
     class TestInvalid < self
       def test_lt
-        string = "<;"
-        assert_raise(RuntimeError.new("Illegal character \"<\" in raw string #{string.inspect}")) { check(string) }
+        assert_check_failed('<;', '<')
       end
 
       def test_entity_reference_missing_colon
-        string = "&amp"
-        assert_raise(RuntimeError.new("Illegal character \"&\" in raw string #{string.inspect}")) { check(string) }
+        assert_check_failed('&amp', '&')
       end
 
       def test_character_reference_decimal_invalid_value
-        string = "&#8;"
-        assert_raise(RuntimeError.new("Illegal character #{string.inspect} in raw string #{string.inspect}")) { check(string) }
+        assert_check_failed('&#8;', '&#8;')
       end
 
       def test_character_reference_hex_invalid_value
-        string = "&#xD800;"
-        assert_raise(RuntimeError.new("Illegal character #{string.inspect} in raw string #{string.inspect}")) { check(string) }
+        assert_check_failed('&#xD800;', '&#xD800;')
       end
 
       def test_entity_name_non_ascii_invalid_value
-        string = "&\u00BF;"
-        assert_raise(RuntimeError.new("Illegal character \"&\" in raw string #{string.inspect}")) { check(string) }
+        assert_check_failed('&\u00BF;', '&')
       end
     end
   end
