@@ -72,6 +72,11 @@ module REXMLTests
         assert_check_failed("&#48x;", "&")
       end
 
+      def test_character_reference_decimal_space_at_the_start
+        # U+0030 DIGIT ZERO
+        assert_check_failed("&# 48;", "&")
+      end
+
       def test_character_reference_decimal_control_character
         # U+0008 BACKSPACE
         assert_check_failed("&#8;", "&#8;")
@@ -90,6 +95,11 @@ module REXMLTests
       def test_character_reference_hex_garbage_at_the_end
         # U+0030 DIGIT ZERO
         assert_check_failed("&#x48x;", "&")
+      end
+
+      def test_character_reference_hex_space_at_the_start
+        # U+0030 DIGIT ZERO
+        assert_check_failed("&#x 30;", "&")
       end
 
       def test_character_reference_hex_surrogate_block
