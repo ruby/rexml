@@ -67,6 +67,11 @@ module REXMLTests
         assert_check_failed("&amp", "&")
       end
 
+      def test_character_reference_decimal_garbage_at_the_end
+        # U+0030 DIGIT ZERO
+        assert_check_failed("&#48x;", "&")
+      end
+
       def test_character_reference_decimal_invalid_value
         # U+0008 BACKSPACE
         assert_check_failed("&#8;", "&#8;")
@@ -80,6 +85,11 @@ module REXMLTests
       def test_character_reference_format_hex_00x
         # U+0041 LATIN CAPITAL LETTER A
         assert_check_failed("&#00x41;", "&#00x41;")
+      end
+
+      def test_character_reference_hex_garbage_at_the_end
+        # U+0030 DIGIT ZERO
+        assert_check_failed("&#x48x;", "&")
       end
 
       def test_character_reference_hex_surrogate_block
