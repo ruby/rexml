@@ -78,12 +78,12 @@ module REXMLTests
         assert_check_failed('&#00x41;', '&#00x41;')
       end
 
-      def test_character_reference_hex_invalid_value
+      def test_character_reference_hex_surrogate_block
         # U+0D800 SURROGATE PAIR
         assert_check_failed('&#xD800;', '&#xD800;')
       end
 
-      def test_entity_name_non_ascii_invalid_value
+      def test_entity_name_non_ascii_symbol
         # U+00BF INVERTED QUESTION MARK
         assert_check_failed('&\u00BF;', '&')
       end
