@@ -111,6 +111,11 @@ module REXMLTests
         # U+00BF INVERTED QUESTION MARK
         assert_check_failed("&\u00BF;", "&")
       end
+
+      def test_entity_name_new_line
+        # U+0026 AMPERSAND
+        assert_check_failed("&\namp\nx;", "&")
+      end
     end
   end
 end
