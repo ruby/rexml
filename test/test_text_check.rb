@@ -72,7 +72,7 @@ module REXMLTests
         assert_check_failed("&#48x;", "&")
       end
 
-      def test_character_reference_decimal_invalid_value
+      def test_character_reference_decimal_control_character
         # U+0008 BACKSPACE
         assert_check_failed("&#8;", "&#8;")
       end
