@@ -40,6 +40,10 @@ module REXMLTests
         # U+3044 HIRAGANA LETTER I
         assert_nothing_raised { check("&\u3042\u3044;") }
       end
+
+      def test_normal_string
+        assert_nothing_raised { check("foo") }
+      end
     end
 
     class TestInvalid < self
