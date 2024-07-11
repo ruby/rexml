@@ -16,19 +16,19 @@ module REXMLTests
         assert_nothing_raised { check('&_;') }
       end
 
-      def test_entity_name_char
+      def test_entity_name_mix
         assert_nothing_raised { check('&A.b-0123;') }
       end
 
-      def test_numeric_entity_decimal
+      def test_character_reference_decimal
         assert_nothing_raised { check('&#0162;') }
       end
 
-      def test_numeric_entity_hex
+      def test_character_reference_hex
         assert_nothing_raised { check('&#x10FFFF;') }
       end
 
-      def test_unicode_entity
+      def test_entity_name_non_ascii
         assert_nothing_raised { check("&\u00D6\u0300\u0300;") }
       end
     end
@@ -39,22 +39,22 @@ module REXMLTests
         assert_raise(RuntimeError.new("Illegal character \"<\" in raw string #{string.inspect}")) { check(string) }
       end
 
-      def test_missing_colon
+      def test_entity_reference_missing_colon
         string = "&amp"
         assert_raise(RuntimeError.new("Illegal character \"&\" in raw string #{string.inspect}")) { check(string) }
       end
 
-      def test_invalid_numeric_entity_decimal
+      def test_character_reference_decimal_invalid_value
         string = "&#8;"
         assert_raise(RuntimeError.new("Illegal character #{string.inspect} in raw string #{string.inspect}")) { check(string) }
       end
 
-      def test_invalid_numeric_entity_hex
+      def test_character_reference_hex_invalid_value
         string = "&#xD800;"
         assert_raise(RuntimeError.new("Illegal character #{string.inspect} in raw string #{string.inspect}")) { check(string) }
       end
 
-      def test_invalid_unicode
+      def test_entity_name_non_ascii_invalid_value
         string = "&\u00BF;"
         assert_raise(RuntimeError.new("Illegal character \"&\" in raw string #{string.inspect}")) { check(string) }
       end
