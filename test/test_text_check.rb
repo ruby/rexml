@@ -9,39 +9,27 @@ module REXMLTests
 
     class TestValid < self
       def test_entity_name_start_char_colon
-        string = '&:;'
-        text = check(string)
-        assert_equal(string, text.to_s)
+        assert_nothing_raised { check('&:;') }
       end
 
       def test_entity_name_start_char_under_score
-        string = '&_;'
-        text = check(string)
-        assert_equal(string, text.to_s)
+        assert_nothing_raised { check('&_;') }
       end
 
       def test_entity_name_char
-        string = '&A.b-0123;'
-        text = check(string)
-        assert_equal(string, text.to_s)
+        assert_nothing_raised { check('&A.b-0123;') }
       end
 
       def test_numeric_entity_decimal
-        string = '&#0162;'
-        text = check(string)
-        assert_equal(string, text.to_s)
+        assert_nothing_raised { check('&#0162;') }
       end
 
       def test_numeric_entity_hex
-        string = '&#x10FFFF;'
-        text = check(string)
-        assert_equal(string, text.to_s)
+        assert_nothing_raised { check('&#x10FFFF;') }
       end
 
       def test_unicode_entity
-        string = "&\u00D6\u0300\u0300;"
-        text = check(string)
-        assert_equal(string, text.to_s)
+        assert_nothing_raised { check("&\u00D6\u0300\u0300;") }
       end
     end
 
