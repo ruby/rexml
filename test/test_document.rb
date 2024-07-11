@@ -236,7 +236,7 @@ EOX
 
     class WriteTest < Test::Unit::TestCase
       def setup
-        @document = REXML::Document.new(<<-EOX)
+        @document = REXML::Document.new(<<-EOX.chomp)
 <?xml version="1.0" encoding="UTF-8"?>
 <message>Hello world!</message>
 EOX
@@ -246,7 +246,7 @@ EOX
         def test_output
           output = ""
           @document.write(output)
-          assert_equal(<<-EOX, output)
+          assert_equal(<<-EOX.chomp, output)
 <?xml version='1.0' encoding='UTF-8'?>
 <message>Hello world!</message>
 EOX
@@ -269,7 +269,7 @@ EOX
           indent = 2
           transitive = true
           @document.write(output, indent, transitive)
-          assert_equal(<<-EOX, output)
+          assert_equal(<<-EOX.chomp, output)
 <?xml version='1.0' encoding='UTF-8'?>
 <message
 >Hello world!</message
@@ -298,7 +298,7 @@ EOX
           japanese_text = "こんにちは"
           @document.root.text = japanese_text
           @document.write(output, indent, transitive, ie_hack, encoding)
-          assert_equal(<<-EOX.encode(encoding), output)
+          assert_equal(<<-EOX.chomp.encode(encoding), output)
 <?xml version='1.0' encoding='SHIFT_JIS'?>
 <message>#{japanese_text}</message>
 EOX
@@ -309,7 +309,7 @@ EOX
         def test_output
           output = ""
           @document.write(:output => output)
-          assert_equal(<<-EOX, output)
+          assert_equal(<<-EOX.chomp, output)
 <?xml version='1.0' encoding='UTF-8'?>
 <message>Hello world!</message>
 EOX
@@ -329,7 +329,7 @@ EOX
         def test_transitive
           output = ""
           @document.write(:output => output, :indent => 2, :transitive => true)
-          assert_equal(<<-EOX, output)
+          assert_equal(<<-EOX.chomp, output)
 <?xml version='1.0' encoding='UTF-8'?>
 <message
 >Hello world!</message
@@ -351,7 +351,7 @@ EOX
           japanese_text = "こんにちは"
           @document.root.text = japanese_text
           @document.write(:output => output, :encoding => encoding)
-          assert_equal(<<-EOX.encode(encoding), output)
+          assert_equal(<<-EOX.chomp.encode(encoding), output)
 <?xml version='1.0' encoding='SHIFT_JIS'?>
 <message>#{japanese_text}</message>
 EOX

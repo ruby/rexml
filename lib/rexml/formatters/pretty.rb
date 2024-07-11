@@ -111,7 +111,7 @@ module REXML
         # itself, then we don't need a carriage return... which makes this
         # logic more complex.
         node.children.each { |child|
-          next if child == node.children[-1] and child.instance_of?(Text)
+          next if child.instance_of?(Text)
           unless child == node.children[0] or child.instance_of?(Text) or
             (child == node.children[1] and !node.children[0].writethis)
             output << "\n"
