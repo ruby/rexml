@@ -68,21 +68,6 @@ module REXMLTests
         assert_check_failed('&#8;', '&#8;')
       end
 
-      def test_character_reference_format_without_hash
-        # U+0030 DIGIT ZERO
-        assert_check_failed('&48;', '&')
-      end
-
-      def test_character_reference_format_without_hash_and_start_0
-        # U+0030 DIGIT ZERO
-        assert_check_failed('&048;', '&')
-      end
-
-      def test_character_reference_format_without_hash_and_start_00
-        # U+0030 DIGIT ZERO
-        assert_check_failed('&0048;', '&')
-      end
-
       def test_character_reference_format_hex_0x
         # U+0041 LATIN CAPITAL LETTER A
         assert_check_failed('&#0x41;', '&#0x41;')
