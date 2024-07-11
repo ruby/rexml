@@ -59,6 +59,10 @@ module REXMLTests
         assert_check_failed("ab<cd", "<")
       end
 
+      def test_reference_empty
+        assert_check_failed("&;", "&")
+      end
+
       def test_entity_reference_missing_colon
         assert_check_failed("&amp", "&")
       end
