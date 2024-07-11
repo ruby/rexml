@@ -8,7 +8,7 @@ module REXMLTests
     end
 
     def assert_check(string)
-      assert_nothing_raised { REXML::Text.check(string, REXML::Text::NEEDS_A_SECOND_CHECK, nil) }
+      assert_nothing_raised { check(string) }
     end
 
     def assert_check_failed(string, illegal_part)
