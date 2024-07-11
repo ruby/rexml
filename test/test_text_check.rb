@@ -60,14 +60,17 @@ module REXMLTests
       end
 
       def test_character_reference_decimal_invalid_value
+        # U+0008 BACKSPACE
         assert_check_failed('&#8;', '&#8;')
       end
 
       def test_character_reference_hex_invalid_value
+        # U+0D800 SURROGATE PAIR
         assert_check_failed('&#xD800;', '&#xD800;')
       end
 
       def test_entity_name_non_ascii_invalid_value
+        # U+00BF INVERTED QUESTION MARK
         assert_check_failed('&\u00BF;', '&')
       end
     end
