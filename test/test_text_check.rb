@@ -55,6 +55,10 @@ module REXMLTests
         assert_check_failed('<;', '<')
       end
 
+      def test_lt_mix
+        assert_check_failed('ab<cd', '<')
+      end
+
       def test_entity_reference_missing_colon
         assert_check_failed('&amp', '&')
       end
@@ -62,6 +66,31 @@ module REXMLTests
       def test_character_reference_decimal_invalid_value
         # U+0008 BACKSPACE
         assert_check_failed('&#8;', '&#8;')
+      end
+
+      def test_character_reference_format_without_hash
+        # U+0030 DIGIT ZERO
+        assert_check_failed('&48;', '&')
+      end
+
+      def test_character_reference_format_without_hash_and_start_0
+        # U+0030 DIGIT ZERO
+        assert_check_failed('&048;', '&')
+      end
+
+      def test_character_reference_format_without_hash_and_start_00
+        # U+0030 DIGIT ZERO
+        assert_check_failed('&0048;', '&')
+      end
+
+      def test_character_reference_format_hex_0x
+        # U+0041 LATIN CAPITAL LETTER A
+        assert_check_failed('&#0x41;', '&#0x41;')
+      end
+
+      def test_character_reference_format_hex_00x
+        # U+0041 LATIN CAPITAL LETTER A
+        assert_check_failed('&#00x41;', '&#00x41;')
       end
 
       def test_character_reference_hex_invalid_value
