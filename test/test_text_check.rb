@@ -29,7 +29,9 @@ module REXMLTests
       end
 
       def test_entity_name_non_ascii
-        assert_nothing_raised { check("&\u00D6\u0300\u0300;") }
+        # U+3042 HIRAGANA LETTER A
+        # U+3044 HIRAGANA LETTER I
+        assert_nothing_raised { check("&\u3042\u3044;") }
       end
     end
 
