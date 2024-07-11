@@ -7,6 +7,10 @@ module REXMLTests
       REXML::Text.check(string, REXML::Text::NEEDS_A_SECOND_CHECK, nil)
     end
 
+    def assert_check(string)
+      assert_nothing_raised { REXML::Text.check(string, REXML::Text::NEEDS_A_SECOND_CHECK, nil) }
+    end
+
     def assert_check_failed(string, illegal_part)
       message = "Illegal character #{illegal_part.inspect} in raw string #{string.inspect}"
       assert_raise(RuntimeError.new(message)) do
@@ -16,33 +20,33 @@ module REXMLTests
 
     class TestValid < self
       def test_entity_name_start_char_colon
-        assert_nothing_raised { check('&:;') }
+        assert_check('&:;')
       end
 
       def test_entity_name_start_char_under_score
-        assert_nothing_raised { check('&_;') }
+        assert_check('&_;')
       end
 
       def test_entity_name_mix
-        assert_nothing_raised { check('&A.b-0123;') }
+        assert_check('&A.b-0123;')
       end
 
       def test_character_reference_decimal
-        assert_nothing_raised { check('&#0162;') }
+        assert_check('&#0162;')
       end
 
       def test_character_reference_hex
-        assert_nothing_raised { check('&#x10FFFF;') }
+        assert_check('&#x10FFFF;')
       end
 
       def test_entity_name_non_ascii
         # U+3042 HIRAGANA LETTER A
         # U+3044 HIRAGANA LETTER I
-        assert_nothing_raised { check("&\u3042\u3044;") }
+        assert_check("&\u3042\u3044;")
       end
 
       def test_normal_string
-        assert_nothing_raised { check("foo") }
+        assert_check("foo")
       end
     end
 
