@@ -435,7 +435,7 @@ EOX
 
           actual_xml = ""
           document.write(actual_xml)
-          expected_xml = <<-EOX.encode("UTF-16BE")
+          expected_xml = <<-EOX.chomp.encode("UTF-16BE")
 \ufeff<?xml version='1.0' encoding='UTF-16'?>
 <message>Hello world!</message>
 EOX

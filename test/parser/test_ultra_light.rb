@@ -17,7 +17,6 @@ class TestUltraLightParser < Test::Unit::TestCase
                        [:entitydecl, "name", "value"]
                      ],
                      [:start_element, :parent, "root", {}],
-                     [:text, "\n"],
                    ],
                    parse(<<-INTERNAL_SUBSET))
 <!ENTITY name "value">

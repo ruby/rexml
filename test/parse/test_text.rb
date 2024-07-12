@@ -21,5 +21,20 @@ module REXMLTests
         DETAIL
       end
     end
+
+    def test_whitespace_characters_after_root
+      parser = REXML::Parsers::BaseParser.new('<a>b</a> ')
+
+      events = []
+      while parser.has_next?
+        event = parser.pull
+        case event[0]
+        when :text
+          events << event[1]
+        end
+      end
+
+      assert_equal(["b"], events)
+    end
   end
 end
