@@ -31,6 +31,17 @@ module REXMLTests
       assert_equal '--1234--', results[1]
     end
 
+    def test_characters_predefined_entities
+      source = '<root><a>&lt;P&gt; &lt;I&gt; &lt;B&gt; Text &lt;/B&gt;  &lt;/I&gt;</a></root>'
+
+      sax = Parsers::SAX2Parser.new( source )
+      results = []
+      sax.listen(:characters) {|x| results << x }
+      sax.parse
+
+      assert_equal(["<P> <I> <B> Text </B>  </I>"], results)
+    end
+
     def test_sax2
       File.open(fixture_path("documentation.xml")) do |f|
         parser = Parsers::SAX2Parser.new( f )

@@ -82,6 +82,22 @@ module REXMLTests
       assert_equal("B", events['b'])
     end
 
+    def test_text_entity_references
+      source = '<root><a>&lt;P&gt; &lt;I&gt; &lt;B&gt; Text &lt;/B&gt;  &lt;/I&gt;</a></root>'
+      parser = REXML::Parsers::PullParser.new( source )
+
+      events = []
+      while parser.has_next?
+        event = parser.pull
+        case event.event_type
+        when :text
+          events << event[1]
+        end
+      end
+
+      assert_equal(["<P> <I> <B> Text </B>  </I>"], events)
+    end
+
     def test_text_content_with_line_breaks
       source = "<root><a>A</a><b>B\n</b><c>C\r\n</c></root>"
       parser = REXML::Parsers::PullParser.new( source )
