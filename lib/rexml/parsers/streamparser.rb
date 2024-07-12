@@ -36,8 +36,8 @@ module REXML
             @listener.tag_end( event[1] )
             @tag_stack.pop
           when :text
-            normalized = @parser.unnormalize( event[1] )
-            @listener.text( normalized )
+            unnormalized = @parser.unnormalize( event[1] )
+            @listener.text( unnormalized )
           when :processing_instruction
             @listener.instruction( *event[1,2] )
           when :start_doctype
