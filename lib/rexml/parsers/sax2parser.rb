@@ -157,25 +157,8 @@ module REXML
               end
             end
           when :text
-            #normalized = @parser.normalize( event[1] )
-            #handle( :characters, normalized )
-            copy = event[1].clone
-
-            esub = proc { |match|
-              if @entities.has_key?($1)
-                @entities[$1].gsub(Text::REFERENCE, &esub)
-              else
-                match
-              end
-            }
-
-            copy.gsub!( Text::REFERENCE, &esub )
-            copy.gsub!( Text::NUMERICENTITY ) {|m|
-              m=$1
-              m = "0#{m}" if m[0] == ?x
-              [Integer(m)].pack('U*')
-            }
-            handle( :characters, copy )
+            unnormalized = @parser.unnormalize( event[1], @entities )
+            handle( :characters, unnormalized )
           when :entitydecl
             handle_entitydecl( event )
           when :processing_instruction, :comment, :attlistdecl,
