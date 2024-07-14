@@ -192,8 +192,8 @@
       <span class="ruby-ivar">@listener</span>.<span class="ruby-identifier">tag_end</span>( <span class="ruby-identifier">event</span>[<span class="ruby-value">1</span>] )
       <span class="ruby-ivar">@tag_stack</span>.<span class="ruby-identifier">pop</span>
     <span class="ruby-keyword">when</span> <span class="ruby-value">:text</span>
-      <span class="ruby-identifier">normalized</span> = <span class="ruby-ivar">@parser</span>.<span class="ruby-identifier">unnormalize</span>( <span class="ruby-identifier">event</span>[<span class="ruby-value">1</span>] )
-      <span class="ruby-ivar">@listener</span>.<span class="ruby-identifier">text</span>( <span class="ruby-identifier">normalized</span> )
+      <span class="ruby-identifier">unnormalized</span> = <span class="ruby-ivar">@parser</span>.<span class="ruby-identifier">unnormalize</span>( <span class="ruby-identifier">event</span>[<span class="ruby-value">1</span>] )
+      <span class="ruby-ivar">@listener</span>.<span class="ruby-identifier">text</span>( <span class="ruby-identifier">unnormalized</span> )
     <span class="ruby-keyword">when</span> <span class="ruby-value">:processing_instruction</span>
       <span class="ruby-ivar">@listener</span>.<span class="ruby-identifier">instruction</span>( <span class="ruby-operator">*</span><span class="ruby-identifier">event</span>[<span class="ruby-value">1</span>,<span class="ruby-value">2</span>] )
     <span class="ruby-keyword">when</span> <span class="ruby-value">:start_doctype</span>

@@ -352,25 +352,8 @@
         <span class="ruby-keyword">end</span>
       <span class="ruby-keyword">end</span>
     <span class="ruby-keyword">when</span> <span class="ruby-value">:text</span>
-      <span class="ruby-comment">#normalized = @parser.normalize( event[1] )</span>
-      <span class="ruby-comment">#handle( :characters, normalized )</span>
-      <span class="ruby-identifier">copy</span> = <span class="ruby-identifier">event</span>[<span class="ruby-value">1</span>].<span class="ruby-identifier">clone</span>
-
-      <span class="ruby-identifier">esub</span> = <span class="ruby-identifier">proc</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">match</span><span class="ruby-operator">|</span>
-        <span class="ruby-keyword">if</span> <span class="ruby-ivar">@entities</span>.<span class="ruby-identifier">has_key?</span>(<span class="ruby-node">$1</span>)
-          <span class="ruby-ivar">@entities</span>[<span class="ruby-node">$1</span>].<span class="ruby-identifier">gsub</span>(<span class="ruby-constant">Text</span><span class="ruby-operator">::</span><span class="ruby-constant">REFERENCE</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">esub</span>)
-        <span class="ruby-keyword">else</span>
-          <span class="ruby-identifier">match</span>
-        <span class="ruby-keyword">end</span>
-      }
-
-      <span class="ruby-identifier">copy</span>.<span class="ruby-identifier">gsub!</span>( <span class="ruby-constant">Text</span><span class="ruby-operator">::</span><span class="ruby-constant">REFERENCE</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">esub</span> )
-      <span class="ruby-identifier">copy</span>.<span class="ruby-identifier">gsub!</span>( <span class="ruby-constant">Text</span><span class="ruby-operator">::</span><span class="ruby-constant">NUMERICENTITY</span> ) {<span class="ruby-operator">|</span><span class="ruby-identifier">m</span><span class="ruby-operator">|</span>
-        <span class="ruby-identifier">m</span>=<span class="ruby-node">$1</span>
-        <span class="ruby-identifier">m</span> = <span class="ruby-node">&quot;0#{m}&quot;</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">m</span>[<span class="ruby-value">0</span>] <span class="ruby-operator">==</span> <span class="ruby-value">?x</span>
-        [<span class="ruby-constant">Integer</span>(<span class="ruby-identifier">m</span>)].<span class="ruby-identifier">pack</span>(<span class="ruby-string">&#39;U*&#39;</span>)
-      }
-      <span class="ruby-identifier">handle</span>( <span class="ruby-value">:characters</span>, <span class="ruby-identifier">copy</span> )
+      <span class="ruby-identifier">unnormalized</span> = <span class="ruby-ivar">@parser</span>.<span class="ruby-identifier">unnormalize</span>( <span class="ruby-identifier">event</span>[<span class="ruby-value">1</span>], <span class="ruby-ivar">@entities</span> )
+      <span class="ruby-identifier">handle</span>( <span class="ruby-value">:characters</span>, <span class="ruby-identifier">unnormalized</span> )
     <span class="ruby-keyword">when</span> <span class="ruby-value">:entitydecl</span>
       <span class="ruby-identifier">handle_entitydecl</span>( <span class="ruby-identifier">event</span> )
     <span class="ruby-keyword">when</span> <span class="ruby-value">:processing_instruction</span>, <span class="ruby-value">:comment</span>, <span class="ruby-value">:attlistdecl</span>,
