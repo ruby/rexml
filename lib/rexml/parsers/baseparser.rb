@@ -350,7 +350,7 @@ module REXML
               contents = md[0]
 
               pairs = {}
-              values = md[0].scan( ATTDEF_RE )
+              values = md[0].strip.scan( ATTDEF_RE )
               values.each do |attdef|
                 unless attdef[3] == "#IMPLIED"
                   attdef.compact!
