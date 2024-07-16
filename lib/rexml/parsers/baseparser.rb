@@ -124,11 +124,15 @@ module REXML
       }
 
       module Private
-        INSTRUCTION_END = /#{NAME}(\s+.*?)?\?>/um
+        # Terminal requires two or more letters.
         INSTRUCTION_TERM = "?>"
         COMMENT_TERM = "-->"
         CDATA_TERM = "]]>"
         DOCTYPE_TERM = "]>"
+        # Read to the end of DOCTYPE because there is no proper ENTITY termination
+        ENTITY_TERM = DOCTYPE_TERM
+
+        INSTRUCTION_END = /#{NAME}(\s+.*?)?\?>/um
         TAG_PATTERN = /((?>#{QNAME_STR}))\s*/um
         CLOSE_PATTERN = /(#{QNAME_STR})\s*>/um
         ATTLISTDECL_END = /\s+#{NAME}(?:#{ATTDEF})*\s*>/um
@@ -313,7 +317,7 @@ module REXML
               raise REXML::ParseException.new( "Bad ELEMENT declaration!", @source ) if md.nil?
               return [ :elementdecl, "<!ELEMENT" + md[1] ]
             elsif @source.match("ENTITY", true)
-              match = [:entitydecl, *@source.match(Private::ENTITYDECL_PATTERN, true).captures.compact]
+              match = [:entitydecl, *@source.match(Private::ENTITYDECL_PATTERN, true, term: Private::ENTITY_TERM).captures.compact]
               ref = false
               if match[1] == '%'
                 ref = true
