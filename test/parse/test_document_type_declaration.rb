@@ -1,9 +1,13 @@
 # frozen_string_literal: false
 require "test/unit"
+require "core_assertions"
+
 require "rexml/document"
 
 module REXMLTests
   class TestParseDocumentTypeDeclaration < Test::Unit::TestCase
+    include Test::Unit::CoreAssertions
+
     private
     def parse(doctype)
       REXML::Document.new(<<-XML).doctype
@@ -274,6 +278,16 @@ x'>  <r/>
         INTERNAL_SUBSET
         assert_equal([REXML::NotationDecl, REXML::AttlistDecl],
                      doctype.children.collect(&:class))
+      end
+
+      def test_gt_linear_performance_malformed_entity
+        seq = [10000, 50000, 100000, 150000, 200000]
+        assert_linear_performance(seq, rehearsal: 10) do |n|
+          begin
+            REXML::Document.new('<!DOCTYPE root [' + "%>" * n + ']><test/>')
+          rescue
+          end
+        end
       end
 
       private
