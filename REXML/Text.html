@@ -206,25 +206,45 @@
     <span class="ruby-keyword">end</span>
   <span class="ruby-keyword">end</span>
 
-  <span class="ruby-comment"># context sensitive</span>
-  <span class="ruby-identifier">string</span>.<span class="ruby-identifier">scan</span>(<span class="ruby-identifier">pattern</span>) <span class="ruby-keyword">do</span>
-    <span class="ruby-keyword">if</span> <span class="ruby-node">$1</span>[<span class="ruby-value">-1</span>] <span class="ruby-operator">!=</span> <span class="ruby-value">?;</span>
-      <span class="ruby-identifier">raise</span> <span class="ruby-node">&quot;Illegal character #{$1.inspect} in raw string #{string.inspect}&quot;</span>
-    <span class="ruby-keyword">elsif</span> <span class="ruby-node">$1</span>[<span class="ruby-value">0</span>] <span class="ruby-operator">==</span> <span class="ruby-value">?&amp;</span>
-      <span class="ruby-keyword">if</span> <span class="ruby-node">$5</span> <span class="ruby-keyword">and</span> <span class="ruby-node">$5</span>[<span class="ruby-value">0</span>] <span class="ruby-operator">==</span> <span class="ruby-value">?#</span>
-        <span class="ruby-keyword">case</span> (<span class="ruby-node">$5</span>[<span class="ruby-value">1</span>] <span class="ruby-operator">==</span> <span class="ruby-value">?x</span> <span class="ruby-operator">?</span> <span class="ruby-node">$5</span>[<span class="ruby-value">2</span><span class="ruby-operator">..</span><span class="ruby-value">-1</span>].<span class="ruby-identifier">to_i</span>(<span class="ruby-value">16</span>) <span class="ruby-operator">:</span> <span class="ruby-node">$5</span>[<span class="ruby-value">1</span><span class="ruby-operator">..</span><span class="ruby-value">-1</span>].<span class="ruby-identifier">to_i</span>)
-        <span class="ruby-keyword">when</span> <span class="ruby-operator">*</span><span class="ruby-constant">VALID_CHAR</span>
-        <span class="ruby-keyword">else</span>
-          <span class="ruby-identifier">raise</span> <span class="ruby-node">&quot;Illegal character #{$1.inspect} in raw string #{string.inspect}&quot;</span>
-        <span class="ruby-keyword">end</span>
-      <span class="ruby-comment"># FIXME: below can&#39;t work but this needs API change.</span>
-      <span class="ruby-comment"># elsif @parent and $3 and !SUBSTITUTES.include?($1)</span>
-      <span class="ruby-comment">#   if !doctype or !doctype.entities.has_key?($3)</span>
-      <span class="ruby-comment">#     raise &quot;Undeclared entity &#39;#{$1}&#39; in raw string \&quot;#{string}\&quot;&quot;</span>
-      <span class="ruby-comment">#   end</span>
-      <span class="ruby-keyword">end</span>
+  <span class="ruby-identifier">pos</span> = <span class="ruby-value">0</span>
+  <span class="ruby-keyword">while</span> (<span class="ruby-identifier">index</span> = <span class="ruby-identifier">string</span>.<span class="ruby-identifier">index</span>(<span class="ruby-regexp">/&lt;|&amp;/</span>, <span class="ruby-identifier">pos</span>))
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">string</span>[<span class="ruby-identifier">index</span>] <span class="ruby-operator">==</span> <span class="ruby-string">&quot;&lt;&quot;</span>
+      <span class="ruby-identifier">raise</span> <span class="ruby-node">&quot;Illegal character \&quot;#{string[index]}\&quot; in raw string #{string.inspect}&quot;</span>
     <span class="ruby-keyword">end</span>
+
+    <span class="ruby-keyword">unless</span> (<span class="ruby-identifier">end_index</span> = <span class="ruby-identifier">string</span>.<span class="ruby-identifier">index</span>(<span class="ruby-regexp">/[^\s];/</span>, <span class="ruby-identifier">index</span> <span class="ruby-operator">+</span> <span class="ruby-value">1</span>))
+      <span class="ruby-identifier">raise</span> <span class="ruby-node">&quot;Illegal character \&quot;#{string[index]}\&quot; in raw string #{string.inspect}&quot;</span>
+    <span class="ruby-keyword">end</span>
+
+    <span class="ruby-identifier">value</span> = <span class="ruby-identifier">string</span>[(<span class="ruby-identifier">index</span> <span class="ruby-operator">+</span> <span class="ruby-value">1</span>)<span class="ruby-operator">..</span><span class="ruby-identifier">end_index</span>]
+    <span class="ruby-keyword">if</span> <span class="ruby-regexp">/\s/</span>.<span class="ruby-identifier">match?</span>(<span class="ruby-identifier">value</span>)
+      <span class="ruby-identifier">raise</span> <span class="ruby-node">&quot;Illegal character \&quot;#{string[index]}\&quot; in raw string #{string.inspect}&quot;</span>
+    <span class="ruby-keyword">end</span>
+
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">value</span>[<span class="ruby-value">0</span>] <span class="ruby-operator">==</span> <span class="ruby-string">&quot;#&quot;</span>
+      <span class="ruby-identifier">character_reference</span> = <span class="ruby-identifier">value</span>[<span class="ruby-value">1</span><span class="ruby-operator">..</span><span class="ruby-value">-1</span>]
+
+      <span class="ruby-keyword">unless</span> (<span class="ruby-regexp">/\A(\d+|x[0-9a-fA-F]+)\z/</span>.<span class="ruby-identifier">match?</span>(<span class="ruby-identifier">character_reference</span>))
+        <span class="ruby-keyword">if</span> <span class="ruby-identifier">character_reference</span>[<span class="ruby-value">0</span>] <span class="ruby-operator">==</span> <span class="ruby-string">&quot;x&quot;</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">character_reference</span>[<span class="ruby-value">-1</span>] <span class="ruby-operator">==</span> <span class="ruby-string">&quot;x&quot;</span>
+          <span class="ruby-identifier">raise</span> <span class="ruby-node">&quot;Illegal character \&quot;#{string[index]}\&quot; in raw string #{string.inspect}&quot;</span>
+        <span class="ruby-keyword">else</span>
+          <span class="ruby-identifier">raise</span> <span class="ruby-node">&quot;Illegal character #{string.inspect} in raw string #{string.inspect}&quot;</span>
+        <span class="ruby-keyword">end</span>
+      <span class="ruby-keyword">end</span>
+
+      <span class="ruby-keyword">case</span> (<span class="ruby-identifier">character_reference</span>[<span class="ruby-value">0</span>] <span class="ruby-operator">==</span> <span class="ruby-string">&quot;x&quot;</span> <span class="ruby-operator">?</span> <span class="ruby-identifier">character_reference</span>[<span class="ruby-value">1</span><span class="ruby-operator">..</span><span class="ruby-value">-1</span>].<span class="ruby-identifier">to_i</span>(<span class="ruby-value">16</span>) <span class="ruby-operator">:</span> <span class="ruby-identifier">character_reference</span>[<span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-value">-1</span>].<span class="ruby-identifier">to_i</span>)
+      <span class="ruby-keyword">when</span> <span class="ruby-operator">*</span><span class="ruby-constant">VALID_CHAR</span>
+      <span class="ruby-keyword">else</span>
+        <span class="ruby-identifier">raise</span> <span class="ruby-node">&quot;Illegal character #{string.inspect} in raw string #{string.inspect}&quot;</span>
+      <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">elsif</span> <span class="ruby-operator">!</span>(<span class="ruby-regexp">/\A#{Entity::NAME}\z/um</span>.<span class="ruby-identifier">match?</span>(<span class="ruby-identifier">value</span>))
+      <span class="ruby-identifier">raise</span> <span class="ruby-node">&quot;Illegal character \&quot;#{string[index]}\&quot; in raw string #{string.inspect}&quot;</span>
+    <span class="ruby-keyword">end</span>
+
+    <span class="ruby-identifier">pos</span> = <span class="ruby-identifier">end_index</span> <span class="ruby-operator">+</span> <span class="ruby-value">1</span>
   <span class="ruby-keyword">end</span>
+
+  <span class="ruby-identifier">string</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
         </div>
@@ -334,7 +354,7 @@
 <p><code>returns</code> the text itself to enable method chain like ‘text &lt;&lt; “XXX” &lt;&lt; “YYY”’.</p>
 
           <div class="method-source-code" id="3C-3C-source">
-            <pre><span class="ruby-comment"># File lib/rexml/text.rb, line 194</span>
+            <pre><span class="ruby-comment"># File lib/rexml/text.rb, line 214</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">&lt;&lt;</span>( <span class="ruby-identifier">to_append</span> )
   <span class="ruby-ivar">@string</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">to_append</span>.<span class="ruby-identifier">gsub</span>( <span class="ruby-regexp">/\r\n?/</span>, <span class="ruby-string">&quot;\n&quot;</span> )
   <span class="ruby-identifier">clear_cache</span>
@@ -359,7 +379,7 @@
           <p><code>other</code> a String or a <a href="Text.html"><code>Text</code></a> <code>returns</code> the result of (<a href="Text.html#method-i-to_s"><code>to_s</code></a> &lt;=&gt; arg.to_s)</p>
 
           <div class="method-source-code" id="3C-3D-3E-source">
-            <pre><span class="ruby-comment"># File lib/rexml/text.rb, line 203</span>
+            <pre><span class="ruby-comment"># File lib/rexml/text.rb, line 223</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">&lt;=&gt;</span>( <span class="ruby-identifier">other</span> )
   <span class="ruby-identifier">to_s</span>() <span class="ruby-operator">&lt;=&gt;</span> <span class="ruby-identifier">other</span>.<span class="ruby-identifier">to_s</span>
 <span class="ruby-keyword">end</span></pre>
@@ -382,7 +402,7 @@
           
 
           <div class="method-source-code" id="clone-source">
-            <pre><span class="ruby-comment"># File lib/rexml/text.rb, line 184</span>
+            <pre><span class="ruby-comment"># File lib/rexml/text.rb, line 204</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">clone</span>
   <span class="ruby-keyword">return</span> <span class="ruby-constant">Text</span>.<span class="ruby-identifier">new</span>(<span class="ruby-keyword">self</span>, <span class="ruby-keyword">true</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -405,7 +425,7 @@
           
 
           <div class="method-source-code" id="doctype-source">
-            <pre><span class="ruby-comment"># File lib/rexml/text.rb, line 207</span>
+            <pre><span class="ruby-comment"># File lib/rexml/text.rb, line 227</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">doctype</span>
   <span class="ruby-keyword">if</span> <span class="ruby-ivar">@parent</span>
     <span class="ruby-identifier">doc</span> = <span class="ruby-ivar">@parent</span>.<span class="ruby-identifier">document</span>
@@ -431,7 +451,7 @@
           
 
           <div class="method-source-code" id="empty-3F-source">
-            <pre><span class="ruby-comment"># File lib/rexml/text.rb, line 179</span>
+            <pre><span class="ruby-comment"># File lib/rexml/text.rb, line 199</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">empty?</span>
   <span class="ruby-ivar">@string</span>.<span class="ruby-identifier">size</span><span class="ruby-operator">==</span><span class="ruby-value">0</span>
 <span class="ruby-keyword">end</span></pre>
@@ -454,7 +474,7 @@
           
 
           <div class="method-source-code" id="indent_text-source">
-            <pre><span class="ruby-comment"># File lib/rexml/text.rb, line 278</span>
+            <pre><span class="ruby-comment"># File lib/rexml/text.rb, line 298</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">indent_text</span>(<span class="ruby-identifier">string</span>, <span class="ruby-identifier">level</span>=<span class="ruby-value">1</span>, <span class="ruby-identifier">style</span>=<span class="ruby-string">&quot;\t&quot;</span>, <span class="ruby-identifier">indentfirstline</span>=<span class="ruby-keyword">true</span>)
   <span class="ruby-keyword">return</span> <span class="ruby-identifier">string</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">level</span> <span class="ruby-operator">&lt;</span> <span class="ruby-value">0</span>
   <span class="ruby-identifier">new_string</span> = <span class="ruby-string">&#39;&#39;</span>
@@ -485,7 +505,7 @@
           
 
           <div class="method-source-code" id="inspect-source">
-            <pre><span class="ruby-comment"># File lib/rexml/text.rb, line 233</span>
+            <pre><span class="ruby-comment"># File lib/rexml/text.rb, line 253</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">inspect</span>
   <span class="ruby-ivar">@string</span>.<span class="ruby-identifier">inspect</span>
 <span class="ruby-keyword">end</span></pre>
@@ -508,7 +528,7 @@
           
 
           <div class="method-source-code" id="node_type-source">
-            <pre><span class="ruby-comment"># File lib/rexml/text.rb, line 175</span>
+            <pre><span class="ruby-comment"># File lib/rexml/text.rb, line 195</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">node_type</span>
   <span class="ruby-value">:text</span>
 <span class="ruby-keyword">end</span></pre>
@@ -569,7 +589,7 @@
 </pre>
 
           <div class="method-source-code" id="to_s-source">
-            <pre><span class="ruby-comment"># File lib/rexml/text.rb, line 228</span>
+            <pre><span class="ruby-comment"># File lib/rexml/text.rb, line 248</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">to_s</span>
   <span class="ruby-keyword">return</span> <span class="ruby-ivar">@string</span> <span class="ruby-keyword">if</span> <span class="ruby-ivar">@raw</span>
   <span class="ruby-ivar">@normalized</span> <span class="ruby-operator">||=</span> <span class="ruby-constant">Text</span><span class="ruby-operator">::</span><span class="ruby-identifier">normalize</span>( <span class="ruby-ivar">@string</span>, <span class="ruby-identifier">doctype</span>, <span class="ruby-ivar">@entity_filter</span> )
@@ -603,7 +623,7 @@
 </pre>
 
           <div class="method-source-code" id="value-source">
-            <pre><span class="ruby-comment"># File lib/rexml/text.rb, line 250</span>
+            <pre><span class="ruby-comment"># File lib/rexml/text.rb, line 270</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">value</span>
   <span class="ruby-ivar">@unnormalized</span> <span class="ruby-operator">||=</span> <span class="ruby-constant">Text</span><span class="ruby-operator">::</span><span class="ruby-identifier">unnormalize</span>( <span class="ruby-ivar">@string</span>, <span class="ruby-identifier">doctype</span> )
 <span class="ruby-keyword">end</span></pre>
@@ -632,7 +652,7 @@
 </pre>
 
           <div class="method-source-code" id="value-3D-source">
-            <pre><span class="ruby-comment"># File lib/rexml/text.rb, line 261</span>
+            <pre><span class="ruby-comment"># File lib/rexml/text.rb, line 281</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">value=</span>( <span class="ruby-identifier">val</span> )
   <span class="ruby-ivar">@string</span> = <span class="ruby-identifier">val</span>.<span class="ruby-identifier">gsub</span>( <span class="ruby-regexp">/\r\n?/</span>, <span class="ruby-string">&quot;\n&quot;</span> )
   <span class="ruby-identifier">clear_cache</span>
@@ -657,7 +677,7 @@
           
 
           <div class="method-source-code" id="wrap-source">
-            <pre><span class="ruby-comment"># File lib/rexml/text.rb, line 267</span>
+            <pre><span class="ruby-comment"># File lib/rexml/text.rb, line 287</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">wrap</span>(<span class="ruby-identifier">string</span>, <span class="ruby-identifier">width</span>, <span class="ruby-identifier">addnewline</span>=<span class="ruby-keyword">false</span>)
   <span class="ruby-comment"># Recursively wrap string at width.</span>
   <span class="ruby-keyword">return</span> <span class="ruby-identifier">string</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">string</span>.<span class="ruby-identifier">length</span> <span class="ruby-operator">&lt;=</span> <span class="ruby-identifier">width</span>
@@ -689,7 +709,7 @@
 <p>See <a href="Formatters.html"><code>REXML::Formatters</code></a></p>
 
           <div class="method-source-code" id="write-source">
-            <pre><span class="ruby-comment"># File lib/rexml/text.rb, line 293</span>
+            <pre><span class="ruby-comment"># File lib/rexml/text.rb, line 313</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">write</span>( <span class="ruby-identifier">writer</span>, <span class="ruby-identifier">indent</span>=<span class="ruby-value">-1</span>, <span class="ruby-identifier">transitive</span>=<span class="ruby-keyword">false</span>, <span class="ruby-identifier">ie_hack</span>=<span class="ruby-keyword">false</span> )
   <span class="ruby-constant">Kernel</span>.<span class="ruby-identifier">warn</span>(<span class="ruby-node">&quot;#{self.class.name}.write is deprecated.  See REXML::Formatters&quot;</span>, <span class="ruby-value">uplevel:</span> <span class="ruby-value">1</span>)
   <span class="ruby-identifier">formatter</span> = <span class="ruby-keyword">if</span> <span class="ruby-identifier">indent</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">-1</span>
@@ -730,7 +750,7 @@
 </pre>
 
           <div class="method-source-code" id="write_with_substitution-source">
-            <pre><span class="ruby-comment"># File lib/rexml/text.rb, line 325</span>
+            <pre><span class="ruby-comment"># File lib/rexml/text.rb, line 345</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">write_with_substitution</span> <span class="ruby-identifier">out</span>, <span class="ruby-identifier">input</span>
   <span class="ruby-identifier">copy</span> = <span class="ruby-identifier">input</span>.<span class="ruby-identifier">clone</span>
   <span class="ruby-comment"># Doing it like this rather than in a loop improves the speed</span>
@@ -761,7 +781,7 @@
           <p>FIXME This probably won’t work properly</p>
 
           <div class="method-source-code" id="xpath-source">
-            <pre><span class="ruby-comment"># File lib/rexml/text.rb, line 305</span>
+            <pre><span class="ruby-comment"># File lib/rexml/text.rb, line 325</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">xpath</span>
   <span class="ruby-identifier">path</span> = <span class="ruby-ivar">@parent</span>.<span class="ruby-identifier">xpath</span>
   <span class="ruby-identifier">path</span> <span class="ruby-operator">+=</span> <span class="ruby-string">&quot;/text()&quot;</span>
