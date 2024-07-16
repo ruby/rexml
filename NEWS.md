@@ -15,6 +15,9 @@
     * GH-172
     * GH-173
     * GH-174
+    * GH-175
+    * GH-176
+    * GH-177
     * Patch by Watson.
 
   * Added support for raising a parse exception when an XML has extra
