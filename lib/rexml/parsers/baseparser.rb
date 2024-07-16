@@ -378,7 +378,7 @@ module REXML
                 raise REXML::ParseException.new(message, @source)
               end
               return [:notationdecl, name, *id]
-            elsif md = @source.match(/--(.*?)-->/um, true)
+            elsif md = @source.match(/--(.*?)-->/um, true, term: Private::COMMENT_TERM)
               case md[1]
               when /--/, /-\z/
                 raise REXML::ParseException.new("Malformed comment", @source)
