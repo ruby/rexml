@@ -67,6 +67,18 @@
               <ul class="link-list" role="directory">
                           <li>
             <details open>
+              <summary>      <a href="#label-3.3.2+-+2024-07-16+-7B-23version-3-3-2-7D">3.3.2 - 2024-07-16 {#version-3-3-2}</a>
+</summary>
+              <ul class="link-list" role="directory">
+                          <li>      <a href="#label-Improvements">Improvements</a>
+          <li>      <a href="#label-Fixes">Fixes</a>
+          <li>      <a href="#label-Thanks">Thanks</a>
+
+              </ul>
+            </details>
+          </li>
+          <li>
+            <details open>
               <summary>      <a href="#label-3.3.1+-+2024-06-25+-7B-23version-3-3-1-7D">3.3.1 - 2024-06-25 {#version-3-3-1}</a>
 </summary>
               <ul class="link-list" role="directory">
@@ -268,6 +280,84 @@
 
 <h1 id="label-News">News<span><a href="#label-News">&para;</a> <a href="#top">&uarr;</a></span></h1>
 
+<h2 id="label-3.3.2+-+2024-07-16+-7B-23version-3-3-2-7D">3.3.2 - 2024-07-16 {#version-3-3-2}<span><a href="#label-3.3.2+-+2024-07-16+-7B-23version-3-3-2-7D">&para;</a> <a href="#top">&uarr;</a></span></h2>
+
+<h3 id="label-Improvements">Improvements<span><a href="#label-Improvements">&para;</a> <a href="#top">&uarr;</a></span></h3>
+<ul><li>
+<p>Improved parse performance.</p>
+<ul><li>
+<p>GH-160</p>
+</li><li>
+<p>Patch by NAITOH Jun.</p>
+</li><li>
+<p>GH-160</p>
+</li><li>
+<p>Patch by NAITOH Jun.</p>
+</li></ul>
+</li><li>
+<p>Improved parse performance.</p>
+<ul><li>
+<p>GH-169</p>
+</li><li>
+<p>GH-170</p>
+</li><li>
+<p>GH-171</p>
+</li><li>
+<p>GH-172</p>
+</li><li>
+<p>GH-173</p>
+</li><li>
+<p>GH-174</p>
+</li><li>
+<p>Patch by Watson.</p>
+</li></ul>
+</li><li>
+<p>Added support for raising a parse exception when an XML has extra content after the root element.</p>
+<ul><li>
+<p>GH-161</p>
+</li><li>
+<p>Patch by NAITOH Jun.</p>
+</li></ul>
+</li><li>
+<p>Added support for raising a parse exception when an XML declaration exists in wrong position.</p>
+<ul><li>
+<p>GH-162</p>
+</li><li>
+<p>Patch by NAITOH Jun.</p>
+</li></ul>
+</li><li>
+<p>Removed needless a space after XML declaration in pretty print mode.</p>
+<ul><li>
+<p>GH-164</p>
+</li><li>
+<p>Patch by NAITOH Jun.</p>
+</li></ul>
+</li><li>
+<p>Stopped to emit <code>:text</code> event after the root element.</p>
+<ul><li>
+<p>GH-167</p>
+</li><li>
+<p>Patch by NAITOH Jun.</p>
+</li></ul>
+</li></ul>
+
+<h3 id="label-Fixes">Fixes<span><a href="#label-Fixes">&para;</a> <a href="#top">&uarr;</a></span></h3>
+<ul><li>
+<p>Fixed a bug that SAX2 parser doesn’t expand predefined entities for <code>characters</code> callback.</p>
+<ul><li>
+<p>GH-168</p>
+</li><li>
+<p>Patch by NAITOH Jun.</p>
+</li></ul>
+</li></ul>
+
+<h3 id="label-Thanks">Thanks<span><a href="#label-Thanks">&para;</a> <a href="#top">&uarr;</a></span></h3>
+<ul><li>
+<p>NAITOH Jun</p>
+</li><li>
+<p>Watson</p>
+</li></ul>
+
 <h2 id="label-3.3.1+-+2024-06-25+-7B-23version-3-3-1-7D">3.3.1 - 2024-06-25 {#version-3-3-1}<span><a href="#label-3.3.1+-+2024-06-25+-7B-23version-3-3-1-7D">&para;</a> <a href="#top">&uarr;</a></span></h2>
 
 <h3 id="label-Improvements">Improvements<span><a href="#label-Improvements">&para;</a> <a href="#top">&uarr;</a></span></h3>
@@ -323,7 +413,7 @@
 
 <h3 id="label-Fixes">Fixes<span><a href="#label-Fixes">&para;</a> <a href="#top">&uarr;</a></span></h3>
 <ul><li>
-<p>Fixed a bug that large XML can't be parsed.</p>
+<p>Fixed a bug that large XML can’t be parsed.</p>
 <ul><li>
 <p>GH-154</p>
 </li><li>
@@ -486,7 +576,7 @@
 <p>Patch by NAITOH Jun.</p>
 </li></ul>
 </li><li>
-<p>Fixed a bug that an exception message can't be generated for invalid encoding XML.</p>
+<p>Fixed a bug that an exception message can’t be generated for invalid encoding XML.</p>
 <ul><li>
 <p>GH-29</p>
 </li><li>
@@ -581,7 +671,7 @@
 
 <h3 id="label-Fixes">Fixes<span><a href="#label-Fixes">&para;</a> <a href="#top">&uarr;</a></span></h3>
 <ul><li>
-<p>Fixed a bug that <code>REXML::DocType#clone</code> doesn't copy external ID information.</p>
+<p>Fixed a bug that <code>REXML::DocType#clone</code> doesn’t copy external ID information.</p>
 </li><li>
 <p>Fixed round-trip vulnerability bugs. See also: <a href="https://www.ruby-lang.org/en/news/2021/04/05/xml-round-trip-vulnerability-in-rexml-cve-2021-28965">www.ruby-lang.org/en/news/2021/04/05/xml-round-trip-vulnerability-in-rexml-cve-2021-28965</a>/ [<a href="CVE-2021-28965">HackerOne#1104077]</a>[Reported by Juho Nurminen]</p>
 </li></ul>
@@ -620,7 +710,7 @@
 
 <h3 id="label-Fixes">Fixes<span><a href="#label-Fixes">&para;</a> <a href="#top">&uarr;</a></span></h3>
 <ul><li>
-<p>Fixed a bug that <code>REXML::XMLDecl#close</code> doesn't copy <code>@writethis</code>. [GitHub#20][Patch by hirura]</p>
+<p>Fixed a bug that <code>REXML::XMLDecl#close</code> doesn’t copy <code>@writethis</code>. [GitHub#20][Patch by hirura]</p>
 </li></ul>
 
 <h3 id="label-Thanks">Thanks<span><a href="#label-Thanks">&para;</a> <a href="#top">&uarr;</a></span></h3>
@@ -675,7 +765,7 @@
 
 <h3 id="label-Fixes">Fixes<span><a href="#label-Fixes">&para;</a> <a href="#top">&uarr;</a></span></h3>
 <ul><li>
-<p>Fixed a bug that no namespace attribute isn't matched with prefix.</p>
+<p>Fixed a bug that no namespace attribute isn’t matched with prefix.</p>
 
 <p>[ruby-list:50731][Reported by Yasuhiro KIMURA]</p>
 </li><li>
