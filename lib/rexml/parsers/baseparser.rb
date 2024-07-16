@@ -127,6 +127,7 @@ module REXML
         INSTRUCTION_END = /#{NAME}(\s+.*?)?\?>/um
         INSTRUCTION_TERM = "?>"
         COMMENT_TERM = "-->"
+        CDATA_TERM = "]]>"
         TAG_PATTERN = /((?>#{QNAME_STR}))\s*/um
         CLOSE_PATTERN = /(#{QNAME_STR})\s*>/um
         ATTLISTDECL_END = /\s+#{NAME}(?:#{ATTDEF})*\s*>/um
@@ -431,7 +432,7 @@ module REXML
 
                 return [ :comment, md[1] ]
               else
-                md = @source.match(/\[CDATA\[(.*?)\]\]>/um, true)
+                md = @source.match(/\[CDATA\[(.*?)\]\]>/um, true, term: Private::CDATA_TERM)
                 return [ :cdata, md[1] ] if md
               end
               raise REXML::ParseException.new( "Declarations can only occur "+
