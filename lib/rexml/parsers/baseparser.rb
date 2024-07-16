@@ -165,6 +165,7 @@ module REXML
       def stream=( source )
         @source = SourceFactory.create_from( source )
         @closed = nil
+        @have_root = false
         @document_status = nil
         @tags = []
         @stack = []
