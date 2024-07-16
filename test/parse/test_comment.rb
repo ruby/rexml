@@ -122,14 +122,14 @@ module REXMLTests
       assert_equal(" ok comment ", events[:comment])
     end
 
-    def test_gt_linear_performance
+    def test_linear_performance_top_level_gt
       seq = [10000, 50000, 100000, 150000, 200000]
       assert_linear_performance(seq, rehearsal: 10) do |n|
         REXML::Document.new('<!-- ' + ">" * n + ' -->')
       end
     end
 
-    def test_gt_linear_performance_in_element
+    def test_linear_performance_in_element_gt
       seq = [10000, 50000, 100000, 150000, 200000]
       assert_linear_performance(seq, rehearsal: 10) do |n|
         REXML::Document.new('<xml><!-- ' + '>' * n + ' --></xml>')
