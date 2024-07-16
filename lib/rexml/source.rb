@@ -117,7 +117,7 @@ module REXML
     def ensure_buffer
     end
 
-    def match(pattern, cons=false)
+    def match(pattern, cons=false, term: nil)
       if cons
         @scanner.scan(pattern).nil? ? nil : @scanner
       else
@@ -240,7 +240,7 @@ module REXML
     # Note: When specifying a string for 'pattern', it must not include '>' except in the following formats:
     # - ">"
     # - "XXX>" (X is any string excluding '>')
-    def match( pattern, cons=false )
+    def match( pattern, cons=false, term: nil )
       while true
         if cons
           md = @scanner.scan(pattern)
@@ -250,7 +250,7 @@ module REXML
         break if md
         return nil if pattern.is_a?(String)
         return nil if @source.nil?
-        return nil unless read
+        return nil unless read(term)
       end
 
       md.nil? ? nil : @scanner
