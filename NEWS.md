@@ -1,5 +1,53 @@
 # News
 
+## 3.3.2 - 2024-07-16 {#version-3-3-2}
+
+### Improvements
+
+  * Improved parse performance.
+    * GH-160
+    * Patch by NAITOH Jun.
+
+  * Improved parse performance.
+    * GH-169
+    * GH-170
+    * GH-171
+    * GH-172
+    * GH-173
+    * GH-174
+    * Patch by Watson.
+
+  * Added support for raising a parse exception when an XML has extra
+    content after the root element.
+    * GH-161
+    * Patch by NAITOH Jun.
+
+  * Added support for raising a parse exception when an XML
+    declaration exists in wrong position.
+    * GH-162
+    * Patch by NAITOH Jun.
+
+  * Removed needless a space after XML declaration in pretty print mode.
+    * GH-164
+    * Patch by NAITOH Jun.
+
+  * Stopped to emit `:text` event after the root element.
+    * GH-167
+    * Patch by NAITOH Jun.
+
+### Fixes
+
+  * Fixed a bug that SAX2 parser doesn't expand predefined entities for
+    `characters` callback.
+    * GH-168
+    * Patch by NAITOH Jun.
+
+### Thanks
+
+  * NAITOH Jun
+
+  * Watson
+
 ## 3.3.1 - 2024-06-25 {#version-3-3-1}
 
 ### Improvements
