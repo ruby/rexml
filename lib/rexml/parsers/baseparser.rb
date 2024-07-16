@@ -430,7 +430,7 @@ module REXML
               #STDERR.puts "SOURCE BUFFER = #{source.buffer}, #{source.buffer.size}"
               raise REXML::ParseException.new("Malformed node", @source) unless md
               if md[0][0] == ?-
-                md = @source.match(/--(.*?)-->/um, true)
+                md = @source.match(/--(.*?)-->/um, true, term: Private::COMMENT_TERM)
 
                 if md.nil? || /--|-\z/.match?(md[1])
                   raise REXML::ParseException.new("Malformed comment", @source)
