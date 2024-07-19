@@ -24,11 +24,18 @@ module REXMLTests
 
     public
     def test_empty
-      assert_raise(REXML::ParseException) do
+      exception = assert_raise(REXML::ParseException) do
         parse(<<-INTERNAL_SUBSET)
 <!ENTITY>
         INTERNAL_SUBSET
       end
+      assert_equal(<<-DETAIL.chomp, exception.to_s)
+Malformed entity declaration
+Line: 5
+Position: 70
+Last 80 unconsumed characters:
+>  ]> <r/> 
+      DETAIL
     end
 
     def test_linear_performance_gt
