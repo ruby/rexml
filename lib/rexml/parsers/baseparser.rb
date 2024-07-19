@@ -318,11 +318,11 @@ module REXML
               raise REXML::ParseException.new( "Bad ELEMENT declaration!", @source ) if md.nil?
               return [ :elementdecl, "<!ELEMENT" + md[1] ]
             elsif @source.match("ENTITY", true)
-              scanner = @source.match(Private::ENTITYDECL_PATTERN, true, term: Private::ENTITY_TERM)
-              unless scanner
+              match_data = @source.match(Private::ENTITYDECL_PATTERN, true, term: Private::ENTITY_TERM)
+              unless match_data
                 raise REXML::ParseException.new("Malformed entity declaration", @source)
               end
-              match = [:entitydecl, *scanner.captures.compact]
+              match = [:entitydecl, *match_data.captures.compact]
               ref = false
               if match[1] == '%'
                 ref = true
