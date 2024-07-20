@@ -486,11 +486,15 @@ module REXML
             if text.chomp!("<")
               @source.position -= "<".bytesize
             end
-            if @tags.empty? and @have_root
+            if @tags.empty?
               unless /\A\s*\z/.match?(text)
-                raise ParseException.new("Malformed XML: Extra content at the end of the document (got '#{text}')", @source)
+                if @have_root
+                  raise ParseException.new("Malformed XML: Extra content at the end of the document (got '#{text}')", @source)
+                else
+                  raise ParseException.new("Malformed XML: Content at the start of the document (got '#{text}')", @source)
+                end
               end
-              return pull_event
+              return pull_event if @have_root
             end
             return [ :text, text ]
           end

@@ -110,6 +110,18 @@ module REXMLTests
       end
     end
 
+    def test_before_root
+      parser = REXML::Parsers::BaseParser.new('<!-- ok comment --><a></a>')
+
+      events = {}
+      while parser.has_next?
+        event = parser.pull
+        events[event[0]] = event[1]
+      end
+
+      assert_equal(" ok comment ", events[:comment])
+    end
+
     def test_after_root
       parser = REXML::Parsers::BaseParser.new('<a></a><!-- ok comment -->')
 
