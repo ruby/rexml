@@ -25,25 +25,6 @@ Last 80 unconsumed characters:
         DETAIL
       end
 
-      def test_garbage_text
-        # TODO: This should be parse error.
-        # Create test/parse/test_document.rb or something and move this to it.
-        doc = parse(<<-XML)
-x<?x y
-<!--?><?x -->?>
-<r/>
-        XML
-        pi = doc.children[1]
-        assert_equal([
-                       "x",
-                       "y\n<!--",
-                     ],
-                     [
-                       pi.target,
-                       pi.content,
-                     ])
-      end
-
       def test_xml_declaration_not_at_document_start
         exception = assert_raise(REXML::ParseException) do
           parser = REXML::Parsers::BaseParser.new('<a><?xml version="1.0" ?></a>')
@@ -60,6 +41,30 @@ x<?x y
 
         DETAIL
       end
+    end
+
+    def test_comment
+      doc = parse(<<-XML)
+<?x y
+<!--?><?x -->?>
+<r/>
+      XML
+      assert_equal([["x", "y\n<!--"],
+                    ["x", "-->"]],
+                   [[doc.children[0].target, doc.children[0].content],
+                    [doc.children[1].target, doc.children[1].content]])
+    end
+
+    def test_before_root
+      parser = REXML::Parsers::BaseParser.new('<?abc version="1.0" ?><a></a>')
+
+      events = {}
+      while parser.has_next?
+        event = parser.pull
+        events[event[0]] = event[1]
+      end
+
+      assert_equal("abc", events[:processing_instruction])
     end
 
     def test_after_root
