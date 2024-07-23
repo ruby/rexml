@@ -218,6 +218,19 @@ Last 80 unconsumed characters:
         DETAIL
         end
       end
+
+      def test_no_space
+        exception = assert_raise(REXML::ParseException) do
+          REXML::Document.new('<!DOCTYPE root [<!ENTITY valid-namePUBLIC"valid-pubid-literal""valid-system-literal"NDATAvalid-name>]>')
+        end
+        assert_equal(<<-DETAIL.chomp, exception.to_s)
+Malformed entity declaration
+Line: 1
+Position: 102
+Last 80 unconsumed characters:
+ valid-namePUBLIC\"valid-pubid-literal\"\"valid-system-literal\"NDATAvalid-name>]>
+        DETAIL
+      end
     end
 
     # https://www.w3.org/TR/2006/REC-xml11-20060816/#NT-PEDecl
@@ -396,6 +409,19 @@ Last 80 unconsumed characters:
  % valid-name \"valid-entity-value\" NDATA valid-ndata-value>]>
         DETAIL
         end
+      end
+
+      def test_no_space
+        exception = assert_raise(REXML::ParseException) do
+          REXML::Document.new('<!DOCTYPE root [<!ENTITY %valid-nameSYSTEM"valid-system-literal">]>')
+        end
+        assert_equal(<<-DETAIL.chomp, exception.to_s)
+Malformed entity declaration
+Line: 1
+Position: 67
+Last 80 unconsumed characters:
+ %valid-nameSYSTEM\"valid-system-literal\">]>
+        DETAIL
       end
     end
 
