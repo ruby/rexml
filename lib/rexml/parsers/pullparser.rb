@@ -47,6 +47,10 @@ module REXML
         @listeners << listener
       end
 
+      def entity_expansion_count
+        @parser.entity_expansion_count
+      end
+
       def each
         while has_next?
           yield self.pull

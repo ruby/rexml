@@ -22,6 +22,10 @@ module REXML
         @parser.source
       end
 
+      def entity_expansion_count
+        @parser.entity_expansion_count
+      end
+
       def add_listener( listener )
         @parser.add_listener( listener )
       end

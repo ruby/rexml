@@ -41,7 +41,7 @@ EOF
 
       class GeneralEntityTest < self
         def test_have_value
-          xml = <<EOF
+          xml = <<XML
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE member [
   <!ENTITY a "&b;&b;&b;&b;&b;&b;&b;&b;&b;&b;">
@@ -55,23 +55,24 @@ EOF
 <member>
 &a;
 </member>
-EOF
+XML
 
           doc = REXML::Document.new(xml)
-          assert_raise(RuntimeError) do
+          assert_raise(RuntimeError.new("entity expansion has grown too large")) do
             doc.root.children.first.value
           end
+
           REXML::Security.entity_expansion_limit = 100
           assert_equal(100, REXML::Security.entity_expansion_limit)
           doc = REXML::Document.new(xml)
-          assert_raise(RuntimeError) do
+          assert_raise(RuntimeError.new("number of entity expansions exceeded, processing aborted.")) do
             doc.root.children.first.value
           end
           assert_equal(101, doc.entity_expansion_count)
         end
 
         def test_empty_value
-          xml = <<EOF
+          xml = <<XML
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE member [
   <!ENTITY a "&b;&b;&b;&b;&b;&b;&b;&b;&b;&b;">
@@ -85,23 +86,24 @@ EOF
 <member>
 &a;
 </member>
-EOF
+XML
 
           doc = REXML::Document.new(xml)
-          assert_raise(RuntimeError) do
+          assert_raise(RuntimeError.new("number of entity expansions exceeded, processing aborted.")) do
             doc.root.children.first.value
           end
+
           REXML::Security.entity_expansion_limit = 100
           assert_equal(100, REXML::Security.entity_expansion_limit)
           doc = REXML::Document.new(xml)
-          assert_raise(RuntimeError) do
+          assert_raise(RuntimeError.new("number of entity expansions exceeded, processing aborted.")) do
             doc.root.children.first.value
           end
           assert_equal(101, doc.entity_expansion_count)
         end
 
         def test_with_default_entity
-          xml = <<EOF
+          xml = <<XML
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE member [
   <!ENTITY a "a">
@@ -112,14 +114,15 @@ EOF
 &a2;
 &lt;
 </member>
-EOF
+XML
 
           REXML::Security.entity_expansion_limit = 4
           doc = REXML::Document.new(xml)
           assert_equal("\na\na a\n<\n", doc.root.children.first.value)
+
           REXML::Security.entity_expansion_limit = 3
           doc = REXML::Document.new(xml)
-          assert_raise(RuntimeError) do
+          assert_raise(RuntimeError.new("number of entity expansions exceeded, processing aborted.")) do
             doc.root.children.first.value
           end
         end
