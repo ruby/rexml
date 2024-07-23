@@ -159,7 +159,7 @@ Last 80 unconsumed characters:
               DETAIL
             end
 
-            def test_invalid_pubid_char
+            def test_prohibited_pubid_character
               exception = assert_raise(REXML::ParseException) do
                 # U+3042 HIRAGANA LETTER A
                 REXML::Document.new("<!DOCTYPE root [<!ENTITY valid-name PUBLIC \"\u3042\" \"valid-system-literal\">]>")
