@@ -145,34 +145,32 @@ Last 80 unconsumed characters:
       class ParsedEntityDefinition < self
         # https://www.w3.org/TR/2006/REC-xml11-20060816/#NT-PEDef
         class TestEntityValue < self
-          class TestEntityValue < self
-            def test_no_quote
-              # https://www.w3.org/TR/2006/REC-xml11-20060816/#NT-EntityValue
-              exception = assert_raise(REXML::ParseException) do
-                REXML::Document.new('<!DOCTYPE root [<!ENTITY % valid-name invalid-entity-value > ]>')
-              end
-              assert_equal(<<-DETAIL.chomp, exception.to_s)
+          def test_no_quote
+            # https://www.w3.org/TR/2006/REC-xml11-20060816/#NT-EntityValue
+            exception = assert_raise(REXML::ParseException) do
+              REXML::Document.new('<!DOCTYPE root [<!ENTITY % valid-name invalid-entity-value > ]>')
+            end
+            assert_equal(<<-DETAIL.chomp, exception.to_s)
 Malformed entity declaration
 Line: 1
 Position: 63
 Last 80 unconsumed characters:
  % valid-name invalid-entity-value > ]>
-              DETAIL
-            end
+            DETAIL
+          end
 
-            def test_invalid_entity_value
-              # https://www.w3.org/TR/2006/REC-xml11-20060816/#NT-EntityValue
-              exception = assert_raise(REXML::ParseException) do
-                REXML::Document.new('<!DOCTYPE root [<!ENTITY % valid-name "% &" > ]>')
-              end
-              assert_equal(<<-DETAIL.chomp, exception.to_s)
+          def test_invalid_entity_value
+            # https://www.w3.org/TR/2006/REC-xml11-20060816/#NT-EntityValue
+            exception = assert_raise(REXML::ParseException) do
+              REXML::Document.new('<!DOCTYPE root [<!ENTITY % valid-name "% &" > ]>')
+            end
+            assert_equal(<<-DETAIL.chomp, exception.to_s)
 Malformed entity declaration
 Line: 1
 Position: 48
 Last 80 unconsumed characters:
  % valid-name \"% &\" > ]>
-              DETAIL
-            end
+            DETAIL
           end
         end
 
