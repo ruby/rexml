@@ -237,14 +237,14 @@ Last 80 unconsumed characters:
 
       def test_unnecessary_ndata_declaration
         exception = assert_raise(REXML::ParseException) do
-          REXML::Document.new('<!DOCTYPE root [<!ENTITY % valid-name "valid-entity-value" "NDATA" valid-ndata-value>]>')
+          REXML::Document.new('<!DOCTYPE root [<!ENTITY % valid-name "valid-entity-value" NDATA valid-ndata-value>]>')
         end
         assert_equal(<<-DETAIL.chomp, exception.to_s)
 Malformed entity declaration
 Line: 1
-Position: 87
+Position: 85
 Last 80 unconsumed characters:
- % valid-name \"valid-entity-value\" \"NDATA\" valid-ndata-value>]>
+ % valid-name \"valid-entity-value\" NDATA valid-ndata-value>]>
         DETAIL
       end
     end
