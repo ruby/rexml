@@ -26,6 +26,22 @@ module REXMLTests
 
     # https://www.w3.org/TR/2006/REC-xml11-20060816/#NT-GEDecl
     class TestGeneralEntityDeclaration < self
+      # https://www.w3.org/TR/2006/REC-xml11-20060816/#NT-Name
+      class TestName < self
+        def test_prohibited_character
+          exception = assert_raise(REXML::ParseException) do
+            REXML::Document.new('<!DOCTYPE root [<!ENTITY invalid&name "valid-entity-value">]>')
+          end
+          assert_equal(<<-DETAIL.chomp, exception.to_s)
+Malformed entity declaration
+Line: 1
+Position: 61
+Last 80 unconsumed characters:
+ invalid&name \"valid-entity-value\">]>
+          DETAIL
+        end
+      end
+
       # https://www.w3.org/TR/2006/REC-xml11-20060816/#NT-EntityDef
       class TestEntityDefinition < self
         # https://www.w3.org/TR/2006/REC-xml11-20060816/#NT-EntityValue
@@ -121,16 +137,17 @@ Last 80 unconsumed characters:
 
           # https://www.w3.org/TR/2006/REC-xml11-20060816/#NT-NDataDecl
           class TestNotationDataDeclaration < self
-            def test_no_quote
+            # https://www.w3.org/TR/2006/REC-xml11-20060816/#NT-NameChar
+            def test_prohibited_character
               exception = assert_raise(REXML::ParseException) do
-                REXML::Document.new('<!DOCTYPE root [<!ENTITY valid-name PUBLIC "valid-pubid-literal" "valid-system-literal" invalid-ndata valid-ndata-value>]>')
+                REXML::Document.new('<!DOCTYPE root [<!ENTITY valid-name PUBLIC "valid-pubid-literal" "valid-system-literal" NDATA invalid&name>]>')
               end
               assert_equal(<<-DETAIL.chomp, exception.to_s)
 Malformed entity declaration
 Line: 1
-Position: 122
+Position: 109
 Last 80 unconsumed characters:
- valid-name PUBLIC \"valid-pubid-literal\" \"valid-system-literal\" invalid-ndata val
+ valid-name PUBLIC \"valid-pubid-literal\" \"valid-system-literal\" NDATA invalid&nam
               DETAIL
             end
           end
@@ -142,6 +159,22 @@ Last 80 unconsumed characters:
     class TestParsedEntityDeclaration < self
       # https://www.w3.org/TR/2006/REC-xml11-20060816/#NT-PEDef
       class TestParsedEntityDefinition < self
+        # https://www.w3.org/TR/2006/REC-xml11-20060816/#NT-Name
+        class TestName < self
+          def test_prohibited_character
+            exception = assert_raise(REXML::ParseException) do
+              REXML::Document.new('<!DOCTYPE root [<!ENTITY % invalid&name "valid-entity-value">]>')
+            end
+            assert_equal(<<-DETAIL.chomp, exception.to_s)
+Malformed entity declaration
+Line: 1
+Position: 63
+Last 80 unconsumed characters:
+ % invalid&name \"valid-entity-value\">]>
+          DETAIL
+          end
+        end
+
         # https://www.w3.org/TR/2006/REC-xml11-20060816/#NT-EntityValue
         class TestEntityValue < self
           def test_no_quote
