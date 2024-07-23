@@ -24,13 +24,13 @@ module REXMLTests
 
     public
 
+    # https://www.w3.org/TR/2006/REC-xml11-20060816/#NT-GEDecl
     class TestGeneralEntityDeclaration < self
-      # https://www.w3.org/TR/2006/REC-xml11-20060816/#NT-GEDecl
+      # https://www.w3.org/TR/2006/REC-xml11-20060816/#NT-EntityDef
       class TestEntityDefinition < self
-        # https://www.w3.org/TR/2006/REC-xml11-20060816/#NT-EntityDef
+        # https://www.w3.org/TR/2006/REC-xml11-20060816/#NT-EntityValue
         class TestEntityValue < self
           def test_no_quote
-            # https://www.w3.org/TR/2006/REC-xml11-20060816/#NT-EntityValue
             exception = assert_raise(REXML::ParseException) do
               REXML::Document.new('<!DOCTYPE root [<!ENTITY valid-name invalid-entity-value > ]>')
             end
@@ -44,7 +44,6 @@ Last 80 unconsumed characters:
           end
 
           def test_invalid_entity_value
-            # https://www.w3.org/TR/2006/REC-xml11-20060816/#NT-EntityValue
             exception = assert_raise(REXML::ParseException) do
               REXML::Document.new('<!DOCTYPE root [<!ENTITY valid-name "% &" > ]>')
             end
@@ -57,11 +56,11 @@ Last 80 unconsumed characters:
             DETAIL
           end
 
+          # https://www.w3.org/TR/2006/REC-xml11-20060816/#NT-ExternalID
           class TestExternalId < self
-            # https://www.w3.org/TR/2006/REC-xml11-20060816/#NT-ExternalID
+            # https://www.w3.org/TR/2006/REC-xml11-20060816/#NT-SystemLiteral
             class TestSystemLiteral < self
               def test_no_quote_in_system
-                # https://www.w3.org/TR/2006/REC-xml11-20060816/#NT-SystemLiteral
                 exception = assert_raise(REXML::ParseException) do
                   REXML::Document.new('<!DOCTYPE root [<!ENTITY valid-name SYSTEM invalid-system-literal > ]>')
                 end
@@ -75,7 +74,6 @@ Last 80 unconsumed characters:
               end
 
               def test_no_quote_in_public
-                # https://www.w3.org/TR/2006/REC-xml11-20060816/#NT-SystemLiteral
                 exception = assert_raise(REXML::ParseException) do
                   REXML::Document.new('<!DOCTYPE root [<!ENTITY valid-name PUBLIC "valid-pubid-literal" invalid-system-literal > ]>')
                 end
@@ -89,9 +87,10 @@ Last 80 unconsumed characters:
               end
             end
 
+            # https://www.w3.org/TR/2006/REC-xml11-20060816/#NT-PubidLiteral
+            # https://www.w3.org/TR/2006/REC-xml11-20060816/#NT-PubidChar
             class TestPubidLiteral < self
               def test_no_quote
-                # https://www.w3.org/TR/2006/REC-xml11-20060816/#NT-PubidLiteral
                 exception = assert_raise(REXML::ParseException) do
                   REXML::Document.new('<!DOCTYPE root [<!ENTITY valid-name PUBLIC invalid-pubid-literal "valid-system-literal" > ]>')
                 end
@@ -105,7 +104,6 @@ Last 80 unconsumed characters:
               end
 
               def test_invalid_pubid_char
-                # https://www.w3.org/TR/2006/REC-xml11-20060816/#NT-PubidChar
                 exception = assert_raise(REXML::ParseException) do
                   # U+3042 HIRAGANA LETTER A
                   REXML::Document.new("<!DOCTYPE root [<!ENTITY valid-name PUBLIC \"\u3042\" \"valid-system-literal\" > ]>")
@@ -121,9 +119,9 @@ Last 80 unconsumed characters:
             end
           end
 
+          # https://www.w3.org/TR/2006/REC-xml11-20060816/#NT-NDataDecl
           class TestNDataDeclaration < self
             def test_no_quote
-              # https://www.w3.org/TR/2006/REC-xml11-20060816/#NT-NDataDecl
               exception = assert_raise(REXML::ParseException) do
                 REXML::Document.new('<!DOCTYPE root [<!ENTITY valid-name PUBLIC "valid-pubid-literal" "valid-system-literal" invalid-ndata valid-ndata-value> ]>')
               end
@@ -140,13 +138,13 @@ Last 80 unconsumed characters:
       end
     end
 
+    # https://www.w3.org/TR/2006/REC-xml11-20060816/#NT-PEDecl
     class TestParsedEntityDeclaration < self
-      # https://www.w3.org/TR/2006/REC-xml11-20060816/#NT-PEDecl
+      # https://www.w3.org/TR/2006/REC-xml11-20060816/#NT-PEDef
       class ParsedEntityDefinition < self
-        # https://www.w3.org/TR/2006/REC-xml11-20060816/#NT-PEDef
+        # https://www.w3.org/TR/2006/REC-xml11-20060816/#NT-EntityValue
         class TestEntityValue < self
           def test_no_quote
-            # https://www.w3.org/TR/2006/REC-xml11-20060816/#NT-EntityValue
             exception = assert_raise(REXML::ParseException) do
               REXML::Document.new('<!DOCTYPE root [<!ENTITY % valid-name invalid-entity-value > ]>')
             end
@@ -160,7 +158,6 @@ Last 80 unconsumed characters:
           end
 
           def test_invalid_entity_value
-            # https://www.w3.org/TR/2006/REC-xml11-20060816/#NT-EntityValue
             exception = assert_raise(REXML::ParseException) do
               REXML::Document.new('<!DOCTYPE root [<!ENTITY % valid-name "% &" > ]>')
             end
@@ -174,11 +171,11 @@ Last 80 unconsumed characters:
           end
         end
 
+        # https://www.w3.org/TR/2006/REC-xml11-20060816/#NT-ExternalID
         class TestExternalId < self
-          # https://www.w3.org/TR/2006/REC-xml11-20060816/#NT-ExternalID
+          # https://www.w3.org/TR/2006/REC-xml11-20060816/#NT-SystemLiteral
           class TestSystemLiteral < self
             def test_no_quote_in_system
-              # https://www.w3.org/TR/2006/REC-xml11-20060816/#NT-SystemLiteral
               exception = assert_raise(REXML::ParseException) do
                 REXML::Document.new('<!DOCTYPE root [<!ENTITY % valid-name SYSTEM invalid-system-literal > ]>')
               end
@@ -192,7 +189,6 @@ Last 80 unconsumed characters:
             end
 
             def test_no_quote_in_public
-              # https://www.w3.org/TR/2006/REC-xml11-20060816/#NT-SystemLiteral
               exception = assert_raise(REXML::ParseException) do
                 REXML::Document.new('<!DOCTYPE root [<!ENTITY % valid-name PUBLIC "valid-pubid-literal" invalid-system-literal > ]>')
               end
@@ -206,9 +202,10 @@ Last 80 unconsumed characters:
             end
           end
 
+          # https://www.w3.org/TR/2006/REC-xml11-20060816/#NT-PubidLiteral
+          # https://www.w3.org/TR/2006/REC-xml11-20060816/#NT-PubidChar
           class TestPubidLiteral < self
             def test_no_quote
-              # https://www.w3.org/TR/2006/REC-xml11-20060816/#NT-PubidLiteral
               exception = assert_raise(REXML::ParseException) do
                 REXML::Document.new('<!DOCTYPE root [<!ENTITY % valid-name PUBLIC invalid-pubid-literal "valid-system-literal" > ]>')
               end
@@ -222,7 +219,6 @@ Last 80 unconsumed characters:
             end
 
             def test_invalid_pubid_char
-              # https://www.w3.org/TR/2006/REC-xml11-20060816/#NT-PubidChar
               exception = assert_raise(REXML::ParseException) do
                 # U+3042 HIRAGANA LETTER A
                 REXML::Document.new("<!DOCTYPE root [<!ENTITY % valid-name PUBLIC \"\u3042\" \"valid-system-literal\" > ]>")
@@ -240,7 +236,6 @@ Last 80 unconsumed characters:
       end
 
       def test_unnecessary_ndata_declaration
-        # https://www.w3.org/TR/2006/REC-xml11-20060816/#NT-PEDef
         exception = assert_raise(REXML::ParseException) do
           REXML::Document.new('<!DOCTYPE root [<!ENTITY % valid-name "valid-entity-value" "NDATA" valid-ndata-value > ]>')
         end
