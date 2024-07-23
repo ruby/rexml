@@ -43,7 +43,7 @@ Last 80 unconsumed characters:
             DETAIL
           end
 
-          def test_invalid_entity_value
+          def test_prohibited_character
             exception = assert_raise(REXML::ParseException) do
               REXML::Document.new('<!DOCTYPE root [<!ENTITY valid-name "% &">]>')
             end
@@ -157,7 +157,7 @@ Last 80 unconsumed characters:
             DETAIL
           end
 
-          def test_invalid_entity_value
+          def test_prohibited_character
             exception = assert_raise(REXML::ParseException) do
               REXML::Document.new('<!DOCTYPE root [<!ENTITY % valid-name "% &">]>')
             end
