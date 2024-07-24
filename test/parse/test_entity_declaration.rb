@@ -23,6 +23,486 @@ module REXMLTests
     end
 
     public
+
+    # https://www.w3.org/TR/2006/REC-xml11-20060816/#NT-GEDecl
+    class TestGeneralEntityDeclaration < self
+      # https://www.w3.org/TR/2006/REC-xml11-20060816/#NT-Name
+      class TestName < self
+        def test_prohibited_character
+          exception = assert_raise(REXML::ParseException) do
+            REXML::Document.new("<!DOCTYPE root [<!ENTITY invalid&name \"valid-entity-value\">]>")
+          end
+          assert_equal(<<-DETAIL.chomp, exception.to_s)
+Malformed entity declaration
+Line: 1
+Position: 61
+Last 80 unconsumed characters:
+ invalid&name "valid-entity-value">]>
+          DETAIL
+        end
+      end
+
+      # https://www.w3.org/TR/2006/REC-xml11-20060816/#NT-EntityDef
+      class TestEntityDefinition < self
+        # https://www.w3.org/TR/2006/REC-xml11-20060816/#NT-EntityValue
+        class TestEntityValue < self
+          def test_no_quote
+            exception = assert_raise(REXML::ParseException) do
+              REXML::Document.new("<!DOCTYPE root [<!ENTITY valid-name invalid-entity-value>]>")
+            end
+            assert_equal(<<-DETAIL.chomp, exception.to_s)
+Malformed entity declaration
+Line: 1
+Position: 59
+Last 80 unconsumed characters:
+ valid-name invalid-entity-value>]>
+            DETAIL
+          end
+
+          def test_prohibited_character
+            exception = assert_raise(REXML::ParseException) do
+              REXML::Document.new("<!DOCTYPE root [<!ENTITY valid-name \"% &\">]>")
+            end
+            assert_equal(<<-DETAIL.chomp, exception.to_s)
+Malformed entity declaration
+Line: 1
+Position: 44
+Last 80 unconsumed characters:
+ valid-name "% &">]>
+            DETAIL
+          end
+
+          def test_mixed_quote
+            exception = assert_raise(REXML::ParseException) do
+              REXML::Document.new("<!DOCTYPE root [<!ENTITY valid-name \"invalid-entity-value'>]>")
+            end
+            assert_equal(<<-DETAIL.chomp, exception.to_s)
+Malformed entity declaration
+Line: 1
+Position: 61
+Last 80 unconsumed characters:
+ valid-name "invalid-entity-value'>]>
+            DETAIL
+          end
+        end
+
+        # https://www.w3.org/TR/2006/REC-xml11-20060816/#NT-ExternalID
+        class TestExternalID < self
+          # https://www.w3.org/TR/2006/REC-xml11-20060816/#NT-SystemLiteral
+          class TestSystemLiteral < self
+            def test_no_quote_in_system
+              exception = assert_raise(REXML::ParseException) do
+                REXML::Document.new("<!DOCTYPE root [<!ENTITY valid-name SYSTEM invalid-system-literal>]>")
+              end
+              assert_equal(<<-DETAIL.chomp, exception.to_s)
+Malformed entity declaration
+Line: 1
+Position: 68
+Last 80 unconsumed characters:
+ valid-name SYSTEM invalid-system-literal>]>
+              DETAIL
+            end
+
+            def test_no_quote_in_public
+              exception = assert_raise(REXML::ParseException) do
+                REXML::Document.new("<!DOCTYPE root [<!ENTITY valid-name PUBLIC \"valid-pubid-literal\" invalid-system-literal>]>")
+              end
+              assert_equal(<<-DETAIL.chomp, exception.to_s)
+Malformed entity declaration
+Line: 1
+Position: 90
+Last 80 unconsumed characters:
+ valid-name PUBLIC "valid-pubid-literal" invalid-system-literal>]>
+              DETAIL
+            end
+
+            def test_mixed_quote_in_system
+              exception = assert_raise(REXML::ParseException) do
+                REXML::Document.new("<!DOCTYPE root [<!ENTITY valid-name SYSTEM 'invalid-system-literal\">]>")
+              end
+              assert_equal(<<-DETAIL.chomp, exception.to_s)
+Malformed entity declaration
+Line: 1
+Position: 70
+Last 80 unconsumed characters:
+ valid-name SYSTEM 'invalid-system-literal">]>
+              DETAIL
+            end
+
+            def test_mixed_quote_in_public
+              exception = assert_raise(REXML::ParseException) do
+                REXML::Document.new("<!DOCTYPE root [<!ENTITY valid-name PUBLIC \"valid-pubid-literal\" \"invalid-system-literal'>]>")
+              end
+              assert_equal(<<-DETAIL.chomp, exception.to_s)
+Malformed entity declaration
+Line: 1
+Position: 92
+Last 80 unconsumed characters:
+ valid-name PUBLIC "valid-pubid-literal" "invalid-system-literal'>]>
+              DETAIL
+            end
+
+            def test_no_literal_in_system
+              exception = assert_raise(REXML::ParseException) do
+                REXML::Document.new("<!DOCTYPE root [<!ENTITY valid-name SYSTEM>]>")
+              end
+              assert_equal(<<-DETAIL.chomp, exception.to_s)
+Malformed entity declaration
+Line: 1
+Position: 45
+Last 80 unconsumed characters:
+ valid-name SYSTEM>]>
+              DETAIL
+            end
+
+            def test_no_literal_in_public
+              exception = assert_raise(REXML::ParseException) do
+                REXML::Document.new("<!DOCTYPE root [<!ENTITY valid-name PUBLIC \"valid-pubid-literal\">]>")
+              end
+              assert_equal(<<-DETAIL.chomp, exception.to_s)
+Malformed entity declaration
+Line: 1
+Position: 67
+Last 80 unconsumed characters:
+ valid-name PUBLIC "valid-pubid-literal">]>
+              DETAIL
+            end
+          end
+
+          # https://www.w3.org/TR/2006/REC-xml11-20060816/#NT-PubidLiteral
+          # https://www.w3.org/TR/2006/REC-xml11-20060816/#NT-PubidChar
+          class TestPublicIDLiteral < self
+            def test_no_quote
+              exception = assert_raise(REXML::ParseException) do
+                REXML::Document.new("<!DOCTYPE root [<!ENTITY valid-name PUBLIC invalid-pubid-literal \"valid-system-literal\">]>")
+              end
+              assert_equal(<<-DETAIL.chomp, exception.to_s)
+Malformed entity declaration
+Line: 1
+Position: 90
+Last 80 unconsumed characters:
+ valid-name PUBLIC invalid-pubid-literal "valid-system-literal">]>
+              DETAIL
+            end
+
+            def test_prohibited_pubid_character
+              exception = assert_raise(REXML::ParseException) do
+                # U+3042 HIRAGANA LETTER A
+                REXML::Document.new("<!DOCTYPE root [<!ENTITY valid-name PUBLIC \"\u3042\" \"valid-system-literal\">]>")
+              end
+              assert_equal(<<-DETAIL.force_encoding('utf-8').chomp, exception.to_s.force_encoding('utf-8'))
+Malformed entity declaration
+Line: 1
+Position: 74
+Last 80 unconsumed characters:
+ valid-name PUBLIC "\u3042" "valid-system-literal">]>
+              DETAIL
+            end
+
+            def test_mixed_quote
+              exception = assert_raise(REXML::ParseException) do
+                REXML::Document.new("<!DOCTYPE root [<!ENTITY valid-name PUBLIC \"invalid-pubid-literal' \"valid-system-literal\">]>")
+              end
+              assert_equal(<<-DETAIL.chomp, exception.to_s)
+Malformed entity declaration
+Line: 1
+Position: 92
+Last 80 unconsumed characters:
+ valid-name PUBLIC "invalid-pubid-literal' "valid-system-literal">]>
+              DETAIL
+            end
+
+            def test_no_literal
+              exception = assert_raise(REXML::ParseException) do
+                REXML::Document.new("<!DOCTYPE root [<!ENTITY valid-name PUBLIC>]>")
+              end
+              assert_equal(<<-DETAIL.chomp, exception.to_s)
+Malformed entity declaration
+Line: 1
+Position: 45
+Last 80 unconsumed characters:
+ valid-name PUBLIC>]>
+              DETAIL
+            end
+          end
+        end
+
+        # https://www.w3.org/TR/2006/REC-xml11-20060816/#NT-NDataDecl
+        class TestNotationDataDeclaration < self
+          # https://www.w3.org/TR/2006/REC-xml11-20060816/#NT-NameChar
+          def test_prohibited_character
+            exception = assert_raise(REXML::ParseException) do
+              REXML::Document.new("<!DOCTYPE root [<!ENTITY valid-name PUBLIC \"valid-pubid-literal\" \"valid-system-literal\" NDATA invalid&name>]>")
+            end
+            assert_equal(<<-DETAIL.chomp, exception.to_s)
+Malformed entity declaration
+Line: 1
+Position: 109
+Last 80 unconsumed characters:
+ valid-name PUBLIC "valid-pubid-literal" "valid-system-literal" NDATA invalid&nam
+            DETAIL
+          end
+        end
+
+        def test_entity_value_and_notation_data_declaration
+          exception = assert_raise(REXML::ParseException) do
+            REXML::Document.new("<!DOCTYPE root [<!ENTITY valid-name \"valid-entity-value\" NDATA valid-ndata-value>]>")
+          end
+          assert_equal(<<-DETAIL.chomp, exception.to_s)
+Malformed entity declaration
+Line: 1
+Position: 83
+Last 80 unconsumed characters:
+ valid-name "valid-entity-value" NDATA valid-ndata-value>]>
+        DETAIL
+        end
+      end
+
+      def test_no_space
+        exception = assert_raise(REXML::ParseException) do
+          REXML::Document.new("<!DOCTYPE root [<!ENTITY valid-namePUBLIC\"valid-pubid-literal\"\"valid-system-literal\"NDATAvalid-name>]>")
+        end
+        assert_equal(<<-DETAIL.chomp, exception.to_s)
+Malformed entity declaration
+Line: 1
+Position: 102
+Last 80 unconsumed characters:
+ valid-namePUBLIC"valid-pubid-literal""valid-system-literal"NDATAvalid-name>]>
+        DETAIL
+      end
+    end
+
+    # https://www.w3.org/TR/2006/REC-xml11-20060816/#NT-PEDecl
+    class TestParsedEntityDeclaration < self
+      # https://www.w3.org/TR/2006/REC-xml11-20060816/#NT-Name
+      class TestName < self
+        def test_prohibited_character
+          exception = assert_raise(REXML::ParseException) do
+            REXML::Document.new("<!DOCTYPE root [<!ENTITY % invalid&name \"valid-entity-value\">]>")
+          end
+          assert_equal(<<-DETAIL.chomp, exception.to_s)
+Malformed entity declaration
+Line: 1
+Position: 63
+Last 80 unconsumed characters:
+ % invalid&name "valid-entity-value">]>
+          DETAIL
+        end
+      end
+
+      # https://www.w3.org/TR/2006/REC-xml11-20060816/#NT-PEDef
+      class TestParsedEntityDefinition < self
+        # https://www.w3.org/TR/2006/REC-xml11-20060816/#NT-EntityValue
+        class TestEntityValue < self
+          def test_no_quote
+            exception = assert_raise(REXML::ParseException) do
+              REXML::Document.new("<!DOCTYPE root [<!ENTITY % valid-name invalid-entity-value>]>")
+            end
+            assert_equal(<<-DETAIL.chomp, exception.to_s)
+Malformed entity declaration
+Line: 1
+Position: 61
+Last 80 unconsumed characters:
+ % valid-name invalid-entity-value>]>
+            DETAIL
+          end
+
+          def test_prohibited_character
+            exception = assert_raise(REXML::ParseException) do
+              REXML::Document.new("<!DOCTYPE root [<!ENTITY % valid-name \"% &\">]>")
+            end
+            assert_equal(<<-DETAIL.chomp, exception.to_s)
+Malformed entity declaration
+Line: 1
+Position: 46
+Last 80 unconsumed characters:
+ % valid-name "% &">]>
+            DETAIL
+          end
+
+          def test_mixed_quote
+            exception = assert_raise(REXML::ParseException) do
+              REXML::Document.new("<!DOCTYPE root [<!ENTITY % valid-name 'invalid-entity-value\">]>")
+            end
+            assert_equal(<<-DETAIL.chomp, exception.to_s)
+Malformed entity declaration
+Line: 1
+Position: 63
+Last 80 unconsumed characters:
+ % valid-name 'invalid-entity-value">]>
+            DETAIL
+          end
+        end
+
+        # https://www.w3.org/TR/2006/REC-xml11-20060816/#NT-ExternalID
+        class TestExternalID < self
+          # https://www.w3.org/TR/2006/REC-xml11-20060816/#NT-SystemLiteral
+          class TestSystemLiteral < self
+            def test_no_quote_in_system
+              exception = assert_raise(REXML::ParseException) do
+                REXML::Document.new("<!DOCTYPE root [<!ENTITY % valid-name SYSTEM invalid-system-literal>]>")
+              end
+              assert_equal(<<-DETAIL.chomp, exception.to_s)
+Malformed entity declaration
+Line: 1
+Position: 70
+Last 80 unconsumed characters:
+ % valid-name SYSTEM invalid-system-literal>]>
+              DETAIL
+            end
+
+            def test_no_quote_in_public
+              exception = assert_raise(REXML::ParseException) do
+                REXML::Document.new("<!DOCTYPE root [<!ENTITY % valid-name PUBLIC \"valid-pubid-literal\" invalid-system-literal>]>")
+              end
+              assert_equal(<<-DETAIL.chomp, exception.to_s)
+Malformed entity declaration
+Line: 1
+Position: 92
+Last 80 unconsumed characters:
+ % valid-name PUBLIC "valid-pubid-literal" invalid-system-literal>]>
+              DETAIL
+            end
+
+            def test_mixed_quote_in_system
+              exception = assert_raise(REXML::ParseException) do
+                REXML::Document.new("<!DOCTYPE root [<!ENTITY % valid-name SYSTEM \"invalid-system-literal'>]>")
+              end
+              assert_equal(<<-DETAIL.chomp, exception.to_s)
+Malformed entity declaration
+Line: 1
+Position: 72
+Last 80 unconsumed characters:
+ % valid-name SYSTEM "invalid-system-literal'>]>
+              DETAIL
+            end
+
+            def test_mixed_quote_in_public
+              exception = assert_raise(REXML::ParseException) do
+                REXML::Document.new("<!DOCTYPE root [<!ENTITY % valid-name PUBLIC \"valid-pubid-literal\" 'invalid-system-literal\">]>")
+              end
+              assert_equal(<<-DETAIL.chomp, exception.to_s)
+Malformed entity declaration
+Line: 1
+Position: 94
+Last 80 unconsumed characters:
+ % valid-name PUBLIC "valid-pubid-literal" 'invalid-system-literal">]>
+              DETAIL
+            end
+
+            def test_no_literal_in_system
+              exception = assert_raise(REXML::ParseException) do
+                REXML::Document.new("<!DOCTYPE root [<!ENTITY % valid-name SYSTEM>]>")
+              end
+              assert_equal(<<-DETAIL.chomp, exception.to_s)
+Malformed entity declaration
+Line: 1
+Position: 47
+Last 80 unconsumed characters:
+ % valid-name SYSTEM>]>
+              DETAIL
+            end
+
+            def test_no_literal_in_public
+              exception = assert_raise(REXML::ParseException) do
+                REXML::Document.new("<!DOCTYPE root [<!ENTITY % valid-name PUBLIC \"valid-pubid-literal\">]>")
+              end
+              assert_equal(<<-DETAIL.chomp, exception.to_s)
+Malformed entity declaration
+Line: 1
+Position: 69
+Last 80 unconsumed characters:
+ % valid-name PUBLIC "valid-pubid-literal">]>
+              DETAIL
+            end
+          end
+
+          # https://www.w3.org/TR/2006/REC-xml11-20060816/#NT-PubidLiteral
+          # https://www.w3.org/TR/2006/REC-xml11-20060816/#NT-PubidChar
+          class TestPublicIDLiteral < self
+            def test_no_quote
+              exception = assert_raise(REXML::ParseException) do
+                REXML::Document.new("<!DOCTYPE root [<!ENTITY % valid-name PUBLIC invalid-pubid-literal \"valid-system-literal\">]>")
+              end
+              assert_equal(<<-DETAIL.chomp, exception.to_s)
+Malformed entity declaration
+Line: 1
+Position: 92
+Last 80 unconsumed characters:
+ % valid-name PUBLIC invalid-pubid-literal "valid-system-literal">]>
+              DETAIL
+            end
+
+            def test_prohibited_pubid_character
+              exception = assert_raise(REXML::ParseException) do
+                # U+3042 HIRAGANA LETTER A
+                REXML::Document.new("<!DOCTYPE root [<!ENTITY % valid-name PUBLIC \"\u3042\" \"valid-system-literal\">]>")
+              end
+              assert_equal(<<-DETAIL.force_encoding('utf-8').chomp, exception.to_s.force_encoding('utf-8'))
+Malformed entity declaration
+Line: 1
+Position: 76
+Last 80 unconsumed characters:
+ % valid-name PUBLIC "\u3042" "valid-system-literal">]>
+              DETAIL
+            end
+
+            def test_mixed_quote
+              exception = assert_raise(REXML::ParseException) do
+                REXML::Document.new("<!DOCTYPE root [<!ENTITY % valid-name PUBLIC 'invalid-pubid-literal\" \"valid-system-literal\">]>")
+              end
+              assert_equal(<<-DETAIL.chomp, exception.to_s)
+Malformed entity declaration
+Line: 1
+Position: 94
+Last 80 unconsumed characters:
+ % valid-name PUBLIC 'invalid-pubid-literal" "valid-system-literal">]>
+              DETAIL
+            end
+
+            def test_no_literal
+              exception = assert_raise(REXML::ParseException) do
+                REXML::Document.new("<!DOCTYPE root [<!ENTITY % valid-name PUBLIC>]>")
+              end
+              assert_equal(<<-DETAIL.chomp, exception.to_s)
+Malformed entity declaration
+Line: 1
+Position: 47
+Last 80 unconsumed characters:
+ % valid-name PUBLIC>]>
+              DETAIL
+            end
+          end
+        end
+
+        def test_entity_value_and_notation_data_declaration
+          exception = assert_raise(REXML::ParseException) do
+            REXML::Document.new("<!DOCTYPE root [<!ENTITY % valid-name \"valid-entity-value\" NDATA valid-ndata-value>]>")
+          end
+          assert_equal(<<-DETAIL.chomp, exception.to_s)
+Malformed entity declaration
+Line: 1
+Position: 85
+Last 80 unconsumed characters:
+ % valid-name "valid-entity-value" NDATA valid-ndata-value>]>
+        DETAIL
+        end
+      end
+
+      def test_no_space
+        exception = assert_raise(REXML::ParseException) do
+          REXML::Document.new("<!DOCTYPE root [<!ENTITY %valid-nameSYSTEM\"valid-system-literal\">]>")
+        end
+        assert_equal(<<-DETAIL.chomp, exception.to_s)
+Malformed entity declaration
+Line: 1
+Position: 67
+Last 80 unconsumed characters:
+ %valid-nameSYSTEM"valid-system-literal">]>
+        DETAIL
+      end
+    end
+
     def test_empty
       exception = assert_raise(REXML::ParseException) do
         parse(<<-INTERNAL_SUBSET)
