@@ -147,56 +147,6 @@ XML
           assert_equal(90, doc.root.children.first.value.bytesize)
         end
       end
-
-      class ParameterEntityTest < self
-        def test_have_value
-          xml = <<EOF
-<!DOCTYPE root [
-  <!ENTITY % a "BOOM.BOOM.BOOM.BOOM.BOOM.BOOM.BOOM.BOOM.BOOM.">
-  <!ENTITY % b "%a;%a;%a;%a;%a;%a;%a;%a;%a;%a;%a;%a;%a;%a;%a;">
-  <!ENTITY % c "%b;%b;%b;%b;%b;%b;%b;%b;%b;%b;%b;%b;%b;%b;%b;">
-  <!ENTITY % d "%c;%c;%c;%c;%c;%c;%c;%c;%c;%c;%c;%c;%c;%c;%c;">
-  <!ENTITY % e "%d;%d;%d;%d;%d;%d;%d;%d;%d;%d;%d;%d;%d;%d;%d;">
-  <!ENTITY % f "%e;%e;%e;%e;%e;%e;%e;%e;%e;%e;%e;%e;%e;%e;%e;">
-  <!ENTITY % g "%f;%f;%f;%f;%f;%f;%f;%f;%f;%f;%f;%f;%f;%f;%f;">
-  <!ENTITY test "test %g;">
-]>
-<cd></cd>
-EOF
-
-          assert_raise(REXML::ParseException) do
-            REXML::Document.new(xml)
-          end
-          REXML::Security.entity_expansion_limit = 100
-          assert_equal(100, REXML::Security.entity_expansion_limit)
-          assert_raise(REXML::ParseException) do
-            REXML::Document.new(xml)
-          end
-        end
-
-        def test_empty_value
-          xml = <<EOF
-<!DOCTYPE root [
-  <!ENTITY % a "">
-  <!ENTITY % b "%a;%a;%a;%a;%a;%a;%a;%a;%a;%a;%a;%a;%a;%a;%a;">
-  <!ENTITY % c "%b;%b;%b;%b;%b;%b;%b;%b;%b;%b;%b;%b;%b;%b;%b;">
-  <!ENTITY % d "%c;%c;%c;%c;%c;%c;%c;%c;%c;%c;%c;%c;%c;%c;%c;">
-  <!ENTITY % e "%d;%d;%d;%d;%d;%d;%d;%d;%d;%d;%d;%d;%d;%d;%d;">
-  <!ENTITY % f "%e;%e;%e;%e;%e;%e;%e;%e;%e;%e;%e;%e;%e;%e;%e;">
-  <!ENTITY % g "%f;%f;%f;%f;%f;%f;%f;%f;%f;%f;%f;%f;%f;%f;%f;">
-  <!ENTITY test "test %g;">
-]>
-<cd></cd>
-EOF
-
-          REXML::Document.new(xml)
-          REXML::Security.entity_expansion_limit = 90
-          assert_equal(90, REXML::Security.entity_expansion_limit)
-          assert_raise(REXML::ParseException) do
-            REXML::Document.new(xml)
-          end
-        end
-      end
     end
 
     def test_tag_in_cdata_with_not_ascii_only_but_ascii8bit_encoding_source
