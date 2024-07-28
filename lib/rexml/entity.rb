@@ -123,43 +123,14 @@ module REXML
     end
 
     PEREFERENCE_RE = /#{PEREFERENCE}/um
-    # Returns the value of this entity.  At the moment, only internal entities
-    # are processed.  If the value contains internal references (IE,
-    # %blah;), those are replaced with their values.  IE, if the doctype
-    # contains:
-    #  <!ENTITY % foo "bar">
-    #  <!ENTITY yada "nanoo %foo; nanoo>
-    # then:
-    #  doctype.entity('yada').value   #-> "nanoo bar nanoo"
     def value
-      @resolved_value ||= resolve_value
-    end
-
-    def parent=(other)
-      @resolved_value = nil
-      super
-    end
-
-    private
-    def resolve_value
       return nil if @value.nil?
-      return @value unless @value.match?(PEREFERENCE_RE)
 
-      matches = @value.scan(PEREFERENCE_RE)
-      rv = @value.clone
-      if @parent
-        sum = 0
-        matches.each do |entity_reference|
-          entity_value = @parent.entity( entity_reference[0] )
-          if sum + entity_value.bytesize > Security.entity_expansion_text_limit
-            raise "entity expansion has grown too large"
-          else
-            sum += entity_value.bytesize
-          end
-          rv.gsub!( /%#{entity_reference.join};/um, entity_value )
-        end
+      if @value.match?(PEREFERENCE_RE)
+        raise REXML::ParseException.new("Parameter Entity References forbidden in internal subset :#{@value}")
       end
-      rv
+
+      @value
     end
   end
 
