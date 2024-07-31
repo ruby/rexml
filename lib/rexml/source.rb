@@ -247,9 +247,6 @@ module REXML
       read if @scanner.eos? && @source
     end
 
-    # Note: When specifying a string for 'pattern', it must not include '>' except in the following formats:
-    # - ">"
-    # - "XXX>" (X is any string excluding '>')
     def match( pattern, cons=false )
       # To avoid performance issue, we need to increase bytes to read per scan
       min_bytes = 1
