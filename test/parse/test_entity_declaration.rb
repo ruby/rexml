@@ -518,10 +518,39 @@ Last 80 unconsumed characters:
       DETAIL
     end
 
-    def test_linear_performance_gt
+    def test_linear_performance_entity_value_gt
       seq = [10000, 50000, 100000, 150000, 200000]
       assert_linear_performance(seq, rehearsal: 10) do |n|
-        REXML::Document.new("<!DOCTYPE rubynet [<!ENTITY rbconfig.ruby_version \"" + ">" * n + "\">]>")
+        REXML::Document.new("<!DOCTYPE rubynet [<!ENTITY rbconfig.ruby_version \"" +
+                            ">" * n +
+                            "\">]>")
+      end
+    end
+
+    def test_linear_performance_entity_value_gt_right_bracket
+      seq = [10000, 50000, 100000, 150000, 200000]
+      assert_linear_performance(seq, rehearsal: 10) do |n|
+        REXML::Document.new("<!DOCTYPE rubynet [<!ENTITY rbconfig.ruby_version \"" +
+                            ">]" * n +
+                            "\">]>")
+      end
+    end
+
+    def test_linear_performance_system_literal_in_system_gt_right_bracket
+      seq = [10000, 50000, 100000, 150000, 200000]
+      assert_linear_performance(seq, rehearsal: 10) do |n|
+        REXML::Document.new("<!DOCTYPE rubynet [<!ENTITY rbconfig.ruby_version SYSTEM \"" +
+                            ">]" * n +
+                            "\">]>")
+      end
+    end
+
+    def test_linear_performance_system_literal_in_public_gt_right_bracket
+      seq = [10000, 50000, 100000, 150000, 200000]
+      assert_linear_performance(seq, rehearsal: 10) do |n|
+        REXML::Document.new("<!DOCTYPE rubynet [<!ENTITY rbconfig.ruby_version PUBLIC \"pubid-literal\" \"" +
+                            ">]" * n +
+                            "\">]>")
       end
     end
   end
