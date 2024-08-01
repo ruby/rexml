@@ -124,14 +124,6 @@ module REXML
       }
 
       module Private
-        # Terminal requires two or more letters.
-        INSTRUCTION_TERM = "?>"
-        COMMENT_TERM = "-->"
-        CDATA_TERM = "]]>"
-        DOCTYPE_TERM = "]>"
-        # Read to the end of DOCTYPE because there is no proper ENTITY termination
-        ENTITY_TERM = DOCTYPE_TERM
-
         INSTRUCTION_END = /#{NAME}(\s+.*?)?\?>/um
         TAG_PATTERN = /((?>#{QNAME_STR}))\s*/um
         CLOSE_PATTERN = /(#{QNAME_STR})\s*>/um
@@ -253,7 +245,7 @@ module REXML
             return process_instruction(start_position)
           elsif @source.match("<!", true)
             if @source.match("--", true)
-              md = @source.match(/(.*?)-->/um, true, term: Private::COMMENT_TERM)
+              md = @source.match(/(.*?)-->/um, true)
               if md.nil?
                 raise REXML::ParseException.new("Unclosed comment", @source)
               end
@@ -320,7 +312,7 @@ module REXML
               raise REXML::ParseException.new( "Bad ELEMENT declaration!", @source ) if md.nil?
               return [ :elementdecl, "<!ELEMENT" + md[1] ]
             elsif @source.match("ENTITY", true)
-              match_data = @source.match(Private::ENTITYDECL_PATTERN, true, term: Private::ENTITY_TERM)
+              match_data = @source.match(Private::ENTITYDECL_PATTERN, true)
               unless match_data
                 raise REXML::ParseException.new("Malformed entity declaration", @source)
               end
@@ -389,14 +381,14 @@ module REXML
                 raise REXML::ParseException.new(message, @source)
               end
               return [:notationdecl, name, *id]
-            elsif md = @source.match(/--(.*?)-->/um, true, term: Private::COMMENT_TERM)
+            elsif md = @source.match(/--(.*?)-->/um, true)
               case md[1]
               when /--/, /-\z/
                 raise REXML::ParseException.new("Malformed comment", @source)
               end
               return [ :comment, md[1] ] if md
             end
-          elsif match = @source.match(/(%.*?;)\s*/um, true, term: Private::DOCTYPE_TERM)
+          elsif match = @source.match(/(%.*?;)\s*/um, true)
             return [ :externalentity, match[1] ]
           elsif @source.match(/\]\s*>/um, true)
             @document_status = :after_doctype
@@ -436,7 +428,7 @@ module REXML
               #STDERR.puts "SOURCE BUFFER = #{source.buffer}, #{source.buffer.size}"
               raise REXML::ParseException.new("Malformed node", @source) unless md
               if md[0][0] == ?-
-                md = @source.match(/--(.*?)-->/um, true, term: Private::COMMENT_TERM)
+                md = @source.match(/--(.*?)-->/um, true)
 
                 if md.nil? || /--|-\z/.match?(md[1])
                   raise REXML::ParseException.new("Malformed comment", @source)
@@ -444,7 +436,7 @@ module REXML
 
                 return [ :comment, md[1] ]
               else
-                md = @source.match(/\[CDATA\[(.*?)\]\]>/um, true, term: Private::CDATA_TERM)
+                md = @source.match(/\[CDATA\[(.*?)\]\]>/um, true)
                 return [ :cdata, md[1] ] if md
               end
               raise REXML::ParseException.new( "Declarations can only occur "+
@@ -673,7 +665,7 @@ module REXML
       end
 
       def process_instruction(start_position)
-        match_data = @source.match(Private::INSTRUCTION_END, true, term: Private::INSTRUCTION_TERM)
+        match_data = @source.match(Private::INSTRUCTION_END, true)
         unless match_data
           message = "Invalid processing instruction node"
           @source.position = start_position
