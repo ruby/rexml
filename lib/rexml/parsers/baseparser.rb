@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 require_relative '../parseexception'
 require_relative '../undefinednamespaceexception'
+require_relative '../security'
 require_relative '../source'
 require 'set'
 require "strscan"
