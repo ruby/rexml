@@ -308,7 +308,7 @@
           
 
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File lib/rexml/parsers/baseparser.rb, line 145</span>
+            <pre><span class="ruby-comment"># File lib/rexml/parsers/baseparser.rb, line 144</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>( <span class="ruby-identifier">source</span> )
   <span class="ruby-keyword">self</span>.<span class="ruby-identifier">stream</span> = <span class="ruby-identifier">source</span>
   <span class="ruby-ivar">@listeners</span> = []
@@ -341,7 +341,7 @@
           
 
           <div class="method-source-code" id="add_listener-source">
-            <pre><span class="ruby-comment"># File lib/rexml/parsers/baseparser.rb, line 152</span>
+            <pre><span class="ruby-comment"># File lib/rexml/parsers/baseparser.rb, line 151</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">add_listener</span>( <span class="ruby-identifier">listener</span> )
   <span class="ruby-ivar">@listeners</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">listener</span>
 <span class="ruby-keyword">end</span></pre>
@@ -364,7 +364,7 @@
           <p>Returns true if there are no more events</p>
 
           <div class="method-source-code" id="empty-3F-source">
-            <pre><span class="ruby-comment"># File lib/rexml/parsers/baseparser.rb, line 180</span>
+            <pre><span class="ruby-comment"># File lib/rexml/parsers/baseparser.rb, line 179</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">empty?</span>
   <span class="ruby-keyword">return</span> (<span class="ruby-ivar">@source</span>.<span class="ruby-identifier">empty?</span> <span class="ruby-keyword">and</span> <span class="ruby-ivar">@stack</span>.<span class="ruby-identifier">empty?</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -387,7 +387,7 @@
           
 
           <div class="method-source-code" id="entity-source">
-            <pre><span class="ruby-comment"># File lib/rexml/parsers/baseparser.rb, line 507</span>
+            <pre><span class="ruby-comment"># File lib/rexml/parsers/baseparser.rb, line 506</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">entity</span>( <span class="ruby-identifier">reference</span>, <span class="ruby-identifier">entities</span> )
   <span class="ruby-identifier">value</span> = <span class="ruby-keyword">nil</span>
   <span class="ruby-identifier">value</span> = <span class="ruby-identifier">entities</span>[ <span class="ruby-identifier">reference</span> ] <span class="ruby-keyword">if</span> <span class="ruby-identifier">entities</span>
@@ -418,7 +418,7 @@
           <p>Returns true if there are more events.  Synonymous with !empty?</p>
 
           <div class="method-source-code" id="has_next-3F-source">
-            <pre><span class="ruby-comment"># File lib/rexml/parsers/baseparser.rb, line 185</span>
+            <pre><span class="ruby-comment"># File lib/rexml/parsers/baseparser.rb, line 184</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">has_next?</span>
   <span class="ruby-keyword">return</span> <span class="ruby-operator">!</span>(<span class="ruby-ivar">@source</span>.<span class="ruby-identifier">empty?</span> <span class="ruby-keyword">and</span> <span class="ruby-ivar">@stack</span>.<span class="ruby-identifier">empty?</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -441,7 +441,7 @@
           <p>Escapes all possible entities</p>
 
           <div class="method-source-code" id="normalize-source">
-            <pre><span class="ruby-comment"># File lib/rexml/parsers/baseparser.rb, line 520</span>
+            <pre><span class="ruby-comment"># File lib/rexml/parsers/baseparser.rb, line 519</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">normalize</span>( <span class="ruby-identifier">input</span>, <span class="ruby-identifier">entities</span>=<span class="ruby-keyword">nil</span>, <span class="ruby-identifier">entity_filter</span>=<span class="ruby-keyword">nil</span> )
   <span class="ruby-identifier">copy</span> = <span class="ruby-identifier">input</span>.<span class="ruby-identifier">clone</span>
   <span class="ruby-comment"># Doing it like this rather than in a loop improves the speed</span>
@@ -475,7 +475,7 @@
           <p>Peek at the <code>depth</code> event in the stack.  The first element on the stack is at depth 0.  If <code>depth</code> is -1, will parse to the end of the input stream and return the last event, which is always :end_document. Be aware that this causes the stream to be parsed up to the <code>depth</code> event, so you can effectively pre-parse the entire document (pull the entire thing into memory) using this method.</p>
 
           <div class="method-source-code" id="peek-source">
-            <pre><span class="ruby-comment"># File lib/rexml/parsers/baseparser.rb, line 201</span>
+            <pre><span class="ruby-comment"># File lib/rexml/parsers/baseparser.rb, line 200</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">peek</span> <span class="ruby-identifier">depth</span>=<span class="ruby-value">0</span>
   <span class="ruby-identifier">raise</span> <span class="ruby-node">%Q[Illegal argument &quot;#{depth}&quot;]</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">depth</span> <span class="ruby-operator">&lt;</span> <span class="ruby-value">-1</span>
   <span class="ruby-identifier">temp</span> = []
@@ -508,7 +508,7 @@
           
 
           <div class="method-source-code" id="position-source">
-            <pre><span class="ruby-comment"># File lib/rexml/parsers/baseparser.rb, line 170</span>
+            <pre><span class="ruby-comment"># File lib/rexml/parsers/baseparser.rb, line 169</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">position</span>
   <span class="ruby-keyword">if</span> <span class="ruby-ivar">@source</span>.<span class="ruby-identifier">respond_to?</span> <span class="ruby-value">:position</span>
     <span class="ruby-ivar">@source</span>.<span class="ruby-identifier">position</span>
@@ -536,7 +536,7 @@
           <p>Returns the next event.  This is a <code>PullEvent</code> object.</p>
 
           <div class="method-source-code" id="pull-source">
-            <pre><span class="ruby-comment"># File lib/rexml/parsers/baseparser.rb, line 216</span>
+            <pre><span class="ruby-comment"># File lib/rexml/parsers/baseparser.rb, line 215</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">pull</span>
   <span class="ruby-ivar">@source</span>.<span class="ruby-identifier">drop_parsed_content</span>
 
@@ -565,7 +565,7 @@
           
 
           <div class="method-source-code" id="stream-3D-source">
-            <pre><span class="ruby-comment"># File lib/rexml/parsers/baseparser.rb, line 159</span>
+            <pre><span class="ruby-comment"># File lib/rexml/parsers/baseparser.rb, line 158</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">stream=</span>( <span class="ruby-identifier">source</span> )
   <span class="ruby-ivar">@source</span> = <span class="ruby-constant">SourceFactory</span>.<span class="ruby-identifier">create_from</span>( <span class="ruby-identifier">source</span> )
   <span class="ruby-ivar">@closed</span> = <span class="ruby-keyword">nil</span>
@@ -595,7 +595,7 @@
           <p>Unescapes all possible entities</p>
 
           <div class="method-source-code" id="unnormalize-source">
-            <pre><span class="ruby-comment"># File lib/rexml/parsers/baseparser.rb, line 536</span>
+            <pre><span class="ruby-comment"># File lib/rexml/parsers/baseparser.rb, line 535</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">unnormalize</span>( <span class="ruby-identifier">string</span>, <span class="ruby-identifier">entities</span>=<span class="ruby-keyword">nil</span>, <span class="ruby-identifier">filter</span>=<span class="ruby-keyword">nil</span> )
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">string</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-string">&quot;\r&quot;</span>)
     <span class="ruby-identifier">rv</span> = <span class="ruby-identifier">string</span>.<span class="ruby-identifier">gsub</span>( <span class="ruby-constant">Private</span><span class="ruby-operator">::</span><span class="ruby-constant">CARRIAGE_RETURN_NEWLINE_PATTERN</span>, <span class="ruby-string">&quot;\n&quot;</span> )
@@ -651,7 +651,7 @@
           <p>Push an event back on the head of the stream.  This method has (theoretically) infinite depth.</p>
 
           <div class="method-source-code" id="unshift-source">
-            <pre><span class="ruby-comment"># File lib/rexml/parsers/baseparser.rb, line 191</span>
+            <pre><span class="ruby-comment"># File lib/rexml/parsers/baseparser.rb, line 190</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">unshift</span> <span class="ruby-identifier">token</span>
   <span class="ruby-ivar">@stack</span>.<span class="ruby-identifier">unshift</span>(<span class="ruby-identifier">token</span>)
 <span class="ruby-keyword">end</span></pre>
