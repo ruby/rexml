@@ -4,7 +4,7 @@ require "core_assertions"
 require "rexml/document"
 
 module REXMLTests
-  class TestParseAttlist < Test::Unit::TestCase
+  class TestParseAttributeListDeclaration < Test::Unit::TestCase
     include Test::Unit::CoreAssertions
 
     def test_linear_performance_gt
