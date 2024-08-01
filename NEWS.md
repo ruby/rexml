@@ -1,5 +1,39 @@
 # News
 
+## 3.3.3 - 2024-08-01 {#version-3-3-3}
+
+### Improvements
+
+  * Added support for detecting invalid XML that has unsupported
+    content before root element
+    * GH-184
+    * Patch by NAITOH Jun.
+
+  * Added support for `REXML::Security.entity_expansion_limit=` and
+    `REXML::Security.entity_expansion_text_limit=` in SAX2 and pull
+    parsers
+    * GH-187
+    * Patch by NAITOH Jun.
+
+  * Added more tests for invalid XMLs.
+    * GH-183
+    * Patch by Watson.
+
+  * Added more performance tests.
+    * Patch by Watson.
+
+  * Improved parse performance.
+    * GH-186
+    * Patch by tomoya ishida.
+
+### Thanks
+
+  * NAITOH Jun
+
+  * Watson
+
+  * tomoya ishida
+
 ## 3.3.2 - 2024-07-16 {#version-3-3-2}
 
 ### Improvements
