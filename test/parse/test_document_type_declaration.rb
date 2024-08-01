@@ -280,23 +280,6 @@ x'>  <r/>
                      doctype.children.collect(&:class))
       end
 
-      def test_linear_performance_percent_gt
-        seq = [10000, 50000, 100000, 150000, 200000]
-        assert_linear_performance(seq, rehearsal: 10) do |n|
-          begin
-            REXML::Document.new('<!DOCTYPE root [' + "%>" * n + ']><test/>')
-          rescue
-          end
-        end
-      end
-
-      def test_linear_performance_comment_gt
-        seq = [10000, 50000, 100000, 150000, 200000]
-        assert_linear_performance(seq, rehearsal: 10) do |n|
-          REXML::Document.new('<!DOCTYPE root [<!-- ' + ">" * n + ' -->]>')
-        end
-      end
-
       private
       def parse(internal_subset)
         super(<<-DOCTYPE)
@@ -304,6 +287,23 @@ x'>  <r/>
 #{internal_subset}
 ]>
         DOCTYPE
+      end
+    end
+
+    def test_linear_performance_percent_gt
+      seq = [10000, 50000, 100000, 150000, 200000]
+      assert_linear_performance(seq, rehearsal: 10) do |n|
+        begin
+          REXML::Document.new('<!DOCTYPE root [' + "%>" * n + ']><test/>')
+        rescue
+        end
+      end
+    end
+
+    def test_linear_performance_comment_gt
+      seq = [10000, 50000, 100000, 150000, 200000]
+      assert_linear_performance(seq, rehearsal: 10) do |n|
+        REXML::Document.new('<!DOCTYPE root [<!-- ' + ">" * n + ' -->]>')
       end
     end
   end
