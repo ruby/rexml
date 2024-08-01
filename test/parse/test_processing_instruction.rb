@@ -4,7 +4,7 @@ require "core_assertions"
 require "rexml/document"
 
 module REXMLTests
-  class TestParseProcessinInstruction < Test::Unit::TestCase
+  class TestParseProcessingInstruction < Test::Unit::TestCase
     include Test::Unit::CoreAssertions
 
     def parse(xml)
