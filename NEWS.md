@@ -1,5 +1,19 @@
 # News
 
+## 3.3.4 - 2024-08-01 {#version-3-3-4}
+
+### Fixes
+
+  * Fixed a bug that `REXML::Security` isn't defined when
+    `REXML::Parsers::StreamParser` is used and
+    `rexml/parsers/streamparser` is only required.
+    * GH-189
+    * Patch by takuya kodama.
+
+### Thanks
+
+  * takuya kodama
+
 ## 3.3.3 - 2024-08-01 {#version-3-3-3}
 
 ### Improvements
