@@ -75,6 +75,7 @@
     <li ><a href="#method-c-new">::new</a>
     <li ><a href="#method-i-add_listener">#add_listener</a>
     <li ><a href="#method-i-deafen">#deafen</a>
+    <li ><a href="#method-i-entity_expansion_count">#entity_expansion_count</a>
     <li ><a href="#method-i-listen">#listen</a>
     <li ><a href="#method-i-parse">#parse</a>
     <li ><a href="#method-i-source">#source</a>
@@ -155,7 +156,7 @@
           
 
           <div class="method-source-code" id="add_listener-source">
-            <pre><span class="ruby-comment"># File lib/rexml/parsers/sax2parser.rb, line 25</span>
+            <pre><span class="ruby-comment"># File lib/rexml/parsers/sax2parser.rb, line 29</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">add_listener</span>( <span class="ruby-identifier">listener</span> )
   <span class="ruby-ivar">@parser</span>.<span class="ruby-identifier">add_listener</span>( <span class="ruby-identifier">listener</span> )
 <span class="ruby-keyword">end</span></pre>
@@ -178,7 +179,7 @@
           
 
           <div class="method-source-code" id="deafen-source">
-            <pre><span class="ruby-comment"># File lib/rexml/parsers/sax2parser.rb, line 77</span>
+            <pre><span class="ruby-comment"># File lib/rexml/parsers/sax2parser.rb, line 81</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">deafen</span>( <span class="ruby-identifier">listener</span>=<span class="ruby-keyword">nil</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">blok</span> )
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">listener</span>
     <span class="ruby-ivar">@listeners</span>.<span class="ruby-identifier">delete_if</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">item</span><span class="ruby-operator">|</span> <span class="ruby-identifier">item</span>[<span class="ruby-value">-1</span>] <span class="ruby-operator">==</span> <span class="ruby-identifier">listener</span> }
@@ -186,6 +187,29 @@
   <span class="ruby-keyword">else</span>
     <span class="ruby-ivar">@procs</span>.<span class="ruby-identifier">delete_if</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">item</span><span class="ruby-operator">|</span> <span class="ruby-identifier">item</span>[<span class="ruby-value">-1</span>] <span class="ruby-operator">==</span> <span class="ruby-identifier">blok</span> }
   <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+        </div>
+
+
+      </div>
+
+      <div id="method-i-entity_expansion_count" class="method-detail ">
+        <div class="method-header">
+          <div class="method-heading">
+            <span class="method-name">entity_expansion_count</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+        </div>
+
+        <div class="method-description">
+          
+
+          <div class="method-source-code" id="entity_expansion_count-source">
+            <pre><span class="ruby-comment"># File lib/rexml/parsers/sax2parser.rb, line 25</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">entity_expansion_count</span>
+  <span class="ruby-ivar">@parser</span>.<span class="ruby-identifier">entity_expansion_count</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
         </div>
@@ -240,7 +264,7 @@
 <p>Block will be passed the same arguments as a <a href="../SAX2Listener.html"><code>SAX2Listener</code></a> method would be, where the method name is the same as the matched Symbol. See the <a href="../SAX2Listener.html"><code>SAX2Listener</code></a> for more information.</p>
 
           <div class="method-source-code" id="listen-source">
-            <pre><span class="ruby-comment"># File lib/rexml/parsers/sax2parser.rb, line 59</span>
+            <pre><span class="ruby-comment"># File lib/rexml/parsers/sax2parser.rb, line 63</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">listen</span>( <span class="ruby-operator">*</span><span class="ruby-identifier">args</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">blok</span> )
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">args</span>[<span class="ruby-value">0</span>].<span class="ruby-identifier">kind_of?</span> <span class="ruby-constant">Symbol</span>
     <span class="ruby-keyword">if</span> <span class="ruby-identifier">args</span>.<span class="ruby-identifier">size</span> <span class="ruby-operator">==</span> <span class="ruby-value">2</span>
@@ -277,7 +301,7 @@
           
 
           <div class="method-source-code" id="parse-source">
-            <pre><span class="ruby-comment"># File lib/rexml/parsers/sax2parser.rb, line 86</span>
+            <pre><span class="ruby-comment"># File lib/rexml/parsers/sax2parser.rb, line 90</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">parse</span>
   <span class="ruby-ivar">@procs</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">sym</span>,<span class="ruby-identifier">match</span>,<span class="ruby-identifier">block</span><span class="ruby-operator">|</span> <span class="ruby-identifier">block</span>.<span class="ruby-identifier">call</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">sym</span> <span class="ruby-operator">==</span> <span class="ruby-value">:start_document</span> }
   <span class="ruby-ivar">@listeners</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">sym</span>,<span class="ruby-identifier">match</span>,<span class="ruby-identifier">block</span><span class="ruby-operator">|</span>
