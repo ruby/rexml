@@ -17,11 +17,37 @@ module REXMLTests
           parse("<??>")
         end
         assert_equal(<<-DETAIL.chomp, exception.to_s)
-Invalid processing instruction node
+Malformed XML: Invalid processing instruction node: invalid name
 Line: 1
 Position: 4
 Last 80 unconsumed characters:
-<??>
+?>
+        DETAIL
+      end
+
+      def test_unclosed_content
+        exception = assert_raise(REXML::ParseException) do
+          parse("<?name content")
+        end
+        assert_equal(<<-DETAIL.chomp, exception.to_s)
+Malformed XML: Unclosed processing instruction
+Line: 1
+Position: 14
+Last 80 unconsumed characters:
+content
+        DETAIL
+      end
+
+      def test_unclosed_no_content
+        exception = assert_raise(REXML::ParseException) do
+          parse("<?name")
+        end
+        assert_equal(<<-DETAIL.chomp, exception.to_s)
+Malformed XML: Unclosed processing instruction
+Line: 1
+Position: 6
+Last 80 unconsumed characters:
+
         DETAIL
       end
 
@@ -77,6 +103,11 @@ Last 80 unconsumed characters:
       end
 
       assert_equal("abc", events[:processing_instruction])
+    end
+
+    def test_content_question
+      document = REXML::Document.new("<a><?name con?tent?></a>")
+      assert_equal("con?tent", document.root.children.first.content)
     end
 
     def test_linear_performance_gt

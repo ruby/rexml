@@ -124,11 +124,10 @@ module REXML
       }
 
       module Private
-        INSTRUCTION_END = /#{NAME}(\s+.*?)?\?>/um
         TAG_PATTERN = /((?>#{QNAME_STR}))\s*/um
         CLOSE_PATTERN = /(#{QNAME_STR})\s*>/um
         ATTLISTDECL_END = /\s+#{NAME}(?:#{ATTDEF})*\s*>/um
-        NAME_PATTERN = /\s*#{NAME}/um
+        NAME_PATTERN = /#{NAME}/um
         GEDECL_PATTERN = "\\s+#{NAME}\\s+#{ENTITYDEF}\\s*>"
         PEDECL_PATTERN = "\\s+(%)\\s+#{NAME}\\s+#{PEDEF}\\s*>"
         ENTITYDECL_PATTERN = /(?:#{GEDECL_PATTERN})|(?:#{PEDECL_PATTERN})/um
@@ -242,7 +241,7 @@ module REXML
         if @document_status == nil
           start_position = @source.position
           if @source.match("<?", true)
-            return process_instruction(start_position)
+            return process_instruction
           elsif @source.match("<!", true)
             if @source.match("--", true)
               md = @source.match(/(.*?)-->/um, true)
@@ -442,7 +441,7 @@ module REXML
               raise REXML::ParseException.new( "Declarations can only occur "+
                 "in the doctype declaration.", @source)
             elsif @source.match("?", true)
-              return process_instruction(start_position)
+              return process_instruction
             else
               # Get the next tag
               md = @source.match(Private::TAG_PATTERN, true)
@@ -588,14 +587,14 @@ module REXML
       def parse_name(base_error_message)
         md = @source.match(Private::NAME_PATTERN, true)
         unless md
-          if @source.match(/\s*\S/um)
+          if @source.match(/\S/um)
             message = "#{base_error_message}: invalid name"
           else
             message = "#{base_error_message}: name is missing"
           end
           raise REXML::ParseException.new(message, @source)
         end
-        md[1]
+        md[0]
       end
 
       def parse_id(base_error_message,
@@ -664,18 +663,24 @@ module REXML
         end
       end
 
-      def process_instruction(start_position)
-        match_data = @source.match(Private::INSTRUCTION_END, true)
-        unless match_data
-          message = "Invalid processing instruction node"
-          @source.position = start_position
-          raise REXML::ParseException.new(message, @source)
+      def process_instruction
+        name = parse_name("Malformed XML: Invalid processing instruction node")
+        if @source.match(/\s+/um, true)
+          match_data = @source.match(/(.*?)\?>/um, true)
+          unless match_data
+            raise ParseException.new("Malformed XML: Unclosed processing instruction", @source)
+          end
+          content = match_data[1]
+        else
+          content = nil
+          unless @source.match("?>", true)
+            raise ParseException.new("Malformed XML: Unclosed processing instruction", @source)
+          end
         end
-        if match_data[1] == "xml"
+        if name == "xml"
           if @document_status
             raise ParseException.new("Malformed XML: XML declaration is not at the start", @source)
           end
-          content = match_data[2]
           version = VERSION.match(content)
           version = version[1] unless version.nil?
           encoding = ENCODING.match(content)
@@ -690,7 +695,7 @@ module REXML
           standalone = standalone[1] unless standalone.nil?
           return [ :xmldecl, version, encoding, standalone ]
         end
-        [:processing_instruction, match_data[1], match_data[2]]
+        [:processing_instruction, name, content]
       end
 
       def parse_attributes(prefixes, curr_ns)
