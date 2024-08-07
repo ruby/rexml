@@ -549,7 +549,7 @@ module REXML
         matches.collect!{|x|x[0]}.compact!
         if matches.size > 0
           sum = 0
-          matches.each do |entity_reference|
+          matches.uniq.each do |entity_reference|
             unless filter and filter.include?(entity_reference)
               entity_value = entity( entity_reference, entities )
               if entity_value
