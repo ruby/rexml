@@ -548,15 +548,13 @@ module REXML
         }
         matches.collect!{|x|x[0]}.compact!
         if matches.size > 0
-          sum = 0
           matches.each do |entity_reference|
             unless filter and filter.include?(entity_reference)
               entity_value = entity( entity_reference, entities )
               if entity_value
                 re = Private::DEFAULT_ENTITIES_PATTERNS[entity_reference] || /&#{entity_reference};/
                 rv.gsub!( re, entity_value )
-                sum += rv.bytesize
-                if sum > Security.entity_expansion_text_limit
+                if rv.bytesize > Security.entity_expansion_text_limit
                   raise "entity expansion has grown too large"
                 end
               else

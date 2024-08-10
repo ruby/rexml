@@ -102,10 +102,12 @@ module REXMLTests
     class EntityExpansionLimitTest < Test::Unit::TestCase
       def setup
         @default_entity_expansion_limit = REXML::Security.entity_expansion_limit
+        @default_entity_expansion_text_limit = REXML::Security.entity_expansion_text_limit
       end
 
       def teardown
         REXML::Security.entity_expansion_limit = @default_entity_expansion_limit
+        REXML::Security.entity_expansion_text_limit = @default_entity_expansion_text_limit
       end
 
       class GeneralEntityTest < self
@@ -181,6 +183,28 @@ module REXMLTests
           assert_raise(RuntimeError.new("number of entity expansions exceeded, processing aborted.")) do
             sax.parse
           end
+        end
+
+        def test_entity_expansion_text_limit
+          source = <<-XML
+<!DOCTYPE member [
+  <!ENTITY a "&b;&b;&b;">
+  <!ENTITY b "&c;&d;&e;">
+  <!ENTITY c "xxxxxxxxxx">
+  <!ENTITY d "yyyyyyyyyy">
+  <!ENTITY e "zzzzzzzzzz">
+]>
+<member>&a;</member>
+          XML
+
+          REXML::Security.entity_expansion_text_limit = 90
+          sax = REXML::Parsers::SAX2Parser.new(source)
+          text_size = nil
+          sax.listen(:characters, ["member"]) do |text|
+            text_size = text.size
+          end
+          sax.parse
+          assert_equal(90, text_size)
         end
       end
     end
