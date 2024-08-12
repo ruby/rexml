@@ -104,6 +104,68 @@ module REXMLTests
       assert_equal source, out
     end
 
+    def test_readers_with_reference
+      entity = REXML::Entity.new([:entitydecl, "a", "B", "%"])
+      assert_equal([
+                     '<!ENTITY % a "B">',
+                     "a",
+                     "B",
+                     "B",
+                     "B",
+                   ],
+                   [
+                     entity.to_s,
+                     entity.name,
+                     entity.value,
+                     entity.normalized,
+                     entity.unnormalized,
+                   ])
+    end
+
+    def test_readers_without_reference
+      entity = REXML::Entity.new([:entitydecl, "a", "&b;"])
+      assert_equal([
+                     '<!ENTITY a "&b;">',
+                     "a",
+                     "&b;",
+                     "&b;",
+                     "&b;",
+                   ],
+                   [
+                     entity.to_s,
+                     entity.name,
+                     entity.value,
+                     entity.normalized,
+                     entity.unnormalized,
+                   ])
+    end
+
+    def test_readers_with_nested_references
+      doctype = REXML::DocType.new('root')
+      doctype.add(REXML::Entity.new([:entitydecl, "a", "&b;"]))
+      doctype.add(REXML::Entity.new([:entitydecl, "b", "X"]))
+      assert_equal([
+                     "a",
+                     "&b;",
+                     "&b;",
+                     "X",
+                     "b",
+                     "X",
+                     "X",
+                     "X",
+                  ],
+                   [
+                     doctype.entities["a"].name,
+                     doctype.entities["a"].value,
+                     doctype.entities["a"].normalized,
+                     doctype.entities["a"].unnormalized,
+                     doctype.entities["b"].name,
+                     doctype.entities["b"].value,
+                     doctype.entities["b"].normalized,
+                     doctype.entities["b"].unnormalized,
+                   ])
+    end
+
     def test_entity_string_limit
       template = '<!DOCTYPE bomb [ <!ENTITY a "^" > ]> <bomb>$</bomb>'
       len      = 5120 # 5k per entity
