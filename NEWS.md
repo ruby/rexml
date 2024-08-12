@@ -1,5 +1,22 @@
 # News
 
+## 3.3.5 - 2024-08-12 {#version-3-3-5}
+
+### Fixes
+
+  * Fixed a bug that `REXML::Security.entity_expansion_text_limit`
+    check has wrong text size calculation in SAX and pull parsers.
+    * GH-193
+    * GH-195
+    * Reported by Viktor Ivarsson.
+    * Patch by NAITOH Jun.
+
+### Thanks
+
+  * Viktor Ivarsson
+
+  * NAITOH Jun
+
 ## 3.3.4 - 2024-08-01 {#version-3-3-4}
 
 ### Fixes
