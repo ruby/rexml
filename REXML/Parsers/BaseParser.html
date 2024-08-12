@@ -611,15 +611,13 @@
   }
   <span class="ruby-identifier">matches</span>.<span class="ruby-identifier">collect!</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">x</span><span class="ruby-operator">|</span><span class="ruby-identifier">x</span>[<span class="ruby-value">0</span>]}.<span class="ruby-identifier">compact!</span>
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">matches</span>.<span class="ruby-identifier">size</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">0</span>
-    <span class="ruby-identifier">sum</span> = <span class="ruby-value">0</span>
     <span class="ruby-identifier">matches</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">entity_reference</span><span class="ruby-operator">|</span>
       <span class="ruby-keyword">unless</span> <span class="ruby-identifier">filter</span> <span class="ruby-keyword">and</span> <span class="ruby-identifier">filter</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">entity_reference</span>)
         <span class="ruby-identifier">entity_value</span> = <span class="ruby-identifier">entity</span>( <span class="ruby-identifier">entity_reference</span>, <span class="ruby-identifier">entities</span> )
         <span class="ruby-keyword">if</span> <span class="ruby-identifier">entity_value</span>
           <span class="ruby-identifier">re</span> = <span class="ruby-constant">Private</span><span class="ruby-operator">::</span><span class="ruby-constant">DEFAULT_ENTITIES_PATTERNS</span>[<span class="ruby-identifier">entity_reference</span>] <span class="ruby-operator">||</span> <span class="ruby-regexp">/&amp;#{entity_reference};/</span>
           <span class="ruby-identifier">rv</span>.<span class="ruby-identifier">gsub!</span>( <span class="ruby-identifier">re</span>, <span class="ruby-identifier">entity_value</span> )
-          <span class="ruby-identifier">sum</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">rv</span>.<span class="ruby-identifier">bytesize</span>
-          <span class="ruby-keyword">if</span> <span class="ruby-identifier">sum</span> <span class="ruby-operator">&gt;</span> <span class="ruby-constant">Security</span>.<span class="ruby-identifier">entity_expansion_text_limit</span>
+          <span class="ruby-keyword">if</span> <span class="ruby-identifier">rv</span>.<span class="ruby-identifier">bytesize</span> <span class="ruby-operator">&gt;</span> <span class="ruby-constant">Security</span>.<span class="ruby-identifier">entity_expansion_text_limit</span>
             <span class="ruby-identifier">raise</span> <span class="ruby-string">&quot;entity expansion has grown too large&quot;</span>
           <span class="ruby-keyword">end</span>
         <span class="ruby-keyword">else</span>
