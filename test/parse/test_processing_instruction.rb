@@ -123,5 +123,15 @@ Last 80 unconsumed characters:
         REXML::Document.new("<?name" + "\t" * n + "version=\"1.0\" > ?>")
       end
     end
+   
+    def test_linear_performance_tab_gt
+      seq = [10000, 50000, 100000, 150000, 200000]
+      assert_linear_performance(seq, rehearsal: 10) do |n|
+        _n = n / 3
+        REXML::Document.new("<?" + "0" * _n + "\t" * _n + ">" * _n)
+        rescue REXML::ParseException
+          # Ignored
+      end
+    end
   end
 end
