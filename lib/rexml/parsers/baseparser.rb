@@ -8,6 +8,22 @@ require "strscan"
 
 module REXML
   module Parsers
+    unless [].respond_to?(:tally)
+      module EnumerableTally
+        refine Enumerable do
+          def tally
+            counts = {}
+            each do |item|
+              counts[item] ||= 0
+              counts[item] += 1
+            end
+            counts
+          end
+        end
+      end
+      using EnumerableTally
+    end
+
     if StringScanner::Version < "3.0.8"
       module StringScannerCaptures
         refine StringScanner do
