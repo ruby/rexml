@@ -89,6 +89,44 @@ module REXMLTests
     end
   end
 
+  class EntityExpansionLimitTest < Test::Unit::TestCase
+    def setup
+      @default_entity_expansion_limit = REXML::Security.entity_expansion_limit
+      @default_entity_expansion_text_limit = REXML::Security.entity_expansion_text_limit
+    end
+
+    def teardown
+      REXML::Security.entity_expansion_limit = @default_entity_expansion_limit
+      REXML::Security.entity_expansion_text_limit = @default_entity_expansion_text_limit
+    end
+
+    def test_with_only_default_entities
+      member_value = "&lt;p&gt;#{'A' * @default_entity_expansion_text_limit}&lt;/p&gt;"
+      source = StringIO.new(<<-XML)
+<?xml version="1.0" encoding="UTF-8"?>
+<member>
+#{member_value}
+</member>
+      XML
+
+      listener = MyListener.new
+      class << listener
+        attr_accessor :text_value
+        def text(text)
+          @text_value << text
+        end
+      end
+      listener.text_value = ""
+      REXML::Document.parse_stream(source, listener)
+
+      expected_value = "<p>#{'A' * @default_entity_expansion_text_limit}</p>"
+      assert_equal(expected_value, listener.text_value.strip)
+      assert do
+        listener.text_value.bytesize > @default_entity_expansion_text_limit
+      end
+    end
+  end
+
 
   # For test_listener
   class RequestReader
