@@ -4,7 +4,7 @@
 <head>
 <meta charset="UTF-8">
 
-<title>module REXML::Parsers::StringScannerCaptures - RDoc Documentation</title>
+<title>module REXML::Parsers::EnumerableTally - RDoc Documentation</title>
 
 <script type="text/javascript">
   var rdoc_rel_prefix = "../../";
@@ -66,16 +66,16 @@
   <h3>Methods</h3>
 
   <ul class="link-list" role="directory">
-    <li ><a href="#method-i-captures">#captures</a>
+    <li ><a href="#method-i-tally">#tally</a>
   </ul>
 </div>
 
   </div>
 </nav>
 
-<main role="main" aria-labelledby="module-REXML::Parsers::StringScannerCaptures">
-  <h1 id="module-REXML::Parsers::StringScannerCaptures" class="module">
-    module REXML::Parsers::StringScannerCaptures
+<main role="main" aria-labelledby="module-REXML::Parsers::EnumerableTally">
+  <h1 id="module-REXML::Parsers::EnumerableTally" class="module">
+    module REXML::Parsers::EnumerableTally
   </h1>
 
   <section class="description">
@@ -93,10 +93,10 @@
          <h3>Public Instance Methods</h3>
        </header>
 
-      <div id="method-i-captures" class="method-detail ">
+      <div id="method-i-tally" class="method-detail ">
         <div class="method-header">
           <div class="method-heading">
-            <span class="method-name">captures</span><span
+            <span class="method-name">tally</span><span
               class="method-args">()</span>
             <span class="method-click-advice">click to toggle source</span>
           </div>
@@ -105,10 +105,15 @@
         <div class="method-description">
           
 
-          <div class="method-source-code" id="captures-source">
-            <pre><span class="ruby-comment"># File lib/rexml/parsers/baseparser.rb, line 30</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">captures</span>
-  <span class="ruby-identifier">values_at</span>(<span class="ruby-operator">*</span>(<span class="ruby-value">1</span><span class="ruby-operator">...</span><span class="ruby-identifier">size</span>))
+          <div class="method-source-code" id="tally-source">
+            <pre><span class="ruby-comment"># File lib/rexml/parsers/baseparser.rb, line 14</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">tally</span>
+  <span class="ruby-identifier">counts</span> = {}
+  <span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">item</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">counts</span>[<span class="ruby-identifier">item</span>] <span class="ruby-operator">||=</span> <span class="ruby-value">0</span>
+    <span class="ruby-identifier">counts</span>[<span class="ruby-identifier">item</span>] <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-identifier">counts</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
         </div>
