@@ -147,17 +147,19 @@ module REXMLTests
 </member>
           XML
 
+          REXML::Security.entity_expansion_limit = 100000
           sax = REXML::Parsers::SAX2Parser.new(source)
-          assert_raise(RuntimeError.new("number of entity expansions exceeded, processing aborted.")) do
-            sax.parse
-          end
+          sax.parse
+          assert_equal(11111, sax.entity_expansion_count)
 
-          REXML::Security.entity_expansion_limit = 100
+          REXML::Security.entity_expansion_limit = @default_entity_expansion_limit
           sax = REXML::Parsers::SAX2Parser.new(source)
           assert_raise(RuntimeError.new("number of entity expansions exceeded, processing aborted.")) do
             sax.parse
           end
-          assert_equal(101, sax.entity_expansion_count)
+          assert do
+            sax.entity_expansion_count > @default_entity_expansion_limit
+          end
         end
 
         def test_with_default_entity

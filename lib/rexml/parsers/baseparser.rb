@@ -8,6 +8,22 @@ require "strscan"
 
 module REXML
   module Parsers
+    unless [].respond_to?(:tally)
+      module EnumerableTally
+        refine Enumerable do
+          def tally
+            counts = {}
+            each do |item|
+              counts[item] ||= 0
+              counts[item] += 1
+            end
+            counts
+          end
+        end
+      end
+      using EnumerableTally
+    end
+
     if StringScanner::Version < "3.0.8"
       module StringScannerCaptures
         refine StringScanner do
@@ -547,20 +563,29 @@ module REXML
           [Integer(m)].pack('U*')
         }
         matches.collect!{|x|x[0]}.compact!
+        if filter
+          matches.reject! do |entity_reference|
+            filter.include?(entity_reference)
+          end
+        end
         if matches.size > 0
-          matches.each do |entity_reference|
-            unless filter and filter.include?(entity_reference)
-              entity_value = entity( entity_reference, entities )
-              if entity_value
-                re = Private::DEFAULT_ENTITIES_PATTERNS[entity_reference] || /&#{entity_reference};/
-                rv.gsub!( re, entity_value )
-                if rv.bytesize > Security.entity_expansion_text_limit
-                  raise "entity expansion has grown too large"
-                end
-              else
-                er = DEFAULT_ENTITIES[entity_reference]
-                rv.gsub!( er[0], er[2] ) if er
+          matches.tally.each do |entity_reference, n|
+            entity_expansion_count_before = @entity_expansion_count
+            entity_value = entity( entity_reference, entities )
+            if entity_value
+              if n > 1
+                entity_expansion_count_delta =
+                  @entity_expansion_count - entity_expansion_count_before
+                record_entity_expansion(entity_expansion_count_delta * (n - 1))
               end
+              re = Private::DEFAULT_ENTITIES_PATTERNS[entity_reference] || /&#{entity_reference};/
+              rv.gsub!( re, entity_value )
+              if rv.bytesize > Security.entity_expansion_text_limit
+                raise "entity expansion has grown too large"
+              end
+            else
+              er = DEFAULT_ENTITIES[entity_reference]
+              rv.gsub!( er[0], er[2] ) if er
             end
           end
           rv.gsub!( Private::DEFAULT_ENTITIES_PATTERNS['amp'], '&' )
@@ -570,8 +595,8 @@ module REXML
 
       private
 
-      def record_entity_expansion
-        @entity_expansion_count += 1
+      def record_entity_expansion(delta=1)
+        @entity_expansion_count += delta
         if @entity_expansion_count > Security.entity_expansion_limit
           raise "number of entity expansions exceeded, processing aborted."
         end
