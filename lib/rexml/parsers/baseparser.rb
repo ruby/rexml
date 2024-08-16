@@ -505,14 +505,13 @@ module REXML
       private :pull_event
 
       def entity( reference, entities )
-        value = nil
-        value = entities[ reference ] if entities
-        if value
-          record_entity_expansion
-          return unnormalize( value, entities )
-        end
+        return unless entities
 
-        nil
+        value = entities[ reference ]
+        return if value.nil?
+
+        record_entity_expansion
+        unnormalize( value, entities )
       end
 
       # Escapes all possible entities
