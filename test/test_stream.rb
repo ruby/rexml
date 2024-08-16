@@ -102,7 +102,7 @@ module REXMLTests
 
     def test_with_only_default_entities
       member_value = "&lt;p&gt;#{'A' * @default_entity_expansion_text_limit}&lt;/p&gt;"
-      source = StringIO.new(<<-XML)
+      source = <<-XML
 <?xml version="1.0" encoding="UTF-8"?>
 <member>
 #{member_value}
