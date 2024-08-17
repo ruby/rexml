@@ -624,8 +624,12 @@ module REXML
       else
         prefix = "xmlns:#{prefix}" unless prefix[0,5] == 'xmlns'
       end
-      ns = attributes[ prefix ]
-      ns = parent.namespace(prefix) if ns.nil? and parent
+      ns = nil
+      target = self
+      while ns.nil? and target
+        ns = target.attributes[prefix]
+        target = target.parent
+      end
       ns = '' if ns.nil? and prefix == 'xmlns'
       return ns
     end
