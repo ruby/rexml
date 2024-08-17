@@ -177,12 +177,12 @@ module REXMLTests
             assert_equal([declaration],
                          parse(<<-INTERNAL_SUBSET))
 <!NOTATION name SYSTEM "system-literal">
-           INTERNAL_SUBSET
-         end
+            INTERNAL_SUBSET
+          end
 
-         def test_public
-           declaration = ["name", "PUBLIC", "public-literal", "system-literal"]
-           assert_equal([declaration], parse(<<-INTERNAL_SUBSET))
+          def test_public
+            declaration = ["name", "PUBLIC", "public-literal", "system-literal"]
+            assert_equal([declaration], parse(<<-INTERNAL_SUBSET))
 <!NOTATION name PUBLIC "public-literal" "system-literal">
             INTERNAL_SUBSET
           end
