@@ -754,6 +754,7 @@ module REXML
 
       def parse_attributes(prefixes)
         attributes = {}
+        expanded_names = {}
         closed = false
         while true
           if @source.match(">", true)
@@ -803,6 +804,20 @@ module REXML
             if attributes[name]
               msg = "Duplicate attribute #{name.inspect}"
               raise REXML::ParseException.new(msg, @source, self)
+            end
+
+            unless prefix == "xmlns"
+              uri = @namespaces[prefix]
+              expanded_name = [uri, local_part]
+              existing_prefix = expanded_names[expanded_name]
+              if existing_prefix
+                message = "Namespace conflict in adding attribute " +
+                          "\"#{local_part}\": " +
+                          "Prefix \"#{existing_prefix}\" = \"#{uri}\" and " +
+                          "prefix \"#{prefix}\" = \"#{uri}\""
+                raise REXML::ParseException.new(message, @source, self)
+              end
+              expanded_names[expanded_name] = prefix
             end
 
             attributes[name] = value

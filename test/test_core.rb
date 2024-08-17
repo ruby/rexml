@@ -136,6 +136,10 @@ Last 80 unconsumed characters:
       # https://www.w3.org/TR/xml-names/#uniqAttrs
       message = <<-MESSAGE.chomp
 Namespace conflict in adding attribute "a": Prefix "n1" = "http://www.w3.org" and prefix "n2" = "http://www.w3.org"
+Line: 4
+Position: 140
+Last 80 unconsumed characters:
+/>
       MESSAGE
       assert_raise(REXML::ParseException.new(message)) do
         Document.new(<<-XML)

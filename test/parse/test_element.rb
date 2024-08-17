@@ -131,5 +131,19 @@ Last 80 unconsumed characters:
         REXML::Document.new('<test testing="' + ">" * n + '"></test>')
       end
     end
+
+    def test_linear_performance_deep_same_name_attributes
+      seq = [100, 500, 1000, 1500, 2000]
+      assert_linear_performance(seq, rehearsal: 10) do |n|
+        xml = <<-XML
+<?xml version="1.0"?>
+<root xmlns:ns="ns-uri">
+#{"<x ns:name='ns-value' name='value'>\n" * n}
+#{"</x>\n" * n}
+</root>
+        XML
+        REXML::Document.new(xml)
+      end
+    end
   end
 end
