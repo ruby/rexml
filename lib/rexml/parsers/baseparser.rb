@@ -181,7 +181,8 @@ module REXML
         @tags = []
         @stack = []
         @entities = []
-        @nsstack = []
+        @namespaces = {}
+        @namespaces_restore_stack = []
       end
 
       def position
@@ -285,7 +286,6 @@ module REXML
                 @source.position = start_position
                 raise REXML::ParseException.new(message, @source)
               end
-              @nsstack.unshift(Set.new)
               name = parse_name(base_error_message)
               if @source.match(/\s*\[/um, true)
                 id = [nil, nil, nil]
@@ -379,7 +379,7 @@ module REXML
                   val = attdef[4] if val == "#FIXED "
                   pairs[attdef[0]] = val
                   if attdef[0] =~ /^xmlns:(.*)/
-                    @nsstack[0] << $1
+                    @namespaces[$1] = val
                   end
                 end
               end
@@ -432,7 +432,7 @@ module REXML
             # here explicitly.
             @source.ensure_buffer
             if @source.match("/", true)
-              @nsstack.shift
+              @namespaces_restore_stack.pop
               last_tag = @tags.pop
               md = @source.match(Private::CLOSE_PATTERN, true)
               if md and !last_tag
@@ -477,18 +477,18 @@ module REXML
               @document_status = :in_element
               @prefixes.clear
               @prefixes << md[2] if md[2]
-              @nsstack.unshift(curr_ns=Set.new)
-              attributes, closed = parse_attributes(@prefixes, curr_ns)
+              push_namespaces_restore
+              attributes, closed = parse_attributes(@prefixes)
               # Verify that all of the prefixes have been defined
               for prefix in @prefixes
-                unless @nsstack.find{|k| k.member?(prefix)}
+                unless @namespaces.key?(prefix)
                   raise UndefinedNamespaceException.new(prefix,@source,self)
                 end
               end
 
               if closed
                 @closed = tag
-                @nsstack.shift
+                pop_namespaces_restore
               else
                 if @tags.empty? and @have_root
                   raise ParseException.new("Malformed XML: Extra tag at the end of the document (got '<#{tag}')", @source)
@@ -599,6 +599,31 @@ module REXML
       end
 
       private
+      def add_namespace(prefix, uri)
+        @namespaces_restore_stack.last[prefix] = @namespaces[prefix]
+        if uri.nil?
+          @namespaces.delete(prefix)
+        else
+          @namespaces[prefix] = uri
+        end
+      end
+
+      def push_namespaces_restore
+        namespaces_restore = {}
+        @namespaces_restore_stack.push(namespaces_restore)
+        namespaces_restore
+      end
+
+      def pop_namespaces_restore
+        namespaces_restore = @namespaces_restore_stack.pop
+        namespaces_restore.each do |prefix, uri|
+          if uri.nil?
+            @namespaces.delete(prefix)
+          else
+            @namespaces[prefix] = uri
+          end
+        end
+      end
 
       def record_entity_expansion(delta=1)
         @entity_expansion_count += delta
@@ -727,7 +752,7 @@ module REXML
         [:processing_instruction, name, content]
       end
 
-      def parse_attributes(prefixes, curr_ns)
+      def parse_attributes(prefixes)
         attributes = {}
         closed = false
         while true
@@ -770,7 +795,7 @@ module REXML
                   "(http://www.w3.org/TR/REC-xml-names/#ns-decl)"
                 raise REXML::ParseException.new( msg, @source, self)
               end
-              curr_ns << local_part
+              add_namespace(local_part, value)
             elsif prefix
               prefixes << prefix unless prefix == "xml"
             end
