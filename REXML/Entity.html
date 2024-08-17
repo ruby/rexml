@@ -83,10 +83,8 @@
     <li ><a href="#method-c-matches-3F">::matches?</a>
     <li class="calls-super" ><a href="#method-c-new">::new</a>
     <li ><a href="#method-i-normalized">#normalized</a>
-    <li class="calls-super" ><a href="#method-i-parent-3D">#parent=</a>
     <li ><a href="#method-i-to_s">#to_s</a>
     <li ><a href="#method-i-unnormalized">#unnormalized</a>
-    <li ><a href="#method-i-value">#value</a>
     <li ><a href="#method-i-write">#write</a>
   </ul>
 </div>
@@ -195,6 +193,16 @@
         
         </div>
       </div>
+      <div id="attribute-i-value" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">value</span><span
+            class="attribute-access-type">[R]</span>
+        </div>
+
+        <div class="method-description">
+        
+        </div>
+      </div>
     </section>
 
 
@@ -216,7 +224,7 @@
           <p>Evaluates whether the given string matches an entity definition, returning true if so, and false otherwise.</p>
 
           <div class="method-source-code" id="matches-3F-source">
-            <pre><span class="ruby-comment"># File lib/rexml/entity.rb, line 66</span>
+            <pre><span class="ruby-comment"># File lib/rexml/entity.rb, line 67</span>
 <span class="ruby-keyword">def</span> <span class="ruby-constant">Entity</span><span class="ruby-operator">::</span><span class="ruby-identifier ruby-title">matches?</span> <span class="ruby-identifier">string</span>
   (<span class="ruby-constant">ENTITYDECL</span> <span class="ruby-operator">=~</span> <span class="ruby-identifier">string</span>) <span class="ruby-operator">==</span> <span class="ruby-value">0</span>
 <span class="ruby-keyword">end</span></pre>
@@ -246,7 +254,7 @@
             </div>
 
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File lib/rexml/entity.rb, line 33</span>
+            <pre><span class="ruby-comment"># File lib/rexml/entity.rb, line 34</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span> <span class="ruby-identifier">stream</span>, <span class="ruby-identifier">value</span>=<span class="ruby-keyword">nil</span>, <span class="ruby-identifier">parent</span>=<span class="ruby-keyword">nil</span>, <span class="ruby-identifier">reference</span>=<span class="ruby-keyword">false</span>
   <span class="ruby-keyword">super</span>(<span class="ruby-identifier">parent</span>)
   <span class="ruby-ivar">@ndata</span> = <span class="ruby-ivar">@pubid</span> = <span class="ruby-ivar">@value</span> = <span class="ruby-ivar">@external</span> = <span class="ruby-keyword">nil</span>
@@ -303,37 +311,9 @@
           <p>Returns the value of this entity unprocessed – raw.  This is the normalized value; that is, with all %ent; and &amp;ent; entities intact</p>
 
           <div class="method-source-code" id="normalized-source">
-            <pre><span class="ruby-comment"># File lib/rexml/entity.rb, line 85</span>
+            <pre><span class="ruby-comment"># File lib/rexml/entity.rb, line 83</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">normalized</span>
   <span class="ruby-ivar">@value</span>
-<span class="ruby-keyword">end</span></pre>
-          </div>
-        </div>
-
-
-      </div>
-
-      <div id="method-i-parent-3D" class="method-detail ">
-        <div class="method-header">
-          <div class="method-heading">
-            <span class="method-name">parent=</span><span
-              class="method-args">(other)</span>
-            <span class="method-click-advice">click to toggle source</span>
-          </div>
-        </div>
-
-        <div class="method-description">
-          
-            <div class="method-calls-super">
-              Calls superclass method
-              <a href="Child.html#method-i-parent-3D"><code>REXML::Child#parent=</code></a>
-            </div>
-
-          <div class="method-source-code" id="parent-3D-source">
-            <pre><span class="ruby-comment"># File lib/rexml/entity.rb, line 138</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">parent=</span>(<span class="ruby-identifier">other</span>)
-  <span class="ruby-ivar">@resolved_value</span> = <span class="ruby-keyword">nil</span>
-  <span class="ruby-keyword">super</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
         </div>
@@ -354,7 +334,7 @@
           <p>Returns this entity as a string.  See write().</p>
 
           <div class="method-source-code" id="to_s-source">
-            <pre><span class="ruby-comment"># File lib/rexml/entity.rb, line 119</span>
+            <pre><span class="ruby-comment"># File lib/rexml/entity.rb, line 117</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">to_s</span>
   <span class="ruby-identifier">rv</span> = <span class="ruby-string">&#39;&#39;</span>
   <span class="ruby-identifier">write</span> <span class="ruby-identifier">rv</span>
@@ -376,47 +356,14 @@
         </div>
 
         <div class="method-description">
-          <p>Evaluates to the unnormalized value of this entity; that is, replacing all entities – both %ent; and &amp;ent; entities.  This differs from +value()+ in that <code>value</code> only replaces %ent; entities.</p>
+          <p>Evaluates to the unnormalized value of this entity; that is, replacing &amp;ent; entities.</p>
 
           <div class="method-source-code" id="unnormalized-source">
             <pre><span class="ruby-comment"># File lib/rexml/entity.rb, line 73</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">unnormalized</span>
   <span class="ruby-identifier">document</span>.<span class="ruby-identifier">record_entity_expansion</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">document</span>.<span class="ruby-identifier">nil?</span>
-  <span class="ruby-identifier">v</span> = <span class="ruby-identifier">value</span>()
-  <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">v</span>.<span class="ruby-identifier">nil?</span>
-  <span class="ruby-ivar">@unnormalized</span> = <span class="ruby-constant">Text</span><span class="ruby-operator">::</span><span class="ruby-identifier">unnormalize</span>(<span class="ruby-identifier">v</span>, <span class="ruby-identifier">parent</span>)
-  <span class="ruby-ivar">@unnormalized</span>
-<span class="ruby-keyword">end</span></pre>
-          </div>
-        </div>
-
-
-      </div>
-
-      <div id="method-i-value" class="method-detail ">
-        <div class="method-header">
-          <div class="method-heading">
-            <span class="method-name">value</span><span
-              class="method-args">()</span>
-            <span class="method-click-advice">click to toggle source</span>
-          </div>
-        </div>
-
-        <div class="method-description">
-          <p>Returns the value of this entity.  At the moment, only internal entities are processed.  If the value contains internal references (IE, %blah;), those are replaced with their values.  IE, if the doctype contains:</p>
-
-<pre>&lt;!ENTITY % foo &quot;bar&quot;&gt;
-&lt;!ENTITY yada &quot;nanoo %foo; nanoo&gt;</pre>
-
-<p>then:</p>
-
-<pre class="ruby"><span class="ruby-identifier">doctype</span>.<span class="ruby-identifier">entity</span>(<span class="ruby-string">&#39;yada&#39;</span>).<span class="ruby-identifier">value</span>   <span class="ruby-comment">#-&gt; &quot;nanoo bar nanoo&quot;</span>
-</pre>
-
-          <div class="method-source-code" id="value-source">
-            <pre><span class="ruby-comment"># File lib/rexml/entity.rb, line 134</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">value</span>
-  <span class="ruby-ivar">@resolved_value</span> <span class="ruby-operator">||=</span> <span class="ruby-identifier">resolve_value</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span> <span class="ruby-keyword">if</span> <span class="ruby-ivar">@value</span>.<span class="ruby-identifier">nil?</span>
+  <span class="ruby-ivar">@unnormalized</span> = <span class="ruby-constant">Text</span><span class="ruby-operator">::</span><span class="ruby-identifier">unnormalize</span>(<span class="ruby-ivar">@value</span>, <span class="ruby-identifier">parent</span>)
 <span class="ruby-keyword">end</span></pre>
           </div>
         </div>
@@ -444,7 +391,7 @@
 </dd></dl>
 
           <div class="method-source-code" id="write-source">
-            <pre><span class="ruby-comment"># File lib/rexml/entity.rb, line 97</span>
+            <pre><span class="ruby-comment"># File lib/rexml/entity.rb, line 95</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">write</span> <span class="ruby-identifier">out</span>, <span class="ruby-identifier">indent</span>=<span class="ruby-value">-1</span>
   <span class="ruby-identifier">out</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-string">&#39;&lt;!ENTITY &#39;</span>
   <span class="ruby-identifier">out</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-string">&#39;% &#39;</span> <span class="ruby-keyword">if</span> <span class="ruby-ivar">@reference</span>
