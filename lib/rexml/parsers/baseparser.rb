@@ -249,6 +249,10 @@ module REXML
           if @document_status == :in_doctype
             raise ParseException.new("Malformed DOCTYPE: unclosed", @source)
           end
+          unless @tags.empty?
+            path = "/" + @tags.join("/")
+            raise ParseException.new("Missing end tag for '#{path}'", @source)
+          end
           return [ :end_document ]
         end
         return @stack.shift if @stack.size > 0

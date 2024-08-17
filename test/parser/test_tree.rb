@@ -31,7 +31,7 @@ Last 80 unconsumed characters:
           parse(xml)
         end
         assert_equal(<<-MESSAGE, exception.to_s)
-No close tag for /root
+Missing end tag for '/root'
 Line: 1
 Position: #{xml.bytesize}
 Last 80 unconsumed characters:

@@ -15,7 +15,6 @@ module REXML
       end
 
       def parse
-        tag_stack = []
         entities = nil
         begin
           while true
@@ -23,19 +22,13 @@ module REXML
             #STDERR.puts "TREEPARSER GOT #{event.inspect}"
             case event[0]
             when :end_document
-              unless tag_stack.empty?
-                raise ParseException.new("No close tag for #{@build_context.xpath}",
-                                         @parser.source, @parser)
-              end
               return
             when :start_element
-              tag_stack.push(event[1])
               el = @build_context = @build_context.add_element( event[1] )
               event[2].each do |key, value|
                 el.attributes[key]=Attribute.new(key,value,self)
               end
             when :end_element
-              tag_stack.pop
               @build_context = @build_context.parent
             when :text
               if @build_context[-1].instance_of? Text
