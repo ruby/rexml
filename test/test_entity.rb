@@ -59,8 +59,7 @@ module REXMLTests
 
     def test_constructor
       one = [ %q{<!ENTITY % YN '"Yes"'>},
-        %q{<!ENTITY % YN2 "Yes">},
-        %q{<!ENTITY WhatHeSaid "He said %YN;">},
+        %q{<!ENTITY WhatHeSaid 'He said "Yes"'>},
         '<!ENTITY open-hatch
                 SYSTEM "http://www.textuality.com/boilerplate/OpenHatch.xml">',
         '<!ENTITY open-hatch2
@@ -71,8 +70,7 @@ module REXMLTests
                 NDATA gif>' ]
       source = %q{<!DOCTYPE foo [
         <!ENTITY % YN '"Yes"'>
-        <!ENTITY % YN2 "Yes">
-        <!ENTITY WhatHeSaid "He said %YN;">
+        <!ENTITY WhatHeSaid 'He said "Yes"'>
         <!ENTITY open-hatch
                 SYSTEM "http://www.textuality.com/boilerplate/OpenHatch.xml">
         <!ENTITY open-hatch2
@@ -104,6 +102,84 @@ module REXMLTests
       assert_equal source, out
     end
 
+    def test_readers_with_reference
+      entity = REXML::Entity.new([:entitydecl, "a", "B", "%"])
+      assert_equal([
+                     '<!ENTITY % a "B">',
+                     "a",
+                     "B",
+                     "B",
+                     "B",
+                   ],
+                   [
+                     entity.to_s,
+                     entity.name,
+                     entity.value,
+                     entity.normalized,
+                     entity.unnormalized,
+                   ])
+    end
+
+    def test_readers_without_reference
+      entity = REXML::Entity.new([:entitydecl, "a", "&b;"])
+      assert_equal([
+                     '<!ENTITY a "&b;">',
+                     "a",
+                     "&b;",
+                     "&b;",
+                     "&b;",
+                   ],
+                   [
+                     entity.to_s,
+                     entity.name,
+                     entity.value,
+                     entity.normalized,
+                     entity.unnormalized,
+                   ])
+    end
+
+    def test_readers_with_nested_references
+      doctype = REXML::DocType.new('root')
+      doctype.add(REXML::Entity.new([:entitydecl, "a", "&b;"]))
+      doctype.add(REXML::Entity.new([:entitydecl, "b", "X"]))
+      assert_equal([
+                     "a",
+                     "&b;",
+                     "&b;",
+                     "X",
+                     "b",
+                     "X",
+                     "X",
+                     "X",
+                  ],
+                   [
+                     doctype.entities["a"].name,
+                     doctype.entities["a"].value,
+                     doctype.entities["a"].normalized,
+                     doctype.entities["a"].unnormalized,
+                     doctype.entities["b"].name,
+                     doctype.entities["b"].value,
+                     doctype.entities["b"].normalized,
+                     doctype.entities["b"].unnormalized,
+                   ])
+    end
+
+    def test_parameter_entity_reference_forbidden_by_internal_subset_in_parser
+      source = '<!DOCTYPE root [ <!ENTITY % a "B" > <!ENTITY c "%a;" > ]><root/>'
+      parser = REXML::Parsers::BaseParser.new(source)
+      exception = assert_raise(REXML::ParseException) do
+        while parser.has_next?
+          parser.pull
+        end
+      end
+      assert_equal(<<-DETAIL, exception.to_s)
+Parameter entity references forbidden in internal subset: "%a;"
+Line: 1
+Position: 54
+Last 80 unconsumed characters:
+      DETAIL
+    end
+
     def test_entity_string_limit
       template = '<!DOCTYPE bomb [ <!ENTITY a "^" > ]> <bomb>$</bomb>'
       len      = 5120 # 5k per entity
@@ -119,22 +195,6 @@ module REXMLTests
       xmldoc = REXML::Document.new(template.sub(/\$/, entities))
       assert_raise(RuntimeError) do
         xmldoc.root.text
-      end
-    end
-
-    def test_entity_string_limit_for_parameter_entity
-      template = '<!DOCTYPE bomb [ <!ENTITY % a "^" > <!ENTITY bomb "$" > ]><root/>'
-      len      = 5120 # 5k per entity
-      template.sub!(/\^/, "B" * len)
-
-      # 10k is OK
-      entities = '%a;' * 2 # 5k entity * 2 = 10k
-      REXML::Document.new(template.sub(/\$/, entities))
-
-      # above 10k explodes
-      entities = '%a;' * 3 # 5k entity * 2 = 15k
-      assert_raise(REXML::ParseException) do
-        REXML::Document.new(template.sub(/\$/, entities))
       end
     end
 
@@ -161,7 +221,7 @@ module REXMLTests
     def test_entity_replacement
       source = %q{<!DOCTYPE foo [
       <!ENTITY % YN '"Yes"'>
-      <!ENTITY WhatHeSaid "He said %YN;">]>
+      <!ENTITY WhatHeSaid 'He said "Yes"'>]>
       <a>&WhatHeSaid;</a>}
 
       d = REXML::Document.new( source )

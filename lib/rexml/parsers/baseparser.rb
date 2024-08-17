@@ -141,6 +141,7 @@ module REXML
       }
 
       module Private
+        PEREFERENCE_PATTERN = /#{PEREFERENCE}/um
         TAG_PATTERN = /((?>#{QNAME_STR}))\s*/um
         CLOSE_PATTERN = /(#{QNAME_STR})\s*>/um
         ATTLISTDECL_END = /\s+#{NAME}(?:#{ATTDEF})*\s*>/um
@@ -350,6 +351,8 @@ module REXML
                 match[4] = match[4][1..-2] # HREF
                 match.delete_at(5) if match.size > 5 # Chop out NDATA decl
                 # match is [ :entity, name, PUBLIC, pubid, href(, ndata)? ]
+              elsif Private::PEREFERENCE_PATTERN.match?(match[2])
+                raise REXML::ParseException.new("Parameter entity references forbidden in internal subset: #{match[2]}", @source)
               else
                 match[2] = match[2][1..-2]
                 match.pop if match.size == 4
