@@ -254,6 +254,36 @@ module REXMLTests
           end
         end
 
+        def test_with_only_default_entities
+          member_value = "&lt;p&gt;#{'A' * @default_entity_expansion_text_limit}&lt;/p&gt;"
+          source = <<-XML
+<?xml version="1.0" encoding="UTF-8"?>
+<member>
+#{member_value}
+</member>
+          XML
+
+          parser = REXML::Parsers::PullParser.new(source)
+          events = {}
+          element_name = ''
+          while parser.has_next?
+            event = parser.pull
+            case event.event_type
+            when :start_element
+              element_name = event[0]
+            when :text
+              events[element_name] = event[1]
+            end
+          end
+
+          expected_value = "<p>#{'A' * @default_entity_expansion_text_limit}</p>"
+          assert_equal(expected_value, events['member'].strip)
+          assert_equal(0, parser.entity_expansion_count)
+          assert do
+            events['member'].bytesize > @default_entity_expansion_text_limit
+          end
+        end
+
         def test_entity_expansion_text_limit
           source = <<-XML
 <!DOCTYPE member [

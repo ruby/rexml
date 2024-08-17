@@ -187,6 +187,30 @@ module REXMLTests
           end
         end
 
+        def test_with_only_default_entities
+          member_value = "&lt;p&gt;#{'A' * @default_entity_expansion_text_limit}&lt;/p&gt;"
+          source = <<-XML
+<?xml version="1.0" encoding="UTF-8"?>
+<member>
+#{member_value}
+</member>
+          XML
+
+          sax = REXML::Parsers::SAX2Parser.new(source)
+          text_value = nil
+          sax.listen(:characters, ["member"]) do |text|
+            text_value = text
+          end
+          sax.parse
+
+          expected_value = "<p>#{'A' * @default_entity_expansion_text_limit}</p>"
+          assert_equal(expected_value, text_value.strip)
+          assert_equal(0, sax.entity_expansion_count)
+          assert do
+            text_value.bytesize > @default_entity_expansion_text_limit
+          end
+        end
+
         def test_entity_expansion_text_limit
           source = <<-XML
 <!DOCTYPE member [
