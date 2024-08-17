@@ -441,9 +441,14 @@ module REXML
     # Related: #root_node, #document.
     #
     def root
-      return elements[1] if self.kind_of? Document
-      return self if parent.kind_of? Document or parent.nil?
-      return parent.root
+      target = self
+      while target
+        return target.elements[1] if target.kind_of? Document
+        parent = target.parent
+        return target if parent.kind_of? Document or parent.nil?
+        target = parent
+      end
+      nil
     end
 
     # :call-seq:
