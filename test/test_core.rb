@@ -114,22 +114,35 @@ module REXMLTests
         name4='test4'/>).join(' '), e.to_s
     end
 
-    def test_attribute_namespace_conflict
+    def test_attribute_duplicated
       # https://www.w3.org/TR/xml-names/#uniqAttrs
       message = <<-MESSAGE.chomp
 Duplicate attribute "a"
-Line: 4
-Position: 140
+Line: 2
+Position: 24
 Last 80 unconsumed characters:
 />
       MESSAGE
       assert_raise(REXML::ParseException.new(message)) do
         Document.new(<<-XML)
+<x>
+  <bad a="1" a="2"/>
+</x>
+        XML
+      end
+    end
+
+    def test_attribute_namespace_conflict
+      # https://www.w3.org/TR/xml-names/#uniqAttrs
+      message = <<-MESSAGE.chomp
+Namespace conflict in adding attribute "a": Prefix "n1" = "http://www.w3.org" and prefix "n2" = "http://www.w3.org"
+      MESSAGE
+      assert_raise(REXML::ParseException.new(message)) do
+        Document.new(<<-XML)
 <!-- http://www.w3.org is bound to n1 and n2 -->
 <x xmlns:n1="http://www.w3.org"
-   xmlns:n2="http://www.w3.org" >
-  <bad a="1"     a="2" />
-  <bad n1:a="1"  n2:a="2" />
+   xmlns:n2="http://www.w3.org">
+  <bad n1:a="1" n2:a="2"/>
 </x>
         XML
       end
