@@ -364,7 +364,7 @@
           <p>Returns true if there are no more events</p>
 
           <div class="method-source-code" id="empty-3F-source">
-            <pre><span class="ruby-comment"># File lib/rexml/parsers/baseparser.rb, line 197</span>
+            <pre><span class="ruby-comment"># File lib/rexml/parsers/baseparser.rb, line 198</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">empty?</span>
   <span class="ruby-keyword">return</span> (<span class="ruby-ivar">@source</span>.<span class="ruby-identifier">empty?</span> <span class="ruby-keyword">and</span> <span class="ruby-ivar">@stack</span>.<span class="ruby-identifier">empty?</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -416,7 +416,7 @@
           <p>Returns true if there are more events.  Synonymous with !empty?</p>
 
           <div class="method-source-code" id="has_next-3F-source">
-            <pre><span class="ruby-comment"># File lib/rexml/parsers/baseparser.rb, line 202</span>
+            <pre><span class="ruby-comment"># File lib/rexml/parsers/baseparser.rb, line 203</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">has_next?</span>
   <span class="ruby-keyword">return</span> <span class="ruby-operator">!</span>(<span class="ruby-ivar">@source</span>.<span class="ruby-identifier">empty?</span> <span class="ruby-keyword">and</span> <span class="ruby-ivar">@stack</span>.<span class="ruby-identifier">empty?</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -473,7 +473,7 @@
           <p>Peek at the <code>depth</code> event in the stack.  The first element on the stack is at depth 0.  If <code>depth</code> is -1, will parse to the end of the input stream and return the last event, which is always :end_document. Be aware that this causes the stream to be parsed up to the <code>depth</code> event, so you can effectively pre-parse the entire document (pull the entire thing into memory) using this method.</p>
 
           <div class="method-source-code" id="peek-source">
-            <pre><span class="ruby-comment"># File lib/rexml/parsers/baseparser.rb, line 218</span>
+            <pre><span class="ruby-comment"># File lib/rexml/parsers/baseparser.rb, line 219</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">peek</span> <span class="ruby-identifier">depth</span>=<span class="ruby-value">0</span>
   <span class="ruby-identifier">raise</span> <span class="ruby-node">%Q[Illegal argument &quot;#{depth}&quot;]</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">depth</span> <span class="ruby-operator">&lt;</span> <span class="ruby-value">-1</span>
   <span class="ruby-identifier">temp</span> = []
@@ -506,7 +506,7 @@
           
 
           <div class="method-source-code" id="position-source">
-            <pre><span class="ruby-comment"># File lib/rexml/parsers/baseparser.rb, line 187</span>
+            <pre><span class="ruby-comment"># File lib/rexml/parsers/baseparser.rb, line 188</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">position</span>
   <span class="ruby-keyword">if</span> <span class="ruby-ivar">@source</span>.<span class="ruby-identifier">respond_to?</span> <span class="ruby-value">:position</span>
     <span class="ruby-ivar">@source</span>.<span class="ruby-identifier">position</span>
@@ -534,7 +534,7 @@
           <p>Returns the next event.  This is a <code>PullEvent</code> object.</p>
 
           <div class="method-source-code" id="pull-source">
-            <pre><span class="ruby-comment"># File lib/rexml/parsers/baseparser.rb, line 233</span>
+            <pre><span class="ruby-comment"># File lib/rexml/parsers/baseparser.rb, line 234</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">pull</span>
   <span class="ruby-ivar">@source</span>.<span class="ruby-identifier">drop_parsed_content</span>
 
@@ -572,7 +572,8 @@
   <span class="ruby-ivar">@tags</span> = []
   <span class="ruby-ivar">@stack</span> = []
   <span class="ruby-ivar">@entities</span> = []
-  <span class="ruby-ivar">@nsstack</span> = []
+  <span class="ruby-ivar">@namespaces</span> = {}
+  <span class="ruby-ivar">@namespaces_restore_stack</span> = []
 <span class="ruby-keyword">end</span></pre>
           </div>
         </div>
@@ -656,7 +657,7 @@
           <p>Push an event back on the head of the stream.  This method has (theoretically) infinite depth.</p>
 
           <div class="method-source-code" id="unshift-source">
-            <pre><span class="ruby-comment"># File lib/rexml/parsers/baseparser.rb, line 208</span>
+            <pre><span class="ruby-comment"># File lib/rexml/parsers/baseparser.rb, line 209</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">unshift</span> <span class="ruby-identifier">token</span>
   <span class="ruby-ivar">@stack</span>.<span class="ruby-identifier">unshift</span>(<span class="ruby-identifier">token</span>)
 <span class="ruby-keyword">end</span></pre>
