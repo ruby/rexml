@@ -127,7 +127,6 @@ module REXMLTests
     end
   end
 
-
   # For test_listener
   class RequestReader
     attr_reader :doc
