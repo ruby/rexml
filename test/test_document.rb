@@ -32,12 +32,10 @@ EOF
 
     class EntityExpansionLimitTest < Test::Unit::TestCase
       def setup
-        @default_entity_expansion_limit = REXML::Security.entity_expansion_limit
         @default_entity_expansion_text_limit = REXML::Security.entity_expansion_text_limit
       end
 
       def teardown
-        REXML::Security.entity_expansion_limit = @default_entity_expansion_limit
         REXML::Security.entity_expansion_text_limit = @default_entity_expansion_text_limit
       end
 
@@ -64,9 +62,8 @@ XML
             doc.root.children.first.value
           end
 
-          REXML::Security.entity_expansion_limit = 100
-          assert_equal(100, REXML::Security.entity_expansion_limit)
           doc = REXML::Document.new(xml)
+          doc.entity_expansion_limit = 100
           assert_raise(RuntimeError.new("number of entity expansions exceeded, processing aborted.")) do
             doc.root.children.first.value
           end
@@ -95,9 +92,8 @@ XML
             doc.root.children.first.value
           end
 
-          REXML::Security.entity_expansion_limit = 100
-          assert_equal(100, REXML::Security.entity_expansion_limit)
           doc = REXML::Document.new(xml)
+          doc.entity_expansion_limit = 100
           assert_raise(RuntimeError.new("number of entity expansions exceeded, processing aborted.")) do
             doc.root.children.first.value
           end
@@ -118,12 +114,12 @@ XML
 </member>
 XML
 
-          REXML::Security.entity_expansion_limit = 4
           doc = REXML::Document.new(xml)
+          doc.entity_expansion_limit = 4
           assert_equal("\na\na a\n<\n", doc.root.children.first.value)
 
-          REXML::Security.entity_expansion_limit = 3
           doc = REXML::Document.new(xml)
+          doc.entity_expansion_limit = 3
           assert_raise(RuntimeError.new("number of entity expansions exceeded, processing aborted.")) do
             doc.root.children.first.value
           end

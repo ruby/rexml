@@ -126,16 +126,6 @@ module REXMLTests
   end
 
   class EntityExpansionLimitTest < Test::Unit::TestCase
-    def setup
-      @default_entity_expansion_limit = REXML::Security.entity_expansion_limit
-      @default_entity_expansion_text_limit = REXML::Security.entity_expansion_text_limit
-    end
-
-    def teardown
-      REXML::Security.entity_expansion_limit = @default_entity_expansion_limit
-      REXML::Security.entity_expansion_text_limit = @default_entity_expansion_text_limit
-    end
-
     def test_have_value
       source = <<-XML
 <?xml version="1.0" encoding="UTF-8"?>
@@ -172,18 +162,17 @@ module REXMLTests
       XML
 
       listener = MyListener.new
-      REXML::Security.entity_expansion_limit = 100000
       parser = REXML::Parsers::StreamParser.new( source, listener )
+      parser.entity_expansion_limit = 100000
       parser.parse
       assert_equal(11111, parser.entity_expansion_count)
 
-      REXML::Security.entity_expansion_limit = @default_entity_expansion_limit
       parser = REXML::Parsers::StreamParser.new( source, listener )
       assert_raise(RuntimeError.new("number of entity expansions exceeded, processing aborted.")) do
         parser.parse
       end
       assert do
-        parser.entity_expansion_count > @default_entity_expansion_limit
+        parser.entity_expansion_count > REXML::Security.entity_expansion_limit
       end
     end
 
@@ -202,17 +191,19 @@ module REXMLTests
       XML
 
       listener = MyListener.new
-      REXML::Security.entity_expansion_limit = 4
-      REXML::Document.parse_stream(source, listener)
+      parser = REXML::Parsers::StreamParser.new( source, listener )
+      parser.entity_expansion_limit = 4
+      parser.parse
 
-      REXML::Security.entity_expansion_limit = 3
+      parser = REXML::Parsers::StreamParser.new( source, listener )
+      parser.entity_expansion_limit = 3
       assert_raise(RuntimeError.new("number of entity expansions exceeded, processing aborted.")) do
-        REXML::Document.parse_stream(source, listener)
+        parser.parse
       end
     end
 
     def test_with_only_default_entities
-      member_value = "&lt;p&gt;#{'A' * @default_entity_expansion_text_limit}&lt;/p&gt;"
+      member_value = "&lt;p&gt;#{'A' * REXML::Security.entity_expansion_text_limit}&lt;/p&gt;"
       source = <<-XML
 <?xml version="1.0" encoding="UTF-8"?>
 <member>
@@ -231,11 +222,11 @@ module REXMLTests
       parser = REXML::Parsers::StreamParser.new( source, listener )
       parser.parse
 
-      expected_value = "<p>#{'A' * @default_entity_expansion_text_limit}</p>"
+      expected_value = "<p>#{'A' * REXML::Security.entity_expansion_text_limit}</p>"
       assert_equal(expected_value, listener.text_value.strip)
       assert_equal(0, parser.entity_expansion_count)
       assert do
-        listener.text_value.bytesize > @default_entity_expansion_text_limit
+        listener.text_value.bytesize > REXML::Security.entity_expansion_text_limit
       end
     end
 
@@ -259,9 +250,9 @@ module REXMLTests
         end
       end
       listener.text_value = ""
-      REXML::Security.entity_expansion_text_limit = 90
-      REXML::Document.parse_stream(source, listener)
-
+      parser = REXML::Parsers::StreamParser.new( source, listener )
+      parser.entity_expansion_text_limit = 90
+      parser.parse
       assert_equal(90, listener.text_value.size)
     end
   end

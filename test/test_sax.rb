@@ -100,16 +100,6 @@ module REXMLTests
     end
 
     class EntityExpansionLimitTest < Test::Unit::TestCase
-      def setup
-        @default_entity_expansion_limit = REXML::Security.entity_expansion_limit
-        @default_entity_expansion_text_limit = REXML::Security.entity_expansion_text_limit
-      end
-
-      def teardown
-        REXML::Security.entity_expansion_limit = @default_entity_expansion_limit
-        REXML::Security.entity_expansion_text_limit = @default_entity_expansion_text_limit
-      end
-
       class GeneralEntityTest < self
         def test_have_value
           source = <<-XML
@@ -147,18 +137,17 @@ module REXMLTests
 </member>
           XML
 
-          REXML::Security.entity_expansion_limit = 100000
           sax = REXML::Parsers::SAX2Parser.new(source)
+          sax.entity_expansion_limit = 100000
           sax.parse
           assert_equal(11111, sax.entity_expansion_count)
 
-          REXML::Security.entity_expansion_limit = @default_entity_expansion_limit
           sax = REXML::Parsers::SAX2Parser.new(source)
           assert_raise(RuntimeError.new("number of entity expansions exceeded, processing aborted.")) do
             sax.parse
           end
           assert do
-            sax.entity_expansion_count > @default_entity_expansion_limit
+            sax.entity_expansion_count > REXML::Security.entity_expansion_limit
           end
         end
 
@@ -176,19 +165,19 @@ module REXMLTests
 </member>
           XML
 
-          REXML::Security.entity_expansion_limit = 4
           sax = REXML::Parsers::SAX2Parser.new(source)
+          sax.entity_expansion_limit = 4
           sax.parse
 
-          REXML::Security.entity_expansion_limit = 3
           sax = REXML::Parsers::SAX2Parser.new(source)
+          sax.entity_expansion_limit = 3
           assert_raise(RuntimeError.new("number of entity expansions exceeded, processing aborted.")) do
             sax.parse
           end
         end
 
         def test_with_only_default_entities
-          member_value = "&lt;p&gt;#{'A' * @default_entity_expansion_text_limit}&lt;/p&gt;"
+          member_value = "&lt;p&gt;#{'A' * REXML::Security.entity_expansion_text_limit}&lt;/p&gt;"
           source = <<-XML
 <?xml version="1.0" encoding="UTF-8"?>
 <member>
@@ -203,11 +192,11 @@ module REXMLTests
           end
           sax.parse
 
-          expected_value = "<p>#{'A' * @default_entity_expansion_text_limit}</p>"
+          expected_value = "<p>#{'A' * REXML::Security.entity_expansion_text_limit}</p>"
           assert_equal(expected_value, text_value.strip)
           assert_equal(0, sax.entity_expansion_count)
           assert do
-            text_value.bytesize > @default_entity_expansion_text_limit
+            text_value.bytesize > REXML::Security.entity_expansion_text_limit
           end
         end
 
@@ -223,8 +212,8 @@ module REXMLTests
 <member>&a;</member>
           XML
 
-          REXML::Security.entity_expansion_text_limit = 90
           sax = REXML::Parsers::SAX2Parser.new(source)
+          sax.entity_expansion_text_limit = 90
           text_size = nil
           sax.listen(:characters, ["member"]) do |text|
             text_size = text.size
