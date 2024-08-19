@@ -7,6 +7,7 @@ module REXML
       def initialize source, listener
         @listener = listener
         @parser = BaseParser.new( source )
+        @entities = {}
       end
 
       def add_listener( listener )
@@ -28,7 +29,7 @@ module REXML
           when :end_element
             @listener.tag_end( event[1] )
           when :text
-            unnormalized = @parser.unnormalize( event[1] )
+            unnormalized = @parser.unnormalize( event[1], @entities )
             @listener.text( unnormalized )
           when :processing_instruction
             @listener.instruction( *event[1,2] )
@@ -40,6 +41,7 @@ module REXML
           when :comment, :attlistdecl, :cdata, :xmldecl, :elementdecl
             @listener.send( event[0].to_s, *event[1..-1] )
           when :entitydecl, :notationdecl
+            @entities[ event[1] ] = event[2] if event.size == 3
             @listener.send( event[0].to_s, event[1..-1] )
           when :externalentity
             entity_reference = event[1]

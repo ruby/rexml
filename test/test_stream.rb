@@ -88,6 +88,25 @@ module REXMLTests
       assert_equal(["ISOLat2"], listener.entities)
     end
 
+    def test_entity_replacement
+      source = '<!DOCTYPE foo [
+      <!ENTITY la "1234">
+      <!ENTITY lala "--&la;--">
+      <!ENTITY lalal "&la;&la;">
+      ]><a><la>&la;</la><lala>&lala;</lala></a>'
+
+      listener = MyListener.new
+      class << listener
+        attr_accessor :text_values
+        def text(text)
+          @text_values << text
+        end
+      end
+      listener.text_values = []
+      REXML::Document.parse_stream(source, listener)
+      assert_equal(["1234", "--1234--"], listener.text_values)
+    end
+
     def test_characters_predefined_entities
       source = '<root><a>&lt;P&gt; &lt;I&gt; &lt;B&gt; Text &lt;/B&gt;  &lt;/I&gt;</a></root>'
 
