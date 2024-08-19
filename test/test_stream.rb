@@ -87,6 +87,21 @@ module REXMLTests
 
       assert_equal(["ISOLat2"], listener.entities)
     end
+
+    def test_characters_predefined_entities
+      source = '<root><a>&lt;P&gt; &lt;I&gt; &lt;B&gt; Text &lt;/B&gt;  &lt;/I&gt;</a></root>'
+
+      listener = MyListener.new
+      class << listener
+        attr_accessor :text_value
+        def text(text)
+          @text_value << text
+        end
+      end
+      listener.text_value = ""
+      REXML::Document.parse_stream(source, listener)
+      assert_equal("<P> <I> <B> Text </B>  </I>", listener.text_value)
+    end
   end
 
   class EntityExpansionLimitTest < Test::Unit::TestCase
