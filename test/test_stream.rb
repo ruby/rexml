@@ -226,10 +226,12 @@ module REXMLTests
         end
       end
       listener.text_value = ""
-      REXML::Document.parse_stream(source, listener)
+      parser = REXML::Parsers::StreamParser.new( source, listener )
+      parser.parse
 
       expected_value = "<p>#{'A' * @default_entity_expansion_text_limit}</p>"
       assert_equal(expected_value, listener.text_value.strip)
+      assert_equal(0, parser.entity_expansion_count)
       assert do
         listener.text_value.bytesize > @default_entity_expansion_text_limit
       end
