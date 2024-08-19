@@ -14,6 +14,10 @@ module REXML
         @parser.add_listener( listener )
       end
 
+      def entity_expansion_count
+        @parser.entity_expansion_count
+      end
+
       def parse
         # entity string
         while true
