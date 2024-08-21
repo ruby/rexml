@@ -74,6 +74,7 @@
   <ul class="link-list" role="directory">
     <li ><a href="#method-c-new">::new</a>
     <li ><a href="#method-i-add_listener">#add_listener</a>
+    <li ><a href="#method-i-entity_expansion_count">#entity_expansion_count</a>
     <li ><a href="#method-i-parse">#parse</a>
   </ul>
 </div>
@@ -118,6 +119,7 @@
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span> <span class="ruby-identifier">source</span>, <span class="ruby-identifier">listener</span>
   <span class="ruby-ivar">@listener</span> = <span class="ruby-identifier">listener</span>
   <span class="ruby-ivar">@parser</span> = <span class="ruby-constant">BaseParser</span>.<span class="ruby-identifier">new</span>( <span class="ruby-identifier">source</span> )
+  <span class="ruby-ivar">@entities</span> = {}
 <span class="ruby-keyword">end</span></pre>
           </div>
         </div>
@@ -145,9 +147,32 @@
           
 
           <div class="method-source-code" id="add_listener-source">
-            <pre><span class="ruby-comment"># File lib/rexml/parsers/streamparser.rb, line 12</span>
+            <pre><span class="ruby-comment"># File lib/rexml/parsers/streamparser.rb, line 13</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">add_listener</span>( <span class="ruby-identifier">listener</span> )
   <span class="ruby-ivar">@parser</span>.<span class="ruby-identifier">add_listener</span>( <span class="ruby-identifier">listener</span> )
+<span class="ruby-keyword">end</span></pre>
+          </div>
+        </div>
+
+
+      </div>
+
+      <div id="method-i-entity_expansion_count" class="method-detail ">
+        <div class="method-header">
+          <div class="method-heading">
+            <span class="method-name">entity_expansion_count</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+        </div>
+
+        <div class="method-description">
+          
+
+          <div class="method-source-code" id="entity_expansion_count-source">
+            <pre><span class="ruby-comment"># File lib/rexml/parsers/streamparser.rb, line 17</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">entity_expansion_count</span>
+  <span class="ruby-ivar">@parser</span>.<span class="ruby-identifier">entity_expansion_count</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
         </div>
@@ -168,7 +193,7 @@
           
 
           <div class="method-source-code" id="parse-source">
-            <pre><span class="ruby-comment"># File lib/rexml/parsers/streamparser.rb, line 16</span>
+            <pre><span class="ruby-comment"># File lib/rexml/parsers/streamparser.rb, line 21</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">parse</span>
   <span class="ruby-comment"># entity string</span>
   <span class="ruby-keyword">while</span> <span class="ruby-keyword">true</span>
@@ -184,7 +209,7 @@
     <span class="ruby-keyword">when</span> <span class="ruby-value">:end_element</span>
       <span class="ruby-ivar">@listener</span>.<span class="ruby-identifier">tag_end</span>( <span class="ruby-identifier">event</span>[<span class="ruby-value">1</span>] )
     <span class="ruby-keyword">when</span> <span class="ruby-value">:text</span>
-      <span class="ruby-identifier">unnormalized</span> = <span class="ruby-ivar">@parser</span>.<span class="ruby-identifier">unnormalize</span>( <span class="ruby-identifier">event</span>[<span class="ruby-value">1</span>] )
+      <span class="ruby-identifier">unnormalized</span> = <span class="ruby-ivar">@parser</span>.<span class="ruby-identifier">unnormalize</span>( <span class="ruby-identifier">event</span>[<span class="ruby-value">1</span>], <span class="ruby-ivar">@entities</span> )
       <span class="ruby-ivar">@listener</span>.<span class="ruby-identifier">text</span>( <span class="ruby-identifier">unnormalized</span> )
     <span class="ruby-keyword">when</span> <span class="ruby-value">:processing_instruction</span>
       <span class="ruby-ivar">@listener</span>.<span class="ruby-identifier">instruction</span>( <span class="ruby-operator">*</span><span class="ruby-identifier">event</span>[<span class="ruby-value">1</span>,<span class="ruby-value">2</span>] )
@@ -196,6 +221,7 @@
     <span class="ruby-keyword">when</span> <span class="ruby-value">:comment</span>, <span class="ruby-value">:attlistdecl</span>, <span class="ruby-value">:cdata</span>, <span class="ruby-value">:xmldecl</span>, <span class="ruby-value">:elementdecl</span>
       <span class="ruby-ivar">@listener</span>.<span class="ruby-identifier">send</span>( <span class="ruby-identifier">event</span>[<span class="ruby-value">0</span>].<span class="ruby-identifier">to_s</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">event</span>[<span class="ruby-value">1</span><span class="ruby-operator">..</span><span class="ruby-value">-1</span>] )
     <span class="ruby-keyword">when</span> <span class="ruby-value">:entitydecl</span>, <span class="ruby-value">:notationdecl</span>
+      <span class="ruby-ivar">@entities</span>[ <span class="ruby-identifier">event</span>[<span class="ruby-value">1</span>] ] = <span class="ruby-identifier">event</span>[<span class="ruby-value">2</span>] <span class="ruby-keyword">if</span> <span class="ruby-identifier">event</span>.<span class="ruby-identifier">size</span> <span class="ruby-operator">==</span> <span class="ruby-value">3</span>
       <span class="ruby-ivar">@listener</span>.<span class="ruby-identifier">send</span>( <span class="ruby-identifier">event</span>[<span class="ruby-value">0</span>].<span class="ruby-identifier">to_s</span>, <span class="ruby-identifier">event</span>[<span class="ruby-value">1</span><span class="ruby-operator">..</span><span class="ruby-value">-1</span>] )
     <span class="ruby-keyword">when</span> <span class="ruby-value">:externalentity</span>
       <span class="ruby-identifier">entity_reference</span> = <span class="ruby-identifier">event</span>[<span class="ruby-value">1</span>]
