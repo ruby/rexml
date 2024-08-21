@@ -89,11 +89,13 @@ module REXMLTests
     end
 
     def test_entity_replacement
-      source = '<!DOCTYPE foo [
-      <!ENTITY la "1234">
-      <!ENTITY lala "--&la;--">
-      <!ENTITY lalal "&la;&la;">
-      ]><a><la>&la;</la><lala>&lala;</lala></a>'
+      source = <<-XML
+<!DOCTYPE foo [
+  <!ENTITY la "1234">
+  <!ENTITY lala "--&la;--">
+  <!ENTITY lalal "&la;&la;">
+]><a><la>&la;</la><lala>&lala;</lala></a>
+      XML
 
       listener = MyListener.new
       class << listener
