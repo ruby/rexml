@@ -87,6 +87,42 @@ module REXMLTests
 
       assert_equal(["ISOLat2"], listener.entities)
     end
+
+    def test_entity_replacement
+      source = <<-XML
+<!DOCTYPE foo [
+  <!ENTITY la "1234">
+  <!ENTITY lala "--&la;--">
+  <!ENTITY lalal "&la;&la;">
+]><a><la>&la;</la><lala>&lala;</lala></a>
+      XML
+
+      listener = MyListener.new
+      class << listener
+        attr_accessor :text_values
+        def text(text)
+          @text_values << text
+        end
+      end
+      listener.text_values = []
+      REXML::Document.parse_stream(source, listener)
+      assert_equal(["1234", "--1234--"], listener.text_values)
+    end
+
+    def test_characters_predefined_entities
+      source = '<root><a>&lt;P&gt; &lt;I&gt; &lt;B&gt; Text &lt;/B&gt;  &lt;/I&gt;</a></root>'
+
+      listener = MyListener.new
+      class << listener
+        attr_accessor :text_value
+        def text(text)
+          @text_value << text
+        end
+      end
+      listener.text_value = ""
+      REXML::Document.parse_stream(source, listener)
+      assert_equal("<P> <I> <B> Text </B>  </I>", listener.text_value)
+    end
   end
 
   class EntityExpansionLimitTest < Test::Unit::TestCase
@@ -98,6 +134,81 @@ module REXMLTests
     def teardown
       REXML::Security.entity_expansion_limit = @default_entity_expansion_limit
       REXML::Security.entity_expansion_text_limit = @default_entity_expansion_text_limit
+    end
+
+    def test_have_value
+      source = <<-XML
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE member [
+  <!ENTITY a "&b;&b;&b;&b;&b;&b;&b;&b;&b;&b;">
+  <!ENTITY b "&c;&c;&c;&c;&c;&c;&c;&c;&c;&c;">
+  <!ENTITY c "&d;&d;&d;&d;&d;&d;&d;&d;&d;&d;">
+  <!ENTITY d "&e;&e;&e;&e;&e;&e;&e;&e;&e;&e;">
+  <!ENTITY e "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx">
+]>
+<member>
+&a;
+</member>
+      XML
+
+      assert_raise(RuntimeError.new("entity expansion has grown too large")) do
+        REXML::Document.parse_stream(source, MyListener.new)
+      end
+    end
+
+    def test_empty_value
+      source = <<-XML
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE member [
+  <!ENTITY a "&b;&b;&b;&b;&b;&b;&b;&b;&b;&b;">
+  <!ENTITY b "&c;&c;&c;&c;&c;&c;&c;&c;&c;&c;">
+  <!ENTITY c "&d;&d;&d;&d;&d;&d;&d;&d;&d;&d;">
+  <!ENTITY d "&e;&e;&e;&e;&e;&e;&e;&e;&e;&e;">
+  <!ENTITY e "">
+]>
+<member>
+&a;
+</member>
+      XML
+
+      listener = MyListener.new
+      REXML::Security.entity_expansion_limit = 100000
+      parser = REXML::Parsers::StreamParser.new( source, listener )
+      parser.parse
+      assert_equal(11111, parser.entity_expansion_count)
+
+      REXML::Security.entity_expansion_limit = @default_entity_expansion_limit
+      parser = REXML::Parsers::StreamParser.new( source, listener )
+      assert_raise(RuntimeError.new("number of entity expansions exceeded, processing aborted.")) do
+        parser.parse
+      end
+      assert do
+        parser.entity_expansion_count > @default_entity_expansion_limit
+      end
+    end
+
+    def test_with_default_entity
+      source = <<-XML
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE member [
+  <!ENTITY a "a">
+  <!ENTITY a2 "&a; &a;">
+]>
+<member>
+&a;
+&a2;
+&lt;
+</member>
+      XML
+
+      listener = MyListener.new
+      REXML::Security.entity_expansion_limit = 4
+      REXML::Document.parse_stream(source, listener)
+
+      REXML::Security.entity_expansion_limit = 3
+      assert_raise(RuntimeError.new("number of entity expansions exceeded, processing aborted.")) do
+        REXML::Document.parse_stream(source, listener)
+      end
     end
 
     def test_with_only_default_entities
@@ -117,13 +228,41 @@ module REXMLTests
         end
       end
       listener.text_value = ""
-      REXML::Document.parse_stream(source, listener)
+      parser = REXML::Parsers::StreamParser.new( source, listener )
+      parser.parse
 
       expected_value = "<p>#{'A' * @default_entity_expansion_text_limit}</p>"
       assert_equal(expected_value, listener.text_value.strip)
+      assert_equal(0, parser.entity_expansion_count)
       assert do
         listener.text_value.bytesize > @default_entity_expansion_text_limit
       end
+    end
+
+    def test_entity_expansion_text_limit
+      source = <<-XML
+<!DOCTYPE member [
+  <!ENTITY a "&b;&b;&b;">
+  <!ENTITY b "&c;&d;&e;">
+  <!ENTITY c "xxxxxxxxxx">
+  <!ENTITY d "yyyyyyyyyy">
+  <!ENTITY e "zzzzzzzzzz">
+]>
+<member>&a;</member>
+      XML
+
+      listener = MyListener.new
+      class << listener
+        attr_accessor :text_value
+        def text(text)
+          @text_value << text
+        end
+      end
+      listener.text_value = ""
+      REXML::Security.entity_expansion_text_limit = 90
+      REXML::Document.parse_stream(source, listener)
+
+      assert_equal(90, listener.text_value.size)
     end
   end
 
