@@ -71,9 +71,12 @@ module REXML
     # Evaluates to the unnormalized value of this entity; that is, replacing
     # &ent; entities.
     def unnormalized
-      document.record_entity_expansion unless document.nil?
+      document&.record_entity_expansion
+
       return nil if @value.nil?
-      @unnormalized = Text::unnormalize(@value, parent)
+
+      @unnormalized = Text::unnormalize(@value, parent,
+                                        entity_expansion_text_limit: document&.entity_expansion_text_limit)
     end
 
     #once :unnormalized

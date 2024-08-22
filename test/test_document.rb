@@ -31,14 +31,6 @@ EOF
     end
 
     class EntityExpansionLimitTest < Test::Unit::TestCase
-      def setup
-        @default_entity_expansion_text_limit = REXML::Security.entity_expansion_text_limit
-      end
-
-      def teardown
-        REXML::Security.entity_expansion_text_limit = @default_entity_expansion_text_limit
-      end
-
       class GeneralEntityTest < self
         def test_have_value
           xml = <<XML
@@ -138,8 +130,8 @@ XML
 <member>&a;</member>
           XML
 
-          REXML::Security.entity_expansion_text_limit = 90
           doc = REXML::Document.new(xml)
+          doc.entity_expansion_text_limit = 90
           assert_equal(90, doc.root.children.first.value.bytesize)
         end
       end

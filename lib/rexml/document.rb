@@ -92,6 +92,7 @@ module REXML
     def initialize( source = nil, context = {} )
       @entity_expansion_count = 0
       @entity_expansion_limit = Security.entity_expansion_limit
+      @entity_expansion_text_limit = Security.entity_expansion_text_limit
       super()
       @context = context
       return if source.nil?
@@ -433,6 +434,7 @@ module REXML
 
     attr_reader :entity_expansion_count
     attr_writer :entity_expansion_limit
+    attr_accessor :entity_expansion_text_limit
 
     def record_entity_expansion
       @entity_expansion_count += 1
