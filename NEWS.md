@@ -1,5 +1,44 @@
 # News
 
+## 3.3.6 - 2024-08-22 {#version-3-3-6}
+
+### Improvements
+
+  * Removed duplicated entity expansions for performance.
+    * GH-194
+    * Patch by Viktor Ivarsson.
+
+  * Improved namespace conflicted attribute check performance. It was
+    too slow for deep elements.
+    * Reported by l33thaxor.
+
+### Fixes
+
+  * Fixed a bug that default entity expansions are counted for
+    security check. Default entity expansions should not be counted
+    because they don't have a security risk.
+    * GH-198
+    * GH-199
+    * Patch Viktor Ivarsson
+
+  * Fixed a parser bug that parameter entity references in internal
+    subsets are expanded. It's not allowed in the XML specification.
+    * GH-191
+    * Patch by NAITOH Jun.
+
+  * Fixed a stream parser bug that user-defined entity references in
+    text aren't expanded.
+    * GH-200
+    * Patch by NAITOH Jun.
+
+### Thanks
+
+  * Viktor Ivarsson
+
+  * NAITOH Jun
+
+  * l33thaxor
+
 ## 3.3.5 - 2024-08-12 {#version-3-3-5}
 
 ### Fixes
