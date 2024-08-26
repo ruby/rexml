@@ -311,7 +311,7 @@
           <p>Returns the value of this entity unprocessed – raw.  This is the normalized value; that is, with all %ent; and &amp;ent; entities intact</p>
 
           <div class="method-source-code" id="normalized-source">
-            <pre><span class="ruby-comment"># File lib/rexml/entity.rb, line 83</span>
+            <pre><span class="ruby-comment"># File lib/rexml/entity.rb, line 86</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">normalized</span>
   <span class="ruby-ivar">@value</span>
 <span class="ruby-keyword">end</span></pre>
@@ -334,7 +334,7 @@
           <p>Returns this entity as a string.  See write().</p>
 
           <div class="method-source-code" id="to_s-source">
-            <pre><span class="ruby-comment"># File lib/rexml/entity.rb, line 117</span>
+            <pre><span class="ruby-comment"># File lib/rexml/entity.rb, line 120</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">to_s</span>
   <span class="ruby-identifier">rv</span> = <span class="ruby-string">&#39;&#39;</span>
   <span class="ruby-identifier">write</span> <span class="ruby-identifier">rv</span>
@@ -361,9 +361,12 @@
           <div class="method-source-code" id="unnormalized-source">
             <pre><span class="ruby-comment"># File lib/rexml/entity.rb, line 73</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">unnormalized</span>
-  <span class="ruby-identifier">document</span>.<span class="ruby-identifier">record_entity_expansion</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">document</span>.<span class="ruby-identifier">nil?</span>
+  <span class="ruby-identifier">document</span>&amp;.<span class="ruby-identifier">record_entity_expansion</span>
+
   <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span> <span class="ruby-keyword">if</span> <span class="ruby-ivar">@value</span>.<span class="ruby-identifier">nil?</span>
-  <span class="ruby-ivar">@unnormalized</span> = <span class="ruby-constant">Text</span><span class="ruby-operator">::</span><span class="ruby-identifier">unnormalize</span>(<span class="ruby-ivar">@value</span>, <span class="ruby-identifier">parent</span>)
+
+  <span class="ruby-ivar">@unnormalized</span> = <span class="ruby-constant">Text</span><span class="ruby-operator">::</span><span class="ruby-identifier">unnormalize</span>(<span class="ruby-ivar">@value</span>, <span class="ruby-identifier">parent</span>,
+                                    <span class="ruby-value">entity_expansion_text_limit:</span> <span class="ruby-identifier">document</span>&amp;.<span class="ruby-identifier">entity_expansion_text_limit</span>)
 <span class="ruby-keyword">end</span></pre>
           </div>
         </div>
@@ -391,7 +394,7 @@
 </dd></dl>
 
           <div class="method-source-code" id="write-source">
-            <pre><span class="ruby-comment"># File lib/rexml/entity.rb, line 95</span>
+            <pre><span class="ruby-comment"># File lib/rexml/entity.rb, line 98</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">write</span> <span class="ruby-identifier">out</span>, <span class="ruby-identifier">indent</span>=<span class="ruby-value">-1</span>
   <span class="ruby-identifier">out</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-string">&#39;&lt;!ENTITY &#39;</span>
   <span class="ruby-identifier">out</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-string">&#39;% &#39;</span> <span class="ruby-keyword">if</span> <span class="ruby-ivar">@reference</span>

@@ -92,6 +92,8 @@
     <li ><a href="#method-i-add_listener">#add_listener</a>
     <li ><a href="#method-i-each">#each</a>
     <li ><a href="#method-i-entity_expansion_count">#entity_expansion_count</a>
+    <li ><a href="#method-i-entity_expansion_limit-3D">#entity_expansion_limit=</a>
+    <li ><a href="#method-i-entity_expansion_text_limit-3D">#entity_expansion_text_limit=</a>
     <li ><a href="#method-i-peek">#peek</a>
     <li ><a href="#method-i-pull">#pull</a>
     <li ><a href="#method-i-unshift">#unshift</a>
@@ -215,7 +217,7 @@
           
 
           <div class="method-source-code" id="each-source">
-            <pre><span class="ruby-comment"># File lib/rexml/parsers/pullparser.rb, line 54</span>
+            <pre><span class="ruby-comment"># File lib/rexml/parsers/pullparser.rb, line 62</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">each</span>
   <span class="ruby-keyword">while</span> <span class="ruby-identifier">has_next?</span>
     <span class="ruby-keyword">yield</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">pull</span>
@@ -250,6 +252,52 @@
 
       </div>
 
+      <div id="method-i-entity_expansion_limit-3D" class="method-detail ">
+        <div class="method-header">
+          <div class="method-heading">
+            <span class="method-name">entity_expansion_limit=</span><span
+              class="method-args">( limit )</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+        </div>
+
+        <div class="method-description">
+          
+
+          <div class="method-source-code" id="entity_expansion_limit-3D-source">
+            <pre><span class="ruby-comment"># File lib/rexml/parsers/pullparser.rb, line 54</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">entity_expansion_limit=</span>( <span class="ruby-identifier">limit</span> )
+  <span class="ruby-ivar">@parser</span>.<span class="ruby-identifier">entity_expansion_limit</span> = <span class="ruby-identifier">limit</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+        </div>
+
+
+      </div>
+
+      <div id="method-i-entity_expansion_text_limit-3D" class="method-detail ">
+        <div class="method-header">
+          <div class="method-heading">
+            <span class="method-name">entity_expansion_text_limit=</span><span
+              class="method-args">( limit )</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+        </div>
+
+        <div class="method-description">
+          
+
+          <div class="method-source-code" id="entity_expansion_text_limit-3D-source">
+            <pre><span class="ruby-comment"># File lib/rexml/parsers/pullparser.rb, line 58</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">entity_expansion_text_limit=</span>( <span class="ruby-identifier">limit</span> )
+  <span class="ruby-ivar">@parser</span>.<span class="ruby-identifier">entity_expansion_text_limit</span> = <span class="ruby-identifier">limit</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+        </div>
+
+
+      </div>
+
       <div id="method-i-peek" class="method-detail ">
         <div class="method-header">
           <div class="method-heading">
@@ -263,7 +311,7 @@
           
 
           <div class="method-source-code" id="peek-source">
-            <pre><span class="ruby-comment"># File lib/rexml/parsers/pullparser.rb, line 60</span>
+            <pre><span class="ruby-comment"># File lib/rexml/parsers/pullparser.rb, line 68</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">peek</span> <span class="ruby-identifier">depth</span>=<span class="ruby-value">0</span>
   <span class="ruby-keyword">if</span> <span class="ruby-ivar">@my_stack</span>.<span class="ruby-identifier">length</span> <span class="ruby-operator">&lt;=</span> <span class="ruby-identifier">depth</span>
     (<span class="ruby-identifier">depth</span> <span class="ruby-operator">-</span> <span class="ruby-ivar">@my_stack</span>.<span class="ruby-identifier">length</span> <span class="ruby-operator">+</span> <span class="ruby-value">1</span>).<span class="ruby-identifier">times</span> {
@@ -292,7 +340,7 @@
           
 
           <div class="method-source-code" id="pull-source">
-            <pre><span class="ruby-comment"># File lib/rexml/parsers/pullparser.rb, line 70</span>
+            <pre><span class="ruby-comment"># File lib/rexml/parsers/pullparser.rb, line 78</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">pull</span>
   <span class="ruby-keyword">return</span> <span class="ruby-ivar">@my_stack</span>.<span class="ruby-identifier">shift</span> <span class="ruby-keyword">if</span> <span class="ruby-ivar">@my_stack</span>.<span class="ruby-identifier">length</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">0</span>
 
@@ -326,7 +374,7 @@
           
 
           <div class="method-source-code" id="unshift-source">
-            <pre><span class="ruby-comment"># File lib/rexml/parsers/pullparser.rb, line 85</span>
+            <pre><span class="ruby-comment"># File lib/rexml/parsers/pullparser.rb, line 93</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">unshift</span> <span class="ruby-identifier">token</span>
   <span class="ruby-ivar">@my_stack</span>.<span class="ruby-identifier">unshift</span> <span class="ruby-identifier">token</span>
 <span class="ruby-keyword">end</span></pre>

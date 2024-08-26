@@ -75,6 +75,8 @@
     <li ><a href="#method-c-new">::new</a>
     <li ><a href="#method-i-add_listener">#add_listener</a>
     <li ><a href="#method-i-entity_expansion_count">#entity_expansion_count</a>
+    <li ><a href="#method-i-entity_expansion_limit-3D">#entity_expansion_limit=</a>
+    <li ><a href="#method-i-entity_expansion_text_limit-3D">#entity_expansion_text_limit=</a>
     <li ><a href="#method-i-parse">#parse</a>
   </ul>
 </div>
@@ -180,6 +182,52 @@
 
       </div>
 
+      <div id="method-i-entity_expansion_limit-3D" class="method-detail ">
+        <div class="method-header">
+          <div class="method-heading">
+            <span class="method-name">entity_expansion_limit=</span><span
+              class="method-args">( limit )</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+        </div>
+
+        <div class="method-description">
+          
+
+          <div class="method-source-code" id="entity_expansion_limit-3D-source">
+            <pre><span class="ruby-comment"># File lib/rexml/parsers/streamparser.rb, line 21</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">entity_expansion_limit=</span>( <span class="ruby-identifier">limit</span> )
+  <span class="ruby-ivar">@parser</span>.<span class="ruby-identifier">entity_expansion_limit</span> = <span class="ruby-identifier">limit</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+        </div>
+
+
+      </div>
+
+      <div id="method-i-entity_expansion_text_limit-3D" class="method-detail ">
+        <div class="method-header">
+          <div class="method-heading">
+            <span class="method-name">entity_expansion_text_limit=</span><span
+              class="method-args">( limit )</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+        </div>
+
+        <div class="method-description">
+          
+
+          <div class="method-source-code" id="entity_expansion_text_limit-3D-source">
+            <pre><span class="ruby-comment"># File lib/rexml/parsers/streamparser.rb, line 25</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">entity_expansion_text_limit=</span>( <span class="ruby-identifier">limit</span> )
+  <span class="ruby-ivar">@parser</span>.<span class="ruby-identifier">entity_expansion_text_limit</span> = <span class="ruby-identifier">limit</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+        </div>
+
+
+      </div>
+
       <div id="method-i-parse" class="method-detail ">
         <div class="method-header">
           <div class="method-heading">
@@ -193,7 +241,7 @@
           
 
           <div class="method-source-code" id="parse-source">
-            <pre><span class="ruby-comment"># File lib/rexml/parsers/streamparser.rb, line 21</span>
+            <pre><span class="ruby-comment"># File lib/rexml/parsers/streamparser.rb, line 29</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">parse</span>
   <span class="ruby-comment"># entity string</span>
   <span class="ruby-keyword">while</span> <span class="ruby-keyword">true</span>

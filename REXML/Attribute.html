@@ -250,7 +250,7 @@
           <p>Returns a copy of this attribute</p>
 
           <div class="method-source-code" id="clone-source">
-            <pre><span class="ruby-comment"># File lib/rexml/attribute.rb, line 163</span>
+            <pre><span class="ruby-comment"># File lib/rexml/attribute.rb, line 164</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">clone</span>
   <span class="ruby-constant">Attribute</span>.<span class="ruby-identifier">new</span> <span class="ruby-keyword">self</span>
 <span class="ruby-keyword">end</span></pre>
@@ -301,7 +301,7 @@
 <p>Returns this attribute</p>
 
           <div class="method-source-code" id="element-3D-source">
-            <pre><span class="ruby-comment"># File lib/rexml/attribute.rb, line 171</span>
+            <pre><span class="ruby-comment"># File lib/rexml/attribute.rb, line 172</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">element=</span>( <span class="ruby-identifier">element</span> )
   <span class="ruby-ivar">@element</span> = <span class="ruby-identifier">element</span>
 
@@ -353,7 +353,7 @@
           
 
           <div class="method-source-code" id="inspect-source">
-            <pre><span class="ruby-comment"># File lib/rexml/attribute.rb, line 197</span>
+            <pre><span class="ruby-comment"># File lib/rexml/attribute.rb, line 198</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">inspect</span>
   <span class="ruby-identifier">rv</span> = <span class="ruby-string">+&quot;&quot;</span>
   <span class="ruby-identifier">write</span>( <span class="ruby-identifier">rv</span> )
@@ -427,7 +427,7 @@
           
 
           <div class="method-source-code" id="node_type-source">
-            <pre><span class="ruby-comment"># File lib/rexml/attribute.rb, line 193</span>
+            <pre><span class="ruby-comment"># File lib/rexml/attribute.rb, line 194</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">node_type</span>
   <span class="ruby-value">:attribute</span>
 <span class="ruby-keyword">end</span></pre>
@@ -450,7 +450,7 @@
           <p>The normalized value of this attribute.  That is, the attribute with entities intact.</p>
 
           <div class="method-source-code" id="normalized-3D-source">
-            <pre><span class="ruby-comment"># File lib/rexml/attribute.rb, line 157</span>
+            <pre><span class="ruby-comment"># File lib/rexml/attribute.rb, line 158</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">normalized=</span>(<span class="ruby-identifier">new_normalized</span>)
   <span class="ruby-ivar">@normalized</span> = <span class="ruby-identifier">new_normalized</span>
   <span class="ruby-ivar">@unnormalized</span> = <span class="ruby-keyword">nil</span>
@@ -512,7 +512,7 @@
 <p>This method is usually not called directly.</p>
 
           <div class="method-source-code" id="remove-source">
-            <pre><span class="ruby-comment"># File lib/rexml/attribute.rb, line 184</span>
+            <pre><span class="ruby-comment"># File lib/rexml/attribute.rb, line 185</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">remove</span>
   <span class="ruby-ivar">@element</span>.<span class="ruby-identifier">attributes</span>.<span class="ruby-identifier">delete</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">name</span> <span class="ruby-keyword">unless</span> <span class="ruby-ivar">@element</span>.<span class="ruby-identifier">nil?</span>
 <span class="ruby-keyword">end</span></pre>
@@ -600,8 +600,9 @@
             <pre><span class="ruby-comment"># File lib/rexml/attribute.rb, line 149</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">value</span>
   <span class="ruby-keyword">return</span> <span class="ruby-ivar">@unnormalized</span> <span class="ruby-keyword">if</span> <span class="ruby-ivar">@unnormalized</span>
-  <span class="ruby-ivar">@unnormalized</span> = <span class="ruby-constant">Text</span><span class="ruby-operator">::</span><span class="ruby-identifier">unnormalize</span>( <span class="ruby-ivar">@normalized</span>, <span class="ruby-identifier">doctype</span> )
-  <span class="ruby-ivar">@unnormalized</span>
+
+  <span class="ruby-ivar">@unnormalized</span> = <span class="ruby-constant">Text</span><span class="ruby-operator">::</span><span class="ruby-identifier">unnormalize</span>(<span class="ruby-ivar">@normalized</span>, <span class="ruby-identifier">doctype</span>,
+                                    <span class="ruby-value">entity_expansion_text_limit:</span> <span class="ruby-ivar">@element</span>&amp;.<span class="ruby-identifier">document</span>&amp;.<span class="ruby-identifier">entity_expansion_text_limit</span>)
 <span class="ruby-keyword">end</span></pre>
           </div>
         </div>
@@ -622,7 +623,7 @@
           <p>Writes this attribute (EG, puts ‘key=“value”’ to the output)</p>
 
           <div class="method-source-code" id="write-source">
-            <pre><span class="ruby-comment"># File lib/rexml/attribute.rb, line 189</span>
+            <pre><span class="ruby-comment"># File lib/rexml/attribute.rb, line 190</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">write</span>( <span class="ruby-identifier">output</span>, <span class="ruby-identifier">indent</span>=<span class="ruby-value">-1</span> )
   <span class="ruby-identifier">output</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">to_string</span>
 <span class="ruby-keyword">end</span></pre>
@@ -645,7 +646,7 @@
           
 
           <div class="method-source-code" id="xpath-source">
-            <pre><span class="ruby-comment"># File lib/rexml/attribute.rb, line 203</span>
+            <pre><span class="ruby-comment"># File lib/rexml/attribute.rb, line 204</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">xpath</span>
   <span class="ruby-identifier">path</span> = <span class="ruby-ivar">@element</span>.<span class="ruby-identifier">xpath</span>
   <span class="ruby-identifier">path</span> <span class="ruby-operator">+=</span> <span class="ruby-node">&quot;/@#{self.expanded_name}&quot;</span>
