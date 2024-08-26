@@ -148,8 +148,9 @@ module REXML
     # have been expanded to their values
     def value
       return @unnormalized if @unnormalized
-      @unnormalized = Text::unnormalize( @normalized, doctype )
-      @unnormalized
+
+      @unnormalized = Text::unnormalize(@normalized, doctype,
+                                        entity_expansion_text_limit: @element&.document&.entity_expansion_text_limit)
     end
 
     # The normalized value of this attribute.  That is, the attribute with

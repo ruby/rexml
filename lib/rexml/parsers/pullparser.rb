@@ -51,6 +51,14 @@ module REXML
         @parser.entity_expansion_count
       end
 
+      def entity_expansion_limit=( limit )
+        @parser.entity_expansion_limit = limit
+      end
+
+      def entity_expansion_text_limit=( limit )
+        @parser.entity_expansion_text_limit = limit
+      end
+
       def each
         while has_next?
           yield self.pull

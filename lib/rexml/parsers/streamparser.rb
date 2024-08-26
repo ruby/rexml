@@ -18,6 +18,14 @@ module REXML
         @parser.entity_expansion_count
       end
 
+      def entity_expansion_limit=( limit )
+        @parser.entity_expansion_limit = limit
+      end
+
+      def entity_expansion_text_limit=( limit )
+        @parser.entity_expansion_text_limit = limit
+      end
+
       def parse
         # entity string
         while true

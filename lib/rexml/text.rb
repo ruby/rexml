@@ -268,7 +268,8 @@ module REXML
     #   u = Text.new( "sean russell", false, nil, true )
     #   u.value   #-> "sean russell"
     def value
-      @unnormalized ||= Text::unnormalize( @string, doctype )
+      @unnormalized ||= Text::unnormalize(@string, doctype,
+                                          entity_expansion_text_limit: document&.entity_expansion_text_limit)
     end
 
     # Sets the contents of this text node.  This expects the text to be
@@ -411,11 +412,12 @@ module REXML
     end
 
     # Unescapes all possible entities
-    def Text::unnormalize( string, doctype=nil, filter=nil, illegal=nil )
+    def Text::unnormalize( string, doctype=nil, filter=nil, illegal=nil, entity_expansion_text_limit: nil )
+      entity_expansion_text_limit ||= Security.entity_expansion_text_limit
       sum = 0
       string.gsub( /\r\n?/, "\n" ).gsub( REFERENCE ) {
         s = Text.expand($&, doctype, filter)
-        if sum + s.bytesize > Security.entity_expansion_text_limit
+        if sum + s.bytesize > entity_expansion_text_limit
           raise "entity expansion has grown too large"
         else
           sum += s.bytesize

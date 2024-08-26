@@ -164,6 +164,8 @@ module REXML
         @listeners = []
         @prefixes = Set.new
         @entity_expansion_count = 0
+        @entity_expansion_limit = Security.entity_expansion_limit
+        @entity_expansion_text_limit = Security.entity_expansion_text_limit
       end
 
       def add_listener( listener )
@@ -172,6 +174,8 @@ module REXML
 
       attr_reader :source
       attr_reader :entity_expansion_count
+      attr_writer :entity_expansion_limit
+      attr_writer :entity_expansion_text_limit
 
       def stream=( source )
         @source = SourceFactory.create_from( source )
@@ -585,7 +589,7 @@ module REXML
               end
               re = Private::DEFAULT_ENTITIES_PATTERNS[entity_reference] || /&#{entity_reference};/
               rv.gsub!( re, entity_value )
-              if rv.bytesize > Security.entity_expansion_text_limit
+              if rv.bytesize > @entity_expansion_text_limit
                 raise "entity expansion has grown too large"
               end
             else
@@ -627,7 +631,7 @@ module REXML
 
       def record_entity_expansion(delta=1)
         @entity_expansion_count += delta
-        if @entity_expansion_count > Security.entity_expansion_limit
+        if @entity_expansion_count > @entity_expansion_limit
           raise "number of entity expansions exceeded, processing aborted."
         end
       end
