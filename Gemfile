@@ -7,6 +7,14 @@ gemspec
 
 group :development do
   gem "bundler"
+  # This is for suppressing the following warning:
+  #
+  #   warning: ostruct was loaded from the standard library, but will
+  #   no longer be part of the default gems starting from Ruby 3.5.0.
+  #
+  # This should be part of "json". We can remove this when "json"
+  # depends on "ostruct" explicitly.
+  gem "ostruct"
   gem "rake"
 end
 
