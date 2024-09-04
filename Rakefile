@@ -14,6 +14,7 @@ task :default => :test
 namespace :warning do
   desc "Treat warning as error"
   task :error do
+    require "json" # workaround https://bugs.ruby-lang.org/issues/20713
     def Warning.warn(*message, **)
       super
       raise "Treat warning as error:\n" + message.join("\n")
