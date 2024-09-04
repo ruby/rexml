@@ -1,5 +1,27 @@
 # News
 
+## 3.3.7 - 2024-09-04 {#version-3-3-7}
+
+### Improvements
+
+  * Added local entity expansion limit methods
+    * GH-192
+    * GH-202
+    * Reported by takuya kodama.
+    * Patch by NAITOH Jun.
+
+  * Removed explicit strscan dependency
+    * GH-204
+    * Patch by Bo Anderson.
+
+### Thanks
+
+  * takuya kodama
+
+  * NAITOH Jun
+
+  * Bo Anderson
+
 ## 3.3.6 - 2024-08-22 {#version-3-3-6}
 
 ### Improvements
