@@ -259,6 +259,8 @@ module REXML
       end
 
       def get_namespace( prefix )
+        return nil if @namespace_stack.empty?
+
         uris = (@namespace_stack.find_all { |ns| not ns[prefix].nil? }) ||
           (@namespace_stack.find { |ns| not ns[nil].nil? })
         uris[-1][prefix] unless uris.nil? or 0 == uris.size
