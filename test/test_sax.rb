@@ -99,6 +99,52 @@ module REXMLTests
       end
     end
 
+    def test_without_namespace
+      xml = <<-XML
+<root >
+  <a att1='1' att2='2' att3='&lt;'>
+    <b />
+  </a>
+</root>
+      XML
+
+      parser = REXML::Parsers::SAX2Parser.new(xml)
+      elements = []
+      parser.listen(:start_element) do |uri, localname, qname, attrs|
+        elements << [uri, localname, qname, attrs]
+      end
+      parser.parse
+      assert_equal([
+        [nil, "root", "root", {}],
+        [nil, "a", "a", {"att1"=>"1", "att2"=>"2", "att3"=>"&lt;"}],
+        [nil, "b", "b", {}]
+      ], elements)
+    end
+
+    def test_with_namespace
+      xml = <<-XML
+<root xmlns="http://example.org/default"
+      xmlns:foo="http://example.org/foo"
+      xmlns:bar="http://example.org/bar">
+  <a foo:att='1' bar:att='2' att='&lt;'>
+    <bar:b />
+  </a>
+</root>
+      XML
+
+      parser = REXML::Parsers::SAX2Parser.new(xml)
+      elements = []
+      parser.listen(:start_element) do |uri, localname, qname, attrs|
+        elements << [uri, localname, qname, attrs]
+      end
+      parser.parse
+      assert_equal([
+        ["http://example.org/default", "root", "root",  {"xmlns"=>"http://example.org/default", "xmlns:bar"=>"http://example.org/bar", "xmlns:foo"=>"http://example.org/foo"}],
+        ["http://example.org/default", "a", "a", {"att"=>"&lt;", "bar:att"=>"2", "foo:att"=>"1"}],
+        ["http://example.org/bar", "b", "bar:b", {}]
+      ], elements)
+    end
+
     class EntityExpansionLimitTest < Test::Unit::TestCase
       class GeneralEntityTest < self
         def test_have_value
