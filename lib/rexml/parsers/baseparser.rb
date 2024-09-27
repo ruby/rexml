@@ -185,7 +185,7 @@ module REXML
         @tags = []
         @stack = []
         @entities = []
-        @namespaces = {}
+        @namespaces = {"xml" => "http://www.w3.org/XML/1998/namespace"}
         @namespaces_restore_stack = []
       end
 
