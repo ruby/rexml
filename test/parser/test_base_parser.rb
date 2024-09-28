@@ -43,20 +43,20 @@ module REXMLTests
       5.times {parser.pull}
 
       html = parser.pull
-      assert_equal [:start_element,
+      assert_equal([:start_element,
                     "html",
                     {"xmlns" => "http://www.w3.org/1999/xhtml",
                      "xml:lang" => "en",
                      "lang" => "en"}],
-                   html
+                   html)
 
       15.times {parser.pull}
 
       p = parser.pull
-      assert_equal [:start_element,
+      assert_equal([:start_element,
                     "p",
                     {"xml:lang" => "ja", "lang" => "ja"}],
-                   p
+                   p)
     end
   end
 end
