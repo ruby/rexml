@@ -140,8 +140,6 @@ module REXML
         "apos" => [/&apos;/, "&apos;", "'", /'/]
       }
 
-      XML_PREFIXED_NAMESPACE = "http://www.w3.org/XML/1998/namespace"
-
       module Private
         PEREFERENCE_PATTERN = /#{PEREFERENCE}/um
         TAG_PATTERN = /((?>#{QNAME_STR}))\s*/um
@@ -158,6 +156,7 @@ module REXML
         default_entities.each do |term|
           DEFAULT_ENTITIES_PATTERNS[term] = /&#{term};/
         end
+        XML_PREFIXED_NAMESPACE = "http://www.w3.org/XML/1998/namespace"
       end
       private_constant :Private
 
@@ -187,7 +186,7 @@ module REXML
         @tags = []
         @stack = []
         @entities = []
-        @namespaces = {"xml" => XML_PREFIXED_NAMESPACE}
+        @namespaces = {"xml" => Private::XML_PREFIXED_NAMESPACE}
         @namespaces_restore_stack = []
       end
 
@@ -792,7 +791,7 @@ module REXML
             @source.match(/\s*/um, true)
             if prefix == "xmlns"
               if local_part == "xml"
-                if value != XML_PREFIXED_NAMESPACE
+                if value != Private::XML_PREFIXED_NAMESPACE
                   msg = "The 'xml' prefix must not be bound to any other namespace "+
                     "(http://www.w3.org/TR/REC-xml-names/#ns-decl)"
                   raise REXML::ParseException.new( msg, @source, self )
