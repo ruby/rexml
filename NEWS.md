@@ -1,5 +1,26 @@
 # News
 
+## 3.3.8 - 2024-09-29 {#version-3-3-8}
+
+### Improvements
+
+  * SAX2: Improve parse performance.
+    * GH-207
+    * Patch by NAITOH Jun.
+
+### Fixes
+
+  * Fixed a bug that unexpected attribute namespace conflict error for
+    the predefined "xml" namespace is reported.
+    * GH-208
+    * Patch by KITAITI Makoto
+
+### Thanks
+
+  * NAITOH Jun
+
+  * KITAITI Makoto
+
 ## 3.3.7 - 2024-09-04 {#version-3-3-7}
 
 ### Improvements
