@@ -34,7 +34,7 @@ module REXMLTests
           </head>
           <body>
             <h1>XHTML Document</h1>
-            <p xml:lang="ja" lang="ja">この段落は日本語です。</p>
+            <p xml:lang="ja" lang="ja">For Japanese</p>
           </body>
         </html>
       XML
