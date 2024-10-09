@@ -124,7 +124,7 @@
             </div>
 
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File lib/rexml/source.rb, line 186</span>
+            <pre><span class="ruby-comment"># File lib/rexml/source.rb, line 187</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(<span class="ruby-identifier">arg</span>, <span class="ruby-identifier">block_size</span>=<span class="ruby-value">500</span>, <span class="ruby-identifier">encoding</span>=<span class="ruby-keyword">nil</span>)
   <span class="ruby-ivar">@er_source</span> = <span class="ruby-ivar">@source</span> = <span class="ruby-identifier">arg</span>
   <span class="ruby-ivar">@to_utf</span> = <span class="ruby-keyword">false</span>
@@ -171,7 +171,7 @@
           <p>@return the current line in the source</p>
 
           <div class="method-source-code" id="current_line-source">
-            <pre><span class="ruby-comment"># File lib/rexml/source.rb, line 274</span>
+            <pre><span class="ruby-comment"># File lib/rexml/source.rb, line 275</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">current_line</span>
   <span class="ruby-keyword">begin</span>
     <span class="ruby-identifier">pos</span> = <span class="ruby-ivar">@er_source</span>.<span class="ruby-identifier">pos</span>        <span class="ruby-comment"># The byte position in the source</span>
@@ -215,7 +215,7 @@
             </div>
 
           <div class="method-source-code" id="empty-3F-source">
-            <pre><span class="ruby-comment"># File lib/rexml/source.rb, line 269</span>
+            <pre><span class="ruby-comment"># File lib/rexml/source.rb, line 270</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">empty?</span>
   <span class="ruby-keyword">super</span> <span class="ruby-keyword">and</span> ( <span class="ruby-ivar">@source</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-operator">||</span> <span class="ruby-ivar">@source</span>.<span class="ruby-identifier">eof?</span> )
 <span class="ruby-keyword">end</span></pre>
@@ -238,7 +238,7 @@
           
 
           <div class="method-source-code" id="ensure_buffer-source">
-            <pre><span class="ruby-comment"># File lib/rexml/source.rb, line 246</span>
+            <pre><span class="ruby-comment"># File lib/rexml/source.rb, line 247</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">ensure_buffer</span>
   <span class="ruby-identifier">read</span> <span class="ruby-keyword">if</span> <span class="ruby-ivar">@scanner</span>.<span class="ruby-identifier">eos?</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-ivar">@source</span>
 <span class="ruby-keyword">end</span></pre>
@@ -261,7 +261,7 @@
           
 
           <div class="method-source-code" id="match-source">
-            <pre><span class="ruby-comment"># File lib/rexml/source.rb, line 250</span>
+            <pre><span class="ruby-comment"># File lib/rexml/source.rb, line 251</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">match</span>( <span class="ruby-identifier">pattern</span>, <span class="ruby-identifier">cons</span>=<span class="ruby-keyword">false</span> )
   <span class="ruby-comment"># To avoid performance issue, we need to increase bytes to read per scan</span>
   <span class="ruby-identifier">min_bytes</span> = <span class="ruby-value">1</span>
@@ -299,7 +299,7 @@
           
 
           <div class="method-source-code" id="read-source">
-            <pre><span class="ruby-comment"># File lib/rexml/source.rb, line 207</span>
+            <pre><span class="ruby-comment"># File lib/rexml/source.rb, line 208</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">read</span>(<span class="ruby-identifier">term</span> = <span class="ruby-keyword">nil</span>, <span class="ruby-identifier">min_bytes</span> = <span class="ruby-value">1</span>)
   <span class="ruby-identifier">term</span> = <span class="ruby-identifier">encode</span>(<span class="ruby-identifier">term</span>) <span class="ruby-keyword">if</span> <span class="ruby-identifier">term</span>
   <span class="ruby-keyword">begin</span>
@@ -339,10 +339,10 @@
           
 
           <div class="method-source-code" id="read_until-source">
-            <pre><span class="ruby-comment"># File lib/rexml/source.rb, line 228</span>
+            <pre><span class="ruby-comment"># File lib/rexml/source.rb, line 229</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">read_until</span>(<span class="ruby-identifier">term</span>)
   <span class="ruby-identifier">pattern</span> = <span class="ruby-constant">Private</span><span class="ruby-operator">::</span><span class="ruby-constant">PRE_DEFINED_TERM_PATTERNS</span>[<span class="ruby-identifier">term</span>] <span class="ruby-operator">||</span> <span class="ruby-regexp">/#{Regexp.escape(term)}/</span>
-  <span class="ruby-identifier">term</span> = <span class="ruby-identifier">encode</span>(<span class="ruby-identifier">term</span>)
+  <span class="ruby-identifier">term</span> = <span class="ruby-ivar">@term_encord</span>[<span class="ruby-identifier">term</span>] <span class="ruby-operator">||=</span> <span class="ruby-identifier">encode</span>(<span class="ruby-identifier">term</span>)
   <span class="ruby-keyword">until</span> <span class="ruby-identifier">str</span> = <span class="ruby-ivar">@scanner</span>.<span class="ruby-identifier">scan_until</span>(<span class="ruby-identifier">pattern</span>)
     <span class="ruby-keyword">break</span> <span class="ruby-keyword">if</span> <span class="ruby-ivar">@source</span>.<span class="ruby-identifier">nil?</span>
     <span class="ruby-keyword">break</span> <span class="ruby-keyword">if</span> <span class="ruby-ivar">@source</span>.<span class="ruby-identifier">eof?</span>
