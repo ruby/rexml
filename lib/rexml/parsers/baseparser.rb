@@ -167,6 +167,7 @@ module REXML
         @entity_expansion_count = 0
         @entity_expansion_limit = Security.entity_expansion_limit
         @entity_expansion_text_limit = Security.entity_expansion_text_limit
+        @source.ensure_buffer
       end
 
       def add_listener( listener )

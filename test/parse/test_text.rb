@@ -4,6 +4,23 @@ require 'rexml/parsers/baseparser'
 module REXMLTests
   class TestParseText < Test::Unit::TestCase
     class TestInvalid < self
+      def test_text_only
+        exception = assert_raise(REXML::ParseException) do
+          parser = REXML::Parsers::BaseParser.new('a')
+          while parser.has_next?
+            parser.pull
+          end
+        end
+
+        assert_equal(<<~DETAIL.chomp, exception.to_s)
+          Malformed XML: Content at the start of the document (got 'a')
+          Line: 1
+          Position: 1
+          Last 80 unconsumed characters:
+
+        DETAIL
+      end
+
       def test_before_root
         exception = assert_raise(REXML::ParseException) do
           parser = REXML::Parsers::BaseParser.new('b<a></a>')
