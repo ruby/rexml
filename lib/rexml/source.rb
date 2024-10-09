@@ -295,14 +295,19 @@ module REXML
 
     private
     def readline(term = nil)
-      str = @source.readline(term || @line_break)
       if @pending_buffer
+        begin
+          str = @source.readline(term || @line_break)
+        rescue IOError
+        end
         if str.nil?
           str = @pending_buffer
         else
           str = @pending_buffer + str
         end
         @pending_buffer = nil
+      else
+        str = @source.readline(term || @line_break)
       end
       return nil if str.nil?
 
