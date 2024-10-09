@@ -284,6 +284,8 @@ module REXML
     # Returns the XMLDecl encoding of the document,
     # if it has been set, otherwise the default encoding:
     #
+    #   d = REXML::Document.new('<?xml version="1.0" encoding="UTF-32"?>')
+    #   d.encoding # => "UTF-32"
     #   d = REXML::Document.new('<?xml version="1.0" encoding="UTF-16"?>')
     #   d.encoding # => "UTF-16"
     #   d = REXML::Document.new('')

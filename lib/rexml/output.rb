@@ -13,7 +13,10 @@ module REXML
 
       @to_utf = encoding != 'UTF-8'
 
-      if encoding == "UTF-16"
+      if encoding == "UTF-32"
+        @output << "\ufeff".encode("UTF-32BE")
+        self.encoding = "UTF-32BE"
+      elsif encoding == "UTF-16"
         @output << "\ufeff".encode("UTF-16BE")
         self.encoding = "UTF-16BE"
       end

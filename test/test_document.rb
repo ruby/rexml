@@ -351,6 +351,26 @@ EOX
           document = REXML::Document.new(bom + xml)
           assert_equal("UTF-16", document.encoding)
         end
+
+        def test_utf_32le
+          xml = <<-EOX.encode("UTF-32LE").force_encoding("ASCII-8BIT")
+<?xml version="1.0" encoding="UTF-32"?>
+<message>Hello world!</message>
+EOX
+          bom = "\ufeff".encode("UTF-32LE").force_encoding("ASCII-8BIT")
+          document = REXML::Document.new(bom + xml)
+          assert_equal("UTF-32", document.encoding)
+        end
+
+        def test_utf_32be
+          xml = <<-EOX.encode("UTF-32BE").force_encoding("ASCII-8BIT")
+<?xml version="1.0" encoding="UTF-32"?>
+<message>Hello world!</message>
+EOX
+          bom = "\ufeff".encode("UTF-32BE").force_encoding("ASCII-8BIT")
+          document = REXML::Document.new(bom + xml)
+          assert_equal("UTF-32", document.encoding)
+        end
       end
 
       class NoEncodingTest < self
@@ -383,6 +403,26 @@ EOX
           document = REXML::Document.new(bom + xml)
           assert_equal("UTF-16", document.encoding)
         end
+
+        def test_utf_32le
+          xml = <<-EOX.encode("UTF-32LE").force_encoding("ASCII-8BIT")
+<?xml version="1.0"?>
+<message>Hello world!</message>
+EOX
+          bom = "\ufeff".encode("UTF-32LE").force_encoding("ASCII-8BIT")
+          document = REXML::Document.new(bom + xml)
+          assert_equal("UTF-32", document.encoding)
+        end
+
+        def test_utf_32be
+          xml = <<-EOX.encode("UTF-32BE").force_encoding("ASCII-8BIT")
+<?xml version="1.0"?>
+<message>Hello world!</message>
+EOX
+          bom = "\ufeff".encode("UTF-32BE").force_encoding("ASCII-8BIT")
+          document = REXML::Document.new(bom + xml)
+          assert_equal("UTF-32", document.encoding)
+        end
       end
 
       class WriteTest < self
@@ -402,10 +442,27 @@ EOX
 EOX
           assert_equal(expected_xml, actual_xml)
         end
+
+        def test_utf_32
+          xml = <<-EOX.encode("UTF-32LE").force_encoding("ASCII-8BIT")
+<?xml version="1.0"?>
+<message>Hello world!</message>
+EOX
+          bom = "\ufeff".encode("UTF-32LE").force_encoding("ASCII-8BIT")
+          document = REXML::Document.new(bom + xml)
+
+          actual_xml = ""
+          document.write(actual_xml)
+          expected_xml = <<-EOX.chomp.encode("UTF-32BE")
+\ufeff<?xml version='1.0' encoding='UTF-32'?>
+<message>Hello world!</message>
+EOX
+          assert_equal(expected_xml, actual_xml)
+        end
       end
 
       class ReadUntilTest < Test::Unit::TestCase
-       def test_utf_8
+        def test_utf_8
           xml = <<-EOX.force_encoding("ASCII-8BIT")
 <?xml version="1.0" encoding="UTF-8"?>
 <message testing=">">Hello world!</message>
@@ -434,6 +491,28 @@ EOX
           bom = "\ufeff".encode("UTF-16BE").force_encoding("ASCII-8BIT")
           document = REXML::Document.new(bom + xml)
           assert_equal("UTF-16", document.encoding)
+          assert_equal(">", REXML::XPath.match(document, "/message")[0].attribute("testing").value)
+        end
+
+        def test_utf_32le
+          xml = <<-EOX.encode("UTF-32LE").force_encoding("ASCII-8BIT")
+<?xml version="1.0" encoding="UTF-32"?>
+<message testing=">">Hello world!</message>
+EOX
+          bom = "\ufeff".encode("UTF-32LE").force_encoding("ASCII-8BIT")
+          document = REXML::Document.new(bom + xml)
+          assert_equal("UTF-32", document.encoding)
+          assert_equal(">", REXML::XPath.match(document, "/message")[0].attribute("testing").value)
+        end
+
+        def test_utf_32be
+          xml = <<-EOX.encode("UTF-32BE").force_encoding("ASCII-8BIT")
+<?xml version="1.0" encoding="UTF-32"?>
+<message testing=">">Hello world!</message>
+EOX
+          bom = "\ufeff".encode("UTF-32BE").force_encoding("ASCII-8BIT")
+          document = REXML::Document.new(bom + xml)
+          assert_equal("UTF-32", document.encoding)
           assert_equal(">", REXML::XPath.match(document, "/message")[0].attribute("testing").value)
         end
       end

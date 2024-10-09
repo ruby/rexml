@@ -154,7 +154,11 @@ module REXML
       detected_encoding = "UTF-8"
       begin
         @scanner.string.force_encoding("ASCII-8BIT")
-        if @scanner.scan(/\xfe\xff/n)
+        if @scanner.scan(/\x00\x00\xfe\xff/n)
+          detected_encoding = "UTF-32BE"
+        elsif @scanner.scan(/\xff\xfe\x00\x00/n)
+          detected_encoding = "UTF-32LE"
+        elsif @scanner.scan(/\xfe\xff/n)
           detected_encoding = "UTF-16BE"
         elsif @scanner.scan(/\xff\xfe/n)
           detected_encoding = "UTF-16LE"
@@ -192,7 +196,7 @@ module REXML
       if encoding
         super("", encoding)
       else
-        super(@source.read(3) || "")
+        super(@source.read(4) || "")
       end
 
       if !@to_utf and
@@ -321,7 +325,7 @@ module REXML
 
     def encoding_updated
       case @encoding
-      when "UTF-16BE", "UTF-16LE"
+      when "UTF-32BE", "UTF-32LE", "UTF-16BE", "UTF-16LE"
         @source.binmode
         @source.set_encoding(@encoding, @encoding)
       end

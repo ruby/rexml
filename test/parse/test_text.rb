@@ -32,9 +32,9 @@ module REXMLTests
         assert_equal(<<~DETAIL.chomp, exception.to_s)
           Malformed XML: Content at the start of the document (got 'b')
           Line: 1
-          Position: 4
+          Position: 8
           Last 80 unconsumed characters:
-          <a>
+          <a></a>
         DETAIL
       end
 
