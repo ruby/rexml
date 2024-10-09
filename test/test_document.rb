@@ -403,6 +403,40 @@ EOX
           assert_equal(expected_xml, actual_xml)
         end
       end
+
+      class ReadUntilTest < Test::Unit::TestCase
+       def test_utf_8
+          xml = <<-EOX.force_encoding("ASCII-8BIT")
+<?xml version="1.0" encoding="UTF-8"?>
+<message testing=">">Hello world!</message>
+EOX
+          document = REXML::Document.new(xml)
+          assert_equal("UTF-8", document.encoding)
+          assert_equal(">", REXML::XPath.match(document, "/message")[0].attribute("testing").value)
+        end
+
+        def test_utf_16le
+          xml = <<-EOX.encode("UTF-16LE").force_encoding("ASCII-8BIT")
+<?xml version="1.0" encoding="UTF-16"?>
+<message testing=">">Hello world!</message>
+EOX
+          bom = "\ufeff".encode("UTF-16LE").force_encoding("ASCII-8BIT")
+          document = REXML::Document.new(bom + xml)
+          assert_equal("UTF-16", document.encoding)
+          assert_equal(">", REXML::XPath.match(document, "/message")[0].attribute("testing").value)
+        end
+
+        def test_utf_16be
+          xml = <<-EOX.encode("UTF-16BE").force_encoding("ASCII-8BIT")
+<?xml version="1.0" encoding="UTF-16"?>
+<message testing=">">Hello world!</message>
+EOX
+          bom = "\ufeff".encode("UTF-16BE").force_encoding("ASCII-8BIT")
+          document = REXML::Document.new(bom + xml)
+          assert_equal("UTF-16", document.encoding)
+          assert_equal(">", REXML::XPath.match(document, "/message")[0].attribute("testing").value)
+        end
+      end
     end
   end
 end
