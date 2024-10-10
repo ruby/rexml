@@ -92,7 +92,15 @@ module REXMLTests
         REXML::Document.new(f)
       end
       assert_equal("UTF-16", utf16.encoding)
-      assert( utf16[0].kind_of?(REXML::XMLDecl))
+      assert(utf16[0].kind_of?(REXML::XMLDecl))
+    end
+
+    def test_parse_utf32
+      utf32 = File.open(fixture_path("utf32.xml")) do |f|
+        REXML::Document.new(f)
+      end
+      assert_equal("UTF-32", utf32.encoding)
+      assert(utf32[0].kind_of?(REXML::XMLDecl))
     end
 
     def test_parse_utf16_with_utf8_default_internal
@@ -101,6 +109,15 @@ module REXMLTests
           REXML::Document.new(f)
         end
         assert_equal("UTF-16", utf16.encoding)
+      end
+    end
+
+    def test_parse_utf32_with_utf8_default_internal
+      with_default_internal("UTF-8") do
+        utf32 = File.open(fixture_path("utf32.xml")) do |f|
+          REXML::Document.new(f)
+        end
+        assert_equal("UTF-32", utf32.encoding)
       end
     end
   end

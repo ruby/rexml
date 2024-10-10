@@ -167,6 +167,7 @@ module REXML
         @entity_expansion_count = 0
         @entity_expansion_limit = Security.entity_expansion_limit
         @entity_expansion_text_limit = Security.entity_expansion_text_limit
+        @source.ensure_buffer
       end
 
       def add_listener( listener )
@@ -639,7 +640,7 @@ module REXML
 
       def need_source_encoding_update?(xml_declaration_encoding)
         return false if xml_declaration_encoding.nil?
-        return false if /\AUTF-16\z/i =~ xml_declaration_encoding
+        return false if /\AUTF-(32|16)\z/i =~ xml_declaration_encoding
         true
       end
 
@@ -747,8 +748,8 @@ module REXML
           if need_source_encoding_update?(encoding)
             @source.encoding = encoding
           end
-          if encoding.nil? and /\AUTF-16(?:BE|LE)\z/i =~ @source.encoding
-            encoding = "UTF-16"
+          if encoding.nil? and /\AUTF-(32|16)(?:BE|LE)\z/i =~ @source.encoding
+            encoding = "UTF-#{$1}"
           end
           standalone = STANDALONE.match(content)
           standalone = standalone[1] unless standalone.nil?

@@ -488,6 +488,11 @@ Last 80 unconsumed characters:
                    XMLDecl.new("1.0", "UTF-16").to_s)
     end
 
+    def test_xmldecl_utf_32be_encoding_name
+      assert_equal("<?xml version='1.0' encoding='UTF-32'?>",
+                   XMLDecl.new("1.0", "UTF-32").to_s)
+    end
+
     def each_test( element, xpath, num_children )
       count = 0
       element.each_element( xpath ) { |child|
