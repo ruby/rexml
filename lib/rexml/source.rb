@@ -18,6 +18,16 @@ module REXML
           pattern = /#{Regexp.escape(pattern)}/ if pattern.is_a?(String)
           super(pattern)
         end
+
+        def match?(pattern)
+          pattern = /#{Regexp.escape(pattern)}/ if pattern.is_a?(String)
+          super(pattern)
+        end
+
+        def skip(pattern)
+          pattern = /#{Regexp.escape(pattern)}/ if pattern.is_a?(String)
+          super(pattern)
+        end
       end
     end
     using StringScannerCheckScanString
