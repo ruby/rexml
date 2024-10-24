@@ -1,5 +1,26 @@
 # News
 
+## 3.3.9 - 2024-10-24 {#version-3-3-9}
+
+### Improvements
+
+  * Improved performance.
+    * GH-210
+    * Patch by NAITOH Jun.
+
+### Fixes
+
+  * Fixed a parse bug for text only invalid XML.
+    * GH-215
+    * Patch by NAITOH Jun.
+
+  * Fixed a parse bug that `&#0x...;` is accepted as a character
+    reference.
+
+### Thanks
+
+  * NAITOH Jun
+
 ## 3.3.8 - 2024-09-29 {#version-3-3-8}
 
 ### Improvements
