@@ -405,7 +405,7 @@ EOX
       end
 
       class ReadUntilTest < Test::Unit::TestCase
-       def test_utf_8
+        def test_utf_8
           xml = <<-EOX.force_encoding("ASCII-8BIT")
 <?xml version="1.0" encoding="UTF-8"?>
 <message testing=">">Hello world!</message>
