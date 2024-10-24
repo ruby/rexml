@@ -628,8 +628,12 @@
   <span class="ruby-keyword">return</span> <span class="ruby-identifier">rv</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">matches</span>.<span class="ruby-identifier">size</span> <span class="ruby-operator">==</span> <span class="ruby-value">0</span>
   <span class="ruby-identifier">rv</span>.<span class="ruby-identifier">gsub!</span>( <span class="ruby-constant">Private</span><span class="ruby-operator">::</span><span class="ruby-constant">CHARACTER_REFERENCES</span> ) {
     <span class="ruby-identifier">m</span>=<span class="ruby-node">$1</span>
-    <span class="ruby-identifier">m</span> = <span class="ruby-node">&quot;0#{m}&quot;</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">m</span>[<span class="ruby-value">0</span>] <span class="ruby-operator">==</span> <span class="ruby-value">?x</span>
-    [<span class="ruby-constant">Integer</span>(<span class="ruby-identifier">m</span>)].<span class="ruby-identifier">pack</span>(<span class="ruby-string">&#39;U*&#39;</span>)
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">m</span>.<span class="ruby-identifier">start_with?</span>(<span class="ruby-string">&quot;x&quot;</span>)
+      <span class="ruby-identifier">code_point</span> = <span class="ruby-constant">Integer</span>(<span class="ruby-identifier">m</span>[<span class="ruby-value">1</span><span class="ruby-operator">..</span><span class="ruby-value">-1</span>], <span class="ruby-value">16</span>)
+    <span class="ruby-keyword">else</span>
+      <span class="ruby-identifier">code_point</span> = <span class="ruby-constant">Integer</span>(<span class="ruby-identifier">m</span>, <span class="ruby-value">10</span>)
+    <span class="ruby-keyword">end</span>
+    [<span class="ruby-identifier">code_point</span>].<span class="ruby-identifier">pack</span>(<span class="ruby-string">&#39;U*&#39;</span>)
   }
   <span class="ruby-identifier">matches</span>.<span class="ruby-identifier">collect!</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">x</span><span class="ruby-operator">|</span><span class="ruby-identifier">x</span>[<span class="ruby-value">0</span>]}.<span class="ruby-identifier">compact!</span>
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">filter</span>
