@@ -67,6 +67,18 @@
               <ul class="link-list" role="directory">
                           <li>
             <details open>
+              <summary>      <a href="#label-3.3.9+-+2024-10-24+-7B-23version-3-3-9-7D">3.3.9 - 2024-10-24 {#version-3-3-9}</a>
+</summary>
+              <ul class="link-list" role="directory">
+                          <li>      <a href="#label-Improvements">Improvements</a>
+          <li>      <a href="#label-Fixes">Fixes</a>
+          <li>      <a href="#label-Thanks">Thanks</a>
+
+              </ul>
+            </details>
+          </li>
+          <li>
+            <details open>
               <summary>      <a href="#label-3.3.8+-+2024-09-29+-7B-23version-3-3-8-7D">3.3.8 - 2024-09-29 {#version-3-3-8}</a>
 </summary>
               <ul class="link-list" role="directory">
@@ -348,6 +360,39 @@
 
 <h1 id="label-News">News<span><a href="#label-News">&para;</a> <a href="#top">&uarr;</a></span></h1>
 
+<h2 id="label-3.3.9+-+2024-10-24+-7B-23version-3-3-9-7D">3.3.9 - 2024-10-24 {#version-3-3-9}<span><a href="#label-3.3.9+-+2024-10-24+-7B-23version-3-3-9-7D">&para;</a> <a href="#top">&uarr;</a></span></h2>
+
+<h3 id="label-Improvements">Improvements<span><a href="#label-Improvements">&para;</a> <a href="#top">&uarr;</a></span></h3>
+<ul><li>
+<p>Improved performance.</p>
+<ul><li>
+<p>GH-210</p>
+</li><li>
+<p>Patch by NAITOH Jun.</p>
+</li></ul>
+</li></ul>
+
+<h3 id="label-Fixes">Fixes<span><a href="#label-Fixes">&para;</a> <a href="#top">&uarr;</a></span></h3>
+<ul><li>
+<p>Fixed a parse bug for text only invalid XML.</p>
+<ul><li>
+<p>GH-215</p>
+</li><li>
+<p>Patch by NAITOH Jun.</p>
+</li><li>
+<p>GH-215</p>
+</li><li>
+<p>Patch by NAITOH Jun.</p>
+</li></ul>
+</li><li>
+<p>Fixed a parse bug that <code>&amp;#0x...;</code> is accepted as a character reference.</p>
+</li></ul>
+
+<h3 id="label-Thanks">Thanks<span><a href="#label-Thanks">&para;</a> <a href="#top">&uarr;</a></span></h3>
+<ul><li>
+<p>NAITOH Jun</p>
+</li></ul>
+
 <h2 id="label-3.3.8+-+2024-09-29+-7B-23version-3-3-8-7D">3.3.8 - 2024-09-29 {#version-3-3-8}<span><a href="#label-3.3.8+-+2024-09-29+-7B-23version-3-3-8-7D">&para;</a> <a href="#top">&uarr;</a></span></h2>
 
 <h3 id="label-Improvements">Improvements<span><a href="#label-Improvements">&para;</a> <a href="#top">&uarr;</a></span></h3>
@@ -362,7 +407,7 @@
 
 <h3 id="label-Fixes">Fixes<span><a href="#label-Fixes">&para;</a> <a href="#top">&uarr;</a></span></h3>
 <ul><li>
-<p>Fixed a bug that unexpected attribute namespace conflict error for the predefined “xml” namespace is reported.</p>
+<p>Fixed a bug that unexpected attribute namespace conflict error for the predefined "xml" namespace is reported.</p>
 <ul><li>
 <p>GH-208</p>
 </li><li>
@@ -440,7 +485,7 @@
 
 <h3 id="label-Fixes">Fixes<span><a href="#label-Fixes">&para;</a> <a href="#top">&uarr;</a></span></h3>
 <ul><li>
-<p>Fixed a bug that default entity expansions are counted for security check. Default entity expansions should not be counted because they don’t have a security risk.</p>
+<p>Fixed a bug that default entity expansions are counted for security check. Default entity expansions should not be counted because they don't have a security risk.</p>
 <ul><li>
 <p>GH-198</p>
 </li><li>
@@ -455,14 +500,14 @@
 <p>Patch Viktor Ivarsson</p>
 </li></ul>
 </li><li>
-<p>Fixed a parser bug that parameter entity references in internal subsets are expanded. It’s not allowed in the XML specification.</p>
+<p>Fixed a parser bug that parameter entity references in internal subsets are expanded. It's not allowed in the XML specification.</p>
 <ul><li>
 <p>GH-191</p>
 </li><li>
 <p>Patch by NAITOH Jun.</p>
 </li></ul>
 </li><li>
-<p>Fixed a stream parser bug that user-defined entity references in text aren’t expanded.</p>
+<p>Fixed a stream parser bug that user-defined entity references in text aren't expanded.</p>
 <ul><li>
 <p>GH-200</p>
 </li><li>
@@ -506,7 +551,7 @@
 
 <h3 id="label-Fixes">Fixes<span><a href="#label-Fixes">&para;</a> <a href="#top">&uarr;</a></span></h3>
 <ul><li>
-<p>Fixed a bug that <code>REXML::Security</code> isn’t defined when <code>REXML::Parsers::StreamParser</code> is used and <code>rexml/parsers/streamparser</code> is only required.</p>
+<p>Fixed a bug that <code>REXML::Security</code> isn't defined when <code>REXML::Parsers::StreamParser</code> is used and <code>rexml/parsers/streamparser</code> is only required.</p>
 <ul><li>
 <p>GH-189</p>
 </li><li>
@@ -639,7 +684,7 @@
 
 <h3 id="label-Fixes">Fixes<span><a href="#label-Fixes">&para;</a> <a href="#top">&uarr;</a></span></h3>
 <ul><li>
-<p>Fixed a bug that SAX2 parser doesn’t expand predefined entities for <code>characters</code> callback.</p>
+<p>Fixed a bug that SAX2 parser doesn't expand predefined entities for <code>characters</code> callback.</p>
 <ul><li>
 <p>GH-168</p>
 </li><li>
@@ -709,7 +754,7 @@
 
 <h3 id="label-Fixes">Fixes<span><a href="#label-Fixes">&para;</a> <a href="#top">&uarr;</a></span></h3>
 <ul><li>
-<p>Fixed a bug that large XML can’t be parsed.</p>
+<p>Fixed a bug that large XML can't be parsed.</p>
 <ul><li>
 <p>GH-154</p>
 </li><li>
@@ -872,7 +917,7 @@
 <p>Patch by NAITOH Jun.</p>
 </li></ul>
 </li><li>
-<p>Fixed a bug that an exception message can’t be generated for invalid encoding XML.</p>
+<p>Fixed a bug that an exception message can't be generated for invalid encoding XML.</p>
 <ul><li>
 <p>GH-29</p>
 </li><li>
@@ -967,7 +1012,7 @@
 
 <h3 id="label-Fixes">Fixes<span><a href="#label-Fixes">&para;</a> <a href="#top">&uarr;</a></span></h3>
 <ul><li>
-<p>Fixed a bug that <code>REXML::DocType#clone</code> doesn’t copy external ID information.</p>
+<p>Fixed a bug that <code>REXML::DocType#clone</code> doesn't copy external ID information.</p>
 </li><li>
 <p>Fixed round-trip vulnerability bugs. See also: <a href="https://www.ruby-lang.org/en/news/2021/04/05/xml-round-trip-vulnerability-in-rexml-cve-2021-28965">www.ruby-lang.org/en/news/2021/04/05/xml-round-trip-vulnerability-in-rexml-cve-2021-28965</a>/ [<a href="CVE-2021-28965">HackerOne#1104077]</a>[Reported by Juho Nurminen]</p>
 </li></ul>
@@ -1006,7 +1051,7 @@
 
 <h3 id="label-Fixes">Fixes<span><a href="#label-Fixes">&para;</a> <a href="#top">&uarr;</a></span></h3>
 <ul><li>
-<p>Fixed a bug that <code>REXML::XMLDecl#close</code> doesn’t copy <code>@writethis</code>. [GitHub#20][Patch by hirura]</p>
+<p>Fixed a bug that <code>REXML::XMLDecl#close</code> doesn't copy <code>@writethis</code>. [GitHub#20][Patch by hirura]</p>
 </li></ul>
 
 <h3 id="label-Thanks">Thanks<span><a href="#label-Thanks">&para;</a> <a href="#top">&uarr;</a></span></h3>
@@ -1061,7 +1106,7 @@
 
 <h3 id="label-Fixes">Fixes<span><a href="#label-Fixes">&para;</a> <a href="#top">&uarr;</a></span></h3>
 <ul><li>
-<p>Fixed a bug that no namespace attribute isn’t matched with prefix.</p>
+<p>Fixed a bug that no namespace attribute isn't matched with prefix.</p>
 
 <p>[ruby-list:50731][Reported by Yasuhiro KIMURA]</p>
 </li><li>
