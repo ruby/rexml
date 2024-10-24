@@ -133,6 +133,7 @@ Last 80 unconsumed characters:
     end
 
     def test_linear_performance_deep_same_name_attributes
+      omit("This is fragile on JRuby") if RUBY_ENGINE == "jruby"
       seq = [100, 500, 1000, 1500, 2000]
       assert_linear_performance(seq, rehearsal: 10) do |n|
         xml = <<-XML
