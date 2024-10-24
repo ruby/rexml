@@ -150,7 +150,7 @@ module REXML
         PEDECL_PATTERN = "\\s+(%)\\s+#{NAME}\\s+#{PEDEF}\\s*>"
         ENTITYDECL_PATTERN = /(?:#{GEDECL_PATTERN})|(?:#{PEDECL_PATTERN})/um
         CARRIAGE_RETURN_NEWLINE_PATTERN = /\r\n?/
-        CHARACTER_REFERENCES = /&#0*((?:\d+)|(?:x[a-fA-F0-9]+));/
+        CHARACTER_REFERENCES = /&#((?:\d+)|(?:x[a-fA-F0-9]+));/
         DEFAULT_ENTITIES_PATTERNS = {}
         default_entities = ['gt', 'lt', 'quot', 'apos', 'amp']
         default_entities.each do |term|
@@ -570,8 +570,12 @@ module REXML
         return rv if matches.size == 0
         rv.gsub!( Private::CHARACTER_REFERENCES ) {
           m=$1
-          m = "0#{m}" if m[0] == ?x
-          [Integer(m)].pack('U*')
+          if m.start_with?("x")
+            code_point = Integer(m[1..-1], 16)
+          else
+            code_point = Integer(m, 10)
+          end
+          [code_point].pack('U*')
         }
         matches.collect!{|x|x[0]}.compact!
         if filter
