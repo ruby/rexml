@@ -114,7 +114,7 @@
           <p>Generates a <a href="Source.html"><code>Source</code></a> object @param arg Either a String, or an IO @return a <a href="Source.html"><code>Source</code></a>, or nil if a bad argument was given</p>
 
           <div class="method-source-code" id="create_from-source">
-            <pre><span class="ruby-comment"># File lib/rexml/source.rb, line 31</span>
+            <pre><span class="ruby-comment"># File lib/rexml/source.rb, line 41</span>
 <span class="ruby-keyword">def</span> <span class="ruby-constant">SourceFactory</span><span class="ruby-operator">::</span><span class="ruby-identifier ruby-title">create_from</span>(<span class="ruby-identifier">arg</span>)
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">arg</span>.<span class="ruby-identifier">respond_to?</span> <span class="ruby-value">:read</span> <span class="ruby-keyword">and</span>
       <span class="ruby-identifier">arg</span>.<span class="ruby-identifier">respond_to?</span> <span class="ruby-value">:readline</span> <span class="ruby-keyword">and</span>
