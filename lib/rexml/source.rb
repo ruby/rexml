@@ -18,6 +18,16 @@ module REXML
           pattern = /#{Regexp.escape(pattern)}/ if pattern.is_a?(String)
           super(pattern)
         end
+
+        def match?(pattern)
+          pattern = /#{Regexp.escape(pattern)}/ if pattern.is_a?(String)
+          super(pattern)
+        end
+
+        def skip(pattern)
+          pattern = /#{Regexp.escape(pattern)}/ if pattern.is_a?(String)
+          super(pattern)
+        end
       end
     end
     using StringScannerCheckScanString
@@ -123,6 +133,14 @@ module REXML
         @scanner.scan(pattern).nil? ? nil : @scanner
       else
         @scanner.check(pattern).nil? ? nil : @scanner
+      end
+    end
+
+    def match?(pattern, cons=false)
+      if cons
+        !@scanner.skip(pattern).nil?
+      else
+        !@scanner.match?(pattern).nil?
       end
     end
 
@@ -265,6 +283,23 @@ module REXML
       end
 
       md.nil? ? nil : @scanner
+    end
+
+    def match?( pattern, cons=false )
+      # To avoid performance issue, we need to increase bytes to read per scan
+      min_bytes = 1
+      while true
+        if cons
+          n_matched_bytes = @scanner.skip(pattern)
+        else
+          n_matched_bytes = @scanner.match?(pattern)
+        end
+        return true if n_matched_bytes
+        return false if pattern.is_a?(String)
+        return false if @source.nil?
+        return false unless read(nil, min_bytes)
+        min_bytes *= 2
+      end
     end
 
     def empty?
