@@ -87,7 +87,7 @@ module REXML
         detect_encoding
       end
       @line = 0
-      @encoded_term = {}
+      @encoded_terms = {}
     end
 
     # The current buffer (what we're going to read next)
@@ -246,7 +246,7 @@ module REXML
 
     def read_until(term)
       pattern = Private::PRE_DEFINED_TERM_PATTERNS[term] || /#{Regexp.escape(term)}/
-      term = @encoded_term[term] ||= encode(term)
+      term = @encoded_terms[term] ||= encode(term)
       until str = @scanner.scan_until(pattern)
         break if @source.nil?
         break if @source.eof?
