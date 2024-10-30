@@ -379,7 +379,7 @@
             <pre><span class="ruby-comment"># File lib/rexml/source.rb, line 247</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">read_until</span>(<span class="ruby-identifier">term</span>)
   <span class="ruby-identifier">pattern</span> = <span class="ruby-constant">Private</span><span class="ruby-operator">::</span><span class="ruby-constant">PRE_DEFINED_TERM_PATTERNS</span>[<span class="ruby-identifier">term</span>] <span class="ruby-operator">||</span> <span class="ruby-regexp">/#{Regexp.escape(term)}/</span>
-  <span class="ruby-identifier">term</span> = <span class="ruby-ivar">@term_encord</span>[<span class="ruby-identifier">term</span>] <span class="ruby-operator">||=</span> <span class="ruby-identifier">encode</span>(<span class="ruby-identifier">term</span>)
+  <span class="ruby-identifier">term</span> = <span class="ruby-ivar">@encoded_terms</span>[<span class="ruby-identifier">term</span>] <span class="ruby-operator">||=</span> <span class="ruby-identifier">encode</span>(<span class="ruby-identifier">term</span>)
   <span class="ruby-keyword">until</span> <span class="ruby-identifier">str</span> = <span class="ruby-ivar">@scanner</span>.<span class="ruby-identifier">scan_until</span>(<span class="ruby-identifier">pattern</span>)
     <span class="ruby-keyword">break</span> <span class="ruby-keyword">if</span> <span class="ruby-ivar">@source</span>.<span class="ruby-identifier">nil?</span>
     <span class="ruby-keyword">break</span> <span class="ruby-keyword">if</span> <span class="ruby-ivar">@source</span>.<span class="ruby-identifier">eof?</span>
