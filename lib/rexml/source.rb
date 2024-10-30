@@ -2,6 +2,7 @@
 # frozen_string_literal: false
 
 require "strscan"
+require "stringio"
 
 require_relative 'encoding'
 
@@ -45,7 +46,6 @@ module REXML
           arg.respond_to? :eof?
         IOSource.new(arg)
       elsif arg.respond_to? :to_str
-        require 'stringio'
         IOSource.new(StringIO.new(arg))
       elsif arg.kind_of? Source
         arg
