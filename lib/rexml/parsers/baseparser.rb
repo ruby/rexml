@@ -181,6 +181,10 @@ module REXML
 
       def stream=( source )
         @source = SourceFactory.create_from( source )
+        reset
+      end
+
+      def reset
         @closed = nil
         @have_root = false
         @document_status = nil
