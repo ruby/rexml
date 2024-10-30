@@ -1,8 +1,8 @@
 # coding: US-ASCII
 # frozen_string_literal: false
 
-require "strscan"
 require "stringio"
+require "strscan"
 
 require_relative 'encoding'
 
