@@ -131,7 +131,7 @@
           <p>The type of this event.  Will be one of :tag_start, :tag_end, :text, :processing_instruction, :comment, :doctype, :attlistdecl, :entitydecl, :notationdecl, :entity, :cdata, :xmldecl, or :error.</p>
 
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File lib/rexml/parsers/pullparser.rb, line 107</span>
+            <pre><span class="ruby-comment"># File lib/rexml/parsers/pullparser.rb, line 111</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(<span class="ruby-identifier">arg</span>)
   <span class="ruby-ivar">@contents</span> = <span class="ruby-identifier">arg</span>
 <span class="ruby-keyword">end</span></pre>
@@ -161,7 +161,7 @@
           
 
           <div class="method-source-code" id="5B-5D-source">
-            <pre><span class="ruby-comment"># File lib/rexml/parsers/pullparser.rb, line 111</span>
+            <pre><span class="ruby-comment"># File lib/rexml/parsers/pullparser.rb, line 115</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">[]</span>( <span class="ruby-identifier">start</span>, <span class="ruby-identifier">endd</span>=<span class="ruby-keyword">nil</span>)
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">start</span>.<span class="ruby-identifier">kind_of?</span> <span class="ruby-constant">Range</span>
     <span class="ruby-ivar">@contents</span>.<span class="ruby-identifier">slice</span>( <span class="ruby-identifier">start</span>.<span class="ruby-identifier">begin</span><span class="ruby-value">+1</span> <span class="ruby-operator">..</span> <span class="ruby-identifier">start</span>.<span class="ruby-identifier">end</span> )
@@ -194,7 +194,7 @@
           <p>Content: [ String text ]</p>
 
           <div class="method-source-code" id="attlistdecl-3F-source">
-            <pre><span class="ruby-comment"># File lib/rexml/parsers/pullparser.rb, line 160</span>
+            <pre><span class="ruby-comment"># File lib/rexml/parsers/pullparser.rb, line 164</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">attlistdecl?</span>
   <span class="ruby-ivar">@contents</span>[<span class="ruby-value">0</span>] <span class="ruby-operator">==</span> <span class="ruby-value">:attlistdecl</span>
 <span class="ruby-keyword">end</span></pre>
@@ -217,7 +217,7 @@
           <p>Content: [ String text ]</p>
 
           <div class="method-source-code" id="cdata-3F-source">
-            <pre><span class="ruby-comment"># File lib/rexml/parsers/pullparser.rb, line 191</span>
+            <pre><span class="ruby-comment"># File lib/rexml/parsers/pullparser.rb, line 195</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">cdata?</span>
   <span class="ruby-ivar">@contents</span>[<span class="ruby-value">0</span>] <span class="ruby-operator">==</span> <span class="ruby-value">:cdata</span>
 <span class="ruby-keyword">end</span></pre>
@@ -240,7 +240,7 @@
           <p>Content: [ String text ]</p>
 
           <div class="method-source-code" id="comment-3F-source">
-            <pre><span class="ruby-comment"># File lib/rexml/parsers/pullparser.rb, line 150</span>
+            <pre><span class="ruby-comment"># File lib/rexml/parsers/pullparser.rb, line 154</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">comment?</span>
   <span class="ruby-ivar">@contents</span>[<span class="ruby-value">0</span>] <span class="ruby-operator">==</span> <span class="ruby-value">:comment</span>
 <span class="ruby-keyword">end</span></pre>
@@ -263,7 +263,7 @@
           <p>Content: [ String name, String pub_sys, String long_name, String uri ]</p>
 
           <div class="method-source-code" id="doctype-3F-source">
-            <pre><span class="ruby-comment"># File lib/rexml/parsers/pullparser.rb, line 155</span>
+            <pre><span class="ruby-comment"># File lib/rexml/parsers/pullparser.rb, line 159</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">doctype?</span>
   <span class="ruby-ivar">@contents</span>[<span class="ruby-value">0</span>] <span class="ruby-operator">==</span> <span class="ruby-value">:start_doctype</span>
 <span class="ruby-keyword">end</span></pre>
@@ -286,7 +286,7 @@
           <p>Content: [ String text ]</p>
 
           <div class="method-source-code" id="elementdecl-3F-source">
-            <pre><span class="ruby-comment"># File lib/rexml/parsers/pullparser.rb, line 165</span>
+            <pre><span class="ruby-comment"># File lib/rexml/parsers/pullparser.rb, line 169</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">elementdecl?</span>
   <span class="ruby-ivar">@contents</span>[<span class="ruby-value">0</span>] <span class="ruby-operator">==</span> <span class="ruby-value">:elementdecl</span>
 <span class="ruby-keyword">end</span></pre>
@@ -309,7 +309,7 @@
           <p>Content: [ String tag_name ]</p>
 
           <div class="method-source-code" id="end_element-3F-source">
-            <pre><span class="ruby-comment"># File lib/rexml/parsers/pullparser.rb, line 135</span>
+            <pre><span class="ruby-comment"># File lib/rexml/parsers/pullparser.rb, line 139</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">end_element?</span>
   <span class="ruby-ivar">@contents</span>[<span class="ruby-value">0</span>] <span class="ruby-operator">==</span> <span class="ruby-value">:end_element</span>
 <span class="ruby-keyword">end</span></pre>
@@ -332,7 +332,7 @@
           <p>Content: [ String text ]</p>
 
           <div class="method-source-code" id="entity-3F-source">
-            <pre><span class="ruby-comment"># File lib/rexml/parsers/pullparser.rb, line 186</span>
+            <pre><span class="ruby-comment"># File lib/rexml/parsers/pullparser.rb, line 190</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">entity?</span>
   <span class="ruby-ivar">@contents</span>[<span class="ruby-value">0</span>] <span class="ruby-operator">==</span> <span class="ruby-value">:entity</span>
 <span class="ruby-keyword">end</span></pre>
@@ -362,7 +362,7 @@
 <p>Content: [ String text ]</p>
 
           <div class="method-source-code" id="entitydecl-3F-source">
-            <pre><span class="ruby-comment"># File lib/rexml/parsers/pullparser.rb, line 176</span>
+            <pre><span class="ruby-comment"># File lib/rexml/parsers/pullparser.rb, line 180</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">entitydecl?</span>
   <span class="ruby-ivar">@contents</span>[<span class="ruby-value">0</span>] <span class="ruby-operator">==</span> <span class="ruby-value">:entitydecl</span>
 <span class="ruby-keyword">end</span></pre>
@@ -385,7 +385,7 @@
           
 
           <div class="method-source-code" id="error-3F-source">
-            <pre><span class="ruby-comment"># File lib/rexml/parsers/pullparser.rb, line 200</span>
+            <pre><span class="ruby-comment"># File lib/rexml/parsers/pullparser.rb, line 204</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">error?</span>
   <span class="ruby-ivar">@contents</span>[<span class="ruby-value">0</span>] <span class="ruby-operator">==</span> <span class="ruby-value">:error</span>
 <span class="ruby-keyword">end</span></pre>
@@ -408,7 +408,7 @@
           
 
           <div class="method-source-code" id="event_type-source">
-            <pre><span class="ruby-comment"># File lib/rexml/parsers/pullparser.rb, line 125</span>
+            <pre><span class="ruby-comment"># File lib/rexml/parsers/pullparser.rb, line 129</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">event_type</span>
   <span class="ruby-ivar">@contents</span>[<span class="ruby-value">0</span>]
 <span class="ruby-keyword">end</span></pre>
@@ -431,7 +431,7 @@
           
 
           <div class="method-source-code" id="inspect-source">
-            <pre><span class="ruby-comment"># File lib/rexml/parsers/pullparser.rb, line 204</span>
+            <pre><span class="ruby-comment"># File lib/rexml/parsers/pullparser.rb, line 208</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">inspect</span>
   <span class="ruby-ivar">@contents</span>[<span class="ruby-value">0</span>].<span class="ruby-identifier">to_s</span> <span class="ruby-operator">+</span> <span class="ruby-string">&quot;: &quot;</span> <span class="ruby-operator">+</span> <span class="ruby-ivar">@contents</span>[<span class="ruby-value">1</span><span class="ruby-operator">..</span><span class="ruby-value">-1</span>].<span class="ruby-identifier">inspect</span>
 <span class="ruby-keyword">end</span></pre>
@@ -454,7 +454,7 @@
           <p>Content: [ String text ]</p>
 
           <div class="method-source-code" id="instruction-3F-source">
-            <pre><span class="ruby-comment"># File lib/rexml/parsers/pullparser.rb, line 145</span>
+            <pre><span class="ruby-comment"># File lib/rexml/parsers/pullparser.rb, line 149</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">instruction?</span>
   <span class="ruby-ivar">@contents</span>[<span class="ruby-value">0</span>] <span class="ruby-operator">==</span> <span class="ruby-value">:processing_instruction</span>
 <span class="ruby-keyword">end</span></pre>
@@ -477,7 +477,7 @@
           <p>Content: [ String text ]</p>
 
           <div class="method-source-code" id="notationdecl-3F-source">
-            <pre><span class="ruby-comment"># File lib/rexml/parsers/pullparser.rb, line 181</span>
+            <pre><span class="ruby-comment"># File lib/rexml/parsers/pullparser.rb, line 185</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">notationdecl?</span>
   <span class="ruby-ivar">@contents</span>[<span class="ruby-value">0</span>] <span class="ruby-operator">==</span> <span class="ruby-value">:notationdecl</span>
 <span class="ruby-keyword">end</span></pre>
@@ -500,7 +500,7 @@
           <p>Content: [ String tag_name, Hash attributes ]</p>
 
           <div class="method-source-code" id="start_element-3F-source">
-            <pre><span class="ruby-comment"># File lib/rexml/parsers/pullparser.rb, line 130</span>
+            <pre><span class="ruby-comment"># File lib/rexml/parsers/pullparser.rb, line 134</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">start_element?</span>
   <span class="ruby-ivar">@contents</span>[<span class="ruby-value">0</span>] <span class="ruby-operator">==</span> <span class="ruby-value">:start_element</span>
 <span class="ruby-keyword">end</span></pre>
@@ -523,7 +523,7 @@
           <p>Content: [ String raw_text, String unnormalized_text ]</p>
 
           <div class="method-source-code" id="text-3F-source">
-            <pre><span class="ruby-comment"># File lib/rexml/parsers/pullparser.rb, line 140</span>
+            <pre><span class="ruby-comment"># File lib/rexml/parsers/pullparser.rb, line 144</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">text?</span>
   <span class="ruby-ivar">@contents</span>[<span class="ruby-value">0</span>] <span class="ruby-operator">==</span> <span class="ruby-value">:text</span>
 <span class="ruby-keyword">end</span></pre>
@@ -546,7 +546,7 @@
           <p>Content: [ String version, String encoding, String standalone ]</p>
 
           <div class="method-source-code" id="xmldecl-3F-source">
-            <pre><span class="ruby-comment"># File lib/rexml/parsers/pullparser.rb, line 196</span>
+            <pre><span class="ruby-comment"># File lib/rexml/parsers/pullparser.rb, line 200</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">xmldecl?</span>
   <span class="ruby-ivar">@contents</span>[<span class="ruby-value">0</span>] <span class="ruby-operator">==</span> <span class="ruby-value">:xmldecl</span>
 <span class="ruby-keyword">end</span></pre>
