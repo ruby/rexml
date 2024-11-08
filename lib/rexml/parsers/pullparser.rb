@@ -93,6 +93,10 @@ module REXML
       def unshift token
         @my_stack.unshift token
       end
+
+      def reset
+        @parser.reset
+      end
     end
 
     # A parsing event.  The contents of the event are accessed as an +Array?,

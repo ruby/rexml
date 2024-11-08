@@ -156,6 +156,39 @@ module REXMLTests
       assert_equal( 0, names.length )
     end
 
+    def test_reset
+      xml_chunks = [
+        "<message>First valid and complete message</message>",
+        "<message>Second valid and complete message</message>",
+        "<message>Third valid and complete message</message>"
+      ]
+
+      messages = []
+
+      IO.pipe do |reader, writer|
+        xml_chunks.each do |chunk|
+          writer.write(chunk)
+        end
+        writer.close
+
+        parser = REXML::Parsers::PullParser.new(reader)
+        while parser.has_next?
+          parser.pull
+          message_text = parser.pull
+          messages << message_text[0]
+          parser.pull
+          parser.reset
+        end
+      end
+
+      assert_equal(
+        messages,
+        ["First valid and complete message",
+         "Second valid and complete message",
+         "Third valid and complete message"]
+      )
+    end
+
     class EntityExpansionLimitTest < Test::Unit::TestCase
       class GeneralEntityTest < self
         def test_have_value
