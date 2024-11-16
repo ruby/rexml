@@ -321,7 +321,7 @@ module REXML
         rescue
         end
         @er_source.seek(pos)
-      rescue IOError
+      rescue IOError, SystemCallError
         pos = -1
         line = -1
       end

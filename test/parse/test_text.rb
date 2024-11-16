@@ -6,10 +6,7 @@ module REXMLTests
     class TestInvalid < self
       def test_text_only
         exception = assert_raise(REXML::ParseException) do
-          parser = REXML::Parsers::BaseParser.new('a')
-          while parser.has_next?
-            parser.pull
-          end
+          REXML::Parsers::BaseParser.new('a').pull
         end
 
         assert_equal(<<~DETAIL.chomp, exception.to_s)
@@ -19,6 +16,25 @@ module REXMLTests
           Last 80 unconsumed characters:
 
         DETAIL
+      end
+
+      def test_text_only_with_io_pipe
+        IO.pipe do |reader, writer|
+          writer.write('a')
+          writer.close
+
+          exception = assert_raise(REXML::ParseException) do
+            REXML::Parsers::BaseParser.new(reader).pull
+          end
+
+          assert_equal(<<~DETAIL.chomp, exception.to_s)
+            Malformed XML: Content at the start of the document (got 'a')
+            Line: -1
+            Position: -1
+            Last 80 unconsumed characters:
+
+          DETAIL
+        end
       end
 
       def test_before_root
