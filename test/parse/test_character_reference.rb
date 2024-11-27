@@ -2,6 +2,7 @@ require "test/unit"
 require "core_assertions"
 
 require "rexml/document"
+require "rexml/parsers/pullparser"
 
 module REXMLTests
   class TestParseCharacterReference < Test::Unit::TestCase
