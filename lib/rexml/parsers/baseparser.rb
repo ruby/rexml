@@ -157,6 +157,11 @@ module REXML
           DEFAULT_ENTITIES_PATTERNS[term] = /&#{term};/
         end
         XML_PREFIXED_NAMESPACE = "http://www.w3.org/XML/1998/namespace"
+
+        QUOTE = [].tap { |x|
+          x['"'.ord] = '"'
+          x["'".ord] = "'"
+        }
       end
       private_constant :Private
 
@@ -766,6 +771,19 @@ module REXML
         [:processing_instruction, name, content]
       end
 
+      if StringScanner::Version < "3.1.1"
+        def get_quote
+          @source.match(/(['"])/, true)&.[](1)
+        end
+      else
+        def get_quote
+          if quote = Private::QUOTE[@source.peek_byte]
+            @source.scan_byte
+          end
+          quote
+        end
+      end
+
       def parse_attributes(prefixes)
         attributes = {}
         expanded_names = {}
@@ -785,11 +803,10 @@ module REXML
               message = "Missing attribute equal: <#{name}>"
               raise REXML::ParseException.new(message, @source)
             end
-            unless match = @source.match(/(['"])/, true)
+            unless quote = get_quote
               message = "Missing attribute value start quote: <#{name}>"
               raise REXML::ParseException.new(message, @source)
             end
-            quote = match[1]
             start_position = @source.position
             value = @source.read_until(quote)
             unless value.chomp!(quote)
