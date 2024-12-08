@@ -29,31 +29,16 @@ module REXML
       (0x10000..0x10FFFF)
     ]
 
-    if String.method_defined? :encode
-      VALID_XML_CHARS = Regexp.new('^['+
-        VALID_CHAR.map { |item|
-          case item
-          when Integer
-            [item].pack('U').force_encoding('utf-8')
-          when Range
-            [item.first, '-'.ord, item.last].pack('UUU').force_encoding('utf-8')
-          end
-        }.join +
-      ']*$')
-    else
-      VALID_XML_CHARS = /^(
-           [\x09\x0A\x0D\x20-\x7E]            # ASCII
-         | [\xC2-\xDF][\x80-\xBF]             # non-overlong 2-byte
-         |  \xE0[\xA0-\xBF][\x80-\xBF]        # excluding overlongs
-         | [\xE1-\xEC\xEE][\x80-\xBF]{2}      # straight 3-byte
-         |  \xEF[\x80-\xBE]{2}                #
-         |  \xEF\xBF[\x80-\xBD]               # excluding U+fffe and U+ffff
-         |  \xED[\x80-\x9F][\x80-\xBF]        # excluding surrogates
-         |  \xF0[\x90-\xBF][\x80-\xBF]{2}     # planes 1-3
-         | [\xF1-\xF3][\x80-\xBF]{3}          # planes 4-15
-         |  \xF4[\x80-\x8F][\x80-\xBF]{2}     # plane 16
-       )*$/nx;
-    end
+    VALID_XML_CHARS = Regexp.new('^['+
+      VALID_CHAR.map { |item|
+        case item
+        when Integer
+          [item].pack('U').force_encoding('utf-8')
+        when Range
+          [item.first, '-'.ord, item.last].pack('UUU').force_encoding('utf-8')
+        end
+      }.join +
+    ']*$')
 
     # Constructor
     # +arg+ if a String, the content is set to the String.  If a Text,
@@ -132,21 +117,11 @@ module REXML
 
       # illegal anywhere
       if !string.match?(VALID_XML_CHARS)
-        if String.method_defined? :encode
-          string.chars.each do |c|
-            case c.ord
-            when *VALID_CHAR
-            else
-              raise "Illegal character #{c.inspect} in raw string #{string.inspect}"
-            end
-          end
-        else
-          string.scan(/[\x00-\x7F]|[\x80-\xBF][\xC0-\xF0]*|[\xC0-\xF0]/n) do |c|
-            case c.unpack('U')
-            when *VALID_CHAR
-            else
-              raise "Illegal character #{c.inspect} in raw string #{string.inspect}"
-            end
+        string.chars.each do |c|
+          case c.ord
+          when *VALID_CHAR
+          else
+            raise "Illegal character #{c.inspect} in raw string #{string.inspect}"
           end
         end
       end
