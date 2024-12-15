@@ -1,5 +1,34 @@
 # News
 
+## 3.4.0 - 2024-12-15 {#version-3-4-0}
+
+### Improvement
+
+  * Improved performance.
+    * GH-216
+    * Patch by NAITOH Jun
+
+  * JRuby: Improved parse performance.
+    * GH-219
+    * Patch by João Duarte
+
+  * Added support for reusing pull parser.
+    * GH-214
+    * GH-220
+    * Patch by Dmitry Pogrebnoy
+
+  * Improved error handling when source is `IO`.
+    * GH-221
+    * Patch by NAITOH Jun
+
+### Thanks
+
+  * NAITOH Jun
+
+  * João Duarte
+
+  * Dmitry Pogrebnoy
+
 ## 3.3.9 - 2024-10-24 {#version-3-3-9}
 
 ### Improvements
