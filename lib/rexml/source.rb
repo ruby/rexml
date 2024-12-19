@@ -158,6 +158,14 @@ module REXML
       @scanner.pos = pos
     end
 
+    def peek_byte
+      @scanner.peek_byte
+    end
+
+    def scan_byte
+      @scanner.scan_byte
+    end
+
     # @return true if the Source is exhausted
     def empty?
       @scanner.eos?
