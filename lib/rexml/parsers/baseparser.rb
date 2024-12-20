@@ -766,6 +766,25 @@ module REXML
         [:processing_instruction, name, content]
       end
 
+      if StringScanner::Version < "3.1.1"
+        def scan_quote
+          @source.match(/(['"])/, true)&.[](1)
+        end
+      else
+        def scan_quote
+          case @source.peek_byte
+          when 34 # '"'.ord
+            @source.scan_byte
+            '"'
+          when 39 # "'".ord
+            @source.scan_byte
+            "'"
+          else
+            nil
+          end
+        end
+      end
+
       def parse_attributes(prefixes)
         attributes = {}
         expanded_names = {}
@@ -785,11 +804,10 @@ module REXML
               message = "Missing attribute equal: <#{name}>"
               raise REXML::ParseException.new(message, @source)
             end
-            unless match = @source.match(/(['"])/, true)
+            unless quote = scan_quote
               message = "Missing attribute value start quote: <#{name}>"
               raise REXML::ParseException.new(message, @source)
             end
-            quote = match[1]
             start_position = @source.position
             value = @source.read_until(quote)
             unless value.chomp!(quote)
