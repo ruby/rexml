@@ -90,10 +90,12 @@
     <li ><a href="#method-i-ensure_buffer">#ensure_buffer</a>
     <li ><a href="#method-i-match">#match</a>
     <li ><a href="#method-i-match-3F">#match?</a>
+    <li ><a href="#method-i-peek_byte">#peek_byte</a>
     <li ><a href="#method-i-position">#position</a>
     <li ><a href="#method-i-position-3D">#position=</a>
     <li ><a href="#method-i-read">#read</a>
     <li ><a href="#method-i-read_until">#read_until</a>
+    <li ><a href="#method-i-scan_byte">#scan_byte</a>
   </ul>
 </div>
 
@@ -245,7 +247,7 @@
           <p>@return the current line in the source</p>
 
           <div class="method-source-code" id="current_line-source">
-            <pre><span class="ruby-comment"># File lib/rexml/source.rb, line 167</span>
+            <pre><span class="ruby-comment"># File lib/rexml/source.rb, line 175</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">current_line</span>
   <span class="ruby-identifier">lines</span> = <span class="ruby-ivar">@orig</span>.<span class="ruby-identifier">split</span>
   <span class="ruby-identifier">res</span> = <span class="ruby-identifier">lines</span>.<span class="ruby-identifier">grep</span> <span class="ruby-ivar">@scanner</span>.<span class="ruby-identifier">rest</span>[<span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-value">30</span>]
@@ -296,7 +298,7 @@
           <p>@return true if the <a href="Source.html"><code>Source</code></a> is exhausted</p>
 
           <div class="method-source-code" id="empty-3F-source">
-            <pre><span class="ruby-comment"># File lib/rexml/source.rb, line 162</span>
+            <pre><span class="ruby-comment"># File lib/rexml/source.rb, line 170</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">empty?</span>
   <span class="ruby-ivar">@scanner</span>.<span class="ruby-identifier">eos?</span>
 <span class="ruby-keyword">end</span></pre>
@@ -410,6 +412,29 @@
 
       </div>
 
+      <div id="method-i-peek_byte" class="method-detail ">
+        <div class="method-header">
+          <div class="method-heading">
+            <span class="method-name">peek_byte</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+        </div>
+
+        <div class="method-description">
+          
+
+          <div class="method-source-code" id="peek_byte-source">
+            <pre><span class="ruby-comment"># File lib/rexml/source.rb, line 161</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">peek_byte</span>
+  <span class="ruby-ivar">@scanner</span>.<span class="ruby-identifier">peek_byte</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+        </div>
+
+
+      </div>
+
       <div id="method-i-position" class="method-detail ">
         <div class="method-header">
           <div class="method-heading">
@@ -500,6 +525,29 @@
     <span class="ruby-ivar">@scanner</span>.<span class="ruby-identifier">pos</span> = <span class="ruby-ivar">@scanner</span>.<span class="ruby-identifier">string</span>.<span class="ruby-identifier">bytesize</span>
   <span class="ruby-keyword">end</span>
   <span class="ruby-identifier">data</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+        </div>
+
+
+      </div>
+
+      <div id="method-i-scan_byte" class="method-detail ">
+        <div class="method-header">
+          <div class="method-heading">
+            <span class="method-name">scan_byte</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+        </div>
+
+        <div class="method-description">
+          
+
+          <div class="method-source-code" id="scan_byte-source">
+            <pre><span class="ruby-comment"># File lib/rexml/source.rb, line 165</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">scan_byte</span>
+  <span class="ruby-ivar">@scanner</span>.<span class="ruby-identifier">scan_byte</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
         </div>
