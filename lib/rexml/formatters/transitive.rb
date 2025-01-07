@@ -12,7 +12,7 @@ module REXML
     # Note that this is only useful if the original XML is not already
     # formatted.  Since this formatter does not alter whitespace nodes, the
     # results of formatting already formatted XML will be odd.
-    class Transitive < REXML::Formatters::Pretty
+    class Transitive < Pretty
       def write_text( node, output )
         output << node.to_s()
       end
