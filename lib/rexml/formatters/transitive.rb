@@ -14,7 +14,7 @@ module REXML
     # results of formatting already formatted XML will be odd.
     class Transitive < Pretty
       def write_text( node, output )
-        output << node.to_s()
+        output << node.to_s().strip
       end
     end
   end
