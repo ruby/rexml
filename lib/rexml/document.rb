@@ -388,6 +388,7 @@ module REXML
       end
       formatter = if indent > -1
           if transitive
+            
             REXML::Formatters::Transitive.new( indent, ie_hack )
           else
             REXML::Formatters::Pretty.new( indent, ie_hack )
