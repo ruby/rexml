@@ -882,6 +882,7 @@ EOL
       ]>
       <a xmlns:three='xxx' three='yyy'><one:b/><three:c/></a>
       EOL
+      assert_equal '<!ATTLIST blah xmlns CDATA "foo">', doc.doctype.children[0].to_s.gsub(/\s+/, " ")
       assert_equal 'gobble', doc.root.attributes['bar']
       assert_equal 'xxx', doc.root.elements[2].namespace
       assert_equal 'two', doc.root.elements[1].namespace

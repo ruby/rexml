@@ -378,7 +378,7 @@ module REXML
               md = @source.match(Private::ATTLISTDECL_END, true)
               raise REXML::ParseException.new( "Bad ATTLIST declaration!", @source ) if md.nil?
               element = md[1]
-              contents = md[0]
+              contents = "<!ATTLIST" + md[0]
 
               pairs = {}
               values = md[0].strip.scan( ATTDEF_RE )
