@@ -16,7 +16,6 @@ group :development do
   # depends on "ostruct" explicitly.
   gem "ostruct"
   gem "rake"
-  gem "rdoc"
 end
 
 group :benchmark do
