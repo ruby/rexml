@@ -3,8 +3,13 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 
 <title>module REXML::Functions - RDoc Documentation</title>
+
+  <meta name="keywords" content="ruby,module,REXML::Functions">
+
+    <meta name="description" content="module REXML::Functions: In the case of context methods (such as position), the function should return an array with a value for each child in the array. XML will have &quot;-&quot; rep">
 
 <script type="text/javascript">
   var rdoc_rel_prefix = "../";
@@ -22,7 +27,12 @@
 
 
 <body id="top" role="document" class="module">
-<nav role="navigation">
+<div id="navigation-toggle" role="button" tabindex="0" aria-label="Toggle sidebar" aria-expanded="true" aria-controls="navigation">
+  <span aria-hidden="true">&#9776;</span>
+</div>
+
+
+<nav id="navigation" role="navigation">
   <div id="project-navigation">
     <div id="home-section" role="region" title="Quick navigation" class="nav-section">
   <h2>
@@ -54,65 +64,70 @@
   </div>
 
   
-
-  <div id="class-metadata">
-    
-    
-    
-    
-    
-<!-- Method Quickref -->
-<div id="method-list-section" class="nav-section">
-  <h3>Methods</h3>
-
-  <ul class="link-list" role="directory">
-    <li ><a href="#method-c-boolean">::boolean</a>
-    <li ><a href="#method-c-ceiling">::ceiling</a>
-    <li ><a href="#method-c-compare_language">::compare_language</a>
-    <li ><a href="#method-c-concat">::concat</a>
-    <li ><a href="#method-c-contains">::contains</a>
-    <li ><a href="#method-c-context-3D">::context=</a>
-    <li ><a href="#method-c-count">::count</a>
-    <li ><a href="#method-c-false">::false</a>
-    <li ><a href="#method-c-floor">::floor</a>
-    <li ><a href="#method-c-get_namespace">::get_namespace</a>
-    <li ><a href="#method-c-id">::id</a>
-    <li ><a href="#method-c-lang">::lang</a>
-    <li ><a href="#method-c-last">::last</a>
-    <li ><a href="#method-c-local_name">::local_name</a>
-    <li ><a href="#method-c-name">::name</a>
-    <li ><a href="#method-c-namespace_context">::namespace_context</a>
-    <li ><a href="#method-c-namespace_context-3D">::namespace_context=</a>
-    <li ><a href="#method-c-namespace_uri">::namespace_uri</a>
-    <li ><a href="#method-c-normalize_space">::normalize_space</a>
-    <li ><a href="#method-c-not">::not</a>
-    <li ><a href="#method-c-number">::number</a>
-    <li ><a href="#method-c-position">::position</a>
-    <li ><a href="#method-c-processing_instruction">::processing_instruction</a>
-    <li ><a href="#method-c-round">::round</a>
-    <li class="calls-super" ><a href="#method-c-send">::send</a>
-    <li ><a href="#method-c-singleton_method_added">::singleton_method_added</a>
-    <li ><a href="#method-c-starts_with">::starts_with</a>
-    <li ><a href="#method-c-string">::string</a>
-    <li ><a href="#method-c-string_length">::string_length</a>
-    <li ><a href="#method-c-string_value">::string_value</a>
-    <li ><a href="#method-c-substring">::substring</a>
-    <li ><a href="#method-c-substring_after">::substring_after</a>
-    <li ><a href="#method-c-substring_before">::substring_before</a>
-    <li ><a href="#method-c-sum">::sum</a>
-    <li ><a href="#method-c-text">::text</a>
-    <li ><a href="#method-c-translate">::translate</a>
-    <li ><a href="#method-c-true">::true</a>
-    <li ><a href="#method-c-variables">::variables</a>
-    <li ><a href="#method-c-variables-3D">::variables=</a>
-  </ul>
-</div>
-
+  
+  
+  
+  
+  
+  <div class="nav-section">
+    <h3>Class Methods</h3>
+    <ul class="link-list" role="directory">
+      <li ><a href="#method-c-boolean">boolean</a></li>
+      <li ><a href="#method-c-ceiling">ceiling</a></li>
+      <li ><a href="#method-c-compare_language">compare_language</a></li>
+      <li ><a href="#method-c-concat">concat</a></li>
+      <li ><a href="#method-c-contains">contains</a></li>
+      <li ><a href="#method-c-context-3D">context=</a></li>
+      <li ><a href="#method-c-count">count</a></li>
+      <li ><a href="#method-c-false">false</a></li>
+      <li ><a href="#method-c-floor">floor</a></li>
+      <li ><a href="#method-c-get_namespace">get_namespace</a></li>
+      <li ><a href="#method-c-id">id</a></li>
+      <li ><a href="#method-c-lang">lang</a></li>
+      <li ><a href="#method-c-last">last</a></li>
+      <li ><a href="#method-c-local_name">local_name</a></li>
+      <li ><a href="#method-c-name">name</a></li>
+      <li ><a href="#method-c-namespace_context">namespace_context</a></li>
+      <li ><a href="#method-c-namespace_context-3D">namespace_context=</a></li>
+      <li ><a href="#method-c-namespace_uri">namespace_uri</a></li>
+      <li ><a href="#method-c-normalize_space">normalize_space</a></li>
+      <li ><a href="#method-c-not">not</a></li>
+      <li ><a href="#method-c-number">number</a></li>
+      <li ><a href="#method-c-position">position</a></li>
+      <li ><a href="#method-c-processing_instruction">processing_instruction</a></li>
+      <li ><a href="#method-c-round">round</a></li>
+      <li class="calls-super" ><a href="#method-c-send">send</a></li>
+      <li ><a href="#method-c-singleton_method_added">singleton_method_added</a></li>
+      <li ><a href="#method-c-starts_with">starts_with</a></li>
+      <li ><a href="#method-c-string">string</a></li>
+      <li ><a href="#method-c-string_length">string_length</a></li>
+      <li ><a href="#method-c-string_value">string_value</a></li>
+      <li ><a href="#method-c-substring">substring</a></li>
+      <li ><a href="#method-c-substring_after">substring_after</a></li>
+      <li ><a href="#method-c-substring_before">substring_before</a></li>
+      <li ><a href="#method-c-sum">sum</a></li>
+      <li ><a href="#method-c-text">text</a></li>
+      <li ><a href="#method-c-translate">translate</a></li>
+      <li ><a href="#method-c-true">true</a></li>
+      <li ><a href="#method-c-variables">variables</a></li>
+      <li ><a href="#method-c-variables-3D">variables=</a></li>
+    </ul>
   </div>
+
+
+
+
+
+  <footer id="validator-badges" role="contentinfo">
+  <p><a href="https://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.11.0.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+</footer>
+
 </nav>
 
 <main role="main" aria-labelledby="module-REXML::Functions">
-  <h1 id="module-REXML::Functions" class="module">
+  <h1 id="module-REXML::Functions" class="anchor-link module">
     module REXML::Functions
   </h1>
 
@@ -122,7 +137,7 @@
 
   </section>
 
-  <section id="5Buntitled-5D" class="documentation-section">
+  <section id="5Buntitled-5D" class="documentation-section anchor-link">
 
 
     <section class="constants-list">
@@ -132,32 +147,40 @@
       <dl>
         <dt id="INTERNAL_METHODS">INTERNAL_METHODS
         <dd>
+          
         <dt id="namespace_context">namespace_context
         <dd>
+          
         <dt id="variables">variables
         <dd>
+          
       </dl>
     </section>
 
 
 
-     <section id="public-class-5Buntitled-5D-method-details" class="method-section">
+     <section id="public-class-5Buntitled-5D-method-details" class="method-section anchor-link">
        <header>
          <h3>Public Class Methods</h3>
        </header>
 
-      <div id="method-c-boolean" class="method-detail ">
+      <div id="method-c-boolean" class="method-detail anchor-link ">
         <div class="method-header">
-          <div class="method-heading">
-            <span class="method-name">boolean</span><span
-              class="method-args">(object=@@context[:node])</span>
-            <span class="method-click-advice">click to toggle source</span>
-          </div>
+            <div class="method-heading">
+              <a href="#method-c-boolean" title="Link to this method">
+                <span class="method-name">boolean</span>
+                <span class="method-args">(object=@@context[:node])</span>
+              </a>
+            </div>
         </div>
 
-        <div class="method-description">
-          
+          <div class="method-controls">
+            <details class="method-source-toggle">
+              <summary>Source</summary>
+            </details>
+          </div>
 
+        <div class="method-description">
           <div class="method-source-code" id="boolean-source">
             <pre><span class="ruby-comment"># File lib/rexml/functions.rb, line 317</span>
 <span class="ruby-keyword">def</span> <span class="ruby-constant">Functions</span><span class="ruby-operator">::</span><span class="ruby-identifier ruby-title">boolean</span>(<span class="ruby-identifier">object</span>=<span class="ruby-identifier">@@context</span>[<span class="ruby-value">:node</span>])
@@ -179,69 +202,87 @@
   <span class="ruby-keyword">end</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
+          
         </div>
 
 
       </div>
 
-      <div id="method-c-ceiling" class="method-detail ">
+      <div id="method-c-ceiling" class="method-detail anchor-link ">
         <div class="method-header">
-          <div class="method-heading">
-            <span class="method-name">ceiling</span><span
-              class="method-args">( number )</span>
-            <span class="method-click-advice">click to toggle source</span>
-          </div>
+            <div class="method-heading">
+              <a href="#method-c-ceiling" title="Link to this method">
+                <span class="method-name">ceiling</span>
+                <span class="method-args">( number )</span>
+              </a>
+            </div>
         </div>
 
-        <div class="method-description">
-          
+          <div class="method-controls">
+            <details class="method-source-toggle">
+              <summary>Source</summary>
+            </details>
+          </div>
 
+        <div class="method-description">
           <div class="method-source-code" id="ceiling-source">
             <pre><span class="ruby-comment"># File lib/rexml/functions.rb, line 417</span>
 <span class="ruby-keyword">def</span> <span class="ruby-constant">Functions</span><span class="ruby-operator">::</span><span class="ruby-identifier ruby-title">ceiling</span>( <span class="ruby-identifier">number</span> )
   <span class="ruby-identifier">number</span>(<span class="ruby-identifier">number</span>).<span class="ruby-identifier">ceil</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
+          
         </div>
 
 
       </div>
 
-      <div id="method-c-compare_language" class="method-detail ">
+      <div id="method-c-compare_language" class="method-detail anchor-link ">
         <div class="method-header">
-          <div class="method-heading">
-            <span class="method-name">compare_language</span><span
-              class="method-args">(lang1, lang2)</span>
-            <span class="method-click-advice">click to toggle source</span>
-          </div>
+            <div class="method-heading">
+              <a href="#method-c-compare_language" title="Link to this method">
+                <span class="method-name">compare_language</span>
+                <span class="method-args">(lang1, lang2)</span>
+              </a>
+            </div>
         </div>
 
-        <div class="method-description">
-          
+          <div class="method-controls">
+            <details class="method-source-toggle">
+              <summary>Source</summary>
+            </details>
+          </div>
 
+        <div class="method-description">
           <div class="method-source-code" id="compare_language-source">
             <pre><span class="ruby-comment"># File lib/rexml/functions.rb, line 370</span>
 <span class="ruby-keyword">def</span> <span class="ruby-constant">Functions</span><span class="ruby-operator">::</span><span class="ruby-identifier ruby-title">compare_language</span> <span class="ruby-identifier">lang1</span>, <span class="ruby-identifier">lang2</span>
   <span class="ruby-identifier">lang2</span>.<span class="ruby-identifier">downcase</span>.<span class="ruby-identifier">index</span>(<span class="ruby-identifier">lang1</span>.<span class="ruby-identifier">downcase</span>) <span class="ruby-operator">==</span> <span class="ruby-value">0</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
+          
         </div>
 
 
       </div>
 
-      <div id="method-c-concat" class="method-detail ">
+      <div id="method-c-concat" class="method-detail anchor-link ">
         <div class="method-header">
-          <div class="method-heading">
-            <span class="method-name">concat</span><span
-              class="method-args">( *objects )</span>
-            <span class="method-click-advice">click to toggle source</span>
-          </div>
+            <div class="method-heading">
+              <a href="#method-c-concat" title="Link to this method">
+                <span class="method-name">concat</span>
+                <span class="method-args">( *objects )</span>
+              </a>
+            </div>
         </div>
 
-        <div class="method-description">
-          
+          <div class="method-controls">
+            <details class="method-source-toggle">
+              <summary>Source</summary>
+            </details>
+          </div>
 
+        <div class="method-description">
           <div class="method-source-code" id="concat-source">
             <pre><span class="ruby-comment"># File lib/rexml/functions.rb, line 190</span>
 <span class="ruby-keyword">def</span> <span class="ruby-constant">Functions</span><span class="ruby-operator">::</span><span class="ruby-identifier ruby-title">concat</span>( <span class="ruby-operator">*</span><span class="ruby-identifier">objects</span> )
@@ -252,136 +293,172 @@
   <span class="ruby-identifier">concatenated</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
+          
         </div>
 
 
       </div>
 
-      <div id="method-c-contains" class="method-detail ">
+      <div id="method-c-contains" class="method-detail anchor-link ">
         <div class="method-header">
-          <div class="method-heading">
-            <span class="method-name">contains</span><span
-              class="method-args">( string, test )</span>
-            <span class="method-click-advice">click to toggle source</span>
-          </div>
+            <div class="method-heading">
+              <a href="#method-c-contains" title="Link to this method">
+                <span class="method-name">contains</span>
+                <span class="method-args">( string, test )</span>
+              </a>
+            </div>
         </div>
 
-        <div class="method-description">
-          <p>Fixed by Mike Stok</p>
+          <div class="method-controls">
+            <details class="method-source-toggle">
+              <summary>Source</summary>
+            </details>
+          </div>
 
+        <div class="method-description">
           <div class="method-source-code" id="contains-source">
             <pre><span class="ruby-comment"># File lib/rexml/functions.rb, line 204</span>
 <span class="ruby-keyword">def</span> <span class="ruby-constant">Functions</span><span class="ruby-operator">::</span><span class="ruby-identifier ruby-title">contains</span>( <span class="ruby-identifier">string</span>, <span class="ruby-identifier">test</span> )
   <span class="ruby-identifier">string</span>(<span class="ruby-identifier">string</span>).<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">string</span>(<span class="ruby-identifier">test</span>))
 <span class="ruby-keyword">end</span></pre>
           </div>
+          <p>Fixed by Mike Stok</p>
         </div>
 
 
       </div>
 
-      <div id="method-c-context-3D" class="method-detail ">
+      <div id="method-c-context-3D" class="method-detail anchor-link ">
         <div class="method-header">
-          <div class="method-heading">
-            <span class="method-name">context=</span><span
-              class="method-args">(value)</span>
-            <span class="method-click-advice">click to toggle source</span>
-          </div>
+            <div class="method-heading">
+              <a href="#method-c-context-3D" title="Link to this method">
+                <span class="method-name">context=</span>
+                <span class="method-args">(value)</span>
+              </a>
+            </div>
         </div>
 
-        <div class="method-description">
-          
+          <div class="method-controls">
+            <details class="method-source-toggle">
+              <summary>Source</summary>
+            </details>
+          </div>
 
+        <div class="method-description">
           <div class="method-source-code" id="context-3D-source">
             <pre><span class="ruby-comment"># File lib/rexml/functions.rb, line 38</span>
 <span class="ruby-keyword">def</span> <span class="ruby-constant">Functions</span><span class="ruby-operator">::</span><span class="ruby-identifier ruby-title">context=</span>(<span class="ruby-identifier">value</span>); <span class="ruby-identifier">@@context</span> = <span class="ruby-identifier">value</span>; <span class="ruby-keyword">end</span></pre>
           </div>
+          
         </div>
 
 
       </div>
 
-      <div id="method-c-count" class="method-detail ">
+      <div id="method-c-count" class="method-detail anchor-link ">
         <div class="method-header">
-          <div class="method-heading">
-            <span class="method-name">count</span><span
-              class="method-args">( node_set )</span>
-            <span class="method-click-advice">click to toggle source</span>
-          </div>
+            <div class="method-heading">
+              <a href="#method-c-count" title="Link to this method">
+                <span class="method-name">count</span>
+                <span class="method-args">( node_set )</span>
+              </a>
+            </div>
         </div>
 
-        <div class="method-description">
-          <p>Returns the size of the given list of nodes.</p>
+          <div class="method-controls">
+            <details class="method-source-toggle">
+              <summary>Source</summary>
+            </details>
+          </div>
 
+        <div class="method-description">
           <div class="method-source-code" id="count-source">
             <pre><span class="ruby-comment"># File lib/rexml/functions.rb, line 60</span>
 <span class="ruby-keyword">def</span> <span class="ruby-constant">Functions</span><span class="ruby-operator">::</span><span class="ruby-identifier ruby-title">count</span>( <span class="ruby-identifier">node_set</span> )
   <span class="ruby-identifier">node_set</span>.<span class="ruby-identifier">size</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
+          <p>Returns the size of the given list of nodes.</p>
         </div>
 
 
       </div>
 
-      <div id="method-c-false" class="method-detail ">
+      <div id="method-c-false" class="method-detail anchor-link ">
         <div class="method-header">
-          <div class="method-heading">
-            <span class="method-name">false</span><span
-              class="method-args">( )</span>
-            <span class="method-click-advice">click to toggle source</span>
-          </div>
+            <div class="method-heading">
+              <a href="#method-c-false" title="Link to this method">
+                <span class="method-name">false</span>
+                <span class="method-args">( )</span>
+              </a>
+            </div>
         </div>
 
-        <div class="method-description">
-          <p>UNTESTED</p>
+          <div class="method-controls">
+            <details class="method-source-toggle">
+              <summary>Source</summary>
+            </details>
+          </div>
 
+        <div class="method-description">
           <div class="method-source-code" id="false-source">
             <pre><span class="ruby-comment"># File lib/rexml/functions.rb, line 347</span>
 <span class="ruby-keyword">def</span> <span class="ruby-constant">Functions</span><span class="ruby-operator">::</span><span class="ruby-keyword">false</span>(  )
   <span class="ruby-keyword">false</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
+          <p>UNTESTED</p>
         </div>
 
 
       </div>
 
-      <div id="method-c-floor" class="method-detail ">
+      <div id="method-c-floor" class="method-detail anchor-link ">
         <div class="method-header">
-          <div class="method-heading">
-            <span class="method-name">floor</span><span
-              class="method-args">( number )</span>
-            <span class="method-click-advice">click to toggle source</span>
-          </div>
+            <div class="method-heading">
+              <a href="#method-c-floor" title="Link to this method">
+                <span class="method-name">floor</span>
+                <span class="method-args">( number )</span>
+              </a>
+            </div>
         </div>
 
-        <div class="method-description">
-          
+          <div class="method-controls">
+            <details class="method-source-toggle">
+              <summary>Source</summary>
+            </details>
+          </div>
 
+        <div class="method-description">
           <div class="method-source-code" id="floor-source">
             <pre><span class="ruby-comment"># File lib/rexml/functions.rb, line 413</span>
 <span class="ruby-keyword">def</span> <span class="ruby-constant">Functions</span><span class="ruby-operator">::</span><span class="ruby-identifier ruby-title">floor</span>( <span class="ruby-identifier">number</span> )
   <span class="ruby-identifier">number</span>(<span class="ruby-identifier">number</span>).<span class="ruby-identifier">floor</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
+          
         </div>
 
 
       </div>
 
-      <div id="method-c-get_namespace" class="method-detail ">
+      <div id="method-c-get_namespace" class="method-detail anchor-link ">
         <div class="method-header">
-          <div class="method-heading">
-            <span class="method-name">get_namespace</span><span
-              class="method-args">( node_set = nil ) { |context| ... }</span>
-            <span class="method-click-advice">click to toggle source</span>
-          </div>
+            <div class="method-heading">
+              <a href="#method-c-get_namespace" title="Link to this method">
+                <span class="method-name">get_namespace</span>
+                <span class="method-args">( node_set = nil ) { |context| ... }</span>
+              </a>
+            </div>
         </div>
 
-        <div class="method-description">
-          <p>Helper method.</p>
+          <div class="method-controls">
+            <details class="method-source-toggle">
+              <summary>Source</summary>
+            </details>
+          </div>
 
+        <div class="method-description">
           <div class="method-source-code" id="get_namespace-source">
             <pre><span class="ruby-comment"># File lib/rexml/functions.rb, line 87</span>
 <span class="ruby-keyword">def</span> <span class="ruby-constant">Functions</span><span class="ruby-operator">::</span><span class="ruby-identifier ruby-title">get_namespace</span>( <span class="ruby-identifier">node_set</span> = <span class="ruby-keyword">nil</span> )
@@ -400,45 +477,57 @@
   <span class="ruby-keyword">end</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
+          <p>Helper method.</p>
         </div>
 
 
       </div>
 
-      <div id="method-c-id" class="method-detail ">
+      <div id="method-c-id" class="method-detail anchor-link ">
         <div class="method-header">
-          <div class="method-heading">
-            <span class="method-name">id</span><span
-              class="method-args">( object )</span>
-            <span class="method-click-advice">click to toggle source</span>
-          </div>
+            <div class="method-heading">
+              <a href="#method-c-id" title="Link to this method">
+                <span class="method-name">id</span>
+                <span class="method-args">( object )</span>
+              </a>
+            </div>
         </div>
 
-        <div class="method-description">
-          <p>Since <a href="../REXML.html"><code>REXML</code></a> is non-validating, this method is not implemented as it requires a <a href="DTD.html"><code>DTD</code></a></p>
+          <div class="method-controls">
+            <details class="method-source-toggle">
+              <summary>Source</summary>
+            </details>
+          </div>
 
+        <div class="method-description">
           <div class="method-source-code" id="id-source">
             <pre><span class="ruby-comment"># File lib/rexml/functions.rb, line 66</span>
 <span class="ruby-keyword">def</span> <span class="ruby-constant">Functions</span><span class="ruby-operator">::</span><span class="ruby-identifier ruby-title">id</span>( <span class="ruby-identifier">object</span> )
 <span class="ruby-keyword">end</span></pre>
           </div>
+          <p>Since <a href="../REXML.html"><code>REXML</code></a> is non-validating, this method is not implemented as it requires a <a href="DTD.html"><code>DTD</code></a></p>
         </div>
 
 
       </div>
 
-      <div id="method-c-lang" class="method-detail ">
+      <div id="method-c-lang" class="method-detail anchor-link ">
         <div class="method-header">
-          <div class="method-heading">
-            <span class="method-name">lang</span><span
-              class="method-args">( language )</span>
-            <span class="method-click-advice">click to toggle source</span>
-          </div>
+            <div class="method-heading">
+              <a href="#method-c-lang" title="Link to this method">
+                <span class="method-name">lang</span>
+                <span class="method-args">( language )</span>
+              </a>
+            </div>
         </div>
 
-        <div class="method-description">
-          <p>UNTESTED</p>
+          <div class="method-controls">
+            <details class="method-source-toggle">
+              <summary>Source</summary>
+            </details>
+          </div>
 
+        <div class="method-description">
           <div class="method-source-code" id="lang-source">
             <pre><span class="ruby-comment"># File lib/rexml/functions.rb, line 352</span>
 <span class="ruby-keyword">def</span> <span class="ruby-constant">Functions</span><span class="ruby-operator">::</span><span class="ruby-identifier ruby-title">lang</span>( <span class="ruby-identifier">language</span> )
@@ -459,46 +548,58 @@
   <span class="ruby-identifier">lang</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
+          <p>UNTESTED</p>
         </div>
 
 
       </div>
 
-      <div id="method-c-last" class="method-detail ">
+      <div id="method-c-last" class="method-detail anchor-link ">
         <div class="method-header">
-          <div class="method-heading">
-            <span class="method-name">last</span><span
-              class="method-args">( )</span>
-            <span class="method-click-advice">click to toggle source</span>
-          </div>
+            <div class="method-heading">
+              <a href="#method-c-last" title="Link to this method">
+                <span class="method-name">last</span>
+                <span class="method-args">( )</span>
+              </a>
+            </div>
         </div>
 
-        <div class="method-description">
-          <p>Returns the last node of the given list of nodes.</p>
+          <div class="method-controls">
+            <details class="method-source-toggle">
+              <summary>Source</summary>
+            </details>
+          </div>
 
+        <div class="method-description">
           <div class="method-source-code" id="last-source">
             <pre><span class="ruby-comment"># File lib/rexml/functions.rb, line 51</span>
 <span class="ruby-keyword">def</span> <span class="ruby-constant">Functions</span><span class="ruby-operator">::</span><span class="ruby-identifier ruby-title">last</span>( )
   <span class="ruby-identifier">@@context</span>[<span class="ruby-value">:size</span>]
 <span class="ruby-keyword">end</span></pre>
           </div>
+          <p>Returns the last node of the given list of nodes.</p>
         </div>
 
 
       </div>
 
-      <div id="method-c-local_name" class="method-detail ">
+      <div id="method-c-local_name" class="method-detail anchor-link ">
         <div class="method-header">
-          <div class="method-heading">
-            <span class="method-name">local_name</span><span
-              class="method-args">(node_set=nil)</span>
-            <span class="method-click-advice">click to toggle source</span>
-          </div>
+            <div class="method-heading">
+              <a href="#method-c-local_name" title="Link to this method">
+                <span class="method-name">local_name</span>
+                <span class="method-args">(node_set=nil)</span>
+              </a>
+            </div>
         </div>
 
-        <div class="method-description">
-          
+          <div class="method-controls">
+            <details class="method-source-toggle">
+              <summary>Source</summary>
+            </details>
+          </div>
 
+        <div class="method-description">
           <div class="method-source-code" id="local_name-source">
             <pre><span class="ruby-comment"># File lib/rexml/functions.rb, line 69</span>
 <span class="ruby-keyword">def</span> <span class="ruby-constant">Functions</span><span class="ruby-operator">::</span><span class="ruby-identifier ruby-title">local_name</span>(<span class="ruby-identifier">node_set</span>=<span class="ruby-keyword">nil</span>)
@@ -508,23 +609,29 @@
   <span class="ruby-string">&quot;&quot;</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
+          
         </div>
 
 
       </div>
 
-      <div id="method-c-name" class="method-detail ">
+      <div id="method-c-name" class="method-detail anchor-link ">
         <div class="method-header">
-          <div class="method-heading">
-            <span class="method-name">name</span><span
-              class="method-args">( node_set=nil )</span>
-            <span class="method-click-advice">click to toggle source</span>
-          </div>
+            <div class="method-heading">
+              <a href="#method-c-name" title="Link to this method">
+                <span class="method-name">name</span>
+                <span class="method-args">( node_set=nil )</span>
+              </a>
+            </div>
         </div>
 
-        <div class="method-description">
-          
+          <div class="method-controls">
+            <details class="method-source-toggle">
+              <summary>Source</summary>
+            </details>
+          </div>
 
+        <div class="method-description">
           <div class="method-source-code" id="name-source">
             <pre><span class="ruby-comment"># File lib/rexml/functions.rb, line 80</span>
 <span class="ruby-keyword">def</span> <span class="ruby-constant">Functions</span><span class="ruby-operator">::</span><span class="ruby-identifier ruby-title">name</span>( <span class="ruby-identifier">node_set</span>=<span class="ruby-keyword">nil</span> )
@@ -533,88 +640,112 @@
   <span class="ruby-keyword">end</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
+          
         </div>
 
 
       </div>
 
-      <div id="method-c-namespace_context" class="method-detail ">
+      <div id="method-c-namespace_context" class="method-detail anchor-link ">
         <div class="method-header">
-          <div class="method-heading">
-            <span class="method-name">namespace_context</span><span
-              class="method-args">()</span>
-            <span class="method-click-advice">click to toggle source</span>
-          </div>
+            <div class="method-heading">
+              <a href="#method-c-namespace_context" title="Link to this method">
+                <span class="method-name">namespace_context</span>
+                <span class="method-args">()</span>
+              </a>
+            </div>
         </div>
 
-        <div class="method-description">
-          
+          <div class="method-controls">
+            <details class="method-source-toggle">
+              <summary>Source</summary>
+            </details>
+          </div>
 
+        <div class="method-description">
           <div class="method-source-code" id="namespace_context-source">
             <pre><span class="ruby-comment"># File lib/rexml/functions.rb, line 35</span>
 <span class="ruby-keyword">def</span> <span class="ruby-constant">Functions</span><span class="ruby-operator">::</span><span class="ruby-identifier ruby-title">namespace_context</span> ; <span class="ruby-identifier">@@namespace_context</span> ; <span class="ruby-keyword">end</span></pre>
           </div>
+          
         </div>
 
 
       </div>
 
-      <div id="method-c-namespace_context-3D" class="method-detail ">
+      <div id="method-c-namespace_context-3D" class="method-detail anchor-link ">
         <div class="method-header">
-          <div class="method-heading">
-            <span class="method-name">namespace_context=</span><span
-              class="method-args">(x)</span>
-            <span class="method-click-advice">click to toggle source</span>
-          </div>
+            <div class="method-heading">
+              <a href="#method-c-namespace_context-3D" title="Link to this method">
+                <span class="method-name">namespace_context=</span>
+                <span class="method-args">(x)</span>
+              </a>
+            </div>
         </div>
 
-        <div class="method-description">
-          
+          <div class="method-controls">
+            <details class="method-source-toggle">
+              <summary>Source</summary>
+            </details>
+          </div>
 
+        <div class="method-description">
           <div class="method-source-code" id="namespace_context-3D-source">
             <pre><span class="ruby-comment"># File lib/rexml/functions.rb, line 33</span>
 <span class="ruby-keyword">def</span> <span class="ruby-constant">Functions</span><span class="ruby-operator">::</span><span class="ruby-identifier ruby-title">namespace_context=</span>(<span class="ruby-identifier">x</span>) ; <span class="ruby-identifier">@@namespace_context</span>=<span class="ruby-identifier">x</span> ; <span class="ruby-keyword">end</span></pre>
           </div>
+          
         </div>
 
 
       </div>
 
-      <div id="method-c-namespace_uri" class="method-detail ">
+      <div id="method-c-namespace_uri" class="method-detail anchor-link ">
         <div class="method-header">
-          <div class="method-heading">
-            <span class="method-name">namespace_uri</span><span
-              class="method-args">( node_set=nil )</span>
-            <span class="method-click-advice">click to toggle source</span>
-          </div>
+            <div class="method-heading">
+              <a href="#method-c-namespace_uri" title="Link to this method">
+                <span class="method-name">namespace_uri</span>
+                <span class="method-args">( node_set=nil )</span>
+              </a>
+            </div>
         </div>
 
-        <div class="method-description">
-          
+          <div class="method-controls">
+            <details class="method-source-toggle">
+              <summary>Source</summary>
+            </details>
+          </div>
 
+        <div class="method-description">
           <div class="method-source-code" id="namespace_uri-source">
             <pre><span class="ruby-comment"># File lib/rexml/functions.rb, line 76</span>
 <span class="ruby-keyword">def</span> <span class="ruby-constant">Functions</span><span class="ruby-operator">::</span><span class="ruby-identifier ruby-title">namespace_uri</span>( <span class="ruby-identifier">node_set</span>=<span class="ruby-keyword">nil</span> )
   <span class="ruby-identifier">get_namespace</span>( <span class="ruby-identifier">node_set</span> ) {<span class="ruby-operator">|</span><span class="ruby-identifier">node</span><span class="ruby-operator">|</span> <span class="ruby-identifier">node</span>.<span class="ruby-identifier">namespace</span>}
 <span class="ruby-keyword">end</span></pre>
           </div>
+          
         </div>
 
 
       </div>
 
-      <div id="method-c-normalize_space" class="method-detail ">
+      <div id="method-c-normalize_space" class="method-detail anchor-link ">
         <div class="method-header">
-          <div class="method-heading">
-            <span class="method-name">normalize_space</span><span
-              class="method-args">( string=nil )</span>
-            <span class="method-click-advice">click to toggle source</span>
-          </div>
+            <div class="method-heading">
+              <a href="#method-c-normalize_space" title="Link to this method">
+                <span class="method-name">normalize_space</span>
+                <span class="method-args">( string=nil )</span>
+              </a>
+            </div>
         </div>
 
-        <div class="method-description">
-          
+          <div class="method-controls">
+            <details class="method-source-toggle">
+              <summary>Source</summary>
+            </details>
+          </div>
 
+        <div class="method-description">
           <div class="method-source-code" id="normalize_space-source">
             <pre><span class="ruby-comment"># File lib/rexml/functions.rb, line 265</span>
 <span class="ruby-keyword">def</span> <span class="ruby-constant">Functions</span><span class="ruby-operator">::</span><span class="ruby-identifier ruby-title">normalize_space</span>( <span class="ruby-identifier">string</span>=<span class="ruby-keyword">nil</span> )
@@ -626,52 +757,58 @@
   <span class="ruby-keyword">end</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
+          
         </div>
 
 
       </div>
 
-      <div id="method-c-not" class="method-detail ">
+      <div id="method-c-not" class="method-detail anchor-link ">
         <div class="method-header">
-          <div class="method-heading">
-            <span class="method-name">not</span><span
-              class="method-args">( object )</span>
-            <span class="method-click-advice">click to toggle source</span>
-          </div>
+            <div class="method-heading">
+              <a href="#method-c-not" title="Link to this method">
+                <span class="method-name">not</span>
+                <span class="method-args">( object )</span>
+              </a>
+            </div>
         </div>
 
-        <div class="method-description">
-          <p>UNTESTED</p>
+          <div class="method-controls">
+            <details class="method-source-toggle">
+              <summary>Source</summary>
+            </details>
+          </div>
 
+        <div class="method-description">
           <div class="method-source-code" id="not-source">
             <pre><span class="ruby-comment"># File lib/rexml/functions.rb, line 337</span>
 <span class="ruby-keyword">def</span> <span class="ruby-constant">Functions</span><span class="ruby-operator">::</span><span class="ruby-keyword">not</span>( <span class="ruby-identifier ruby-title">object</span> )
   <span class="ruby-keyword">not</span> <span class="ruby-identifier">boolean</span>( <span class="ruby-identifier">object</span> )
 <span class="ruby-keyword">end</span></pre>
           </div>
+          <p>UNTESTED</p>
         </div>
 
 
       </div>
 
-      <div id="method-c-number" class="method-detail ">
+      <div id="method-c-number" class="method-detail anchor-link ">
         <div class="method-header">
-          <div class="method-heading">
-            <span class="method-name">number</span><span
-              class="method-args">(object=@@context[:node])</span>
-            <span class="method-click-advice">click to toggle source</span>
-          </div>
+            <div class="method-heading">
+              <a href="#method-c-number" title="Link to this method">
+                <span class="method-name">number</span>
+                <span class="method-args">(object=@@context[:node])</span>
+              </a>
+            </div>
         </div>
 
+          <div class="method-controls">
+            <details class="method-source-toggle">
+              <summary>Source</summary>
+            </details>
+          </div>
+
         <div class="method-description">
-          <p>a string that consists of optional whitespace followed by an optional minus sign followed by a Number followed by whitespace is converted to the IEEE 754 number that is nearest (according to the IEEE 754 round-to-nearest rule) to the mathematical value represented by the string; any other string is converted to NaN</p>
-
-<p>boolean true is converted to 1; boolean false is converted to 0</p>
-
-<p>a node-set is first converted to a string as if by a call to the string function and then converted in the same way as a string argument</p>
-
-<p>an object of a type other than the four basic types is converted to a number in a way that is dependent on that type</p>
-
           <div class="method-source-code" id="number-source">
             <pre><span class="ruby-comment"># File lib/rexml/functions.rb, line 387</span>
 <span class="ruby-keyword">def</span> <span class="ruby-constant">Functions</span><span class="ruby-operator">::</span><span class="ruby-identifier ruby-title">number</span>(<span class="ruby-identifier">object</span>=<span class="ruby-identifier">@@context</span>[<span class="ruby-value">:node</span>])
@@ -695,69 +832,93 @@
   <span class="ruby-keyword">end</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
+          <p>a string that consists of optional whitespace followed by an optional minus sign followed by a Number followed by whitespace is converted to the IEEE 754 number that is nearest (according to the IEEE 754 round-to-nearest rule) to the mathematical value represented by the string; any other string is converted to NaN</p>
+
+<p>boolean true is converted to 1; boolean false is converted to 0</p>
+
+<p>a node-set is first converted to a string as if by a call to the string function and then converted in the same way as a string argument</p>
+
+<p>an object of a type other than the four basic types is converted to a number in a way that is dependent on that type</p>
         </div>
 
 
       </div>
 
-      <div id="method-c-position" class="method-detail ">
+      <div id="method-c-position" class="method-detail anchor-link ">
         <div class="method-header">
-          <div class="method-heading">
-            <span class="method-name">position</span><span
-              class="method-args">( )</span>
-            <span class="method-click-advice">click to toggle source</span>
-          </div>
+            <div class="method-heading">
+              <a href="#method-c-position" title="Link to this method">
+                <span class="method-name">position</span>
+                <span class="method-args">( )</span>
+              </a>
+            </div>
         </div>
 
-        <div class="method-description">
-          
+          <div class="method-controls">
+            <details class="method-source-toggle">
+              <summary>Source</summary>
+            </details>
+          </div>
 
+        <div class="method-description">
           <div class="method-source-code" id="position-source">
             <pre><span class="ruby-comment"># File lib/rexml/functions.rb, line 55</span>
 <span class="ruby-keyword">def</span> <span class="ruby-constant">Functions</span><span class="ruby-operator">::</span><span class="ruby-identifier ruby-title">position</span>( )
   <span class="ruby-identifier">@@context</span>[<span class="ruby-value">:index</span>]
 <span class="ruby-keyword">end</span></pre>
           </div>
+          
         </div>
 
 
       </div>
 
-      <div id="method-c-processing_instruction" class="method-detail ">
+      <div id="method-c-processing_instruction" class="method-detail anchor-link ">
         <div class="method-header">
-          <div class="method-heading">
-            <span class="method-name">processing_instruction</span><span
-              class="method-args">( node )</span>
-            <span class="method-click-advice">click to toggle source</span>
-          </div>
+            <div class="method-heading">
+              <a href="#method-c-processing_instruction" title="Link to this method">
+                <span class="method-name">processing_instruction</span>
+                <span class="method-args">( node )</span>
+              </a>
+            </div>
         </div>
 
-        <div class="method-description">
-          
+          <div class="method-controls">
+            <details class="method-source-toggle">
+              <summary>Source</summary>
+            </details>
+          </div>
 
+        <div class="method-description">
           <div class="method-source-code" id="processing_instruction-source">
             <pre><span class="ruby-comment"># File lib/rexml/functions.rb, line 432</span>
 <span class="ruby-keyword">def</span> <span class="ruby-constant">Functions</span><span class="ruby-operator">::</span><span class="ruby-identifier ruby-title">processing_instruction</span>( <span class="ruby-identifier">node</span> )
   <span class="ruby-identifier">node</span>.<span class="ruby-identifier">node_type</span> <span class="ruby-operator">==</span> <span class="ruby-value">:processing_instruction</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
+          
         </div>
 
 
       </div>
 
-      <div id="method-c-round" class="method-detail ">
+      <div id="method-c-round" class="method-detail anchor-link ">
         <div class="method-header">
-          <div class="method-heading">
-            <span class="method-name">round</span><span
-              class="method-args">( number )</span>
-            <span class="method-click-advice">click to toggle source</span>
-          </div>
+            <div class="method-heading">
+              <a href="#method-c-round" title="Link to this method">
+                <span class="method-name">round</span>
+                <span class="method-args">( number )</span>
+              </a>
+            </div>
         </div>
 
-        <div class="method-description">
-          
+          <div class="method-controls">
+            <details class="method-source-toggle">
+              <summary>Source</summary>
+            </details>
+          </div>
 
+        <div class="method-description">
           <div class="method-source-code" id="round-source">
             <pre><span class="ruby-comment"># File lib/rexml/functions.rb, line 421</span>
 <span class="ruby-keyword">def</span> <span class="ruby-constant">Functions</span><span class="ruby-operator">::</span><span class="ruby-identifier ruby-title">round</span>( <span class="ruby-identifier">number</span> )
@@ -771,27 +932,29 @@
   <span class="ruby-keyword">end</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
+          
         </div>
 
 
       </div>
 
-      <div id="method-c-send" class="method-detail ">
+      <div id="method-c-send" class="method-detail anchor-link ">
         <div class="method-header">
-          <div class="method-heading">
-            <span class="method-name">send</span><span
-              class="method-args">(name, *args)</span>
-            <span class="method-click-advice">click to toggle source</span>
-          </div>
+            <div class="method-heading">
+              <a href="#method-c-send" title="Link to this method">
+                <span class="method-name">send</span>
+                <span class="method-args">(name, *args)</span>
+              </a>
+            </div>
         </div>
 
-        <div class="method-description">
-          
-            <div class="method-calls-super">
-              Calls superclass method
-              
-            </div>
+          <div class="method-controls">
+            <details class="method-source-toggle">
+              <summary>Source</summary>
+            </details>
+          </div>
 
+        <div class="method-description">
           <div class="method-source-code" id="send-source">
             <pre><span class="ruby-comment"># File lib/rexml/functions.rb, line 436</span>
 <span class="ruby-keyword">def</span> <span class="ruby-constant">Functions</span><span class="ruby-operator">::</span><span class="ruby-identifier ruby-title">send</span>(<span class="ruby-identifier">name</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
@@ -804,23 +967,33 @@
   <span class="ruby-keyword">end</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
+          
+            <div class="method-calls-super">
+              Calls superclass method
+              
+            </div>
         </div>
 
 
       </div>
 
-      <div id="method-c-singleton_method_added" class="method-detail ">
+      <div id="method-c-singleton_method_added" class="method-detail anchor-link ">
         <div class="method-header">
-          <div class="method-heading">
-            <span class="method-name">singleton_method_added</span><span
-              class="method-args">(name)</span>
-            <span class="method-click-advice">click to toggle source</span>
-          </div>
+            <div class="method-heading">
+              <a href="#method-c-singleton_method_added" title="Link to this method">
+                <span class="method-name">singleton_method_added</span>
+                <span class="method-args">(name)</span>
+              </a>
+            </div>
         </div>
 
-        <div class="method-description">
-          
+          <div class="method-controls">
+            <details class="method-source-toggle">
+              <summary>Source</summary>
+            </details>
+          </div>
 
+        <div class="method-description">
           <div class="method-source-code" id="singleton_method_added-source">
             <pre><span class="ruby-comment"># File lib/rexml/functions.rb, line 26</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">singleton_method_added</span>(<span class="ruby-identifier">name</span>)
@@ -829,66 +1002,58 @@
   <span class="ruby-keyword">end</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
+          
         </div>
 
 
       </div>
 
-      <div id="method-c-starts_with" class="method-detail ">
+      <div id="method-c-starts_with" class="method-detail anchor-link ">
         <div class="method-header">
-          <div class="method-heading">
-            <span class="method-name">starts_with</span><span
-              class="method-args">( string, test )</span>
-            <span class="method-click-advice">click to toggle source</span>
-          </div>
+            <div class="method-heading">
+              <a href="#method-c-starts_with" title="Link to this method">
+                <span class="method-name">starts_with</span>
+                <span class="method-args">( string, test )</span>
+              </a>
+            </div>
         </div>
 
-        <div class="method-description">
-          <p>Fixed by Mike Stok</p>
+          <div class="method-controls">
+            <details class="method-source-toggle">
+              <summary>Source</summary>
+            </details>
+          </div>
 
+        <div class="method-description">
           <div class="method-source-code" id="starts_with-source">
             <pre><span class="ruby-comment"># File lib/rexml/functions.rb, line 199</span>
 <span class="ruby-keyword">def</span> <span class="ruby-constant">Functions</span><span class="ruby-operator">::</span><span class="ruby-identifier ruby-title">starts_with</span>( <span class="ruby-identifier">string</span>, <span class="ruby-identifier">test</span> )
   <span class="ruby-identifier">string</span>(<span class="ruby-identifier">string</span>).<span class="ruby-identifier">index</span>(<span class="ruby-identifier">string</span>(<span class="ruby-identifier">test</span>)) <span class="ruby-operator">==</span> <span class="ruby-value">0</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
+          <p>Fixed by Mike Stok</p>
         </div>
 
 
       </div>
 
-      <div id="method-c-string" class="method-detail ">
+      <div id="method-c-string" class="method-detail anchor-link ">
         <div class="method-header">
-          <div class="method-heading">
-            <span class="method-name">string</span><span
-              class="method-args">( object=@@context[:node] )</span>
-            <span class="method-click-advice">click to toggle source</span>
-          </div>
+            <div class="method-heading">
+              <a href="#method-c-string" title="Link to this method">
+                <span class="method-name">string</span>
+                <span class="method-args">( object=@@context[:node] )</span>
+              </a>
+            </div>
         </div>
 
+          <div class="method-controls">
+            <details class="method-source-toggle">
+              <summary>Source</summary>
+            </details>
+          </div>
+
         <div class="method-description">
-          <p>A node-set is converted to a string by returning the string-value of the node in the node-set that is first in document order. If the node-set is empty, an empty string is returned.</p>
-
-<p>A number is converted to a string as follows</p>
-
-<p>NaN is converted to the string NaN</p>
-
-<p>positive zero is converted to the string 0</p>
-
-<p>negative zero is converted to the string 0</p>
-
-<p>positive infinity is converted to the string Infinity</p>
-
-<p>negative infinity is converted to the string -Infinity</p>
-
-<p>if the number is an integer, the number is represented in decimal form as a Number with no decimal point and no leading zeros, preceded by a minus sign (-) if the number is negative</p>
-
-<p>otherwise, the number is represented in decimal form as a Number including a decimal point with at least one digit before the decimal point and at least one digit after the decimal point, preceded by a minus sign (-) if the number is negative; there must be no leading zeros before the decimal point apart possibly from the one required digit immediately before the decimal point; beyond the one required digit after the decimal point there must be as many, but only as many, more digits as are needed to uniquely distinguish the number from all other IEEE 754 numeric values.</p>
-
-<p>The boolean false value is converted to the string false. The boolean true value is converted to the string true.</p>
-
-<p>An object of a type other than the four basic types is converted to a string in a way that is dependent on that type.</p>
-
           <div class="method-source-code" id="string-source">
             <pre><span class="ruby-comment"># File lib/rexml/functions.rb, line 138</span>
 <span class="ruby-keyword">def</span> <span class="ruby-constant">Functions</span><span class="ruby-operator">::</span><span class="ruby-identifier ruby-title">string</span>( <span class="ruby-identifier">object</span>=<span class="ruby-identifier">@@context</span>[<span class="ruby-value">:node</span>] )
@@ -926,46 +1091,78 @@
   <span class="ruby-keyword">end</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
+          <p>A node-set is converted to a string by returning the string-value of the node in the node-set that is first in document order. If the node-set is empty, an empty string is returned.</p>
+
+<p>A number is converted to a string as follows</p>
+
+<p>NaN is converted to the string NaN</p>
+
+<p>positive zero is converted to the string 0</p>
+
+<p>negative zero is converted to the string 0</p>
+
+<p>positive infinity is converted to the string Infinity</p>
+
+<p>negative infinity is converted to the string -Infinity</p>
+
+<p>if the number is an integer, the number is represented in decimal form as a Number with no decimal point and no leading zeros, preceded by a minus sign (-) if the number is negative</p>
+
+<p>otherwise, the number is represented in decimal form as a Number including a decimal point with at least one digit before the decimal point and at least one digit after the decimal point, preceded by a minus sign (-) if the number is negative; there must be no leading zeros before the decimal point apart possibly from the one required digit immediately before the decimal point; beyond the one required digit after the decimal point there must be as many, but only as many, more digits as are needed to uniquely distinguish the number from all other IEEE 754 numeric values.</p>
+
+<p>The boolean false value is converted to the string false. The boolean true value is converted to the string true.</p>
+
+<p>An object of a type other than the four basic types is converted to a string in a way that is dependent on that type.</p>
         </div>
 
 
       </div>
 
-      <div id="method-c-string_length" class="method-detail ">
+      <div id="method-c-string_length" class="method-detail anchor-link ">
         <div class="method-header">
-          <div class="method-heading">
-            <span class="method-name">string_length</span><span
-              class="method-args">( string )</span>
-            <span class="method-click-advice">click to toggle source</span>
-          </div>
+            <div class="method-heading">
+              <a href="#method-c-string_length" title="Link to this method">
+                <span class="method-name">string_length</span>
+                <span class="method-args">( string )</span>
+              </a>
+            </div>
         </div>
 
-        <div class="method-description">
-          <p>UNTESTED</p>
+          <div class="method-controls">
+            <details class="method-source-toggle">
+              <summary>Source</summary>
+            </details>
+          </div>
 
+        <div class="method-description">
           <div class="method-source-code" id="string_length-source">
             <pre><span class="ruby-comment"># File lib/rexml/functions.rb, line 261</span>
 <span class="ruby-keyword">def</span> <span class="ruby-constant">Functions</span><span class="ruby-operator">::</span><span class="ruby-identifier ruby-title">string_length</span>( <span class="ruby-identifier">string</span> )
   <span class="ruby-identifier">string</span>(<span class="ruby-identifier">string</span>).<span class="ruby-identifier">length</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
+          <p>UNTESTED</p>
         </div>
 
 
       </div>
 
-      <div id="method-c-string_value" class="method-detail ">
+      <div id="method-c-string_value" class="method-detail anchor-link ">
         <div class="method-header">
-          <div class="method-heading">
-            <span class="method-name">string_value</span><span
-              class="method-args">( o )</span>
-            <span class="method-click-advice">click to toggle source</span>
-          </div>
+            <div class="method-heading">
+              <a href="#method-c-string_value" title="Link to this method">
+                <span class="method-name">string_value</span>
+                <span class="method-args">( o )</span>
+              </a>
+            </div>
         </div>
 
-        <div class="method-description">
-          <p>A node-set is converted to a string by returning the concatenation of the string-value of each of the children of the node in the node-set that is first in document order. If the node-set is empty, an empty string is returned.</p>
+          <div class="method-controls">
+            <details class="method-source-toggle">
+              <summary>Source</summary>
+            </details>
+          </div>
 
+        <div class="method-description">
           <div class="method-source-code" id="string_value-source">
             <pre><span class="ruby-comment"># File lib/rexml/functions.rb, line 178</span>
 <span class="ruby-keyword">def</span> <span class="ruby-constant">Functions</span><span class="ruby-operator">::</span><span class="ruby-identifier ruby-title">string_value</span>( <span class="ruby-identifier">o</span> )
@@ -980,23 +1177,29 @@
   <span class="ruby-identifier">rv</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
+          <p>A node-set is converted to a string by returning the concatenation of the string-value of each of the children of the node in the node-set that is first in document order. If the node-set is empty, an empty string is returned.</p>
         </div>
 
 
       </div>
 
-      <div id="method-c-substring" class="method-detail ">
+      <div id="method-c-substring" class="method-detail anchor-link ">
         <div class="method-header">
-          <div class="method-heading">
-            <span class="method-name">substring</span><span
-              class="method-args">( string, start, length=nil )</span>
-            <span class="method-click-advice">click to toggle source</span>
-          </div>
+            <div class="method-heading">
+              <a href="#method-c-substring" title="Link to this method">
+                <span class="method-name">substring</span>
+                <span class="method-args">( string, start, length=nil )</span>
+              </a>
+            </div>
         </div>
 
-        <div class="method-description">
-          <p>Take equal portions of Mike Stok and Sean Russell; mix vigorously, and pour into a tall, chilled glass.  Serves 10,000.</p>
+          <div class="method-controls">
+            <details class="method-source-toggle">
+              <summary>Source</summary>
+            </details>
+          </div>
 
+        <div class="method-description">
           <div class="method-source-code" id="substring-source">
             <pre><span class="ruby-comment"># File lib/rexml/functions.rb, line 228</span>
 <span class="ruby-keyword">def</span> <span class="ruby-constant">Functions</span><span class="ruby-operator">::</span><span class="ruby-identifier ruby-title">substring</span>( <span class="ruby-identifier">string</span>, <span class="ruby-identifier">start</span>, <span class="ruby-identifier">length</span>=<span class="ruby-keyword">nil</span> )
@@ -1031,23 +1234,29 @@
   <span class="ruby-identifier">ruby_string</span>[<span class="ruby-identifier">ruby_start</span>,<span class="ruby-identifier">ruby_length</span>]
 <span class="ruby-keyword">end</span></pre>
           </div>
+          <p>Take equal portions of Mike Stok and Sean Russell; mix vigorously, and pour into a tall, chilled glass.  Serves 10,000.</p>
         </div>
 
 
       </div>
 
-      <div id="method-c-substring_after" class="method-detail ">
+      <div id="method-c-substring_after" class="method-detail anchor-link ">
         <div class="method-header">
-          <div class="method-heading">
-            <span class="method-name">substring_after</span><span
-              class="method-args">( string, test )</span>
-            <span class="method-click-advice">click to toggle source</span>
-          </div>
+            <div class="method-heading">
+              <a href="#method-c-substring_after" title="Link to this method">
+                <span class="method-name">substring_after</span>
+                <span class="method-args">( string, test )</span>
+              </a>
+            </div>
         </div>
 
-        <div class="method-description">
-          <p>Kouhei fixed this too</p>
+          <div class="method-controls">
+            <details class="method-source-toggle">
+              <summary>Source</summary>
+            </details>
+          </div>
 
+        <div class="method-description">
           <div class="method-source-code" id="substring_after-source">
             <pre><span class="ruby-comment"># File lib/rexml/functions.rb, line 220</span>
 <span class="ruby-keyword">def</span> <span class="ruby-constant">Functions</span><span class="ruby-operator">::</span><span class="ruby-identifier ruby-title">substring_after</span>( <span class="ruby-identifier">string</span>, <span class="ruby-identifier">test</span> )
@@ -1056,23 +1265,29 @@
   <span class="ruby-string">&quot;&quot;</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
+          <p>Kouhei fixed this too</p>
         </div>
 
 
       </div>
 
-      <div id="method-c-substring_before" class="method-detail ">
+      <div id="method-c-substring_before" class="method-detail anchor-link ">
         <div class="method-header">
-          <div class="method-heading">
-            <span class="method-name">substring_before</span><span
-              class="method-args">( string, test )</span>
-            <span class="method-click-advice">click to toggle source</span>
-          </div>
+            <div class="method-heading">
+              <a href="#method-c-substring_before" title="Link to this method">
+                <span class="method-name">substring_before</span>
+                <span class="method-args">( string, test )</span>
+              </a>
+            </div>
         </div>
 
-        <div class="method-description">
-          <p>Kouhei fixed this</p>
+          <div class="method-controls">
+            <details class="method-source-toggle">
+              <summary>Source</summary>
+            </details>
+          </div>
 
+        <div class="method-description">
           <div class="method-source-code" id="substring_before-source">
             <pre><span class="ruby-comment"># File lib/rexml/functions.rb, line 209</span>
 <span class="ruby-keyword">def</span> <span class="ruby-constant">Functions</span><span class="ruby-operator">::</span><span class="ruby-identifier ruby-title">substring_before</span>( <span class="ruby-identifier">string</span>, <span class="ruby-identifier">test</span> )
@@ -1085,23 +1300,29 @@
   <span class="ruby-keyword">end</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
+          <p>Kouhei fixed this</p>
         </div>
 
 
       </div>
 
-      <div id="method-c-sum" class="method-detail ">
+      <div id="method-c-sum" class="method-detail anchor-link ">
         <div class="method-header">
-          <div class="method-heading">
-            <span class="method-name">sum</span><span
-              class="method-args">( nodes )</span>
-            <span class="method-click-advice">click to toggle source</span>
-          </div>
+            <div class="method-heading">
+              <a href="#method-c-sum" title="Link to this method">
+                <span class="method-name">sum</span>
+                <span class="method-args">( nodes )</span>
+              </a>
+            </div>
         </div>
 
-        <div class="method-description">
-          
+          <div class="method-controls">
+            <details class="method-source-toggle">
+              <summary>Source</summary>
+            </details>
+          </div>
 
+        <div class="method-description">
           <div class="method-source-code" id="sum-source">
             <pre><span class="ruby-comment"># File lib/rexml/functions.rb, line 408</span>
 <span class="ruby-keyword">def</span> <span class="ruby-constant">Functions</span><span class="ruby-operator">::</span><span class="ruby-identifier ruby-title">sum</span>( <span class="ruby-identifier">nodes</span> )
@@ -1109,23 +1330,29 @@
   <span class="ruby-identifier">nodes</span>.<span class="ruby-identifier">inject</span>(<span class="ruby-value">0</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">r</span>,<span class="ruby-identifier">n</span><span class="ruby-operator">|</span> <span class="ruby-identifier">r</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">number</span>(<span class="ruby-identifier">string</span>(<span class="ruby-identifier">n</span>)) }
 <span class="ruby-keyword">end</span></pre>
           </div>
+          
         </div>
 
 
       </div>
 
-      <div id="method-c-text" class="method-detail ">
+      <div id="method-c-text" class="method-detail anchor-link ">
         <div class="method-header">
-          <div class="method-heading">
-            <span class="method-name">text</span><span
-              class="method-args">( )</span>
-            <span class="method-click-advice">click to toggle source</span>
-          </div>
+            <div class="method-heading">
+              <a href="#method-c-text" title="Link to this method">
+                <span class="method-name">text</span>
+                <span class="method-args">( )</span>
+              </a>
+            </div>
         </div>
 
-        <div class="method-description">
-          
+          <div class="method-controls">
+            <details class="method-source-toggle">
+              <summary>Source</summary>
+            </details>
+          </div>
 
+        <div class="method-description">
           <div class="method-source-code" id="text-source">
             <pre><span class="ruby-comment"># File lib/rexml/functions.rb, line 40</span>
 <span class="ruby-keyword">def</span> <span class="ruby-constant">Functions</span><span class="ruby-operator">::</span><span class="ruby-identifier ruby-title">text</span>( )
@@ -1138,23 +1365,29 @@
   <span class="ruby-keyword">end</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
+          
         </div>
 
 
       </div>
 
-      <div id="method-c-translate" class="method-detail ">
+      <div id="method-c-translate" class="method-detail anchor-link ">
         <div class="method-header">
-          <div class="method-heading">
-            <span class="method-name">translate</span><span
-              class="method-args">( string, tr1, tr2 )</span>
-            <span class="method-click-advice">click to toggle source</span>
-          </div>
+            <div class="method-heading">
+              <a href="#method-c-translate" title="Link to this method">
+                <span class="method-name">translate</span>
+                <span class="method-args">( string, tr1, tr2 )</span>
+              </a>
+            </div>
         </div>
 
-        <div class="method-description">
-          <p>This is entirely Mike Stok’s beast</p>
+          <div class="method-controls">
+            <details class="method-source-toggle">
+              <summary>Source</summary>
+            </details>
+          </div>
 
+        <div class="method-description">
           <div class="method-source-code" id="translate-source">
             <pre><span class="ruby-comment"># File lib/rexml/functions.rb, line 275</span>
 <span class="ruby-keyword">def</span> <span class="ruby-constant">Functions</span><span class="ruby-operator">::</span><span class="ruby-identifier ruby-title">translate</span>( <span class="ruby-identifier">string</span>, <span class="ruby-identifier">tr1</span>, <span class="ruby-identifier">tr2</span> )
@@ -1199,71 +1432,90 @@
   <span class="ruby-keyword">end</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
+          <p>This is entirely Mike Stok’s beast</p>
         </div>
 
 
       </div>
 
-      <div id="method-c-true" class="method-detail ">
+      <div id="method-c-true" class="method-detail anchor-link ">
         <div class="method-header">
-          <div class="method-heading">
-            <span class="method-name">true</span><span
-              class="method-args">( )</span>
-            <span class="method-click-advice">click to toggle source</span>
-          </div>
+            <div class="method-heading">
+              <a href="#method-c-true" title="Link to this method">
+                <span class="method-name">true</span>
+                <span class="method-args">( )</span>
+              </a>
+            </div>
         </div>
 
-        <div class="method-description">
-          <p>UNTESTED</p>
+          <div class="method-controls">
+            <details class="method-source-toggle">
+              <summary>Source</summary>
+            </details>
+          </div>
 
+        <div class="method-description">
           <div class="method-source-code" id="true-source">
             <pre><span class="ruby-comment"># File lib/rexml/functions.rb, line 342</span>
 <span class="ruby-keyword">def</span> <span class="ruby-constant">Functions</span><span class="ruby-operator">::</span><span class="ruby-keyword">true</span>( )
   <span class="ruby-keyword">true</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
+          <p>UNTESTED</p>
         </div>
 
 
       </div>
 
-      <div id="method-c-variables" class="method-detail ">
+      <div id="method-c-variables" class="method-detail anchor-link ">
         <div class="method-header">
-          <div class="method-heading">
-            <span class="method-name">variables</span><span
-              class="method-args">()</span>
-            <span class="method-click-advice">click to toggle source</span>
-          </div>
+            <div class="method-heading">
+              <a href="#method-c-variables" title="Link to this method">
+                <span class="method-name">variables</span>
+                <span class="method-args">()</span>
+              </a>
+            </div>
         </div>
 
-        <div class="method-description">
-          
+          <div class="method-controls">
+            <details class="method-source-toggle">
+              <summary>Source</summary>
+            </details>
+          </div>
 
+        <div class="method-description">
           <div class="method-source-code" id="variables-source">
             <pre><span class="ruby-comment"># File lib/rexml/functions.rb, line 36</span>
 <span class="ruby-keyword">def</span> <span class="ruby-constant">Functions</span><span class="ruby-operator">::</span><span class="ruby-identifier ruby-title">variables</span> ; <span class="ruby-identifier">@@variables</span> ; <span class="ruby-keyword">end</span></pre>
           </div>
+          
         </div>
 
 
       </div>
 
-      <div id="method-c-variables-3D" class="method-detail ">
+      <div id="method-c-variables-3D" class="method-detail anchor-link ">
         <div class="method-header">
-          <div class="method-heading">
-            <span class="method-name">variables=</span><span
-              class="method-args">(x)</span>
-            <span class="method-click-advice">click to toggle source</span>
-          </div>
+            <div class="method-heading">
+              <a href="#method-c-variables-3D" title="Link to this method">
+                <span class="method-name">variables=</span>
+                <span class="method-args">(x)</span>
+              </a>
+            </div>
         </div>
 
-        <div class="method-description">
-          
+          <div class="method-controls">
+            <details class="method-source-toggle">
+              <summary>Source</summary>
+            </details>
+          </div>
 
+        <div class="method-description">
           <div class="method-source-code" id="variables-3D-source">
             <pre><span class="ruby-comment"># File lib/rexml/functions.rb, line 34</span>
 <span class="ruby-keyword">def</span> <span class="ruby-constant">Functions</span><span class="ruby-operator">::</span><span class="ruby-identifier ruby-title">variables=</span>(<span class="ruby-identifier">x</span>) ; <span class="ruby-identifier">@@variables</span>=<span class="ruby-identifier">x</span> ; <span class="ruby-keyword">end</span></pre>
           </div>
+          
         </div>
 
 
@@ -1273,11 +1525,4 @@
 
   </section>
 </main>
-
-
-<footer id="validator-badges" role="contentinfo">
-  <p><a href="https://validator.w3.org/check/referer">Validate</a>
-  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.6.3.1.
-  <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
-</footer>
 
