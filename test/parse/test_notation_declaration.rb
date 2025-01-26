@@ -80,7 +80,7 @@ Malformed notation declaration: invalid ID type
 Line: 5
 Position: 85
 Last 80 unconsumed characters:
- INVALID>  ]> <r/> 
+INVALID>  ]> <r/> 
         DETAIL
       end
     end
@@ -98,7 +98,7 @@ Malformed notation declaration: system literal is missing
 Line: 5
 Position: 84
 Last 80 unconsumed characters:
- SYSTEM>  ]> <r/> 
+>  ]> <r/> 
           DETAIL
         end
 
@@ -145,7 +145,7 @@ Malformed notation declaration: invalid public ID literal
 Line: 5
 Position: 129
 Last 80 unconsumed characters:
- PUBLIC 'double quote " is invalid' "system-literal">  ]> <r/> 
+ 'double quote " is invalid' "system-literal">  ]> <r/> 
             DETAIL
           end
 
@@ -229,7 +229,7 @@ Malformed notation declaration: public ID literal is missing
 Line: 5
 Position: 84
 Last 80 unconsumed characters:
- PUBLIC>  ]> <r/> 
+>  ]> <r/> 
         DETAIL
       end
 
@@ -244,7 +244,7 @@ Malformed notation declaration: invalid public ID literal
 Line: 5
 Position: 128
 Last 80 unconsumed characters:
- PUBLIC 'double quote \" is invalid in PubidLiteral'>  ]> <r/> 
+ 'double quote \" is invalid in PubidLiteral'>  ]> <r/> 
         DETAIL
       end
 

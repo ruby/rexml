@@ -153,7 +153,7 @@ Malformed DOCTYPE: system literal is missing
 Line: 3
 Position: 26
 Last 80 unconsumed characters:
-SYSTEM>  <r/> 
+>  <r/> 
           DETAIL
         end
 
@@ -200,7 +200,7 @@ Malformed DOCTYPE: invalid public ID literal
 Line: 3
 Position: 62
 Last 80 unconsumed characters:
-PUBLIC 'double quote " is invalid' "r.dtd">  <r/> 
+ 'double quote " is invalid' "r.dtd">  <r/> 
             DETAIL
           end
 

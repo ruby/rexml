@@ -696,36 +696,35 @@ module REXML
 
       def parse_id_invalid_details(accept_external_id:,
                                    accept_public_id:)
-        public = /\A\s*PUBLIC/um
-        system = /\A\s*SYSTEM/um
-        if (accept_external_id or accept_public_id) and @source.match?(/#{public}/um)
-          if @source.match?(/#{public}(?:\s+[^'"]|\s*[\[>])/um)
+        @source.skip_spaces
+        if (accept_external_id or accept_public_id) and @source.match?("PUBLIC", true)
+          if @source.match?(/(?:\s+[^'"]|\s*[\[>])/um)
             return "public ID literal is missing"
           end
-          unless @source.match?(/#{public}\s+#{PUBIDLITERAL}/um)
+          unless @source.match?(/\s+#{PUBIDLITERAL}/um)
             return "invalid public ID literal"
           end
           if accept_public_id
-            if @source.match?(/#{public}\s+#{PUBIDLITERAL}\s+[^'"]/um)
+            if @source.match?(/\s+#{PUBIDLITERAL}\s+[^'"]/um)
               return "system ID literal is missing"
             end
-            unless @source.match?(/#{public}\s+#{PUBIDLITERAL}\s+#{SYSTEMLITERAL}/um)
+            unless @source.match?(/\s+#{PUBIDLITERAL}\s+#{SYSTEMLITERAL}/um)
               return "invalid system literal"
             end
             "garbage after system literal"
           else
             "garbage after public ID literal"
           end
-        elsif accept_external_id and @source.match?(/#{system}/um)
-          if @source.match?(/#{system}(?:\s+[^'"]|\s*[\[>])/um)
+        elsif accept_external_id and @source.match?("SYSTEM", true)
+          if @source.match?(/(?:\s+[^'"]|\s*[\[>])/um)
             return "system literal is missing"
           end
-          unless @source.match?(/#{system}\s+#{SYSTEMLITERAL}/um)
+          unless @source.match?(/\s+#{SYSTEMLITERAL}/um)
             return "invalid system literal"
           end
           "garbage after system literal"
         else
-          unless @source.match?(/\A\s*(?:PUBLIC|SYSTEM)\s/um)
+          unless @source.match?(/(?:PUBLIC|SYSTEM)\s/um)
             return "invalid ID type"
           end
           "ID type is missing"
