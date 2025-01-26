@@ -153,7 +153,7 @@ Malformed DOCTYPE: system literal is missing
 Line: 3
 Position: 26
 Last 80 unconsumed characters:
- SYSTEM>  <r/> 
+SYSTEM>  <r/> 
           DETAIL
         end
 
@@ -200,7 +200,7 @@ Malformed DOCTYPE: invalid public ID literal
 Line: 3
 Position: 62
 Last 80 unconsumed characters:
- PUBLIC 'double quote " is invalid' "r.dtd">  <r/> 
+PUBLIC 'double quote " is invalid' "r.dtd">  <r/> 
             DETAIL
           end
 
@@ -228,10 +228,10 @@ Last 80 unconsumed characters:
             end
             assert_equal(<<-DETAIL.chomp, exception.to_s)
 Malformed DOCTYPE: garbage after external ID
-Line: 3
-Position: 65
+Line: 1
+Position: 58
 Last 80 unconsumed characters:
-x'>  <r/> 
+x'>
            DETAIL
           end
 

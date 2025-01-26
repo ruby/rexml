@@ -297,10 +297,11 @@ module REXML
                 raise REXML::ParseException.new(message, @source)
               end
               name = parse_name(base_error_message)
-              if @source.match?(/\s*\[/um, true)
+              @source.match?(/\s*/um, true) # skip spaces
+              if @source.match?("[", true)
                 id = [nil, nil, nil]
                 @document_status = :in_doctype
-              elsif @source.match?(/\s*>/um, true)
+              elsif @source.match?(">", true)
                 id = [nil, nil, nil]
                 @document_status = :after_doctype
                 @source.ensure_buffer
@@ -312,9 +313,10 @@ module REXML
                   # For backward compatibility
                   id[1], id[2] = id[2], nil
                 end
-                if @source.match?(/\s*\[/um, true)
+                @source.match?(/\s*/um, true) # skip spaces
+                if @source.match?("[", true)
                   @document_status = :in_doctype
-                elsif @source.match?(/\s*>/um, true)
+                elsif @source.match?(">", true)
                   @document_status = :after_doctype
                   @source.ensure_buffer
                 else
@@ -409,7 +411,8 @@ module REXML
               id = parse_id(base_error_message,
                             accept_external_id: true,
                             accept_public_id: true)
-              unless @source.match?(/\s*>/um, true)
+              @source.match?(/\s*/um, true) # skip spaces
+              unless @source.match?(">", true)
                 message = "#{base_error_message}: garbage before end >"
                 raise REXML::ParseException.new(message, @source)
               end
