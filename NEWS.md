@@ -1,5 +1,29 @@
 # News
 
+## 3.4.1 - 2025-02-16 {#version-3-4-1}
+
+### Improvement
+
+  * Improved performance.
+    * GH-226
+    * GH-227
+    * GH-237
+    * Patch by NAITOH Jun
+
+### Fixes
+
+  * Fix serialization of ATTLIST is incorrect
+    * GH-233
+    * GH-234
+    * Patch by OlofKalufs
+    * Reported by OlofKalufs
+
+### Thanks
+
+  * NAITOH Jun
+
+  * OlofKalufs
+
 ## 3.4.0 - 2024-12-15 {#version-3-4-0}
 
 ### Improvement
