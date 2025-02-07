@@ -1,12 +1,14 @@
 require "rdoc/task"
-
 require "bundler/gem_tasks"
+require "rake/testtask"
 
 spec = Bundler::GemHelper.gemspec
 
-desc "Run test"
-task :test do
-  ruby("test/run.rb")
+Rake::TestTask.new do |t|
+  t.verbose = true
+  t.libs << "lib"
+  t.ruby_opts << ["-r", "./test/helper.rb"]
+  t.test_files = FileList["test/**/test_*.rb"]
 end
 
 task :default => :test
