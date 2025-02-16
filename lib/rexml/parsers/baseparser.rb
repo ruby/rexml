@@ -733,10 +733,7 @@ module REXML
           if @source.match?(/(?:\s+[^'"]|\s*[\[>])/um)
             return "system literal is missing"
           end
-          unless @source.match?(Private::EXTERNAL_ID_SYSTEM_PATTERN)
-            return "invalid system literal"
-          end
-          return "garbage after system literal"
+          return "invalid system literal"
         end
         "ID type is missing"
       end

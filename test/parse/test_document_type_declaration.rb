@@ -157,6 +157,21 @@ Last 80 unconsumed characters:
           DETAIL
         end
 
+        def test_garbage_invalid_system_literal
+          exception = assert_raise(REXML::ParseException) do
+            parse(<<-DOCTYPE)
+<!DOCTYPE r SYSTEM '
+            DOCTYPE
+          end
+          assert_equal(<<-DETAIL.chomp, exception.to_s)
+Malformed DOCTYPE: invalid system literal
+Line: 3
+Position: 27
+Last 80 unconsumed characters:
+ '  <r/> 
+          DETAIL
+        end
+
         def test_garbage_after_literal
           exception = assert_raise(REXML::ParseException) do
             parse(<<-DOCTYPE)
