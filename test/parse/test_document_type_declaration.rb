@@ -235,6 +235,21 @@ Last 80 unconsumed characters:
         end
 
         class TestSystemLiteral < self
+          def test_garbage_after_public_ID_literal
+            exception = assert_raise(REXML::ParseException) do
+              parse(<<-DOCTYPE)
+<!DOCTYPE r PUBLIC "public-id-literal" 'system>
+              DOCTYPE
+            end
+            assert_equal(<<-DETAIL.chomp, exception.to_s)
+Malformed DOCTYPE: garbage after public ID literal
+Line: 3
+Position: 54
+Last 80 unconsumed characters:
+ "public-id-literal" 'system>  <r/> 
+            DETAIL
+          end
+
           def test_garbage_after_literal
             exception = assert_raise(REXML::ParseException) do
               parse(<<-DOCTYPE)
