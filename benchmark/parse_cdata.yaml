@@ -1,0 +1,50 @@
+loop_count: 100
+contexts:
+  - gems:
+      rexml: 3.2.6
+    require: false
+    prelude: require 'rexml'
+  - name: master
+    prelude: |
+      $LOAD_PATH.unshift(File.expand_path("lib"))
+      require 'rexml'
+  - name: 3.2.6(YJIT)
+    gems:
+      rexml: 3.2.6
+    require: false
+    prelude: |
+      require 'rexml'
+      RubyVM::YJIT.enable
+  - name: master(YJIT)
+    prelude: |
+      $LOAD_PATH.unshift(File.expand_path("lib"))
+      require 'rexml'
+      RubyVM::YJIT.enable
+
+prelude: |
+  require 'rexml/document'
+  require 'rexml/parsers/sax2parser'
+  require 'rexml/parsers/pullparser'
+  require 'rexml/parsers/streamparser'
+  require 'rexml/streamlistener'
+
+  def build_xml(size)
+    xml = "<?xml version=\"1.0\"?>\n" +
+           "<root>Test</root>\n" +
+           "<![CDATA[" + "a" * size + "]]>\n"
+  end
+  xml = build_xml(100000)
+
+  class Listener
+    include REXML::StreamListener
+  end
+
+benchmark:
+  'dom'        : REXML::Document.new(xml)
+  'sax'        : REXML::Parsers::SAX2Parser.new(xml).parse
+  'pull'       : |
+    parser = REXML::Parsers::PullParser.new(xml)
+    while parser.has_next?
+      parser.pull
+    end
+  'stream'     : REXML::Parsers::StreamParser.new(xml, Listener.new).parse
