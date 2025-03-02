@@ -277,14 +277,7 @@ module REXML
             return process_instruction
           elsif @source.match?("<!", true)
             if @source.match?("--", true)
-              md = @source.match(/(.*?)-->/um, true)
-              if md.nil?
-                raise REXML::ParseException.new("Unclosed comment", @source)
-              end
-              if /--|-\z/.match?(md[1])
-                raise REXML::ParseException.new("Malformed comment", @source)
-              end
-              return [ :comment, md[1] ]
+              return [ :comment, process_comment ]
             elsif @source.match?("DOCTYPE", true)
               base_error_message = "Malformed DOCTYPE"
               unless @source.match?(/\s+/um, true)
@@ -417,12 +410,8 @@ module REXML
                 raise REXML::ParseException.new(message, @source)
               end
               return [:notationdecl, name, *id]
-            elsif md = @source.match(/--(.*?)-->/um, true)
-              case md[1]
-              when /--/, /-\z/
-                raise REXML::ParseException.new("Malformed comment", @source)
-              end
-              return [ :comment, md[1] ] if md
+            elsif @source.match?("--", true)
+              return [ :comment, process_comment ]
             end
           elsif match = @source.match(/(%.*?;)\s*/um, true)
             return [ :externalentity, match[1] ]
@@ -463,14 +452,8 @@ module REXML
               md = @source.match(/([^>]*>)/um)
               #STDERR.puts "SOURCE BUFFER = #{source.buffer}, #{source.buffer.size}"
               raise REXML::ParseException.new("Malformed node", @source) unless md
-              if md[0][0] == ?-
-                md = @source.match(/--(.*?)-->/um, true)
-
-                if md.nil? || /--|-\z/.match?(md[1])
-                  raise REXML::ParseException.new("Malformed comment", @source)
-                end
-
-                return [ :comment, md[1] ]
+              if @source.match?("--", true)
+                return [ :comment, process_comment ]
               elsif @source.match?("[CDATA[", true)
                 text = @source.read_until("]]>")
                 if text.chomp!("]]>")
@@ -736,6 +719,18 @@ module REXML
           end
           "ID type is missing"
         end
+      end
+
+      def process_comment
+        text = @source.read_until("-->")
+        unless text.chomp!("-->")
+          raise REXML::ParseException.new("Unclosed comment: Missing end '-->'", @source)
+        end
+
+        if text.include? "--" or text.end_with?("-")
+          raise REXML::ParseException.new("Malformed comment", @source)
+        end
+        text
       end
 
       def process_instruction

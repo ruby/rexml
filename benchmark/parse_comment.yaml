@@ -1,0 +1,36 @@
+loop_count: 100
+contexts:
+  - gems:
+      rexml: 3.2.6
+    require: false
+    prelude: require 'rexml'
+  - name: master
+    prelude: |
+      $LOAD_PATH.unshift(File.expand_path("lib"))
+      require 'rexml'
+  - name: 3.2.6(YJIT)
+    gems:
+      rexml: 3.2.6
+    require: false
+    prelude: |
+      require 'rexml'
+      RubyVM::YJIT.enable
+  - name: master(YJIT)
+    prelude: |
+      $LOAD_PATH.unshift(File.expand_path("lib"))
+      require 'rexml'
+      RubyVM::YJIT.enable
+
+prelude: |
+  require 'rexml/document'
+
+  SIZE = 100000
+
+  top_level_xml     = "<!--" + "a" * SIZE + "-->\n"
+  in_doctype_xml    = "<!DOCTYPE foo [<!--" + "a" * SIZE + "-->]>"
+  after_doctype_xml = "<root/><!--" + "a" * SIZE + "-->"
+
+benchmark:
+  'top_level'      : REXML::Document.new(top_level_xml)
+  'in_doctype'     : REXML::Document.new(in_doctype_xml)
+  'after_doctype'  : REXML::Document.new(after_doctype_xml)
