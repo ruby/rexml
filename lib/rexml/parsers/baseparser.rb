@@ -471,9 +471,13 @@ module REXML
                 end
 
                 return [ :comment, md[1] ]
-              else
-                md = @source.match(/\[CDATA\[(.*?)\]\]>/um, true)
-                return [ :cdata, md[1] ] if md
+              elsif @source.match?("[CDATA[", true)
+                text = @source.read_until("]]>")
+                if text.chomp!("]]>")
+                  return [ :cdata, text ]
+                else
+                  raise REXML::ParseException.new("Malformed CDATA: Missing end ']]>'", @source)
+                end
               end
               raise REXML::ParseException.new( "Declarations can only occur "+
                 "in the doctype declaration.", @source)
