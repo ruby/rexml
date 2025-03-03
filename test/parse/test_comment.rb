@@ -84,6 +84,19 @@ module REXMLTests
         DETAIL
       end
 
+      def test_after_doctype_malformed_node
+        exception = assert_raise(REXML::ParseException) do
+          parse("<a><!a")
+        end
+        assert_equal(<<~DETAIL.chomp, exception.to_s)
+          Malformed node: Started with '<!' but not a comment nor CDATA
+          Line: 1
+          Position: 6
+          Last 80 unconsumed characters:
+          a
+        DETAIL
+      end
+
       def test_after_doctype_unclosed_comment
         exception = assert_raise(REXML::ParseException) do
           parse("<a><!-->")
