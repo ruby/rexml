@@ -17,7 +17,7 @@ module REXMLTests
           parse("<!--")
         end
         assert_equal(<<~DETAIL, exception.to_s)
-          Unclosed comment
+          Unclosed comment: Missing end '-->'
           Line: 1
           Position: 4
           Last 80 unconsumed characters:
@@ -48,6 +48,18 @@ module REXMLTests
         DETAIL
       end
 
+      def test_doctype_unclosed_comment
+        exception = assert_raise(REXML::ParseException) do
+          parse("<!DOCTYPE foo [<!--")
+        end
+        assert_equal(<<~DETAIL, exception.to_s)
+          Unclosed comment: Missing end '-->'
+          Line: 1
+          Position: 19
+          Last 80 unconsumed characters:
+        DETAIL
+      end
+
       def test_doctype_malformed_comment_inner
         exception = assert_raise(REXML::ParseException) do
           parse("<!DOCTYPE foo [<!-- -- -->")
@@ -72,16 +84,15 @@ module REXMLTests
         DETAIL
       end
 
-      def test_after_doctype_malformed_comment_short
+      def test_after_doctype_unclosed_comment
         exception = assert_raise(REXML::ParseException) do
           parse("<a><!-->")
         end
-        assert_equal(<<~DETAIL.chomp, exception.to_s)
-          Malformed comment
+        assert_equal(<<~DETAIL, exception.to_s)
+          Unclosed comment: Missing end '-->'
           Line: 1
           Position: 8
           Last 80 unconsumed characters:
-          -->
         DETAIL
       end
 
