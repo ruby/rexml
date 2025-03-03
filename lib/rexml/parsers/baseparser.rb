@@ -449,9 +449,7 @@ module REXML
               end
               return [ :end_element, last_tag ]
             elsif @source.match?("!", true)
-              md = @source.match(/([^>]*>)/um)
               #STDERR.puts "SOURCE BUFFER = #{source.buffer}, #{source.buffer.size}"
-              raise REXML::ParseException.new("Malformed node", @source) unless md
               if @source.match?("--", true)
                 return [ :comment, process_comment ]
               elsif @source.match?("[CDATA[", true)
@@ -462,8 +460,7 @@ module REXML
                   raise REXML::ParseException.new("Malformed CDATA: Missing end ']]>'", @source)
                 end
               end
-              raise REXML::ParseException.new( "Declarations can only occur "+
-                "in the doctype declaration.", @source)
+              raise REXML::ParseException.new("Malformed node", @source)
             elsif @source.match?("?", true)
               return process_instruction
             else
