@@ -412,6 +412,8 @@ module REXML
               return [:notationdecl, name, *id]
             elsif @source.match?("--", true)
               return [ :comment, process_comment ]
+            else
+              raise REXML::ParseException.new("Malformed node: Started with '<!' but not a comment nor ELEMENT,ENTITY,ATTLIST,NOTATION", @source)
             end
           elsif match = @source.match(/(%.*?;)\s*/um, true)
             return [ :externalentity, match[1] ]
