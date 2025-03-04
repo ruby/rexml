@@ -420,8 +420,7 @@ module REXML
           elsif @source.match?(/\]\s*>/um, true)
             @document_status = :after_doctype
             return [ :end_doctype ]
-          end
-          if @document_status == :in_doctype
+          else
             raise ParseException.new("Malformed DOCTYPE: invalid declaration", @source)
           end
         end
