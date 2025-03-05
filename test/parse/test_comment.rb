@@ -48,6 +48,19 @@ module REXMLTests
         DETAIL
       end
 
+      def test_doctype_malformed_node
+        exception = assert_raise(REXML::ParseException) do
+          parse("<!DOCTYPE foo [<!a")
+        end
+        assert_equal(<<~DETAIL.chomp, exception.to_s)
+          Malformed node: Started with '<!' but not a comment nor ELEMENT,ENTITY,ATTLIST,NOTATION
+          Line: 1
+          Position: 18
+          Last 80 unconsumed characters:
+          a
+        DETAIL
+      end
+
       def test_doctype_unclosed_comment
         exception = assert_raise(REXML::ParseException) do
           parse("<!DOCTYPE foo [<!--")

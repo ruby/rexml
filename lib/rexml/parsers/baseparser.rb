@@ -412,14 +412,15 @@ module REXML
               return [:notationdecl, name, *id]
             elsif @source.match?("--", true)
               return [ :comment, process_comment ]
+            else
+              raise REXML::ParseException.new("Malformed node: Started with '<!' but not a comment nor ELEMENT,ENTITY,ATTLIST,NOTATION", @source)
             end
           elsif match = @source.match(/(%.*?;)\s*/um, true)
             return [ :externalentity, match[1] ]
           elsif @source.match?(/\]\s*>/um, true)
             @document_status = :after_doctype
             return [ :end_doctype ]
-          end
-          if @document_status == :in_doctype
+          else
             raise ParseException.new("Malformed DOCTYPE: invalid declaration", @source)
           end
         end
