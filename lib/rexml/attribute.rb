@@ -206,6 +206,10 @@ module REXML
       path += "/@#{self.expanded_name}"
       return path
     end
+
+    def document
+      @element&.document
+    end
   end
 end
 #vim:ts=2 sw=2 noexpandtab:
