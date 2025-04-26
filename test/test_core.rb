@@ -653,17 +653,22 @@ Last 80 unconsumed characters:
       assert_equal "<sean:blah>Some text</sean:blah>", out
     end
 
-
     def test_add_namespace
       e = Element.new 'a'
+      assert_equal("", e.namespace)
+      assert_nil(e.namespace('foo'))
       e.add_namespace 'someuri'
       e.add_namespace 'foo', 'otheruri'
       e.add_namespace 'xmlns:bar', 'thirduri'
-      assert_equal 'someuri', e.attributes['xmlns']
-      assert_equal 'otheruri', e.attributes['xmlns:foo']
-      assert_equal 'thirduri', e.attributes['xmlns:bar']
+      assert_equal("someuri", e.namespace)
+      assert_equal("otheruri", e.namespace('foo'))
+      assert_equal("otheruri", e.namespace('xmlns:foo'))
+      assert_equal("thirduri", e.namespace('bar'))
+      assert_equal("thirduri", e.namespace('xmlns:bar'))
+      assert_equal('someuri', e.attributes['xmlns'])
+      assert_equal('otheruri', e.attributes['xmlns:foo'])
+      assert_equal('thirduri', e.attributes['xmlns:bar'])
     end
-
 
     def test_big_documentation
       d = File.open(fixture_path("documentation.xml")) {|f| Document.new f }
@@ -764,9 +769,15 @@ Last 80 unconsumed characters:
 
     def test_delete_namespace
       doc = Document.new "<a xmlns='1' xmlns:x='2'/>"
+      assert_equal("1", doc.root.namespace)
+      assert_equal("2", doc.root.namespace('x'))
+      assert_equal("2", doc.root.namespace('xmlns:x'))
       doc.root.delete_namespace
       doc.root.delete_namespace 'x'
-      assert_equal "<a/>", doc.to_s
+      assert_equal("<a/>", doc.to_s)
+      assert_equal("", doc.root.namespace)
+      assert_nil(doc.root.namespace('x'))
+      assert_nil(doc.root.namespace('xmlns:x'))
     end
 
     def test_each_element_with_attribute
