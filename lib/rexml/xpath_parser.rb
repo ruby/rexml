@@ -78,7 +78,15 @@ module REXML
 
     def parse path, node
       path_stack = @parser.parse( path )
-      match( path_stack, node )
+      if node.is_a?(Array)
+        Kernel.warn("REXML::XPath.each, REXML::XPath.first, REXML::XPath.match dropped support for nodeset...", uplevel: 1)
+        return [] if node.empty?
+        node = node.first
+      end
+
+      node.document.__send__(:enable_cache) do
+        match( path_stack, node )
+      end
     end
 
     def get_first path, node
@@ -137,11 +145,6 @@ module REXML
 
 
     def match(path_stack, node)
-      if node.is_a?(Array)
-        Kernel.warn("REXML::XPath.each, REXML::XPath.first, REXML::XPath.match dropped support for nodeset...", uplevel: 1)
-        return [] if node.empty?
-        node = node.first
-      end
       nodeset = [XPathNode.new(node, position: 1)]
       result = expr(path_stack, nodeset)
       case result
@@ -494,14 +497,10 @@ module REXML
                 if strict?
                   raw_node.name == name and raw_node.namespace == ""
                 else
-                  # FIXME: This DOUBLES the time XPath searches take
-                  ns = get_namespace(raw_node, prefix)
-                  raw_node.name == name and raw_node.namespace == ns
+                  raw_node.name == name and raw_node.namespace == get_namespace(raw_node, prefix)
                 end
               else
-                # FIXME: This DOUBLES the time XPath searches take
-                ns = get_namespace(raw_node, prefix)
-                raw_node.name == name and raw_node.namespace == ns
+                raw_node.name == name and raw_node.namespace == get_namespace(raw_node, prefix)
               end
             when :attribute
               if prefix.nil?
@@ -509,9 +508,7 @@ module REXML
               elsif prefix.empty?
                 raw_node.name == name and raw_node.namespace == ""
               else
-                # FIXME: This DOUBLES the time XPath searches take
-                ns = get_namespace(raw_node.element, prefix)
-                raw_node.name == name and raw_node.namespace == ns
+                raw_node.name == name and raw_node.namespace == get_namespace(raw_node.element, prefix)
               end
             else
               false

@@ -589,10 +589,12 @@ module REXML
     #   d.elements['//c'].namespaces # => {"x"=>"1", "y"=>"2", "z"=>"3"}
     #
     def namespaces
-      namespaces = {}
-      namespaces = parent.namespaces if parent
-      namespaces = namespaces.merge( attributes.namespaces )
-      return namespaces
+      namespaces_cache = document&.__send__(:namespaces_cache)
+      if namespaces_cache
+        namespaces_cache[self] ||= calculate_namespaces
+      else
+        calculate_namespaces
+      end
     end
 
     # :call-seq:
@@ -619,17 +621,9 @@ module REXML
       if prefix.nil?
         prefix = prefix()
       end
-      if prefix == ''
-        prefix = "xmlns"
-      else
-        prefix = "xmlns:#{prefix}" unless prefix[0,5] == 'xmlns'
-      end
-      ns = nil
-      target = self
-      while ns.nil? and target
-        ns = target.attributes[prefix]
-        target = target.parent
-      end
+      prefix = (prefix == '') ? 'xmlns' : prefix.delete_prefix("xmlns:")
+      ns = namespaces[prefix]
+
       ns = '' if ns.nil? and prefix == 'xmlns'
       return ns
     end
@@ -1516,8 +1510,15 @@ module REXML
       formatter.write( self, output )
     end
 
-
     private
+    def calculate_namespaces
+      if parent
+        parent.namespaces.merge(attributes.namespaces)
+      else
+        attributes.namespaces
+      end
+    end
+
     def __to_xpath_helper node
       rv = node.expanded_name.clone
       if node.parent

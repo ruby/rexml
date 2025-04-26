@@ -448,6 +448,20 @@ module REXML
     end
 
     private
+
+    attr_accessor :namespaces_cache
+
+    # New document level cache is created and available in this block.
+    # This API is thread unsafe. Users can't change this document in this block.
+    def enable_cache
+      @namespaces_cache = {}
+      begin
+        yield
+      ensure
+        @namespaces_cache = nil
+      end
+    end
+
     def build( source )
       Parsers::TreeParser.new( source, self ).parse
     end
