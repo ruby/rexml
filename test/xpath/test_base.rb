@@ -411,9 +411,10 @@ module REXMLTests
 
       s = "<a><b><c id='1'/></b><b><b><c id='2'/><c id='3'/></b><c id='4'/></b><c id='NOMATCH'><c id='5'/></c></a>"
       d = REXML::Document.new(s)
-      c = REXML::XPath.match( d, "//c[@id = '5']")
-      cs = REXML::XPath.match( c, "preceding::c" )
-      assert_equal( 4, cs.length )
+      c = REXML::XPath.match(d, "//c[@id = '5']")
+      assert_equal(1, c.length)
+      cs = REXML::XPath.match(c.first, "preceding::c")
+      assert_equal(4, cs.length)
     end
 
     def test_following

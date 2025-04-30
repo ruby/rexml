@@ -56,7 +56,9 @@ module REXMLTests
 
     # processes a tests/document/context node
     def process_context(doc, context)
-      test_context = XPath.match(doc, context.attributes["select"])
+      matched = XPath.match(doc, context.attributes["select"])
+      assert_equal(matched.size, 1)
+      test_context = matched.first
       namespaces = context.namespaces
       namespaces.delete("var")
       namespaces = nil if namespaces.empty?
@@ -104,7 +106,8 @@ module REXMLTests
       end
 
       XPath.each(test, "valueOf") do |value_of|
-        process_value_of(matched, variables, namespaces, value_of)
+        assert_equal(1, matched.size)
+        process_value_of(matched.first, variables, namespaces, value_of)
       end
     end
 
@@ -118,10 +121,8 @@ module REXMLTests
 
     def user_message(context, xpath, matched)
       message = ""
-      context.each_with_index do |node, i|
-        message << "Node#{i}:\n"
-        message << "#{node}\n"
-      end
+      message << "Node:\n"
+      message << "#{context}\n"
       message << "XPath: <#{xpath}>\n"
       message << "Matched <#{matched}>"
       message
