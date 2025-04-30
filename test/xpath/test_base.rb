@@ -409,6 +409,10 @@ module REXMLTests
       assert_equal("c", matches[0].name)
       assert_equal("b", matches[1].name)
 
+      d = REXML::Document.new("<a><b/><c/><d/><d/></a>")
+      cs = REXML::XPath.match(d, "a/d/preceding::node()")
+      assert_equal(["d", "c", "c", "b", "b"], cs.map(&:name))
+
       s = "<a><b><c id='1'/></b><b><b><c id='2'/><c id='3'/></b><c id='4'/></b><c id='NOMATCH'><c id='5'/></c></a>"
       d = REXML::Document.new(s)
       c = REXML::XPath.match( d, "//c[@id = '5']")
