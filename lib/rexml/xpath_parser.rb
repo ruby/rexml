@@ -671,7 +671,7 @@ module REXML
         if order == :forward
           index
         else
-          -index
+          index.map(&:-@)
         end
       end
       ordered.collect do |_index, node|

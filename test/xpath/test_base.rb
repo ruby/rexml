@@ -416,6 +416,12 @@ module REXMLTests
       assert_equal( 4, cs.length )
     end
 
+    def test_preceding_sibling
+      d = REXML::Document.new("<a><b><c/><d/><x/></b><b><e/><x/></b></a>")
+      matches = REXML::XPath.match(d, "a/b/x/preceding-sibling::node()")
+      assert_equal(["e", "d", "c"], matches.map(&:name))
+    end
+
     def test_following
       d = Document.new "<a><b id='0'/><b/><b><c id='1'/><c id='2'/></b><b id='1'/></a>"
       start = XPath.first( d, "/a/b[@id='0']" )
