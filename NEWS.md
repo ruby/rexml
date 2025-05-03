@@ -386,7 +386,7 @@
 
     * Patch by NAITOH Jun.
 
-  * Improved parse performance when an attribute has many `<`s.
+  * Improved parse performance when an attribute has many `>`s.
 
     * GH-126
 
