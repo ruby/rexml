@@ -137,6 +137,11 @@ module REXML
 
 
     def match(path_stack, node)
+      if node.is_a?(Array)
+        Kernel.warn("REXML::XPath.each, REXML::XPath.first, REXML::XPath.match dropped support for nodeset...", uplevel: 1)
+        return [] if node.empty?
+        node = node.first
+      end
       nodeset = [XPathNode.new(node, position: 1)]
       result = expr(path_stack, nodeset)
       case result

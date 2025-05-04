@@ -1159,5 +1159,15 @@ EOF
       end
       assert_equal(["/"], hrefs, "Bug #3842 [ruby-core:32447]")
     end
+
+    def test_match_with_deprecated_usage
+      verbose, $VERBOSE = $VERBOSE, nil
+      doc = Document.new("<a><b/></a>")
+      assert_equal(['b'], XPath.match([doc, doc], '//b').map(&:name))
+      assert_equal(['b'], XPath.match([doc], '//b').map(&:name))
+      assert_equal([], XPath.match([], '//b').map(&:name))
+    ensure
+      $VERBOSE = verbose
+    end
   end
 end
