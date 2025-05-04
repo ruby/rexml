@@ -144,7 +144,7 @@ module REXML
       result = expr(path_stack, nodeset)
       case result
       when Array # nodeset
-        unnode(result)
+        unnode(result).uniq
       else
         [result]
       end

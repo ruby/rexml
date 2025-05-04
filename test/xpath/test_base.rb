@@ -416,10 +416,101 @@ module REXMLTests
       assert_equal( 4, cs.length )
     end
 
-    def test_preceding_sibling
-      d = REXML::Document.new("<a><b><c/><d/><x/></b><b><e/><x/></b></a>")
-      matches = REXML::XPath.match(d, "a/b/x/preceding-sibling::node()")
+    def test_preceding_multiple
+      source = <<-XML
+<a>
+  <b/><c/><d/><d/><e/><f/>
+</a>
+      XML
+      doc = REXML::Document.new(source)
+      matches = REXML::XPath.match(doc, "a/d/preceding::*")
+      assert_equal(["d", "c", "b"], matches.map(&:name))
+    end
+
+    def test_following_multiple
+      source = <<-XML
+<a>
+  <b/><c/><d/><d/><e/><f/>
+</a>
+      XML
+      doc = REXML::Document.new(source)
+      matches = REXML::XPath.match(doc, "a/d/following::*")
+      assert_equal(["d", "e", "f"], matches.map(&:name))
+    end
+
+    def test_following_sibling_across_multiple_nodes
+      source = <<-XML
+<a>
+  <b>
+    <x/><c/><d/>
+  </b>
+  <b>
+    <x/><e/>
+  </b>
+</a>
+      XML
+      doc = REXML::Document.new(source)
+      matches = REXML::XPath.match(doc, "a/b/x/following-sibling::*")
+      assert_equal(["c", "d", "e"], matches.map(&:name))
+    end
+
+    def test_following_sibling_within_single_node
+      source = <<-XML
+<a>
+  <b>
+    <x/><c/><d/><x/><e/>
+  </b>
+</a>
+      XML
+      doc = REXML::Document.new(source)
+      matches = REXML::XPath.match(doc, "a/b/x/following-sibling::*")
+      assert_equal(["c", "d", "x", "e"], matches.map(&:name))
+    end
+
+    def test_following_sibling_predicates
+      source = <<-XML
+<div>
+  <div>
+    <a/><w/>
+  </div>
+  <a/><x/>
+  <a/><y/>
+  <a/><z/>
+</div>
+      XML
+      doc = REXML::Document.new(source)
+      # Finds a node flowing <a/>
+      matches = REXML::XPath.match(doc, "//a/following-sibling::*[1]")
+      assert_equal(["w", "x", "y", "z"], matches.map(&:name))
+    end
+
+    def test_preceding_sibling_across_multiple_nodes
+      source = <<-XML
+<a>
+  <b>
+    <c/><d/><x/>
+  </b>
+  <b>
+    <e/><x/>
+  </b>
+</a>
+      XML
+      doc = REXML::Document.new(source)
+      matches = REXML::XPath.match(doc, "a/b/x/preceding-sibling::*")
       assert_equal(["e", "d", "c"], matches.map(&:name))
+    end
+
+    def test_preceding_sibling_within_single_node
+      source = <<-XML
+<a>
+  <b>
+    <c/><d/><x/><e/><x/>
+  </b>
+</a>
+      XML
+      doc = REXML::Document.new(source)
+      matches = REXML::XPath.match(doc, "a/b/x/preceding-sibling::*")
+      assert_equal(["e", "x", "d", "c"], matches.map(&:name))
     end
 
     def test_following
