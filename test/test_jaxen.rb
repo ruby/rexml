@@ -103,6 +103,8 @@ module REXMLTests
         assert_equal(Integer(expected, 10),
                      matched.size,
                      user_message(context, xpath, matched))
+      else
+        assert_operator(matched.size, :>, 0, user_message(context, xpath, matched))
       end
 
       XPath.each(test, "valueOf") do |value_of|
