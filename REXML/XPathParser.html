@@ -357,7 +357,7 @@
   <span class="ruby-identifier">result</span> = <span class="ruby-identifier">expr</span>(<span class="ruby-identifier">path_stack</span>, <span class="ruby-identifier">nodeset</span>)
   <span class="ruby-keyword">case</span> <span class="ruby-identifier">result</span>
   <span class="ruby-keyword">when</span> <span class="ruby-constant">Array</span> <span class="ruby-comment"># nodeset</span>
-    <span class="ruby-identifier">unnode</span>(<span class="ruby-identifier">result</span>)
+    <span class="ruby-identifier">unnode</span>(<span class="ruby-identifier">result</span>).<span class="ruby-identifier">uniq</span>
   <span class="ruby-keyword">else</span>
     [<span class="ruby-identifier">result</span>]
   <span class="ruby-keyword">end</span>
