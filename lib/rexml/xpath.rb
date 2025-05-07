@@ -35,7 +35,6 @@ module REXML
       parser.namespaces = namespaces
       parser.variables = variables
       path = "*" unless path
-      element = [element] unless element.kind_of? Array
       parser.parse(path, element).flatten[0]
     end
 
@@ -64,7 +63,6 @@ module REXML
       parser.namespaces = namespaces
       parser.variables = variables
       path = "*" unless path
-      element = [element] unless element.kind_of? Array
       parser.parse(path, element).each( &block )
     end
 
@@ -74,7 +72,6 @@ module REXML
       parser.namespaces = namespaces
       parser.variables = variables
       path = "*" unless path
-      element = [element] unless element.kind_of? Array
       parser.parse(path,element)
     end
   end

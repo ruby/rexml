@@ -411,9 +411,10 @@ module REXMLTests
 
       s = "<a><b><c id='1'/></b><b><b><c id='2'/><c id='3'/></b><c id='4'/></b><c id='NOMATCH'><c id='5'/></c></a>"
       d = REXML::Document.new(s)
-      c = REXML::XPath.match( d, "//c[@id = '5']")
-      cs = REXML::XPath.match( c, "preceding::c" )
-      assert_equal( 4, cs.length )
+      c = REXML::XPath.match(d, "//c[@id = '5']")
+      assert_equal(1, c.length)
+      cs = REXML::XPath.match(c.first, "preceding::c")
+      assert_equal(4, cs.length)
     end
 
     def test_preceding_multiple
@@ -1254,6 +1255,16 @@ EOF
         hrefs << element.attributes["href"]
       end
       assert_equal(["/"], hrefs, "Bug #3842 [ruby-core:32447]")
+    end
+
+    def test_match_with_deprecated_usage
+      verbose, $VERBOSE = $VERBOSE, nil
+      doc = Document.new("<a><b/></a>")
+      assert_equal(['b'], XPath.match([doc, doc], '//b').map(&:name))
+      assert_equal(['b'], XPath.match([doc], '//b').map(&:name))
+      assert_equal([], XPath.match([], '//b').map(&:name))
+    ensure
+      $VERBOSE = verbose
     end
   end
 end

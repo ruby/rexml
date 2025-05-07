@@ -76,19 +76,19 @@ module REXML
       @variables = vars
     end
 
-    def parse path, nodeset
+    def parse path, node
       path_stack = @parser.parse( path )
-      match( path_stack, nodeset )
+      match( path_stack, node )
     end
 
-    def get_first path, nodeset
+    def get_first path, node
       path_stack = @parser.parse( path )
-      first( path_stack, nodeset )
+      first( path_stack, node )
     end
 
-    def predicate path, nodeset
+    def predicate path, node
       path_stack = @parser.parse( path )
-      match( path_stack, nodeset )
+      match( path_stack, node )
     end
 
     def []=( variable_name, value )
@@ -136,11 +136,13 @@ module REXML
     end
 
 
-    def match(path_stack, nodeset)
-      nodeset = nodeset.collect.with_index do |node, i|
-        position = i + 1
-        XPathNode.new(node, position: position)
+    def match(path_stack, node)
+      if node.is_a?(Array)
+        Kernel.warn("REXML::XPath.each, REXML::XPath.first, REXML::XPath.match dropped support for nodeset...", uplevel: 1)
+        return [] if node.empty?
+        node = node.first
       end
+      nodeset = [XPathNode.new(node, position: 1)]
       result = expr(path_stack, nodeset)
       case result
       when Array # nodeset
