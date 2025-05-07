@@ -171,7 +171,7 @@
 
         <div class="method-description">
           <div class="method-source-code" id="each-source">
-            <pre><span class="ruby-comment"># File lib/rexml/xpath.rb, line 60</span>
+            <pre><span class="ruby-comment"># File lib/rexml/xpath.rb, line 59</span>
 <span class="ruby-keyword">def</span> <span class="ruby-constant">XPath</span><span class="ruby-operator">::</span><span class="ruby-identifier ruby-title">each</span>(<span class="ruby-identifier">element</span>, <span class="ruby-identifier">path</span>=<span class="ruby-keyword">nil</span>, <span class="ruby-identifier">namespaces</span>=<span class="ruby-keyword">nil</span>, <span class="ruby-identifier">variables</span>={}, <span class="ruby-identifier">options</span>={}, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
   <span class="ruby-identifier">raise</span> <span class="ruby-string">&quot;The namespaces argument, if supplied, must be a hash object.&quot;</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">namespaces</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-keyword">or</span> <span class="ruby-identifier">namespaces</span>.<span class="ruby-identifier">kind_of?</span>(<span class="ruby-constant">Hash</span>)
   <span class="ruby-identifier">raise</span> <span class="ruby-string">&quot;The variables argument, if supplied, must be a hash object.&quot;</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">variables</span>.<span class="ruby-identifier">kind_of?</span>(<span class="ruby-constant">Hash</span>)
@@ -179,7 +179,6 @@
   <span class="ruby-identifier">parser</span>.<span class="ruby-identifier">namespaces</span> = <span class="ruby-identifier">namespaces</span>
   <span class="ruby-identifier">parser</span>.<span class="ruby-identifier">variables</span> = <span class="ruby-identifier">variables</span>
   <span class="ruby-identifier">path</span> = <span class="ruby-string">&quot;*&quot;</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">path</span>
-  <span class="ruby-identifier">element</span> = [<span class="ruby-identifier">element</span>] <span class="ruby-keyword">unless</span> <span class="ruby-identifier">element</span>.<span class="ruby-identifier">kind_of?</span> <span class="ruby-constant">Array</span>
   <span class="ruby-identifier">parser</span>.<span class="ruby-identifier">parse</span>(<span class="ruby-identifier">path</span>, <span class="ruby-identifier">element</span>).<span class="ruby-identifier">each</span>( <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span> )
 <span class="ruby-keyword">end</span></pre>
           </div>
@@ -234,7 +233,6 @@ XPath.each( node, &#39;/book/publisher/text()=$publisher&#39;, {}, {&quot;publis
   <span class="ruby-identifier">parser</span>.<span class="ruby-identifier">namespaces</span> = <span class="ruby-identifier">namespaces</span>
   <span class="ruby-identifier">parser</span>.<span class="ruby-identifier">variables</span> = <span class="ruby-identifier">variables</span>
   <span class="ruby-identifier">path</span> = <span class="ruby-string">&quot;*&quot;</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">path</span>
-  <span class="ruby-identifier">element</span> = [<span class="ruby-identifier">element</span>] <span class="ruby-keyword">unless</span> <span class="ruby-identifier">element</span>.<span class="ruby-identifier">kind_of?</span> <span class="ruby-constant">Array</span>
   <span class="ruby-identifier">parser</span>.<span class="ruby-identifier">parse</span>(<span class="ruby-identifier">path</span>, <span class="ruby-identifier">element</span>).<span class="ruby-identifier">flatten</span>[<span class="ruby-value">0</span>]
 <span class="ruby-keyword">end</span></pre>
           </div>
@@ -280,13 +278,12 @@ XPath.first( node, &#39;/book/publisher/text()=$publisher&#39;, {}, {&quot;publi
 
         <div class="method-description">
           <div class="method-source-code" id="match-source">
-            <pre><span class="ruby-comment"># File lib/rexml/xpath.rb, line 72</span>
+            <pre><span class="ruby-comment"># File lib/rexml/xpath.rb, line 70</span>
 <span class="ruby-keyword">def</span> <span class="ruby-constant">XPath</span><span class="ruby-operator">::</span><span class="ruby-identifier ruby-title">match</span>(<span class="ruby-identifier">element</span>, <span class="ruby-identifier">path</span>=<span class="ruby-keyword">nil</span>, <span class="ruby-identifier">namespaces</span>=<span class="ruby-keyword">nil</span>, <span class="ruby-identifier">variables</span>={}, <span class="ruby-identifier">options</span>={})
   <span class="ruby-identifier">parser</span> = <span class="ruby-constant">XPathParser</span>.<span class="ruby-identifier">new</span>(<span class="ruby-operator">**</span><span class="ruby-identifier">options</span>)
   <span class="ruby-identifier">parser</span>.<span class="ruby-identifier">namespaces</span> = <span class="ruby-identifier">namespaces</span>
   <span class="ruby-identifier">parser</span>.<span class="ruby-identifier">variables</span> = <span class="ruby-identifier">variables</span>
   <span class="ruby-identifier">path</span> = <span class="ruby-string">&quot;*&quot;</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">path</span>
-  <span class="ruby-identifier">element</span> = [<span class="ruby-identifier">element</span>] <span class="ruby-keyword">unless</span> <span class="ruby-identifier">element</span>.<span class="ruby-identifier">kind_of?</span> <span class="ruby-constant">Array</span>
   <span class="ruby-identifier">parser</span>.<span class="ruby-identifier">parse</span>(<span class="ruby-identifier">path</span>,<span class="ruby-identifier">element</span>)
 <span class="ruby-keyword">end</span></pre>
           </div>

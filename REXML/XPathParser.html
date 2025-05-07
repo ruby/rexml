@@ -305,7 +305,7 @@
             <div class="method-heading">
               <a href="#method-i-get_first" title="Link to this method">
                 <span class="method-name">get_first</span>
-                <span class="method-args">(path, nodeset)</span>
+                <span class="method-args">(path, node)</span>
               </a>
             </div>
         </div>
@@ -319,9 +319,9 @@
         <div class="method-description">
           <div class="method-source-code" id="get_first-source">
             <pre><span class="ruby-comment"># File lib/rexml/xpath_parser.rb, line 84</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">get_first</span> <span class="ruby-identifier">path</span>, <span class="ruby-identifier">nodeset</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">get_first</span> <span class="ruby-identifier">path</span>, <span class="ruby-identifier">node</span>
   <span class="ruby-identifier">path_stack</span> = <span class="ruby-ivar">@parser</span>.<span class="ruby-identifier">parse</span>( <span class="ruby-identifier">path</span> )
-  <span class="ruby-identifier">first</span>( <span class="ruby-identifier">path_stack</span>, <span class="ruby-identifier">nodeset</span> )
+  <span class="ruby-identifier">first</span>( <span class="ruby-identifier">path_stack</span>, <span class="ruby-identifier">node</span> )
 <span class="ruby-keyword">end</span></pre>
           </div>
           
@@ -335,7 +335,7 @@
             <div class="method-heading">
               <a href="#method-i-match" title="Link to this method">
                 <span class="method-name">match</span>
-                <span class="method-args">(path_stack, nodeset)</span>
+                <span class="method-args">(path_stack, node)</span>
               </a>
             </div>
         </div>
@@ -349,11 +349,13 @@
         <div class="method-description">
           <div class="method-source-code" id="match-source">
             <pre><span class="ruby-comment"># File lib/rexml/xpath_parser.rb, line 139</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">match</span>(<span class="ruby-identifier">path_stack</span>, <span class="ruby-identifier">nodeset</span>)
-  <span class="ruby-identifier">nodeset</span> = <span class="ruby-identifier">nodeset</span>.<span class="ruby-identifier">collect</span>.<span class="ruby-identifier">with_index</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">node</span>, <span class="ruby-identifier">i</span><span class="ruby-operator">|</span>
-    <span class="ruby-identifier">position</span> = <span class="ruby-identifier">i</span> <span class="ruby-operator">+</span> <span class="ruby-value">1</span>
-    <span class="ruby-constant">XPathNode</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">node</span>, <span class="ruby-value">position:</span> <span class="ruby-identifier">position</span>)
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">match</span>(<span class="ruby-identifier">path_stack</span>, <span class="ruby-identifier">node</span>)
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">node</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Array</span>)
+    <span class="ruby-constant">Kernel</span>.<span class="ruby-identifier">warn</span>(<span class="ruby-string">&quot;REXML::XPath.each, REXML::XPath.first, REXML::XPath.match dropped support for nodeset...&quot;</span>, <span class="ruby-value">uplevel:</span> <span class="ruby-value">1</span>)
+    <span class="ruby-keyword">return</span> [] <span class="ruby-keyword">if</span> <span class="ruby-identifier">node</span>.<span class="ruby-identifier">empty?</span>
+    <span class="ruby-identifier">node</span> = <span class="ruby-identifier">node</span>.<span class="ruby-identifier">first</span>
   <span class="ruby-keyword">end</span>
+  <span class="ruby-identifier">nodeset</span> = [<span class="ruby-constant">XPathNode</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">node</span>, <span class="ruby-value">position:</span> <span class="ruby-value">1</span>)]
   <span class="ruby-identifier">result</span> = <span class="ruby-identifier">expr</span>(<span class="ruby-identifier">path_stack</span>, <span class="ruby-identifier">nodeset</span>)
   <span class="ruby-keyword">case</span> <span class="ruby-identifier">result</span>
   <span class="ruby-keyword">when</span> <span class="ruby-constant">Array</span> <span class="ruby-comment"># nodeset</span>
@@ -404,7 +406,7 @@
             <div class="method-heading">
               <a href="#method-i-parse" title="Link to this method">
                 <span class="method-name">parse</span>
-                <span class="method-args">(path, nodeset)</span>
+                <span class="method-args">(path, node)</span>
               </a>
             </div>
         </div>
@@ -418,9 +420,9 @@
         <div class="method-description">
           <div class="method-source-code" id="parse-source">
             <pre><span class="ruby-comment"># File lib/rexml/xpath_parser.rb, line 79</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">parse</span> <span class="ruby-identifier">path</span>, <span class="ruby-identifier">nodeset</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">parse</span> <span class="ruby-identifier">path</span>, <span class="ruby-identifier">node</span>
   <span class="ruby-identifier">path_stack</span> = <span class="ruby-ivar">@parser</span>.<span class="ruby-identifier">parse</span>( <span class="ruby-identifier">path</span> )
-  <span class="ruby-identifier">match</span>( <span class="ruby-identifier">path_stack</span>, <span class="ruby-identifier">nodeset</span> )
+  <span class="ruby-identifier">match</span>( <span class="ruby-identifier">path_stack</span>, <span class="ruby-identifier">node</span> )
 <span class="ruby-keyword">end</span></pre>
           </div>
           
@@ -434,7 +436,7 @@
             <div class="method-heading">
               <a href="#method-i-predicate" title="Link to this method">
                 <span class="method-name">predicate</span>
-                <span class="method-args">(path, nodeset)</span>
+                <span class="method-args">(path, node)</span>
               </a>
             </div>
         </div>
@@ -448,9 +450,9 @@
         <div class="method-description">
           <div class="method-source-code" id="predicate-source">
             <pre><span class="ruby-comment"># File lib/rexml/xpath_parser.rb, line 89</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">predicate</span> <span class="ruby-identifier">path</span>, <span class="ruby-identifier">nodeset</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">predicate</span> <span class="ruby-identifier">path</span>, <span class="ruby-identifier">node</span>
   <span class="ruby-identifier">path_stack</span> = <span class="ruby-ivar">@parser</span>.<span class="ruby-identifier">parse</span>( <span class="ruby-identifier">path</span> )
-  <span class="ruby-identifier">match</span>( <span class="ruby-identifier">path_stack</span>, <span class="ruby-identifier">nodeset</span> )
+  <span class="ruby-identifier">match</span>( <span class="ruby-identifier">path_stack</span>, <span class="ruby-identifier">node</span> )
 <span class="ruby-keyword">end</span></pre>
           </div>
           
