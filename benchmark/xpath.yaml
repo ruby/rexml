@@ -1,0 +1,32 @@
+loop_count: 100
+contexts:
+  - gems:
+      rexml: 3.2.6
+    require: false
+    prelude: require 'rexml'
+  - name: master
+    prelude: |
+      $LOAD_PATH.unshift(File.expand_path("lib"))
+      require 'rexml'
+  - name: 3.2.6(YJIT)
+    gems:
+      rexml: 3.2.6
+    require: false
+    prelude: |
+      require 'rexml'
+      RubyVM::YJIT.enable
+  - name: master(YJIT)
+    prelude: |
+      $LOAD_PATH.unshift(File.expand_path("lib"))
+      require 'rexml'
+      RubyVM::YJIT.enable
+
+prelude: |
+  require 'rexml/document'
+
+  DEPTH = 100
+  xml   = '<a>' * DEPTH + '</a>' * DEPTH
+  doc   = REXML::Document.new(xml)
+
+benchmark:
+  "REXML::XPath.match(REXML::Document.new(xml), 'a//a')" : REXML::XPath.match(doc, "a//a")
