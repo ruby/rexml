@@ -1193,6 +1193,16 @@ EOF
       assert_equal( 1,  XPath.match( d, "//x:*" ).size )
     end
 
+    def test_namespaces_cache
+      doc = Document.new("<a xmlns='1'><b/></a>")
+      assert_equal("<b/>", XPath.first(doc, "//b[namespace-uri()='1']").to_s)
+      assert_nil(XPath.first(doc, "//b[namespace-uri()='']"))
+
+      doc.root.delete_namespace
+      assert_nil(XPath.first(doc, "//b[namespace-uri()='1']"))
+      assert_equal("<b/>", XPath.first(doc, "//b[namespace-uri()='']").to_s)
+    end
+
     def test_ticket_71
       doc = Document.new(%Q{<root xmlns:ns1="xyz" xmlns:ns2="123"><element ns1:attrname="foo" ns2:attrname="bar"/></root>})
       el = doc.root.elements[1]
