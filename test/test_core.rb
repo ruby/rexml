@@ -1480,12 +1480,6 @@ ENDXML
       assert_equal(out1,out2)
     end
 
-    def test_ticket_102
-      doc = REXML::Document.new '<doc xmlns="ns"><item name="foo"/></doc>'
-      assert_equal( "foo", doc.root.elements["*:item"].attribute("name","ns").to_s )
-      assert_equal( "item", doc.root.elements["*:item[@name='foo']"].name )
-    end
-
     def test_ticket_14
       # Per .2.5 Node Tests of XPath spec
       assert_raise( REXML::UndefinedNamespaceException,
@@ -1505,18 +1499,6 @@ ENDXML
       d.root.add_text( "a" )
       d.root.add_text( "b" )
       assert_equal( 1, d.root.children.size )
-    end
-
-    # phantom namespace same as default namespace
-    def test_ticket_121
-      doc = REXML::Document.new(
-        '<doc xmlns="ns" xmlns:phantom="ns"><item name="foo">text</item></doc>'
-      )
-      assert_equal 'text', doc.text( "/*:doc/*:item[@name='foo']" )
-      assert_equal "name='foo'",
-        doc.root.elements["*:item"].attribute("name", "ns").inspect
-      assert_equal "<item name='foo'>text</item>",
-        doc.root.elements["*:item[@name='foo']"].to_s
     end
 
     def test_ticket_135
@@ -1548,6 +1530,20 @@ ENDXML
                    doc.root.attributes.to_h)
       assert_equal(expected,
                    REXML::Document.new(doc.root.to_s).root.attributes.to_h)
+    end
+
+    def test_unprefixed_attribute
+      doc = REXML::Document.new(<<~XML)
+        <root xmlns="http://example.org/test">
+          <foo bar="baz" />
+        </root>
+      XML
+
+      assert_equal("baz", doc.elements["//foo"].attribute("bar")&.value)
+
+      # Unprefixed attributes have no prefix and the default namespace is not applied.
+      # See https://www.w3.org/TR/xml-names/#defaulting.
+      assert_equal(nil, doc.elements["//foo"].attribute("bar", "http://example.org/test")&.value)
     end
 
     def test_empty_doc
