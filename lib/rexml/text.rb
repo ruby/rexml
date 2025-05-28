@@ -104,16 +104,16 @@ module REXML
       @entity_filter = entity_filter if entity_filter
       clear_cache
 
-      Text.check(@string, illegal, doctype) if @raw
+      Text.check(@string, illegal) if @raw
     end
 
     def parent= parent
       super(parent)
-      Text.check(@string, NEEDS_A_SECOND_CHECK, doctype) if @raw and @parent
+      Text.check(@string, NEEDS_A_SECOND_CHECK) if @raw and @parent
     end
 
     # check for illegal characters
-    def Text.check string, pattern, doctype
+    def Text.check string, pattern, doctype = nil
 
       # illegal anywhere
       if !string.match?(VALID_XML_CHARS)
