@@ -4,7 +4,7 @@ module REXMLTests
   class TextCheckTester < Test::Unit::TestCase
 
     def check(string)
-      REXML::Text.check(string, REXML::Text::NEEDS_A_SECOND_CHECK, nil)
+      REXML::Text.check(string, REXML::Text::NEEDS_A_SECOND_CHECK)
     end
 
     def assert_check(string)
