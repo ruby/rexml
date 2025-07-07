@@ -201,8 +201,7 @@ module REXML
 
     def doctype
       if @parent
-        doc = @parent.document
-        doc.doctype if doc
+        @parent.document&.doctype
       end
     end
 
