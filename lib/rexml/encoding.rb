@@ -5,7 +5,7 @@ module REXML
     # ID ---> Encoding name
     attr_reader :encoding
     def encoding=(encoding)
-      encoding = encoding.name if encoding.is_a?(Encoding)
+      encoding = encoding.name if encoding.is_a?(::Encoding)
       if encoding.is_a?(String)
         original_encoding = encoding
         encoding = find_encoding(encoding)
