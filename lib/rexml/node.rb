@@ -68,7 +68,7 @@ module REXML
       each_recursive {|node|
         return node if block.call(node)
       }
-      return nil
+      nil
     end
 
     # Returns the position that +self+ holds in its parent's array, indexed

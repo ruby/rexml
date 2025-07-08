@@ -114,7 +114,7 @@ module REXML
       case path[0]
       when :document
         # do nothing
-        return first( path[1..-1], node )
+        first( path[1..-1], node )
       when :child
         for c in node.children
           r = first( path[1..-1], c )
@@ -124,9 +124,9 @@ module REXML
         name = path[2]
         if node.name == name
           return node if path.size == 3
-          return first( path[3..-1], node )
+          first( path[3..-1], node )
         else
-          return nil
+          nil
         end
       when :descendant_or_self
         r = first( path[1..-1], node )
@@ -136,11 +136,12 @@ module REXML
           return r if r
         end
       when :node
-        return first( path[1..-1], node )
+        first( path[1..-1], node )
       when :any
-        return first( path[1..-1], node )
+        first( path[1..-1], node )
+      else
+        nil
       end
-      return nil
     end
 
 
@@ -167,10 +168,10 @@ module REXML
     #  2. If no mapping was supplied, use the context node to look up the namespace
     def get_namespace( node, prefix )
       if @namespaces
-        return @namespaces[prefix] || ''
+        @namespaces[prefix] || ''
       else
         return node.namespace( prefix ) if node.node_type == :element
-        return ''
+        ''
       end
     end
 
@@ -757,22 +758,19 @@ module REXML
     end
 
     def following_node_of( node )
-      if node.kind_of? Element and node.children.size > 0
-        return node.children[0]
-      end
-      return next_sibling_node(node)
+      return node.children[0] if node.kind_of?(Element) and node.children.size > 0
+
+      next_sibling_node(node)
     end
 
     def next_sibling_node(node)
       psn = node.next_sibling_node
       while psn.nil?
-        if node.parent.nil? or node.parent.class == Document
-          return nil
-        end
+        return nil if node.parent.nil? or node.parent.class == Document
         node = node.parent
         psn = node.next_sibling_node
       end
-      return psn
+      psn
     end
 
     def child(nodeset)
@@ -805,13 +803,13 @@ module REXML
     def norm b
       case b
       when true, false
-        return b
+        b
       when 'true', 'false'
-        return Functions::boolean( b )
+        Functions::boolean( b )
       when /^\d+(\.\d+)?$/, Numeric
-        return Functions::number( b )
+        Functions::number( b )
       else
-        return Functions::string( b )
+        Functions::string( b )
       end
     end
 

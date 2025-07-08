@@ -215,7 +215,7 @@ module REXML
         else
           path << yield( parsed )
         end
-        return path.squeeze(" ")
+        path.squeeze(" ")
       end
       # For backward compatibility
       alias_method :preciate_to_string, :predicate_to_path
@@ -252,7 +252,7 @@ module REXML
             path = path[1..-1]
           end
         end
-        return RelativeLocationPath( path, parsed ) if path.size > 0
+        RelativeLocationPath( path, parsed ) if path.size > 0
       end
 
       #RelativeLocationPath
@@ -388,7 +388,7 @@ module REXML
         else
           path = original_path
         end
-        return path
+        path
       end
 
       # Filters the supplied nodeset on the predicate(s)
@@ -600,7 +600,7 @@ module REXML
         end
         rest = LocationPath(rest, n) if rest =~ /\A[\/\.\@\[\w*]/
         parsed.concat(n)
-        return rest
+        rest
       end
 
       #| FilterExpr Predicate
