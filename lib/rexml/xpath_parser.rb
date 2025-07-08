@@ -84,7 +84,12 @@ module REXML
         node = node.first
       end
 
-      node.document.__send__(:enable_cache) do
+      document = node.document
+      if document
+        document.__send__(:enable_cache) do
+          match( path_stack, node )
+        end
+      else
         match( path_stack, node )
       end
     end
