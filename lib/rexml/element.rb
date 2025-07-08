@@ -1273,27 +1273,14 @@ module REXML
     # With arguments +name+ and +namespace+ given,
     # returns the value of the named attribute if it exists, otherwise +nil+:
     #
-    #   xml_string = "<root xmlns:a='a' a:x='a:x' x='x'/>"
+    #   xml_string = "<root xmlns:a='http://example.com/a' a:x='a:x' x='x'/>"
     #   document = REXML::Document.new(xml_string)
     #   document.root.attribute("x")      # => x='x'
-    #   document.root.attribute("x", "a") # => a:x='a:x'
+    #   document.root.attribute("x", "http://example.com/a") # => a:x='a:x'
     #
     def attribute( name, namespace=nil )
       prefix = namespaces.key(namespace) if namespace
-      prefix = nil if prefix == 'xmlns'
-
-      ret_val =
-        attributes.get_attribute( prefix ? "#{prefix}:#{name}" : name )
-
-      return ret_val unless ret_val.nil?
-      return nil if prefix.nil?
-
-      # now check that prefix'es namespace is not the same as the
-      # default namespace
-      return nil unless ( namespaces[ prefix ] == namespaces[ 'xmlns' ] )
-
-      attributes.get_attribute( name )
-
+      attributes.get_attribute( prefix ? "#{prefix}:#{name}" : name )
     end
 
     # :call-seq:
