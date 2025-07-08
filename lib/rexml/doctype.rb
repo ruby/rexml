@@ -171,15 +171,11 @@ module REXML
     end
 
     def context
-      if @parent
-        @parent.context
-      else
-        nil
-      end
+      @parent&.context
     end
 
     def entity( name )
-      @entities[name].unnormalized if @entities[name]
+      @entities[name]&.unnormalized
     end
 
     def add child
@@ -288,8 +284,7 @@ module REXML
     end
 
     def to_s
-      context = nil
-      context = parent.context if parent
+      context = parent&.context
       notation = "<!NOTATION #{@name}"
       reference_writer = ReferenceWriter.new(@middle, @public, @system, context)
       reference_writer.write(notation)

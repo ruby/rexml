@@ -473,8 +473,7 @@ module REXML
     # Related: #root, #root_node.
     #
     def document
-      rt = root
-      rt.parent if rt
+      root&.parent
     end
 
     # :call-seq:
