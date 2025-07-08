@@ -166,7 +166,7 @@
 
         <div class="method-description">
           <div class="method-source-code" id="decode-source">
-            <pre><span class="ruby-comment"># File lib/rexml/encoding.rb, line 29</span>
+            <pre><span class="ruby-comment"># File lib/rexml/encoding.rb, line 26</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">decode</span>(<span class="ruby-identifier">string</span>)
   <span class="ruby-identifier">string</span>.<span class="ruby-identifier">encode</span>(<span class="ruby-operator">::</span><span class="ruby-constant">Encoding</span><span class="ruby-operator">::</span><span class="ruby-constant">UTF_8</span>, <span class="ruby-ivar">@encoding</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -195,7 +195,7 @@
 
         <div class="method-description">
           <div class="method-source-code" id="encode-source">
-            <pre><span class="ruby-comment"># File lib/rexml/encoding.rb, line 25</span>
+            <pre><span class="ruby-comment"># File lib/rexml/encoding.rb, line 22</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">encode</span>(<span class="ruby-identifier">string</span>)
   <span class="ruby-identifier">string</span>.<span class="ruby-identifier">encode</span>(<span class="ruby-ivar">@encoding</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -234,12 +234,9 @@
       <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span>, <span class="ruby-node">&quot;Bad encoding name #{original_encoding}&quot;</span>
     <span class="ruby-keyword">end</span>
   <span class="ruby-keyword">end</span>
+  <span class="ruby-identifier">encoding</span> = <span class="ruby-identifier">encoding</span>.<span class="ruby-identifier">upcase</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">encoding</span>
   <span class="ruby-keyword">return</span> <span class="ruby-keyword">false</span> <span class="ruby-keyword">if</span> <span class="ruby-keyword">defined?</span>(<span class="ruby-ivar">@encoding</span>) <span class="ruby-keyword">and</span> <span class="ruby-identifier">encoding</span> <span class="ruby-operator">==</span> <span class="ruby-ivar">@encoding</span>
-  <span class="ruby-keyword">if</span> <span class="ruby-identifier">encoding</span>
-    <span class="ruby-ivar">@encoding</span> = <span class="ruby-identifier">encoding</span>.<span class="ruby-identifier">upcase</span>
-  <span class="ruby-keyword">else</span>
-    <span class="ruby-ivar">@encoding</span> = <span class="ruby-string">&#39;UTF-8&#39;</span>
-  <span class="ruby-keyword">end</span>
+  <span class="ruby-ivar">@encoding</span> = <span class="ruby-identifier">encoding</span> <span class="ruby-operator">||</span> <span class="ruby-string">&quot;UTF-8&quot;</span>
   <span class="ruby-keyword">true</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
