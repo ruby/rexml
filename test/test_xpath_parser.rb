@@ -11,7 +11,7 @@ module REXMLTests
       @element = @root_element.children[0]
     end
 
-    def _make_service_element(types, uris)
+    def make_service_element(types, uris)
       root_element = REXML::Element.new
       element = root_element.add_element("Service")
       types.each do |type_text|
