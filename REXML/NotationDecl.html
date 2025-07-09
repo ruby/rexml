@@ -189,7 +189,7 @@
 
         <div class="method-description">
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File lib/rexml/doctype.rb, line 282</span>
+            <pre><span class="ruby-comment"># File lib/rexml/doctype.rb, line 278</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span> <span class="ruby-identifier">name</span>, <span class="ruby-identifier">middle</span>, <span class="ruby-identifier">pub</span>, <span class="ruby-identifier">sys</span>
   <span class="ruby-keyword">super</span>(<span class="ruby-keyword">nil</span>)
   <span class="ruby-ivar">@name</span> = <span class="ruby-identifier">name</span>
@@ -233,7 +233,7 @@
 
         <div class="method-description">
           <div class="method-source-code" id="name-source">
-            <pre><span class="ruby-comment"># File lib/rexml/doctype.rb, line 307</span>
+            <pre><span class="ruby-comment"># File lib/rexml/doctype.rb, line 302</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">name</span>
   <span class="ruby-ivar">@name</span>
 <span class="ruby-keyword">end</span></pre>
@@ -264,10 +264,9 @@
 
         <div class="method-description">
           <div class="method-source-code" id="to_s-source">
-            <pre><span class="ruby-comment"># File lib/rexml/doctype.rb, line 290</span>
+            <pre><span class="ruby-comment"># File lib/rexml/doctype.rb, line 286</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">to_s</span>
-  <span class="ruby-identifier">context</span> = <span class="ruby-keyword">nil</span>
-  <span class="ruby-identifier">context</span> = <span class="ruby-identifier">parent</span>.<span class="ruby-identifier">context</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">parent</span>
+  <span class="ruby-identifier">context</span> = <span class="ruby-identifier">parent</span>&amp;.<span class="ruby-identifier">context</span>
   <span class="ruby-identifier">notation</span> = <span class="ruby-node">&quot;&lt;!NOTATION #{@name}&quot;</span>
   <span class="ruby-identifier">reference_writer</span> = <span class="ruby-constant">ReferenceWriter</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@middle</span>, <span class="ruby-ivar">@public</span>, <span class="ruby-ivar">@system</span>, <span class="ruby-identifier">context</span>)
   <span class="ruby-identifier">reference_writer</span>.<span class="ruby-identifier">write</span>(<span class="ruby-identifier">notation</span>)
@@ -299,7 +298,7 @@
 
         <div class="method-description">
           <div class="method-source-code" id="write-source">
-            <pre><span class="ruby-comment"># File lib/rexml/doctype.rb, line 300</span>
+            <pre><span class="ruby-comment"># File lib/rexml/doctype.rb, line 295</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">write</span>( <span class="ruby-identifier">output</span>, <span class="ruby-identifier">indent</span>=<span class="ruby-value">-1</span> )
   <span class="ruby-identifier">output</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">to_s</span>
 <span class="ruby-keyword">end</span></pre>
