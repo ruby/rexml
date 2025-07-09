@@ -4,7 +4,7 @@ require "test/unit"
 require "rexml/parsers/xpathparser"
 
 module REXMLTests
-  class TestXPathParser < Test::Unit::TestCase
+  class TestParserXPathParser < Test::Unit::TestCase
     sub_test_case("#abbreviate") do
       def abbreviate(xpath)
         parser = REXML::Parsers::XPathParser.new
