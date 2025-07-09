@@ -522,6 +522,8 @@ module REXML
           raise REXML::ParseException.new( "Exception parsing",
             @source, self, (error ? error : $!) )
         end
+        # NOTE: The end of the method never runs, because it is unreachable.
+        #       All branches of code above have explicit unconditional return or raise statements.
       end
       private :pull_event
 
