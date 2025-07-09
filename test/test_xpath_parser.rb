@@ -49,8 +49,8 @@ module REXMLTests
     def test_found
       @parser = REXML::XPathParser.new
       res = @parser.parse("/Service", @root_element)
-      assert_equal("[<Service> ... </>]",
-                   res.to_s)
+      assert_equal([@element],
+                   res)
     end
 
     def test_not_found
