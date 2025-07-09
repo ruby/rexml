@@ -49,7 +49,7 @@ module REXMLTests
       assert_kind_of(REXML::Element, @element.children[1].previous_sibling)
     end
 
-    def test_parsing_when_found
+    def test_found
       @parser = REXML::XPathParser.new
       res = @parser.parse("/Service", @root_element)
       assert_equal("[<Service> ... </>]",
