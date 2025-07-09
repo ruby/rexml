@@ -297,8 +297,9 @@
   <span class="ruby-keyword">end</span>
 
   <span class="ruby-keyword">unless</span> <span class="ruby-identifier">value</span>.<span class="ruby-identifier">kind_of?</span> <span class="ruby-constant">Attribute</span>
-    <span class="ruby-keyword">if</span> <span class="ruby-ivar">@element</span>.<span class="ruby-identifier">document</span> <span class="ruby-keyword">and</span> <span class="ruby-ivar">@element</span>.<span class="ruby-identifier">document</span>.<span class="ruby-identifier">doctype</span>
-      <span class="ruby-identifier">value</span> = <span class="ruby-constant">Text</span><span class="ruby-operator">::</span><span class="ruby-identifier">normalize</span>( <span class="ruby-identifier">value</span>, <span class="ruby-ivar">@element</span>.<span class="ruby-identifier">document</span>.<span class="ruby-identifier">doctype</span> )
+    <span class="ruby-identifier">doctype</span> = <span class="ruby-ivar">@element</span>.<span class="ruby-identifier">document</span>&amp;.<span class="ruby-identifier">doctype</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">doctype</span>
+      <span class="ruby-identifier">value</span> = <span class="ruby-constant">Text</span><span class="ruby-operator">::</span><span class="ruby-identifier">normalize</span>( <span class="ruby-identifier">value</span>, <span class="ruby-identifier">doctype</span> )
     <span class="ruby-keyword">else</span>
       <span class="ruby-identifier">value</span> = <span class="ruby-constant">Text</span><span class="ruby-operator">::</span><span class="ruby-identifier">normalize</span>( <span class="ruby-identifier">value</span>, <span class="ruby-keyword">nil</span> )
     <span class="ruby-keyword">end</span>
@@ -362,7 +363,7 @@
 
         <div class="method-description">
           <div class="method-source-code" id="add-source">
-            <pre><span class="ruby-comment"># File lib/rexml/element.rb, line 2523</span>
+            <pre><span class="ruby-comment"># File lib/rexml/element.rb, line 2526</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">add</span>( <span class="ruby-identifier">attribute</span> )
   <span class="ruby-keyword">self</span>[<span class="ruby-identifier">attribute</span>.<span class="ruby-identifier">name</span>] = <span class="ruby-identifier">attribute</span>
 <span class="ruby-keyword">end</span></pre>
@@ -416,7 +417,7 @@
 
         <div class="method-description">
           <div class="method-source-code" id="delete-source">
-            <pre><span class="ruby-comment"># File lib/rexml/element.rb, line 2476</span>
+            <pre><span class="ruby-comment"># File lib/rexml/element.rb, line 2479</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">delete</span>( <span class="ruby-identifier">attribute</span> )
   <span class="ruby-identifier">name</span> = <span class="ruby-keyword">nil</span>
   <span class="ruby-identifier">prefix</span> = <span class="ruby-keyword">nil</span>
@@ -494,7 +495,7 @@
 
         <div class="method-description">
           <div class="method-source-code" id="delete_all-source">
-            <pre><span class="ruby-comment"># File lib/rexml/element.rb, line 2545</span>
+            <pre><span class="ruby-comment"># File lib/rexml/element.rb, line 2548</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">delete_all</span>( <span class="ruby-identifier">name</span> )
   <span class="ruby-identifier">rv</span> = []
   <span class="ruby-identifier">each_attribute</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">attribute</span><span class="ruby-operator">|</span>
@@ -667,11 +668,11 @@
         <span class="ruby-keyword">return</span> <span class="ruby-identifier">attr</span>
       <span class="ruby-keyword">end</span>
     <span class="ruby-keyword">end</span>
-    <span class="ruby-identifier">element_document</span> = <span class="ruby-ivar">@element</span>.<span class="ruby-identifier">document</span>
-    <span class="ruby-keyword">if</span> <span class="ruby-identifier">element_document</span> <span class="ruby-keyword">and</span> <span class="ruby-identifier">element_document</span>.<span class="ruby-identifier">doctype</span>
+    <span class="ruby-identifier">doctype</span> = <span class="ruby-ivar">@element</span>.<span class="ruby-identifier">document</span>&amp;.<span class="ruby-identifier">doctype</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">doctype</span>
       <span class="ruby-identifier">expn</span> = <span class="ruby-ivar">@element</span>.<span class="ruby-identifier">expanded_name</span>
-      <span class="ruby-identifier">expn</span> = <span class="ruby-identifier">element_document</span>.<span class="ruby-identifier">doctype</span>.<span class="ruby-identifier">name</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">expn</span>.<span class="ruby-identifier">size</span> <span class="ruby-operator">==</span> <span class="ruby-value">0</span>
-      <span class="ruby-identifier">attr_val</span> = <span class="ruby-identifier">element_document</span>.<span class="ruby-identifier">doctype</span>.<span class="ruby-identifier">attribute_of</span>(<span class="ruby-identifier">expn</span>, <span class="ruby-identifier">name</span>)
+      <span class="ruby-identifier">expn</span> = <span class="ruby-identifier">doctype</span>.<span class="ruby-identifier">name</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">expn</span>.<span class="ruby-identifier">size</span> <span class="ruby-operator">==</span> <span class="ruby-value">0</span>
+      <span class="ruby-identifier">attr_val</span> = <span class="ruby-identifier">doctype</span>.<span class="ruby-identifier">attribute_of</span>(<span class="ruby-identifier">expn</span>, <span class="ruby-identifier">name</span>)
       <span class="ruby-keyword">return</span> <span class="ruby-constant">Attribute</span>.<span class="ruby-identifier">new</span>( <span class="ruby-identifier">name</span>, <span class="ruby-identifier">attr_val</span> ) <span class="ruby-keyword">if</span> <span class="ruby-identifier">attr_val</span>
     <span class="ruby-keyword">end</span>
     <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span>
@@ -722,7 +723,7 @@
 
         <div class="method-description">
           <div class="method-source-code" id="get_attribute_ns-source">
-            <pre><span class="ruby-comment"># File lib/rexml/element.rb, line 2571</span>
+            <pre><span class="ruby-comment"># File lib/rexml/element.rb, line 2574</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">get_attribute_ns</span>(<span class="ruby-identifier">namespace</span>, <span class="ruby-identifier">name</span>)
   <span class="ruby-identifier">result</span> = <span class="ruby-keyword">nil</span>
   <span class="ruby-identifier">each_attribute</span>() { <span class="ruby-operator">|</span><span class="ruby-identifier">attribute</span><span class="ruby-operator">|</span>
@@ -819,16 +820,17 @@
 
         <div class="method-description">
           <div class="method-source-code" id="namespaces-source">
-            <pre><span class="ruby-comment"># File lib/rexml/element.rb, line 2432</span>
+            <pre><span class="ruby-comment"># File lib/rexml/element.rb, line 2434</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">namespaces</span>
   <span class="ruby-identifier">namespaces</span> = {}
   <span class="ruby-identifier">each_attribute</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">attribute</span><span class="ruby-operator">|</span>
     <span class="ruby-identifier">namespaces</span>[<span class="ruby-identifier">attribute</span>.<span class="ruby-identifier">name</span>] = <span class="ruby-identifier">attribute</span>.<span class="ruby-identifier">value</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">attribute</span>.<span class="ruby-identifier">prefix</span> <span class="ruby-operator">==</span> <span class="ruby-string">&#39;xmlns&#39;</span> <span class="ruby-keyword">or</span> <span class="ruby-identifier">attribute</span>.<span class="ruby-identifier">name</span> <span class="ruby-operator">==</span> <span class="ruby-string">&#39;xmlns&#39;</span>
   <span class="ruby-keyword">end</span>
-  <span class="ruby-keyword">if</span> <span class="ruby-ivar">@element</span>.<span class="ruby-identifier">document</span> <span class="ruby-keyword">and</span> <span class="ruby-ivar">@element</span>.<span class="ruby-identifier">document</span>.<span class="ruby-identifier">doctype</span>
+  <span class="ruby-identifier">doctype</span> = <span class="ruby-ivar">@element</span>.<span class="ruby-identifier">document</span>&amp;.<span class="ruby-identifier">doctype</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">doctype</span>
     <span class="ruby-identifier">expn</span> = <span class="ruby-ivar">@element</span>.<span class="ruby-identifier">expanded_name</span>
-    <span class="ruby-identifier">expn</span> = <span class="ruby-ivar">@element</span>.<span class="ruby-identifier">document</span>.<span class="ruby-identifier">doctype</span>.<span class="ruby-identifier">name</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">expn</span>.<span class="ruby-identifier">size</span> <span class="ruby-operator">==</span> <span class="ruby-value">0</span>
-    <span class="ruby-ivar">@element</span>.<span class="ruby-identifier">document</span>.<span class="ruby-identifier">doctype</span>.<span class="ruby-identifier">attributes_of</span>(<span class="ruby-identifier">expn</span>).<span class="ruby-identifier">each</span> {
+    <span class="ruby-identifier">expn</span> = <span class="ruby-identifier">doctype</span>.<span class="ruby-identifier">name</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">expn</span>.<span class="ruby-identifier">size</span> <span class="ruby-operator">==</span> <span class="ruby-value">0</span>
+    <span class="ruby-identifier">doctype</span>.<span class="ruby-identifier">attributes_of</span>(<span class="ruby-identifier">expn</span>).<span class="ruby-identifier">each</span> {
       <span class="ruby-operator">|</span><span class="ruby-identifier">attribute</span><span class="ruby-operator">|</span>
       <span class="ruby-identifier">namespaces</span>[<span class="ruby-identifier">attribute</span>.<span class="ruby-identifier">name</span>] = <span class="ruby-identifier">attribute</span>.<span class="ruby-identifier">value</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">attribute</span>.<span class="ruby-identifier">prefix</span> <span class="ruby-operator">==</span> <span class="ruby-string">&#39;xmlns&#39;</span> <span class="ruby-keyword">or</span> <span class="ruby-identifier">attribute</span>.<span class="ruby-identifier">name</span> <span class="ruby-operator">==</span> <span class="ruby-string">&#39;xmlns&#39;</span>
     }
@@ -866,16 +868,17 @@
 
         <div class="method-description">
           <div class="method-source-code" id="prefixes-source">
-            <pre><span class="ruby-comment"># File lib/rexml/element.rb, line 2407</span>
+            <pre><span class="ruby-comment"># File lib/rexml/element.rb, line 2408</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">prefixes</span>
   <span class="ruby-identifier">ns</span> = []
   <span class="ruby-identifier">each_attribute</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">attribute</span><span class="ruby-operator">|</span>
     <span class="ruby-identifier">ns</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">attribute</span>.<span class="ruby-identifier">name</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">attribute</span>.<span class="ruby-identifier">prefix</span> <span class="ruby-operator">==</span> <span class="ruby-string">&#39;xmlns&#39;</span>
   <span class="ruby-keyword">end</span>
-  <span class="ruby-keyword">if</span> <span class="ruby-ivar">@element</span>.<span class="ruby-identifier">document</span> <span class="ruby-keyword">and</span> <span class="ruby-ivar">@element</span>.<span class="ruby-identifier">document</span>.<span class="ruby-identifier">doctype</span>
+  <span class="ruby-identifier">doctype</span> = <span class="ruby-ivar">@element</span>.<span class="ruby-identifier">document</span>&amp;.<span class="ruby-identifier">doctype</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">doctype</span>
     <span class="ruby-identifier">expn</span> = <span class="ruby-ivar">@element</span>.<span class="ruby-identifier">expanded_name</span>
-    <span class="ruby-identifier">expn</span> = <span class="ruby-ivar">@element</span>.<span class="ruby-identifier">document</span>.<span class="ruby-identifier">doctype</span>.<span class="ruby-identifier">name</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">expn</span>.<span class="ruby-identifier">size</span> <span class="ruby-operator">==</span> <span class="ruby-value">0</span>
-    <span class="ruby-ivar">@element</span>.<span class="ruby-identifier">document</span>.<span class="ruby-identifier">doctype</span>.<span class="ruby-identifier">attributes_of</span>(<span class="ruby-identifier">expn</span>).<span class="ruby-identifier">each</span> {
+    <span class="ruby-identifier">expn</span> = <span class="ruby-identifier">doctype</span>.<span class="ruby-identifier">name</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">expn</span>.<span class="ruby-identifier">size</span> <span class="ruby-operator">==</span> <span class="ruby-value">0</span>
+    <span class="ruby-identifier">doctype</span>.<span class="ruby-identifier">attributes_of</span>(<span class="ruby-identifier">expn</span>).<span class="ruby-identifier">each</span> {
       <span class="ruby-operator">|</span><span class="ruby-identifier">attribute</span><span class="ruby-operator">|</span>
       <span class="ruby-identifier">ns</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">attribute</span>.<span class="ruby-identifier">name</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">attribute</span>.<span class="ruby-identifier">prefix</span> <span class="ruby-operator">==</span> <span class="ruby-string">&#39;xmlns&#39;</span>
     }
