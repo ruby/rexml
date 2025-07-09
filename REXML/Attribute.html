@@ -369,7 +369,7 @@
 
         <div class="method-description">
           <div class="method-source-code" id="document-source">
-            <pre><span class="ruby-comment"># File lib/rexml/attribute.rb, line 207</span>
+            <pre><span class="ruby-comment"># File lib/rexml/attribute.rb, line 205</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">document</span>
   <span class="ruby-ivar">@element</span>&amp;.<span class="ruby-identifier">document</span>
 <span class="ruby-keyword">end</span></pre>
@@ -819,9 +819,7 @@
           <div class="method-source-code" id="xpath-source">
             <pre><span class="ruby-comment"># File lib/rexml/attribute.rb, line 201</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">xpath</span>
-  <span class="ruby-identifier">path</span> = <span class="ruby-ivar">@element</span>.<span class="ruby-identifier">xpath</span>
-  <span class="ruby-identifier">path</span> <span class="ruby-operator">+=</span> <span class="ruby-node">&quot;/@#{self.expanded_name}&quot;</span>
-  <span class="ruby-keyword">return</span> <span class="ruby-identifier">path</span>
+  <span class="ruby-ivar">@element</span>.<span class="ruby-identifier">xpath</span> <span class="ruby-operator">+</span> <span class="ruby-node">&quot;/@#{self.expanded_name}&quot;</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
           

@@ -244,7 +244,7 @@
           <div class="method-source-code" id="expected-source">
             <pre><span class="ruby-comment"># File lib/rexml/validation/relaxng.rb, line 188</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">expected</span>
-  <span class="ruby-keyword">return</span> [<span class="ruby-ivar">@events</span>[<span class="ruby-ivar">@current</span>]]
+  [<span class="ruby-ivar">@events</span>[<span class="ruby-ivar">@current</span>]]
 <span class="ruby-keyword">end</span></pre>
           </div>
           
@@ -317,16 +317,16 @@
   <span class="ruby-keyword">if</span> ( <span class="ruby-ivar">@events</span>[<span class="ruby-ivar">@current</span>].<span class="ruby-identifier">matches?</span>(<span class="ruby-identifier">event</span>) )
     <span class="ruby-ivar">@current</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
     <span class="ruby-keyword">if</span> <span class="ruby-ivar">@events</span>[<span class="ruby-ivar">@current</span>].<span class="ruby-identifier">nil?</span>
-      <span class="ruby-keyword">return</span> <span class="ruby-ivar">@previous</span>.<span class="ruby-identifier">pop</span>
+      <span class="ruby-ivar">@previous</span>.<span class="ruby-identifier">pop</span>
     <span class="ruby-keyword">elsif</span> <span class="ruby-ivar">@events</span>[<span class="ruby-ivar">@current</span>].<span class="ruby-identifier">kind_of?</span> <span class="ruby-constant">State</span>
       <span class="ruby-ivar">@current</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
       <span class="ruby-ivar">@events</span>[<span class="ruby-ivar">@current</span><span class="ruby-value">-1</span>].<span class="ruby-identifier">previous</span> = <span class="ruby-keyword">self</span>
-      <span class="ruby-keyword">return</span> <span class="ruby-ivar">@events</span>[<span class="ruby-ivar">@current</span><span class="ruby-value">-1</span>]
+      <span class="ruby-ivar">@events</span>[<span class="ruby-ivar">@current</span><span class="ruby-value">-1</span>]
     <span class="ruby-keyword">else</span>
-      <span class="ruby-keyword">return</span> <span class="ruby-keyword">self</span>
+      <span class="ruby-keyword">self</span>
     <span class="ruby-keyword">end</span>
   <span class="ruby-keyword">else</span>
-    <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span>
+    <span class="ruby-keyword">nil</span>
   <span class="ruby-keyword">end</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
@@ -554,7 +554,7 @@
       <span class="ruby-identifier">evt</span> = <span class="ruby-value">:end_attribute</span>
     <span class="ruby-keyword">end</span>
   <span class="ruby-keyword">end</span>
-  <span class="ruby-keyword">return</span> <span class="ruby-constant">Event</span>.<span class="ruby-identifier">new</span>( <span class="ruby-identifier">evt</span>, <span class="ruby-identifier">arg</span> )
+  <span class="ruby-constant">Event</span>.<span class="ruby-identifier">new</span>( <span class="ruby-identifier">evt</span>, <span class="ruby-identifier">arg</span> )
 <span class="ruby-keyword">end</span></pre>
           </div>
           

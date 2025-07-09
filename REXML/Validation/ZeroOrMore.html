@@ -157,10 +157,10 @@
 
         <div class="method-description">
           <div class="method-source-code" id="expected-source">
-            <pre><span class="ruby-comment"># File lib/rexml/validation/relaxng.rb, line 304</span>
+            <pre><span class="ruby-comment"># File lib/rexml/validation/relaxng.rb, line 305</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">expected</span>
   <span class="ruby-keyword">return</span> [ <span class="ruby-ivar">@prior</span>.<span class="ruby-identifier">expected</span>, <span class="ruby-ivar">@events</span>[<span class="ruby-value">0</span>] ].<span class="ruby-identifier">flatten</span> <span class="ruby-keyword">if</span> <span class="ruby-ivar">@current</span> <span class="ruby-operator">==</span> <span class="ruby-value">0</span>
-  <span class="ruby-keyword">return</span> [<span class="ruby-ivar">@events</span>[<span class="ruby-ivar">@current</span>]]
+  [<span class="ruby-ivar">@events</span>[<span class="ruby-ivar">@current</span>]]
 <span class="ruby-keyword">end</span></pre>
           </div>
           
@@ -187,25 +187,25 @@
 
         <div class="method-description">
           <div class="method-source-code" id="next-source">
-            <pre><span class="ruby-comment"># File lib/rexml/validation/relaxng.rb, line 283</span>
+            <pre><span class="ruby-comment"># File lib/rexml/validation/relaxng.rb, line 284</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">next</span>( <span class="ruby-identifier ruby-title">event</span> )
   <span class="ruby-identifier">expand_ref_in</span>( <span class="ruby-ivar">@events</span>, <span class="ruby-ivar">@current</span> ) <span class="ruby-keyword">if</span> <span class="ruby-ivar">@events</span>[<span class="ruby-ivar">@current</span>].<span class="ruby-identifier">class</span> <span class="ruby-operator">==</span> <span class="ruby-constant">Ref</span>
   <span class="ruby-keyword">if</span> ( <span class="ruby-ivar">@events</span>[<span class="ruby-ivar">@current</span>].<span class="ruby-identifier">matches?</span>(<span class="ruby-identifier">event</span>) )
     <span class="ruby-ivar">@current</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
     <span class="ruby-keyword">if</span> <span class="ruby-ivar">@events</span>[<span class="ruby-ivar">@current</span>].<span class="ruby-identifier">nil?</span>
       <span class="ruby-ivar">@current</span> = <span class="ruby-value">0</span>
-      <span class="ruby-keyword">return</span> <span class="ruby-keyword">self</span>
+      <span class="ruby-keyword">self</span>
     <span class="ruby-keyword">elsif</span> <span class="ruby-ivar">@events</span>[<span class="ruby-ivar">@current</span>].<span class="ruby-identifier">kind_of?</span> <span class="ruby-constant">State</span>
       <span class="ruby-ivar">@current</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
       <span class="ruby-ivar">@events</span>[<span class="ruby-ivar">@current</span><span class="ruby-value">-1</span>].<span class="ruby-identifier">previous</span> = <span class="ruby-keyword">self</span>
-      <span class="ruby-keyword">return</span> <span class="ruby-ivar">@events</span>[<span class="ruby-ivar">@current</span><span class="ruby-value">-1</span>]
+      <span class="ruby-ivar">@events</span>[<span class="ruby-ivar">@current</span><span class="ruby-value">-1</span>]
     <span class="ruby-keyword">else</span>
-      <span class="ruby-keyword">return</span> <span class="ruby-keyword">self</span>
+      <span class="ruby-keyword">self</span>
     <span class="ruby-keyword">end</span>
   <span class="ruby-keyword">else</span>
     <span class="ruby-ivar">@prior</span> = <span class="ruby-ivar">@previous</span>.<span class="ruby-identifier">pop</span>
     <span class="ruby-keyword">return</span> <span class="ruby-ivar">@prior</span>.<span class="ruby-identifier">next</span>( <span class="ruby-identifier">event</span> ) <span class="ruby-keyword">if</span> <span class="ruby-ivar">@current</span> <span class="ruby-operator">==</span> <span class="ruby-value">0</span>
-    <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span>
+    <span class="ruby-keyword">nil</span>
   <span class="ruby-keyword">end</span>
 <span class="ruby-keyword">end</span></pre>
           </div>

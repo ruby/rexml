@@ -328,19 +328,19 @@
         <span class="ruby-keyword">return</span> <span class="ruby-keyword">false</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">event</span>[<span class="ruby-value">0</span>] <span class="ruby-operator">==</span> <span class="ruby-ivar">@event_type</span>
         <span class="ruby-keyword">case</span> <span class="ruby-identifier">event</span>[<span class="ruby-value">0</span>]
         <span class="ruby-keyword">when</span> <span class="ruby-keyword">nil</span>
-          <span class="ruby-keyword">return</span> <span class="ruby-keyword">true</span>
+          <span class="ruby-keyword">true</span>
         <span class="ruby-keyword">when</span> <span class="ruby-value">:start_element</span>
-          <span class="ruby-keyword">return</span> <span class="ruby-keyword">true</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">event</span>[<span class="ruby-value">1</span>] <span class="ruby-operator">==</span> <span class="ruby-ivar">@event_arg</span>
+          <span class="ruby-identifier">event</span>[<span class="ruby-value">1</span>] <span class="ruby-operator">==</span> <span class="ruby-ivar">@event_arg</span>
         <span class="ruby-keyword">when</span> <span class="ruby-value">:end_element</span>
-          <span class="ruby-keyword">return</span> <span class="ruby-keyword">true</span>
+          <span class="ruby-keyword">true</span>
         <span class="ruby-keyword">when</span> <span class="ruby-value">:start_attribute</span>
-          <span class="ruby-keyword">return</span> <span class="ruby-keyword">true</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">event</span>[<span class="ruby-value">1</span>] <span class="ruby-operator">==</span> <span class="ruby-ivar">@event_arg</span>
+          <span class="ruby-identifier">event</span>[<span class="ruby-value">1</span>] <span class="ruby-operator">==</span> <span class="ruby-ivar">@event_arg</span>
         <span class="ruby-keyword">when</span> <span class="ruby-value">:end_attribute</span>
-          <span class="ruby-keyword">return</span> <span class="ruby-keyword">true</span>
+          <span class="ruby-keyword">true</span>
         <span class="ruby-keyword">when</span> <span class="ruby-value">:end_document</span>
-          <span class="ruby-keyword">return</span> <span class="ruby-keyword">true</span>
+          <span class="ruby-keyword">true</span>
         <span class="ruby-keyword">when</span> <span class="ruby-value">:text</span>
-          <span class="ruby-keyword">return</span> (<span class="ruby-ivar">@event_arg</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-keyword">or</span> <span class="ruby-ivar">@event_arg</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">event</span>[<span class="ruby-value">1</span>])
+          <span class="ruby-ivar">@event_arg</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-operator">||</span> <span class="ruby-ivar">@event_arg</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">event</span>[<span class="ruby-value">1</span>]
 <span class="ruby-comment">=begin
         when :processing_instruction
           false
@@ -394,7 +394,7 @@
           <div class="method-source-code" id="single-3F-source">
             <pre><span class="ruby-comment"># File lib/rexml/validation/validation.rb, line 82</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">single?</span>
-  <span class="ruby-keyword">return</span> (<span class="ruby-ivar">@event_type</span> <span class="ruby-operator">!=</span> <span class="ruby-value">:start_element</span> <span class="ruby-keyword">and</span> <span class="ruby-ivar">@event_type</span> <span class="ruby-operator">!=</span> <span class="ruby-value">:start_attribute</span>)
+  (<span class="ruby-ivar">@event_type</span> <span class="ruby-operator">!=</span> <span class="ruby-value">:start_element</span> <span class="ruby-keyword">and</span> <span class="ruby-ivar">@event_type</span> <span class="ruby-operator">!=</span> <span class="ruby-value">:start_attribute</span>)
 <span class="ruby-keyword">end</span></pre>
           </div>
           

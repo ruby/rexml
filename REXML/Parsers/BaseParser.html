@@ -524,7 +524,7 @@
           <div class="method-source-code" id="empty-3F-source">
             <pre><span class="ruby-comment"># File lib/rexml/parsers/baseparser.rb, line 208</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">empty?</span>
-  <span class="ruby-keyword">return</span> (<span class="ruby-ivar">@source</span>.<span class="ruby-identifier">empty?</span> <span class="ruby-keyword">and</span> <span class="ruby-ivar">@stack</span>.<span class="ruby-identifier">empty?</span>)
+  (<span class="ruby-ivar">@source</span>.<span class="ruby-identifier">empty?</span> <span class="ruby-keyword">and</span> <span class="ruby-ivar">@stack</span>.<span class="ruby-identifier">empty?</span>)
 <span class="ruby-keyword">end</span></pre>
           </div>
           <p>Returns true if there are no more events</p>
@@ -551,7 +551,7 @@
 
         <div class="method-description">
           <div class="method-source-code" id="entity-source">
-            <pre><span class="ruby-comment"># File lib/rexml/parsers/baseparser.rb, line 529</span>
+            <pre><span class="ruby-comment"># File lib/rexml/parsers/baseparser.rb, line 530</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">entity</span>( <span class="ruby-identifier">reference</span>, <span class="ruby-identifier">entities</span> )
   <span class="ruby-keyword">return</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">entities</span>
 
@@ -588,7 +588,7 @@
           <div class="method-source-code" id="has_next-3F-source">
             <pre><span class="ruby-comment"># File lib/rexml/parsers/baseparser.rb, line 213</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">has_next?</span>
-  <span class="ruby-keyword">return</span> <span class="ruby-operator">!</span>(<span class="ruby-ivar">@source</span>.<span class="ruby-identifier">empty?</span> <span class="ruby-keyword">and</span> <span class="ruby-ivar">@stack</span>.<span class="ruby-identifier">empty?</span>)
+  <span class="ruby-operator">!</span>(<span class="ruby-ivar">@source</span>.<span class="ruby-identifier">empty?</span> <span class="ruby-keyword">and</span> <span class="ruby-ivar">@stack</span>.<span class="ruby-identifier">empty?</span>)
 <span class="ruby-keyword">end</span></pre>
           </div>
           <p>Returns true if there are more events.  Synonymous with !empty?</p>
@@ -615,7 +615,7 @@
 
         <div class="method-description">
           <div class="method-source-code" id="normalize-source">
-            <pre><span class="ruby-comment"># File lib/rexml/parsers/baseparser.rb, line 540</span>
+            <pre><span class="ruby-comment"># File lib/rexml/parsers/baseparser.rb, line 541</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">normalize</span>( <span class="ruby-identifier">input</span>, <span class="ruby-identifier">entities</span>=<span class="ruby-keyword">nil</span>, <span class="ruby-identifier">entity_filter</span>=<span class="ruby-keyword">nil</span> )
   <span class="ruby-identifier">copy</span> = <span class="ruby-identifier">input</span>.<span class="ruby-identifier">clone</span>
   <span class="ruby-comment"># Doing it like this rather than in a loop improves the speed</span>
@@ -829,7 +829,7 @@
 
         <div class="method-description">
           <div class="method-source-code" id="unnormalize-source">
-            <pre><span class="ruby-comment"># File lib/rexml/parsers/baseparser.rb, line 556</span>
+            <pre><span class="ruby-comment"># File lib/rexml/parsers/baseparser.rb, line 557</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">unnormalize</span>( <span class="ruby-identifier">string</span>, <span class="ruby-identifier">entities</span>=<span class="ruby-keyword">nil</span>, <span class="ruby-identifier">filter</span>=<span class="ruby-keyword">nil</span> )
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">string</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-string">&quot;\r&quot;</span>)
     <span class="ruby-identifier">rv</span> = <span class="ruby-identifier">string</span>.<span class="ruby-identifier">gsub</span>( <span class="ruby-constant">Private</span><span class="ruby-operator">::</span><span class="ruby-constant">CARRIAGE_RETURN_NEWLINE_PATTERN</span>, <span class="ruby-string">&quot;\n&quot;</span> )

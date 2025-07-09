@@ -755,7 +755,7 @@
 
         <div class="method-description">
           <div class="method-source-code" id="5B-5D-source">
-            <pre><span class="ruby-comment"># File lib/rexml/element.rb, line 1239</span>
+            <pre><span class="ruby-comment"># File lib/rexml/element.rb, line 1238</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">[]</span>(<span class="ruby-identifier">name_or_index</span>)
   <span class="ruby-keyword">case</span> <span class="ruby-identifier">name_or_index</span>
   <span class="ruby-keyword">when</span> <span class="ruby-constant">String</span>
@@ -835,7 +835,7 @@
 
         <div class="method-description">
           <div class="method-source-code" id="add_attribute-source">
-            <pre><span class="ruby-comment"># File lib/rexml/element.rb, line 1338</span>
+            <pre><span class="ruby-comment"># File lib/rexml/element.rb, line 1336</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">add_attribute</span>( <span class="ruby-identifier">key</span>, <span class="ruby-identifier">value</span>=<span class="ruby-keyword">nil</span> )
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">key</span>.<span class="ruby-identifier">kind_of?</span> <span class="ruby-constant">Attribute</span>
     <span class="ruby-ivar">@attributes</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">key</span>
@@ -895,7 +895,7 @@
 
         <div class="method-description">
           <div class="method-source-code" id="add_attributes-source">
-            <pre><span class="ruby-comment"># File lib/rexml/element.rb, line 1369</span>
+            <pre><span class="ruby-comment"># File lib/rexml/element.rb, line 1367</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">add_attributes</span> <span class="ruby-identifier">hash</span>
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">hash</span>.<span class="ruby-identifier">kind_of?</span> <span class="ruby-constant">Hash</span>
     <span class="ruby-identifier">hash</span>.<span class="ruby-identifier">each_pair</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">key</span>, <span class="ruby-identifier">value</span><span class="ruby-operator">|</span> <span class="ruby-ivar">@attributes</span>[<span class="ruby-identifier">key</span>] = <span class="ruby-identifier">value</span> }
@@ -1068,7 +1068,7 @@
 
         <div class="method-description">
           <div class="method-source-code" id="add_text-source">
-            <pre><span class="ruby-comment"># File lib/rexml/element.rb, line 1140</span>
+            <pre><span class="ruby-comment"># File lib/rexml/element.rb, line 1139</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">add_text</span>( <span class="ruby-identifier">text</span> )
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">text</span>.<span class="ruby-identifier">kind_of?</span> <span class="ruby-constant">String</span>
     <span class="ruby-keyword">if</span> <span class="ruby-ivar">@children</span>[<span class="ruby-value">-1</span>].<span class="ruby-identifier">kind_of?</span> <span class="ruby-constant">Text</span>
@@ -1078,7 +1078,7 @@
     <span class="ruby-identifier">text</span> = <span class="ruby-constant">Text</span>.<span class="ruby-identifier">new</span>( <span class="ruby-identifier">text</span>, <span class="ruby-identifier">whitespace</span>(), <span class="ruby-keyword">nil</span>, <span class="ruby-identifier">raw</span>() )
   <span class="ruby-keyword">end</span>
   <span class="ruby-keyword">self</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">text</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">text</span>.<span class="ruby-identifier">nil?</span>
-  <span class="ruby-keyword">return</span> <span class="ruby-keyword">self</span>
+  <span class="ruby-keyword">self</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
           <p>Adds text to the element.</p>
@@ -1136,7 +1136,7 @@
 
         <div class="method-description">
           <div class="method-source-code" id="attribute-source">
-            <pre><span class="ruby-comment"># File lib/rexml/element.rb, line 1280</span>
+            <pre><span class="ruby-comment"># File lib/rexml/element.rb, line 1279</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">attribute</span>( <span class="ruby-identifier">name</span>, <span class="ruby-identifier">namespace</span>=<span class="ruby-keyword">nil</span> )
   <span class="ruby-identifier">prefix</span> = <span class="ruby-identifier">namespaces</span>.<span class="ruby-identifier">key</span>(<span class="ruby-identifier">namespace</span>) <span class="ruby-keyword">if</span> <span class="ruby-identifier">namespace</span>
   <span class="ruby-identifier">prefix</span> = <span class="ruby-keyword">nil</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">prefix</span> <span class="ruby-operator">==</span> <span class="ruby-string">&#39;xmlns&#39;</span>
@@ -1152,7 +1152,6 @@
   <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span> <span class="ruby-keyword">unless</span> ( <span class="ruby-identifier">namespaces</span>[ <span class="ruby-identifier">prefix</span> ] <span class="ruby-operator">==</span> <span class="ruby-identifier">namespaces</span>[ <span class="ruby-string">&#39;xmlns&#39;</span> ] )
 
   <span class="ruby-identifier">attributes</span>.<span class="ruby-identifier">get_attribute</span>( <span class="ruby-identifier">name</span> )
-
 <span class="ruby-keyword">end</span></pre>
           </div>
           <p>Returns the string value for the given attribute name.</p>
@@ -1204,7 +1203,7 @@
 
         <div class="method-description">
           <div class="method-source-code" id="cdatas-source">
-            <pre><span class="ruby-comment"># File lib/rexml/element.rb, line 1413</span>
+            <pre><span class="ruby-comment"># File lib/rexml/element.rb, line 1411</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">cdatas</span>
   <span class="ruby-identifier">find_all</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">child</span><span class="ruby-operator">|</span> <span class="ruby-identifier">child</span>.<span class="ruby-identifier">kind_of?</span> <span class="ruby-constant">CData</span> }.<span class="ruby-identifier">freeze</span>
 <span class="ruby-keyword">end</span></pre>
@@ -1281,7 +1280,7 @@
 
         <div class="method-description">
           <div class="method-source-code" id="comments-source">
-            <pre><span class="ruby-comment"># File lib/rexml/element.rb, line 1434</span>
+            <pre><span class="ruby-comment"># File lib/rexml/element.rb, line 1432</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">comments</span>
   <span class="ruby-identifier">find_all</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">child</span><span class="ruby-operator">|</span> <span class="ruby-identifier">child</span>.<span class="ruby-identifier">kind_of?</span> <span class="ruby-constant">Comment</span> }.<span class="ruby-identifier">freeze</span>
 <span class="ruby-keyword">end</span></pre>
@@ -1324,7 +1323,7 @@
 
         <div class="method-description">
           <div class="method-source-code" id="delete_attribute-source">
-            <pre><span class="ruby-comment"># File lib/rexml/element.rb, line 1388</span>
+            <pre><span class="ruby-comment"># File lib/rexml/element.rb, line 1386</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">delete_attribute</span>(<span class="ruby-identifier">key</span>)
   <span class="ruby-identifier">attr</span> = <span class="ruby-ivar">@attributes</span>.<span class="ruby-identifier">get_attribute</span>(<span class="ruby-identifier">key</span>)
   <span class="ruby-identifier">attr</span>.<span class="ruby-identifier">remove</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">attr</span>.<span class="ruby-identifier">nil?</span>
@@ -1770,7 +1769,7 @@
 
         <div class="method-description">
           <div class="method-source-code" id="get_text-source">
-            <pre><span class="ruby-comment"># File lib/rexml/element.rb, line 1046</span>
+            <pre><span class="ruby-comment"># File lib/rexml/element.rb, line 1045</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">get_text</span> <span class="ruby-identifier">path</span> = <span class="ruby-keyword">nil</span>
   <span class="ruby-identifier">rv</span> = <span class="ruby-keyword">nil</span>
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">path</span>
@@ -1779,7 +1778,7 @@
   <span class="ruby-keyword">else</span>
     <span class="ruby-identifier">rv</span> = <span class="ruby-ivar">@children</span>.<span class="ruby-identifier">find</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">node</span><span class="ruby-operator">|</span> <span class="ruby-identifier">node</span>.<span class="ruby-identifier">kind_of?</span> <span class="ruby-constant">Text</span> }
   <span class="ruby-keyword">end</span>
-  <span class="ruby-keyword">return</span> <span class="ruby-identifier">rv</span>
+  <span class="ruby-identifier">rv</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
           <p>Returns the first text node child in a specified element, if it exists, <code>nil</code> otherwise.</p>
@@ -1819,9 +1818,9 @@
 
         <div class="method-description">
           <div class="method-source-code" id="has_attributes-3F-source">
-            <pre><span class="ruby-comment"># File lib/rexml/element.rb, line 1308</span>
+            <pre><span class="ruby-comment"># File lib/rexml/element.rb, line 1306</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">has_attributes?</span>
-  <span class="ruby-keyword">return</span> <span class="ruby-operator">!</span><span class="ruby-ivar">@attributes</span>.<span class="ruby-identifier">empty?</span>
+  <span class="ruby-operator">!</span><span class="ruby-ivar">@attributes</span>.<span class="ruby-identifier">empty?</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
           <p>Returns <code>true</code> if the element has attributes, <code>false</code> otherwise:</p>
@@ -2028,7 +2027,7 @@
 
         <div class="method-description">
           <div class="method-source-code" id="instructions-source">
-            <pre><span class="ruby-comment"># File lib/rexml/element.rb, line 1455</span>
+            <pre><span class="ruby-comment"># File lib/rexml/element.rb, line 1453</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">instructions</span>
   <span class="ruby-identifier">find_all</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">child</span><span class="ruby-operator">|</span> <span class="ruby-identifier">child</span>.<span class="ruby-identifier">kind_of?</span> <span class="ruby-constant">Instruction</span> }.<span class="ruby-identifier">freeze</span>
 <span class="ruby-keyword">end</span></pre>
@@ -2080,7 +2079,7 @@
   <span class="ruby-identifier">ns</span> = <span class="ruby-identifier">namespaces</span>[<span class="ruby-identifier">prefix</span>]
 
   <span class="ruby-identifier">ns</span> = <span class="ruby-string">&#39;&#39;</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">ns</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-keyword">and</span> <span class="ruby-identifier">prefix</span> <span class="ruby-operator">==</span> <span class="ruby-string">&#39;xmlns&#39;</span>
-  <span class="ruby-keyword">return</span> <span class="ruby-identifier">ns</span>
+  <span class="ruby-identifier">ns</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
           <p>Returns the string namespace URI for the element, possibly deriving from one of its ancestors.</p>
@@ -2176,7 +2175,7 @@
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">next_element</span>
   <span class="ruby-identifier">element</span> = <span class="ruby-identifier">next_sibling</span>
   <span class="ruby-identifier">element</span> = <span class="ruby-identifier">element</span>.<span class="ruby-identifier">next_sibling</span> <span class="ruby-keyword">until</span> <span class="ruby-identifier">element</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-keyword">or</span> <span class="ruby-identifier">element</span>.<span class="ruby-identifier">kind_of?</span> <span class="ruby-constant">Element</span>
-  <span class="ruby-keyword">return</span> <span class="ruby-identifier">element</span>
+  <span class="ruby-identifier">element</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
           <p>Returns the next sibling that is an element if it exists, <code>niL</code> otherwise:</p>
@@ -2209,7 +2208,7 @@
 
         <div class="method-description">
           <div class="method-source-code" id="node_type-source">
-            <pre><span class="ruby-comment"># File lib/rexml/element.rb, line 1161</span>
+            <pre><span class="ruby-comment"># File lib/rexml/element.rb, line 1160</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">node_type</span>
   <span class="ruby-value">:element</span>
 <span class="ruby-keyword">end</span></pre>
@@ -2249,7 +2248,7 @@
   <span class="ruby-identifier">prefixes</span> = []
   <span class="ruby-identifier">prefixes</span> = <span class="ruby-identifier">parent</span>.<span class="ruby-identifier">prefixes</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">parent</span>
   <span class="ruby-identifier">prefixes</span> <span class="ruby-operator">|=</span> <span class="ruby-identifier">attributes</span>.<span class="ruby-identifier">prefixes</span>
-  <span class="ruby-keyword">return</span> <span class="ruby-identifier">prefixes</span>
+  <span class="ruby-identifier">prefixes</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
           <p>Returns an array of the string prefixes (names) of all defined namespaces in the element and its ancestors:</p>
@@ -2295,7 +2294,7 @@
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">previous_element</span>
   <span class="ruby-identifier">element</span> = <span class="ruby-identifier">previous_sibling</span>
   <span class="ruby-identifier">element</span> = <span class="ruby-identifier">element</span>.<span class="ruby-identifier">previous_sibling</span> <span class="ruby-keyword">until</span> <span class="ruby-identifier">element</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-keyword">or</span> <span class="ruby-identifier">element</span>.<span class="ruby-identifier">kind_of?</span> <span class="ruby-constant">Element</span>
-  <span class="ruby-keyword">return</span> <span class="ruby-identifier">element</span>
+  <span class="ruby-identifier">element</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
           <p>Returns the previous sibling that is an element if it exists, <code>niL</code> otherwise:</p>
@@ -2477,8 +2476,7 @@
             <pre><span class="ruby-comment"># File lib/rexml/element.rb, line 1023</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">text</span>( <span class="ruby-identifier">path</span> = <span class="ruby-keyword">nil</span> )
   <span class="ruby-identifier">rv</span> = <span class="ruby-identifier">get_text</span>(<span class="ruby-identifier">path</span>)
-  <span class="ruby-keyword">return</span> <span class="ruby-identifier">rv</span>.<span class="ruby-identifier">value</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">rv</span>.<span class="ruby-identifier">nil?</span>
-  <span class="ruby-keyword">nil</span>
+  <span class="ruby-identifier">rv</span>&amp;.<span class="ruby-identifier">value</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
           <p>Returns the text string from the first text node child in a specified element, if it exists, <code>nil</code> otherwise.</p>
@@ -2529,7 +2527,7 @@
 
         <div class="method-description">
           <div class="method-source-code" id="text-3D-source">
-            <pre><span class="ruby-comment"># File lib/rexml/element.rb, line 1082</span>
+            <pre><span class="ruby-comment"># File lib/rexml/element.rb, line 1081</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">text=</span>( <span class="ruby-identifier">text</span> )
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">text</span>.<span class="ruby-identifier">kind_of?</span> <span class="ruby-constant">String</span>
     <span class="ruby-identifier">text</span> = <span class="ruby-constant">Text</span>.<span class="ruby-identifier">new</span>( <span class="ruby-identifier">text</span>, <span class="ruby-identifier">whitespace</span>(), <span class="ruby-keyword">nil</span>, <span class="ruby-identifier">raw</span>() )
@@ -2546,7 +2544,7 @@
       <span class="ruby-identifier">old_text</span>.<span class="ruby-identifier">replace_with</span>( <span class="ruby-identifier">text</span> )
     <span class="ruby-keyword">end</span>
   <span class="ruby-keyword">end</span>
-  <span class="ruby-keyword">return</span> <span class="ruby-keyword">self</span>
+  <span class="ruby-keyword">self</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
           <p>Adds, replaces, or removes the first text node child in the element.</p>
@@ -2592,7 +2590,7 @@
 
         <div class="method-description">
           <div class="method-source-code" id="texts-source">
-            <pre><span class="ruby-comment"># File lib/rexml/element.rb, line 1471</span>
+            <pre><span class="ruby-comment"># File lib/rexml/element.rb, line 1469</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">texts</span>
   <span class="ruby-identifier">find_all</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">child</span><span class="ruby-operator">|</span> <span class="ruby-identifier">child</span>.<span class="ruby-identifier">kind_of?</span> <span class="ruby-constant">Text</span> }.<span class="ruby-identifier">freeze</span>
 <span class="ruby-keyword">end</span></pre>
@@ -2675,7 +2673,7 @@
 
         <div class="method-description">
           <div class="method-source-code" id="write-source">
-            <pre><span class="ruby-comment"># File lib/rexml/element.rb, line 1497</span>
+            <pre><span class="ruby-comment"># File lib/rexml/element.rb, line 1495</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">write</span>(<span class="ruby-identifier">output</span>=<span class="ruby-identifier">$stdout</span>, <span class="ruby-identifier">indent</span>=<span class="ruby-value">-1</span>, <span class="ruby-identifier">transitive</span>=<span class="ruby-keyword">false</span>, <span class="ruby-identifier">ie_hack</span>=<span class="ruby-keyword">false</span>)
   <span class="ruby-constant">Kernel</span>.<span class="ruby-identifier">warn</span>(<span class="ruby-node">&quot;#{self.class.name}#write is deprecated.  See REXML::Formatters&quot;</span>, <span class="ruby-value">uplevel:</span> <span class="ruby-value">1</span>)
   <span class="ruby-identifier">formatter</span> = <span class="ruby-keyword">if</span> <span class="ruby-identifier">indent</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">-1</span>
@@ -2741,7 +2739,7 @@
 
         <div class="method-description">
           <div class="method-source-code" id="xpath-source">
-            <pre><span class="ruby-comment"># File lib/rexml/element.rb, line 1185</span>
+            <pre><span class="ruby-comment"># File lib/rexml/element.rb, line 1184</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">xpath</span>
   <span class="ruby-identifier">path_elements</span> = []
   <span class="ruby-identifier">cur</span> = <span class="ruby-keyword">self</span>
@@ -2750,7 +2748,7 @@
     <span class="ruby-identifier">cur</span> = <span class="ruby-identifier">cur</span>.<span class="ruby-identifier">parent</span>
     <span class="ruby-identifier">path_elements</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">__to_xpath_helper</span>( <span class="ruby-identifier">cur</span> )
   <span class="ruby-keyword">end</span>
-  <span class="ruby-keyword">return</span> <span class="ruby-identifier">path_elements</span>.<span class="ruby-identifier">reverse</span>.<span class="ruby-identifier">join</span>( <span class="ruby-string">&quot;/&quot;</span> )
+  <span class="ruby-identifier">path_elements</span>.<span class="ruby-identifier">reverse</span>.<span class="ruby-identifier">join</span>( <span class="ruby-string">&quot;/&quot;</span> )
 <span class="ruby-keyword">end</span></pre>
           </div>
           <p>Returns the string xpath to the element relative to the most distant parent:</p>

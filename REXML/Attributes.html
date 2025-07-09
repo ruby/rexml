@@ -174,7 +174,7 @@
 
         <div class="method-description">
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File lib/rexml/element.rb, line 2156</span>
+            <pre><span class="ruby-comment"># File lib/rexml/element.rb, line 2150</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span> <span class="ruby-identifier">element</span>
   <span class="ruby-ivar">@element</span> = <span class="ruby-identifier">element</span>
 <span class="ruby-keyword">end</span></pre>
@@ -242,11 +242,10 @@
 
         <div class="method-description">
           <div class="method-source-code" id="5B-5D-source">
-            <pre><span class="ruby-comment"># File lib/rexml/element.rb, line 2181</span>
+            <pre><span class="ruby-comment"># File lib/rexml/element.rb, line 2175</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">[]</span>(<span class="ruby-identifier">name</span>)
   <span class="ruby-identifier">attr</span> = <span class="ruby-identifier">get_attribute</span>(<span class="ruby-identifier">name</span>)
-  <span class="ruby-keyword">return</span> <span class="ruby-identifier">attr</span>.<span class="ruby-identifier">value</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">attr</span>.<span class="ruby-identifier">nil?</span>
-  <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span>
+  <span class="ruby-identifier">attr</span>&amp;.<span class="ruby-identifier">value</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
           <p>Returns the value for the attribute given by <code>name</code>, if it exists; otherwise <code>nil</code>. The value returned is the unnormalized attribute value, with entities expanded:</p>
@@ -288,7 +287,7 @@
 
         <div class="method-description">
           <div class="method-source-code" id="5B-5D-3D-source">
-            <pre><span class="ruby-comment"># File lib/rexml/element.rb, line 2365</span>
+            <pre><span class="ruby-comment"># File lib/rexml/element.rb, line 2358</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">[]=</span>( <span class="ruby-identifier">name</span>, <span class="ruby-identifier">value</span> )
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">value</span>.<span class="ruby-identifier">nil?</span>             <span class="ruby-comment"># Delete the named attribute</span>
     <span class="ruby-identifier">attr</span> = <span class="ruby-identifier">get_attribute</span>(<span class="ruby-identifier">name</span>)
@@ -317,7 +316,7 @@
   <span class="ruby-keyword">else</span>
     <span class="ruby-identifier">store</span> <span class="ruby-identifier">value</span>.<span class="ruby-identifier">name</span>, <span class="ruby-identifier">value</span>
   <span class="ruby-keyword">end</span>
-  <span class="ruby-keyword">return</span> <span class="ruby-ivar">@element</span>
+  <span class="ruby-ivar">@element</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
           <p>When <code>value</code> is non-<code>nil</code>, assigns that to the attribute for the given <code>name</code>, overwriting the previous value if it exists:</p>
@@ -363,7 +362,7 @@
 
         <div class="method-description">
           <div class="method-source-code" id="add-source">
-            <pre><span class="ruby-comment"># File lib/rexml/element.rb, line 2525</span>
+            <pre><span class="ruby-comment"># File lib/rexml/element.rb, line 2516</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">add</span>( <span class="ruby-identifier">attribute</span> )
   <span class="ruby-keyword">self</span>[<span class="ruby-identifier">attribute</span>.<span class="ruby-identifier">name</span>] = <span class="ruby-identifier">attribute</span>
 <span class="ruby-keyword">end</span></pre>
@@ -417,7 +416,7 @@
 
         <div class="method-description">
           <div class="method-source-code" id="delete-source">
-            <pre><span class="ruby-comment"># File lib/rexml/element.rb, line 2478</span>
+            <pre><span class="ruby-comment"># File lib/rexml/element.rb, line 2471</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">delete</span>( <span class="ruby-identifier">attribute</span> )
   <span class="ruby-identifier">name</span> = <span class="ruby-keyword">nil</span>
   <span class="ruby-identifier">prefix</span> = <span class="ruby-keyword">nil</span>
@@ -437,9 +436,7 @@
       <span class="ruby-identifier">old</span>.<span class="ruby-identifier">each_value</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">v</span><span class="ruby-operator">|</span> <span class="ruby-identifier">repl</span> = <span class="ruby-identifier">v</span>}
       <span class="ruby-identifier">store</span> <span class="ruby-identifier">name</span>, <span class="ruby-identifier">repl</span>
     <span class="ruby-keyword">end</span>
-  <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">old</span>.<span class="ruby-identifier">nil?</span>
-    <span class="ruby-keyword">return</span> <span class="ruby-ivar">@element</span>
-  <span class="ruby-keyword">else</span> <span class="ruby-comment"># the supplied attribute is a top-level one</span>
+  <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">old</span> <span class="ruby-comment"># the supplied attribute is a top-level one</span>
     <span class="ruby-keyword">super</span>(<span class="ruby-identifier">name</span>)
   <span class="ruby-keyword">end</span>
   <span class="ruby-ivar">@element</span>
@@ -495,14 +492,14 @@
 
         <div class="method-description">
           <div class="method-source-code" id="delete_all-source">
-            <pre><span class="ruby-comment"># File lib/rexml/element.rb, line 2547</span>
+            <pre><span class="ruby-comment"># File lib/rexml/element.rb, line 2538</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">delete_all</span>( <span class="ruby-identifier">name</span> )
   <span class="ruby-identifier">rv</span> = []
   <span class="ruby-identifier">each_attribute</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">attribute</span><span class="ruby-operator">|</span>
     <span class="ruby-identifier">rv</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">attribute</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">attribute</span>.<span class="ruby-identifier">expanded_name</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">name</span>
   }
   <span class="ruby-identifier">rv</span>.<span class="ruby-identifier">each</span>{ <span class="ruby-operator">|</span><span class="ruby-identifier">attr</span><span class="ruby-operator">|</span> <span class="ruby-identifier">attr</span>.<span class="ruby-identifier">remove</span> }
-  <span class="ruby-keyword">return</span> <span class="ruby-identifier">rv</span>
+  <span class="ruby-identifier">rv</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
           <p>Removes all attributes matching the given <code>name</code>; returns an array of the removed attributes:</p>
@@ -541,7 +538,7 @@
 
         <div class="method-description">
           <div class="method-source-code" id="each-source">
-            <pre><span class="ruby-comment"># File lib/rexml/element.rb, line 2283</span>
+            <pre><span class="ruby-comment"># File lib/rexml/element.rb, line 2276</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">each</span>
   <span class="ruby-keyword">return</span> <span class="ruby-identifier">to_enum</span>(<span class="ruby-identifier">__method__</span>) <span class="ruby-keyword">unless</span> <span class="ruby-identifier">block_given?</span>
   <span class="ruby-identifier">each_attribute</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">attr</span><span class="ruby-operator">|</span>
@@ -593,7 +590,7 @@
 
         <div class="method-description">
           <div class="method-source-code" id="each_attribute-source">
-            <pre><span class="ruby-comment"># File lib/rexml/element.rb, line 2250</span>
+            <pre><span class="ruby-comment"># File lib/rexml/element.rb, line 2243</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">each_attribute</span> <span class="ruby-comment"># :yields: attribute</span>
   <span class="ruby-keyword">return</span> <span class="ruby-identifier">to_enum</span>(<span class="ruby-identifier">__method__</span>) <span class="ruby-keyword">unless</span> <span class="ruby-identifier">block_given?</span>
   <span class="ruby-identifier">each_value</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">val</span><span class="ruby-operator">|</span>
@@ -649,7 +646,7 @@
 
         <div class="method-description">
           <div class="method-source-code" id="get_attribute-source">
-            <pre><span class="ruby-comment"># File lib/rexml/element.rb, line 2309</span>
+            <pre><span class="ruby-comment"># File lib/rexml/element.rb, line 2302</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">get_attribute</span>( <span class="ruby-identifier">name</span> )
   <span class="ruby-identifier">attr</span> = <span class="ruby-identifier">fetch</span>( <span class="ruby-identifier">name</span>, <span class="ruby-keyword">nil</span> )
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">attr</span>.<span class="ruby-identifier">nil?</span>
@@ -680,7 +677,7 @@
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">attr</span>.<span class="ruby-identifier">kind_of?</span> <span class="ruby-constant">Hash</span>
     <span class="ruby-identifier">attr</span> = <span class="ruby-identifier">attr</span>[ <span class="ruby-ivar">@element</span>.<span class="ruby-identifier">prefix</span> ]
   <span class="ruby-keyword">end</span>
-  <span class="ruby-keyword">return</span> <span class="ruby-identifier">attr</span>
+  <span class="ruby-identifier">attr</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
           <p>Returns the REXML::Attribute object for the given <code>name</code>:</p>
@@ -723,7 +720,7 @@
 
         <div class="method-description">
           <div class="method-source-code" id="get_attribute_ns-source">
-            <pre><span class="ruby-comment"># File lib/rexml/element.rb, line 2573</span>
+            <pre><span class="ruby-comment"># File lib/rexml/element.rb, line 2564</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">get_attribute_ns</span>(<span class="ruby-identifier">namespace</span>, <span class="ruby-identifier">name</span>)
   <span class="ruby-identifier">result</span> = <span class="ruby-keyword">nil</span>
   <span class="ruby-identifier">each_attribute</span>() { <span class="ruby-operator">|</span><span class="ruby-identifier">attribute</span><span class="ruby-operator">|</span>
@@ -775,7 +772,7 @@
 
         <div class="method-description">
           <div class="method-source-code" id="length-source">
-            <pre><span class="ruby-comment"># File lib/rexml/element.rb, line 2221</span>
+            <pre><span class="ruby-comment"># File lib/rexml/element.rb, line 2214</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">length</span>
   <span class="ruby-identifier">c</span> = <span class="ruby-value">0</span>
   <span class="ruby-identifier">each_attribute</span> { <span class="ruby-identifier">c</span><span class="ruby-operator">+=</span><span class="ruby-value">1</span> }
@@ -820,7 +817,7 @@
 
         <div class="method-description">
           <div class="method-source-code" id="namespaces-source">
-            <pre><span class="ruby-comment"># File lib/rexml/element.rb, line 2433</span>
+            <pre><span class="ruby-comment"># File lib/rexml/element.rb, line 2426</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">namespaces</span>
   <span class="ruby-identifier">namespaces</span> = {}
   <span class="ruby-identifier">each_attribute</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">attribute</span><span class="ruby-operator">|</span>
@@ -868,7 +865,7 @@
 
         <div class="method-description">
           <div class="method-source-code" id="prefixes-source">
-            <pre><span class="ruby-comment"># File lib/rexml/element.rb, line 2407</span>
+            <pre><span class="ruby-comment"># File lib/rexml/element.rb, line 2400</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">prefixes</span>
   <span class="ruby-identifier">ns</span> = []
   <span class="ruby-identifier">each_attribute</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">attribute</span><span class="ruby-operator">|</span>
@@ -938,7 +935,7 @@
 
         <div class="method-description">
           <div class="method-source-code" id="to_a-source">
-            <pre><span class="ruby-comment"># File lib/rexml/element.rb, line 2203</span>
+            <pre><span class="ruby-comment"># File lib/rexml/element.rb, line 2196</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">to_a</span>
   <span class="ruby-identifier">enum_for</span>(<span class="ruby-value">:each_attribute</span>).<span class="ruby-identifier">to_a</span>
 <span class="ruby-keyword">end</span></pre>

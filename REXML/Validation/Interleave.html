@@ -168,7 +168,7 @@
 
         <div class="method-description">
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File lib/rexml/validation/relaxng.rb, line 440</span>
+            <pre><span class="ruby-comment"># File lib/rexml/validation/relaxng.rb, line 441</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span> <span class="ruby-identifier">context</span>
   <span class="ruby-keyword">super</span>
   <span class="ruby-ivar">@choice</span> = <span class="ruby-value">0</span>
@@ -209,10 +209,10 @@
 
         <div class="method-description">
           <div class="method-source-code" id="expected-source">
-            <pre><span class="ruby-comment"># File lib/rexml/validation/relaxng.rb, line 511</span>
+            <pre><span class="ruby-comment"># File lib/rexml/validation/relaxng.rb, line 512</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">expected</span>
   <span class="ruby-keyword">return</span> [<span class="ruby-ivar">@events</span>[<span class="ruby-ivar">@current</span>]] <span class="ruby-keyword">if</span> <span class="ruby-ivar">@events</span>[<span class="ruby-ivar">@current</span>]
-  <span class="ruby-keyword">return</span> <span class="ruby-ivar">@choices</span>[<span class="ruby-ivar">@choice</span><span class="ruby-operator">..</span><span class="ruby-value">-1</span>].<span class="ruby-identifier">collect</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">x</span><span class="ruby-operator">|</span>
+  <span class="ruby-ivar">@choices</span>[<span class="ruby-ivar">@choice</span><span class="ruby-operator">..</span><span class="ruby-value">-1</span>].<span class="ruby-identifier">collect</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">x</span><span class="ruby-operator">|</span>
     <span class="ruby-keyword">if</span> <span class="ruby-identifier">x</span>[<span class="ruby-value">0</span>].<span class="ruby-identifier">kind_of?</span> <span class="ruby-constant">State</span>
       <span class="ruby-identifier">x</span>[<span class="ruby-value">0</span>].<span class="ruby-identifier">expected</span>
     <span class="ruby-keyword">else</span>
@@ -245,7 +245,7 @@
 
         <div class="method-description">
           <div class="method-source-code" id="inspect-source">
-            <pre><span class="ruby-comment"># File lib/rexml/validation/relaxng.rb, line 522</span>
+            <pre><span class="ruby-comment"># File lib/rexml/validation/relaxng.rb, line 523</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">inspect</span>
   <span class="ruby-node">&quot;&lt; #{to_s} #{@choices.collect{|e| e.collect{|f|f.to_s}.join(&#39;, &#39;)}.join(&#39; and &#39;)} &gt;&quot;</span>
 <span class="ruby-keyword">end</span></pre>
@@ -274,7 +274,7 @@
 
         <div class="method-description">
           <div class="method-source-code" id="matches-3F-source">
-            <pre><span class="ruby-comment"># File lib/rexml/validation/relaxng.rb, line 506</span>
+            <pre><span class="ruby-comment"># File lib/rexml/validation/relaxng.rb, line 507</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">matches?</span>( <span class="ruby-identifier">event</span> )
   <span class="ruby-keyword">return</span> <span class="ruby-ivar">@events</span>[<span class="ruby-ivar">@current</span>].<span class="ruby-identifier">matches?</span>( <span class="ruby-identifier">event</span> ) <span class="ruby-keyword">if</span> <span class="ruby-ivar">@events</span>[<span class="ruby-ivar">@current</span>]
   <span class="ruby-operator">!</span><span class="ruby-ivar">@choices</span>[<span class="ruby-ivar">@choice</span><span class="ruby-operator">..</span><span class="ruby-value">-1</span>].<span class="ruby-identifier">find</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">evt</span><span class="ruby-operator">|</span> <span class="ruby-identifier">evt</span>[<span class="ruby-value">0</span>].<span class="ruby-identifier">matches?</span>(<span class="ruby-identifier">event</span>)}.<span class="ruby-identifier">nil?</span>
@@ -304,7 +304,7 @@
 
         <div class="method-description">
           <div class="method-source-code" id="next-source">
-            <pre><span class="ruby-comment"># File lib/rexml/validation/relaxng.rb, line 477</span>
+            <pre><span class="ruby-comment"># File lib/rexml/validation/relaxng.rb, line 478</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">next</span>( <span class="ruby-identifier ruby-title">event</span> )
   <span class="ruby-comment"># Find the next series</span>
   <span class="ruby-identifier">next_current</span>(<span class="ruby-identifier">event</span>) <span class="ruby-keyword">unless</span> <span class="ruby-ivar">@events</span>[<span class="ruby-ivar">@current</span>]
@@ -321,16 +321,16 @@
     <span class="ruby-ivar">@current</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
     <span class="ruby-keyword">if</span> <span class="ruby-ivar">@events</span>[<span class="ruby-ivar">@current</span>].<span class="ruby-identifier">nil?</span>
       <span class="ruby-keyword">return</span> <span class="ruby-keyword">self</span> <span class="ruby-keyword">unless</span> <span class="ruby-ivar">@choices</span>[<span class="ruby-ivar">@choice</span>].<span class="ruby-identifier">nil?</span>
-      <span class="ruby-keyword">return</span> <span class="ruby-ivar">@previous</span>.<span class="ruby-identifier">pop</span>
+      <span class="ruby-ivar">@previous</span>.<span class="ruby-identifier">pop</span>
     <span class="ruby-keyword">elsif</span> <span class="ruby-ivar">@events</span>[<span class="ruby-ivar">@current</span>].<span class="ruby-identifier">kind_of?</span> <span class="ruby-constant">State</span>
       <span class="ruby-ivar">@current</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
       <span class="ruby-ivar">@events</span>[<span class="ruby-ivar">@current</span><span class="ruby-value">-1</span>].<span class="ruby-identifier">previous</span> = <span class="ruby-keyword">self</span>
-      <span class="ruby-keyword">return</span> <span class="ruby-ivar">@events</span>[<span class="ruby-ivar">@current</span><span class="ruby-value">-1</span>]
+      <span class="ruby-ivar">@events</span>[<span class="ruby-ivar">@current</span><span class="ruby-value">-1</span>]
     <span class="ruby-keyword">else</span>
-      <span class="ruby-keyword">return</span> <span class="ruby-keyword">self</span>
+      <span class="ruby-keyword">self</span>
     <span class="ruby-keyword">end</span>
   <span class="ruby-keyword">else</span>
-    <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span>
+    <span class="ruby-keyword">nil</span>
   <span class="ruby-keyword">end</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
@@ -358,7 +358,7 @@
 
         <div class="method-description">
           <div class="method-source-code" id="next_current-source">
-            <pre><span class="ruby-comment"># File lib/rexml/validation/relaxng.rb, line 449</span>
+            <pre><span class="ruby-comment"># File lib/rexml/validation/relaxng.rb, line 450</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">next_current</span>( <span class="ruby-identifier">event</span> )
   <span class="ruby-comment"># Expand references</span>
   <span class="ruby-identifier">c</span> = <span class="ruby-value">0</span> ; <span class="ruby-identifier">max</span> = <span class="ruby-ivar">@choices</span>.<span class="ruby-identifier">size</span>
@@ -410,7 +410,7 @@
 
         <div class="method-description">
           <div class="method-source-code" id="reset-source">
-            <pre><span class="ruby-comment"># File lib/rexml/validation/relaxng.rb, line 445</span>
+            <pre><span class="ruby-comment"># File lib/rexml/validation/relaxng.rb, line 446</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">reset</span>
   <span class="ruby-ivar">@choice</span> = <span class="ruby-value">0</span>
 <span class="ruby-keyword">end</span></pre>
