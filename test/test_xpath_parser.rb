@@ -3,7 +3,7 @@
 module REXMLTests
   class TestXPathParser < Test::Unit::TestCase
     def setup
-      @root_element = _make_service_element(["urn:type1", "urn:type2"], ["http://uri"])
+      @root_element = make_service_element(["urn:type1", "urn:type2"], ["http://uri"])
       @root = @root_element.root
       @element = @root_element.children[0]
     end
@@ -56,8 +56,8 @@ module REXMLTests
     def test_not_found
       @parser = REXML::XPathParser.new
       res = @parser.parse("/nonexistent", @root_element)
-      assert_equal("[]",
-                   res.to_s)
+      assert_equal([],
+                   res)
     end
   end
 end
