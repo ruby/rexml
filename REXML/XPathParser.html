@@ -228,7 +228,7 @@
 
         <div class="method-description">
           <div class="method-source-code" id="5B-5D-3D-source">
-            <pre><span class="ruby-comment"># File lib/rexml/xpath_parser.rb, line 102</span>
+            <pre><span class="ruby-comment"># File lib/rexml/xpath_parser.rb, line 107</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">[]=</span>( <span class="ruby-identifier">variable_name</span>, <span class="ruby-identifier">value</span> )
   <span class="ruby-ivar">@variables</span>[ <span class="ruby-identifier">variable_name</span> ] = <span class="ruby-identifier">value</span>
 <span class="ruby-keyword">end</span></pre>
@@ -257,7 +257,7 @@
 
         <div class="method-description">
           <div class="method-source-code" id="first-source">
-            <pre><span class="ruby-comment"># File lib/rexml/xpath_parser.rb, line 111</span>
+            <pre><span class="ruby-comment"># File lib/rexml/xpath_parser.rb, line 116</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">first</span>( <span class="ruby-identifier">path_stack</span>, <span class="ruby-identifier">node</span> )
   <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">path</span>.<span class="ruby-identifier">size</span> <span class="ruby-operator">==</span> <span class="ruby-value">0</span>
 
@@ -320,7 +320,7 @@
 
         <div class="method-description">
           <div class="method-source-code" id="get_first-source">
-            <pre><span class="ruby-comment"># File lib/rexml/xpath_parser.rb, line 92</span>
+            <pre><span class="ruby-comment"># File lib/rexml/xpath_parser.rb, line 97</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">get_first</span> <span class="ruby-identifier">path</span>, <span class="ruby-identifier">node</span>
   <span class="ruby-identifier">path_stack</span> = <span class="ruby-ivar">@parser</span>.<span class="ruby-identifier">parse</span>( <span class="ruby-identifier">path</span> )
   <span class="ruby-identifier">first</span>( <span class="ruby-identifier">path_stack</span>, <span class="ruby-identifier">node</span> )
@@ -350,7 +350,7 @@
 
         <div class="method-description">
           <div class="method-source-code" id="match-source">
-            <pre><span class="ruby-comment"># File lib/rexml/xpath_parser.rb, line 148</span>
+            <pre><span class="ruby-comment"># File lib/rexml/xpath_parser.rb, line 153</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">match</span>(<span class="ruby-identifier">path_stack</span>, <span class="ruby-identifier">node</span>)
   <span class="ruby-identifier">nodeset</span> = [<span class="ruby-constant">XPathNode</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">node</span>, <span class="ruby-value">position:</span> <span class="ruby-value">1</span>)]
   <span class="ruby-identifier">result</span> = <span class="ruby-identifier">expr</span>(<span class="ruby-identifier">path_stack</span>, <span class="ruby-identifier">nodeset</span>)
@@ -425,7 +425,12 @@
     <span class="ruby-identifier">node</span> = <span class="ruby-identifier">node</span>.<span class="ruby-identifier">first</span>
   <span class="ruby-keyword">end</span>
 
-  <span class="ruby-identifier">node</span>.<span class="ruby-identifier">document</span>.<span class="ruby-identifier">__send__</span>(<span class="ruby-value">:enable_cache</span>) <span class="ruby-keyword">do</span>
+  <span class="ruby-identifier">document</span> = <span class="ruby-identifier">node</span>.<span class="ruby-identifier">document</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">document</span>
+    <span class="ruby-identifier">document</span>.<span class="ruby-identifier">__send__</span>(<span class="ruby-value">:enable_cache</span>) <span class="ruby-keyword">do</span>
+      <span class="ruby-identifier">match</span>( <span class="ruby-identifier">path_stack</span>, <span class="ruby-identifier">node</span> )
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">else</span>
     <span class="ruby-identifier">match</span>( <span class="ruby-identifier">path_stack</span>, <span class="ruby-identifier">node</span> )
   <span class="ruby-keyword">end</span>
 <span class="ruby-keyword">end</span></pre>
@@ -454,7 +459,7 @@
 
         <div class="method-description">
           <div class="method-source-code" id="predicate-source">
-            <pre><span class="ruby-comment"># File lib/rexml/xpath_parser.rb, line 97</span>
+            <pre><span class="ruby-comment"># File lib/rexml/xpath_parser.rb, line 102</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">predicate</span> <span class="ruby-identifier">path</span>, <span class="ruby-identifier">node</span>
   <span class="ruby-identifier">path_stack</span> = <span class="ruby-ivar">@parser</span>.<span class="ruby-identifier">parse</span>( <span class="ruby-identifier">path</span> )
   <span class="ruby-identifier">match</span>( <span class="ruby-identifier">path_stack</span>, <span class="ruby-identifier">node</span> )
