@@ -2325,11 +2325,11 @@ module REXML
             return attr
           end
         end
-        element_document = @element.document
-        if element_document and element_document.doctype
+        doctype = @element.document&.doctype
+        if doctype
           expn = @element.expanded_name
-          expn = element_document.doctype.name if expn.size == 0
-          attr_val = element_document.doctype.attribute_of(expn, name)
+          expn = doctype.name if expn.size == 0
+          attr_val = doctype.attribute_of(expn, name)
           return Attribute.new( name, attr_val ) if attr_val
         end
         return nil
@@ -2371,8 +2371,9 @@ module REXML
       end
 
       unless value.kind_of? Attribute
-        if @element.document and @element.document.doctype
-          value = Text::normalize( value, @element.document.doctype )
+        doctype = @element.document&.doctype
+        if doctype
+          value = Text::normalize( value, doctype )
         else
           value = Text::normalize( value, nil )
         end
@@ -2409,10 +2410,11 @@ module REXML
       each_attribute do |attribute|
         ns << attribute.name if attribute.prefix == 'xmlns'
       end
-      if @element.document and @element.document.doctype
+      doctype = @element.document&.doctype
+      if doctype
         expn = @element.expanded_name
-        expn = @element.document.doctype.name if expn.size == 0
-        @element.document.doctype.attributes_of(expn).each {
+        expn = doctype.name if expn.size == 0
+        doctype.attributes_of(expn).each {
           |attribute|
           ns << attribute.name if attribute.prefix == 'xmlns'
         }
@@ -2434,10 +2436,11 @@ module REXML
       each_attribute do |attribute|
         namespaces[attribute.name] = attribute.value if attribute.prefix == 'xmlns' or attribute.name == 'xmlns'
       end
-      if @element.document and @element.document.doctype
+      doctype = @element.document&.doctype
+      if doctype
         expn = @element.expanded_name
-        expn = @element.document.doctype.name if expn.size == 0
-        @element.document.doctype.attributes_of(expn).each {
+        expn = doctype.name if expn.size == 0
+        doctype.attributes_of(expn).each {
           |attribute|
           namespaces[attribute.name] = attribute.value if attribute.prefix == 'xmlns' or attribute.name == 'xmlns'
         }
