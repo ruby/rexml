@@ -1,7 +1,4 @@
 # frozen_string_literal: false
-#
-#  Created by Henrik Mårtensson on 2007-02-18.
-#  Copyright (c) 2007. All rights reserved.
 
 module REXMLTests
   class TestXPathParser < Test::Unit::TestCase
