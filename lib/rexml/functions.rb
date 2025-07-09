@@ -39,11 +39,11 @@ module REXML
 
     def Functions::text( )
       if @@context[:node].node_type == :element
-        return @@context[:node].find_all{|n| n.node_type == :text}.collect{|n| n.value}
+        @@context[:node].find_all{|n| n.node_type == :text}.collect{|n| n.value}
       elsif @@context[:node].node_type == :text
-        return @@context[:node].value
+        @@context[:node].value
       else
-        return false
+        false
       end
     end
 

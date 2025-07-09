@@ -177,7 +177,7 @@ module REXML
 
 
     def clone
-      return Text.new(self, true)
+      Text.new(self, true)
     end
 
 
@@ -261,10 +261,10 @@ module REXML
       # Recursively wrap string at width.
       return string if string.length <= width
       place = string.rindex(' ', width) # Position in string with last ' ' before cutoff
-      if addnewline then
-        return "\n" + string[0,place] + "\n" + wrap(string[place+1..-1], width)
+      if addnewline
+        "\n" + string[0,place] + "\n" + wrap(string[place+1..-1], width)
       else
-        return string[0,place] + "\n" + wrap(string[place+1..-1], width)
+        string[0,place] + "\n" + wrap(string[place+1..-1], width)
       end
     end
 
@@ -277,7 +277,7 @@ module REXML
         new_string << new_line
       }
       new_string.strip! unless indentfirstline
-      return new_string
+      new_string
     end
 
     # == DEPRECATED
@@ -296,9 +296,7 @@ module REXML
     # FIXME
     # This probably won't work properly
     def xpath
-      path = @parent.xpath
-      path += "/text()"
-      return path
+      @parent.xpath + "/text()"
     end
 
     # Writes out text, substituting special characters beforehand.

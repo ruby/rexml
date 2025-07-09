@@ -206,12 +206,12 @@ module REXML
 
       # Returns true if there are no more events
       def empty?
-        return (@source.empty? and @stack.empty?)
+        (@source.empty? and @stack.empty?)
       end
 
       # Returns true if there are more events.  Synonymous with !empty?
       def has_next?
-        return !(@source.empty? and @stack.empty?)
+        !(@source.empty? and @stack.empty?)
       end
 
       # Push an event back on the head of the stream.  This method
@@ -522,7 +522,8 @@ module REXML
           raise REXML::ParseException.new( "Exception parsing",
             @source, self, (error ? error : $!) )
         end
-        return [ :dummy ]
+        # NOTE: The end of the method never runs, because it is unreachable.
+        #       All branches of code above have explicit unconditional return or raise statements.
       end
       private :pull_event
 

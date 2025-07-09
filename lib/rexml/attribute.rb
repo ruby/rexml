@@ -199,9 +199,7 @@ module REXML
     end
 
     def xpath
-      path = @element.xpath
-      path += "/@#{self.expanded_name}"
-      return path
+      @element.xpath + "/@#{self.expanded_name}"
     end
 
     def document

@@ -42,11 +42,11 @@ module REXML
     # Compares names optionally WITH namespaces
     def has_name?( other, ns=nil )
       if ns
-        return (namespace() == ns and name() == other)
+        namespace() == ns and name() == other
       elsif other.include? ":"
-        return fully_expanded_name == other
+        fully_expanded_name == other
       else
-        return name == other
+        name == other
       end
     end
 
@@ -57,7 +57,7 @@ module REXML
     def fully_expanded_name
       ns = prefix
       return "#{ns}:#@name" if ns.size > 0
-      return @name
+      @name
     end
   end
 end
