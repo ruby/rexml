@@ -269,14 +269,15 @@ module REXML
     end
 
     def indent_text(string, level=1, style="\t", indentfirstline=true)
+      Kernel.warn("#{self.class.name}#indent_text is deprecated.  See REXML::Formatters", uplevel: 1)
       return string if level < 0
       new_string = ''
       string.each_line { |line|
         indent_string = style * level
         new_line = (indent_string + line).sub(/[\s]+$/,'')
-        new_string << new_line
+        new_string += new_line
       }
-      new_string.strip! unless indentfirstline
+      new_string = new_string.strip unless indentfirstline
       new_string
     end
 
