@@ -381,7 +381,7 @@
           <div class="method-source-code" id="write-source">
             <pre><span class="ruby-comment"># File lib/rexml/instruction.rb, line 51</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">write</span> <span class="ruby-identifier">writer</span>, <span class="ruby-identifier">indent</span>=<span class="ruby-value">-1</span>, <span class="ruby-identifier">transitive</span>=<span class="ruby-keyword">false</span>, <span class="ruby-identifier">ie_hack</span>=<span class="ruby-keyword">false</span>
-  <span class="ruby-constant">Kernel</span>.<span class="ruby-identifier">warn</span>( <span class="ruby-node">&quot;#{self.class.name}.write is deprecated&quot;</span>, <span class="ruby-value">uplevel:</span> <span class="ruby-value">1</span>)
+  <span class="ruby-constant">Kernel</span>.<span class="ruby-identifier">warn</span>( <span class="ruby-node">&quot;#{self.class.name}#write is deprecated&quot;</span>, <span class="ruby-value">uplevel:</span> <span class="ruby-value">1</span>)
   <span class="ruby-identifier">indent</span>(<span class="ruby-identifier">writer</span>, <span class="ruby-identifier">indent</span>)
   <span class="ruby-identifier">writer</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-constant">START</span>
   <span class="ruby-identifier">writer</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-ivar">@target</span>

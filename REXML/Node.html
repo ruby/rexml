@@ -380,7 +380,7 @@
             <pre><span class="ruby-comment"># File lib/rexml/node.rb, line 27</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">to_s</span> <span class="ruby-identifier">indent</span>=<span class="ruby-keyword">nil</span>
   <span class="ruby-keyword">unless</span> <span class="ruby-identifier">indent</span>.<span class="ruby-identifier">nil?</span>
-    <span class="ruby-constant">Kernel</span>.<span class="ruby-identifier">warn</span>( <span class="ruby-node">&quot;#{self.class.name}.to_s(indent) parameter is deprecated&quot;</span>, <span class="ruby-value">uplevel:</span> <span class="ruby-value">1</span>)
+    <span class="ruby-constant">Kernel</span>.<span class="ruby-identifier">warn</span>( <span class="ruby-node">&quot;#{self.class.name}#to_s(indent) parameter is deprecated&quot;</span>, <span class="ruby-value">uplevel:</span> <span class="ruby-value">1</span>)
     <span class="ruby-identifier">f</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Formatters</span><span class="ruby-operator">::</span><span class="ruby-constant">Pretty</span>.<span class="ruby-identifier">new</span>( <span class="ruby-identifier">indent</span> )
     <span class="ruby-identifier">f</span>.<span class="ruby-identifier">write</span>( <span class="ruby-keyword">self</span>, <span class="ruby-identifier">rv</span> = <span class="ruby-string">&quot;&quot;</span> )
   <span class="ruby-keyword">else</span>
