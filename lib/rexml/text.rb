@@ -200,10 +200,7 @@ module REXML
     end
 
     def doctype
-      if @parent
-        doc = @parent.document
-        doc.doctype if doc
-      end
+      @parent&.document&.doctype
     end
 
     REFERENCE = /#{Entity::REFERENCE}/

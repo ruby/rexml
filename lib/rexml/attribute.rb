@@ -130,10 +130,7 @@ module REXML
     end
 
     def doctype
-      if @element
-        doc = @element.document
-        doc.doctype if doc
-      end
+      @element&.document&.doctype
     end
 
     # Returns the attribute value, with entities replaced
