@@ -58,7 +58,7 @@ module REXMLTests
 
     def test_parsing_when_not_found
       @parser = REXML::XPathParser.new
-      res = @parser.parse("/Stardust", @root_element)
+      res = @parser.parse("/nonexistent", @root_element)
       assert_equal("[]",
                    res.to_s)
     end
