@@ -16,7 +16,7 @@
 	// Use 'postCreateCommand' to run commands after the container is created.
 	// "postCreateCommand": "ruby --version",
 
-	// Configure tool-specific properties.
+  // Configure tool-specific properties.
   "customizations" : {
     "jetbrains" : {
       "backend" : "RubyMine"
