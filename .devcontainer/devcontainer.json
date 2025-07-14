@@ -2,7 +2,7 @@
 // README at: https://github.com/devcontainers/templates/tree/main/src/ruby
 {
   "name": "Ruby 2.5 on Debian",
-  "image": "ruby:2.5-slim-buster", // Specify the Ruby 2.5 image
+  "image": "ruby:2.5-buster", // Specify the Ruby 2.5 image
   "postCreateCommand": "RUBYGEMS_VERSION=3.3.27\ngem install rubygems-update -v ${RUBYGEMS_VERSION} > /dev/null 2>&1\nupdate_rubygems > /dev/null 2>&1\n", // Optional: Run this command after the container is created
 
   // Features to add to the dev container. More info: https://containers.dev/features.
