@@ -72,7 +72,9 @@ module REXMLTests
 
     def test_indent_text
       text = Text.new("")
-      assert_equal("\tline1\tline2\tline3", text.indent_text("line1\r\nline2\r\nline3\r\n"))
+      suppress_warning do
+        assert_equal("\tline1\tline2\tline3", text.indent_text("line1\r\nline2\r\nline3\r\n"))
+      end
     end
   end
 end
