@@ -2,6 +2,7 @@
 
 module REXMLTests
   class TextTester < Test::Unit::TestCase
+    include Helper::Global
     include REXML
 
     def test_new_text_response_whitespace_default
