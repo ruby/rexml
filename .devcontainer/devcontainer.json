@@ -17,9 +17,9 @@
 	// "postCreateCommand": "ruby --version",
 
   // Configure tool-specific properties.
-  "customizations" : {
-    "jetbrains" : {
-      "backend" : "RubyMine"
+  "customizations": {
+    "jetbrains": {
+      "backend": "RubyMine"
     }
   },
 }
