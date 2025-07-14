@@ -269,7 +269,7 @@ module REXML
     end
 
     def indent_text(string, level=1, style="\t", indentfirstline=true)
-      Kernel.warn("#{self.class.name}#indent_text is deprecated.  See REXML::Formatters", uplevel: 1)
+      Kernel.warn("#{self.class.name}#indent_text is deprecated. See REXML::Formatters", uplevel: 1)
       return string if level < 0
       new_string = ''
       string.each_line { |line|
