@@ -278,7 +278,7 @@ module REXML
         new_line = (indent_string + line).sub(/[\s]+$/,'')
         new_string << new_line
       }
-      new_string.strip! unless indentfirstline # no change
+      new_string.strip! unless indentfirstline
       new_string
     end
 
