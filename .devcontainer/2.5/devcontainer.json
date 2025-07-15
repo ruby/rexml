@@ -3,12 +3,12 @@
 {
   "name": "Ruby 2.5 on Debian",
   "image": "ruby:2.5-buster",
-  "postCreateCommand": "RUBYGEMS_VERSION=3.3.27\ngem install rubygems-update -v ${RUBYGEMS_VERSION} > /dev/null 2>&1 &&\nupdate_rubygems > /dev/null 2>&1 &&\nbundle install",
+  "postCreateCommand": "bundle install",
 
   // Features to add to the dev container. More info: https://containers.dev/features.
   // Features run during the image build, and thus before the lifecycle hooks in this file, e.g., postCreateCommand
   "features": {
-    "./apt-install": {}
+    "./bundle-config": {}
   },
 
   // Configure tool-specific properties.
