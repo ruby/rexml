@@ -2,6 +2,7 @@
 
 module REXMLTests
   class TextTester < Test::Unit::TestCase
+    include Helper::Global
     include REXML
 
     def test_new_text_response_whitespace_default
@@ -68,6 +69,13 @@ module REXMLTests
       text = Text.new("&amp;lt; <")
       assert_equal(text.to_s,
                    text.clone.to_s)
+    end
+
+    def test_indent_text
+      text = Text.new("")
+      suppress_warning do
+        assert_equal("\tline1\tline2\tline3", text.indent_text("line1\r\nline2\r\nline3\r\n"))
+      end
     end
   end
 end
