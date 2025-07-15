@@ -1,0 +1,42 @@
+PATH
+  remote: .
+  specs:
+    rexml (3.4.2)
+
+GEM
+  remote: https://rubygems.org/
+  specs:
+    benchmark_driver (0.16.5)
+    date (3.4.1)
+    erb (5.0.2)
+    ostruct (0.6.2)
+    power_assert (2.0.5)
+    psych (5.2.6)
+      date
+      stringio
+    rake (13.3.0)
+    rdoc (6.14.2)
+      erb
+      psych (>= 4.0.0)
+    stringio (3.1.7)
+    test-unit (3.7.0)
+      power_assert
+    test-unit-ruby-core (1.0.7)
+      test-unit
+
+PLATFORMS
+  ruby
+  x86_64-linux
+
+DEPENDENCIES
+  benchmark_driver
+  bundler
+  ostruct
+  rake
+  rdoc
+  rexml!
+  test-unit
+  test-unit-ruby-core
+
+BUNDLED WITH
+   2.6.9
