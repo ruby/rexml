@@ -64,7 +64,7 @@ module REXML
       parser.namespaces = namespaces
       parser.variables = variables
       path = "*" unless path
-      parser.parse(path,element) || []
+      parser.parse(path,element)
     end
   end
 end
