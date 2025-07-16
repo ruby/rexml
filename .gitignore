@@ -7,3 +7,5 @@
 /spec/reports/
 /tmp/
 Gemfile.lock
+*.gemfile
+*.gemfile.lock

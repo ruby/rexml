@@ -3,7 +3,7 @@
 {
   "name": "Ruby 2.5 on Debian",
   "image": "ruby:2.5-buster",
-  "postCreateCommand": "bundle install",
+  "postCreateCommand": "cp Gemfile Gemfile-ruby2_5.gemfile && bundle install",
 
   // Features to add to the dev container. More info: https://containers.dev/features.
   // Features run during the image build, and thus before the lifecycle hooks in this file, e.g., postCreateCommand
