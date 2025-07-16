@@ -6,7 +6,6 @@ git_source(:github) {|repo_name| "https://github.com/#{repo_name}" }
 gemspec
 
 group :development do
-  gem "bundler"
   # This is for suppressing the following warning:
   #
   #   warning: ostruct was loaded from the standard library, but will
