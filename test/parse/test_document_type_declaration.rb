@@ -49,10 +49,10 @@ Last 80 unconsumed characters:
         end
         assert_equal(<<-DETAIL.chomp, exception.to_s)
 Malformed DOCTYPE: name is missing
-Line: 3
-Position: 17
+Line: 1
+Position: 10
 Last 80 unconsumed characters:
-<!DOCTYPE>  <r/> 
+<!DOCTYPE>
         DETAIL
       end
     end

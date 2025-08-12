@@ -280,7 +280,7 @@ module REXML
               return [ :comment, process_comment ]
             elsif @source.match?("DOCTYPE", true)
               base_error_message = "Malformed DOCTYPE"
-              unless @source.match?(/\s+/um, true)
+              unless @source.skip_spaces
                 if @source.match?(">")
                   message = "#{base_error_message}: name is missing"
                 else
@@ -290,7 +290,7 @@ module REXML
                 raise REXML::ParseException.new(message, @source)
               end
               name = parse_name(base_error_message)
-              @source.match?(/\s*/um, true) # skip spaces
+              @source.skip_spaces
               if @source.match?("[", true)
                 id = [nil, nil, nil]
                 @document_status = :in_doctype
@@ -306,7 +306,7 @@ module REXML
                   # For backward compatibility
                   id[1], id[2] = id[2], nil
                 end
-                @source.match?(/\s*/um, true) # skip spaces
+                @source.skip_spaces
                 if @source.match?("[", true)
                   @document_status = :in_doctype
                 elsif @source.match?(">", true)
@@ -319,7 +319,7 @@ module REXML
               end
               args = [:start_doctype, name, *id]
               if @document_status == :after_doctype
-                @source.match?(/\s*/um, true)
+                @source.skip_spaces
                 @stack << [ :end_doctype ]
               end
               return args
@@ -330,7 +330,7 @@ module REXML
           end
         end
         if @document_status == :in_doctype
-          @source.match?(/\s*/um, true) # skip spaces
+          @source.skip_spaces
           start_position = @source.position
           if @source.match?("<!", true)
             if @source.match?("ELEMENT", true)
@@ -391,7 +391,7 @@ module REXML
               return [ :attlistdecl, element, pairs, contents ]
             elsif @source.match?("NOTATION", true)
               base_error_message = "Malformed notation declaration"
-              unless @source.match?(/\s+/um, true)
+              unless @source.skip_spaces
                 if @source.match?(">")
                   message = "#{base_error_message}: name is missing"
                 else
@@ -404,7 +404,7 @@ module REXML
               id = parse_id(base_error_message,
                             accept_external_id: true,
                             accept_public_id: true)
-              @source.match?(/\s*/um, true) # skip spaces
+              @source.skip_spaces
               unless @source.match?(">", true)
                 message = "#{base_error_message}: garbage before end >"
                 raise REXML::ParseException.new(message, @source)
@@ -425,7 +425,7 @@ module REXML
           end
         end
         if @document_status == :after_doctype
-          @source.match?(/\s*/um, true)
+          @source.skip_spaces
         end
         begin
           start_position = @source.position
@@ -735,7 +735,7 @@ module REXML
 
       def process_instruction
         name = parse_name("Malformed XML: Invalid processing instruction node")
-        if @source.match?(/\s+/um, true)
+        if @source.skip_spaces
           match_data = @source.match(/(.*?)\?>/um, true)
           unless match_data
             raise ParseException.new("Malformed XML: Unclosed processing instruction", @source)
@@ -817,7 +817,7 @@ module REXML
               message = "Missing attribute value end quote: <#{name}>: <#{quote}>"
               raise REXML::ParseException.new(message, @source)
             end
-            @source.match?(/\s*/um, true)
+            @source.skip_spaces
             if prefix == "xmlns"
               if local_part == "xml"
                 if value != Private::XML_PREFIXED_NAMESPACE

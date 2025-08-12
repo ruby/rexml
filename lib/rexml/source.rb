@@ -65,6 +65,7 @@ module REXML
     attr_reader :encoding
 
     module Private
+      SPACES_PATTERN = /\s+/um
       SCANNER_RESET_SIZE = 100000
       PRE_DEFINED_TERM_PATTERNS = {}
       pre_defined_terms = ["'", '"', "<", "]]>"]
@@ -148,6 +149,10 @@ module REXML
       else
         !@scanner.match?(pattern).nil?
       end
+    end
+
+    def skip_spaces
+      @scanner.skip(Private::SPACES_PATTERN) ? true : false
     end
 
     def position
