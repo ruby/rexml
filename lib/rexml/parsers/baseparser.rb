@@ -144,6 +144,7 @@ module REXML
         PEREFERENCE_PATTERN = /#{PEREFERENCE}/um
         TAG_PATTERN = /((?>#{QNAME_STR}))\s*/um
         CLOSE_PATTERN = /(#{QNAME_STR})\s*>/um
+        EQUAL_PATTERN = /\s*=\s*/um
         ATTLISTDECL_END = /\s+#{NAME}(?:#{ATTDEF})*\s*>/um
         NAME_PATTERN = /#{NAME}/um
         GEDECL_PATTERN = "\\s+#{NAME}\\s+#{ENTITYDEF}\\s*>"
@@ -168,6 +169,7 @@ module REXML
         @entity_expansion_limit = Security.entity_expansion_limit
         @entity_expansion_text_limit = Security.entity_expansion_text_limit
         @source.ensure_buffer
+        @version = nil
       end
 
       def add_listener( listener )
@@ -642,6 +644,10 @@ module REXML
         true
       end
 
+      def normalize_xml_declaration_encoding(xml_declaration_encoding)
+        /\AUTF-16(?:BE|LE)\z/i.match?(xml_declaration_encoding) ? "UTF-16" : nil
+      end
+
       def parse_name(base_error_message)
         md = @source.match(Private::NAME_PATTERN, true)
         unless md
@@ -735,37 +741,85 @@ module REXML
 
       def process_instruction
         name = parse_name("Malformed XML: Invalid processing instruction node")
-        if @source.skip_spaces
-          match_data = @source.match(/(.*?)\?>/um, true)
-          unless match_data
-            raise ParseException.new("Malformed XML: Unclosed processing instruction", @source)
-          end
-          content = match_data[1]
-        else
-          content = nil
-          unless @source.match?("?>", true)
-            raise ParseException.new("Malformed XML: Unclosed processing instruction", @source)
-          end
-        end
         if name == "xml"
-          if @document_status
-            raise ParseException.new("Malformed XML: XML declaration is not at the start", @source)
+          xml_declaration
+        else # PITarget
+          if @source.skip_spaces # e.g. <?name content?>
+            start_position = @source.position
+            content = @source.read_until("?>")
+            unless content.chomp!("?>")
+              @source.position = start_position
+              raise ParseException.new("Malformed XML: Unclosed processing instruction: <#{name}>", @source)
+            end
+          else # e.g. <?name?>
+            content = nil
+            unless @source.match?("?>", true)
+              raise ParseException.new("Malformed XML: Unclosed processing instruction: <#{name}>", @source)
+            end
           end
-          version = VERSION.match(content)
-          version = version[1] unless version.nil?
-          encoding = ENCODING.match(content)
-          encoding = encoding[1] unless encoding.nil?
-          if need_source_encoding_update?(encoding)
-            @source.encoding = encoding
-          end
-          if encoding.nil? and /\AUTF-16(?:BE|LE)\z/i =~ @source.encoding
-            encoding = "UTF-16"
-          end
-          standalone = STANDALONE.match(content)
-          standalone = standalone[1] unless standalone.nil?
-          return [ :xmldecl, version, encoding, standalone ]
+          [:processing_instruction, name, content]
         end
-        [:processing_instruction, name, content]
+      end
+
+      def xml_declaration
+        unless @version.nil?
+          raise ParseException.new("Malformed XML: XML declaration is duplicated", @source)
+        end
+        if @document_status
+          raise ParseException.new("Malformed XML: XML declaration is not at the start", @source)
+        end
+        unless @source.skip_spaces
+          raise ParseException.new("Malformed XML: XML declaration misses spaces before version", @source)
+        end
+        unless @source.match?("version", true)
+          raise ParseException.new("Malformed XML: XML declaration misses version", @source)
+        end
+        @version = parse_attribute_value_with_equal("xml")
+        unless @source.skip_spaces
+          unless @source.match?("?>", true)
+            raise ParseException.new("Malformed XML: Unclosed XML declaration", @source)
+          end
+          encoding = normalize_xml_declaration_encoding(@source.encoding)
+          return [ :xmldecl, @version, encoding, nil ] # e.g. <?xml version="1.0"?>
+        end
+
+        if @source.match?("encoding", true)
+          encoding = parse_attribute_value_with_equal("xml")
+          unless @source.skip_spaces
+            unless @source.match?("?>", true)
+              raise ParseException.new("Malformed XML: Unclosed XML declaration", @source)
+            end
+            if need_source_encoding_update?(encoding)
+              @source.encoding = encoding
+            end
+            encoding ||= normalize_xml_declaration_encoding(@source.encoding)
+            return [ :xmldecl, @version, encoding, nil ] # e.g. <?xml version="1.1" encoding="UTF-8"?>
+          end
+        end
+
+        if @source.match?("standalone", true)
+          standalone = parse_attribute_value_with_equal("xml")
+          case standalone
+          when "yes", "no"
+          else
+            raise ParseException.new("Malformed XML: XML declaration standalone is not yes or no : <#{standalone}>", @source)
+          end
+        end
+        @source.skip_spaces
+        unless @source.match?("?>", true)
+          raise ParseException.new("Malformed XML: Unclosed XML declaration", @source)
+        end
+
+        if need_source_encoding_update?(encoding)
+          @source.encoding = encoding
+        end
+        encoding ||= normalize_xml_declaration_encoding(@source.encoding)
+
+        # e.g. <?xml version="1.0" ?>
+        #      <?xml version="1.1" encoding="UTF-8" ?>
+        #      <?xml version="1.1" standalone="yes"?>
+        #      <?xml version="1.1" encoding="UTF-8" standalone="yes" ?>
+        [ :xmldecl, @version, encoding, standalone ]
       end
 
       if StringScanner::Version < "3.1.1"
@@ -787,6 +841,25 @@ module REXML
         end
       end
 
+      def parse_attribute_value_with_equal(name)
+        unless @source.match?(Private::EQUAL_PATTERN, true)
+          message = "Missing attribute equal: <#{name}>"
+          raise REXML::ParseException.new(message, @source)
+        end
+        unless quote = scan_quote
+          message = "Missing attribute value start quote: <#{name}>"
+          raise REXML::ParseException.new(message, @source)
+        end
+        start_position = @source.position
+        value = @source.read_until(quote)
+        unless value.chomp!(quote)
+          @source.position = start_position
+          message = "Missing attribute value end quote: <#{name}>: <#{quote}>"
+          raise REXML::ParseException.new(message, @source)
+        end
+        value
+      end
+
       def parse_attributes(prefixes)
         attributes = {}
         expanded_names = {}
@@ -801,22 +874,7 @@ module REXML
             name = match[1]
             prefix = match[2]
             local_part = match[3]
-
-            unless @source.match?(/\s*=\s*/um, true)
-              message = "Missing attribute equal: <#{name}>"
-              raise REXML::ParseException.new(message, @source)
-            end
-            unless quote = scan_quote
-              message = "Missing attribute value start quote: <#{name}>"
-              raise REXML::ParseException.new(message, @source)
-            end
-            start_position = @source.position
-            value = @source.read_until(quote)
-            unless value.chomp!(quote)
-              @source.position = start_position
-              message = "Missing attribute value end quote: <#{name}>: <#{quote}>"
-              raise REXML::ParseException.new(message, @source)
-            end
+            value = parse_attribute_value_with_equal(name)
             @source.skip_spaces
             if prefix == "xmlns"
               if local_part == "xml"

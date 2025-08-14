@@ -30,7 +30,7 @@ Last 80 unconsumed characters:
           parse("<?name content")
         end
         assert_equal(<<-DETAIL.chomp, exception.to_s)
-Malformed XML: Unclosed processing instruction
+Malformed XML: Unclosed processing instruction: <name>
 Line: 1
 Position: 14
 Last 80 unconsumed characters:
@@ -43,11 +43,24 @@ content
           parse("<?name")
         end
         assert_equal(<<-DETAIL.chomp, exception.to_s)
-Malformed XML: Unclosed processing instruction
+Malformed XML: Unclosed processing instruction: <name>
 Line: 1
 Position: 6
 Last 80 unconsumed characters:
 
+        DETAIL
+      end
+
+      def test_xml_declaration_duplicated
+        exception = assert_raise(REXML::ParseException) do
+          parse('<?xml version="1.0"?><?xml version="1.0"?>')
+        end
+        assert_equal(<<-DETAIL.chomp, exception.to_s)
+Malformed XML: XML declaration is duplicated
+Line: 1
+Position: 42
+Last 80 unconsumed characters:
+ version="1.0"?>
         DETAIL
       end
 
@@ -64,7 +77,118 @@ Last 80 unconsumed characters:
           Line: 1
           Position: 25
           Last 80 unconsumed characters:
+           version="1.0" ?>
+        DETAIL
+      end
 
+      def test_xml_declaration_missing_spaces
+        exception = assert_raise(REXML::ParseException) do
+          parser = REXML::Parsers::BaseParser.new('<?xml?>')
+          while parser.has_next?
+            parser.pull
+          end
+        end
+
+        assert_equal(<<~DETAIL.chomp, exception.to_s)
+          Malformed XML: XML declaration misses spaces before version
+          Line: 1
+          Position: 7
+          Last 80 unconsumed characters:
+          ?>
+        DETAIL
+      end
+
+      def test_xml_declaration_missing_version
+        exception = assert_raise(REXML::ParseException) do
+          parser = REXML::Parsers::BaseParser.new('<?xml ?>')
+          while parser.has_next?
+            parser.pull
+          end
+        end
+
+        assert_equal(<<~DETAIL.chomp, exception.to_s)
+          Malformed XML: XML declaration misses version
+          Line: 1
+          Position: 8
+          Last 80 unconsumed characters:
+          ?>
+        DETAIL
+      end
+
+      def test_xml_declaration_unclosed_content
+        exception = assert_raise(REXML::ParseException) do
+          parse('<?xml version="1.0"')
+        end
+        assert_equal(<<-DETAIL.chomp, exception.to_s)
+Malformed XML: Unclosed XML declaration
+Line: 1
+Position: 19
+Last 80 unconsumed characters:
+
+        DETAIL
+      end
+
+      def test_xml_declaration_unclosed_content_missing_space_after_version
+        exception = assert_raise(REXML::ParseException) do
+          parser = REXML::Parsers::BaseParser.new('<?xml version="1.0"encoding="UTF-8"?>')
+          while parser.has_next?
+            parser.pull
+          end
+        end
+
+        assert_equal(<<~DETAIL.chomp, exception.to_s)
+          Malformed XML: Unclosed XML declaration
+          Line: 1
+          Position: 37
+          Last 80 unconsumed characters:
+          encoding="UTF-8"?>
+        DETAIL
+      end
+
+      def test_xml_declaration_unclosed_content_missing_space_after_encoding
+        exception = assert_raise(REXML::ParseException) do
+          parser = REXML::Parsers::BaseParser.new('<?xml version="1.0" encoding="UTF-8"standalone="no"?>')
+          while parser.has_next?
+            parser.pull
+          end
+        end
+
+        assert_equal(<<~DETAIL.chomp, exception.to_s)
+          Malformed XML: Unclosed XML declaration
+          Line: 1
+          Position: 53
+          Last 80 unconsumed characters:
+          standalone="no"?>
+        DETAIL
+      end
+
+      def test_xml_declaration_unclosed_content_with_unknown_attributes
+        exception = assert_raise(REXML::ParseException) do
+          parser = REXML::Parsers::BaseParser.new('<?xml version="1.0" test="no"?>')
+          while parser.has_next?
+            parser.pull
+          end
+        end
+
+        assert_equal(<<~DETAIL.chomp, exception.to_s)
+          Malformed XML: Unclosed XML declaration
+          Line: 1
+          Position: 31
+          Last 80 unconsumed characters:
+          test="no"?>
+        DETAIL
+      end
+
+      def test_xml_declaration_standalone_no_yes_or_no
+        exception = assert_raise(REXML::ParseException) do
+          parse('<?xml version="1.0" standalone="YES"?>')
+        end
+        assert_equal(<<-DETAIL.chomp, exception.to_s)
+Malformed XML: XML declaration standalone is not yes or no : <YES>
+Line: 1
+Position: 38
+Last 80 unconsumed characters:
+?>
         DETAIL
       end
     end
@@ -113,7 +237,7 @@ Last 80 unconsumed characters:
     def test_linear_performance_gt
       seq = [10000, 50000, 100000, 150000, 200000]
       assert_linear_performance(seq, rehearsal: 10) do |n|
-        REXML::Document.new("<?xml version=\"1.0\" " + ">" * n + " ?>")
+        REXML::Document.new("<?name content " + ">" * n + " ?>")
       end
     end
 

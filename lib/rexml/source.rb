@@ -68,7 +68,7 @@ module REXML
       SPACES_PATTERN = /\s+/um
       SCANNER_RESET_SIZE = 100000
       PRE_DEFINED_TERM_PATTERNS = {}
-      pre_defined_terms = ["'", '"', "<", "]]>"]
+      pre_defined_terms = ["'", '"', "<", "]]>", "?>"]
       if StringScanner::Version < "3.1.1"
         pre_defined_terms.each do |term|
           PRE_DEFINED_TERM_PATTERNS[term] = /#{Regexp.escape(term)}/
