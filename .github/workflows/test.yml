@@ -27,7 +27,7 @@ jobs:
         #   - runs-on: ubuntu-latest
         #     ruby-version: truffleruby
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: ${{ matrix.ruby-version }}
@@ -39,7 +39,7 @@ jobs:
     name: frozen-string-literal
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: ruby
@@ -66,7 +66,7 @@ jobs:
           - windows-latest
         ruby-version: ${{ fromJson(needs.ruby-versions-gems.outputs.versions) }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: ${{ matrix.ruby-version }}
@@ -95,7 +95,7 @@ jobs:
     name: "Document"
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: ruby
@@ -105,7 +105,7 @@ jobs:
       - name: Build document
         run: |
           bundle exec rake warning:error rdoc
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
         if: |
           github.event_name == 'push'
         with:
