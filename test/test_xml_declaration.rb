@@ -7,7 +7,7 @@ module REXMLTests
   class TestXmlDeclaration < Test::Unit::TestCase
     def setup
       xml = <<~XML
-      <?xml encoding= 'UTF-8' standalone='yes'?>
+      <?xml version='1.0' encoding= 'UTF-8' standalone='yes'?>
       <root>
       </root>
       XML
