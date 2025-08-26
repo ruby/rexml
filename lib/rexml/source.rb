@@ -258,7 +258,7 @@ module REXML
         end
         true
       rescue Exception, NameError
-        @source = nil
+        @source = StringIO.new
         false
       end
     end
