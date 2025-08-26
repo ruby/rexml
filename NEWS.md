@@ -1,5 +1,107 @@
 # News
 
+## 3.4.2 - 2025-08-26 {#version-3-4-2}
+
+### Improvement
+
+  * Improved performance.
+    * GH-244
+    * GH-245
+    * GH-246
+    * GH-249
+    * GH-256
+    * Patch by NAITOH Jun
+
+  * Raise appropriate exception when failing to match start tag in DOCTYPE
+    * GH-247
+    * Patch by NAITOH Jun
+
+  * Deprecate accepting array as an element in XPath.match, first and each
+    * GH-252
+    * Patch by tomoya ishida
+
+  * Don't call needless encoding_updated
+    * GH-259
+    * Patch by Sutou Kouhei
+
+  * Reuse XPath::match
+    * GH-263
+    * Patch by pboling
+
+  * Cache redundant calls for doctype
+    * GH-264
+    * Patch by pboling
+
+  * Use Safe Navigation (&.) from Ruby 2.3
+    * GH-265
+    * Patch by pboling
+
+  * Remove redundant return statements
+    * GH-266
+    * Patch by pboling
+
+  * Added XML declaration check & Source#skip_spaces method
+    * GH-282
+    * Patch by NAITOH Jun
+    * Reported by Sofi Aberegg
+
+### Fixes
+
+  * Fix docs typo
+    * GH-248
+    * Patch by James Coleman
+
+  * Fix reverse sort in xpath_parser
+    * GH-251
+    * Patch by tomoya ishida
+
+  * Fix duplicate responses in XPath following, following-sibling, preceding, preceding-sibling
+    * GH-255
+    * Patch by NAITOH Jun
+
+  * Fix wrong Encoding resolution
+    * GH-258
+    * Patch by Sutou Kouhei
+
+  * Handle nil when parsing fragment
+    * GH-267
+    * GH-268
+    * Patch by pboling
+
+  * [Documentation] Use # to reference instance methods
+    * GH-269
+    * GH-270
+    * Patch by pboling
+
+  * Fix & Deprecate REXML::Text#text_indent
+    * GH-273
+    * GH-275
+    * Patch by pboling
+
+  * remove bundler from dev deps
+    * GH-276
+    * GH-277
+    * Patch by pboling
+
+  * remove ostruct from dev deps
+    * GH-280
+    * GH-281
+    * Patch by pboling
+
+### Thanks
+
+  * NAITOH Jun
+
+  * tomoya ishida
+
+  * James Coleman
+
+  * pboling
+
+  * Sutou Kouhei
+
+  * Sofi Aberegg
+
 ## 3.4.1 - 2025-02-16 {#version-3-4-1}
 
 ### Improvement
