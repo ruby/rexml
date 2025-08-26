@@ -8,7 +8,7 @@
 <title>NEWS - RDoc Documentation</title>
 
   <meta name="keywords" content="ruby,documentation,NEWS">
-  <meta name="description" content="NEWS: News ## 3. version-3-4-1} ### Improvement * Improved performance.">
+  <meta name="description" content="NEWS: News ## 3. version-3-4-2} ### Improvement * Improved performance.">
 
 
 <script type="text/javascript">
@@ -76,6 +76,18 @@
 </summary>
               <ul class="link-list" role="directory">
                           <li>
+            <details open>
+              <summary>      <a href="#label-3.4.2+-+2025-08-26+-7B-23version-3-4-2-7D">3.4.2 - 2025-08-26 {#version-3-4-2}</a>
+</summary>
+              <ul class="link-list" role="directory">
+                          <li>      <a href="#label-Improvement">Improvement</a>
+          <li>      <a href="#label-Fixes">Fixes</a>
+          <li>      <a href="#label-Thanks">Thanks</a>
+
+              </ul>
+            </details>
+          </li>
+          <li>
             <details open>
               <summary>      <a href="#label-3.4.1+-+2025-02-16+-7B-23version-3-4-1-7D">3.4.1 - 2025-02-16 {#version-3-4-1}</a>
 </summary>
@@ -396,6 +408,191 @@
 <main role="main" aria-label="Page NEWS.md">
 
 <h1 id="label-News">News<span><a href="#label-News">&para;</a> <a href="#top">&uarr;</a></span></h1>
+
+<h2 id="label-3.4.2+-+2025-08-26+-7B-23version-3-4-2-7D">3.4.2 - 2025-08-26 {#version-3-4-2}<span><a href="#label-3.4.2+-+2025-08-26+-7B-23version-3-4-2-7D">&para;</a> <a href="#top">&uarr;</a></span></h2>
+
+<h3 id="label-Improvement">Improvement<span><a href="#label-Improvement">&para;</a> <a href="#top">&uarr;</a></span></h3>
+<ul><li>
+<p>Improved performance.</p>
+<ul><li>
+<p>GH-244</p>
+</li><li>
+<p>GH-245</p>
+</li><li>
+<p>GH-246</p>
+</li><li>
+<p>GH-249</p>
+</li><li>
+<p>GH-256</p>
+</li><li>
+<p>Patch by NAITOH Jun</p>
+</li><li>
+<p>GH-244</p>
+</li><li>
+<p>GH-245</p>
+</li><li>
+<p>GH-246</p>
+</li><li>
+<p>GH-249</p>
+</li><li>
+<p>GH-256</p>
+</li><li>
+<p>Patch by NAITOH Jun</p>
+</li></ul>
+</li><li>
+<p>Raise appropriate exception when failing to match start tag in DOCTYPE</p>
+<ul><li>
+<p>GH-247</p>
+</li><li>
+<p>Patch by NAITOH Jun</p>
+</li></ul>
+</li><li>
+<p>Deprecate accepting array as an element in XPath.match, first and each</p>
+<ul><li>
+<p>GH-252</p>
+</li><li>
+<p>Patch by tomoya ishida</p>
+</li></ul>
+</li><li>
+<p>Don't call needless encoding_updated</p>
+<ul><li>
+<p>GH-259</p>
+</li><li>
+<p>Patch by Sutou Kouhei</p>
+</li></ul>
+</li><li>
+<p>Reuse XPath::match</p>
+<ul><li>
+<p>GH-263</p>
+</li><li>
+<p>Patch by pboling</p>
+</li></ul>
+</li><li>
+<p>Cache redundant calls for doctype</p>
+<ul><li>
+<p>GH-264</p>
+</li><li>
+<p>Patch by pboling</p>
+</li></ul>
+</li><li>
+<p>Use Safe Navigation (&amp;.) from Ruby 2.3</p>
+<ul><li>
+<p>GH-265</p>
+</li><li>
+<p>Patch by pboling</p>
+</li></ul>
+</li><li>
+<p>Remove redundant return statements</p>
+<ul><li>
+<p>GH-266</p>
+</li><li>
+<p>Patch by pboling</p>
+</li></ul>
+</li><li>
+<p>Added XML declaration check &amp; Source#skip_spaces method</p>
+<ul><li>
+<p>GH-282</p>
+</li><li>
+<p>Patch by NAITOH Jun</p>
+</li><li>
+<p>Reported by Sofi Aberegg</p>
+</li></ul>
+</li></ul>
+
+<h3 id="label-Fixes">Fixes<span><a href="#label-Fixes">&para;</a> <a href="#top">&uarr;</a></span></h3>
+<ul><li>
+<p>Fix docs typo</p>
+<ul><li>
+<p>GH-248</p>
+</li><li>
+<p>Patch by James Coleman</p>
+</li><li>
+<p>GH-248</p>
+</li><li>
+<p>Patch by James Coleman</p>
+</li></ul>
+</li><li>
+<p>Fix reverse sort in xpath_parser</p>
+<ul><li>
+<p>GH-251</p>
+</li><li>
+<p>Patch by tomoya ishida</p>
+</li></ul>
+</li><li>
+<p>Fix duplicate responses in XPath following, following-sibling, preceding, preceding-sibling</p>
+<ul><li>
+<p>GH-255</p>
+</li><li>
+<p>Patch by NAITOH Jun</p>
+</li></ul>
+</li><li>
+<p>Fix wrong Encoding resolution</p>
+<ul><li>
+<p>GH-258</p>
+</li><li>
+<p>Patch by Sutou Kouhei</p>
+</li></ul>
+</li><li>
+<p>Handle nil when parsing fragment</p>
+<ul><li>
+<p>GH-267</p>
+</li><li>
+<p>GH-268</p>
+</li><li>
+<p>Patch by pboling</p>
+</li></ul>
+</li><li>
+<p>[Documentation] Use # to reference instance methods</p>
+<ul><li>
+<p>GH-269</p>
+</li><li>
+<p>GH-270</p>
+</li><li>
+<p>Patch by pboling</p>
+</li></ul>
+</li><li>
+<p>Fix &amp; Deprecate REXML::Text#text_indent</p>
+<ul><li>
+<p>GH-273</p>
+</li><li>
+<p>GH-275</p>
+</li><li>
+<p>Patch by pboling</p>
+</li></ul>
+</li><li>
+<p>remove bundler from dev deps</p>
+<ul><li>
+<p>GH-276</p>
+</li><li>
+<p>GH-277</p>
+</li><li>
+<p>Patch by pboling</p>
+</li></ul>
+</li><li>
+<p>remove ostruct from dev deps</p>
+<ul><li>
+<p>GH-280</p>
+</li><li>
+<p>GH-281</p>
+</li><li>
+<p>Patch by pboling</p>
+</li></ul>
+</li></ul>
+
+<h3 id="label-Thanks">Thanks<span><a href="#label-Thanks">&para;</a> <a href="#top">&uarr;</a></span></h3>
+<ul><li>
+<p>NAITOH Jun</p>
+</li><li>
+<p>tomoya ishida</p>
+</li><li>
+<p>James Coleman</p>
+</li><li>
+<p>pboling</p>
+</li><li>
+<p>Sutou Kouhei</p>
+</li><li>
+<p>Sofi Aberegg</p>
+</li></ul>
 
 <h2 id="label-3.4.1+-+2025-02-16+-7B-23version-3-4-1-7D">3.4.1 - 2025-02-16 {#version-3-4-1}<span><a href="#label-3.4.1+-+2025-02-16+-7B-23version-3-4-1-7D">&para;</a> <a href="#top">&uarr;</a></span></h2>
 
