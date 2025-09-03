@@ -272,7 +272,7 @@ module REXML
         @scanner << readline(term)
       end
       if str
-        read if @scanner.eos? and !@source.eof?
+        read if @scanner.eos? and @source and !@source.eof?
         str
       else
         rest = @scanner.rest
