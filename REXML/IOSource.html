@@ -472,7 +472,7 @@
     <span class="ruby-ivar">@scanner</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">readline</span>(<span class="ruby-identifier">term</span>)
   <span class="ruby-keyword">end</span>
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">str</span>
-    <span class="ruby-identifier">read</span> <span class="ruby-keyword">if</span> <span class="ruby-ivar">@scanner</span>.<span class="ruby-identifier">eos?</span> <span class="ruby-keyword">and</span> <span class="ruby-operator">!</span><span class="ruby-ivar">@source</span>.<span class="ruby-identifier">eof?</span>
+    <span class="ruby-identifier">read</span> <span class="ruby-keyword">if</span> <span class="ruby-ivar">@scanner</span>.<span class="ruby-identifier">eos?</span> <span class="ruby-keyword">and</span> <span class="ruby-ivar">@source</span> <span class="ruby-keyword">and</span> <span class="ruby-operator">!</span><span class="ruby-ivar">@source</span>.<span class="ruby-identifier">eof?</span>
     <span class="ruby-identifier">str</span>
   <span class="ruby-keyword">else</span>
     <span class="ruby-identifier">rest</span> = <span class="ruby-ivar">@scanner</span>.<span class="ruby-identifier">rest</span>
