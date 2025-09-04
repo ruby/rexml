@@ -1,0 +1,9 @@
+{
+  "name": "Bundle Config",
+  "id": "bundle-config",
+  "version": "1.0.0",
+  "description": "Bundle Config",
+  "install": {
+    "script": "install.sh"
+  }
+}

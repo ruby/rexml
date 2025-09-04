@@ -1,0 +1,20 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the
+// README at: https://github.com/devcontainers/templates/tree/main/src/ruby
+{
+  "name": "Ruby 2.5 on Debian",
+  "image": "ruby:2.5-buster",
+  "postCreateCommand": "cp Gemfile Gemfile-ruby2_5.gemfile && bundle install",
+
+  // Features to add to the dev container. More info: https://containers.dev/features.
+  // Features run during the image build, and thus before the lifecycle hooks in this file, e.g., postCreateCommand
+  "features": {
+    "./bundle-config": {}
+  },
+
+  // Configure tool-specific properties.
+  "customizations": {
+    "jetbrains": {
+      "backend": "RubyMine"
+    }
+  }
+}
