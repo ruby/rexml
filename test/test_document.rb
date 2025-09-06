@@ -151,11 +151,11 @@ EOX
 
     def test_xml_declaration_standalone
       bug2539 = '[ruby-core:27345]'
-      doc = REXML::Document.new('<?xml version="1.0" standalone="no" ?>')
+      doc = REXML::Document.new('<?xml version="1.0" standalone="no" ?><a/>')
       assert_equal('no', doc.stand_alone?, bug2539)
-      doc = REXML::Document.new('<?xml version="1.0" standalone= "no" ?>')
+      doc = REXML::Document.new('<?xml version="1.0" standalone= "no" ?><a/>')
       assert_equal('no', doc.stand_alone?, bug2539)
-      doc = REXML::Document.new('<?xml version="1.0" standalone=  "no" ?>')
+      doc = REXML::Document.new('<?xml version="1.0" standalone=  "no" ?><a/>')
       assert_equal('no', doc.stand_alone?, bug2539)
     end
 

@@ -472,7 +472,7 @@ EOL
 <!ENTITY % extern-packages SYSTEM "../../common-declarations.dtd">
 %extern-packages;
 %extern-common;
-]>}
+]><a/>}
       doc = Document.new( src )
       doc.write( out="" )
       src = src.tr('"', "'")
