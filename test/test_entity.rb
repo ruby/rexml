@@ -79,7 +79,7 @@ module REXMLTests
         <!ENTITY hatch-pic
                 SYSTEM "../grafix/OpenHatch.gif"
                 NDATA gif>
-      ]>}
+      ]><foo/>}
 
       d = REXML::Document.new( source )
       dt = d.doctype

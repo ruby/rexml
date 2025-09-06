@@ -237,14 +237,14 @@ Last 80 unconsumed characters:
     def test_linear_performance_gt
       seq = [10000, 50000, 100000, 150000, 200000]
       assert_linear_performance(seq, rehearsal: 10) do |n|
-        REXML::Document.new("<?name content " + ">" * n + " ?>")
+        REXML::Document.new("<?name content " + ">" * n + " ?><a/>")
       end
     end
 
     def test_linear_performance_tab
       seq = [10000, 50000, 100000, 150000, 200000]
       assert_linear_performance(seq, rehearsal: 10) do |n|
-        REXML::Document.new("<?name" + "\t" * n + "version=\"1.0\" > ?>")
+        REXML::Document.new("<?name" + "\t" * n + "version=\"1.0\" > ?><a/>")
       end
     end
   end
