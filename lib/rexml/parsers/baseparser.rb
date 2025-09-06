@@ -266,6 +266,11 @@ module REXML
             path = "/" + @tags.join("/")
             raise ParseException.new("Missing end tag for '#{path}'", @source)
           end
+
+          unless @document_status == :in_element
+            raise ParseException.new("Malformed XML: No root element", @source)
+          end
+
           return [ :end_document ]
         end
         return @stack.shift if @stack.size > 0
