@@ -47,6 +47,8 @@ END
      end
      # Provided by Tom Talbott
      def test_more_ordering
+       omit("not supported on JRuby") if RUBY_ENGINE == "jruby"
+
        doc = Zlib::GzipReader.open(fixture_path('LostineRiver.kml.gz'), encoding: 'utf-8') do |f|
          REXML::Document.new(f)
        end
