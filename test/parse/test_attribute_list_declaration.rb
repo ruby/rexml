@@ -12,7 +12,7 @@ module REXMLTests
       assert_linear_performance(seq, rehearsal: 10) do |n|
         REXML::Document.new("<!DOCTYPE schema SYSTEM \"foo.dtd\" [<!ATTLIST " +
                             " " * n +
-                            " root v CDATA #FIXED \"test\">]>")
+                            " root v CDATA #FIXED \"test\">]><a/>")
       end
     end
 
@@ -23,7 +23,7 @@ module REXMLTests
                             "\t" * n +
                             "root value CDATA \"" +
                             ">" * n +
-                            "\">]>")
+                            "\">]><a/>")
       end
     end
   end

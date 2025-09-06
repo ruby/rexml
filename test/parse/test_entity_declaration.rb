@@ -523,7 +523,7 @@ Last 80 unconsumed characters:
       assert_linear_performance(seq, rehearsal: 10) do |n|
         REXML::Document.new("<!DOCTYPE rubynet [<!ENTITY rbconfig.ruby_version \"" +
                             ">" * n +
-                            "\">]>")
+                            "\">]><a/>")
       end
     end
 
@@ -532,7 +532,7 @@ Last 80 unconsumed characters:
       assert_linear_performance(seq, rehearsal: 10) do |n|
         REXML::Document.new("<!DOCTYPE rubynet [<!ENTITY rbconfig.ruby_version \"" +
                             ">]" * n +
-                            "\">]>")
+                            "\">]><a/>")
       end
     end
 
@@ -541,7 +541,7 @@ Last 80 unconsumed characters:
       assert_linear_performance(seq, rehearsal: 10) do |n|
         REXML::Document.new("<!DOCTYPE rubynet [<!ENTITY rbconfig.ruby_version SYSTEM \"" +
                             ">]" * n +
-                            "\">]>")
+                            "\">]><a/>")
       end
     end
 
@@ -550,7 +550,7 @@ Last 80 unconsumed characters:
       assert_linear_performance(seq, rehearsal: 10) do |n|
         REXML::Document.new("<!DOCTYPE rubynet [<!ENTITY rbconfig.ruby_version PUBLIC \"pubid-literal\" \"" +
                             ">]" * n +
-                            "\">]>")
+                            "\">]><a/>")
       end
     end
   end
