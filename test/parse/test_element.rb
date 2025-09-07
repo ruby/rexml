@@ -12,6 +12,45 @@ module REXMLTests
     end
 
     class TestInvalid < self
+      def test_top_level_no_tag
+        exception = assert_raise(REXML::ParseException) do
+          parse("")
+        end
+        assert_equal(<<-DETAIL.chomp, exception.to_s)
+Malformed XML: No root element
+Line: 0
+Position: 0
+Last 80 unconsumed characters:
+
+        DETAIL
+      end
+
+      def test_top_level_no_tag_with_xml_declaration
+        exception = assert_raise(REXML::ParseException) do
+          parse("<?xml version='1.0'?>")
+        end
+        assert_equal(<<-DETAIL.chomp, exception.to_s)
+Malformed XML: No root element
+Line: 1
+Position: 21
+Last 80 unconsumed characters:
+
+        DETAIL
+      end
+
+      def test_top_level_no_tag_with_comment
+        exception = assert_raise(REXML::ParseException) do
+          parse("<!-- comment -->")
+        end
+        assert_equal(<<-DETAIL.chomp, exception.to_s)
+Malformed XML: No root element
+Line: 1
+Position: 16
+Last 80 unconsumed characters:
+
+        DETAIL
+      end
+
       def test_top_level_end_tag
         exception = assert_raise(REXML::ParseException) do
           parse("</a>")

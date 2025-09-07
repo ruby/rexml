@@ -329,7 +329,7 @@ Last 80 unconsumed characters:
       REXML::Formatters::Default.new.write( instruction, out = "" )
       assert_equal(source, out)
 
-      d = Document.new( source )
+      d = Document.new( source + "<a/>")
       instruction2 = d[0]
       assert_equal(instruction.to_s, instruction2.to_s)
 
@@ -875,7 +875,7 @@ EOL
     def test_element_decl
       element_decl = Source.new("<!DOCTYPE foo [
 <!ELEMENT bar (#PCDATA)>
-]>")
+]><foo/>")
       doc = Document.new( element_decl )
       d = doc[0]
       assert_equal("<!ELEMENT bar (#PCDATA)>", d.to_s.split(/\n/)[1].strip)
@@ -1329,7 +1329,7 @@ EOL
     end
 
     def test_ticket_52
-      source = "<!-- this is a single line comment -->"
+      source = "<!-- this is a single line comment --><a/>"
       d = REXML::Document.new(source)
       d.write(k="")
       assert_equal( source, k )
@@ -1408,10 +1408,10 @@ value/>
     end
 
     def test_ticket_88
-      doc = REXML::Document.new("<?xml version=\"1.0\" encoding=\"shift_jis\"?>")
-      assert_equal("<?xml version='1.0' encoding='SHIFT_JIS'?>", doc.to_s)
-      doc = REXML::Document.new("<?xml version = \"1.0\" encoding = \"shift_jis\"?>")
-      assert_equal("<?xml version='1.0' encoding='SHIFT_JIS'?>", doc.to_s)
+      doc = REXML::Document.new("<?xml version=\"1.0\" encoding=\"shift_jis\"?><a/>")
+      assert_equal("<?xml version='1.0' encoding='SHIFT_JIS'?><a/>", doc.to_s)
+      doc = REXML::Document.new("<?xml version = \"1.0\" encoding = \"shift_jis\"?><a/>")
+      assert_equal("<?xml version='1.0' encoding='SHIFT_JIS'?><a/>", doc.to_s)
     end
 
     def test_ticket_85
@@ -1548,10 +1548,6 @@ ENDXML
                    doc.root.attributes.to_h)
       assert_equal(expected,
                    REXML::Document.new(doc.root.to_s).root.attributes.to_h)
-    end
-
-    def test_empty_doc
-      assert(REXML::Document.new('').children.empty?)
     end
 
     private
