@@ -1,5 +1,31 @@
 # News
 
+## 3.4.3 - 2025-09-07 {#version-3-4-3}
+
+### Improvement
+
+  * Reject no root element XML as an invalid XML
+    * GH-289
+    * GH-291
+    * Patch by NAITOH Jun
+    * Reported by Sutou Kouhei
+
+### Fixes
+
+  * Fixed an issue with `IOSource#read_until` when reaching the end of a file
+    * GH-287
+    * GH-288
+    * Patch by NAITOH Jun
+    * Reported by Jason Thomas
+
+### Thanks
+
+  * NAITOH Jun
+
+  * Sutou Kouhei
+
+  * Jason Thomas
+
 ## 3.4.2 - 2025-08-26 {#version-3-4-2}
 
 ### Improvement
