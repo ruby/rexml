@@ -47,6 +47,8 @@ END
      end
      # Provided by Tom Talbott
      def test_more_ordering
+       omit("not supported on JRuby") if RUBY_ENGINE == "jruby"
+
        doc = Zlib::GzipReader.open(fixture_path('LostineRiver.kml.gz'), encoding: 'utf-8') do |f|
          REXML::Document.new(f)
        end
@@ -104,6 +106,8 @@ END
          assert_equal( actual[count], n ) unless n =~ /Arrive at/
          count += 1
        }
+
+       assert_equal( actual.size, count )
      end if defined?(Zlib::GzipReader)
   end
 end
