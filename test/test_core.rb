@@ -1550,6 +1550,26 @@ ENDXML
                    REXML::Document.new(doc.root.to_s).root.attributes.to_h)
     end
 
+    def test_document_with_no_arguments
+      assert do
+        REXML::Document.new(nil).children.empty?
+      end
+    end
+
+    def test_document_with_nil_arguments
+      assert do
+        REXML::Document.new(nil).children.empty?
+      end
+    end
+
+    def test_empty_doc
+      # This is an invalid usage because no root element XML is an invalid XML.
+      # But we accept `""` for backward compatibility.
+      assert do
+        REXML::Document.new('').children.empty?
+      end
+    end
+
     private
     def attribute(name, value)
       REXML::Attribute.new(name, value)

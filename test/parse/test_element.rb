@@ -14,12 +14,12 @@ module REXMLTests
     class TestInvalid < self
       def test_top_level_no_tag
         exception = assert_raise(REXML::ParseException) do
-          parse("")
+          parse(" ")
         end
         assert_equal(<<-DETAIL.chomp, exception.to_s)
 Malformed XML: No root element
-Line: 0
-Position: 0
+Line: 1
+Position: 1
 Last 80 unconsumed characters:
 
         DETAIL
