@@ -1,5 +1,21 @@
 # News
 
+## 3.4.4 - 2025-09-10 {#version-3-4-4}
+
+### Improvement
+
+  * Accept `REXML::Document.new("")` for backward compatibility
+    * GH-296
+    * GH-295
+    * Patch by NAITOH Jun
+    * Reported by Joe Rafaniello
+
+### Thanks
+
+  * NAITOH Jun
+
+  * Joe Rafaniello
+
 ## 3.4.3 - 2025-09-07 {#version-3-4-3}
 
 ### Improvement
