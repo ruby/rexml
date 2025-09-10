@@ -95,7 +95,9 @@ module REXML
       @entity_expansion_text_limit = Security.entity_expansion_text_limit
       super()
       @context = context
-      return if source.nil?
+      # `source = ""` is an invalid usage because no root element XML is an invalid XML.
+      # But we accept `""` for backward compatibility.
+      return if source.nil? or source == ""
       if source.kind_of? Document
         @context = source.context
         super source
