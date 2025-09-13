@@ -684,7 +684,7 @@ module REXML
             pubid = pubid_literal[1..-2] if pubid_literal # Remove quote
             return ["PUBLIC", pubid, nil]
           end
-          details = parse_id_invalid_details_public(accept_public_id: accept_public_id)
+          details = parse_id_invalid_details_public
         elsif @source.match?("SYSTEM", true)
           if (md = @source.match(Private::EXTERNAL_ID_SYSTEM_PATTERN, true))
             system = nil
@@ -704,24 +704,14 @@ module REXML
         raise REXML::ParseException.new(message, @source)
       end
 
-      def parse_id_invalid_details_public(accept_public_id:)
+      def parse_id_invalid_details_public
         if @source.match?(/(?:\s+[^'"]|\s*[\[>])/um)
           return "public ID literal is missing"
         end
         unless @source.match?(Private::PUBLIC_ID_PATTERN)
           return "invalid public ID literal"
         end
-        if accept_public_id
-          if @source.match?(/\s+#{PUBIDLITERAL}\s+[^'"]/um)
-            return "system ID literal is missing"
-          end
-          unless @source.match?(Private::EXTERNAL_ID_PUBLIC_PATTERN)
-            return "invalid system literal"
-          end
-          return "garbage after system literal"
-        else
-          return "garbage after public ID literal"
-        end
+        return "garbage after public ID literal"
       end
 
       def process_comment
