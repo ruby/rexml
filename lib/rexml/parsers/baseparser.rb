@@ -158,6 +158,9 @@ module REXML
           DEFAULT_ENTITIES_PATTERNS[term] = /&#{term};/
         end
         XML_PREFIXED_NAMESPACE = "http://www.w3.org/XML/1998/namespace"
+        EXTERNAL_ID_PUBLIC_PATTERN = /\s+#{PUBIDLITERAL}\s+#{SYSTEMLITERAL}/um
+        EXTERNAL_ID_SYSTEM_PATTERN  = /\s+#{SYSTEMLITERAL}/um
+        PUBLIC_ID_PATTERN = /\s+#{PUBIDLITERAL}/um
       end
       private_constant :Private
 
@@ -669,66 +672,73 @@ module REXML
       def parse_id(base_error_message,
                    accept_external_id:,
                    accept_public_id:)
-        if accept_external_id and (md = @source.match(EXTERNAL_ID_PUBLIC, true))
-          pubid = system = nil
-          pubid_literal = md[1]
-          pubid = pubid_literal[1..-2] if pubid_literal # Remove quote
-          system_literal = md[2]
-          system = system_literal[1..-2] if system_literal # Remove quote
-          ["PUBLIC", pubid, system]
-        elsif accept_public_id and (md = @source.match(PUBLIC_ID, true))
-          pubid = system = nil
-          pubid_literal = md[1]
-          pubid = pubid_literal[1..-2] if pubid_literal # Remove quote
-          ["PUBLIC", pubid, nil]
-        elsif accept_external_id and (md = @source.match(EXTERNAL_ID_SYSTEM, true))
-          system = nil
-          system_literal = md[1]
-          system = system_literal[1..-2] if system_literal # Remove quote
-          ["SYSTEM", nil, system]
+        @source.skip_spaces
+        if @source.match?("PUBLIC", true)
+          if accept_external_id and (md = @source.match(Private::EXTERNAL_ID_PUBLIC_PATTERN, true))
+            pubid = system = nil
+            pubid_literal = md[1]
+            pubid = pubid_literal[1..-2] if pubid_literal # Remove quote
+            system_literal = md[2]
+            system = system_literal[1..-2] if system_literal # Remove quote
+            return ["PUBLIC", pubid, system]
+          elsif accept_public_id and (md = @source.match(Private::PUBLIC_ID_PATTERN, true))
+            pubid = system = nil
+            pubid_literal = md[1]
+            pubid = pubid_literal[1..-2] if pubid_literal # Remove quote
+            return ["PUBLIC", pubid, nil]
+          end
+          details = parse_id_invalid_details_public(accept_external_id: accept_external_id,
+                                                    accept_public_id: accept_public_id)
+        elsif @source.match?("SYSTEM", true)
+          if accept_external_id and (md = @source.match(Private::EXTERNAL_ID_SYSTEM_PATTERN, true))
+            system = nil
+            system_literal = md[1]
+            system = system_literal[1..-2] if system_literal # Remove quote
+            return ["SYSTEM", nil, system]
+          end
+          details = parse_id_invalid_details_system(accept_external_id: accept_external_id)
         else
-          details = parse_id_invalid_details(accept_external_id: accept_external_id,
-                                             accept_public_id: accept_public_id)
-          message = "#{base_error_message}: #{details}"
-          raise REXML::ParseException.new(message, @source)
+          details = "invalid ID type"
         end
+        message = "#{base_error_message}: #{details}"
+        raise REXML::ParseException.new(message, @source)
       end
 
-      def parse_id_invalid_details(accept_external_id:,
+      def parse_id_invalid_details_public(accept_external_id:,
                                    accept_public_id:)
-        @source.skip_spaces
-        if (accept_external_id or accept_public_id) and @source.match?("PUBLIC", true)
+        if (accept_external_id or accept_public_id)
           if @source.match?(/(?:\s+[^'"]|\s*[\[>])/um)
             return "public ID literal is missing"
           end
-          unless @source.match?(/\s+#{PUBIDLITERAL}/um)
+          unless @source.match?(Private::PUBLIC_ID_PATTERN)
             return "invalid public ID literal"
           end
           if accept_public_id
             if @source.match?(/\s+#{PUBIDLITERAL}\s+[^'"]/um)
               return "system ID literal is missing"
             end
-            unless @source.match?(/\s+#{PUBIDLITERAL}\s+#{SYSTEMLITERAL}/um)
+            unless @source.match?(Private::EXTERNAL_ID_PUBLIC_PATTERN)
               return "invalid system literal"
             end
-            "garbage after system literal"
+            return "garbage after system literal"
           else
-            "garbage after public ID literal"
+            return "garbage after public ID literal"
           end
-        elsif accept_external_id and @source.match?("SYSTEM", true)
+        end
+        "ID type is missing"
+      end
+
+      def parse_id_invalid_details_system(accept_external_id:)
+        if accept_external_id
           if @source.match?(/(?:\s+[^'"]|\s*[\[>])/um)
             return "system literal is missing"
           end
-          unless @source.match?(/\s+#{SYSTEMLITERAL}/um)
+          unless @source.match?(Private::EXTERNAL_ID_SYSTEM_PATTERN)
             return "invalid system literal"
           end
-          "garbage after system literal"
-        else
-          unless @source.match?(/(?:PUBLIC|SYSTEM)\s/um)
-            return "invalid ID type"
-          end
-          "ID type is missing"
+          return "garbage after system literal"
         end
+        "ID type is missing"
       end
 
       def process_comment

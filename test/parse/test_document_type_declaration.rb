@@ -165,10 +165,10 @@ Last 80 unconsumed characters:
           end
           assert_equal(<<-DETAIL.chomp, exception.to_s)
 Malformed DOCTYPE: garbage after external ID
-Line: 3
-Position: 36
+Line: 1
+Position: 29
 Last 80 unconsumed characters:
-x'>  <r/> 
+x'>
           DETAIL
         end
 
