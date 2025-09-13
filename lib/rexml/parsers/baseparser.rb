@@ -692,7 +692,11 @@ module REXML
             system = system_literal[1..-2] if system_literal # Remove quote
             return ["SYSTEM", nil, system]
           end
-          details = parse_id_invalid_details_system
+          if @source.match?(/(?:\s+[^'"]|\s*[\[>])/um)
+            details = "system literal is missing"
+          else
+            details = "invalid system literal"
+          end
         else
           details = "invalid ID type"
         end
@@ -718,13 +722,6 @@ module REXML
         else
           return "garbage after public ID literal"
         end
-      end
-
-      def parse_id_invalid_details_system
-        if @source.match?(/(?:\s+[^'"]|\s*[\[>])/um)
-          return "system literal is missing"
-        end
-        return "invalid system literal"
       end
 
       def process_comment
