@@ -153,7 +153,22 @@ Malformed DOCTYPE: system literal is missing
 Line: 3
 Position: 26
 Last 80 unconsumed characters:
-SYSTEM>  <r/> 
+>  <r/> 
+          DETAIL
+        end
+
+        def test_garbage_invalid_system_literal
+          exception = assert_raise(REXML::ParseException) do
+            parse(<<-DOCTYPE)
+<!DOCTYPE r SYSTEM '
+            DOCTYPE
+          end
+          assert_equal(<<-DETAIL.chomp, exception.to_s)
+Malformed DOCTYPE: invalid system literal
+Line: 3
+Position: 27
+Last 80 unconsumed characters:
+ '  <r/> 
           DETAIL
         end
 
@@ -165,10 +180,10 @@ SYSTEM>  <r/>
           end
           assert_equal(<<-DETAIL.chomp, exception.to_s)
 Malformed DOCTYPE: garbage after external ID
-Line: 3
-Position: 36
+Line: 1
+Position: 29
 Last 80 unconsumed characters:
-x'>  <r/> 
+x'>
           DETAIL
         end
 
@@ -200,7 +215,7 @@ Malformed DOCTYPE: invalid public ID literal
 Line: 3
 Position: 62
 Last 80 unconsumed characters:
-PUBLIC 'double quote " is invalid' "r.dtd">  <r/> 
+ 'double quote " is invalid' "r.dtd">  <r/> 
             DETAIL
           end
 
@@ -220,6 +235,21 @@ PUBLIC 'double quote " is invalid' "r.dtd">  <r/>
         end
 
         class TestSystemLiteral < self
+          def test_garbage_after_public_ID_literal
+            exception = assert_raise(REXML::ParseException) do
+              parse(<<-DOCTYPE)
+<!DOCTYPE r PUBLIC "public-id-literal" 'system>
+              DOCTYPE
+            end
+            assert_equal(<<-DETAIL.chomp, exception.to_s)
+Malformed DOCTYPE: garbage after public ID literal
+Line: 3
+Position: 54
+Last 80 unconsumed characters:
+ "public-id-literal" 'system>  <r/> 
+            DETAIL
+          end
+
           def test_garbage_after_literal
             exception = assert_raise(REXML::ParseException) do
               parse(<<-DOCTYPE)
