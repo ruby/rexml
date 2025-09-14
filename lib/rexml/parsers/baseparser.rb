@@ -677,37 +677,33 @@ module REXML
             pubid = pubid_literal[1..-2] if pubid_literal # Remove quote
             system_literal = md[2]
             system = system_literal[1..-2] if system_literal # Remove quote
-            return ["PUBLIC", pubid, system]
+            ["PUBLIC", pubid, system]
           elsif accept_public_id and (md = @source.match(Private::PUBLIC_ID_PATTERN, true))
             pubid = system = nil
             pubid_literal = md[1]
             pubid = pubid_literal[1..-2] if pubid_literal # Remove quote
-            return ["PUBLIC", pubid, nil]
-          end
-          if @source.match?(/(?:\s+[^'"]|\s*[\[>])/um)
-            details = "public ID literal is missing"
+            ["PUBLIC", pubid, nil]
+          elsif @source.match?(/(?:\s+[^'"]|\s*[\[>])/um)
+            raise REXML::ParseException.new("#{base_error_message}: public ID literal is missing", @source)
           elsif !@source.match?(Private::PUBLIC_ID_PATTERN)
-            details = "invalid public ID literal"
+            raise REXML::ParseException.new("#{base_error_message}: invalid public ID literal", @source)
           else
-            details = "garbage after public ID literal"
+            raise REXML::ParseException.new("#{base_error_message}: garbage after public ID literal", @source)
           end
         elsif @source.match?("SYSTEM", true)
           if (md = @source.match(Private::EXTERNAL_ID_SYSTEM_PATTERN, true))
             system = nil
             system_literal = md[1]
             system = system_literal[1..-2] if system_literal # Remove quote
-            return ["SYSTEM", nil, system]
-          end
-          if @source.match?(/(?:\s+[^'"]|\s*[\[>])/um)
-            details = "system literal is missing"
+            ["SYSTEM", nil, system]
+          elsif @source.match?(/(?:\s+[^'"]|\s*[\[>])/um)
+            raise REXML::ParseException.new("#{base_error_message}: system literal is missing", @source)
           else
-            details = "invalid system literal"
+            raise REXML::ParseException.new("#{base_error_message}: invalid system literal", @source)
           end
         else
-          details = "invalid ID type"
+          raise REXML::ParseException.new("#{base_error_message}: invalid ID type", @source)
         end
-        message = "#{base_error_message}: #{details}"
-        raise REXML::ParseException.new(message, @source)
       end
 
       def process_comment
