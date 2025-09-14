@@ -32,10 +32,10 @@ module REXMLTests
         end
         assert_equal(<<-DETAIL.chomp, exception.to_s)
 Malformed notation declaration: name is missing
-Line: 5
-Position: 72
+Line: 2
+Position: 62
 Last 80 unconsumed characters:
-<!NOTATION>  ]> <r/> 
+<!NOTATION>
         DETAIL
       end
 
@@ -62,10 +62,10 @@ Last 80 unconsumed characters:
         end
         assert_equal(<<-DETAIL.chomp, exception.to_s)
 Malformed notation declaration: invalid ID type
-Line: 5
-Position: 77
+Line: 2
+Position: 67
 Last 80 unconsumed characters:
->  ]> <r/> 
+>
         DETAIL
       end
 
@@ -77,10 +77,10 @@ Last 80 unconsumed characters:
         end
         assert_equal(<<-DETAIL.chomp, exception.to_s)
 Malformed notation declaration: invalid ID type
-Line: 5
-Position: 85
+Line: 2
+Position: 75
 Last 80 unconsumed characters:
- INVALID>  ]> <r/> 
+INVALID>
         DETAIL
       end
     end
@@ -98,7 +98,7 @@ Malformed notation declaration: system literal is missing
 Line: 5
 Position: 84
 Last 80 unconsumed characters:
- SYSTEM>  ]> <r/> 
+>  ]> <r/> 
           DETAIL
         end
 
@@ -110,10 +110,10 @@ Last 80 unconsumed characters:
           end
           assert_equal(<<-DETAIL.chomp, exception.to_s)
 Malformed notation declaration: garbage before end >
-Line: 5
-Position: 103
+Line: 2
+Position: 93
 Last 80 unconsumed characters:
-x'>  ]> <r/> 
+x'>
           DETAIL
         end
 
@@ -145,7 +145,7 @@ Malformed notation declaration: invalid public ID literal
 Line: 5
 Position: 129
 Last 80 unconsumed characters:
- PUBLIC 'double quote " is invalid' "system-literal">  ]> <r/> 
+ 'double quote " is invalid' "system-literal">  ]> <r/> 
             DETAIL
           end
 
@@ -173,10 +173,10 @@ Last 80 unconsumed characters:
             end
             assert_equal(<<-DETAIL.chomp, exception.to_s)
 Malformed notation declaration: garbage before end >
-Line: 5
-Position: 123
+Line: 2
+Position: 113
 Last 80 unconsumed characters:
-x'>  ]> <r/> 
+x'>
            DETAIL
           end
 
@@ -229,7 +229,7 @@ Malformed notation declaration: public ID literal is missing
 Line: 5
 Position: 84
 Last 80 unconsumed characters:
- PUBLIC>  ]> <r/> 
+>  ]> <r/> 
         DETAIL
       end
 
@@ -244,7 +244,7 @@ Malformed notation declaration: invalid public ID literal
 Line: 5
 Position: 128
 Last 80 unconsumed characters:
- PUBLIC 'double quote \" is invalid in PubidLiteral'>  ]> <r/> 
+ 'double quote \" is invalid in PubidLiteral'>  ]> <r/> 
         DETAIL
       end
 
