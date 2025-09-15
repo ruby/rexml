@@ -12,7 +12,7 @@ module REXML
         @parser = BaseParser.new(source)
         @listeners = []
         @procs = []
-        @namespace_stack = []
+        @namespace_stack = [{}]
         @has_listeners = false
         @tag_stack = []
         @entities = {}
@@ -122,7 +122,7 @@ module REXML
               event[2].each {|n, v| event[2][n] = @parser.normalize(v)}
               nsdecl = event[2].find_all { |n, value| n =~ /^xmlns(:|$)/ }
               nsdecl.collect! { |n, value| [ n[6..-1], value ] }
-              @namespace_stack.push({})
+              @namespace_stack.push(@namespace_stack[-1].dup)
               nsdecl.each do |n,v|
                 @namespace_stack[-1][n] = v
                 # notify observers of namespaces
@@ -259,11 +259,8 @@ module REXML
       end
 
       def get_namespace( prefix )
-        return nil if @namespace_stack.empty?
-
-        uris = (@namespace_stack.find_all { |ns| not ns[prefix].nil? }) ||
-          (@namespace_stack.find { |ns| not ns[nil].nil? })
-        uris[-1][prefix] unless uris.nil? or 0 == uris.size
+        current_namespace = @namespace_stack[-1]
+        current_namespace[prefix] || current_namespace[nil]
       end
     end
   end
