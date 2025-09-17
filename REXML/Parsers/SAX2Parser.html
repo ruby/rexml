@@ -177,7 +177,7 @@
   <span class="ruby-ivar">@parser</span> = <span class="ruby-constant">BaseParser</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">source</span>)
   <span class="ruby-ivar">@listeners</span> = []
   <span class="ruby-ivar">@procs</span> = []
-  <span class="ruby-ivar">@namespace_stack</span> = []
+  <span class="ruby-ivar">@namespace_stack</span> = [{}]
   <span class="ruby-ivar">@has_listeners</span> = <span class="ruby-keyword">false</span>
   <span class="ruby-ivar">@tag_stack</span> = []
   <span class="ruby-ivar">@entities</span> = {}
@@ -469,7 +469,7 @@
         <span class="ruby-identifier">event</span>[<span class="ruby-value">2</span>].<span class="ruby-identifier">each</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">n</span>, <span class="ruby-identifier">v</span><span class="ruby-operator">|</span> <span class="ruby-identifier">event</span>[<span class="ruby-value">2</span>][<span class="ruby-identifier">n</span>] = <span class="ruby-ivar">@parser</span>.<span class="ruby-identifier">normalize</span>(<span class="ruby-identifier">v</span>)}
         <span class="ruby-identifier">nsdecl</span> = <span class="ruby-identifier">event</span>[<span class="ruby-value">2</span>].<span class="ruby-identifier">find_all</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">n</span>, <span class="ruby-identifier">value</span><span class="ruby-operator">|</span> <span class="ruby-identifier">n</span> <span class="ruby-operator">=~</span> <span class="ruby-regexp">/^xmlns(:|$)/</span> }
         <span class="ruby-identifier">nsdecl</span>.<span class="ruby-identifier">collect!</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">n</span>, <span class="ruby-identifier">value</span><span class="ruby-operator">|</span> [ <span class="ruby-identifier">n</span>[<span class="ruby-value">6</span><span class="ruby-operator">..</span><span class="ruby-value">-1</span>], <span class="ruby-identifier">value</span> ] }
-        <span class="ruby-ivar">@namespace_stack</span>.<span class="ruby-identifier">push</span>({})
+        <span class="ruby-ivar">@namespace_stack</span>.<span class="ruby-identifier">push</span>(<span class="ruby-ivar">@namespace_stack</span>[<span class="ruby-value">-1</span>].<span class="ruby-identifier">dup</span>)
         <span class="ruby-identifier">nsdecl</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">n</span>,<span class="ruby-identifier">v</span><span class="ruby-operator">|</span>
           <span class="ruby-ivar">@namespace_stack</span>[<span class="ruby-value">-1</span>][<span class="ruby-identifier">n</span>] = <span class="ruby-identifier">v</span>
           <span class="ruby-comment"># notify observers of namespaces</span>
