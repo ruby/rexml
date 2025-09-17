@@ -1,0 +1,34 @@
+loop_count: 100
+contexts:
+  - gems:
+      rexml: 3.2.6
+    require: false
+    prelude: require 'rexml'
+  - name: master
+    prelude: |
+      $LOAD_PATH.unshift(File.expand_path("lib"))
+      require 'rexml'
+  - name: 3.2.6(YJIT)
+    gems:
+      rexml: 3.2.6
+    require: false
+    prelude: |
+      require 'rexml'
+      RubyVM::YJIT.enable
+  - name: master(YJIT)
+    prelude: |
+      $LOAD_PATH.unshift(File.expand_path("lib"))
+      require 'rexml'
+      RubyVM::YJIT.enable
+
+prelude: |
+  require 'rexml/parsers/sax2parser'
+
+  DEPTH = 100
+  xml   = '<a>' * DEPTH + '</a>' * DEPTH
+
+benchmark:
+  'sax'       : |
+    parser = REXML::Parsers::SAX2Parser.new(xml)
+    parser.listen(:start_element){|uri, localname, qname, attrs|}
+    parser.parse
