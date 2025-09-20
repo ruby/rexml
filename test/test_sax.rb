@@ -7,6 +7,12 @@ module REXMLTests
   class SAX2Tester < Test::Unit::TestCase
     include Helper::Fixture
     include REXML
+
+    def test_without_listien
+      p = Parsers::SAX2Parser.new "<a><a></a></a>"
+      p.parse
+    end
+
     def test_characters
       d = Document.new( "<A>@blah@</A>" )
       txt = d.root.text

@@ -157,7 +157,7 @@ module REXML
               ob.end_element( uri, local, event[1] )
             } if listeners
 
-            namespace_mapping = @namespace_stack.pop
+            namespace_mapping = @namespace_stack.pop if procs or listeners
             # find the observers for namespaces
             procs = get_procs( :end_prefix_mapping, event[1] )
             listeners = get_listeners( :end_prefix_mapping, event[1] )
