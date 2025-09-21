@@ -504,7 +504,7 @@
         <span class="ruby-identifier">ob</span>.<span class="ruby-identifier">end_element</span>( <span class="ruby-identifier">uri</span>, <span class="ruby-identifier">local</span>, <span class="ruby-identifier">event</span>[<span class="ruby-value">1</span>] )
       } <span class="ruby-keyword">if</span> <span class="ruby-identifier">listeners</span>
 
-      <span class="ruby-identifier">namespace_mapping</span> = <span class="ruby-ivar">@namespace_stack</span>.<span class="ruby-identifier">pop</span>
+      <span class="ruby-identifier">namespace_mapping</span> = <span class="ruby-ivar">@namespace_stack</span>.<span class="ruby-identifier">pop</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">procs</span> <span class="ruby-keyword">or</span> <span class="ruby-identifier">listeners</span>
       <span class="ruby-comment"># find the observers for namespaces</span>
       <span class="ruby-identifier">procs</span> = <span class="ruby-identifier">get_procs</span>( <span class="ruby-value">:end_prefix_mapping</span>, <span class="ruby-identifier">event</span>[<span class="ruby-value">1</span>] )
       <span class="ruby-identifier">listeners</span> = <span class="ruby-identifier">get_listeners</span>( <span class="ruby-value">:end_prefix_mapping</span>, <span class="ruby-identifier">event</span>[<span class="ruby-value">1</span>] )
