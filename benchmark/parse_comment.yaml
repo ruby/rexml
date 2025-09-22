@@ -26,8 +26,8 @@ prelude: |
 
   SIZE = 100000
 
-  top_level_xml     = "<!--" + "a" * SIZE + "-->\n"
-  in_doctype_xml    = "<!DOCTYPE foo [<!--" + "a" * SIZE + "-->]>"
+  top_level_xml     = "<!--" + "a" * SIZE + "-->\n<root/>"
+  in_doctype_xml    = "<!DOCTYPE foo [<!--" + "a" * SIZE + "-->]><root/>"
   after_doctype_xml = "<root/><!--" + "a" * SIZE + "-->"
 
 benchmark:
