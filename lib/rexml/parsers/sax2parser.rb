@@ -226,12 +226,8 @@ module REXML
         return nil if @procs.size == 0
         @procs.find_all do |sym, match, block|
           (
-            (sym.nil? or symbol == sym) and
-            ((name.nil? and match.nil?) or match.nil? or (
-              (name == match) or
-              (match.kind_of? Regexp and name =~ match)
-              )
-            )
+            (sym.nil? or (symbol == sym)) and
+            (match.nil? or (name == match) or (match.kind_of? Regexp and match.match?(name)))
           )
         end.collect{|x| x[-1]}
       end
@@ -239,12 +235,8 @@ module REXML
         return nil if @listeners.size == 0
         @listeners.find_all do |sym, match, block|
           (
-            (sym.nil? or symbol == sym) and
-            ((name.nil? and match.nil?) or match.nil? or (
-              (name == match) or
-              (match.kind_of? Regexp and name =~ match)
-              )
-            )
+            (sym.nil? or (symbol == sym)) and
+            (match.nil? or (name == match) or (match.kind_of? Regexp and match.match?(name)))
           )
         end.collect{|x| x[-1]}
       end
