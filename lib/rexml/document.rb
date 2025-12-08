@@ -28,9 +28,9 @@ module REXML
   # If you're somewhat familiar with XML
   # and have a particular task in mind,
   # you may want to see the
-  # {tasks pages}[../doc/rexml/tasks/tocs/master_toc_rdoc.html],
+  # {tasks pages}[../doc/rexml/tasks/rdoc/master_toc_rdoc.html],
   # and in particular, the
-  # {tasks page for documents}[../doc/rexml/tasks/tocs/document_toc_rdoc.html].
+  # {tasks for documents}[../doc/rexml/tasks/rdoc/master_toc_rdoc.html#label-Document].
   #
   class Document < Element
     # A convenient default XML declaration. Use:
