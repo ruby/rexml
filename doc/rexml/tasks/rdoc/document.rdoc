@@ -9,7 +9,7 @@ see:
 - {Tasks for Node}[node_rdoc.html].
 - {Module Enumerable}[https://docs.ruby-lang.org/en/master/Enumerable.html].
 
-:include: ../tocs/document_toc.rdoc
+:include: ../includes/document_toc.rdoc
 
 === New Document
 
