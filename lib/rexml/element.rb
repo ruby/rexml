@@ -24,9 +24,9 @@ module REXML
   # If you're somewhat familiar with XML
   # and have a particular task in mind,
   # you may want to see the
-  # {tasks pages}[../doc/rexml/tasks/rdoc/master_toc_rdoc.html],
+  # {tasks pages}[../doc/rexml/tasks/rdoc/toc_rdoc.html],
   # and in particular, the
-  # {tasks for elements}[../doc/rexml/tasks/rdoc/master_toc_rdoc.html#label-Element].
+  # {tasks for elements}[../doc/rexml/tasks/rdoc/toc_rdoc.html#label-Element].
   #
   # === Name
   #
