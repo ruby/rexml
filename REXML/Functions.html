@@ -8,12 +8,39 @@
 <title>module REXML::Functions - RDoc Documentation</title>
 
 
-  <meta name="keywords" content="ruby,module,REXML::Functions">
+  <meta
+    name="keywords"
+    content="ruby,module,REXML::Functions"
+  >
+
+    <meta
+      name="description"
+      content="module REXML::Functions: the first argument will always be a list of nodes from which to filter. In the case of context methods (such as position), the function should return "
+    >
 
 
-    <meta name="description" content="module REXML::Functions: the first argument will always be a list of nodes from which to filter. In the case of context methods (such as position), the function should return ">
 
 
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="module REXML::Functions - RDoc Documentation">
+
+
+
+    <meta property="og:description" content="the first argument will always be a list of nodes from which to filter. In the case of context methods (such as position), the function should return ">
+
+
+
+
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="module REXML::Functions - RDoc Documentation">
+
+
+
+    <meta name="twitter:description" content="the first argument will always be a list of nodes from which to filter. In the case of context methods (such as position), the function should return ">
 
 
 
@@ -22,55 +49,476 @@
   var index_rel_prefix = "../";
 </script>
 
-<script src="../js/navigation.js" defer></script>
-<script src="../js/search.js" defer></script>
-<script src="../js/search_index.js" defer></script>
-<script src="../js/searcher.js" defer></script>
-<script src="../js/darkfish.js" defer></script>
+<script
+  src="../js/theme-toggle.js?v=7.0.1"
+></script>
 
-<link href="../css/fonts.css" rel="stylesheet">
-<link href="../css/rdoc.css" rel="stylesheet">
+<script
+  src="../js/search_navigation.js?v=7.0.1"
+  defer
+></script>
+
+<script
+  src="../js/search_data.js?v=7.0.1"
+  defer
+></script>
+
+<script
+  src="../js/search_ranker.js?v=7.0.1"
+  defer
+></script>
+
+<script
+  src="../js/search_controller.js?v=7.0.1"
+  defer
+></script>
+
+<script
+  src="../js/c_highlighter.js?v=7.0.1"
+  defer
+></script>
+
+<script
+  src="../js/aliki.js?v=7.0.1"
+  defer
+></script>
+
+<link
+  href="../css/rdoc.css?v=7.0.1"
+  rel="stylesheet"
+>
 
 
 
-<body id="top" role="document" class="module">
+
+<body role="document" class="module has-toc">
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <!-- Chevron (right arrow) - used for expand/collapse -->
+  <symbol
+    id="icon-chevron"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  >
+    <polyline points="9 18 15 12 9 6"></polyline>
+  </symbol>
+
+  <!-- File/Document - Pages section -->
+  <symbol
+    id="icon-file"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  >
+    <path
+      d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"
+    ></path>
+
+    <polyline points="14 2 14 8 20 8"></polyline>
+  </symbol>
+
+  <!-- Layers/Stack - Classes and Modules section -->
+  <symbol
+    id="icon-layers"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  >
+    <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+    <polyline points="2 17 12 22 22 17"></polyline>
+    <polyline points="2 12 12 17 22 12"></polyline>
+  </symbol>
+
+  <!-- Curly braces with C - Class Methods section -->
+  <symbol
+    id="icon-class-methods"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  >
+    <path d="M6 3C3.5 3 2 4.5 2 7v3c0 1.5-1 2-1 2s1 .5 1 2v5c0 2.5 1.5 4 4 4"></path>
+    <path d="M18 3c2.5 0 4 1.5 4 4v3c0 1.5 1 2 1 2s-1 .5-1 2v5c0 2.5-1.5 4-4 4"></path>
+
+    <text
+      x="12"
+      y="17"
+      text-anchor="middle"
+      font-size="13"
+      font-weight="bold"
+      fill="currentColor"
+      stroke="none"
+    >
+      C
+    </text>
+  </symbol>
+
+  <!-- Curly braces with I - Instance Methods section -->
+  <symbol
+    id="icon-instance-methods"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  >
+    <path d="M6 3C3.5 3 2 4.5 2 7v3c0 1.5-1 2-1 2s1 .5 1 2v5c0 2.5 1.5 4 4 4"></path>
+    <path d="M18 3c2.5 0 4 1.5 4 4v3c0 1.5 1 2 1 2s-1 .5-1 2v5c0 2.5-1.5 4-4 4"></path>
+
+    <text
+      x="12"
+      y="17"
+      text-anchor="middle"
+      font-size="13"
+      font-weight="bold"
+      fill="currentColor"
+      stroke="none"
+    >
+      I
+    </text>
+  </symbol>
+
+  <!-- Double chevrons up - Ancestors section -->
+  <symbol
+    id="icon-ancestors"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  >
+    <polyline points="17 11 12 6 7 11"></polyline>
+    <polyline points="17 18 12 13 7 18"></polyline>
+  </symbol>
+
+  <!-- User with plus - Included Modules section -->
+  <symbol
+    id="icon-includes"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  >
+    <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+    <circle cx="8.5" cy="7" r="4"></circle>
+
+    <line
+      x1="20"
+      y1="8"
+      x2="20"
+      y2="14"
+    ></line>
+
+    <line
+      x1="23"
+      y1="11"
+      x2="17"
+      y2="11"
+    ></line>
+  </symbol>
+
+  <!-- User with check - Extended Modules section -->
+  <symbol
+    id="icon-extends"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  >
+    <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+    <circle cx="8.5" cy="7" r="4"></circle>
+    <polyline points="17 11 19 13 23 9"></polyline>
+  </symbol>
+
+  <!-- List - Sections section -->
+  <symbol
+    id="icon-list"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  >
+    <line
+      x1="8"
+      y1="6"
+      x2="21"
+      y2="6"
+    ></line>
+
+    <line
+      x1="8"
+      y1="12"
+      x2="21"
+      y2="12"
+    ></line>
+
+    <line
+      x1="8"
+      y1="18"
+      x2="21"
+      y2="18"
+    ></line>
+
+    <line
+      x1="3"
+      y1="6"
+      x2="3.01"
+      y2="6"
+    ></line>
+
+    <line
+      x1="3"
+      y1="12"
+      x2="3.01"
+      y2="12"
+    ></line>
+
+    <line
+      x1="3"
+      y1="18"
+      x2="3.01"
+      y2="18"
+    ></line>
+  </symbol>
+</svg>
+
+<header class="top-navbar">
+  <a href="../index.html" class="navbar-brand">
+    RDoc Documentation
+  </a>
+
+  <!-- Desktop search bar -->
+  <div class="navbar-search navbar-search-desktop" role="search">
+    <form action="#" method="get" accept-charset="utf-8">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results-desktop"
+             type="text" name="search" placeholder="Search (/) for a class, method..."
+             spellcheck="false" autocomplete="off"
+             title="Type to search, Up and Down to navigate, Enter to load">
+      <ul id="search-results-desktop" aria-label="Search Results"
+          aria-busy="false" aria-expanded="false"
+          aria-atomic="false" class="initially-hidden search-results"></ul>
+    </form>
+  </div>
+
+  <!-- Mobile search icon button -->
+  <button id="search-toggle" class="navbar-search-mobile" aria-label="Open search" type="button">
+    <span aria-hidden="true">🔍</span>
+  </button>
+
+  <!-- Theme toggle button -->
+  <button id="theme-toggle" class="theme-toggle" aria-label="Switch to dark mode" type="button">
+    <span class="theme-toggle-icon" aria-hidden="true">🌙</span>
+  </button>
+</header>
+
+<!-- Search Modal (Mobile) -->
+<div id="search-modal" class="search-modal" hidden aria-modal="true" role="dialog" aria-label="Search">
+  <div class="search-modal-backdrop"></div>
+  <div class="search-modal-content">
+    <div class="search-modal-header">
+      <form class="search-modal-form" action="#" method="get" accept-charset="utf-8">
+        <span class="search-modal-icon" aria-hidden="true">🔍</span>
+        <input id="search-field-mobile" role="combobox" aria-label="Search"
+               aria-autocomplete="list" aria-controls="search-results-mobile"
+               type="text" name="search" placeholder="Search documentation"
+               spellcheck="false" autocomplete="off">
+        <button type="button" class="search-modal-close" aria-label="Close search" id="search-modal-close">
+          <span aria-hidden="true">esc</span>
+        </button>
+      </form>
+    </div>
+    <div class="search-modal-body">
+      <ul id="search-results-mobile" aria-label="Search Results"
+          aria-busy="false" aria-expanded="false"
+          aria-atomic="false" class="search-results search-modal-results initially-hidden"></ul>
+      <div class="search-modal-empty">
+        <p>No recent searches</p>
+      </div>
+    </div>
+  </div>
+</div>
+
 <div id="navigation-toggle" role="button" tabindex="0" aria-label="Toggle sidebar" aria-expanded="true" aria-controls="navigation">
   <span aria-hidden="true">&#9776;</span>
 </div>
 
 
 <nav id="navigation" role="navigation">
-  <div id="project-navigation">
-    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
-  <h2>
-    <a href="../index.html" rel="home">Home</a>
-  </h2>
-
-  <div id="table-of-contents-navigation">
-    <a href="../table_of_contents.html#pages">Pages</a>
-    <a href="../table_of_contents.html#classes">Classes</a>
-    <a href="../table_of_contents.html#methods">Methods</a>
-  </div>
-</div>
-
-    <div id="search-section" role="search" class="project-section initially-hidden">
-  <form action="#" method="get" accept-charset="utf-8">
-    <div id="search-field-wrapper">
-      <input id="search-field" role="combobox" aria-label="Search"
-             aria-autocomplete="list" aria-controls="search-results"
-             type="text" name="search" placeholder="Search (/) for a class, method, ..." spellcheck="false"
-             title="Type to search, Up and Down to navigate, Enter to load">
-    </div>
-
-    <ul id="search-results" aria-label="Search Results"
-        aria-busy="false" aria-expanded="false"
-        aria-atomic="false" class="initially-hidden"></ul>
-  </form>
-</div>
-
-  </div>
-
   
+
+
+
+
+  <div id="fileindex-section" class="nav-section">
+    <details class="nav-section-collapsible" >
+      <summary class="nav-section-header">
+        <span class="nav-section-icon">
+          <svg>
+            <use href="#icon-file"></use>
+          </svg>
+        </span>
+
+        <span class="nav-section-title">Pages</span>
+
+        <span class="nav-section-chevron">
+          <svg>
+            <use href="#icon-chevron"></use>
+          </svg>
+        </span>
+      </summary>
+
+      <ul class="nav-list">
+
+
+
+
+
+
+            <li>
+              <a href="../LICENSE_txt.html">
+                LICENSE
+              </a>
+            </li>
+
+
+
+
+            <li>
+              <a href="../NEWS_md.html">
+                NEWS
+              </a>
+            </li>
+
+
+
+
+            <li>
+              <a href="../README_md.html">
+                README
+              </a>
+            </li>
+
+
+
+
+
+          <li>
+            <details >
+              <summary>
+                
+                  doc
+                  
+                
+              </summary>
+
+              <ul class="link-list">
+
+                  <li>
+                    <a href="../doc/rexml/context_rdoc.html">
+                      context
+                    </a>
+                  </li>
+
+                  <li>
+                    <a href="../doc/rexml/tasks/includes/child_toc_rdoc.html">
+                      child_toc
+                    </a>
+                  </li>
+
+                  <li>
+                    <a href="../doc/rexml/tasks/includes/document_toc_rdoc.html">
+                      document_toc
+                    </a>
+                  </li>
+
+                  <li>
+                    <a href="../doc/rexml/tasks/includes/element_toc_rdoc.html">
+                      element_toc
+                    </a>
+                  </li>
+
+                  <li>
+                    <a href="../doc/rexml/tasks/includes/node_toc_rdoc.html">
+                      node_toc
+                    </a>
+                  </li>
+
+                  <li>
+                    <a href="../doc/rexml/tasks/includes/parent_toc_rdoc.html">
+                      parent_toc
+                    </a>
+                  </li>
+
+                  <li>
+                    <a href="../doc/rexml/tasks/rdoc/child_rdoc.html">
+                      child
+                    </a>
+                  </li>
+
+                  <li>
+                    <a href="../doc/rexml/tasks/rdoc/document_rdoc.html">
+                      document
+                    </a>
+                  </li>
+
+                  <li>
+                    <a href="../doc/rexml/tasks/rdoc/element_rdoc.html">
+                      element
+                    </a>
+                  </li>
+
+                  <li>
+                    <a href="../doc/rexml/tasks/rdoc/node_rdoc.html">
+                      node
+                    </a>
+                  </li>
+
+                  <li>
+                    <a href="../doc/rexml/tasks/rdoc/parent_rdoc.html">
+                      parent
+                    </a>
+                  </li>
+
+                  <li>
+                    <a href="../doc/rexml/tasks/rdoc/toc_rdoc.html">
+                      toc
+                    </a>
+                  </li>
+
+                  <li>
+                    <a href="../doc/rexml/tutorial_rdoc.html">
+                      tutorial
+                    </a>
+                  </li>
+
+              </ul>
+            </details>
+          </li>
+
+      </ul>
+    </details>
+  </div>
+
 
   
 
@@ -82,99 +530,118 @@
 
   
   <div class="nav-section">
-    <h3>Class Methods</h3>
-    <ul class="link-list" role="directory">
+    <details class="nav-section-collapsible" open>
+      <summary class="nav-section-header">
+        <span class="nav-section-icon">
+          <svg><use href="#icon-class-methods"></use></svg>
+        </span>
+        <span class="nav-section-title">Class Methods</span>
+        <span class="nav-section-chevron">
+          <svg><use href="#icon-chevron"></use></svg>
+        </span>
+      </summary>
+      <ul class="nav-list" role="directory">
 
-      <li ><a href="#method-c-boolean">boolean</a></li>
+        <li ><a href="#method-c-boolean">boolean</a></li>
 
-      <li ><a href="#method-c-ceiling">ceiling</a></li>
+        <li ><a href="#method-c-ceiling">ceiling</a></li>
 
-      <li ><a href="#method-c-compare_language">compare_language</a></li>
+        <li ><a href="#method-c-compare_language">compare_language</a></li>
 
-      <li ><a href="#method-c-concat">concat</a></li>
+        <li ><a href="#method-c-concat">concat</a></li>
 
-      <li ><a href="#method-c-contains">contains</a></li>
+        <li ><a href="#method-c-contains">contains</a></li>
 
-      <li ><a href="#method-c-context-3D">context=</a></li>
+        <li ><a href="#method-c-context-3D">context=</a></li>
 
-      <li ><a href="#method-c-count">count</a></li>
+        <li ><a href="#method-c-count">count</a></li>
 
-      <li ><a href="#method-c-false">false</a></li>
+        <li ><a href="#method-c-false">false</a></li>
 
-      <li ><a href="#method-c-floor">floor</a></li>
+        <li ><a href="#method-c-floor">floor</a></li>
 
-      <li ><a href="#method-c-get_namespace">get_namespace</a></li>
+        <li ><a href="#method-c-get_namespace">get_namespace</a></li>
 
-      <li ><a href="#method-c-id">id</a></li>
+        <li ><a href="#method-c-id">id</a></li>
 
-      <li ><a href="#method-c-lang">lang</a></li>
+        <li ><a href="#method-c-lang">lang</a></li>
 
-      <li ><a href="#method-c-last">last</a></li>
+        <li ><a href="#method-c-last">last</a></li>
 
-      <li ><a href="#method-c-local_name">local_name</a></li>
+        <li ><a href="#method-c-local_name">local_name</a></li>
 
-      <li ><a href="#method-c-name">name</a></li>
+        <li ><a href="#method-c-name">name</a></li>
 
-      <li ><a href="#method-c-namespace_context">namespace_context</a></li>
+        <li ><a href="#method-c-namespace_context">namespace_context</a></li>
 
-      <li ><a href="#method-c-namespace_context-3D">namespace_context=</a></li>
+        <li ><a href="#method-c-namespace_context-3D">namespace_context=</a></li>
 
-      <li ><a href="#method-c-namespace_uri">namespace_uri</a></li>
+        <li ><a href="#method-c-namespace_uri">namespace_uri</a></li>
 
-      <li ><a href="#method-c-normalize_space">normalize_space</a></li>
+        <li ><a href="#method-c-normalize_space">normalize_space</a></li>
 
-      <li ><a href="#method-c-not">not</a></li>
+        <li ><a href="#method-c-not">not</a></li>
 
-      <li ><a href="#method-c-number">number</a></li>
+        <li ><a href="#method-c-number">number</a></li>
 
-      <li ><a href="#method-c-position">position</a></li>
+        <li ><a href="#method-c-position">position</a></li>
 
-      <li ><a href="#method-c-processing_instruction">processing_instruction</a></li>
+        <li ><a href="#method-c-processing_instruction">processing_instruction</a></li>
 
-      <li ><a href="#method-c-round">round</a></li>
+        <li ><a href="#method-c-round">round</a></li>
 
-      <li class="calls-super" ><a href="#method-c-send">send</a></li>
+        <li class="calls-super" ><a href="#method-c-send">send</a></li>
 
-      <li ><a href="#method-c-singleton_method_added">singleton_method_added</a></li>
+        <li ><a href="#method-c-singleton_method_added">singleton_method_added</a></li>
 
-      <li ><a href="#method-c-starts_with">starts_with</a></li>
+        <li ><a href="#method-c-starts_with">starts_with</a></li>
 
-      <li ><a href="#method-c-string">string</a></li>
+        <li ><a href="#method-c-string">string</a></li>
 
-      <li ><a href="#method-c-string_length">string_length</a></li>
+        <li ><a href="#method-c-string_length">string_length</a></li>
 
-      <li ><a href="#method-c-string_value">string_value</a></li>
+        <li ><a href="#method-c-string_value">string_value</a></li>
 
-      <li ><a href="#method-c-substring">substring</a></li>
+        <li ><a href="#method-c-substring">substring</a></li>
 
-      <li ><a href="#method-c-substring_after">substring_after</a></li>
+        <li ><a href="#method-c-substring_after">substring_after</a></li>
 
-      <li ><a href="#method-c-substring_before">substring_before</a></li>
+        <li ><a href="#method-c-substring_before">substring_before</a></li>
 
-      <li ><a href="#method-c-sum">sum</a></li>
+        <li ><a href="#method-c-sum">sum</a></li>
 
-      <li ><a href="#method-c-text">text</a></li>
+        <li ><a href="#method-c-text">text</a></li>
 
-      <li ><a href="#method-c-translate">translate</a></li>
+        <li ><a href="#method-c-translate">translate</a></li>
 
-      <li ><a href="#method-c-true">true</a></li>
+        <li ><a href="#method-c-true">true</a></li>
 
-      <li ><a href="#method-c-variables">variables</a></li>
+        <li ><a href="#method-c-variables">variables</a></li>
 
-      <li ><a href="#method-c-variables-3D">variables=</a></li>
+        <li ><a href="#method-c-variables-3D">variables=</a></li>
 
-    </ul>
+      </ul>
+    </details>
   </div>
 
 
 
 
+  <div id="classindex-section" class="nav-section">
+  <details class="nav-section-collapsible" open>
+    <summary class="nav-section-header">
+      <span class="nav-section-icon">
+        <svg><use href="#icon-layers"></use></svg>
+      </span>
+      <span class="nav-section-title">Classes and Modules</span>
+      <span class="nav-section-chevron">
+        <svg><use href="#icon-chevron"></use></svg>
+      </span>
+    </summary>
 
-  <footer id="validator-badges" role="contentinfo">
-  <p><a href="https://validator.w3.org/check/referer">Validate</a></p>
-  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.15.1.</p>
-  <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.</p>
-</footer>
+    <ul class="link-list nav-list"><li><details open><summary><code><a href="../REXML.html">REXML</a></code></summary><ul class="link-list nav-list"><li><code><a href="../REXML/AttlistDecl.html">AttlistDecl</a></code></li><li><code><a href="../REXML/Attribute.html">Attribute</a></code></li><li><code><a href="../REXML/Attributes.html">Attributes</a></code></li><li><code><a href="../REXML/CData.html">CData</a></code></li><li><code><a href="../REXML/Child.html">Child</a></code></li><li><code><a href="../REXML/Comment.html">Comment</a></code></li><li><code><a href="../REXML/DClonable.html">DClonable</a></code></li><li><details><summary><code><a href="../REXML/DTD.html">DTD</a></code></summary><ul class="link-list nav-list"><li><code><a href="../REXML/DTD/AttlistDecl.html">AttlistDecl</a></code></li><li><code><a href="../REXML/DTD/ElementDecl.html">ElementDecl</a></code></li><li><code><a href="../REXML/DTD/EntityDecl.html">EntityDecl</a></code></li><li><code><a href="../REXML/DTD/NotationDecl.html">NotationDecl</a></code></li><li><code><a href="../REXML/DTD/Parser.html">Parser</a></code></li></ul></details></li><li><code><a href="../REXML/Declaration.html">Declaration</a></code></li><li><code><a href="../REXML/DocType.html">DocType</a></code></li><li><code><a href="../REXML/Document.html">Document</a></code></li><li><code><a href="../REXML/Element.html">Element</a></code></li><li><code><a href="../REXML/ElementDecl.html">ElementDecl</a></code></li><li><code><a href="../REXML/Elements.html">Elements</a></code></li><li><code><a href="../REXML/Encoding.html">Encoding</a></code></li><li><code><a href="../REXML/Entity.html">Entity</a></code></li><li><code><a href="../REXML/EntityConst.html">EntityConst</a></code></li><li><code><a href="../REXML/ExternalEntity.html">ExternalEntity</a></code></li><li><details><summary><code><a href="../REXML/Formatters.html">Formatters</a></code></summary><ul class="link-list nav-list"><li><code><a href="../REXML/Formatters/Default.html">Default</a></code></li><li><code><a href="../REXML/Formatters/Pretty.html">Pretty</a></code></li><li><code><a href="../REXML/Formatters/Transitive.html">Transitive</a></code></li></ul></details></li><li><code><a href="../REXML/Functions.html">Functions</a></code></li><li><code><a href="../REXML/IOSource.html">IOSource</a></code></li><li><code><a href="../REXML/Instruction.html">Instruction</a></code></li><li><details><summary><code><a href="../REXML/Light.html">Light</a></code></summary><ul class="link-list nav-list"><li><code><a href="../REXML/Light/Node.html">Node</a></code></li></ul></details></li><li><code><a href="../REXML/Namespace.html">Namespace</a></code></li><li><code><a href="../REXML/Node.html">Node</a></code></li><li><code><a href="../REXML/NotationDecl.html">NotationDecl</a></code></li><li><code><a href="../REXML/Output.html">Output</a></code></li><li><code><a href="../REXML/Parent.html">Parent</a></code></li><li><code><a href="../REXML/ParseException.html">ParseException</a></code></li><li><details><summary><code><a href="../REXML/Parsers.html">Parsers</a></code></summary><ul class="link-list nav-list"><li><details><summary><code><a href="../REXML/Parsers/BaseParser.html">BaseParser</a></code></summary><ul class="link-list nav-list"><li><code><a href="../REXML/Parsers/BaseParser/Private.html">Private</a></code></li></ul></details></li><li><code><a href="../REXML/Parsers/EnumerableTally.html">EnumerableTally</a></code></li><li><code><a href="../REXML/Parsers/LightParser.html">LightParser</a></code></li><li><code><a href="../REXML/Parsers/PullEvent.html">PullEvent</a></code></li><li><code><a href="../REXML/Parsers/PullParser.html">PullParser</a></code></li><li><code><a href="../REXML/Parsers/SAX2Parser.html">SAX2Parser</a></code></li><li><code><a href="../REXML/Parsers/StreamParser.html">StreamParser</a></code></li><li><code><a href="../REXML/Parsers/StringScannerCaptures.html">StringScannerCaptures</a></code></li><li><code><a href="../REXML/Parsers/TreeParser.html">TreeParser</a></code></li><li><code><a href="../REXML/Parsers/UltraLightParser.html">UltraLightParser</a></code></li><li><code><a href="../REXML/Parsers/XPathParser.html">XPathParser</a></code></li></ul></details></li><li><code><a href="../REXML/QuickPath.html">QuickPath</a></code></li><li><code><a href="../REXML/ReferenceWriter.html">ReferenceWriter</a></code></li><li><code><a href="../REXML/SAX2Listener.html">SAX2Listener</a></code></li><li><code><a href="../REXML/Security.html">Security</a></code></li><li><details><summary><code><a href="../REXML/Source.html">Source</a></code></summary><ul class="link-list nav-list"><li><code><a href="../REXML/Source/Private.html">Private</a></code></li></ul></details></li><li><code><a href="../REXML/SourceFactory.html">SourceFactory</a></code></li><li><code><a href="../REXML/StreamListener.html">StreamListener</a></code></li><li><code><a href="../REXML/StringScannerCheckScanString.html">StringScannerCheckScanString</a></code></li><li><code><a href="../REXML/Text.html">Text</a></code></li><li><code><a href="../REXML/UndefinedNamespaceException.html">UndefinedNamespaceException</a></code></li><li><details><summary><code><a href="../REXML/Validation.html">Validation</a></code></summary><ul class="link-list nav-list"><li><code><a href="../REXML/Validation/Choice.html">Choice</a></code></li><li><code><a href="../REXML/Validation/Event.html">Event</a></code></li><li><code><a href="../REXML/Validation/Interleave.html">Interleave</a></code></li><li><code><a href="../REXML/Validation/OneOrMore.html">OneOrMore</a></code></li><li><code><a href="../REXML/Validation/Optional.html">Optional</a></code></li><li><code><a href="../REXML/Validation/Ref.html">Ref</a></code></li><li><code><a href="../REXML/Validation/RelaxNG.html">RelaxNG</a></code></li><li><code><a href="../REXML/Validation/Sequence.html">Sequence</a></code></li><li><code><a href="../REXML/Validation/State.html">State</a></code></li><li><code><a href="../REXML/Validation/ValidationException.html">ValidationException</a></code></li><li><code><a href="../REXML/Validation/Validator.html">Validator</a></code></li><li><code><a href="../REXML/Validation/ZeroOrMore.html">ZeroOrMore</a></code></li></ul></details></li><li><code><a href="../REXML/XMLDecl.html">XMLDecl</a></code></li><li><code><a href="../REXML/XMLTokens.html">XMLTokens</a></code></li><li><code><a href="../REXML/XPath.html">XPath</a></code></li><li><code><a href="../REXML/XPathNode.html">XPathNode</a></code></li><li><code><a href="../REXML/XPathParser.html">XPathParser</a></code></li></ul></details></li></ul>
+  </details>
+</div>
 
 </nav>
 
@@ -217,7 +684,7 @@
 
     <section class="constants-list">
       <header>
-        <h3>Constants</h3>
+        <h3 id="constants"><a href="#constants">Constants</a></h3>
       </header>
       <dl>
 
@@ -254,7 +721,7 @@
 
      <section id="public-class-5Buntitled-5D-method-details" class="method-section anchor-link">
        <header>
-         <h3>Public Class Methods</h3>
+         <h3 id="public-class-methods"><a href="#public-class-methods">Public Class Methods</a></h3>
        </header>
 
 
@@ -276,13 +743,8 @@
               <summary>Source</summary>
             </details>
           </div>
-
-
-
-        <div class="method-description">
-
           <div class="method-source-code" id="boolean-source">
-            <pre><span class="ruby-comment"># File lib/rexml/functions.rb, line 317</span>
+            <pre class="ruby" data-language="ruby"><span class="ruby-comment"># File lib/rexml/functions.rb, line 317</span>
 <span class="ruby-keyword">def</span> <span class="ruby-constant">Functions</span><span class="ruby-operator">::</span><span class="ruby-identifier ruby-title">boolean</span>(<span class="ruby-identifier">object</span>=<span class="ruby-identifier">@@context</span>[<span class="ruby-value">:node</span>])
   <span class="ruby-keyword">case</span> <span class="ruby-identifier">object</span>
   <span class="ruby-keyword">when</span> <span class="ruby-keyword">true</span>, <span class="ruby-keyword">false</span>
@@ -303,6 +765,9 @@
 <span class="ruby-keyword">end</span></pre>
           </div>
 
+
+
+        <div class="method-description">
 
 
           
@@ -335,18 +800,16 @@
               <summary>Source</summary>
             </details>
           </div>
-
-
-
-        <div class="method-description">
-
           <div class="method-source-code" id="ceiling-source">
-            <pre><span class="ruby-comment"># File lib/rexml/functions.rb, line 417</span>
+            <pre class="ruby" data-language="ruby"><span class="ruby-comment"># File lib/rexml/functions.rb, line 417</span>
 <span class="ruby-keyword">def</span> <span class="ruby-constant">Functions</span><span class="ruby-operator">::</span><span class="ruby-identifier ruby-title">ceiling</span>( <span class="ruby-identifier">number</span> )
   <span class="ruby-identifier">number</span>(<span class="ruby-identifier">number</span>).<span class="ruby-identifier">ceil</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
 
+
+
+        <div class="method-description">
 
 
           
@@ -379,18 +842,16 @@
               <summary>Source</summary>
             </details>
           </div>
-
-
-
-        <div class="method-description">
-
           <div class="method-source-code" id="compare_language-source">
-            <pre><span class="ruby-comment"># File lib/rexml/functions.rb, line 370</span>
+            <pre class="ruby" data-language="ruby"><span class="ruby-comment"># File lib/rexml/functions.rb, line 370</span>
 <span class="ruby-keyword">def</span> <span class="ruby-constant">Functions</span><span class="ruby-operator">::</span><span class="ruby-identifier ruby-title">compare_language</span> <span class="ruby-identifier">lang1</span>, <span class="ruby-identifier">lang2</span>
   <span class="ruby-identifier">lang2</span>.<span class="ruby-identifier">downcase</span>.<span class="ruby-identifier">index</span>(<span class="ruby-identifier">lang1</span>.<span class="ruby-identifier">downcase</span>) <span class="ruby-operator">==</span> <span class="ruby-value">0</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
 
+
+
+        <div class="method-description">
 
 
           
@@ -423,13 +884,8 @@
               <summary>Source</summary>
             </details>
           </div>
-
-
-
-        <div class="method-description">
-
           <div class="method-source-code" id="concat-source">
-            <pre><span class="ruby-comment"># File lib/rexml/functions.rb, line 190</span>
+            <pre class="ruby" data-language="ruby"><span class="ruby-comment"># File lib/rexml/functions.rb, line 190</span>
 <span class="ruby-keyword">def</span> <span class="ruby-constant">Functions</span><span class="ruby-operator">::</span><span class="ruby-identifier ruby-title">concat</span>( <span class="ruby-operator">*</span><span class="ruby-identifier">objects</span> )
   <span class="ruby-identifier">concatenated</span> = <span class="ruby-string">&quot;&quot;</span>
   <span class="ruby-identifier">objects</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">object</span><span class="ruby-operator">|</span>
@@ -439,6 +895,9 @@
 <span class="ruby-keyword">end</span></pre>
           </div>
 
+
+
+        <div class="method-description">
 
 
           
@@ -471,18 +930,16 @@
               <summary>Source</summary>
             </details>
           </div>
-
-
-
-        <div class="method-description">
-
           <div class="method-source-code" id="contains-source">
-            <pre><span class="ruby-comment"># File lib/rexml/functions.rb, line 204</span>
+            <pre class="ruby" data-language="ruby"><span class="ruby-comment"># File lib/rexml/functions.rb, line 204</span>
 <span class="ruby-keyword">def</span> <span class="ruby-constant">Functions</span><span class="ruby-operator">::</span><span class="ruby-identifier ruby-title">contains</span>( <span class="ruby-identifier">string</span>, <span class="ruby-identifier">test</span> )
   <span class="ruby-identifier">string</span>(<span class="ruby-identifier">string</span>).<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">string</span>(<span class="ruby-identifier">test</span>))
 <span class="ruby-keyword">end</span></pre>
           </div>
 
+
+
+        <div class="method-description">
 
 
           <p>Fixed by Mike Stok</p>
@@ -515,16 +972,14 @@
               <summary>Source</summary>
             </details>
           </div>
+          <div class="method-source-code" id="context-3D-source">
+            <pre class="ruby" data-language="ruby"><span class="ruby-comment"># File lib/rexml/functions.rb, line 38</span>
+<span class="ruby-keyword">def</span> <span class="ruby-constant">Functions</span><span class="ruby-operator">::</span><span class="ruby-identifier ruby-title">context=</span>(<span class="ruby-identifier">value</span>); <span class="ruby-identifier">@@context</span> = <span class="ruby-identifier">value</span>; <span class="ruby-keyword">end</span></pre>
+          </div>
 
 
 
         <div class="method-description">
-
-          <div class="method-source-code" id="context-3D-source">
-            <pre><span class="ruby-comment"># File lib/rexml/functions.rb, line 38</span>
-<span class="ruby-keyword">def</span> <span class="ruby-constant">Functions</span><span class="ruby-operator">::</span><span class="ruby-identifier ruby-title">context=</span>(<span class="ruby-identifier">value</span>); <span class="ruby-identifier">@@context</span> = <span class="ruby-identifier">value</span>; <span class="ruby-keyword">end</span></pre>
-          </div>
-
 
 
           
@@ -557,18 +1012,16 @@
               <summary>Source</summary>
             </details>
           </div>
-
-
-
-        <div class="method-description">
-
           <div class="method-source-code" id="count-source">
-            <pre><span class="ruby-comment"># File lib/rexml/functions.rb, line 60</span>
+            <pre class="ruby" data-language="ruby"><span class="ruby-comment"># File lib/rexml/functions.rb, line 60</span>
 <span class="ruby-keyword">def</span> <span class="ruby-constant">Functions</span><span class="ruby-operator">::</span><span class="ruby-identifier ruby-title">count</span>( <span class="ruby-identifier">node_set</span> )
   <span class="ruby-identifier">node_set</span>.<span class="ruby-identifier">size</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
 
+
+
+        <div class="method-description">
 
 
           <p>Returns the size of the given list of nodes.</p>
@@ -601,18 +1054,16 @@
               <summary>Source</summary>
             </details>
           </div>
-
-
-
-        <div class="method-description">
-
           <div class="method-source-code" id="false-source">
-            <pre><span class="ruby-comment"># File lib/rexml/functions.rb, line 347</span>
+            <pre class="ruby" data-language="ruby"><span class="ruby-comment"># File lib/rexml/functions.rb, line 347</span>
 <span class="ruby-keyword">def</span> <span class="ruby-constant">Functions</span><span class="ruby-operator">::</span><span class="ruby-keyword">false</span>(  )
   <span class="ruby-keyword">false</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
 
+
+
+        <div class="method-description">
 
 
           <p>UNTESTED</p>
@@ -645,18 +1096,16 @@
               <summary>Source</summary>
             </details>
           </div>
-
-
-
-        <div class="method-description">
-
           <div class="method-source-code" id="floor-source">
-            <pre><span class="ruby-comment"># File lib/rexml/functions.rb, line 413</span>
+            <pre class="ruby" data-language="ruby"><span class="ruby-comment"># File lib/rexml/functions.rb, line 413</span>
 <span class="ruby-keyword">def</span> <span class="ruby-constant">Functions</span><span class="ruby-operator">::</span><span class="ruby-identifier ruby-title">floor</span>( <span class="ruby-identifier">number</span> )
   <span class="ruby-identifier">number</span>(<span class="ruby-identifier">number</span>).<span class="ruby-identifier">floor</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
 
+
+
+        <div class="method-description">
 
 
           
@@ -689,13 +1138,8 @@
               <summary>Source</summary>
             </details>
           </div>
-
-
-
-        <div class="method-description">
-
           <div class="method-source-code" id="get_namespace-source">
-            <pre><span class="ruby-comment"># File lib/rexml/functions.rb, line 87</span>
+            <pre class="ruby" data-language="ruby"><span class="ruby-comment"># File lib/rexml/functions.rb, line 87</span>
 <span class="ruby-keyword">def</span> <span class="ruby-constant">Functions</span><span class="ruby-operator">::</span><span class="ruby-identifier ruby-title">get_namespace</span>( <span class="ruby-identifier">node_set</span> = <span class="ruby-keyword">nil</span> )
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">node_set</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
     <span class="ruby-keyword">yield</span> <span class="ruby-identifier">@@context</span>[<span class="ruby-value">:node</span>] <span class="ruby-keyword">if</span> <span class="ruby-identifier">@@context</span>[<span class="ruby-value">:node</span>].<span class="ruby-identifier">respond_to?</span>(<span class="ruby-value">:namespace</span>)
@@ -713,6 +1157,9 @@
 <span class="ruby-keyword">end</span></pre>
           </div>
 
+
+
+        <div class="method-description">
 
 
           <p>Helper method.</p>
@@ -745,17 +1192,15 @@
               <summary>Source</summary>
             </details>
           </div>
-
-
-
-        <div class="method-description">
-
           <div class="method-source-code" id="id-source">
-            <pre><span class="ruby-comment"># File lib/rexml/functions.rb, line 66</span>
+            <pre class="ruby" data-language="ruby"><span class="ruby-comment"># File lib/rexml/functions.rb, line 66</span>
 <span class="ruby-keyword">def</span> <span class="ruby-constant">Functions</span><span class="ruby-operator">::</span><span class="ruby-identifier ruby-title">id</span>( <span class="ruby-identifier">object</span> )
 <span class="ruby-keyword">end</span></pre>
           </div>
 
+
+
+        <div class="method-description">
 
 
           <p>Since <a href="../REXML.html"><code>REXML</code></a> is non-validating, this method is not implemented as it requires a <a href="DTD.html"><code>DTD</code></a></p>
@@ -788,13 +1233,8 @@
               <summary>Source</summary>
             </details>
           </div>
-
-
-
-        <div class="method-description">
-
           <div class="method-source-code" id="lang-source">
-            <pre><span class="ruby-comment"># File lib/rexml/functions.rb, line 352</span>
+            <pre class="ruby" data-language="ruby"><span class="ruby-comment"># File lib/rexml/functions.rb, line 352</span>
 <span class="ruby-keyword">def</span> <span class="ruby-constant">Functions</span><span class="ruby-operator">::</span><span class="ruby-identifier ruby-title">lang</span>( <span class="ruby-identifier">language</span> )
   <span class="ruby-identifier">lang</span> = <span class="ruby-keyword">false</span>
   <span class="ruby-identifier">node</span> = <span class="ruby-identifier">@@context</span>[<span class="ruby-value">:node</span>]
@@ -814,6 +1254,9 @@
 <span class="ruby-keyword">end</span></pre>
           </div>
 
+
+
+        <div class="method-description">
 
 
           <p>UNTESTED</p>
@@ -846,18 +1289,16 @@
               <summary>Source</summary>
             </details>
           </div>
-
-
-
-        <div class="method-description">
-
           <div class="method-source-code" id="last-source">
-            <pre><span class="ruby-comment"># File lib/rexml/functions.rb, line 51</span>
+            <pre class="ruby" data-language="ruby"><span class="ruby-comment"># File lib/rexml/functions.rb, line 51</span>
 <span class="ruby-keyword">def</span> <span class="ruby-constant">Functions</span><span class="ruby-operator">::</span><span class="ruby-identifier ruby-title">last</span>( )
   <span class="ruby-identifier">@@context</span>[<span class="ruby-value">:size</span>]
 <span class="ruby-keyword">end</span></pre>
           </div>
 
+
+
+        <div class="method-description">
 
 
           <p>Returns the last node of the given list of nodes.</p>
@@ -890,13 +1331,8 @@
               <summary>Source</summary>
             </details>
           </div>
-
-
-
-        <div class="method-description">
-
           <div class="method-source-code" id="local_name-source">
-            <pre><span class="ruby-comment"># File lib/rexml/functions.rb, line 69</span>
+            <pre class="ruby" data-language="ruby"><span class="ruby-comment"># File lib/rexml/functions.rb, line 69</span>
 <span class="ruby-keyword">def</span> <span class="ruby-constant">Functions</span><span class="ruby-operator">::</span><span class="ruby-identifier ruby-title">local_name</span>(<span class="ruby-identifier">node_set</span>=<span class="ruby-keyword">nil</span>)
   <span class="ruby-identifier">get_namespace</span>(<span class="ruby-identifier">node_set</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">node</span><span class="ruby-operator">|</span>
     <span class="ruby-keyword">return</span> <span class="ruby-identifier">node</span>.<span class="ruby-identifier">local_name</span>
@@ -905,6 +1341,9 @@
 <span class="ruby-keyword">end</span></pre>
           </div>
 
+
+
+        <div class="method-description">
 
 
           
@@ -937,13 +1376,8 @@
               <summary>Source</summary>
             </details>
           </div>
-
-
-
-        <div class="method-description">
-
           <div class="method-source-code" id="name-source">
-            <pre><span class="ruby-comment"># File lib/rexml/functions.rb, line 80</span>
+            <pre class="ruby" data-language="ruby"><span class="ruby-comment"># File lib/rexml/functions.rb, line 80</span>
 <span class="ruby-keyword">def</span> <span class="ruby-constant">Functions</span><span class="ruby-operator">::</span><span class="ruby-identifier ruby-title">name</span>( <span class="ruby-identifier">node_set</span>=<span class="ruby-keyword">nil</span> )
   <span class="ruby-identifier">get_namespace</span>( <span class="ruby-identifier">node_set</span> ) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">node</span><span class="ruby-operator">|</span>
     <span class="ruby-identifier">node</span>.<span class="ruby-identifier">expanded_name</span>
@@ -951,6 +1385,9 @@
 <span class="ruby-keyword">end</span></pre>
           </div>
 
+
+
+        <div class="method-description">
 
 
           
@@ -983,16 +1420,14 @@
               <summary>Source</summary>
             </details>
           </div>
+          <div class="method-source-code" id="namespace_context-source">
+            <pre class="ruby" data-language="ruby"><span class="ruby-comment"># File lib/rexml/functions.rb, line 35</span>
+<span class="ruby-keyword">def</span> <span class="ruby-constant">Functions</span><span class="ruby-operator">::</span><span class="ruby-identifier ruby-title">namespace_context</span> ; <span class="ruby-identifier">@@namespace_context</span> ; <span class="ruby-keyword">end</span></pre>
+          </div>
 
 
 
         <div class="method-description">
-
-          <div class="method-source-code" id="namespace_context-source">
-            <pre><span class="ruby-comment"># File lib/rexml/functions.rb, line 35</span>
-<span class="ruby-keyword">def</span> <span class="ruby-constant">Functions</span><span class="ruby-operator">::</span><span class="ruby-identifier ruby-title">namespace_context</span> ; <span class="ruby-identifier">@@namespace_context</span> ; <span class="ruby-keyword">end</span></pre>
-          </div>
-
 
 
           
@@ -1025,16 +1460,14 @@
               <summary>Source</summary>
             </details>
           </div>
+          <div class="method-source-code" id="namespace_context-3D-source">
+            <pre class="ruby" data-language="ruby"><span class="ruby-comment"># File lib/rexml/functions.rb, line 33</span>
+<span class="ruby-keyword">def</span> <span class="ruby-constant">Functions</span><span class="ruby-operator">::</span><span class="ruby-identifier ruby-title">namespace_context=</span>(<span class="ruby-identifier">x</span>) ; <span class="ruby-identifier">@@namespace_context</span>=<span class="ruby-identifier">x</span> ; <span class="ruby-keyword">end</span></pre>
+          </div>
 
 
 
         <div class="method-description">
-
-          <div class="method-source-code" id="namespace_context-3D-source">
-            <pre><span class="ruby-comment"># File lib/rexml/functions.rb, line 33</span>
-<span class="ruby-keyword">def</span> <span class="ruby-constant">Functions</span><span class="ruby-operator">::</span><span class="ruby-identifier ruby-title">namespace_context=</span>(<span class="ruby-identifier">x</span>) ; <span class="ruby-identifier">@@namespace_context</span>=<span class="ruby-identifier">x</span> ; <span class="ruby-keyword">end</span></pre>
-          </div>
-
 
 
           
@@ -1067,18 +1500,16 @@
               <summary>Source</summary>
             </details>
           </div>
-
-
-
-        <div class="method-description">
-
           <div class="method-source-code" id="namespace_uri-source">
-            <pre><span class="ruby-comment"># File lib/rexml/functions.rb, line 76</span>
+            <pre class="ruby" data-language="ruby"><span class="ruby-comment"># File lib/rexml/functions.rb, line 76</span>
 <span class="ruby-keyword">def</span> <span class="ruby-constant">Functions</span><span class="ruby-operator">::</span><span class="ruby-identifier ruby-title">namespace_uri</span>( <span class="ruby-identifier">node_set</span>=<span class="ruby-keyword">nil</span> )
   <span class="ruby-identifier">get_namespace</span>( <span class="ruby-identifier">node_set</span> ) {<span class="ruby-operator">|</span><span class="ruby-identifier">node</span><span class="ruby-operator">|</span> <span class="ruby-identifier">node</span>.<span class="ruby-identifier">namespace</span>}
 <span class="ruby-keyword">end</span></pre>
           </div>
 
+
+
+        <div class="method-description">
 
 
           
@@ -1111,13 +1542,8 @@
               <summary>Source</summary>
             </details>
           </div>
-
-
-
-        <div class="method-description">
-
           <div class="method-source-code" id="normalize_space-source">
-            <pre><span class="ruby-comment"># File lib/rexml/functions.rb, line 265</span>
+            <pre class="ruby" data-language="ruby"><span class="ruby-comment"># File lib/rexml/functions.rb, line 265</span>
 <span class="ruby-keyword">def</span> <span class="ruby-constant">Functions</span><span class="ruby-operator">::</span><span class="ruby-identifier ruby-title">normalize_space</span>( <span class="ruby-identifier">string</span>=<span class="ruby-keyword">nil</span> )
   <span class="ruby-identifier">string</span> = <span class="ruby-identifier">string</span>(<span class="ruby-identifier">@@context</span>[<span class="ruby-value">:node</span>]) <span class="ruby-keyword">if</span> <span class="ruby-identifier">string</span>.<span class="ruby-identifier">nil?</span>
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">string</span>.<span class="ruby-identifier">kind_of?</span> <span class="ruby-constant">Array</span>
@@ -1128,6 +1554,9 @@
 <span class="ruby-keyword">end</span></pre>
           </div>
 
+
+
+        <div class="method-description">
 
 
           
@@ -1160,18 +1589,16 @@
               <summary>Source</summary>
             </details>
           </div>
-
-
-
-        <div class="method-description">
-
           <div class="method-source-code" id="not-source">
-            <pre><span class="ruby-comment"># File lib/rexml/functions.rb, line 337</span>
+            <pre class="ruby" data-language="ruby"><span class="ruby-comment"># File lib/rexml/functions.rb, line 337</span>
 <span class="ruby-keyword">def</span> <span class="ruby-constant">Functions</span><span class="ruby-operator">::</span><span class="ruby-keyword">not</span>( <span class="ruby-identifier ruby-title">object</span> )
   <span class="ruby-keyword">not</span> <span class="ruby-identifier">boolean</span>( <span class="ruby-identifier">object</span> )
 <span class="ruby-keyword">end</span></pre>
           </div>
 
+
+
+        <div class="method-description">
 
 
           <p>UNTESTED</p>
@@ -1204,13 +1631,8 @@
               <summary>Source</summary>
             </details>
           </div>
-
-
-
-        <div class="method-description">
-
           <div class="method-source-code" id="number-source">
-            <pre><span class="ruby-comment"># File lib/rexml/functions.rb, line 387</span>
+            <pre class="ruby" data-language="ruby"><span class="ruby-comment"># File lib/rexml/functions.rb, line 387</span>
 <span class="ruby-keyword">def</span> <span class="ruby-constant">Functions</span><span class="ruby-operator">::</span><span class="ruby-identifier ruby-title">number</span>(<span class="ruby-identifier">object</span>=<span class="ruby-identifier">@@context</span>[<span class="ruby-value">:node</span>])
   <span class="ruby-keyword">case</span> <span class="ruby-identifier">object</span>
   <span class="ruby-keyword">when</span> <span class="ruby-keyword">true</span>
@@ -1233,6 +1655,9 @@
 <span class="ruby-keyword">end</span></pre>
           </div>
 
+
+
+        <div class="method-description">
 
 
           <p>a string that consists of optional whitespace followed by an optional minus sign followed by a Number followed by whitespace is converted to the IEEE 754 number that is nearest (according to the IEEE 754 round-to-nearest rule) to the mathematical value represented by the string; any other string is converted to NaN</p>
@@ -1271,18 +1696,16 @@
               <summary>Source</summary>
             </details>
           </div>
-
-
-
-        <div class="method-description">
-
           <div class="method-source-code" id="position-source">
-            <pre><span class="ruby-comment"># File lib/rexml/functions.rb, line 55</span>
+            <pre class="ruby" data-language="ruby"><span class="ruby-comment"># File lib/rexml/functions.rb, line 55</span>
 <span class="ruby-keyword">def</span> <span class="ruby-constant">Functions</span><span class="ruby-operator">::</span><span class="ruby-identifier ruby-title">position</span>( )
   <span class="ruby-identifier">@@context</span>[<span class="ruby-value">:index</span>]
 <span class="ruby-keyword">end</span></pre>
           </div>
 
+
+
+        <div class="method-description">
 
 
           
@@ -1315,18 +1738,16 @@
               <summary>Source</summary>
             </details>
           </div>
-
-
-
-        <div class="method-description">
-
           <div class="method-source-code" id="processing_instruction-source">
-            <pre><span class="ruby-comment"># File lib/rexml/functions.rb, line 432</span>
+            <pre class="ruby" data-language="ruby"><span class="ruby-comment"># File lib/rexml/functions.rb, line 432</span>
 <span class="ruby-keyword">def</span> <span class="ruby-constant">Functions</span><span class="ruby-operator">::</span><span class="ruby-identifier ruby-title">processing_instruction</span>( <span class="ruby-identifier">node</span> )
   <span class="ruby-identifier">node</span>.<span class="ruby-identifier">node_type</span> <span class="ruby-operator">==</span> <span class="ruby-value">:processing_instruction</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
 
+
+
+        <div class="method-description">
 
 
           
@@ -1359,13 +1780,8 @@
               <summary>Source</summary>
             </details>
           </div>
-
-
-
-        <div class="method-description">
-
           <div class="method-source-code" id="round-source">
-            <pre><span class="ruby-comment"># File lib/rexml/functions.rb, line 421</span>
+            <pre class="ruby" data-language="ruby"><span class="ruby-comment"># File lib/rexml/functions.rb, line 421</span>
 <span class="ruby-keyword">def</span> <span class="ruby-constant">Functions</span><span class="ruby-operator">::</span><span class="ruby-identifier ruby-title">round</span>( <span class="ruby-identifier">number</span> )
   <span class="ruby-identifier">number</span> = <span class="ruby-identifier">number</span>(<span class="ruby-identifier">number</span>)
   <span class="ruby-keyword">begin</span>
@@ -1378,6 +1794,9 @@
 <span class="ruby-keyword">end</span></pre>
           </div>
 
+
+
+        <div class="method-description">
 
 
           
@@ -1410,13 +1829,8 @@
               <summary>Source</summary>
             </details>
           </div>
-
-
-
-        <div class="method-description">
-
           <div class="method-source-code" id="send-source">
-            <pre><span class="ruby-comment"># File lib/rexml/functions.rb, line 436</span>
+            <pre class="ruby" data-language="ruby"><span class="ruby-comment"># File lib/rexml/functions.rb, line 436</span>
 <span class="ruby-keyword">def</span> <span class="ruby-constant">Functions</span><span class="ruby-operator">::</span><span class="ruby-identifier ruby-title">send</span>(<span class="ruby-identifier">name</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">@@available_functions</span>[<span class="ruby-identifier">name</span>.<span class="ruby-identifier">to_sym</span>]
     <span class="ruby-keyword">super</span>
@@ -1428,6 +1842,9 @@
 <span class="ruby-keyword">end</span></pre>
           </div>
 
+
+
+        <div class="method-description">
 
 
           
@@ -1465,13 +1882,8 @@
               <summary>Source</summary>
             </details>
           </div>
-
-
-
-        <div class="method-description">
-
           <div class="method-source-code" id="singleton_method_added-source">
-            <pre><span class="ruby-comment"># File lib/rexml/functions.rb, line 26</span>
+            <pre class="ruby" data-language="ruby"><span class="ruby-comment"># File lib/rexml/functions.rb, line 26</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">singleton_method_added</span>(<span class="ruby-identifier">name</span>)
   <span class="ruby-keyword">unless</span> <span class="ruby-constant">INTERNAL_METHODS</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">name</span>)
     <span class="ruby-identifier">@@available_functions</span>[<span class="ruby-identifier">name</span>] = <span class="ruby-keyword">true</span>
@@ -1479,6 +1891,9 @@
 <span class="ruby-keyword">end</span></pre>
           </div>
 
+
+
+        <div class="method-description">
 
 
           
@@ -1511,18 +1926,16 @@
               <summary>Source</summary>
             </details>
           </div>
-
-
-
-        <div class="method-description">
-
           <div class="method-source-code" id="starts_with-source">
-            <pre><span class="ruby-comment"># File lib/rexml/functions.rb, line 199</span>
+            <pre class="ruby" data-language="ruby"><span class="ruby-comment"># File lib/rexml/functions.rb, line 199</span>
 <span class="ruby-keyword">def</span> <span class="ruby-constant">Functions</span><span class="ruby-operator">::</span><span class="ruby-identifier ruby-title">starts_with</span>( <span class="ruby-identifier">string</span>, <span class="ruby-identifier">test</span> )
   <span class="ruby-identifier">string</span>(<span class="ruby-identifier">string</span>).<span class="ruby-identifier">index</span>(<span class="ruby-identifier">string</span>(<span class="ruby-identifier">test</span>)) <span class="ruby-operator">==</span> <span class="ruby-value">0</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
 
+
+
+        <div class="method-description">
 
 
           <p>Fixed by Mike Stok</p>
@@ -1555,13 +1968,8 @@
               <summary>Source</summary>
             </details>
           </div>
-
-
-
-        <div class="method-description">
-
           <div class="method-source-code" id="string-source">
-            <pre><span class="ruby-comment"># File lib/rexml/functions.rb, line 138</span>
+            <pre class="ruby" data-language="ruby"><span class="ruby-comment"># File lib/rexml/functions.rb, line 138</span>
 <span class="ruby-keyword">def</span> <span class="ruby-constant">Functions</span><span class="ruby-operator">::</span><span class="ruby-identifier ruby-title">string</span>( <span class="ruby-identifier">object</span>=<span class="ruby-identifier">@@context</span>[<span class="ruby-value">:node</span>] )
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">object</span>.<span class="ruby-identifier">respond_to?</span>(<span class="ruby-value">:node_type</span>)
     <span class="ruby-keyword">case</span> <span class="ruby-identifier">object</span>.<span class="ruby-identifier">node_type</span>
@@ -1598,6 +2006,9 @@
 <span class="ruby-keyword">end</span></pre>
           </div>
 
+
+
+        <div class="method-description">
 
 
           <p>A node-set is converted to a string by returning the string-value of the node in the node-set that is first in document order. If the node-set is empty, an empty string is returned.</p>
@@ -1650,18 +2061,16 @@
               <summary>Source</summary>
             </details>
           </div>
-
-
-
-        <div class="method-description">
-
           <div class="method-source-code" id="string_length-source">
-            <pre><span class="ruby-comment"># File lib/rexml/functions.rb, line 261</span>
+            <pre class="ruby" data-language="ruby"><span class="ruby-comment"># File lib/rexml/functions.rb, line 261</span>
 <span class="ruby-keyword">def</span> <span class="ruby-constant">Functions</span><span class="ruby-operator">::</span><span class="ruby-identifier ruby-title">string_length</span>( <span class="ruby-identifier">string</span> )
   <span class="ruby-identifier">string</span>(<span class="ruby-identifier">string</span>).<span class="ruby-identifier">length</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
 
+
+
+        <div class="method-description">
 
 
           <p>UNTESTED</p>
@@ -1694,13 +2103,8 @@
               <summary>Source</summary>
             </details>
           </div>
-
-
-
-        <div class="method-description">
-
           <div class="method-source-code" id="string_value-source">
-            <pre><span class="ruby-comment"># File lib/rexml/functions.rb, line 178</span>
+            <pre class="ruby" data-language="ruby"><span class="ruby-comment"># File lib/rexml/functions.rb, line 178</span>
 <span class="ruby-keyword">def</span> <span class="ruby-constant">Functions</span><span class="ruby-operator">::</span><span class="ruby-identifier ruby-title">string_value</span>( <span class="ruby-identifier">o</span> )
   <span class="ruby-identifier">rv</span> = <span class="ruby-string">&quot;&quot;</span>
   <span class="ruby-identifier">o</span>.<span class="ruby-identifier">children</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">e</span><span class="ruby-operator">|</span>
@@ -1714,6 +2118,9 @@
 <span class="ruby-keyword">end</span></pre>
           </div>
 
+
+
+        <div class="method-description">
 
 
           <p>A node-set is converted to a string by returning the concatenation of the string-value of each of the children of the node in the node-set that is first in document order. If the node-set is empty, an empty string is returned.</p>
@@ -1746,13 +2153,8 @@
               <summary>Source</summary>
             </details>
           </div>
-
-
-
-        <div class="method-description">
-
           <div class="method-source-code" id="substring-source">
-            <pre><span class="ruby-comment"># File lib/rexml/functions.rb, line 228</span>
+            <pre class="ruby" data-language="ruby"><span class="ruby-comment"># File lib/rexml/functions.rb, line 228</span>
 <span class="ruby-keyword">def</span> <span class="ruby-constant">Functions</span><span class="ruby-operator">::</span><span class="ruby-identifier ruby-title">substring</span>( <span class="ruby-identifier">string</span>, <span class="ruby-identifier">start</span>, <span class="ruby-identifier">length</span>=<span class="ruby-keyword">nil</span> )
   <span class="ruby-identifier">ruby_string</span> = <span class="ruby-identifier">string</span>(<span class="ruby-identifier">string</span>)
   <span class="ruby-identifier">ruby_length</span> = <span class="ruby-keyword">if</span> <span class="ruby-identifier">length</span>.<span class="ruby-identifier">nil?</span>
@@ -1788,6 +2190,9 @@
 
 
 
+        <div class="method-description">
+
+
           <p>Take equal portions of Mike Stok and Sean Russell; mix vigorously, and pour into a tall, chilled glass.  Serves 10,000.</p>
 
 
@@ -1818,13 +2223,8 @@
               <summary>Source</summary>
             </details>
           </div>
-
-
-
-        <div class="method-description">
-
           <div class="method-source-code" id="substring_after-source">
-            <pre><span class="ruby-comment"># File lib/rexml/functions.rb, line 220</span>
+            <pre class="ruby" data-language="ruby"><span class="ruby-comment"># File lib/rexml/functions.rb, line 220</span>
 <span class="ruby-keyword">def</span> <span class="ruby-constant">Functions</span><span class="ruby-operator">::</span><span class="ruby-identifier ruby-title">substring_after</span>( <span class="ruby-identifier">string</span>, <span class="ruby-identifier">test</span> )
   <span class="ruby-identifier">ruby_string</span> = <span class="ruby-identifier">string</span>(<span class="ruby-identifier">string</span>)
   <span class="ruby-keyword">return</span> <span class="ruby-node">$1</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">ruby_string</span> <span class="ruby-operator">=~</span> <span class="ruby-regexp">/#{test}(.*)/</span>
@@ -1832,6 +2232,9 @@
 <span class="ruby-keyword">end</span></pre>
           </div>
 
+
+
+        <div class="method-description">
 
 
           <p>Kouhei fixed this too</p>
@@ -1864,13 +2267,8 @@
               <summary>Source</summary>
             </details>
           </div>
-
-
-
-        <div class="method-description">
-
           <div class="method-source-code" id="substring_before-source">
-            <pre><span class="ruby-comment"># File lib/rexml/functions.rb, line 209</span>
+            <pre class="ruby" data-language="ruby"><span class="ruby-comment"># File lib/rexml/functions.rb, line 209</span>
 <span class="ruby-keyword">def</span> <span class="ruby-constant">Functions</span><span class="ruby-operator">::</span><span class="ruby-identifier ruby-title">substring_before</span>( <span class="ruby-identifier">string</span>, <span class="ruby-identifier">test</span> )
   <span class="ruby-identifier">ruby_string</span> = <span class="ruby-identifier">string</span>(<span class="ruby-identifier">string</span>)
   <span class="ruby-identifier">ruby_index</span> = <span class="ruby-identifier">ruby_string</span>.<span class="ruby-identifier">index</span>(<span class="ruby-identifier">string</span>(<span class="ruby-identifier">test</span>))
@@ -1882,6 +2280,9 @@
 <span class="ruby-keyword">end</span></pre>
           </div>
 
+
+
+        <div class="method-description">
 
 
           <p>Kouhei fixed this</p>
@@ -1914,19 +2315,17 @@
               <summary>Source</summary>
             </details>
           </div>
-
-
-
-        <div class="method-description">
-
           <div class="method-source-code" id="sum-source">
-            <pre><span class="ruby-comment"># File lib/rexml/functions.rb, line 408</span>
+            <pre class="ruby" data-language="ruby"><span class="ruby-comment"># File lib/rexml/functions.rb, line 408</span>
 <span class="ruby-keyword">def</span> <span class="ruby-constant">Functions</span><span class="ruby-operator">::</span><span class="ruby-identifier ruby-title">sum</span>( <span class="ruby-identifier">nodes</span> )
   <span class="ruby-identifier">nodes</span> = [<span class="ruby-identifier">nodes</span>] <span class="ruby-keyword">unless</span> <span class="ruby-identifier">nodes</span>.<span class="ruby-identifier">kind_of?</span> <span class="ruby-constant">Array</span>
   <span class="ruby-identifier">nodes</span>.<span class="ruby-identifier">inject</span>(<span class="ruby-value">0</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">r</span>,<span class="ruby-identifier">n</span><span class="ruby-operator">|</span> <span class="ruby-identifier">r</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">number</span>(<span class="ruby-identifier">string</span>(<span class="ruby-identifier">n</span>)) }
 <span class="ruby-keyword">end</span></pre>
           </div>
 
+
+
+        <div class="method-description">
 
 
           
@@ -1959,13 +2358,8 @@
               <summary>Source</summary>
             </details>
           </div>
-
-
-
-        <div class="method-description">
-
           <div class="method-source-code" id="text-source">
-            <pre><span class="ruby-comment"># File lib/rexml/functions.rb, line 40</span>
+            <pre class="ruby" data-language="ruby"><span class="ruby-comment"># File lib/rexml/functions.rb, line 40</span>
 <span class="ruby-keyword">def</span> <span class="ruby-constant">Functions</span><span class="ruby-operator">::</span><span class="ruby-identifier ruby-title">text</span>( )
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">@@context</span>[<span class="ruby-value">:node</span>].<span class="ruby-identifier">node_type</span> <span class="ruby-operator">==</span> <span class="ruby-value">:element</span>
     <span class="ruby-identifier">@@context</span>[<span class="ruby-value">:node</span>].<span class="ruby-identifier">find_all</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">n</span><span class="ruby-operator">|</span> <span class="ruby-identifier">n</span>.<span class="ruby-identifier">node_type</span> <span class="ruby-operator">==</span> <span class="ruby-value">:text</span>}.<span class="ruby-identifier">collect</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">n</span><span class="ruby-operator">|</span> <span class="ruby-identifier">n</span>.<span class="ruby-identifier">value</span>}
@@ -1977,6 +2371,9 @@
 <span class="ruby-keyword">end</span></pre>
           </div>
 
+
+
+        <div class="method-description">
 
 
           
@@ -2009,13 +2406,8 @@
               <summary>Source</summary>
             </details>
           </div>
-
-
-
-        <div class="method-description">
-
           <div class="method-source-code" id="translate-source">
-            <pre><span class="ruby-comment"># File lib/rexml/functions.rb, line 275</span>
+            <pre class="ruby" data-language="ruby"><span class="ruby-comment"># File lib/rexml/functions.rb, line 275</span>
 <span class="ruby-keyword">def</span> <span class="ruby-constant">Functions</span><span class="ruby-operator">::</span><span class="ruby-identifier ruby-title">translate</span>( <span class="ruby-identifier">string</span>, <span class="ruby-identifier">tr1</span>, <span class="ruby-identifier">tr2</span> )
   <span class="ruby-identifier">from</span> = <span class="ruby-identifier">string</span>(<span class="ruby-identifier">tr1</span>)
   <span class="ruby-identifier">to</span> = <span class="ruby-identifier">string</span>(<span class="ruby-identifier">tr2</span>)
@@ -2061,6 +2453,9 @@
 
 
 
+        <div class="method-description">
+
+
           <p>This is entirely Mike Stok’s beast</p>
 
 
@@ -2091,18 +2486,16 @@
               <summary>Source</summary>
             </details>
           </div>
-
-
-
-        <div class="method-description">
-
           <div class="method-source-code" id="true-source">
-            <pre><span class="ruby-comment"># File lib/rexml/functions.rb, line 342</span>
+            <pre class="ruby" data-language="ruby"><span class="ruby-comment"># File lib/rexml/functions.rb, line 342</span>
 <span class="ruby-keyword">def</span> <span class="ruby-constant">Functions</span><span class="ruby-operator">::</span><span class="ruby-keyword">true</span>( )
   <span class="ruby-keyword">true</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
 
+
+
+        <div class="method-description">
 
 
           <p>UNTESTED</p>
@@ -2135,16 +2528,14 @@
               <summary>Source</summary>
             </details>
           </div>
+          <div class="method-source-code" id="variables-source">
+            <pre class="ruby" data-language="ruby"><span class="ruby-comment"># File lib/rexml/functions.rb, line 36</span>
+<span class="ruby-keyword">def</span> <span class="ruby-constant">Functions</span><span class="ruby-operator">::</span><span class="ruby-identifier ruby-title">variables</span> ; <span class="ruby-identifier">@@variables</span> ; <span class="ruby-keyword">end</span></pre>
+          </div>
 
 
 
         <div class="method-description">
-
-          <div class="method-source-code" id="variables-source">
-            <pre><span class="ruby-comment"># File lib/rexml/functions.rb, line 36</span>
-<span class="ruby-keyword">def</span> <span class="ruby-constant">Functions</span><span class="ruby-operator">::</span><span class="ruby-identifier ruby-title">variables</span> ; <span class="ruby-identifier">@@variables</span> ; <span class="ruby-keyword">end</span></pre>
-          </div>
-
 
 
           
@@ -2177,16 +2568,14 @@
               <summary>Source</summary>
             </details>
           </div>
+          <div class="method-source-code" id="variables-3D-source">
+            <pre class="ruby" data-language="ruby"><span class="ruby-comment"># File lib/rexml/functions.rb, line 34</span>
+<span class="ruby-keyword">def</span> <span class="ruby-constant">Functions</span><span class="ruby-operator">::</span><span class="ruby-identifier ruby-title">variables=</span>(<span class="ruby-identifier">x</span>) ; <span class="ruby-identifier">@@variables</span>=<span class="ruby-identifier">x</span> ; <span class="ruby-keyword">end</span></pre>
+          </div>
 
 
 
         <div class="method-description">
-
-          <div class="method-source-code" id="variables-3D-source">
-            <pre><span class="ruby-comment"># File lib/rexml/functions.rb, line 34</span>
-<span class="ruby-keyword">def</span> <span class="ruby-constant">Functions</span><span class="ruby-operator">::</span><span class="ruby-identifier ruby-title">variables=</span>(<span class="ruby-identifier">x</span>) ; <span class="ruby-identifier">@@variables</span>=<span class="ruby-identifier">x</span> ; <span class="ruby-keyword">end</span></pre>
-          </div>
-
 
 
           
@@ -2206,5 +2595,27 @@
   </section>
 
 </main>
+
+<aside class="table-of-contents" role="complementary" aria-label="Table of Contents">
+  <div class="toc-sticky">
+    <h3 class="toc-heading">On This Page</h3>
+    <nav class="toc-nav" id="toc-nav" aria-label="Page sections">
+      <!-- Generated by JavaScript based on page headings -->
+    </nav>
+  </div>
+</aside>
+
+
+<footer class="site-footer">
+  
+
+  <div class="footer-bottom">
+    <p>
+      Generated by <a href="https://ruby.github.io/rdoc/">RDoc 7.0.1</a>
+      using the Aliki theme by <a href="http://st0012.dev">Stan Lo</a>
+    </p>
+  </div>
+</footer>
+
 </body>
 

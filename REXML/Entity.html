@@ -8,12 +8,45 @@
 <title>class REXML::Entity - RDoc Documentation</title>
 
 
-  <meta name="keywords" content="ruby,class,REXML::Entity">
+  <meta
+    name="keywords"
+    content="ruby,class,REXML::Entity"
+  >
+
+    <meta
+      name="description"
+      content="Documentation for the REXML::Entity class"
+    >
 
 
-    <meta name="description" content="Documentation for the REXML::Entity class">
 
 
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="class REXML::Entity - RDoc Documentation">
+
+
+
+    <meta
+      property="og:description"
+      content="Documentation for REXML::Entity class - API reference and code examples"
+    >
+
+
+
+
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="class REXML::Entity - RDoc Documentation">
+
+
+
+    <meta
+      name="twitter:description"
+      content="Documentation for REXML::Entity class - API reference and code examples"
+    >
 
 
 
@@ -22,76 +55,517 @@
   var index_rel_prefix = "../";
 </script>
 
-<script src="../js/navigation.js" defer></script>
-<script src="../js/search.js" defer></script>
-<script src="../js/search_index.js" defer></script>
-<script src="../js/searcher.js" defer></script>
-<script src="../js/darkfish.js" defer></script>
+<script
+  src="../js/theme-toggle.js?v=7.0.1"
+></script>
 
-<link href="../css/fonts.css" rel="stylesheet">
-<link href="../css/rdoc.css" rel="stylesheet">
+<script
+  src="../js/search_navigation.js?v=7.0.1"
+  defer
+></script>
+
+<script
+  src="../js/search_data.js?v=7.0.1"
+  defer
+></script>
+
+<script
+  src="../js/search_ranker.js?v=7.0.1"
+  defer
+></script>
+
+<script
+  src="../js/search_controller.js?v=7.0.1"
+  defer
+></script>
+
+<script
+  src="../js/c_highlighter.js?v=7.0.1"
+  defer
+></script>
+
+<script
+  src="../js/aliki.js?v=7.0.1"
+  defer
+></script>
+
+<link
+  href="../css/rdoc.css?v=7.0.1"
+  rel="stylesheet"
+>
 
 
 
-<body id="top" role="document" class="class">
+
+<body role="document" class="class has-toc">
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <!-- Chevron (right arrow) - used for expand/collapse -->
+  <symbol
+    id="icon-chevron"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  >
+    <polyline points="9 18 15 12 9 6"></polyline>
+  </symbol>
+
+  <!-- File/Document - Pages section -->
+  <symbol
+    id="icon-file"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  >
+    <path
+      d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"
+    ></path>
+
+    <polyline points="14 2 14 8 20 8"></polyline>
+  </symbol>
+
+  <!-- Layers/Stack - Classes and Modules section -->
+  <symbol
+    id="icon-layers"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  >
+    <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+    <polyline points="2 17 12 22 22 17"></polyline>
+    <polyline points="2 12 12 17 22 12"></polyline>
+  </symbol>
+
+  <!-- Curly braces with C - Class Methods section -->
+  <symbol
+    id="icon-class-methods"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  >
+    <path d="M6 3C3.5 3 2 4.5 2 7v3c0 1.5-1 2-1 2s1 .5 1 2v5c0 2.5 1.5 4 4 4"></path>
+    <path d="M18 3c2.5 0 4 1.5 4 4v3c0 1.5 1 2 1 2s-1 .5-1 2v5c0 2.5-1.5 4-4 4"></path>
+
+    <text
+      x="12"
+      y="17"
+      text-anchor="middle"
+      font-size="13"
+      font-weight="bold"
+      fill="currentColor"
+      stroke="none"
+    >
+      C
+    </text>
+  </symbol>
+
+  <!-- Curly braces with I - Instance Methods section -->
+  <symbol
+    id="icon-instance-methods"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  >
+    <path d="M6 3C3.5 3 2 4.5 2 7v3c0 1.5-1 2-1 2s1 .5 1 2v5c0 2.5 1.5 4 4 4"></path>
+    <path d="M18 3c2.5 0 4 1.5 4 4v3c0 1.5 1 2 1 2s-1 .5-1 2v5c0 2.5-1.5 4-4 4"></path>
+
+    <text
+      x="12"
+      y="17"
+      text-anchor="middle"
+      font-size="13"
+      font-weight="bold"
+      fill="currentColor"
+      stroke="none"
+    >
+      I
+    </text>
+  </symbol>
+
+  <!-- Double chevrons up - Ancestors section -->
+  <symbol
+    id="icon-ancestors"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  >
+    <polyline points="17 11 12 6 7 11"></polyline>
+    <polyline points="17 18 12 13 7 18"></polyline>
+  </symbol>
+
+  <!-- User with plus - Included Modules section -->
+  <symbol
+    id="icon-includes"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  >
+    <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+    <circle cx="8.5" cy="7" r="4"></circle>
+
+    <line
+      x1="20"
+      y1="8"
+      x2="20"
+      y2="14"
+    ></line>
+
+    <line
+      x1="23"
+      y1="11"
+      x2="17"
+      y2="11"
+    ></line>
+  </symbol>
+
+  <!-- User with check - Extended Modules section -->
+  <symbol
+    id="icon-extends"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  >
+    <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+    <circle cx="8.5" cy="7" r="4"></circle>
+    <polyline points="17 11 19 13 23 9"></polyline>
+  </symbol>
+
+  <!-- List - Sections section -->
+  <symbol
+    id="icon-list"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  >
+    <line
+      x1="8"
+      y1="6"
+      x2="21"
+      y2="6"
+    ></line>
+
+    <line
+      x1="8"
+      y1="12"
+      x2="21"
+      y2="12"
+    ></line>
+
+    <line
+      x1="8"
+      y1="18"
+      x2="21"
+      y2="18"
+    ></line>
+
+    <line
+      x1="3"
+      y1="6"
+      x2="3.01"
+      y2="6"
+    ></line>
+
+    <line
+      x1="3"
+      y1="12"
+      x2="3.01"
+      y2="12"
+    ></line>
+
+    <line
+      x1="3"
+      y1="18"
+      x2="3.01"
+      y2="18"
+    ></line>
+  </symbol>
+</svg>
+
+<header class="top-navbar">
+  <a href="../index.html" class="navbar-brand">
+    RDoc Documentation
+  </a>
+
+  <!-- Desktop search bar -->
+  <div class="navbar-search navbar-search-desktop" role="search">
+    <form action="#" method="get" accept-charset="utf-8">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results-desktop"
+             type="text" name="search" placeholder="Search (/) for a class, method..."
+             spellcheck="false" autocomplete="off"
+             title="Type to search, Up and Down to navigate, Enter to load">
+      <ul id="search-results-desktop" aria-label="Search Results"
+          aria-busy="false" aria-expanded="false"
+          aria-atomic="false" class="initially-hidden search-results"></ul>
+    </form>
+  </div>
+
+  <!-- Mobile search icon button -->
+  <button id="search-toggle" class="navbar-search-mobile" aria-label="Open search" type="button">
+    <span aria-hidden="true">🔍</span>
+  </button>
+
+  <!-- Theme toggle button -->
+  <button id="theme-toggle" class="theme-toggle" aria-label="Switch to dark mode" type="button">
+    <span class="theme-toggle-icon" aria-hidden="true">🌙</span>
+  </button>
+</header>
+
+<!-- Search Modal (Mobile) -->
+<div id="search-modal" class="search-modal" hidden aria-modal="true" role="dialog" aria-label="Search">
+  <div class="search-modal-backdrop"></div>
+  <div class="search-modal-content">
+    <div class="search-modal-header">
+      <form class="search-modal-form" action="#" method="get" accept-charset="utf-8">
+        <span class="search-modal-icon" aria-hidden="true">🔍</span>
+        <input id="search-field-mobile" role="combobox" aria-label="Search"
+               aria-autocomplete="list" aria-controls="search-results-mobile"
+               type="text" name="search" placeholder="Search documentation"
+               spellcheck="false" autocomplete="off">
+        <button type="button" class="search-modal-close" aria-label="Close search" id="search-modal-close">
+          <span aria-hidden="true">esc</span>
+        </button>
+      </form>
+    </div>
+    <div class="search-modal-body">
+      <ul id="search-results-mobile" aria-label="Search Results"
+          aria-busy="false" aria-expanded="false"
+          aria-atomic="false" class="search-results search-modal-results initially-hidden"></ul>
+      <div class="search-modal-empty">
+        <p>No recent searches</p>
+      </div>
+    </div>
+  </div>
+</div>
+
 <div id="navigation-toggle" role="button" tabindex="0" aria-label="Toggle sidebar" aria-expanded="true" aria-controls="navigation">
   <span aria-hidden="true">&#9776;</span>
 </div>
 
 
 <nav id="navigation" role="navigation">
-  <div id="project-navigation">
-    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
-  <h2>
-    <a href="../index.html" rel="home">Home</a>
-  </h2>
-
-  <div id="table-of-contents-navigation">
-    <a href="../table_of_contents.html#pages">Pages</a>
-    <a href="../table_of_contents.html#classes">Classes</a>
-    <a href="../table_of_contents.html#methods">Methods</a>
-  </div>
-</div>
-
-    <div id="search-section" role="search" class="project-section initially-hidden">
-  <form action="#" method="get" accept-charset="utf-8">
-    <div id="search-field-wrapper">
-      <input id="search-field" role="combobox" aria-label="Search"
-             aria-autocomplete="list" aria-controls="search-results"
-             type="text" name="search" placeholder="Search (/) for a class, method, ..." spellcheck="false"
-             title="Type to search, Up and Down to navigate, Enter to load">
-    </div>
-
-    <ul id="search-results" aria-label="Search Results"
-        aria-busy="false" aria-expanded="false"
-        aria-atomic="false" class="initially-hidden"></ul>
-  </form>
-</div>
-
-  </div>
-
   
+
+
+
+
+  <div id="fileindex-section" class="nav-section">
+    <details class="nav-section-collapsible" >
+      <summary class="nav-section-header">
+        <span class="nav-section-icon">
+          <svg>
+            <use href="#icon-file"></use>
+          </svg>
+        </span>
+
+        <span class="nav-section-title">Pages</span>
+
+        <span class="nav-section-chevron">
+          <svg>
+            <use href="#icon-chevron"></use>
+          </svg>
+        </span>
+      </summary>
+
+      <ul class="nav-list">
+
+
+
+
+
+
+            <li>
+              <a href="../LICENSE_txt.html">
+                LICENSE
+              </a>
+            </li>
+
+
+
+
+            <li>
+              <a href="../NEWS_md.html">
+                NEWS
+              </a>
+            </li>
+
+
+
+
+            <li>
+              <a href="../README_md.html">
+                README
+              </a>
+            </li>
+
+
+
+
+
+          <li>
+            <details >
+              <summary>
+                
+                  doc
+                  
+                
+              </summary>
+
+              <ul class="link-list">
+
+                  <li>
+                    <a href="../doc/rexml/context_rdoc.html">
+                      context
+                    </a>
+                  </li>
+
+                  <li>
+                    <a href="../doc/rexml/tasks/includes/child_toc_rdoc.html">
+                      child_toc
+                    </a>
+                  </li>
+
+                  <li>
+                    <a href="../doc/rexml/tasks/includes/document_toc_rdoc.html">
+                      document_toc
+                    </a>
+                  </li>
+
+                  <li>
+                    <a href="../doc/rexml/tasks/includes/element_toc_rdoc.html">
+                      element_toc
+                    </a>
+                  </li>
+
+                  <li>
+                    <a href="../doc/rexml/tasks/includes/node_toc_rdoc.html">
+                      node_toc
+                    </a>
+                  </li>
+
+                  <li>
+                    <a href="../doc/rexml/tasks/includes/parent_toc_rdoc.html">
+                      parent_toc
+                    </a>
+                  </li>
+
+                  <li>
+                    <a href="../doc/rexml/tasks/rdoc/child_rdoc.html">
+                      child
+                    </a>
+                  </li>
+
+                  <li>
+                    <a href="../doc/rexml/tasks/rdoc/document_rdoc.html">
+                      document
+                    </a>
+                  </li>
+
+                  <li>
+                    <a href="../doc/rexml/tasks/rdoc/element_rdoc.html">
+                      element
+                    </a>
+                  </li>
+
+                  <li>
+                    <a href="../doc/rexml/tasks/rdoc/node_rdoc.html">
+                      node
+                    </a>
+                  </li>
+
+                  <li>
+                    <a href="../doc/rexml/tasks/rdoc/parent_rdoc.html">
+                      parent
+                    </a>
+                  </li>
+
+                  <li>
+                    <a href="../doc/rexml/tasks/rdoc/toc_rdoc.html">
+                      toc
+                    </a>
+                  </li>
+
+                  <li>
+                    <a href="../doc/rexml/tutorial_rdoc.html">
+                      tutorial
+                    </a>
+                  </li>
+
+              </ul>
+            </details>
+          </li>
+
+      </ul>
+    </details>
+  </div>
+
 
   
 
   
 <div id="parent-class-section" class="nav-section">
-  <h3>Ancestors</h3>
-  <ul><li><a href="Child.html">REXML::Child</a><ul><li>Object</li></ul></li></ul>
+  <details class="nav-section-collapsible" open>
+    <summary class="nav-section-header">
+      <span class="nav-section-icon">
+        <svg><use href="#icon-ancestors"></use></svg>
+      </span>
+      <span class="nav-section-title">Ancestors</span>
+      <span class="nav-section-chevron">
+        <svg><use href="#icon-chevron"></use></svg>
+      </span>
+    </summary>
+    <ul><li><a href="Child.html">REXML::Child</a><ul><li>Object</li></ul></li></ul>
+  </details>
 </div>
 
 
   
 <div id="includes-section" class="nav-section">
-  <h3>Included Modules</h3>
+  <details class="nav-section-collapsible" open>
+    <summary class="nav-section-header">
+      <span class="nav-section-icon">
+        <svg><use href="#icon-includes"></use></svg>
+      </span>
+      <span class="nav-section-title">Included Modules</span>
+      <span class="nav-section-chevron">
+        <svg><use href="#icon-chevron"></use></svg>
+      </span>
+    </summary>
 
-  <ul class="link-list">
+    <ul class="nav-list">
 
 
-    <li><a class="include" href="XMLTokens.html">REXML::XMLTokens</a></li>
+      <li><a class="include" href="XMLTokens.html">REXML::XMLTokens</a></li>
 
 
-  </ul>
+    </ul>
+  </details>
 </div>
 
 
@@ -99,40 +573,69 @@
 
   
   <div class="nav-section">
-    <h3>Class Methods</h3>
-    <ul class="link-list" role="directory">
+    <details class="nav-section-collapsible" open>
+      <summary class="nav-section-header">
+        <span class="nav-section-icon">
+          <svg><use href="#icon-class-methods"></use></svg>
+        </span>
+        <span class="nav-section-title">Class Methods</span>
+        <span class="nav-section-chevron">
+          <svg><use href="#icon-chevron"></use></svg>
+        </span>
+      </summary>
+      <ul class="nav-list" role="directory">
 
-      <li ><a href="#method-c-matches-3F">matches?</a></li>
+        <li ><a href="#method-c-matches-3F">matches?</a></li>
 
-      <li class="calls-super" ><a href="#method-c-new">new</a></li>
+        <li class="calls-super" ><a href="#method-c-new">new</a></li>
 
-    </ul>
+      </ul>
+    </details>
   </div>
 
 
 
   <div class="nav-section">
-    <h3>Instance Methods</h3>
-    <ul class="link-list" role="directory">
+    <details class="nav-section-collapsible" open>
+      <summary class="nav-section-header">
+        <span class="nav-section-icon">
+          <svg><use href="#icon-instance-methods"></use></svg>
+        </span>
+        <span class="nav-section-title">Instance Methods</span>
+        <span class="nav-section-chevron">
+          <svg><use href="#icon-chevron"></use></svg>
+        </span>
+      </summary>
+      <ul class="nav-list" role="directory">
 
-      <li ><a href="#method-i-normalized">normalized</a></li>
+        <li ><a href="#method-i-normalized">normalized</a></li>
 
-      <li ><a href="#method-i-to_s">to_s</a></li>
+        <li ><a href="#method-i-to_s">to_s</a></li>
 
-      <li ><a href="#method-i-unnormalized">unnormalized</a></li>
+        <li ><a href="#method-i-unnormalized">unnormalized</a></li>
 
-      <li ><a href="#method-i-write">write</a></li>
+        <li ><a href="#method-i-write">write</a></li>
 
-    </ul>
+      </ul>
+    </details>
   </div>
 
 
+  <div id="classindex-section" class="nav-section">
+  <details class="nav-section-collapsible" open>
+    <summary class="nav-section-header">
+      <span class="nav-section-icon">
+        <svg><use href="#icon-layers"></use></svg>
+      </span>
+      <span class="nav-section-title">Classes and Modules</span>
+      <span class="nav-section-chevron">
+        <svg><use href="#icon-chevron"></use></svg>
+      </span>
+    </summary>
 
-  <footer id="validator-badges" role="contentinfo">
-  <p><a href="https://validator.w3.org/check/referer">Validate</a></p>
-  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.15.1.</p>
-  <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.</p>
-</footer>
+    <ul class="link-list nav-list"><li><details open><summary><code><a href="../REXML.html">REXML</a></code></summary><ul class="link-list nav-list"><li><code><a href="../REXML/AttlistDecl.html">AttlistDecl</a></code></li><li><code><a href="../REXML/Attribute.html">Attribute</a></code></li><li><code><a href="../REXML/Attributes.html">Attributes</a></code></li><li><code><a href="../REXML/CData.html">CData</a></code></li><li><code><a href="../REXML/Child.html">Child</a></code></li><li><code><a href="../REXML/Comment.html">Comment</a></code></li><li><code><a href="../REXML/DClonable.html">DClonable</a></code></li><li><details><summary><code><a href="../REXML/DTD.html">DTD</a></code></summary><ul class="link-list nav-list"><li><code><a href="../REXML/DTD/AttlistDecl.html">AttlistDecl</a></code></li><li><code><a href="../REXML/DTD/ElementDecl.html">ElementDecl</a></code></li><li><code><a href="../REXML/DTD/EntityDecl.html">EntityDecl</a></code></li><li><code><a href="../REXML/DTD/NotationDecl.html">NotationDecl</a></code></li><li><code><a href="../REXML/DTD/Parser.html">Parser</a></code></li></ul></details></li><li><code><a href="../REXML/Declaration.html">Declaration</a></code></li><li><code><a href="../REXML/DocType.html">DocType</a></code></li><li><code><a href="../REXML/Document.html">Document</a></code></li><li><code><a href="../REXML/Element.html">Element</a></code></li><li><code><a href="../REXML/ElementDecl.html">ElementDecl</a></code></li><li><code><a href="../REXML/Elements.html">Elements</a></code></li><li><code><a href="../REXML/Encoding.html">Encoding</a></code></li><li><code><a href="../REXML/Entity.html">Entity</a></code></li><li><code><a href="../REXML/EntityConst.html">EntityConst</a></code></li><li><code><a href="../REXML/ExternalEntity.html">ExternalEntity</a></code></li><li><details><summary><code><a href="../REXML/Formatters.html">Formatters</a></code></summary><ul class="link-list nav-list"><li><code><a href="../REXML/Formatters/Default.html">Default</a></code></li><li><code><a href="../REXML/Formatters/Pretty.html">Pretty</a></code></li><li><code><a href="../REXML/Formatters/Transitive.html">Transitive</a></code></li></ul></details></li><li><code><a href="../REXML/Functions.html">Functions</a></code></li><li><code><a href="../REXML/IOSource.html">IOSource</a></code></li><li><code><a href="../REXML/Instruction.html">Instruction</a></code></li><li><details><summary><code><a href="../REXML/Light.html">Light</a></code></summary><ul class="link-list nav-list"><li><code><a href="../REXML/Light/Node.html">Node</a></code></li></ul></details></li><li><code><a href="../REXML/Namespace.html">Namespace</a></code></li><li><code><a href="../REXML/Node.html">Node</a></code></li><li><code><a href="../REXML/NotationDecl.html">NotationDecl</a></code></li><li><code><a href="../REXML/Output.html">Output</a></code></li><li><code><a href="../REXML/Parent.html">Parent</a></code></li><li><code><a href="../REXML/ParseException.html">ParseException</a></code></li><li><details><summary><code><a href="../REXML/Parsers.html">Parsers</a></code></summary><ul class="link-list nav-list"><li><details><summary><code><a href="../REXML/Parsers/BaseParser.html">BaseParser</a></code></summary><ul class="link-list nav-list"><li><code><a href="../REXML/Parsers/BaseParser/Private.html">Private</a></code></li></ul></details></li><li><code><a href="../REXML/Parsers/EnumerableTally.html">EnumerableTally</a></code></li><li><code><a href="../REXML/Parsers/LightParser.html">LightParser</a></code></li><li><code><a href="../REXML/Parsers/PullEvent.html">PullEvent</a></code></li><li><code><a href="../REXML/Parsers/PullParser.html">PullParser</a></code></li><li><code><a href="../REXML/Parsers/SAX2Parser.html">SAX2Parser</a></code></li><li><code><a href="../REXML/Parsers/StreamParser.html">StreamParser</a></code></li><li><code><a href="../REXML/Parsers/StringScannerCaptures.html">StringScannerCaptures</a></code></li><li><code><a href="../REXML/Parsers/TreeParser.html">TreeParser</a></code></li><li><code><a href="../REXML/Parsers/UltraLightParser.html">UltraLightParser</a></code></li><li><code><a href="../REXML/Parsers/XPathParser.html">XPathParser</a></code></li></ul></details></li><li><code><a href="../REXML/QuickPath.html">QuickPath</a></code></li><li><code><a href="../REXML/ReferenceWriter.html">ReferenceWriter</a></code></li><li><code><a href="../REXML/SAX2Listener.html">SAX2Listener</a></code></li><li><code><a href="../REXML/Security.html">Security</a></code></li><li><details><summary><code><a href="../REXML/Source.html">Source</a></code></summary><ul class="link-list nav-list"><li><code><a href="../REXML/Source/Private.html">Private</a></code></li></ul></details></li><li><code><a href="../REXML/SourceFactory.html">SourceFactory</a></code></li><li><code><a href="../REXML/StreamListener.html">StreamListener</a></code></li><li><code><a href="../REXML/StringScannerCheckScanString.html">StringScannerCheckScanString</a></code></li><li><code><a href="../REXML/Text.html">Text</a></code></li><li><code><a href="../REXML/UndefinedNamespaceException.html">UndefinedNamespaceException</a></code></li><li><details><summary><code><a href="../REXML/Validation.html">Validation</a></code></summary><ul class="link-list nav-list"><li><code><a href="../REXML/Validation/Choice.html">Choice</a></code></li><li><code><a href="../REXML/Validation/Event.html">Event</a></code></li><li><code><a href="../REXML/Validation/Interleave.html">Interleave</a></code></li><li><code><a href="../REXML/Validation/OneOrMore.html">OneOrMore</a></code></li><li><code><a href="../REXML/Validation/Optional.html">Optional</a></code></li><li><code><a href="../REXML/Validation/Ref.html">Ref</a></code></li><li><code><a href="../REXML/Validation/RelaxNG.html">RelaxNG</a></code></li><li><code><a href="../REXML/Validation/Sequence.html">Sequence</a></code></li><li><code><a href="../REXML/Validation/State.html">State</a></code></li><li><code><a href="../REXML/Validation/ValidationException.html">ValidationException</a></code></li><li><code><a href="../REXML/Validation/Validator.html">Validator</a></code></li><li><code><a href="../REXML/Validation/ZeroOrMore.html">ZeroOrMore</a></code></li></ul></details></li><li><code><a href="../REXML/XMLDecl.html">XMLDecl</a></code></li><li><code><a href="../REXML/XMLTokens.html">XMLTokens</a></code></li><li><code><a href="../REXML/XPath.html">XPath</a></code></li><li><code><a href="../REXML/XPathNode.html">XPathNode</a></code></li><li><code><a href="../REXML/XPathParser.html">XPathParser</a></code></li></ul></details></li></ul>
+  </details>
+</div>
 
 </nav>
 
@@ -173,7 +676,7 @@
 
     <section class="constants-list">
       <header>
-        <h3>Constants</h3>
+        <h3 id="constants"><a href="#constants">Constants</a></h3>
       </header>
       <dl>
 
@@ -288,7 +791,7 @@
 
     <section class="attribute-method-details method-section">
       <header>
-        <h3>Attributes</h3>
+        <h3 id="attributes"><a href="#attributes">Attributes</a></h3>
       </header>
 
 
@@ -394,7 +897,7 @@
 
      <section id="public-class-5Buntitled-5D-method-details" class="method-section anchor-link">
        <header>
-         <h3>Public Class Methods</h3>
+         <h3 id="public-class-methods"><a href="#public-class-methods">Public Class Methods</a></h3>
        </header>
 
 
@@ -416,18 +919,16 @@
               <summary>Source</summary>
             </details>
           </div>
-
-
-
-        <div class="method-description">
-
           <div class="method-source-code" id="matches-3F-source">
-            <pre><span class="ruby-comment"># File lib/rexml/entity.rb, line 67</span>
+            <pre class="ruby" data-language="ruby"><span class="ruby-comment"># File lib/rexml/entity.rb, line 67</span>
 <span class="ruby-keyword">def</span> <span class="ruby-constant">Entity</span><span class="ruby-operator">::</span><span class="ruby-identifier ruby-title">matches?</span> <span class="ruby-identifier">string</span>
   (<span class="ruby-constant">ENTITYDECL</span> <span class="ruby-operator">=~</span> <span class="ruby-identifier">string</span>) <span class="ruby-operator">==</span> <span class="ruby-value">0</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
 
+
+
+        <div class="method-description">
 
 
           <p>Evaluates whether the given string matches an entity definition, returning true if so, and false otherwise.</p>
@@ -460,13 +961,8 @@
               <summary>Source</summary>
             </details>
           </div>
-
-
-
-        <div class="method-description">
-
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File lib/rexml/entity.rb, line 34</span>
+            <pre class="ruby" data-language="ruby"><span class="ruby-comment"># File lib/rexml/entity.rb, line 34</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span> <span class="ruby-identifier">stream</span>, <span class="ruby-identifier">value</span>=<span class="ruby-keyword">nil</span>, <span class="ruby-identifier">parent</span>=<span class="ruby-keyword">nil</span>, <span class="ruby-identifier">reference</span>=<span class="ruby-keyword">false</span>
   <span class="ruby-keyword">super</span>(<span class="ruby-identifier">parent</span>)
   <span class="ruby-ivar">@ndata</span> = <span class="ruby-ivar">@pubid</span> = <span class="ruby-ivar">@value</span> = <span class="ruby-ivar">@external</span> = <span class="ruby-keyword">nil</span>
@@ -501,6 +997,9 @@
 
 
 
+        <div class="method-description">
+
+
           <p>Create a new entity.  Simple entities can be constructed by passing a name, value to the constructor; this creates a generic, plain entity reference. For anything more complicated, you have to pass a <a href="Source.html"><code>Source</code></a> to the constructor with the entity definition, or use the accessor methods. <code>WARNING</code>: There is no validation of entity state except when the entity is read from a stream.  If you start poking around with the accessors, you can easily create a non-conformant <a href="Entity.html"><code>Entity</code></a>.</p>
 
 <pre class="ruby"><span class="ruby-identifier">e</span> = <span class="ruby-constant">Entity</span>.<span class="ruby-identifier">new</span>( <span class="ruby-string">&#39;amp&#39;</span>, <span class="ruby-string">&#39;&amp;&#39;</span> )
@@ -525,7 +1024,7 @@
 
      <section id="public-instance-5Buntitled-5D-method-details" class="method-section anchor-link">
        <header>
-         <h3>Public Instance Methods</h3>
+         <h3 id="public-instance-methods"><a href="#public-instance-methods">Public Instance Methods</a></h3>
        </header>
 
 
@@ -547,18 +1046,16 @@
               <summary>Source</summary>
             </details>
           </div>
-
-
-
-        <div class="method-description">
-
           <div class="method-source-code" id="normalized-source">
-            <pre><span class="ruby-comment"># File lib/rexml/entity.rb, line 86</span>
+            <pre class="ruby" data-language="ruby"><span class="ruby-comment"># File lib/rexml/entity.rb, line 86</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">normalized</span>
   <span class="ruby-ivar">@value</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
 
+
+
+        <div class="method-description">
 
 
           <p>Returns the value of this entity unprocessed – raw.  This is the normalized value; that is, with all %ent; and &amp;ent; entities intact</p>
@@ -591,13 +1088,8 @@
               <summary>Source</summary>
             </details>
           </div>
-
-
-
-        <div class="method-description">
-
           <div class="method-source-code" id="to_s-source">
-            <pre><span class="ruby-comment"># File lib/rexml/entity.rb, line 120</span>
+            <pre class="ruby" data-language="ruby"><span class="ruby-comment"># File lib/rexml/entity.rb, line 120</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">to_s</span>
   <span class="ruby-identifier">rv</span> = <span class="ruby-string">&#39;&#39;</span>
   <span class="ruby-identifier">write</span> <span class="ruby-identifier">rv</span>
@@ -605,6 +1097,9 @@
 <span class="ruby-keyword">end</span></pre>
           </div>
 
+
+
+        <div class="method-description">
 
 
           <p>Returns this entity as a string.  See write().</p>
@@ -637,13 +1132,8 @@
               <summary>Source</summary>
             </details>
           </div>
-
-
-
-        <div class="method-description">
-
           <div class="method-source-code" id="unnormalized-source">
-            <pre><span class="ruby-comment"># File lib/rexml/entity.rb, line 73</span>
+            <pre class="ruby" data-language="ruby"><span class="ruby-comment"># File lib/rexml/entity.rb, line 73</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">unnormalized</span>
   <span class="ruby-identifier">document</span>&amp;.<span class="ruby-identifier">record_entity_expansion</span>
 
@@ -654,6 +1144,9 @@
 <span class="ruby-keyword">end</span></pre>
           </div>
 
+
+
+        <div class="method-description">
 
 
           <p>Evaluates to the unnormalized value of this entity; that is, replacing &amp;ent; entities.</p>
@@ -686,13 +1179,8 @@
               <summary>Source</summary>
             </details>
           </div>
-
-
-
-        <div class="method-description">
-
           <div class="method-source-code" id="write-source">
-            <pre><span class="ruby-comment"># File lib/rexml/entity.rb, line 98</span>
+            <pre class="ruby" data-language="ruby"><span class="ruby-comment"># File lib/rexml/entity.rb, line 98</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">write</span> <span class="ruby-identifier">out</span>, <span class="ruby-identifier">indent</span>=<span class="ruby-value">-1</span>
   <span class="ruby-identifier">out</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-string">&#39;&lt;!ENTITY &#39;</span>
   <span class="ruby-identifier">out</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-string">&#39;% &#39;</span> <span class="ruby-keyword">if</span> <span class="ruby-ivar">@reference</span>
@@ -715,6 +1203,9 @@
 <span class="ruby-keyword">end</span></pre>
           </div>
 
+
+
+        <div class="method-description">
 
 
           <p>Write out a fully formed, correct entity definition (assuming the <a href="Entity.html"><code>Entity</code></a> object itself is valid.)</p>
@@ -741,5 +1232,27 @@
   </section>
 
 </main>
+
+<aside class="table-of-contents" role="complementary" aria-label="Table of Contents">
+  <div class="toc-sticky">
+    <h3 class="toc-heading">On This Page</h3>
+    <nav class="toc-nav" id="toc-nav" aria-label="Page sections">
+      <!-- Generated by JavaScript based on page headings -->
+    </nav>
+  </div>
+</aside>
+
+
+<footer class="site-footer">
+  
+
+  <div class="footer-bottom">
+    <p>
+      Generated by <a href="https://ruby.github.io/rdoc/">RDoc 7.0.1</a>
+      using the Aliki theme by <a href="http://st0012.dev">Stan Lo</a>
+    </p>
+  </div>
+</footer>
+
 </body>
 

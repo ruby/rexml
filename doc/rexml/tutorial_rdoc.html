@@ -9,8 +9,33 @@
 
 
   <meta name="keywords" content="ruby,documentation,tutorial">
-  <meta name="description" content="tutorial: REXML Tutorial == Why \REXML? - Ruby&#39;s \REXML library is part of the Ruby distribution, so using it requires no gem installations. REXML is fully ">
+  <meta
+    name="description"
+    content="tutorial: REXML Tutorial == Why \REXML? - Ruby&#39;s \REXML library is part of the Ruby distribution, so using it requires no gem installations. REXML is fully "
+  >
 
+
+
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="tutorial - RDoc Documentation">
+
+
+
+    <meta property="og:description" content="REXML Tutorial == Why \REXML? - Ruby&#39;s \REXML library is part of the Ruby distribution, so using it requires no gem installations. REXML is fully ">
+
+
+
+
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="tutorial - RDoc Documentation">
+
+
+
+    <meta name="twitter:description" content="REXML Tutorial == Why \REXML? - Ruby&#39;s \REXML library is part of the Ruby distribution, so using it requires no gem installations. REXML is fully ">
 
 
 
@@ -19,431 +44,502 @@
   var index_rel_prefix = "../../";
 </script>
 
-<script src="../../js/navigation.js" defer></script>
-<script src="../../js/search.js" defer></script>
-<script src="../../js/search_index.js" defer></script>
-<script src="../../js/searcher.js" defer></script>
-<script src="../../js/darkfish.js" defer></script>
+<script
+  src="../../js/theme-toggle.js?v=7.0.1"
+></script>
 
-<link href="../../css/fonts.css" rel="stylesheet">
-<link href="../../css/rdoc.css" rel="stylesheet">
+<script
+  src="../../js/search_navigation.js?v=7.0.1"
+  defer
+></script>
+
+<script
+  src="../../js/search_data.js?v=7.0.1"
+  defer
+></script>
+
+<script
+  src="../../js/search_ranker.js?v=7.0.1"
+  defer
+></script>
+
+<script
+  src="../../js/search_controller.js?v=7.0.1"
+  defer
+></script>
+
+<script
+  src="../../js/c_highlighter.js?v=7.0.1"
+  defer
+></script>
+
+<script
+  src="../../js/aliki.js?v=7.0.1"
+  defer
+></script>
+
+<link
+  href="../../css/rdoc.css?v=7.0.1"
+  rel="stylesheet"
+>
 
 
 
-<body id="top" role="document" class="file">
+
+<body role="document" class="file has-toc">
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <!-- Chevron (right arrow) - used for expand/collapse -->
+  <symbol
+    id="icon-chevron"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  >
+    <polyline points="9 18 15 12 9 6"></polyline>
+  </symbol>
+
+  <!-- File/Document - Pages section -->
+  <symbol
+    id="icon-file"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  >
+    <path
+      d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"
+    ></path>
+
+    <polyline points="14 2 14 8 20 8"></polyline>
+  </symbol>
+
+  <!-- Layers/Stack - Classes and Modules section -->
+  <symbol
+    id="icon-layers"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  >
+    <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+    <polyline points="2 17 12 22 22 17"></polyline>
+    <polyline points="2 12 12 17 22 12"></polyline>
+  </symbol>
+
+  <!-- Curly braces with C - Class Methods section -->
+  <symbol
+    id="icon-class-methods"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  >
+    <path d="M6 3C3.5 3 2 4.5 2 7v3c0 1.5-1 2-1 2s1 .5 1 2v5c0 2.5 1.5 4 4 4"></path>
+    <path d="M18 3c2.5 0 4 1.5 4 4v3c0 1.5 1 2 1 2s-1 .5-1 2v5c0 2.5-1.5 4-4 4"></path>
+
+    <text
+      x="12"
+      y="17"
+      text-anchor="middle"
+      font-size="13"
+      font-weight="bold"
+      fill="currentColor"
+      stroke="none"
+    >
+      C
+    </text>
+  </symbol>
+
+  <!-- Curly braces with I - Instance Methods section -->
+  <symbol
+    id="icon-instance-methods"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  >
+    <path d="M6 3C3.5 3 2 4.5 2 7v3c0 1.5-1 2-1 2s1 .5 1 2v5c0 2.5 1.5 4 4 4"></path>
+    <path d="M18 3c2.5 0 4 1.5 4 4v3c0 1.5 1 2 1 2s-1 .5-1 2v5c0 2.5-1.5 4-4 4"></path>
+
+    <text
+      x="12"
+      y="17"
+      text-anchor="middle"
+      font-size="13"
+      font-weight="bold"
+      fill="currentColor"
+      stroke="none"
+    >
+      I
+    </text>
+  </symbol>
+
+  <!-- Double chevrons up - Ancestors section -->
+  <symbol
+    id="icon-ancestors"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  >
+    <polyline points="17 11 12 6 7 11"></polyline>
+    <polyline points="17 18 12 13 7 18"></polyline>
+  </symbol>
+
+  <!-- User with plus - Included Modules section -->
+  <symbol
+    id="icon-includes"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  >
+    <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+    <circle cx="8.5" cy="7" r="4"></circle>
+
+    <line
+      x1="20"
+      y1="8"
+      x2="20"
+      y2="14"
+    ></line>
+
+    <line
+      x1="23"
+      y1="11"
+      x2="17"
+      y2="11"
+    ></line>
+  </symbol>
+
+  <!-- User with check - Extended Modules section -->
+  <symbol
+    id="icon-extends"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  >
+    <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+    <circle cx="8.5" cy="7" r="4"></circle>
+    <polyline points="17 11 19 13 23 9"></polyline>
+  </symbol>
+
+  <!-- List - Sections section -->
+  <symbol
+    id="icon-list"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  >
+    <line
+      x1="8"
+      y1="6"
+      x2="21"
+      y2="6"
+    ></line>
+
+    <line
+      x1="8"
+      y1="12"
+      x2="21"
+      y2="12"
+    ></line>
+
+    <line
+      x1="8"
+      y1="18"
+      x2="21"
+      y2="18"
+    ></line>
+
+    <line
+      x1="3"
+      y1="6"
+      x2="3.01"
+      y2="6"
+    ></line>
+
+    <line
+      x1="3"
+      y1="12"
+      x2="3.01"
+      y2="12"
+    ></line>
+
+    <line
+      x1="3"
+      y1="18"
+      x2="3.01"
+      y2="18"
+    ></line>
+  </symbol>
+</svg>
+
+<header class="top-navbar">
+  <a href="../../index.html" class="navbar-brand">
+    RDoc Documentation
+  </a>
+
+  <!-- Desktop search bar -->
+  <div class="navbar-search navbar-search-desktop" role="search">
+    <form action="#" method="get" accept-charset="utf-8">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results-desktop"
+             type="text" name="search" placeholder="Search (/) for a class, method..."
+             spellcheck="false" autocomplete="off"
+             title="Type to search, Up and Down to navigate, Enter to load">
+      <ul id="search-results-desktop" aria-label="Search Results"
+          aria-busy="false" aria-expanded="false"
+          aria-atomic="false" class="initially-hidden search-results"></ul>
+    </form>
+  </div>
+
+  <!-- Mobile search icon button -->
+  <button id="search-toggle" class="navbar-search-mobile" aria-label="Open search" type="button">
+    <span aria-hidden="true">🔍</span>
+  </button>
+
+  <!-- Theme toggle button -->
+  <button id="theme-toggle" class="theme-toggle" aria-label="Switch to dark mode" type="button">
+    <span class="theme-toggle-icon" aria-hidden="true">🌙</span>
+  </button>
+</header>
+
+<!-- Search Modal (Mobile) -->
+<div id="search-modal" class="search-modal" hidden aria-modal="true" role="dialog" aria-label="Search">
+  <div class="search-modal-backdrop"></div>
+  <div class="search-modal-content">
+    <div class="search-modal-header">
+      <form class="search-modal-form" action="#" method="get" accept-charset="utf-8">
+        <span class="search-modal-icon" aria-hidden="true">🔍</span>
+        <input id="search-field-mobile" role="combobox" aria-label="Search"
+               aria-autocomplete="list" aria-controls="search-results-mobile"
+               type="text" name="search" placeholder="Search documentation"
+               spellcheck="false" autocomplete="off">
+        <button type="button" class="search-modal-close" aria-label="Close search" id="search-modal-close">
+          <span aria-hidden="true">esc</span>
+        </button>
+      </form>
+    </div>
+    <div class="search-modal-body">
+      <ul id="search-results-mobile" aria-label="Search Results"
+          aria-busy="false" aria-expanded="false"
+          aria-atomic="false" class="search-results search-modal-results initially-hidden"></ul>
+      <div class="search-modal-empty">
+        <p>No recent searches</p>
+      </div>
+    </div>
+  </div>
+</div>
+
 <div id="navigation-toggle" role="button" tabindex="0" aria-label="Toggle sidebar" aria-expanded="true" aria-controls="navigation">
   <span aria-hidden="true">&#9776;</span>
 </div>
 
 
 <nav id="navigation" role="navigation">
-  <div id="project-navigation">
-    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
-  <h2>
-    <a href="../../index.html" rel="home">Home</a>
-  </h2>
-
-  <div id="table-of-contents-navigation">
-    <a href="../../table_of_contents.html#pages">Pages</a>
-    <a href="../../table_of_contents.html#classes">Classes</a>
-    <a href="../../table_of_contents.html#methods">Methods</a>
-  </div>
-</div>
-
-    <div id="search-section" role="search" class="project-section initially-hidden">
-  <form action="#" method="get" accept-charset="utf-8">
-    <div id="search-field-wrapper">
-      <input id="search-field" role="combobox" aria-label="Search"
-             aria-autocomplete="list" aria-controls="search-results"
-             type="text" name="search" placeholder="Search (/) for a class, method, ..." spellcheck="false"
-             title="Type to search, Up and Down to navigate, Enter to load">
-    </div>
-
-    <ul id="search-results" aria-label="Search Results"
-        aria-busy="false" aria-expanded="false"
-        aria-atomic="false" class="initially-hidden"></ul>
-  </form>
-</div>
-
-  </div>
-
-  
-<div class="nav-section">
-  <h3>Table of Contents</h3>
-
-
-
-
-
-  <ul class="link-list" role="directory">
-    
-
-
-
-
-          <li>
-            <details open>
-              <summary>
-      <a href="#label-REXML+Tutorial">REXML Tutorial</a>
-</summary>
-              <ul class="link-list" role="directory">
-                
-
-
-
-
-          <li>
-      <a href="#label-Why+REXML-3F">Why REXML?</a>
-</li>
-
-
-
-
-          <li>
-      <a href="#label-To+Include-2C+or+Not+to+Include-3F">To Include, or Not to Include?</a>
-</li>
-
-
-
-
-          <li>
-      <a href="#label-Preliminaries">Preliminaries</a>
-</li>
-
-
-
-
-          <li>
-            <details open>
-              <summary>
-      <a href="#label-Parsing+XML+Source">Parsing XML Source</a>
-</summary>
-              <ul class="link-list" role="directory">
-                
-
-
-
-
-          <li>
-      <a href="#label-Parsing+a+Document">Parsing a Document</a>
-</li>
-
-
-
-
-          <li>
-      <a href="#label-Context+-28Parsing+Options-29">Context (Parsing Options)</a>
-</li>
-
-
-
-              </ul>
-            </details>
-          </li>
-
-
-
-
-          <li>
-            <details open>
-              <summary>
-      <a href="#label-Exploring+the+Document">Exploring the Document</a>
-</summary>
-              <ul class="link-list" role="directory">
-                
-
-
-
-
-          <li>
-      <a href="#label-Document+Properties">Document Properties</a>
-</li>
-
-
-
-
-          <li>
-      <a href="#label-Document+Children">Document Children</a>
-</li>
-
-
-
-              </ul>
-            </details>
-          </li>
-
-
-
-
-          <li>
-            <details open>
-              <summary>
-      <a href="#label-Exploring+an+Element">Exploring an Element</a>
-</summary>
-              <ul class="link-list" role="directory">
-                
-
-
-
-
-          <li>
-      <a href="#label-Inside+the+Element">Inside the Element</a>
-</li>
-
-
-
-
-          <li>
-            <details open>
-              <summary>
-      <a href="#label-Relationships">Relationships</a>
-</summary>
-              <ul class="link-list" role="directory">
-                
-
-
-
-
-          <li>
-      <a href="#label-Ancestors">Ancestors</a>
-</li>
-
-
-
-
-          <li>
-      <a href="#label-Siblings">Siblings</a>
-</li>
-
-
-
-
-          <li>
-      <a href="#label-Children">Children</a>
-</li>
-
-
-
-              </ul>
-            </details>
-          </li>
-
-
-
-
-          <li>
-      <a href="#label-Element+Attributes">Element Attributes</a>
-</li>
-
-
-
-              </ul>
-            </details>
-          </li>
-
-
-
-
-          <li>
-      <a href="#label-Whitespace">Whitespace</a>
-</li>
-
-
-
-
-          <li>
-      <a href="#label-Namespaces">Namespaces</a>
-</li>
-
-
-
-
-          <li>
-      <a href="#label-Traversing">Traversing</a>
-</li>
-
-
-
-
-          <li>
-      <a href="#label-Searching">Searching</a>
-</li>
-
-
-
-
-          <li>
-            <details open>
-              <summary>
-      <a href="#label-Editing">Editing</a>
-</summary>
-              <ul class="link-list" role="directory">
-                
-
-
-
-
-          <li>
-      <a href="#label-Editing+a+Document">Editing a Document</a>
-</li>
-
-
-
-
-          <li>
-            <details open>
-              <summary>
-      <a href="#label-Editing+an+Element">Editing an Element</a>
-</summary>
-              <ul class="link-list" role="directory">
-                
-
-
-
-
-          <li>
-      <a href="#label-Creating+an+Element">Creating an Element</a>
-</li>
-
-
-
-
-          <li>
-      <a href="#label-Setting+Element+Properties">Setting Element Properties</a>
-</li>
-
-
-
-
-          <li>
-      <a href="#label-Adding+to+an+Element">Adding to an Element</a>
-</li>
-
-
-
-
-          <li>
-      <a href="#label-Deleting+from+an+Element">Deleting from an Element</a>
-</li>
-
-
-
-
-          <li>
-      <a href="#label-Replacing+Nodes">Replacing Nodes</a>
-</li>
-
-
-
-              </ul>
-            </details>
-          </li>
-
-
-
-
-          <li>
-      <a href="#label-Cloning">Cloning</a>
-</li>
-
-
-
-              </ul>
-            </details>
-          </li>
-
-
-
-
-          <li>
-      <a href="#label-Writing+the+Document">Writing the Document</a>
-</li>
-
-
-
-              </ul>
-            </details>
-          </li>
-
-
-
-  </ul>
-</div>
-
-
   
 
 
 
 
-<div id="fileindex-section" class="nav-section">
-  <h3>Pages</h3>
-
-  <ul class="link-list">
 
 
+  <div id="fileindex-section" class="nav-section">
+    <details class="nav-section-collapsible" open>
+      <summary class="nav-section-header">
+        <span class="nav-section-icon">
+          <svg>
+            <use href="#icon-file"></use>
+          </svg>
+        </span>
 
-    <li><a href="../../LICENSE_txt.html">LICENSE</a></li>
+        <span class="nav-section-title">Pages</span>
+
+        <span class="nav-section-chevron">
+          <svg>
+            <use href="#icon-chevron"></use>
+          </svg>
+        </span>
+      </summary>
+
+      <ul class="nav-list">
 
 
 
-    <li><a href="../../NEWS_md.html">NEWS</a></li>
 
 
 
-    <li><a href="../../README_md.html">README</a></li>
+            <li>
+              <a href="../../LICENSE_txt.html">
+                LICENSE
+              </a>
+            </li>
 
 
 
-    <li><details open><summary>doc</summary>
-    <ul class="link-list">
 
-      <li><a href="../../doc/rexml/context_rdoc.html">context</a></li>
+            <li>
+              <a href="../../NEWS_md.html">
+                NEWS
+              </a>
+            </li>
 
-      <li><a href="../../doc/rexml/tasks/rdoc/child_rdoc.html">child</a></li>
 
-      <li><a href="../../doc/rexml/tasks/rdoc/document_rdoc.html">document</a></li>
 
-      <li><a href="../../doc/rexml/tasks/rdoc/element_rdoc.html">element</a></li>
 
-      <li><a href="../../doc/rexml/tasks/rdoc/node_rdoc.html">node</a></li>
+            <li>
+              <a href="../../README_md.html">
+                README
+              </a>
+            </li>
 
-      <li><a href="../../doc/rexml/tasks/rdoc/parent_rdoc.html">parent</a></li>
 
-      <li><a href="../../doc/rexml/tasks/tocs/child_toc_rdoc.html">child_toc</a></li>
 
-      <li><a href="../../doc/rexml/tasks/tocs/document_toc_rdoc.html">document_toc</a></li>
 
-      <li><a href="../../doc/rexml/tasks/tocs/element_toc_rdoc.html">element_toc</a></li>
 
-      <li><a href="../../doc/rexml/tasks/tocs/master_toc_rdoc.html">master_toc</a></li>
+          <li>
+            <details  open>
+              <summary>
+                
+                  doc
+                  
+                
+              </summary>
 
-      <li><a href="../../doc/rexml/tasks/tocs/node_toc_rdoc.html">node_toc</a></li>
+              <ul class="link-list">
 
-      <li><a href="../../doc/rexml/tasks/tocs/parent_toc_rdoc.html">parent_toc</a></li>
+                  <li>
+                    <a href="../../doc/rexml/context_rdoc.html">
+                      context
+                    </a>
+                  </li>
 
-      <li><a href="../../doc/rexml/tutorial_rdoc.html">tutorial</a></li>
+                  <li>
+                    <a href="../../doc/rexml/tasks/includes/child_toc_rdoc.html">
+                      child_toc
+                    </a>
+                  </li>
 
-    </ul></details></li>
+                  <li>
+                    <a href="../../doc/rexml/tasks/includes/document_toc_rdoc.html">
+                      document_toc
+                    </a>
+                  </li>
 
-  </ul>
+                  <li>
+                    <a href="../../doc/rexml/tasks/includes/element_toc_rdoc.html">
+                      element_toc
+                    </a>
+                  </li>
+
+                  <li>
+                    <a href="../../doc/rexml/tasks/includes/node_toc_rdoc.html">
+                      node_toc
+                    </a>
+                  </li>
+
+                  <li>
+                    <a href="../../doc/rexml/tasks/includes/parent_toc_rdoc.html">
+                      parent_toc
+                    </a>
+                  </li>
+
+                  <li>
+                    <a href="../../doc/rexml/tasks/rdoc/child_rdoc.html">
+                      child
+                    </a>
+                  </li>
+
+                  <li>
+                    <a href="../../doc/rexml/tasks/rdoc/document_rdoc.html">
+                      document
+                    </a>
+                  </li>
+
+                  <li>
+                    <a href="../../doc/rexml/tasks/rdoc/element_rdoc.html">
+                      element
+                    </a>
+                  </li>
+
+                  <li>
+                    <a href="../../doc/rexml/tasks/rdoc/node_rdoc.html">
+                      node
+                    </a>
+                  </li>
+
+                  <li>
+                    <a href="../../doc/rexml/tasks/rdoc/parent_rdoc.html">
+                      parent
+                    </a>
+                  </li>
+
+                  <li>
+                    <a href="../../doc/rexml/tasks/rdoc/toc_rdoc.html">
+                      toc
+                    </a>
+                  </li>
+
+                  <li>
+                    <a href="../../doc/rexml/tutorial_rdoc.html">
+                      tutorial
+                    </a>
+                  </li>
+
+              </ul>
+            </details>
+          </li>
+
+      </ul>
+    </details>
+  </div>
+
+
+  <div id="classindex-section" class="nav-section">
+  <details class="nav-section-collapsible" open>
+    <summary class="nav-section-header">
+      <span class="nav-section-icon">
+        <svg><use href="#icon-layers"></use></svg>
+      </span>
+      <span class="nav-section-title">Classes and Modules</span>
+      <span class="nav-section-chevron">
+        <svg><use href="#icon-chevron"></use></svg>
+      </span>
+    </summary>
+
+    <ul class="link-list nav-list"><li><details open><summary><code><a href="../../REXML.html">REXML</a></code></summary><ul class="link-list nav-list"><li><code><a href="../../REXML/AttlistDecl.html">AttlistDecl</a></code></li><li><code><a href="../../REXML/Attribute.html">Attribute</a></code></li><li><code><a href="../../REXML/Attributes.html">Attributes</a></code></li><li><code><a href="../../REXML/CData.html">CData</a></code></li><li><code><a href="../../REXML/Child.html">Child</a></code></li><li><code><a href="../../REXML/Comment.html">Comment</a></code></li><li><code><a href="../../REXML/DClonable.html">DClonable</a></code></li><li><details><summary><code><a href="../../REXML/DTD.html">DTD</a></code></summary><ul class="link-list nav-list"><li><code><a href="../../REXML/DTD/AttlistDecl.html">AttlistDecl</a></code></li><li><code><a href="../../REXML/DTD/ElementDecl.html">ElementDecl</a></code></li><li><code><a href="../../REXML/DTD/EntityDecl.html">EntityDecl</a></code></li><li><code><a href="../../REXML/DTD/NotationDecl.html">NotationDecl</a></code></li><li><code><a href="../../REXML/DTD/Parser.html">Parser</a></code></li></ul></details></li><li><code><a href="../../REXML/Declaration.html">Declaration</a></code></li><li><code><a href="../../REXML/DocType.html">DocType</a></code></li><li><code><a href="../../REXML/Document.html">Document</a></code></li><li><code><a href="../../REXML/Element.html">Element</a></code></li><li><code><a href="../../REXML/ElementDecl.html">ElementDecl</a></code></li><li><code><a href="../../REXML/Elements.html">Elements</a></code></li><li><code><a href="../../REXML/Encoding.html">Encoding</a></code></li><li><code><a href="../../REXML/Entity.html">Entity</a></code></li><li><code><a href="../../REXML/EntityConst.html">EntityConst</a></code></li><li><code><a href="../../REXML/ExternalEntity.html">ExternalEntity</a></code></li><li><details><summary><code><a href="../../REXML/Formatters.html">Formatters</a></code></summary><ul class="link-list nav-list"><li><code><a href="../../REXML/Formatters/Default.html">Default</a></code></li><li><code><a href="../../REXML/Formatters/Pretty.html">Pretty</a></code></li><li><code><a href="../../REXML/Formatters/Transitive.html">Transitive</a></code></li></ul></details></li><li><code><a href="../../REXML/Functions.html">Functions</a></code></li><li><code><a href="../../REXML/IOSource.html">IOSource</a></code></li><li><code><a href="../../REXML/Instruction.html">Instruction</a></code></li><li><details><summary><code><a href="../../REXML/Light.html">Light</a></code></summary><ul class="link-list nav-list"><li><code><a href="../../REXML/Light/Node.html">Node</a></code></li></ul></details></li><li><code><a href="../../REXML/Namespace.html">Namespace</a></code></li><li><code><a href="../../REXML/Node.html">Node</a></code></li><li><code><a href="../../REXML/NotationDecl.html">NotationDecl</a></code></li><li><code><a href="../../REXML/Output.html">Output</a></code></li><li><code><a href="../../REXML/Parent.html">Parent</a></code></li><li><code><a href="../../REXML/ParseException.html">ParseException</a></code></li><li><details><summary><code><a href="../../REXML/Parsers.html">Parsers</a></code></summary><ul class="link-list nav-list"><li><details><summary><code><a href="../../REXML/Parsers/BaseParser.html">BaseParser</a></code></summary><ul class="link-list nav-list"><li><code><a href="../../REXML/Parsers/BaseParser/Private.html">Private</a></code></li></ul></details></li><li><code><a href="../../REXML/Parsers/EnumerableTally.html">EnumerableTally</a></code></li><li><code><a href="../../REXML/Parsers/LightParser.html">LightParser</a></code></li><li><code><a href="../../REXML/Parsers/PullEvent.html">PullEvent</a></code></li><li><code><a href="../../REXML/Parsers/PullParser.html">PullParser</a></code></li><li><code><a href="../../REXML/Parsers/SAX2Parser.html">SAX2Parser</a></code></li><li><code><a href="../../REXML/Parsers/StreamParser.html">StreamParser</a></code></li><li><code><a href="../../REXML/Parsers/StringScannerCaptures.html">StringScannerCaptures</a></code></li><li><code><a href="../../REXML/Parsers/TreeParser.html">TreeParser</a></code></li><li><code><a href="../../REXML/Parsers/UltraLightParser.html">UltraLightParser</a></code></li><li><code><a href="../../REXML/Parsers/XPathParser.html">XPathParser</a></code></li></ul></details></li><li><code><a href="../../REXML/QuickPath.html">QuickPath</a></code></li><li><code><a href="../../REXML/ReferenceWriter.html">ReferenceWriter</a></code></li><li><code><a href="../../REXML/SAX2Listener.html">SAX2Listener</a></code></li><li><code><a href="../../REXML/Security.html">Security</a></code></li><li><details><summary><code><a href="../../REXML/Source.html">Source</a></code></summary><ul class="link-list nav-list"><li><code><a href="../../REXML/Source/Private.html">Private</a></code></li></ul></details></li><li><code><a href="../../REXML/SourceFactory.html">SourceFactory</a></code></li><li><code><a href="../../REXML/StreamListener.html">StreamListener</a></code></li><li><code><a href="../../REXML/StringScannerCheckScanString.html">StringScannerCheckScanString</a></code></li><li><code><a href="../../REXML/Text.html">Text</a></code></li><li><code><a href="../../REXML/UndefinedNamespaceException.html">UndefinedNamespaceException</a></code></li><li><details><summary><code><a href="../../REXML/Validation.html">Validation</a></code></summary><ul class="link-list nav-list"><li><code><a href="../../REXML/Validation/Choice.html">Choice</a></code></li><li><code><a href="../../REXML/Validation/Event.html">Event</a></code></li><li><code><a href="../../REXML/Validation/Interleave.html">Interleave</a></code></li><li><code><a href="../../REXML/Validation/OneOrMore.html">OneOrMore</a></code></li><li><code><a href="../../REXML/Validation/Optional.html">Optional</a></code></li><li><code><a href="../../REXML/Validation/Ref.html">Ref</a></code></li><li><code><a href="../../REXML/Validation/RelaxNG.html">RelaxNG</a></code></li><li><code><a href="../../REXML/Validation/Sequence.html">Sequence</a></code></li><li><code><a href="../../REXML/Validation/State.html">State</a></code></li><li><code><a href="../../REXML/Validation/ValidationException.html">ValidationException</a></code></li><li><code><a href="../../REXML/Validation/Validator.html">Validator</a></code></li><li><code><a href="../../REXML/Validation/ZeroOrMore.html">ZeroOrMore</a></code></li></ul></details></li><li><code><a href="../../REXML/XMLDecl.html">XMLDecl</a></code></li><li><code><a href="../../REXML/XMLTokens.html">XMLTokens</a></code></li><li><code><a href="../../REXML/XPath.html">XPath</a></code></li><li><code><a href="../../REXML/XPathNode.html">XPathNode</a></code></li><li><code><a href="../../REXML/XPathParser.html">XPathParser</a></code></li></ul></details></li></ul>
+  </details>
 </div>
-
-
-
-  <footer id="validator-badges" role="contentinfo">
-  <p><a href="https://validator.w3.org/check/referer">Validate</a></p>
-  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.15.1.</p>
-  <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.</p>
-</footer>
 
 </nav>
 
 <main role="main" aria-label="Page doc/rexml/tutorial.rdoc">
 
-<h1 id="label-REXML+Tutorial">REXML Tutorial<span><a href="#label-REXML+Tutorial">&para;</a> <a href="#top">&uarr;</a></span></h1>
+<h1 id="label-REXML+Tutorial"><a href="#label-REXML+Tutorial">REXML Tutorial</a></h1>
 
-<h2 id="label-Why+REXML-3F">Why REXML?<span><a href="#label-Why+REXML-3F">&para;</a> <a href="#top">&uarr;</a></span></h2>
+<h2 id="label-Why+REXML-3F"><a href="#label-Why+REXML-3F">Why REXML?</a></h2>
 <ul><li>
 <p>Ruby’s REXML library is part of the Ruby distribution, so using it requires no gem installations.</p>
 </li><li>
@@ -452,7 +548,7 @@
 <p>REXML is mature, having been in use for long years.</p>
 </li></ul>
 
-<h2 id="label-To+Include-2C+or+Not+to+Include-3F">To Include, or Not to Include?<span><a href="#label-To+Include-2C+or+Not+to+Include-3F">&para;</a> <a href="#top">&uarr;</a></span></h2>
+<h2 id="label-To+Include-2C+or+Not+to+Include-3F"><a href="#label-To+Include-2C+or+Not+to+Include-3F">To Include, or Not to Include?</a></h2>
 
 <p><a href="../../REXML.html"><code>REXML</code></a> is a module. To use it, you must require it:</p>
 
@@ -471,7 +567,7 @@
 <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Document</span> <span class="ruby-comment"># =&gt; REXML::Document</span>
 </pre>
 
-<h2 id="label-Preliminaries">Preliminaries<span><a href="#label-Preliminaries">&para;</a> <a href="#top">&uarr;</a></span></h2>
+<h2 id="label-Preliminaries"><a href="#label-Preliminaries">Preliminaries</a></h2>
 
 <p>All examples here assume that the following code has been executed:</p>
 
@@ -501,9 +597,9 @@
 <pre class="ruby"><span class="ruby-identifier">doc</span> = <span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">source_string</span>)
 </pre>
 
-<h2 id="label-Parsing+XML+Source">Parsing XML Source<span><a href="#label-Parsing+XML+Source">&para;</a> <a href="#top">&uarr;</a></span></h2>
+<h2 id="label-Parsing+XML+Source"><a href="#label-Parsing+XML+Source">Parsing XML Source</a></h2>
 
-<h3 id="label-Parsing+a+Document">Parsing a Document<span><a href="#label-Parsing+a+Document">&para;</a> <a href="#top">&uarr;</a></span></h3>
+<h3 id="label-Parsing+a+Document"><a href="#label-Parsing+a+Document">Parsing a Document</a></h3>
 
 <p>Use method <a href="../../REXML/Document.html#method-c-new"><code>REXML::Document::new</code></a> to parse XML source.</p>
 
@@ -537,7 +633,7 @@
 
 <p>A parsed document may produce REXML objects of many classes, but the two that are likely to be of greatest interest are <a href="../../REXML/Document.html"><code>REXML::Document</code></a> and <a href="../../REXML/Element.html"><code>REXML::Element</code></a>. These two classes are covered in great detail in this tutorial.</p>
 
-<h3 id="label-Context+-28Parsing+Options-29">Context (Parsing Options)<span><a href="#label-Context+-28Parsing+Options-29">&para;</a> <a href="#top">&uarr;</a></span></h3>
+<h3 id="label-Context+-28Parsing+Options-29"><a href="#label-Context+-28Parsing+Options-29">Context (Parsing Options)</a></h3>
 
 <p>The context for parsing a document is a hash that influences the way the XML is read and stored.</p>
 
@@ -554,7 +650,7 @@
 
 <p>See <a href="../context_rdoc.html">Element Context</a>.</p>
 
-<h2 id="label-Exploring+the+Document">Exploring the Document<span><a href="#label-Exploring+the+Document">&para;</a> <a href="#top">&uarr;</a></span></h2>
+<h2 id="label-Exploring+the+Document"><a href="#label-Exploring+the+Document">Exploring the Document</a></h2>
 
 <p>An <a href="../../REXML/Document.html"><code>REXML::Document</code></a> object represents an XML document.</p>
 
@@ -574,7 +670,7 @@
 
 <p>This section covers only those properties and methods that are unique to a document (that is, not inherited or included).</p>
 
-<h3 id="label-Document+Properties">Document Properties<span><a href="#label-Document+Properties">&para;</a> <a href="#top">&uarr;</a></span></h3>
+<h3 id="label-Document+Properties"><a href="#label-Document+Properties">Document Properties</a></h3>
 
 <p>A document has several properties (other than its children);</p>
 <ul><li>
@@ -637,7 +733,7 @@
 </pre>
 </dd></dl>
 
-<h3 id="label-Document+Children">Document Children<span><a href="#label-Document+Children">&para;</a> <a href="#top">&uarr;</a></span></h3>
+<h3 id="label-Document+Children"><a href="#label-Document+Children">Document Children</a></h3>
 
 <p>A document may have children of these types:</p>
 <ul><li>
@@ -756,7 +852,7 @@
 [REXML::Element, &lt;book category=&#39;web&#39; cover=&#39;paperback&#39;&gt; ... &lt;/&gt;]
 [REXML::Text, &quot;\n\n&quot;]</pre>
 
-<h2 id="label-Exploring+an+Element">Exploring an Element<span><a href="#label-Exploring+an+Element">&para;</a> <a href="#top">&uarr;</a></span></h2>
+<h2 id="label-Exploring+an+Element"><a href="#label-Exploring+an+Element">Exploring an Element</a></h2>
 
 <p>An <a href="../../REXML/Element.html"><code>REXML::Element</code></a> object represents an XML element.</p>
 
@@ -780,7 +876,7 @@
 <p>Included from <a href="../../REXML/Node.html"><code>REXML::Node</code></a>.</p>
 </li></ul>
 
-<h3 id="label-Inside+the+Element">Inside the Element<span><a href="#label-Inside+the+Element">&para;</a> <a href="#top">&uarr;</a></span></h3>
+<h3 id="label-Inside+the+Element"><a href="#label-Inside+the+Element">Inside the Element</a></h3>
 <dl class="rdoc-list label-list"><dt>Brief String Representation</dt>
 <dd>
 <p>Use method <a href="../../REXML/Element.html#method-i-inspect"><code>REXML::Element#inspect</code></a> to retrieve a brief string representation.</p>
@@ -823,7 +919,7 @@
 </pre>
 </dd></dl>
 
-<h3 id="label-Relationships">Relationships<span><a href="#label-Relationships">&para;</a> <a href="#top">&uarr;</a></span></h3>
+<h3 id="label-Relationships"><a href="#label-Relationships">Relationships</a></h3>
 
 <p>An element may have:</p>
 <ul><li>
@@ -834,7 +930,7 @@
 <p>Children.</p>
 </li></ul>
 
-<h4 id="label-Ancestors">Ancestors<span><a href="#label-Ancestors">&para;</a> <a href="#top">&uarr;</a></span></h4>
+<h4 id="label-Ancestors"><a href="#label-Ancestors">Ancestors</a></h4>
 <dl class="rdoc-list label-list"><dt>Containing Document</dt>
 <dd>
 <p>Use method <a href="../../REXML/Element.html#method-i-document"><code>REXML::Element#document</code></a> to retrieve the containing document, if any:</p>
@@ -891,7 +987,7 @@
 </pre>
 </dd></dl>
 
-<h4 id="label-Siblings">Siblings<span><a href="#label-Siblings">&para;</a> <a href="#top">&uarr;</a></span></h4>
+<h4 id="label-Siblings"><a href="#label-Siblings">Siblings</a></h4>
 <dl class="rdoc-list label-list"><dt>Next Element</dt>
 <dd>
 <p>Use method <a href="../../REXML/Element.html#method-i-next_element"><code>REXML::Element#next_element</code></a> to retrieve the first following sibling that is itself an element (<code>nil</code> if there is none):</p>
@@ -976,7 +1072,7 @@
 [REXML::Text, &quot;\n\n&quot;]</pre>
 </dd></dl>
 
-<h4 id="label-Children">Children<span><a href="#label-Children">&para;</a> <a href="#top">&uarr;</a></span></h4>
+<h4 id="label-Children"><a href="#label-Children">Children</a></h4>
 <dl class="rdoc-list label-list"><dt>Child Count</dt>
 <dd>
 <p>Use inherited method <a href="../../REXML/Parent.html#method-i-size"><code>REXML::Parent.size</code></a> to retrieve the count of nodes (of all types) in the element:</p>
@@ -1125,7 +1221,7 @@
 </pre>
 </dd></dl>
 
-<h3 id="label-Element+Attributes">Element Attributes<span><a href="#label-Element+Attributes">&para;</a> <a href="#top">&uarr;</a></span></h3>
+<h3 id="label-Element+Attributes"><a href="#label-Element+Attributes">Element Attributes</a></h3>
 
 <p>Use method <a href="../../REXML/Element.html#method-i-has_attributes-3F"><code>REXML::Element#has_attributes?</code></a> to return whether the element has attributes:</p>
 
@@ -1165,13 +1261,13 @@
 <span class="ruby-identifier">my_doc</span>.<span class="ruby-identifier">root</span>.<span class="ruby-identifier">attribute</span>(<span class="ruby-string">&quot;x&quot;</span>, <span class="ruby-string">&quot;a&quot;</span>) <span class="ruby-comment"># =&gt; a:x=&#39;a:x&#39;</span>
 </pre>
 
-<h2 id="label-Whitespace">Whitespace<span><a href="#label-Whitespace">&para;</a> <a href="#top">&uarr;</a></span></h2>
+<h2 id="label-Whitespace"><a href="#label-Whitespace">Whitespace</a></h2>
 
 <p>Use method <a href="../../REXML/Element.html#method-i-ignore_whitespace_nodes"><code>REXML::Element#ignore_whitespace_nodes</code></a> to determine whether whitespace nodes were ignored when the XML was parsed; returns <code>true</code> if so, <code>nil</code> otherwise.</p>
 
 <p>Use method <a href="../../REXML/Element.html#method-i-whitespace"><code>REXML::Element#whitespace</code></a> to determine whether whitespace is respected for the element; returns <code>true</code> if so, <code>false</code> otherwise.</p>
 
-<h2 id="label-Namespaces">Namespaces<span><a href="#label-Namespaces">&para;</a> <a href="#top">&uarr;</a></span></h2>
+<h2 id="label-Namespaces"><a href="#label-Namespaces">Namespaces</a></h2>
 
 <p>Use method <a href="../../REXML/Element.html#method-i-namespace"><code>REXML::Element#namespace</code></a> to retrieve the string namespace URI for the element, which may derive from one of its ancestors:</p>
 
@@ -1222,7 +1318,7 @@
 <span class="ruby-identifier">d</span>.<span class="ruby-identifier">elements</span>[<span class="ruby-string">&#39;//c&#39;</span>].<span class="ruby-identifier">prefixes</span> <span class="ruby-comment"># =&gt; [&quot;x&quot;, &quot;y&quot;, &quot;z&quot;]</span>
 </pre>
 
-<h2 id="label-Traversing">Traversing<span><a href="#label-Traversing">&para;</a> <a href="#top">&uarr;</a></span></h2>
+<h2 id="label-Traversing"><a href="#label-Traversing">Traversing</a></h2>
 
 <p>You can use certain methods to traverse children of the element. Each child that meets given criteria is yielded to the given block.</p>
 <dl class="rdoc-list label-list"><dt>Traverse All Children</dt>
@@ -1383,7 +1479,7 @@
 [REXML::Element, &lt;price&gt; ... &lt;/&gt;]</pre>
 </dd></dl>
 
-<h2 id="label-Searching">Searching<span><a href="#label-Searching">&para;</a> <a href="#top">&uarr;</a></span></h2>
+<h2 id="label-Searching"><a href="#label-Searching">Searching</a></h2>
 
 <p>You can use certain methods to search among the descendants of an element.</p>
 
@@ -1436,9 +1532,9 @@
 <span class="ruby-keyword">end</span> <span class="ruby-comment"># =&gt; nil</span>
 </pre>
 
-<h2 id="label-Editing">Editing<span><a href="#label-Editing">&para;</a> <a href="#top">&uarr;</a></span></h2>
+<h2 id="label-Editing"><a href="#label-Editing">Editing</a></h2>
 
-<h3 id="label-Editing+a+Document">Editing a Document<span><a href="#label-Editing+a+Document">&para;</a> <a href="#top">&uarr;</a></span></h3>
+<h3 id="label-Editing+a+Document"><a href="#label-Editing+a+Document">Editing a Document</a></h3>
 <dl class="rdoc-list label-list"><dt>Creating a Document</dt>
 <dd>
 <p>Create a new document with method <a href="../../REXML/Document.html#method-c-new"><code>REXML::Document::new</code></a>:</p>
@@ -1487,16 +1583,16 @@
 </pre>
 </dd></dl>
 
-<h3 id="label-Editing+an+Element">Editing an Element<span><a href="#label-Editing+an+Element">&para;</a> <a href="#top">&uarr;</a></span></h3>
+<h3 id="label-Editing+an+Element"><a href="#label-Editing+an+Element">Editing an Element</a></h3>
 
-<h4 id="label-Creating+an+Element">Creating an Element<span><a href="#label-Creating+an+Element">&para;</a> <a href="#top">&uarr;</a></span></h4>
+<h4 id="label-Creating+an+Element"><a href="#label-Creating+an+Element">Creating an Element</a></h4>
 
 <p>Create a new element with method <a href="../../REXML/Element.html#method-c-new"><code>REXML::Element::new</code></a>:</p>
 
 <pre class="ruby"><span class="ruby-identifier">ele</span> = <span class="ruby-constant">Element</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;foo&#39;</span>) <span class="ruby-comment"># =&gt; &lt;foo/&gt;</span>
 </pre>
 
-<h4 id="label-Setting+Element+Properties">Setting Element Properties<span><a href="#label-Setting+Element+Properties">&para;</a> <a href="#top">&uarr;</a></span></h4>
+<h4 id="label-Setting+Element+Properties"><a href="#label-Setting+Element+Properties">Setting Element Properties</a></h4>
 
 <p>Set the context for an element with method <a href="../../REXML/Element.html#attribute-i-context"><code>REXML::Element#context=</code></a> (see <a href="../context_rdoc.html">Element Context</a>):</p>
 
@@ -1519,7 +1615,7 @@
 <span class="ruby-identifier">ele</span>.<span class="ruby-identifier">text</span> <span class="ruby-comment"># =&gt; &quot;bar&quot;</span>
 </pre>
 
-<h4 id="label-Adding+to+an+Element">Adding to an Element<span><a href="#label-Adding+to+an+Element">&para;</a> <a href="#top">&uarr;</a></span></h4>
+<h4 id="label-Adding+to+an+Element"><a href="#label-Adding+to+an+Element">Adding to an Element</a></h4>
 
 <p>Add a node as the last child with inherited method <a href="../../REXML/Parent.html#method-i-add"><code>REXML::Parent#add</code></a> (or its alias push):</p>
 
@@ -1599,7 +1695,7 @@
 <span class="ruby-identifier">ele</span>.<span class="ruby-identifier">namespaces</span> <span class="ruby-comment"># =&gt; {&quot;xmlns&quot;=&gt;&quot;bar&quot;, &quot;baz&quot;=&gt;&quot;bat&quot;}</span>
 </pre>
 
-<h4 id="label-Deleting+from+an+Element">Deleting from an Element<span><a href="#label-Deleting+from+an+Element">&para;</a> <a href="#top">&uarr;</a></span></h4>
+<h4 id="label-Deleting+from+an+Element"><a href="#label-Deleting+from+an+Element">Deleting from an Element</a></h4>
 
 <p>Delete a specific child object with inherited method <a href="../../REXML/Parent.html#method-i-delete"><code>REXML::Parent#delete</code></a>:</p>
 
@@ -1711,7 +1807,7 @@
 <span class="ruby-identifier">parent</span>.<span class="ruby-identifier">children</span>.<span class="ruby-identifier">size</span>        <span class="ruby-comment"># =&gt; 0</span>
 </pre>
 
-<h4 id="label-Replacing+Nodes">Replacing Nodes<span><a href="#label-Replacing+Nodes">&para;</a> <a href="#top">&uarr;</a></span></h4>
+<h4 id="label-Replacing+Nodes"><a href="#label-Replacing+Nodes">Replacing Nodes</a></h4>
 
 <p>Replace the node at a given 0-based index with inherited method <a href="../../REXML/Parent.html#method-i-5B-5D-3D"><code>REXML::Parent#[]=</code></a>:</p>
 
@@ -1751,7 +1847,7 @@
 <span class="ruby-identifier">ele</span>.<span class="ruby-identifier">children</span>             <span class="ruby-comment"># =&gt; [&lt;bar/&gt;, &quot;baz&quot;, &quot;bah&quot;, &quot;bam&quot;]</span>
 </pre>
 
-<h3 id="label-Cloning">Cloning<span><a href="#label-Cloning">&para;</a> <a href="#top">&uarr;</a></span></h3>
+<h3 id="label-Cloning"><a href="#label-Cloning">Cloning</a></h3>
 
 <p>Create a shallow clone of an element with method <a href="../../REXML/Element.html#method-i-clone"><code>REXML::Element#clone</code></a>. The clone contains the name and attributes, but not the parent or children:</p>
 
@@ -1783,7 +1879,7 @@
 <span class="ruby-identifier">clone</span>.<span class="ruby-identifier">to_s</span>.<span class="ruby-identifier">size</span> <span class="ruby-comment"># =&gt; 825</span>
 </pre>
 
-<h2 id="label-Writing+the+Document">Writing the Document<span><a href="#label-Writing+the+Document">&para;</a> <a href="#top">&uarr;</a></span></h2>
+<h2 id="label-Writing+the+Document"><a href="#label-Writing+the+Document">Writing the Document</a></h2>
 
 <p>Write a document to an IO stream (defaults to <code>$stdout</code>) with method <a href="../../REXML/Document.html#method-i-write"><code>REXML::Document#write</code></a>:</p>
 
@@ -1830,5 +1926,27 @@
 &lt;/bookstore&gt;</pre>
 
 </main>
+
+<aside class="table-of-contents" role="complementary" aria-label="Table of Contents">
+  <div class="toc-sticky">
+    <h3 class="toc-heading">On This Page</h3>
+    <nav class="toc-nav" id="toc-nav" aria-label="Page sections">
+      <!-- Generated by JavaScript based on page headings -->
+    </nav>
+  </div>
+</aside>
+
+
+<footer class="site-footer">
+  
+
+  <div class="footer-bottom">
+    <p>
+      Generated by <a href="https://ruby.github.io/rdoc/">RDoc 7.0.1</a>
+      using the Aliki theme by <a href="http://st0012.dev">Stan Lo</a>
+    </p>
+  </div>
+</footer>
+
 </body>
 

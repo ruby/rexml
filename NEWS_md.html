@@ -9,8 +9,33 @@
 
 
   <meta name="keywords" content="ruby,documentation,NEWS">
-  <meta name="description" content="NEWS: News ## 3. Document.">
+  <meta
+    name="description"
+    content="NEWS: News ## 3. Document."
+  >
 
+
+
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="NEWS - RDoc Documentation">
+
+
+
+    <meta property="og:description" content="News ## 3. Document.">
+
+
+
+
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="NEWS - RDoc Documentation">
+
+
+
+    <meta name="twitter:description" content="News ## 3. Document.">
 
 
 
@@ -19,1084 +44,504 @@
   var index_rel_prefix = "./";
 </script>
 
-<script src="./js/navigation.js" defer></script>
-<script src="./js/search.js" defer></script>
-<script src="./js/search_index.js" defer></script>
-<script src="./js/searcher.js" defer></script>
-<script src="./js/darkfish.js" defer></script>
+<script
+  src="./js/theme-toggle.js?v=7.0.1"
+></script>
 
-<link href="./css/fonts.css" rel="stylesheet">
-<link href="./css/rdoc.css" rel="stylesheet">
+<script
+  src="./js/search_navigation.js?v=7.0.1"
+  defer
+></script>
+
+<script
+  src="./js/search_data.js?v=7.0.1"
+  defer
+></script>
+
+<script
+  src="./js/search_ranker.js?v=7.0.1"
+  defer
+></script>
+
+<script
+  src="./js/search_controller.js?v=7.0.1"
+  defer
+></script>
+
+<script
+  src="./js/c_highlighter.js?v=7.0.1"
+  defer
+></script>
+
+<script
+  src="./js/aliki.js?v=7.0.1"
+  defer
+></script>
+
+<link
+  href="./css/rdoc.css?v=7.0.1"
+  rel="stylesheet"
+>
 
 
 
-<body id="top" role="document" class="file">
+
+<body role="document" class="file has-toc">
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <!-- Chevron (right arrow) - used for expand/collapse -->
+  <symbol
+    id="icon-chevron"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  >
+    <polyline points="9 18 15 12 9 6"></polyline>
+  </symbol>
+
+  <!-- File/Document - Pages section -->
+  <symbol
+    id="icon-file"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  >
+    <path
+      d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"
+    ></path>
+
+    <polyline points="14 2 14 8 20 8"></polyline>
+  </symbol>
+
+  <!-- Layers/Stack - Classes and Modules section -->
+  <symbol
+    id="icon-layers"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  >
+    <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+    <polyline points="2 17 12 22 22 17"></polyline>
+    <polyline points="2 12 12 17 22 12"></polyline>
+  </symbol>
+
+  <!-- Curly braces with C - Class Methods section -->
+  <symbol
+    id="icon-class-methods"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  >
+    <path d="M6 3C3.5 3 2 4.5 2 7v3c0 1.5-1 2-1 2s1 .5 1 2v5c0 2.5 1.5 4 4 4"></path>
+    <path d="M18 3c2.5 0 4 1.5 4 4v3c0 1.5 1 2 1 2s-1 .5-1 2v5c0 2.5-1.5 4-4 4"></path>
+
+    <text
+      x="12"
+      y="17"
+      text-anchor="middle"
+      font-size="13"
+      font-weight="bold"
+      fill="currentColor"
+      stroke="none"
+    >
+      C
+    </text>
+  </symbol>
+
+  <!-- Curly braces with I - Instance Methods section -->
+  <symbol
+    id="icon-instance-methods"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  >
+    <path d="M6 3C3.5 3 2 4.5 2 7v3c0 1.5-1 2-1 2s1 .5 1 2v5c0 2.5 1.5 4 4 4"></path>
+    <path d="M18 3c2.5 0 4 1.5 4 4v3c0 1.5 1 2 1 2s-1 .5-1 2v5c0 2.5-1.5 4-4 4"></path>
+
+    <text
+      x="12"
+      y="17"
+      text-anchor="middle"
+      font-size="13"
+      font-weight="bold"
+      fill="currentColor"
+      stroke="none"
+    >
+      I
+    </text>
+  </symbol>
+
+  <!-- Double chevrons up - Ancestors section -->
+  <symbol
+    id="icon-ancestors"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  >
+    <polyline points="17 11 12 6 7 11"></polyline>
+    <polyline points="17 18 12 13 7 18"></polyline>
+  </symbol>
+
+  <!-- User with plus - Included Modules section -->
+  <symbol
+    id="icon-includes"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  >
+    <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+    <circle cx="8.5" cy="7" r="4"></circle>
+
+    <line
+      x1="20"
+      y1="8"
+      x2="20"
+      y2="14"
+    ></line>
+
+    <line
+      x1="23"
+      y1="11"
+      x2="17"
+      y2="11"
+    ></line>
+  </symbol>
+
+  <!-- User with check - Extended Modules section -->
+  <symbol
+    id="icon-extends"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  >
+    <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+    <circle cx="8.5" cy="7" r="4"></circle>
+    <polyline points="17 11 19 13 23 9"></polyline>
+  </symbol>
+
+  <!-- List - Sections section -->
+  <symbol
+    id="icon-list"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  >
+    <line
+      x1="8"
+      y1="6"
+      x2="21"
+      y2="6"
+    ></line>
+
+    <line
+      x1="8"
+      y1="12"
+      x2="21"
+      y2="12"
+    ></line>
+
+    <line
+      x1="8"
+      y1="18"
+      x2="21"
+      y2="18"
+    ></line>
+
+    <line
+      x1="3"
+      y1="6"
+      x2="3.01"
+      y2="6"
+    ></line>
+
+    <line
+      x1="3"
+      y1="12"
+      x2="3.01"
+      y2="12"
+    ></line>
+
+    <line
+      x1="3"
+      y1="18"
+      x2="3.01"
+      y2="18"
+    ></line>
+  </symbol>
+</svg>
+
+<header class="top-navbar">
+  <a href="./index.html" class="navbar-brand">
+    RDoc Documentation
+  </a>
+
+  <!-- Desktop search bar -->
+  <div class="navbar-search navbar-search-desktop" role="search">
+    <form action="#" method="get" accept-charset="utf-8">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results-desktop"
+             type="text" name="search" placeholder="Search (/) for a class, method..."
+             spellcheck="false" autocomplete="off"
+             title="Type to search, Up and Down to navigate, Enter to load">
+      <ul id="search-results-desktop" aria-label="Search Results"
+          aria-busy="false" aria-expanded="false"
+          aria-atomic="false" class="initially-hidden search-results"></ul>
+    </form>
+  </div>
+
+  <!-- Mobile search icon button -->
+  <button id="search-toggle" class="navbar-search-mobile" aria-label="Open search" type="button">
+    <span aria-hidden="true">🔍</span>
+  </button>
+
+  <!-- Theme toggle button -->
+  <button id="theme-toggle" class="theme-toggle" aria-label="Switch to dark mode" type="button">
+    <span class="theme-toggle-icon" aria-hidden="true">🌙</span>
+  </button>
+</header>
+
+<!-- Search Modal (Mobile) -->
+<div id="search-modal" class="search-modal" hidden aria-modal="true" role="dialog" aria-label="Search">
+  <div class="search-modal-backdrop"></div>
+  <div class="search-modal-content">
+    <div class="search-modal-header">
+      <form class="search-modal-form" action="#" method="get" accept-charset="utf-8">
+        <span class="search-modal-icon" aria-hidden="true">🔍</span>
+        <input id="search-field-mobile" role="combobox" aria-label="Search"
+               aria-autocomplete="list" aria-controls="search-results-mobile"
+               type="text" name="search" placeholder="Search documentation"
+               spellcheck="false" autocomplete="off">
+        <button type="button" class="search-modal-close" aria-label="Close search" id="search-modal-close">
+          <span aria-hidden="true">esc</span>
+        </button>
+      </form>
+    </div>
+    <div class="search-modal-body">
+      <ul id="search-results-mobile" aria-label="Search Results"
+          aria-busy="false" aria-expanded="false"
+          aria-atomic="false" class="search-results search-modal-results initially-hidden"></ul>
+      <div class="search-modal-empty">
+        <p>No recent searches</p>
+      </div>
+    </div>
+  </div>
+</div>
+
 <div id="navigation-toggle" role="button" tabindex="0" aria-label="Toggle sidebar" aria-expanded="true" aria-controls="navigation">
   <span aria-hidden="true">&#9776;</span>
 </div>
 
 
 <nav id="navigation" role="navigation">
-  <div id="project-navigation">
-    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
-  <h2>
-    <a href="./index.html" rel="home">Home</a>
-  </h2>
-
-  <div id="table-of-contents-navigation">
-    <a href="./table_of_contents.html#pages">Pages</a>
-    <a href="./table_of_contents.html#classes">Classes</a>
-    <a href="./table_of_contents.html#methods">Methods</a>
-  </div>
-</div>
-
-    <div id="search-section" role="search" class="project-section initially-hidden">
-  <form action="#" method="get" accept-charset="utf-8">
-    <div id="search-field-wrapper">
-      <input id="search-field" role="combobox" aria-label="Search"
-             aria-autocomplete="list" aria-controls="search-results"
-             type="text" name="search" placeholder="Search (/) for a class, method, ..." spellcheck="false"
-             title="Type to search, Up and Down to navigate, Enter to load">
-    </div>
-
-    <ul id="search-results" aria-label="Search Results"
-        aria-busy="false" aria-expanded="false"
-        aria-atomic="false" class="initially-hidden"></ul>
-  </form>
-</div>
-
-  </div>
-
-  
-<div class="nav-section">
-  <h3>Table of Contents</h3>
-
-
-
-
-
-  <ul class="link-list" role="directory">
-    
-
-
-
-
-          <li>
-            <details open>
-              <summary>
-      <a href="#label-News">News</a>
-</summary>
-              <ul class="link-list" role="directory">
-                
-
-
-
-
-          <li>
-            <details open>
-              <summary>
-      <a href="#label-3.4.4+-+2025-09-10+-7B-23version-3-4-4-7D">3.4.4 - 2025-09-10 {#version-3-4-4}</a>
-</summary>
-              <ul class="link-list" role="directory">
-                
-
-
-
-
-          <li>
-      <a href="#label-Improvement">Improvement</a>
-</li>
-
-
-
-
-          <li>
-      <a href="#label-Thanks">Thanks</a>
-</li>
-
-
-
-              </ul>
-            </details>
-          </li>
-
-
-
-
-          <li>
-            <details open>
-              <summary>
-      <a href="#label-3.4.3+-+2025-09-07+-7B-23version-3-4-3-7D">3.4.3 - 2025-09-07 {#version-3-4-3}</a>
-</summary>
-              <ul class="link-list" role="directory">
-                
-
-
-
-
-          <li>
-      <a href="#label-Improvement">Improvement</a>
-</li>
-
-
-
-
-          <li>
-      <a href="#label-Fixes">Fixes</a>
-</li>
-
-
-
-
-          <li>
-      <a href="#label-Thanks">Thanks</a>
-</li>
-
-
-
-              </ul>
-            </details>
-          </li>
-
-
-
-
-          <li>
-            <details open>
-              <summary>
-      <a href="#label-3.4.2+-+2025-08-26+-7B-23version-3-4-2-7D">3.4.2 - 2025-08-26 {#version-3-4-2}</a>
-</summary>
-              <ul class="link-list" role="directory">
-                
-
-
-
-
-          <li>
-      <a href="#label-Improvement">Improvement</a>
-</li>
-
-
-
-
-          <li>
-      <a href="#label-Fixes">Fixes</a>
-</li>
-
-
-
-
-          <li>
-      <a href="#label-Thanks">Thanks</a>
-</li>
-
-
-
-              </ul>
-            </details>
-          </li>
-
-
-
-
-          <li>
-            <details open>
-              <summary>
-      <a href="#label-3.4.1+-+2025-02-16+-7B-23version-3-4-1-7D">3.4.1 - 2025-02-16 {#version-3-4-1}</a>
-</summary>
-              <ul class="link-list" role="directory">
-                
-
-
-
-
-          <li>
-      <a href="#label-Improvement">Improvement</a>
-</li>
-
-
-
-
-          <li>
-      <a href="#label-Fixes">Fixes</a>
-</li>
-
-
-
-
-          <li>
-      <a href="#label-Thanks">Thanks</a>
-</li>
-
-
-
-              </ul>
-            </details>
-          </li>
-
-
-
-
-          <li>
-            <details open>
-              <summary>
-      <a href="#label-3.4.0+-+2024-12-15+-7B-23version-3-4-0-7D">3.4.0 - 2024-12-15 {#version-3-4-0}</a>
-</summary>
-              <ul class="link-list" role="directory">
-                
-
-
-
-
-          <li>
-      <a href="#label-Improvement">Improvement</a>
-</li>
-
-
-
-
-          <li>
-      <a href="#label-Thanks">Thanks</a>
-</li>
-
-
-
-              </ul>
-            </details>
-          </li>
-
-
-
-
-          <li>
-            <details open>
-              <summary>
-      <a href="#label-3.3.9+-+2024-10-24+-7B-23version-3-3-9-7D">3.3.9 - 2024-10-24 {#version-3-3-9}</a>
-</summary>
-              <ul class="link-list" role="directory">
-                
-
-
-
-
-          <li>
-      <a href="#label-Improvements">Improvements</a>
-</li>
-
-
-
-
-          <li>
-      <a href="#label-Fixes">Fixes</a>
-</li>
-
-
-
-
-          <li>
-      <a href="#label-Thanks">Thanks</a>
-</li>
-
-
-
-              </ul>
-            </details>
-          </li>
-
-
-
-
-          <li>
-            <details open>
-              <summary>
-      <a href="#label-3.3.8+-+2024-09-29+-7B-23version-3-3-8-7D">3.3.8 - 2024-09-29 {#version-3-3-8}</a>
-</summary>
-              <ul class="link-list" role="directory">
-                
-
-
-
-
-          <li>
-      <a href="#label-Improvements">Improvements</a>
-</li>
-
-
-
-
-          <li>
-      <a href="#label-Fixes">Fixes</a>
-</li>
-
-
-
-
-          <li>
-      <a href="#label-Thanks">Thanks</a>
-</li>
-
-
-
-              </ul>
-            </details>
-          </li>
-
-
-
-
-          <li>
-            <details open>
-              <summary>
-      <a href="#label-3.3.7+-+2024-09-04+-7B-23version-3-3-7-7D">3.3.7 - 2024-09-04 {#version-3-3-7}</a>
-</summary>
-              <ul class="link-list" role="directory">
-                
-
-
-
-
-          <li>
-      <a href="#label-Improvements">Improvements</a>
-</li>
-
-
-
-
-          <li>
-      <a href="#label-Thanks">Thanks</a>
-</li>
-
-
-
-              </ul>
-            </details>
-          </li>
-
-
-
-
-          <li>
-            <details open>
-              <summary>
-      <a href="#label-3.3.6+-+2024-08-22+-7B-23version-3-3-6-7D">3.3.6 - 2024-08-22 {#version-3-3-6}</a>
-</summary>
-              <ul class="link-list" role="directory">
-                
-
-
-
-
-          <li>
-      <a href="#label-Improvements">Improvements</a>
-</li>
-
-
-
-
-          <li>
-      <a href="#label-Fixes">Fixes</a>
-</li>
-
-
-
-
-          <li>
-      <a href="#label-Thanks">Thanks</a>
-</li>
-
-
-
-              </ul>
-            </details>
-          </li>
-
-
-
-
-          <li>
-            <details open>
-              <summary>
-      <a href="#label-3.3.5+-+2024-08-12+-7B-23version-3-3-5-7D">3.3.5 - 2024-08-12 {#version-3-3-5}</a>
-</summary>
-              <ul class="link-list" role="directory">
-                
-
-
-
-
-          <li>
-      <a href="#label-Fixes">Fixes</a>
-</li>
-
-
-
-
-          <li>
-      <a href="#label-Thanks">Thanks</a>
-</li>
-
-
-
-              </ul>
-            </details>
-          </li>
-
-
-
-
-          <li>
-            <details open>
-              <summary>
-      <a href="#label-3.3.4+-+2024-08-01+-7B-23version-3-3-4-7D">3.3.4 - 2024-08-01 {#version-3-3-4}</a>
-</summary>
-              <ul class="link-list" role="directory">
-                
-
-
-
-
-          <li>
-      <a href="#label-Fixes">Fixes</a>
-</li>
-
-
-
-
-          <li>
-      <a href="#label-Thanks">Thanks</a>
-</li>
-
-
-
-              </ul>
-            </details>
-          </li>
-
-
-
-
-          <li>
-            <details open>
-              <summary>
-      <a href="#label-3.3.3+-+2024-08-01+-7B-23version-3-3-3-7D">3.3.3 - 2024-08-01 {#version-3-3-3}</a>
-</summary>
-              <ul class="link-list" role="directory">
-                
-
-
-
-
-          <li>
-      <a href="#label-Improvements">Improvements</a>
-</li>
-
-
-
-
-          <li>
-      <a href="#label-Thanks">Thanks</a>
-</li>
-
-
-
-              </ul>
-            </details>
-          </li>
-
-
-
-
-          <li>
-            <details open>
-              <summary>
-      <a href="#label-3.3.2+-+2024-07-16+-7B-23version-3-3-2-7D">3.3.2 - 2024-07-16 {#version-3-3-2}</a>
-</summary>
-              <ul class="link-list" role="directory">
-                
-
-
-
-
-          <li>
-      <a href="#label-Improvements">Improvements</a>
-</li>
-
-
-
-
-          <li>
-      <a href="#label-Fixes">Fixes</a>
-</li>
-
-
-
-
-          <li>
-      <a href="#label-Thanks">Thanks</a>
-</li>
-
-
-
-              </ul>
-            </details>
-          </li>
-
-
-
-
-          <li>
-            <details open>
-              <summary>
-      <a href="#label-3.3.1+-+2024-06-25+-7B-23version-3-3-1-7D">3.3.1 - 2024-06-25 {#version-3-3-1}</a>
-</summary>
-              <ul class="link-list" role="directory">
-                
-
-
-
-
-          <li>
-      <a href="#label-Improvements">Improvements</a>
-</li>
-
-
-
-
-          <li>
-      <a href="#label-Fixes">Fixes</a>
-</li>
-
-
-
-
-          <li>
-      <a href="#label-Thanks">Thanks</a>
-</li>
-
-
-
-              </ul>
-            </details>
-          </li>
-
-
-
-
-          <li>
-            <details open>
-              <summary>
-      <a href="#label-3.3.0+-+2024-06-11+-7B-23version-3-3-0-7D">3.3.0 - 2024-06-11 {#version-3-3-0}</a>
-</summary>
-              <ul class="link-list" role="directory">
-                
-
-
-
-
-          <li>
-      <a href="#label-Improvements">Improvements</a>
-</li>
-
-
-
-
-          <li>
-      <a href="#label-Thanks">Thanks</a>
-</li>
-
-
-
-              </ul>
-            </details>
-          </li>
-
-
-
-
-          <li>
-            <details open>
-              <summary>
-      <a href="#label-3.2.9+-+2024-06-09+-7B-23version-3-2-9-7D">3.2.9 - 2024-06-09 {#version-3-2-9}</a>
-</summary>
-              <ul class="link-list" role="directory">
-                
-
-
-
-
-          <li>
-      <a href="#label-Improvements">Improvements</a>
-</li>
-
-
-
-
-          <li>
-      <a href="#label-Thanks">Thanks</a>
-</li>
-
-
-
-              </ul>
-            </details>
-          </li>
-
-
-
-
-          <li>
-            <details open>
-              <summary>
-      <a href="#label-3.2.8+-+2024-05-16+-7B-23version-3-2-8-7D">3.2.8 - 2024-05-16 {#version-3-2-8}</a>
-</summary>
-              <ul class="link-list" role="directory">
-                
-
-
-
-
-          <li>
-      <a href="#label-Fixes">Fixes</a>
-</li>
-
-
-
-              </ul>
-            </details>
-          </li>
-
-
-
-
-          <li>
-            <details open>
-              <summary>
-      <a href="#label-3.2.7+-+2024-05-16+-7B-23version-3-2-7-7D">3.2.7 - 2024-05-16 {#version-3-2-7}</a>
-</summary>
-              <ul class="link-list" role="directory">
-                
-
-
-
-
-          <li>
-      <a href="#label-Improvements">Improvements</a>
-</li>
-
-
-
-
-          <li>
-      <a href="#label-Fixes">Fixes</a>
-</li>
-
-
-
-
-          <li>
-      <a href="#label-Thanks">Thanks</a>
-</li>
-
-
-
-              </ul>
-            </details>
-          </li>
-
-
-
-
-          <li>
-            <details open>
-              <summary>
-      <a href="#label-3.2.6+-+2023-07-27+-7B-23version-3-2-6-7D">3.2.6 - 2023-07-27 {#version-3-2-6}</a>
-</summary>
-              <ul class="link-list" role="directory">
-                
-
-
-
-
-          <li>
-      <a href="#label-Improvements">Improvements</a>
-</li>
-
-
-
-
-          <li>
-      <a href="#label-Fixes">Fixes</a>
-</li>
-
-
-
-
-          <li>
-      <a href="#label-Thanks">Thanks</a>
-</li>
-
-
-
-              </ul>
-            </details>
-          </li>
-
-
-
-
-          <li>
-            <details open>
-              <summary>
-      <a href="#label-3.2.5+-+2021-04-05+-7B-23version-3-2-5-7D">3.2.5 - 2021-04-05 {#version-3-2-5}</a>
-</summary>
-              <ul class="link-list" role="directory">
-                
-
-
-
-
-          <li>
-      <a href="#label-Improvements">Improvements</a>
-</li>
-
-
-
-
-          <li>
-      <a href="#label-Fixes">Fixes</a>
-</li>
-
-
-
-
-          <li>
-      <a href="#label-Thanks">Thanks</a>
-</li>
-
-
-
-              </ul>
-            </details>
-          </li>
-
-
-
-
-          <li>
-            <details open>
-              <summary>
-      <a href="#label-3.2.4+-+2020-01-31+-7B-23version-3-2-4-7D">3.2.4 - 2020-01-31 {#version-3-2-4}</a>
-</summary>
-              <ul class="link-list" role="directory">
-                
-
-
-
-
-          <li>
-      <a href="#label-Improvements">Improvements</a>
-</li>
-
-
-
-
-          <li>
-      <a href="#label-Fixes">Fixes</a>
-</li>
-
-
-
-
-          <li>
-      <a href="#label-Thanks">Thanks</a>
-</li>
-
-
-
-              </ul>
-            </details>
-          </li>
-
-
-
-
-          <li>
-            <details open>
-              <summary>
-      <a href="#label-3.2.3+-+2019-10-12+-7B-23version-3-2-3-7D">3.2.3 - 2019-10-12 {#version-3-2-3}</a>
-</summary>
-              <ul class="link-list" role="directory">
-                
-
-
-
-
-          <li>
-      <a href="#label-Fixes">Fixes</a>
-</li>
-
-
-
-
-          <li>
-      <a href="#label-Thanks">Thanks</a>
-</li>
-
-
-
-              </ul>
-            </details>
-          </li>
-
-
-
-
-          <li>
-            <details open>
-              <summary>
-      <a href="#label-3.2.2+-+2019-06-03+-7B-23version-3-2-2-7D">3.2.2 - 2019-06-03 {#version-3-2-2}</a>
-</summary>
-              <ul class="link-list" role="directory">
-                
-
-
-
-
-          <li>
-      <a href="#label-Fixes">Fixes</a>
-</li>
-
-
-
-
-          <li>
-      <a href="#label-Thanks">Thanks</a>
-</li>
-
-
-
-              </ul>
-            </details>
-          </li>
-
-
-
-
-          <li>
-            <details open>
-              <summary>
-      <a href="#label-3.2.1+-+2019-05-04+-7B-23version-3-2-1-7D">3.2.1 - 2019-05-04 {#version-3-2-1}</a>
-</summary>
-              <ul class="link-list" role="directory">
-                
-
-
-
-
-          <li>
-      <a href="#label-Improvements">Improvements</a>
-</li>
-
-
-
-
-          <li>
-      <a href="#label-Fixes">Fixes</a>
-</li>
-
-
-
-
-          <li>
-      <a href="#label-Thanks">Thanks</a>
-</li>
-
-
-
-              </ul>
-            </details>
-          </li>
-
-
-
-
-          <li>
-            <details open>
-              <summary>
-      <a href="#label-3.2.0+-+2019-01-01+-7B-23version-3-2-0-7D">3.2.0 - 2019-01-01 {#version-3-2-0}</a>
-</summary>
-              <ul class="link-list" role="directory">
-                
-
-
-
-
-          <li>
-      <a href="#label-Fixes">Fixes</a>
-</li>
-
-
-
-
-          <li>
-      <a href="#label-Thanks">Thanks</a>
-</li>
-
-
-
-              </ul>
-            </details>
-          </li>
-
-
-
-
-          <li>
-            <details open>
-              <summary>
-      <a href="#label-3.1.9+-+2018-12-20+-7B-23version-3-1-9-7D">3.1.9 - 2018-12-20 {#version-3-1-9}</a>
-</summary>
-              <ul class="link-list" role="directory">
-                
-
-
-
-
-          <li>
-      <a href="#label-Improvements">Improvements</a>
-</li>
-
-
-
-              </ul>
-            </details>
-          </li>
-
-
-
-
-          <li>
-            <details open>
-              <summary>
-      <a href="#label-3.1.8+-+2018-12-20+-7B-23version-3-1-8-7D">3.1.8 - 2018-12-20 {#version-3-1-8}</a>
-</summary>
-              <ul class="link-list" role="directory">
-                
-
-
-
-
-          <li>
-      <a href="#label-Improvements">Improvements</a>
-</li>
-
-
-
-
-          <li>
-      <a href="#label-Fixes">Fixes</a>
-</li>
-
-
-
-
-          <li>
-      <a href="#label-Thanks">Thanks</a>
-</li>
-
-
-
-              </ul>
-            </details>
-          </li>
-
-
-
-              </ul>
-            </details>
-          </li>
-
-
-
-  </ul>
-</div>
-
-
   
 
 
 
 
-<div id="fileindex-section" class="nav-section">
-  <h3>Pages</h3>
-
-  <ul class="link-list">
 
 
+  <div id="fileindex-section" class="nav-section">
+    <details class="nav-section-collapsible" open>
+      <summary class="nav-section-header">
+        <span class="nav-section-icon">
+          <svg>
+            <use href="#icon-file"></use>
+          </svg>
+        </span>
 
-    <li><a href="./LICENSE_txt.html">LICENSE</a></li>
+        <span class="nav-section-title">Pages</span>
+
+        <span class="nav-section-chevron">
+          <svg>
+            <use href="#icon-chevron"></use>
+          </svg>
+        </span>
+      </summary>
+
+      <ul class="nav-list">
 
 
 
-    <li><a href="./NEWS_md.html">NEWS</a></li>
 
 
 
-    <li><a href="./README_md.html">README</a></li>
+            <li>
+              <a href="./LICENSE_txt.html">
+                LICENSE
+              </a>
+            </li>
 
 
 
-    <li><details><summary>doc</summary>
-    <ul class="link-list">
 
-      <li><a href="./doc/rexml/context_rdoc.html">context</a></li>
+            <li>
+              <a href="./NEWS_md.html">
+                NEWS
+              </a>
+            </li>
 
-      <li><a href="./doc/rexml/tasks/rdoc/child_rdoc.html">child</a></li>
 
-      <li><a href="./doc/rexml/tasks/rdoc/document_rdoc.html">document</a></li>
 
-      <li><a href="./doc/rexml/tasks/rdoc/element_rdoc.html">element</a></li>
 
-      <li><a href="./doc/rexml/tasks/rdoc/node_rdoc.html">node</a></li>
+            <li>
+              <a href="./README_md.html">
+                README
+              </a>
+            </li>
 
-      <li><a href="./doc/rexml/tasks/rdoc/parent_rdoc.html">parent</a></li>
 
-      <li><a href="./doc/rexml/tasks/tocs/child_toc_rdoc.html">child_toc</a></li>
 
-      <li><a href="./doc/rexml/tasks/tocs/document_toc_rdoc.html">document_toc</a></li>
 
-      <li><a href="./doc/rexml/tasks/tocs/element_toc_rdoc.html">element_toc</a></li>
 
-      <li><a href="./doc/rexml/tasks/tocs/master_toc_rdoc.html">master_toc</a></li>
+          <li>
+            <details >
+              <summary>
+                
+                  doc
+                  
+                
+              </summary>
 
-      <li><a href="./doc/rexml/tasks/tocs/node_toc_rdoc.html">node_toc</a></li>
+              <ul class="link-list">
 
-      <li><a href="./doc/rexml/tasks/tocs/parent_toc_rdoc.html">parent_toc</a></li>
+                  <li>
+                    <a href="./doc/rexml/context_rdoc.html">
+                      context
+                    </a>
+                  </li>
 
-      <li><a href="./doc/rexml/tutorial_rdoc.html">tutorial</a></li>
+                  <li>
+                    <a href="./doc/rexml/tasks/includes/child_toc_rdoc.html">
+                      child_toc
+                    </a>
+                  </li>
 
-    </ul></details></li>
+                  <li>
+                    <a href="./doc/rexml/tasks/includes/document_toc_rdoc.html">
+                      document_toc
+                    </a>
+                  </li>
 
-  </ul>
+                  <li>
+                    <a href="./doc/rexml/tasks/includes/element_toc_rdoc.html">
+                      element_toc
+                    </a>
+                  </li>
+
+                  <li>
+                    <a href="./doc/rexml/tasks/includes/node_toc_rdoc.html">
+                      node_toc
+                    </a>
+                  </li>
+
+                  <li>
+                    <a href="./doc/rexml/tasks/includes/parent_toc_rdoc.html">
+                      parent_toc
+                    </a>
+                  </li>
+
+                  <li>
+                    <a href="./doc/rexml/tasks/rdoc/child_rdoc.html">
+                      child
+                    </a>
+                  </li>
+
+                  <li>
+                    <a href="./doc/rexml/tasks/rdoc/document_rdoc.html">
+                      document
+                    </a>
+                  </li>
+
+                  <li>
+                    <a href="./doc/rexml/tasks/rdoc/element_rdoc.html">
+                      element
+                    </a>
+                  </li>
+
+                  <li>
+                    <a href="./doc/rexml/tasks/rdoc/node_rdoc.html">
+                      node
+                    </a>
+                  </li>
+
+                  <li>
+                    <a href="./doc/rexml/tasks/rdoc/parent_rdoc.html">
+                      parent
+                    </a>
+                  </li>
+
+                  <li>
+                    <a href="./doc/rexml/tasks/rdoc/toc_rdoc.html">
+                      toc
+                    </a>
+                  </li>
+
+                  <li>
+                    <a href="./doc/rexml/tutorial_rdoc.html">
+                      tutorial
+                    </a>
+                  </li>
+
+              </ul>
+            </details>
+          </li>
+
+      </ul>
+    </details>
+  </div>
+
+
+  <div id="classindex-section" class="nav-section">
+  <details class="nav-section-collapsible" open>
+    <summary class="nav-section-header">
+      <span class="nav-section-icon">
+        <svg><use href="#icon-layers"></use></svg>
+      </span>
+      <span class="nav-section-title">Classes and Modules</span>
+      <span class="nav-section-chevron">
+        <svg><use href="#icon-chevron"></use></svg>
+      </span>
+    </summary>
+
+    <ul class="link-list nav-list"><li><details open><summary><code><a href="./REXML.html">REXML</a></code></summary><ul class="link-list nav-list"><li><code><a href="./REXML/AttlistDecl.html">AttlistDecl</a></code></li><li><code><a href="./REXML/Attribute.html">Attribute</a></code></li><li><code><a href="./REXML/Attributes.html">Attributes</a></code></li><li><code><a href="./REXML/CData.html">CData</a></code></li><li><code><a href="./REXML/Child.html">Child</a></code></li><li><code><a href="./REXML/Comment.html">Comment</a></code></li><li><code><a href="./REXML/DClonable.html">DClonable</a></code></li><li><details><summary><code><a href="./REXML/DTD.html">DTD</a></code></summary><ul class="link-list nav-list"><li><code><a href="./REXML/DTD/AttlistDecl.html">AttlistDecl</a></code></li><li><code><a href="./REXML/DTD/ElementDecl.html">ElementDecl</a></code></li><li><code><a href="./REXML/DTD/EntityDecl.html">EntityDecl</a></code></li><li><code><a href="./REXML/DTD/NotationDecl.html">NotationDecl</a></code></li><li><code><a href="./REXML/DTD/Parser.html">Parser</a></code></li></ul></details></li><li><code><a href="./REXML/Declaration.html">Declaration</a></code></li><li><code><a href="./REXML/DocType.html">DocType</a></code></li><li><code><a href="./REXML/Document.html">Document</a></code></li><li><code><a href="./REXML/Element.html">Element</a></code></li><li><code><a href="./REXML/ElementDecl.html">ElementDecl</a></code></li><li><code><a href="./REXML/Elements.html">Elements</a></code></li><li><code><a href="./REXML/Encoding.html">Encoding</a></code></li><li><code><a href="./REXML/Entity.html">Entity</a></code></li><li><code><a href="./REXML/EntityConst.html">EntityConst</a></code></li><li><code><a href="./REXML/ExternalEntity.html">ExternalEntity</a></code></li><li><details><summary><code><a href="./REXML/Formatters.html">Formatters</a></code></summary><ul class="link-list nav-list"><li><code><a href="./REXML/Formatters/Default.html">Default</a></code></li><li><code><a href="./REXML/Formatters/Pretty.html">Pretty</a></code></li><li><code><a href="./REXML/Formatters/Transitive.html">Transitive</a></code></li></ul></details></li><li><code><a href="./REXML/Functions.html">Functions</a></code></li><li><code><a href="./REXML/IOSource.html">IOSource</a></code></li><li><code><a href="./REXML/Instruction.html">Instruction</a></code></li><li><details><summary><code><a href="./REXML/Light.html">Light</a></code></summary><ul class="link-list nav-list"><li><code><a href="./REXML/Light/Node.html">Node</a></code></li></ul></details></li><li><code><a href="./REXML/Namespace.html">Namespace</a></code></li><li><code><a href="./REXML/Node.html">Node</a></code></li><li><code><a href="./REXML/NotationDecl.html">NotationDecl</a></code></li><li><code><a href="./REXML/Output.html">Output</a></code></li><li><code><a href="./REXML/Parent.html">Parent</a></code></li><li><code><a href="./REXML/ParseException.html">ParseException</a></code></li><li><details><summary><code><a href="./REXML/Parsers.html">Parsers</a></code></summary><ul class="link-list nav-list"><li><details><summary><code><a href="./REXML/Parsers/BaseParser.html">BaseParser</a></code></summary><ul class="link-list nav-list"><li><code><a href="./REXML/Parsers/BaseParser/Private.html">Private</a></code></li></ul></details></li><li><code><a href="./REXML/Parsers/EnumerableTally.html">EnumerableTally</a></code></li><li><code><a href="./REXML/Parsers/LightParser.html">LightParser</a></code></li><li><code><a href="./REXML/Parsers/PullEvent.html">PullEvent</a></code></li><li><code><a href="./REXML/Parsers/PullParser.html">PullParser</a></code></li><li><code><a href="./REXML/Parsers/SAX2Parser.html">SAX2Parser</a></code></li><li><code><a href="./REXML/Parsers/StreamParser.html">StreamParser</a></code></li><li><code><a href="./REXML/Parsers/StringScannerCaptures.html">StringScannerCaptures</a></code></li><li><code><a href="./REXML/Parsers/TreeParser.html">TreeParser</a></code></li><li><code><a href="./REXML/Parsers/UltraLightParser.html">UltraLightParser</a></code></li><li><code><a href="./REXML/Parsers/XPathParser.html">XPathParser</a></code></li></ul></details></li><li><code><a href="./REXML/QuickPath.html">QuickPath</a></code></li><li><code><a href="./REXML/ReferenceWriter.html">ReferenceWriter</a></code></li><li><code><a href="./REXML/SAX2Listener.html">SAX2Listener</a></code></li><li><code><a href="./REXML/Security.html">Security</a></code></li><li><details><summary><code><a href="./REXML/Source.html">Source</a></code></summary><ul class="link-list nav-list"><li><code><a href="./REXML/Source/Private.html">Private</a></code></li></ul></details></li><li><code><a href="./REXML/SourceFactory.html">SourceFactory</a></code></li><li><code><a href="./REXML/StreamListener.html">StreamListener</a></code></li><li><code><a href="./REXML/StringScannerCheckScanString.html">StringScannerCheckScanString</a></code></li><li><code><a href="./REXML/Text.html">Text</a></code></li><li><code><a href="./REXML/UndefinedNamespaceException.html">UndefinedNamespaceException</a></code></li><li><details><summary><code><a href="./REXML/Validation.html">Validation</a></code></summary><ul class="link-list nav-list"><li><code><a href="./REXML/Validation/Choice.html">Choice</a></code></li><li><code><a href="./REXML/Validation/Event.html">Event</a></code></li><li><code><a href="./REXML/Validation/Interleave.html">Interleave</a></code></li><li><code><a href="./REXML/Validation/OneOrMore.html">OneOrMore</a></code></li><li><code><a href="./REXML/Validation/Optional.html">Optional</a></code></li><li><code><a href="./REXML/Validation/Ref.html">Ref</a></code></li><li><code><a href="./REXML/Validation/RelaxNG.html">RelaxNG</a></code></li><li><code><a href="./REXML/Validation/Sequence.html">Sequence</a></code></li><li><code><a href="./REXML/Validation/State.html">State</a></code></li><li><code><a href="./REXML/Validation/ValidationException.html">ValidationException</a></code></li><li><code><a href="./REXML/Validation/Validator.html">Validator</a></code></li><li><code><a href="./REXML/Validation/ZeroOrMore.html">ZeroOrMore</a></code></li></ul></details></li><li><code><a href="./REXML/XMLDecl.html">XMLDecl</a></code></li><li><code><a href="./REXML/XMLTokens.html">XMLTokens</a></code></li><li><code><a href="./REXML/XPath.html">XPath</a></code></li><li><code><a href="./REXML/XPathNode.html">XPathNode</a></code></li><li><code><a href="./REXML/XPathParser.html">XPathParser</a></code></li></ul></details></li></ul>
+  </details>
 </div>
-
-
-
-  <footer id="validator-badges" role="contentinfo">
-  <p><a href="https://validator.w3.org/check/referer">Validate</a></p>
-  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.15.1.</p>
-  <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.</p>
-</footer>
 
 </nav>
 
 <main role="main" aria-label="Page NEWS.md">
 
-<h1 id="label-News">News<span><a href="#label-News">&para;</a> <a href="#top">&uarr;</a></span></h1>
+<h1 id="label-News"><a href="#label-News">News</a></h1>
 
-<h2 id="label-3.4.4+-+2025-09-10+-7B-23version-3-4-4-7D">3.4.4 - 2025-09-10 {#version-3-4-4}<span><a href="#label-3.4.4+-+2025-09-10+-7B-23version-3-4-4-7D">&para;</a> <a href="#top">&uarr;</a></span></h2>
+<h2 id="label-3.4.4+-+2025-09-10+-7B-23version-3-4-4-7D"><a href="#label-3.4.4+-+2025-09-10+-7B-23version-3-4-4-7D">3.4.4 - 2025-09-10 {#version-3-4-4}</a></h2>
 
-<h3 id="label-Improvement">Improvement<span><a href="#label-Improvement">&para;</a> <a href="#top">&uarr;</a></span></h3>
+<h3 id="label-Improvement"><a href="#label-Improvement">Improvement</a></h3>
 <ul><li>
 <p>Accept <a href="REXML/Document.html#method-c-new"><code>REXML::Document.new(&quot;&quot;)</code></a> for backward compatibility</p>
 <ul><li>
@@ -1110,16 +555,16 @@
 </li></ul>
 </li></ul>
 
-<h3 id="label-Thanks">Thanks<span><a href="#label-Thanks">&para;</a> <a href="#top">&uarr;</a></span></h3>
+<h3 id="label-Thanks"><a href="#label-Thanks">Thanks</a></h3>
 <ul><li>
 <p>NAITOH Jun</p>
 </li><li>
 <p>Joe Rafaniello</p>
 </li></ul>
 
-<h2 id="label-3.4.3+-+2025-09-07+-7B-23version-3-4-3-7D">3.4.3 - 2025-09-07 {#version-3-4-3}<span><a href="#label-3.4.3+-+2025-09-07+-7B-23version-3-4-3-7D">&para;</a> <a href="#top">&uarr;</a></span></h2>
+<h2 id="label-3.4.3+-+2025-09-07+-7B-23version-3-4-3-7D"><a href="#label-3.4.3+-+2025-09-07+-7B-23version-3-4-3-7D">3.4.3 - 2025-09-07 {#version-3-4-3}</a></h2>
 
-<h3 id="label-Improvement">Improvement<span><a href="#label-Improvement">&para;</a> <a href="#top">&uarr;</a></span></h3>
+<h3 id="label-Improvement"><a href="#label-Improvement">Improvement</a></h3>
 <ul><li>
 <p>Reject no root element XML as an invalid XML</p>
 <ul><li>
@@ -1133,7 +578,7 @@
 </li></ul>
 </li></ul>
 
-<h3 id="label-Fixes">Fixes<span><a href="#label-Fixes">&para;</a> <a href="#top">&uarr;</a></span></h3>
+<h3 id="label-Fixes"><a href="#label-Fixes">Fixes</a></h3>
 <ul><li>
 <p>Fixed an issue with <code>IOSource#read_until</code> when reaching the end of a file</p>
 <ul><li>
@@ -1147,7 +592,7 @@
 </li></ul>
 </li></ul>
 
-<h3 id="label-Thanks">Thanks<span><a href="#label-Thanks">&para;</a> <a href="#top">&uarr;</a></span></h3>
+<h3 id="label-Thanks"><a href="#label-Thanks">Thanks</a></h3>
 <ul><li>
 <p>NAITOH Jun</p>
 </li><li>
@@ -1156,9 +601,9 @@
 <p>Jason Thomas</p>
 </li></ul>
 
-<h2 id="label-3.4.2+-+2025-08-26+-7B-23version-3-4-2-7D">3.4.2 - 2025-08-26 {#version-3-4-2}<span><a href="#label-3.4.2+-+2025-08-26+-7B-23version-3-4-2-7D">&para;</a> <a href="#top">&uarr;</a></span></h2>
+<h2 id="label-3.4.2+-+2025-08-26+-7B-23version-3-4-2-7D"><a href="#label-3.4.2+-+2025-08-26+-7B-23version-3-4-2-7D">3.4.2 - 2025-08-26 {#version-3-4-2}</a></h2>
 
-<h3 id="label-Improvement">Improvement<span><a href="#label-Improvement">&para;</a> <a href="#top">&uarr;</a></span></h3>
+<h3 id="label-Improvement"><a href="#label-Improvement">Improvement</a></h3>
 <ul><li>
 <p>Improved performance.</p>
 <ul><li>
@@ -1246,7 +691,7 @@
 </li></ul>
 </li></ul>
 
-<h3 id="label-Fixes">Fixes<span><a href="#label-Fixes">&para;</a> <a href="#top">&uarr;</a></span></h3>
+<h3 id="label-Fixes"><a href="#label-Fixes">Fixes</a></h3>
 <ul><li>
 <p>Fix docs typo</p>
 <ul><li>
@@ -1326,7 +771,7 @@
 </li></ul>
 </li></ul>
 
-<h3 id="label-Thanks">Thanks<span><a href="#label-Thanks">&para;</a> <a href="#top">&uarr;</a></span></h3>
+<h3 id="label-Thanks"><a href="#label-Thanks">Thanks</a></h3>
 <ul><li>
 <p>NAITOH Jun</p>
 </li><li>
@@ -1341,9 +786,9 @@
 <p>Sofi Aberegg</p>
 </li></ul>
 
-<h2 id="label-3.4.1+-+2025-02-16+-7B-23version-3-4-1-7D">3.4.1 - 2025-02-16 {#version-3-4-1}<span><a href="#label-3.4.1+-+2025-02-16+-7B-23version-3-4-1-7D">&para;</a> <a href="#top">&uarr;</a></span></h2>
+<h2 id="label-3.4.1+-+2025-02-16+-7B-23version-3-4-1-7D"><a href="#label-3.4.1+-+2025-02-16+-7B-23version-3-4-1-7D">3.4.1 - 2025-02-16 {#version-3-4-1}</a></h2>
 
-<h3 id="label-Improvement">Improvement<span><a href="#label-Improvement">&para;</a> <a href="#top">&uarr;</a></span></h3>
+<h3 id="label-Improvement"><a href="#label-Improvement">Improvement</a></h3>
 <ul><li>
 <p>Improved performance.</p>
 <ul><li>
@@ -1357,7 +802,7 @@
 </li></ul>
 </li></ul>
 
-<h3 id="label-Fixes">Fixes<span><a href="#label-Fixes">&para;</a> <a href="#top">&uarr;</a></span></h3>
+<h3 id="label-Fixes"><a href="#label-Fixes">Fixes</a></h3>
 <ul><li>
 <p>Fix serialization of ATTLIST is incorrect</p>
 <ul><li>
@@ -1371,16 +816,16 @@
 </li></ul>
 </li></ul>
 
-<h3 id="label-Thanks">Thanks<span><a href="#label-Thanks">&para;</a> <a href="#top">&uarr;</a></span></h3>
+<h3 id="label-Thanks"><a href="#label-Thanks">Thanks</a></h3>
 <ul><li>
 <p>NAITOH Jun</p>
 </li><li>
 <p>OlofKalufs</p>
 </li></ul>
 
-<h2 id="label-3.4.0+-+2024-12-15+-7B-23version-3-4-0-7D">3.4.0 - 2024-12-15 {#version-3-4-0}<span><a href="#label-3.4.0+-+2024-12-15+-7B-23version-3-4-0-7D">&para;</a> <a href="#top">&uarr;</a></span></h2>
+<h2 id="label-3.4.0+-+2024-12-15+-7B-23version-3-4-0-7D"><a href="#label-3.4.0+-+2024-12-15+-7B-23version-3-4-0-7D">3.4.0 - 2024-12-15 {#version-3-4-0}</a></h2>
 
-<h3 id="label-Improvement">Improvement<span><a href="#label-Improvement">&para;</a> <a href="#top">&uarr;</a></span></h3>
+<h3 id="label-Improvement"><a href="#label-Improvement">Improvement</a></h3>
 <ul><li>
 <p>Improved performance.</p>
 <ul><li>
@@ -1417,7 +862,7 @@
 </li></ul>
 </li></ul>
 
-<h3 id="label-Thanks">Thanks<span><a href="#label-Thanks">&para;</a> <a href="#top">&uarr;</a></span></h3>
+<h3 id="label-Thanks"><a href="#label-Thanks">Thanks</a></h3>
 <ul><li>
 <p>NAITOH Jun</p>
 </li><li>
@@ -1426,9 +871,9 @@
 <p>Dmitry Pogrebnoy</p>
 </li></ul>
 
-<h2 id="label-3.3.9+-+2024-10-24+-7B-23version-3-3-9-7D">3.3.9 - 2024-10-24 {#version-3-3-9}<span><a href="#label-3.3.9+-+2024-10-24+-7B-23version-3-3-9-7D">&para;</a> <a href="#top">&uarr;</a></span></h2>
+<h2 id="label-3.3.9+-+2024-10-24+-7B-23version-3-3-9-7D"><a href="#label-3.3.9+-+2024-10-24+-7B-23version-3-3-9-7D">3.3.9 - 2024-10-24 {#version-3-3-9}</a></h2>
 
-<h3 id="label-Improvements">Improvements<span><a href="#label-Improvements">&para;</a> <a href="#top">&uarr;</a></span></h3>
+<h3 id="label-Improvements"><a href="#label-Improvements">Improvements</a></h3>
 <ul><li>
 <p>Improved performance.</p>
 <ul><li>
@@ -1438,7 +883,7 @@
 </li></ul>
 </li></ul>
 
-<h3 id="label-Fixes">Fixes<span><a href="#label-Fixes">&para;</a> <a href="#top">&uarr;</a></span></h3>
+<h3 id="label-Fixes"><a href="#label-Fixes">Fixes</a></h3>
 <ul><li>
 <p>Fixed a parse bug for text only invalid XML.</p>
 <ul><li>
@@ -1454,14 +899,14 @@
 <p>Fixed a parse bug that <code>&amp;#0x...;</code> is accepted as a character reference.</p>
 </li></ul>
 
-<h3 id="label-Thanks">Thanks<span><a href="#label-Thanks">&para;</a> <a href="#top">&uarr;</a></span></h3>
+<h3 id="label-Thanks"><a href="#label-Thanks">Thanks</a></h3>
 <ul><li>
 <p>NAITOH Jun</p>
 </li></ul>
 
-<h2 id="label-3.3.8+-+2024-09-29+-7B-23version-3-3-8-7D">3.3.8 - 2024-09-29 {#version-3-3-8}<span><a href="#label-3.3.8+-+2024-09-29+-7B-23version-3-3-8-7D">&para;</a> <a href="#top">&uarr;</a></span></h2>
+<h2 id="label-3.3.8+-+2024-09-29+-7B-23version-3-3-8-7D"><a href="#label-3.3.8+-+2024-09-29+-7B-23version-3-3-8-7D">3.3.8 - 2024-09-29 {#version-3-3-8}</a></h2>
 
-<h3 id="label-Improvements">Improvements<span><a href="#label-Improvements">&para;</a> <a href="#top">&uarr;</a></span></h3>
+<h3 id="label-Improvements"><a href="#label-Improvements">Improvements</a></h3>
 <ul><li>
 <p>SAX2: Improve parse performance.</p>
 <ul><li>
@@ -1471,7 +916,7 @@
 </li></ul>
 </li></ul>
 
-<h3 id="label-Fixes">Fixes<span><a href="#label-Fixes">&para;</a> <a href="#top">&uarr;</a></span></h3>
+<h3 id="label-Fixes"><a href="#label-Fixes">Fixes</a></h3>
 <ul><li>
 <p>Fixed a bug that unexpected attribute namespace conflict error for the predefined “xml” namespace is reported.</p>
 <ul><li>
@@ -1481,16 +926,16 @@
 </li></ul>
 </li></ul>
 
-<h3 id="label-Thanks">Thanks<span><a href="#label-Thanks">&para;</a> <a href="#top">&uarr;</a></span></h3>
+<h3 id="label-Thanks"><a href="#label-Thanks">Thanks</a></h3>
 <ul><li>
 <p>NAITOH Jun</p>
 </li><li>
 <p>KITAITI Makoto</p>
 </li></ul>
 
-<h2 id="label-3.3.7+-+2024-09-04+-7B-23version-3-3-7-7D">3.3.7 - 2024-09-04 {#version-3-3-7}<span><a href="#label-3.3.7+-+2024-09-04+-7B-23version-3-3-7-7D">&para;</a> <a href="#top">&uarr;</a></span></h2>
+<h2 id="label-3.3.7+-+2024-09-04+-7B-23version-3-3-7-7D"><a href="#label-3.3.7+-+2024-09-04+-7B-23version-3-3-7-7D">3.3.7 - 2024-09-04 {#version-3-3-7}</a></h2>
 
-<h3 id="label-Improvements">Improvements<span><a href="#label-Improvements">&para;</a> <a href="#top">&uarr;</a></span></h3>
+<h3 id="label-Improvements"><a href="#label-Improvements">Improvements</a></h3>
 <ul><li>
 <p>Added local entity expansion limit methods</p>
 <ul><li>
@@ -1519,7 +964,7 @@
 </li></ul>
 </li></ul>
 
-<h3 id="label-Thanks">Thanks<span><a href="#label-Thanks">&para;</a> <a href="#top">&uarr;</a></span></h3>
+<h3 id="label-Thanks"><a href="#label-Thanks">Thanks</a></h3>
 <ul><li>
 <p>takuya kodama</p>
 </li><li>
@@ -1528,9 +973,9 @@
 <p>Bo Anderson</p>
 </li></ul>
 
-<h2 id="label-3.3.6+-+2024-08-22+-7B-23version-3-3-6-7D">3.3.6 - 2024-08-22 {#version-3-3-6}<span><a href="#label-3.3.6+-+2024-08-22+-7B-23version-3-3-6-7D">&para;</a> <a href="#top">&uarr;</a></span></h2>
+<h2 id="label-3.3.6+-+2024-08-22+-7B-23version-3-3-6-7D"><a href="#label-3.3.6+-+2024-08-22+-7B-23version-3-3-6-7D">3.3.6 - 2024-08-22 {#version-3-3-6}</a></h2>
 
-<h3 id="label-Improvements">Improvements<span><a href="#label-Improvements">&para;</a> <a href="#top">&uarr;</a></span></h3>
+<h3 id="label-Improvements"><a href="#label-Improvements">Improvements</a></h3>
 <ul><li>
 <p>Removed duplicated entity expansions for performance.</p>
 <ul><li>
@@ -1549,7 +994,7 @@
 </li></ul>
 </li></ul>
 
-<h3 id="label-Fixes">Fixes<span><a href="#label-Fixes">&para;</a> <a href="#top">&uarr;</a></span></h3>
+<h3 id="label-Fixes"><a href="#label-Fixes">Fixes</a></h3>
 <ul><li>
 <p>Fixed a bug that default entity expansions are counted for security check. Default entity expansions should not be counted because they don’t have a security risk.</p>
 <ul><li>
@@ -1581,7 +1026,7 @@
 </li></ul>
 </li></ul>
 
-<h3 id="label-Thanks">Thanks<span><a href="#label-Thanks">&para;</a> <a href="#top">&uarr;</a></span></h3>
+<h3 id="label-Thanks"><a href="#label-Thanks">Thanks</a></h3>
 <ul><li>
 <p>Viktor Ivarsson</p>
 </li><li>
@@ -1590,9 +1035,9 @@
 <p>l33thaxor</p>
 </li></ul>
 
-<h2 id="label-3.3.5+-+2024-08-12+-7B-23version-3-3-5-7D">3.3.5 - 2024-08-12 {#version-3-3-5}<span><a href="#label-3.3.5+-+2024-08-12+-7B-23version-3-3-5-7D">&para;</a> <a href="#top">&uarr;</a></span></h2>
+<h2 id="label-3.3.5+-+2024-08-12+-7B-23version-3-3-5-7D"><a href="#label-3.3.5+-+2024-08-12+-7B-23version-3-3-5-7D">3.3.5 - 2024-08-12 {#version-3-3-5}</a></h2>
 
-<h3 id="label-Fixes">Fixes<span><a href="#label-Fixes">&para;</a> <a href="#top">&uarr;</a></span></h3>
+<h3 id="label-Fixes"><a href="#label-Fixes">Fixes</a></h3>
 <ul><li>
 <p>Fixed a bug that <a href="REXML/Security.html#method-c-entity_expansion_text_limit"><code>REXML::Security.entity_expansion_text_limit</code></a> check has wrong text size calculation in SAX and pull parsers.</p>
 <ul><li>
@@ -1606,16 +1051,16 @@
 </li></ul>
 </li></ul>
 
-<h3 id="label-Thanks">Thanks<span><a href="#label-Thanks">&para;</a> <a href="#top">&uarr;</a></span></h3>
+<h3 id="label-Thanks"><a href="#label-Thanks">Thanks</a></h3>
 <ul><li>
 <p>Viktor Ivarsson</p>
 </li><li>
 <p>NAITOH Jun</p>
 </li></ul>
 
-<h2 id="label-3.3.4+-+2024-08-01+-7B-23version-3-3-4-7D">3.3.4 - 2024-08-01 {#version-3-3-4}<span><a href="#label-3.3.4+-+2024-08-01+-7B-23version-3-3-4-7D">&para;</a> <a href="#top">&uarr;</a></span></h2>
+<h2 id="label-3.3.4+-+2024-08-01+-7B-23version-3-3-4-7D"><a href="#label-3.3.4+-+2024-08-01+-7B-23version-3-3-4-7D">3.3.4 - 2024-08-01 {#version-3-3-4}</a></h2>
 
-<h3 id="label-Fixes">Fixes<span><a href="#label-Fixes">&para;</a> <a href="#top">&uarr;</a></span></h3>
+<h3 id="label-Fixes"><a href="#label-Fixes">Fixes</a></h3>
 <ul><li>
 <p>Fixed a bug that <a href="REXML/Security.html"><code>REXML::Security</code></a> isn’t defined when <a href="REXML/Parsers/StreamParser.html"><code>REXML::Parsers::StreamParser</code></a> is used and <code>rexml/parsers/streamparser</code> is only required.</p>
 <ul><li>
@@ -1625,14 +1070,14 @@
 </li></ul>
 </li></ul>
 
-<h3 id="label-Thanks">Thanks<span><a href="#label-Thanks">&para;</a> <a href="#top">&uarr;</a></span></h3>
+<h3 id="label-Thanks"><a href="#label-Thanks">Thanks</a></h3>
 <ul><li>
 <p>takuya kodama</p>
 </li></ul>
 
-<h2 id="label-3.3.3+-+2024-08-01+-7B-23version-3-3-3-7D">3.3.3 - 2024-08-01 {#version-3-3-3}<span><a href="#label-3.3.3+-+2024-08-01+-7B-23version-3-3-3-7D">&para;</a> <a href="#top">&uarr;</a></span></h2>
+<h2 id="label-3.3.3+-+2024-08-01+-7B-23version-3-3-3-7D"><a href="#label-3.3.3+-+2024-08-01+-7B-23version-3-3-3-7D">3.3.3 - 2024-08-01 {#version-3-3-3}</a></h2>
 
-<h3 id="label-Improvements">Improvements<span><a href="#label-Improvements">&para;</a> <a href="#top">&uarr;</a></span></h3>
+<h3 id="label-Improvements"><a href="#label-Improvements">Improvements</a></h3>
 <ul><li>
 <p>Added support for detecting invalid XML that has unsupported content before root element</p>
 <ul><li>
@@ -1672,7 +1117,7 @@
 </li></ul>
 </li></ul>
 
-<h3 id="label-Thanks">Thanks<span><a href="#label-Thanks">&para;</a> <a href="#top">&uarr;</a></span></h3>
+<h3 id="label-Thanks"><a href="#label-Thanks">Thanks</a></h3>
 <ul><li>
 <p>NAITOH Jun</p>
 </li><li>
@@ -1681,9 +1126,9 @@
 <p>tomoya ishida</p>
 </li></ul>
 
-<h2 id="label-3.3.2+-+2024-07-16+-7B-23version-3-3-2-7D">3.3.2 - 2024-07-16 {#version-3-3-2}<span><a href="#label-3.3.2+-+2024-07-16+-7B-23version-3-3-2-7D">&para;</a> <a href="#top">&uarr;</a></span></h2>
+<h2 id="label-3.3.2+-+2024-07-16+-7B-23version-3-3-2-7D"><a href="#label-3.3.2+-+2024-07-16+-7B-23version-3-3-2-7D">3.3.2 - 2024-07-16 {#version-3-3-2}</a></h2>
 
-<h3 id="label-Improvements">Improvements<span><a href="#label-Improvements">&para;</a> <a href="#top">&uarr;</a></span></h3>
+<h3 id="label-Improvements"><a href="#label-Improvements">Improvements</a></h3>
 <ul><li>
 <p>Improved parse performance.</p>
 <ul><li>
@@ -1748,7 +1193,7 @@
 </li></ul>
 </li></ul>
 
-<h3 id="label-Fixes">Fixes<span><a href="#label-Fixes">&para;</a> <a href="#top">&uarr;</a></span></h3>
+<h3 id="label-Fixes"><a href="#label-Fixes">Fixes</a></h3>
 <ul><li>
 <p>Fixed a bug that SAX2 parser doesn’t expand predefined entities for <code>characters</code> callback.</p>
 <ul><li>
@@ -1758,16 +1203,16 @@
 </li></ul>
 </li></ul>
 
-<h3 id="label-Thanks">Thanks<span><a href="#label-Thanks">&para;</a> <a href="#top">&uarr;</a></span></h3>
+<h3 id="label-Thanks"><a href="#label-Thanks">Thanks</a></h3>
 <ul><li>
 <p>NAITOH Jun</p>
 </li><li>
 <p>Watson</p>
 </li></ul>
 
-<h2 id="label-3.3.1+-+2024-06-25+-7B-23version-3-3-1-7D">3.3.1 - 2024-06-25 {#version-3-3-1}<span><a href="#label-3.3.1+-+2024-06-25+-7B-23version-3-3-1-7D">&para;</a> <a href="#top">&uarr;</a></span></h2>
+<h2 id="label-3.3.1+-+2024-06-25+-7B-23version-3-3-1-7D"><a href="#label-3.3.1+-+2024-06-25+-7B-23version-3-3-1-7D">3.3.1 - 2024-06-25 {#version-3-3-1}</a></h2>
 
-<h3 id="label-Improvements">Improvements<span><a href="#label-Improvements">&para;</a> <a href="#top">&uarr;</a></span></h3>
+<h3 id="label-Improvements"><a href="#label-Improvements">Improvements</a></h3>
 <ul><li>
 <p>Added support for detecting malformed top-level comments.</p>
 <ul><li>
@@ -1818,7 +1263,7 @@
 </li></ul>
 </li></ul>
 
-<h3 id="label-Fixes">Fixes<span><a href="#label-Fixes">&para;</a> <a href="#top">&uarr;</a></span></h3>
+<h3 id="label-Fixes"><a href="#label-Fixes">Fixes</a></h3>
 <ul><li>
 <p>Fixed a bug that large XML can’t be parsed.</p>
 <ul><li>
@@ -1839,7 +1284,7 @@
 </li></ul>
 </li></ul>
 
-<h3 id="label-Thanks">Thanks<span><a href="#label-Thanks">&para;</a> <a href="#top">&uarr;</a></span></h3>
+<h3 id="label-Thanks"><a href="#label-Thanks">Thanks</a></h3>
 <ul><li>
 <p>Hiroya Fujinami</p>
 </li><li>
@@ -1848,9 +1293,9 @@
 <p>fynsta</p>
 </li></ul>
 
-<h2 id="label-3.3.0+-+2024-06-11+-7B-23version-3-3-0-7D">3.3.0 - 2024-06-11 {#version-3-3-0}<span><a href="#label-3.3.0+-+2024-06-11+-7B-23version-3-3-0-7D">&para;</a> <a href="#top">&uarr;</a></span></h2>
+<h2 id="label-3.3.0+-+2024-06-11+-7B-23version-3-3-0-7D"><a href="#label-3.3.0+-+2024-06-11+-7B-23version-3-3-0-7D">3.3.0 - 2024-06-11 {#version-3-3-0}</a></h2>
 
-<h3 id="label-Improvements">Improvements<span><a href="#label-Improvements">&para;</a> <a href="#top">&uarr;</a></span></h3>
+<h3 id="label-Improvements"><a href="#label-Improvements">Improvements</a></h3>
 <ul><li>
 <p>Added support for strscan 0.7.0 installed with Ruby 2.6.</p>
 <ul><li>
@@ -1860,14 +1305,14 @@
 </li></ul>
 </li></ul>
 
-<h3 id="label-Thanks">Thanks<span><a href="#label-Thanks">&para;</a> <a href="#top">&uarr;</a></span></h3>
+<h3 id="label-Thanks"><a href="#label-Thanks">Thanks</a></h3>
 <ul><li>
 <p>Fernando Trigoso</p>
 </li></ul>
 
-<h2 id="label-3.2.9+-+2024-06-09+-7B-23version-3-2-9-7D">3.2.9 - 2024-06-09 {#version-3-2-9}<span><a href="#label-3.2.9+-+2024-06-09+-7B-23version-3-2-9-7D">&para;</a> <a href="#top">&uarr;</a></span></h2>
+<h2 id="label-3.2.9+-+2024-06-09+-7B-23version-3-2-9-7D"><a href="#label-3.2.9+-+2024-06-09+-7B-23version-3-2-9-7D">3.2.9 - 2024-06-09 {#version-3-2-9}</a></h2>
 
-<h3 id="label-Improvements">Improvements<span><a href="#label-Improvements">&para;</a> <a href="#top">&uarr;</a></span></h3>
+<h3 id="label-Improvements"><a href="#label-Improvements">Improvements</a></h3>
 <ul><li>
 <p>Added support for old strscan.</p>
 <ul><li>
@@ -1902,7 +1347,7 @@
 </li></ul>
 </li></ul>
 
-<h3 id="label-Thanks">Thanks<span><a href="#label-Thanks">&para;</a> <a href="#top">&uarr;</a></span></h3>
+<h3 id="label-Thanks"><a href="#label-Thanks">Thanks</a></h3>
 <ul><li>
 <p>Adam</p>
 </li><li>
@@ -1913,16 +1358,16 @@
 <p>mprogrammer</p>
 </li></ul>
 
-<h2 id="label-3.2.8+-+2024-05-16+-7B-23version-3-2-8-7D">3.2.8 - 2024-05-16 {#version-3-2-8}<span><a href="#label-3.2.8+-+2024-05-16+-7B-23version-3-2-8-7D">&para;</a> <a href="#top">&uarr;</a></span></h2>
+<h2 id="label-3.2.8+-+2024-05-16+-7B-23version-3-2-8-7D"><a href="#label-3.2.8+-+2024-05-16+-7B-23version-3-2-8-7D">3.2.8 - 2024-05-16 {#version-3-2-8}</a></h2>
 
-<h3 id="label-Fixes">Fixes<span><a href="#label-Fixes">&para;</a> <a href="#top">&uarr;</a></span></h3>
+<h3 id="label-Fixes"><a href="#label-Fixes">Fixes</a></h3>
 <ul><li>
 <p>Suppressed a warning</p>
 </li></ul>
 
-<h2 id="label-3.2.7+-+2024-05-16+-7B-23version-3-2-7-7D">3.2.7 - 2024-05-16 {#version-3-2-7}<span><a href="#label-3.2.7+-+2024-05-16+-7B-23version-3-2-7-7D">&para;</a> <a href="#top">&uarr;</a></span></h2>
+<h2 id="label-3.2.7+-+2024-05-16+-7B-23version-3-2-7-7D"><a href="#label-3.2.7+-+2024-05-16+-7B-23version-3-2-7-7D">3.2.7 - 2024-05-16 {#version-3-2-7}</a></h2>
 
-<h3 id="label-Improvements">Improvements<span><a href="#label-Improvements">&para;</a> <a href="#top">&uarr;</a></span></h3>
+<h3 id="label-Improvements"><a href="#label-Improvements">Improvements</a></h3>
 <ul><li>
 <p>Improve parse performance by using <code>StringScanner</code>.</p>
 <ul><li>
@@ -1961,7 +1406,7 @@
 </li></ul>
 </li></ul>
 
-<h3 id="label-Fixes">Fixes<span><a href="#label-Fixes">&para;</a> <a href="#top">&uarr;</a></span></h3>
+<h3 id="label-Fixes"><a href="#label-Fixes">Fixes</a></h3>
 <ul><li>
 <p>XPath: Fixed a bug of <code>normalize_space(array)</code>.</p>
 <ul><li>
@@ -1995,7 +1440,7 @@
 </li></ul>
 </li></ul>
 
-<h3 id="label-Thanks">Thanks<span><a href="#label-Thanks">&para;</a> <a href="#top">&uarr;</a></span></h3>
+<h3 id="label-Thanks"><a href="#label-Thanks">Thanks</a></h3>
 <ul><li>
 <p>NAITOH Jun</p>
 </li><li>
@@ -2006,9 +1451,9 @@
 <p>DuKewu</p>
 </li></ul>
 
-<h2 id="label-3.2.6+-+2023-07-27+-7B-23version-3-2-6-7D">3.2.6 - 2023-07-27 {#version-3-2-6}<span><a href="#label-3.2.6+-+2023-07-27+-7B-23version-3-2-6-7D">&para;</a> <a href="#top">&uarr;</a></span></h2>
+<h2 id="label-3.2.6+-+2023-07-27+-7B-23version-3-2-6-7D"><a href="#label-3.2.6+-+2023-07-27+-7B-23version-3-2-6-7D">3.2.6 - 2023-07-27 {#version-3-2-6}</a></h2>
 
-<h3 id="label-Improvements">Improvements<span><a href="#label-Improvements">&para;</a> <a href="#top">&uarr;</a></span></h3>
+<h3 id="label-Improvements"><a href="#label-Improvements">Improvements</a></h3>
 <ul><li>
 <p>Required Ruby 2.5 or later explicitly. <a href="https://github.com/ruby/rexml/issues/69">GH-69</a> [Patch by Ivo Anjo]</p>
 </li><li>
@@ -2027,7 +1472,7 @@
 <p><a href="REXML/Parsers/XPathParser.html#method-i-abbreviate"><code>REXML::Parsers::XPathParser#abbreviate</code></a>: Added support for more patterns. <a href="https://github.com/ruby/rexml/issues/97">GH-97</a> [Reported by pulver]</p>
 </li></ul>
 
-<h3 id="label-Fixes">Fixes<span><a href="#label-Fixes">&para;</a> <a href="#top">&uarr;</a></span></h3>
+<h3 id="label-Fixes"><a href="#label-Fixes">Fixes</a></h3>
 <ul><li>
 <p>Fixed a typo in <a href="NEWS_md.html">NEWS</a>. <a href="https://github.com/ruby/rexml/issues/72">GH-72</a> [Patch by Spencer Goodman]</p>
 </li><li>
@@ -2040,7 +1485,7 @@
 <p>Fixed links in tutorial. <a href="https://github.com/ruby/rexml/issues/99">GH-99</a> [Patch by gemmaro]</p>
 </li></ul>
 
-<h3 id="label-Thanks">Thanks<span><a href="#label-Thanks">&para;</a> <a href="#top">&uarr;</a></span></h3>
+<h3 id="label-Thanks"><a href="#label-Thanks">Thanks</a></h3>
 <ul><li>
 <p>Ivo Anjo</p>
 </li><li>
@@ -2061,9 +1506,9 @@
 <p>gemmaro</p>
 </li></ul>
 
-<h2 id="label-3.2.5+-+2021-04-05+-7B-23version-3-2-5-7D">3.2.5 - 2021-04-05 {#version-3-2-5}<span><a href="#label-3.2.5+-+2021-04-05+-7B-23version-3-2-5-7D">&para;</a> <a href="#top">&uarr;</a></span></h2>
+<h2 id="label-3.2.5+-+2021-04-05+-7B-23version-3-2-5-7D"><a href="#label-3.2.5+-+2021-04-05+-7B-23version-3-2-5-7D">3.2.5 - 2021-04-05 {#version-3-2-5}</a></h2>
 
-<h3 id="label-Improvements">Improvements<span><a href="#label-Improvements">&para;</a> <a href="#top">&uarr;</a></span></h3>
+<h3 id="label-Improvements"><a href="#label-Improvements">Improvements</a></h3>
 <ul><li>
 <p>Add more validations to XPath parser.</p>
 </li><li>
@@ -2076,14 +1521,14 @@
 <p>Added <a href="REXML/Elements.html#method-i-parent"><code>REXML::Elements#parent</code></a>. [GitHub#52][Patch by Burdette Lamar]</p>
 </li></ul>
 
-<h3 id="label-Fixes">Fixes<span><a href="#label-Fixes">&para;</a> <a href="#top">&uarr;</a></span></h3>
+<h3 id="label-Fixes"><a href="#label-Fixes">Fixes</a></h3>
 <ul><li>
 <p>Fixed a bug that <a href="REXML/DocType.html#method-i-clone"><code>REXML::DocType#clone</code></a> doesn’t copy external ID information.</p>
 </li><li>
 <p>Fixed round-trip vulnerability bugs. See also: <a href="https://www.ruby-lang.org/en/news/2021/04/05/xml-round-trip-vulnerability-in-rexml-cve-2021-28965">www.ruby-lang.org/en/news/2021/04/05/xml-round-trip-vulnerability-in-rexml-cve-2021-28965</a>/ [<a href="CVE-2021-28965">HackerOne#1104077]</a>[Reported by Juho Nurminen]</p>
 </li></ul>
 
-<h3 id="label-Thanks">Thanks<span><a href="#label-Thanks">&para;</a> <a href="#top">&uarr;</a></span></h3>
+<h3 id="label-Thanks"><a href="#label-Thanks">Thanks</a></h3>
 <ul><li>
 <p>Koichi ITO</p>
 </li><li>
@@ -2094,40 +1539,40 @@
 <p>Juho Nurminen</p>
 </li></ul>
 
-<h2 id="label-3.2.4+-+2020-01-31+-7B-23version-3-2-4-7D">3.2.4 - 2020-01-31 {#version-3-2-4}<span><a href="#label-3.2.4+-+2020-01-31+-7B-23version-3-2-4-7D">&para;</a> <a href="#top">&uarr;</a></span></h2>
+<h2 id="label-3.2.4+-+2020-01-31+-7B-23version-3-2-4-7D"><a href="#label-3.2.4+-+2020-01-31+-7B-23version-3-2-4-7D">3.2.4 - 2020-01-31 {#version-3-2-4}</a></h2>
 
-<h3 id="label-Improvements">Improvements<span><a href="#label-Improvements">&para;</a> <a href="#top">&uarr;</a></span></h3>
+<h3 id="label-Improvements"><a href="#label-Improvements">Improvements</a></h3>
 <ul><li>
 <p>Don’t use <code>taint</code> with Ruby 2.7 or later. [GitHub#21][Patch by Jeremy Evans]</p>
 </li></ul>
 
-<h3 id="label-Fixes">Fixes<span><a href="#label-Fixes">&para;</a> <a href="#top">&uarr;</a></span></h3>
+<h3 id="label-Fixes"><a href="#label-Fixes">Fixes</a></h3>
 <ul><li>
 <p>Fixed a <code>elsif</code> typo. [GitHub#22][Patch by Nobuyoshi Nakada]</p>
 </li></ul>
 
-<h3 id="label-Thanks">Thanks<span><a href="#label-Thanks">&para;</a> <a href="#top">&uarr;</a></span></h3>
+<h3 id="label-Thanks"><a href="#label-Thanks">Thanks</a></h3>
 <ul><li>
 <p>Jeremy Evans</p>
 </li><li>
 <p>Nobuyoshi Nakada</p>
 </li></ul>
 
-<h2 id="label-3.2.3+-+2019-10-12+-7B-23version-3-2-3-7D">3.2.3 - 2019-10-12 {#version-3-2-3}<span><a href="#label-3.2.3+-+2019-10-12+-7B-23version-3-2-3-7D">&para;</a> <a href="#top">&uarr;</a></span></h2>
+<h2 id="label-3.2.3+-+2019-10-12+-7B-23version-3-2-3-7D"><a href="#label-3.2.3+-+2019-10-12+-7B-23version-3-2-3-7D">3.2.3 - 2019-10-12 {#version-3-2-3}</a></h2>
 
-<h3 id="label-Fixes">Fixes<span><a href="#label-Fixes">&para;</a> <a href="#top">&uarr;</a></span></h3>
+<h3 id="label-Fixes"><a href="#label-Fixes">Fixes</a></h3>
 <ul><li>
 <p>Fixed a bug that <code>REXML::XMLDecl#close</code> doesn’t copy <code>@writethis</code>. [GitHub#20][Patch by hirura]</p>
 </li></ul>
 
-<h3 id="label-Thanks">Thanks<span><a href="#label-Thanks">&para;</a> <a href="#top">&uarr;</a></span></h3>
+<h3 id="label-Thanks"><a href="#label-Thanks">Thanks</a></h3>
 <ul><li>
 <p>hirura</p>
 </li></ul>
 
-<h2 id="label-3.2.2+-+2019-06-03+-7B-23version-3-2-2-7D">3.2.2 - 2019-06-03 {#version-3-2-2}<span><a href="#label-3.2.2+-+2019-06-03+-7B-23version-3-2-2-7D">&para;</a> <a href="#top">&uarr;</a></span></h2>
+<h2 id="label-3.2.2+-+2019-06-03+-7B-23version-3-2-2-7D"><a href="#label-3.2.2+-+2019-06-03+-7B-23version-3-2-2-7D">3.2.2 - 2019-06-03 {#version-3-2-2}</a></h2>
 
-<h3 id="label-Fixes">Fixes<span><a href="#label-Fixes">&para;</a> <a href="#top">&uarr;</a></span></h3>
+<h3 id="label-Fixes"><a href="#label-Fixes">Fixes</a></h3>
 <ul><li>
 <p>xpath: Fixed a bug for equality and relational expressions. [GitHub#17][Reported by Mirko Budszuhn]</p>
 </li><li>
@@ -2138,14 +1583,14 @@
 <p>xpath: Fixed <code>number()</code> implementation with node set. [GitHub#18][Reported by Mirko Budszuhn]</p>
 </li></ul>
 
-<h3 id="label-Thanks">Thanks<span><a href="#label-Thanks">&para;</a> <a href="#top">&uarr;</a></span></h3>
+<h3 id="label-Thanks"><a href="#label-Thanks">Thanks</a></h3>
 <ul><li>
 <p>Mirko Budszuhn</p>
 </li></ul>
 
-<h2 id="label-3.2.1+-+2019-05-04+-7B-23version-3-2-1-7D">3.2.1 - 2019-05-04 {#version-3-2-1}<span><a href="#label-3.2.1+-+2019-05-04+-7B-23version-3-2-1-7D">&para;</a> <a href="#top">&uarr;</a></span></h2>
+<h2 id="label-3.2.1+-+2019-05-04+-7B-23version-3-2-1-7D"><a href="#label-3.2.1+-+2019-05-04+-7B-23version-3-2-1-7D">3.2.1 - 2019-05-04 {#version-3-2-1}</a></h2>
 
-<h3 id="label-Improvements">Improvements<span><a href="#label-Improvements">&para;</a> <a href="#top">&uarr;</a></span></h3>
+<h3 id="label-Improvements"><a href="#label-Improvements">Improvements</a></h3>
 <ul><li>
 <p>Improved error message. [GitHub#12][Patch by FUJI Goro]</p>
 </li><li>
@@ -2154,12 +1599,12 @@
 <p>Improved documentation markup. [GitHub#14][Patch by Alyssa Ross]</p>
 </li></ul>
 
-<h3 id="label-Fixes">Fixes<span><a href="#label-Fixes">&para;</a> <a href="#top">&uarr;</a></span></h3>
+<h3 id="label-Fixes"><a href="#label-Fixes">Fixes</a></h3>
 <ul><li>
 <p>Fixed a bug that <code>nil</code> variable value raises an unexpected exception. [GitHub#13][Patch by Alyssa Ross]</p>
 </li></ul>
 
-<h3 id="label-Thanks">Thanks<span><a href="#label-Thanks">&para;</a> <a href="#top">&uarr;</a></span></h3>
+<h3 id="label-Thanks"><a href="#label-Thanks">Thanks</a></h3>
 <ul><li>
 <p>FUJI Goro</p>
 </li><li>
@@ -2168,9 +1613,9 @@
 <p>ujihisa</p>
 </li></ul>
 
-<h2 id="label-3.2.0+-+2019-01-01+-7B-23version-3-2-0-7D">3.2.0 - 2019-01-01 {#version-3-2-0}<span><a href="#label-3.2.0+-+2019-01-01+-7B-23version-3-2-0-7D">&para;</a> <a href="#top">&uarr;</a></span></h2>
+<h2 id="label-3.2.0+-+2019-01-01+-7B-23version-3-2-0-7D"><a href="#label-3.2.0+-+2019-01-01+-7B-23version-3-2-0-7D">3.2.0 - 2019-01-01 {#version-3-2-0}</a></h2>
 
-<h3 id="label-Fixes">Fixes<span><a href="#label-Fixes">&para;</a> <a href="#top">&uarr;</a></span></h3>
+<h3 id="label-Fixes"><a href="#label-Fixes">Fixes</a></h3>
 <ul><li>
 <p>Fixed a bug that no namespace attribute isn’t matched with prefix.</p>
 
@@ -2186,23 +1631,23 @@
 </li></ul>
 </li></ul>
 
-<h3 id="label-Thanks">Thanks<span><a href="#label-Thanks">&para;</a> <a href="#top">&uarr;</a></span></h3>
+<h3 id="label-Thanks"><a href="#label-Thanks">Thanks</a></h3>
 <ul><li>
 <p>Yasuhiro KIMURA</p>
 </li></ul>
 
-<h2 id="label-3.1.9+-+2018-12-20+-7B-23version-3-1-9-7D">3.1.9 - 2018-12-20 {#version-3-1-9}<span><a href="#label-3.1.9+-+2018-12-20+-7B-23version-3-1-9-7D">&para;</a> <a href="#top">&uarr;</a></span></h2>
+<h2 id="label-3.1.9+-+2018-12-20+-7B-23version-3-1-9-7D"><a href="#label-3.1.9+-+2018-12-20+-7B-23version-3-1-9-7D">3.1.9 - 2018-12-20 {#version-3-1-9}</a></h2>
 
-<h3 id="label-Improvements">Improvements<span><a href="#label-Improvements">&para;</a> <a href="#top">&uarr;</a></span></h3>
+<h3 id="label-Improvements"><a href="#label-Improvements">Improvements</a></h3>
 <ul><li>
 <p>Improved backward compatibility.</p>
 
 <p>Restored <code>REXML::Parsers::BaseParser::UNQME_STR</code> because it's used by kramdown.</p>
 </li></ul>
 
-<h2 id="label-3.1.8+-+2018-12-20+-7B-23version-3-1-8-7D">3.1.8 - 2018-12-20 {#version-3-1-8}<span><a href="#label-3.1.8+-+2018-12-20+-7B-23version-3-1-8-7D">&para;</a> <a href="#top">&uarr;</a></span></h2>
+<h2 id="label-3.1.8+-+2018-12-20+-7B-23version-3-1-8-7D"><a href="#label-3.1.8+-+2018-12-20+-7B-23version-3-1-8-7D">3.1.8 - 2018-12-20 {#version-3-1-8}</a></h2>
 
-<h3 id="label-Improvements">Improvements<span><a href="#label-Improvements">&para;</a> <a href="#top">&uarr;</a></span></h3>
+<h3 id="label-Improvements"><a href="#label-Improvements">Improvements</a></h3>
 <ul><li>
 <p>Added support for customizing quote character in prologue. [GitHub#8][Bug #9367][Reported by Takashi Oguma]</p>
 <ul><li>
@@ -2218,12 +1663,12 @@
 <p>Stopped to use <code>Exception</code>. [GitHub#9][Patch by Jean Boussier]</p>
 </li></ul>
 
-<h3 id="label-Fixes">Fixes<span><a href="#label-Fixes">&para;</a> <a href="#top">&uarr;</a></span></h3>
+<h3 id="label-Fixes"><a href="#label-Fixes">Fixes</a></h3>
 <ul><li>
 <p>Fixed a bug that <a href="REXML/Text.html#method-i-clone"><code>REXML::Text#clone</code></a> escapes value twice. [ruby-dev:50626][Bug #15058][Reported by Ryosuke Nanba]</p>
 </li></ul>
 
-<h3 id="label-Thanks">Thanks<span><a href="#label-Thanks">&para;</a> <a href="#top">&uarr;</a></span></h3>
+<h3 id="label-Thanks"><a href="#label-Thanks">Thanks</a></h3>
 <ul><li>
 <p>Takashi Oguma</p>
 </li><li>
@@ -2235,5 +1680,27 @@
 </li></ul>
 
 </main>
+
+<aside class="table-of-contents" role="complementary" aria-label="Table of Contents">
+  <div class="toc-sticky">
+    <h3 class="toc-heading">On This Page</h3>
+    <nav class="toc-nav" id="toc-nav" aria-label="Page sections">
+      <!-- Generated by JavaScript based on page headings -->
+    </nav>
+  </div>
+</aside>
+
+
+<footer class="site-footer">
+  
+
+  <div class="footer-bottom">
+    <p>
+      Generated by <a href="https://ruby.github.io/rdoc/">RDoc 7.0.1</a>
+      using the Aliki theme by <a href="http://st0012.dev">Stan Lo</a>
+    </p>
+  </div>
+</footer>
+
 </body>
 
