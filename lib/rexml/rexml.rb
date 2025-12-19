@@ -18,7 +18,7 @@
 #
 # If you're somewhat familiar with XML
 # and have a particular task in mind,
-# you may want to see {the tasks pages}[doc/rexml/tasks/tocs/master_toc_rdoc.html].
+# you may want to see {the tasks pages}[doc/rexml/tasks/rdoc/toc_rdoc.html].
 #
 # == API
 #

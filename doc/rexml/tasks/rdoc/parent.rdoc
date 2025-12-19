@@ -7,7 +7,7 @@ see:
 - {Tasks for Node}[node_rdoc.html].
 - {Module Enumerable}[https://docs.ruby-lang.org/en/master/Enumerable.html].
 
-:include: ../tocs/parent_toc.rdoc
+:include: ../includes/parent_toc.rdoc
 
 === Queries
 

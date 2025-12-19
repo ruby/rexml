@@ -1,6 +1,6 @@
 == Module Node
 
-:include: ../tocs/node_toc.rdoc
+:include: ../includes/node_toc.rdoc
 
 === Siblings
 

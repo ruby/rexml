@@ -3,7 +3,7 @@
 Class Child includes module Node;
 see {Tasks for Node}[node_rdoc.html].
 
-:include: ../tocs/child_toc.rdoc
+:include: ../includes/child_toc.rdoc
 
 === Relationships
 
