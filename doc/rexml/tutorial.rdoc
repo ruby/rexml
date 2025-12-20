@@ -113,7 +113,8 @@ An REXML::Document object represents an XML document.
 The object inherits from its ancestor classes:
 
 - REXML::Child (includes module REXML::Node)
-  - REXML::Parent (includes module {Enumerable}[rdoc-ref:Enumerable]).
+  - REXML::Parent
+    (includes module {Enumerable}[https://docs.ruby-lang.org/en/master/Enumerable.html]).
     - REXML::Element (includes module REXML::Namespace).
       - REXML::Document
 
@@ -302,7 +303,8 @@ An REXML::Element object represents an XML element.
 The object inherits from its ancestor classes:
 
 - REXML::Child (includes module REXML::Node)
-  - REXML::Parent (includes module {Enumerable}[rdoc-ref:Enumerable]).
+  - REXML::Parent
+    (includes module {Enumerable}[https://docs.ruby-lang.org/en/master/Enumerable.html]).
     - REXML::Element (includes module REXML::Namespace).
 
 This section covers methods:
