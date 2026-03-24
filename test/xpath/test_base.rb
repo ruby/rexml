@@ -1306,5 +1306,79 @@ EOF
       result = XPath.match(xmldoc, "//a//a")
       assert_equal(["1", "2", "3"], result.map { |e| e.attributes["id"] })
     end
+
+    def test_descendant_ancestor_descendant_overlap
+      doc = <<-XML
+      <root>
+        <a id='1'>
+          <a id='2'>
+            <b id='b1'/>
+          </a>
+        </a>
+      </root>
+      XML
+
+      xmldoc = Document.new(doc)
+      result = XPath.match(xmldoc, "//a//b")
+      assert_equal(["b1"], result.map { |e| e.attributes["id"] })
+    end
+
+    def test_descendant_sibling_branches
+      doc = <<-XML
+      <root>
+        <a id='1'>
+          <b id='b1'/>
+        </a>
+        <a id='2'>
+          <b id='b2'/>
+        </a>
+      </root>
+      XML
+      xmldoc = Document.new(doc)
+      result = XPath.match(xmldoc, "//a//b")
+      assert_equal(["b1", "b2"], result.map { |e| e.attributes["id"] })
+    end
+
+    def test_descendant_document_order_with_shared_subtree
+      doc = <<-XML
+      <root>
+        <a>
+          <b id='b1'/>
+          <a>
+            <b id='b2'/>
+          </a>
+        </a>
+      </root>
+      XML
+
+      xmldoc = Document.new(doc)
+      result = XPath.match(xmldoc, "//a//b")
+      assert_equal(["b1", "b2"], result.map { |e| e.attributes["id"] })
+    end
+
+    def test_descendant_axis_on_leaf_element
+      doc = Document.new("<root><b/></root>")
+      result = XPath.match(doc, "//b/descendant::node()")
+      assert_equal([], result)
+    end
+
+    def test_descendant_axis_position_predicate_per_context_node
+      doc = <<-XML
+      <a id="a1">
+        <b id="b1">
+          <a id="a2">
+            <b id="b2">
+              <b id="b3">
+              </b>
+            </b>
+          </a>
+        </b>
+      </a>
+      XML
+
+      xmldoc = Document.new(doc)
+      result = XPath.match(xmldoc, "//a/descendant::b[1]")
+      assert_equal(["b1", "b2"], result.map { |e| e.attributes["id"] })
+    end
   end
 end
