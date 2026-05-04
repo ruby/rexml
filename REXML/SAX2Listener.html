@@ -50,41 +50,46 @@
 </script>
 
 <script
-  src="../js/theme-toggle.js?v=7.0.1"
+  src="../js/theme-toggle.js?v=7.2.0"
 ></script>
 
 <script
-  src="../js/search_navigation.js?v=7.0.1"
+  src="../js/search_navigation.js?v=7.2.0"
   defer
 ></script>
 
 <script
-  src="../js/search_data.js?v=7.0.1"
+  src="../js/search_data.js?v=7.2.0"
   defer
 ></script>
 
 <script
-  src="../js/search_ranker.js?v=7.0.1"
+  src="../js/search_ranker.js?v=7.2.0"
   defer
 ></script>
 
 <script
-  src="../js/search_controller.js?v=7.0.1"
+  src="../js/search_controller.js?v=7.2.0"
   defer
 ></script>
 
 <script
-  src="../js/c_highlighter.js?v=7.0.1"
+  src="../js/c_highlighter.js?v=7.2.0"
   defer
 ></script>
 
 <script
-  src="../js/aliki.js?v=7.0.1"
+  src="../js/bash_highlighter.js?v=7.2.0"
+  defer
+></script>
+
+<script
+  src="../js/aliki.js?v=7.2.0"
   defer
 ></script>
 
 <link
-  href="../css/rdoc.css?v=7.0.1"
+  href="../css/rdoc.css?v=7.2.0"
   rel="stylesheet"
 >
 
@@ -363,7 +368,7 @@
 </div>
 
 
-<nav id="navigation" role="navigation">
+<nav id="navigation" role="navigation" hidden>
   
 
 
@@ -601,7 +606,7 @@
 
 </nav>
 
-<main role="main" aria-labelledby="module-REXML::SAX2Listener">
+<main role="main" aria-labelledby="module-rexml-sax2listener">
   
   
     <ol role="navigation" aria-label="Breadcrumb navigation" class="breadcrumb">
@@ -621,7 +626,8 @@
     </ol>
   
 
-  <h1 id="module-REXML::SAX2Listener" class="anchor-link module">
+  <span id="module-REXML::SAX2Listener" class="legacy-anchor"></span>
+  <h1 id="module-rexml-sax2listener" class="anchor-link module">
     module REXML::SAX2Listener
   </h1>
 
@@ -629,12 +635,14 @@
     
 <p>A template for stream parser listeners. Note that the declarations (attlistdecl, elementdecl, etc) are trivially processed; <a href="../REXML.html"><code>REXML</code></a> doesn’t yet handle doctype entity declarations, so you have to parse them out yourself.</p>
 
-<h3 id="module-REXML::SAX2Listener-label-Missing+methods+from+SAX2"><a href="#module-REXML::SAX2Listener-label-Missing+methods+from+SAX2">Missing methods from SAX2</a></h3>
+<span id="module-REXML::SAX2Listener-label-Missing+methods+from+SAX2" class="legacy-anchor"></span>
+<h3 id="module-rexml-sax2listener-missing-methods-from-sax2"><a href="#module-rexml-sax2listener-missing-methods-from-sax2">Missing methods from SAX2</a></h3>
 
 <pre class="ruby"><span class="ruby-identifier">ignorable_whitespace</span>
 </pre>
 
-<h3 id="module-REXML::SAX2Listener-label-Methods+extending+SAX2"><a href="#module-REXML::SAX2Listener-label-Methods+extending+SAX2">Methods extending SAX2</a></h3>
+<span id="module-REXML::SAX2Listener-label-Methods+extending+SAX2" class="legacy-anchor"></span>
+<h3 id="module-rexml-sax2listener-methods-extending-sax2"><a href="#module-rexml-sax2listener-methods-extending-sax2">Methods extending SAX2</a></h3>
 
 <p><code>WARNING</code> These methods are certainly going to change, until DTDs are fully supported.  Be aware of this.</p>
 
@@ -653,7 +661,8 @@
   </section>
 
 
-  <section id="5Buntitled-5D" class="documentation-section anchor-link">
+  <span id="5Buntitled-5D" class="legacy-anchor"></span>
+  <section class="documentation-section anchor-link">
 
 
 
@@ -663,9 +672,18 @@
 
 
 
-     <section id="public-instance-5Buntitled-5D-method-details" class="method-section anchor-link">
+
+
+
+
+
+
+
+
+
+     <section id="public-instance-untitled-method-details" class="method-section anchor-link">
        <header>
-         <h3 id="public-instance-methods"><a href="#public-instance-methods">Public Instance Methods</a></h3>
+         <h3 id="public-instance-untitled-methods"><a href="#public-instance-untitled-methods">Public Instance Methods</a></h3>
        </header>
 
 
@@ -688,7 +706,7 @@
             </details>
           </div>
           <div class="method-source-code" id="attlistdecl-source">
-            <pre class="ruby" data-language="ruby"><span class="ruby-comment"># File lib/rexml/sax2listener.rb, line 53</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/sax2listener.rb, line 53</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">attlistdecl</span>(<span class="ruby-identifier">element</span>, <span class="ruby-identifier">pairs</span>, <span class="ruby-identifier">contents</span>)
 <span class="ruby-keyword">end</span></pre>
           </div>
@@ -729,7 +747,7 @@
             </details>
           </div>
           <div class="method-source-code" id="cdata-source">
-            <pre class="ruby" data-language="ruby"><span class="ruby-comment"># File lib/rexml/sax2listener.rb, line 81</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/sax2listener.rb, line 81</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">cdata</span> <span class="ruby-identifier">content</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
@@ -770,7 +788,7 @@
             </details>
           </div>
           <div class="method-source-code" id="characters-source">
-            <pre class="ruby" data-language="ruby"><span class="ruby-comment"># File lib/rexml/sax2listener.rb, line 36</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/sax2listener.rb, line 36</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">characters</span> <span class="ruby-identifier">text</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
@@ -811,7 +829,7 @@
             </details>
           </div>
           <div class="method-source-code" id="comment-source">
-            <pre class="ruby" data-language="ruby"><span class="ruby-comment"># File lib/rexml/sax2listener.rb, line 93</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/sax2listener.rb, line 93</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">comment</span> <span class="ruby-identifier">comment</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
@@ -852,7 +870,7 @@
             </details>
           </div>
           <div class="method-source-code" id="doctype-source">
-            <pre class="ruby" data-language="ruby"><span class="ruby-comment"># File lib/rexml/sax2listener.rb, line 46</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/sax2listener.rb, line 46</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">doctype</span> <span class="ruby-identifier">name</span>, <span class="ruby-identifier">pub_sys</span>, <span class="ruby-identifier">long_name</span>, <span class="ruby-identifier">uri</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
@@ -893,7 +911,7 @@
             </details>
           </div>
           <div class="method-source-code" id="elementdecl-source">
-            <pre class="ruby" data-language="ruby"><span class="ruby-comment"># File lib/rexml/sax2listener.rb, line 56</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/sax2listener.rb, line 56</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">elementdecl</span> <span class="ruby-identifier">content</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
@@ -934,7 +952,7 @@
             </details>
           </div>
           <div class="method-source-code" id="end_document-source">
-            <pre class="ruby" data-language="ruby"><span class="ruby-comment"># File lib/rexml/sax2listener.rb, line 26</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/sax2listener.rb, line 26</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">end_document</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
@@ -975,7 +993,7 @@
             </details>
           </div>
           <div class="method-source-code" id="end_element-source">
-            <pre class="ruby" data-language="ruby"><span class="ruby-comment"># File lib/rexml/sax2listener.rb, line 34</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/sax2listener.rb, line 34</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">end_element</span> <span class="ruby-identifier">uri</span>, <span class="ruby-identifier">localname</span>, <span class="ruby-identifier">qname</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
@@ -1016,7 +1034,7 @@
             </details>
           </div>
           <div class="method-source-code" id="end_prefix_mapping-source">
-            <pre class="ruby" data-language="ruby"><span class="ruby-comment"># File lib/rexml/sax2listener.rb, line 30</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/sax2listener.rb, line 30</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">end_prefix_mapping</span> <span class="ruby-identifier">prefix</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
@@ -1057,7 +1075,7 @@
             </details>
           </div>
           <div class="method-source-code" id="entitydecl-source">
-            <pre class="ruby" data-language="ruby"><span class="ruby-comment"># File lib/rexml/sax2listener.rb, line 74</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/sax2listener.rb, line 74</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">entitydecl</span> <span class="ruby-identifier">declaration</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
@@ -1114,7 +1132,7 @@
             </details>
           </div>
           <div class="method-source-code" id="notationdecl-source">
-            <pre class="ruby" data-language="ruby"><span class="ruby-comment"># File lib/rexml/sax2listener.rb, line 77</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/sax2listener.rb, line 77</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">notationdecl</span> <span class="ruby-identifier">name</span>, <span class="ruby-identifier">public_or_system</span>, <span class="ruby-identifier">public_id</span>, <span class="ruby-identifier">system_id</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
@@ -1155,7 +1173,7 @@
             </details>
           </div>
           <div class="method-source-code" id="processing_instruction-source">
-            <pre class="ruby" data-language="ruby"><span class="ruby-comment"># File lib/rexml/sax2listener.rb, line 38</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/sax2listener.rb, line 38</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">processing_instruction</span> <span class="ruby-identifier">target</span>, <span class="ruby-identifier">data</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
@@ -1196,7 +1214,7 @@
             </details>
           </div>
           <div class="method-source-code" id="progress-source">
-            <pre class="ruby" data-language="ruby"><span class="ruby-comment"># File lib/rexml/sax2listener.rb, line 95</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/sax2listener.rb, line 95</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">progress</span> <span class="ruby-identifier">position</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
@@ -1237,7 +1255,7 @@
             </details>
           </div>
           <div class="method-source-code" id="start_document-source">
-            <pre class="ruby" data-language="ruby"><span class="ruby-comment"># File lib/rexml/sax2listener.rb, line 24</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/sax2listener.rb, line 24</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">start_document</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
@@ -1278,7 +1296,7 @@
             </details>
           </div>
           <div class="method-source-code" id="start_element-source">
-            <pre class="ruby" data-language="ruby"><span class="ruby-comment"># File lib/rexml/sax2listener.rb, line 32</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/sax2listener.rb, line 32</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">start_element</span> <span class="ruby-identifier">uri</span>, <span class="ruby-identifier">localname</span>, <span class="ruby-identifier">qname</span>, <span class="ruby-identifier">attributes</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
@@ -1319,7 +1337,7 @@
             </details>
           </div>
           <div class="method-source-code" id="start_prefix_mapping-source">
-            <pre class="ruby" data-language="ruby"><span class="ruby-comment"># File lib/rexml/sax2listener.rb, line 28</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/sax2listener.rb, line 28</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">start_prefix_mapping</span> <span class="ruby-identifier">prefix</span>, <span class="ruby-identifier">uri</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
@@ -1360,7 +1378,7 @@
             </details>
           </div>
           <div class="method-source-code" id="xmldecl-source">
-            <pre class="ruby" data-language="ruby"><span class="ruby-comment"># File lib/rexml/sax2listener.rb, line 89</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/sax2listener.rb, line 89</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">xmldecl</span> <span class="ruby-identifier">version</span>, <span class="ruby-identifier">encoding</span>, <span class="ruby-identifier">standalone</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
@@ -1384,6 +1402,9 @@
 
     </section>
 
+
+
+
   </section>
 
 </main>
@@ -1403,7 +1424,7 @@
 
   <div class="footer-bottom">
     <p>
-      Generated by <a href="https://ruby.github.io/rdoc/">RDoc 7.0.1</a>
+      Generated by <a href="https://ruby.github.io/rdoc/">RDoc 7.2.0</a>
       using the Aliki theme by <a href="http://st0012.dev">Stan Lo</a>
     </p>
   </div>

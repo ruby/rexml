@@ -50,41 +50,46 @@
 </script>
 
 <script
-  src="../../js/theme-toggle.js?v=7.0.1"
+  src="../../js/theme-toggle.js?v=7.2.0"
 ></script>
 
 <script
-  src="../../js/search_navigation.js?v=7.0.1"
+  src="../../js/search_navigation.js?v=7.2.0"
   defer
 ></script>
 
 <script
-  src="../../js/search_data.js?v=7.0.1"
+  src="../../js/search_data.js?v=7.2.0"
   defer
 ></script>
 
 <script
-  src="../../js/search_ranker.js?v=7.0.1"
+  src="../../js/search_ranker.js?v=7.2.0"
   defer
 ></script>
 
 <script
-  src="../../js/search_controller.js?v=7.0.1"
+  src="../../js/search_controller.js?v=7.2.0"
   defer
 ></script>
 
 <script
-  src="../../js/c_highlighter.js?v=7.0.1"
+  src="../../js/c_highlighter.js?v=7.2.0"
   defer
 ></script>
 
 <script
-  src="../../js/aliki.js?v=7.0.1"
+  src="../../js/bash_highlighter.js?v=7.2.0"
+  defer
+></script>
+
+<script
+  src="../../js/aliki.js?v=7.2.0"
   defer
 ></script>
 
 <link
-  href="../../css/rdoc.css?v=7.0.1"
+  href="../../css/rdoc.css?v=7.2.0"
   rel="stylesheet"
 >
 
@@ -363,7 +368,7 @@
 </div>
 
 
-<nav id="navigation" role="navigation">
+<nav id="navigation" role="navigation" hidden>
   
 
 
@@ -618,7 +623,7 @@
 
 </nav>
 
-<main role="main" aria-labelledby="class-REXML::Parsers::XPathParser">
+<main role="main" aria-labelledby="class-rexml-parsers-xpathparser">
   
   
     <ol role="navigation" aria-label="Breadcrumb navigation" class="breadcrumb">
@@ -644,7 +649,8 @@
     </ol>
   
 
-  <h1 id="class-REXML::Parsers::XPathParser" class="anchor-link class">
+  <span id="class-REXML::Parsers::XPathParser" class="legacy-anchor"></span>
+  <h1 id="class-rexml-parsers-xpathparser" class="anchor-link class">
     class REXML::Parsers::XPathParser
   </h1>
 
@@ -655,7 +661,8 @@
   </section>
 
 
-  <section id="5Buntitled-5D" class="documentation-section anchor-link">
+  <span id="5Buntitled-5D" class="legacy-anchor"></span>
+  <section class="documentation-section anchor-link">
 
 
 
@@ -663,7 +670,7 @@
 
     <section class="constants-list">
       <header>
-        <h3 id="constants"><a href="#constants">Constants</a></h3>
+        <h3 id="untitled-constants"><a href="#untitled-constants">Constants</a></h3>
       </header>
       <dl>
 
@@ -773,9 +780,18 @@ The contents of the resulting array are either:
 
 
 
-     <section id="public-instance-5Buntitled-5D-method-details" class="method-section anchor-link">
+
+
+
+
+
+
+
+
+
+     <section id="public-instance-untitled-method-details" class="method-section anchor-link">
        <header>
-         <h3 id="public-instance-methods"><a href="#public-instance-methods">Public Instance Methods</a></h3>
+         <h3 id="public-instance-untitled-methods"><a href="#public-instance-untitled-methods">Public Instance Methods</a></h3>
        </header>
 
 
@@ -798,7 +814,7 @@ The contents of the resulting array are either:
             </details>
           </div>
           <div class="method-source-code" id="abbreviate-source">
-            <pre class="ruby" data-language="ruby"><span class="ruby-comment"># File lib/rexml/parsers/xpathparser.rb, line 42</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/parsers/xpathparser.rb, line 42</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">abbreviate</span>(<span class="ruby-identifier">path_or_parsed</span>)
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">path_or_parsed</span>.<span class="ruby-identifier">kind_of?</span>(<span class="ruby-constant">String</span>)
     <span class="ruby-identifier">parsed</span> = <span class="ruby-identifier">parse</span>(<span class="ruby-identifier">path_or_parsed</span>)
@@ -926,7 +942,7 @@ The contents of the resulting array are either:
             </details>
           </div>
           <div class="method-source-code" id="expand-source">
-            <pre class="ruby" data-language="ruby"><span class="ruby-comment"># File lib/rexml/parsers/xpathparser.rb, line 132</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/parsers/xpathparser.rb, line 132</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">expand</span>(<span class="ruby-identifier">path_or_parsed</span>)
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">path_or_parsed</span>.<span class="ruby-identifier">kind_of?</span>(<span class="ruby-constant">String</span>)
     <span class="ruby-identifier">parsed</span> = <span class="ruby-identifier">parse</span>(<span class="ruby-identifier">path_or_parsed</span>)
@@ -1006,7 +1022,7 @@ The contents of the resulting array are either:
             </details>
           </div>
           <div class="method-source-code" id="namespaces-3D-source">
-            <pre class="ruby" data-language="ruby"><span class="ruby-comment"># File lib/rexml/parsers/xpathparser.rb, line 16</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/parsers/xpathparser.rb, line 16</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">namespaces=</span>( <span class="ruby-identifier">namespaces</span> )
   <span class="ruby-constant">Functions</span><span class="ruby-operator">::</span><span class="ruby-identifier">namespace_context</span> = <span class="ruby-identifier">namespaces</span>
   <span class="ruby-ivar">@namespaces</span> = <span class="ruby-identifier">namespaces</span>
@@ -1049,7 +1065,7 @@ The contents of the resulting array are either:
             </details>
           </div>
           <div class="method-source-code" id="parse-source">
-            <pre class="ruby" data-language="ruby"><span class="ruby-comment"># File lib/rexml/parsers/xpathparser.rb, line 21</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/parsers/xpathparser.rb, line 21</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">parse</span> <span class="ruby-identifier">path</span>
   <span class="ruby-identifier">path</span> = <span class="ruby-identifier">path</span>.<span class="ruby-identifier">dup</span>
   <span class="ruby-identifier">path</span>.<span class="ruby-identifier">gsub!</span>(<span class="ruby-regexp">/([\(\[])\s+/</span>, <span class="ruby-string">&#39;\1&#39;</span>) <span class="ruby-comment"># Strip ignorable spaces</span>
@@ -1136,7 +1152,7 @@ The contents of the resulting array are either:
             </details>
           </div>
           <div class="method-source-code" id="predicate-source">
-            <pre class="ruby" data-language="ruby"><span class="ruby-comment"># File lib/rexml/parsers/xpathparser.rb, line 36</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/parsers/xpathparser.rb, line 36</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">predicate</span> <span class="ruby-identifier">path</span>
   <span class="ruby-identifier">parsed</span> = []
   <span class="ruby-constant">Predicate</span>( <span class="ruby-node">&quot;[#{path}]&quot;</span>, <span class="ruby-identifier">parsed</span> )
@@ -1180,7 +1196,7 @@ The contents of the resulting array are either:
             </details>
           </div>
           <div class="method-source-code" id="predicate_to_path-source">
-            <pre class="ruby" data-language="ruby"><span class="ruby-comment"># File lib/rexml/parsers/xpathparser.rb, line 174</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/parsers/xpathparser.rb, line 174</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">predicate_to_path</span>(<span class="ruby-identifier">parsed</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
   <span class="ruby-identifier">path</span> = <span class="ruby-string">&quot;&quot;</span>
   <span class="ruby-keyword">case</span> <span class="ruby-identifier">parsed</span>[<span class="ruby-value">0</span>]
@@ -1252,6 +1268,9 @@ The contents of the resulting array are either:
 
     </section>
 
+
+
+
   </section>
 
 </main>
@@ -1271,7 +1290,7 @@ The contents of the resulting array are either:
 
   <div class="footer-bottom">
     <p>
-      Generated by <a href="https://ruby.github.io/rdoc/">RDoc 7.0.1</a>
+      Generated by <a href="https://ruby.github.io/rdoc/">RDoc 7.2.0</a>
       using the Aliki theme by <a href="http://st0012.dev">Stan Lo</a>
     </p>
   </div>

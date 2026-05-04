@@ -45,41 +45,46 @@
 </script>
 
 <script
-  src="../../../../js/theme-toggle.js?v=7.0.1"
+  src="../../../../js/theme-toggle.js?v=7.2.0"
 ></script>
 
 <script
-  src="../../../../js/search_navigation.js?v=7.0.1"
+  src="../../../../js/search_navigation.js?v=7.2.0"
   defer
 ></script>
 
 <script
-  src="../../../../js/search_data.js?v=7.0.1"
+  src="../../../../js/search_data.js?v=7.2.0"
   defer
 ></script>
 
 <script
-  src="../../../../js/search_ranker.js?v=7.0.1"
+  src="../../../../js/search_ranker.js?v=7.2.0"
   defer
 ></script>
 
 <script
-  src="../../../../js/search_controller.js?v=7.0.1"
+  src="../../../../js/search_controller.js?v=7.2.0"
   defer
 ></script>
 
 <script
-  src="../../../../js/c_highlighter.js?v=7.0.1"
+  src="../../../../js/c_highlighter.js?v=7.2.0"
   defer
 ></script>
 
 <script
-  src="../../../../js/aliki.js?v=7.0.1"
+  src="../../../../js/bash_highlighter.js?v=7.2.0"
+  defer
+></script>
+
+<script
+  src="../../../../js/aliki.js?v=7.2.0"
   defer
 ></script>
 
 <link
-  href="../../../../css/rdoc.css?v=7.0.1"
+  href="../../../../css/rdoc.css?v=7.2.0"
   rel="stylesheet"
 >
 
@@ -358,7 +363,7 @@
 </div>
 
 
-<nav id="navigation" role="navigation">
+<nav id="navigation" role="navigation" hidden>
   
 
 
@@ -537,7 +542,8 @@
 
 <main role="main" aria-label="Page doc/rexml/tasks/rdoc/node.rdoc">
 
-<h2 id="label-Module+Node"><a href="#label-Module+Node">Module Node</a></h2>
+<span id="label-Module+Node" class="legacy-anchor"></span>
+<h2 id="module-node"><a href="#module-node">Module Node</a></h2>
 
 <p>Tasks on this page:</p>
 <ul><li>
@@ -574,9 +580,11 @@
 </li></ul>
 </li></ul>
 
-<h3 id="label-Siblings"><a href="#label-Siblings">Siblings</a></h3>
+<span id="label-Siblings" class="legacy-anchor"></span>
+<h3 id="siblings"><a href="#siblings">Siblings</a></h3>
 
-<h4 id="label-Task-3A+Find+Previous+Sibling"><a href="#label-Task-3A+Find+Previous+Sibling">Task: Find Previous Sibling</a></h4>
+<span id="label-Task-3A+Find+Previous+Sibling" class="legacy-anchor"></span>
+<h4 id="task-find-previous-sibling"><a href="#task-find-previous-sibling">Task: Find Previous Sibling</a></h4>
 
 <p>Use method <a href="../../../../REXML/Node.html#method-i-previous_sibling">Node.previous_sibling_node</a> to retrieve the previous sibling:</p>
 
@@ -585,7 +593,8 @@
 <span class="ruby-identifier">b</span>.<span class="ruby-identifier">previous_sibling_node</span> <span class="ruby-comment"># =&gt; &lt;a/&gt;</span>
 </pre>
 
-<h4 id="label-Task-3A+Find+Next+Sibling"><a href="#label-Task-3A+Find+Next+Sibling">Task: Find Next Sibling</a></h4>
+<span id="label-Task-3A+Find+Next+Sibling" class="legacy-anchor"></span>
+<h4 id="task-find-next-sibling"><a href="#task-find-next-sibling">Task: Find Next Sibling</a></h4>
 
 <p>Use method <a href="../../../../REXML/Node.html#method-i-next_sibling">Node.next_sibling_node</a> to retrieve the next sibling:</p>
 
@@ -594,9 +603,11 @@
 <span class="ruby-identifier">b</span>.<span class="ruby-identifier">next_sibling_node</span> <span class="ruby-comment"># =&gt; &lt;c/&gt;</span>
 </pre>
 
-<h3 id="label-Position"><a href="#label-Position">Position</a></h3>
+<span id="label-Position" class="legacy-anchor"></span>
+<h3 id="position"><a href="#position">Position</a></h3>
 
-<h4 id="label-Task-3A+Find+Own+Index+Among+Siblings"><a href="#label-Task-3A+Find+Own+Index+Among+Siblings">Task: Find Own Index Among Siblings</a></h4>
+<span id="label-Task-3A+Find+Own+Index+Among+Siblings" class="legacy-anchor"></span>
+<h4 id="task-find-own-index-among-siblings"><a href="#task-find-own-index-among-siblings">Task: Find Own Index Among Siblings</a></h4>
 
 <p>Use method <a href="../../../../REXML/Node.html#method-i-index_in_parent">Node.index_in_parent</a> to retrieve the 1-based index of this node among its siblings:</p>
 
@@ -605,9 +616,11 @@
 <span class="ruby-identifier">b</span>.<span class="ruby-identifier">index_in_parent</span> <span class="ruby-comment"># =&gt; 2</span>
 </pre>
 
-<h3 id="label-Recursive+Traversal"><a href="#label-Recursive+Traversal">Recursive Traversal</a></h3>
+<span id="label-Recursive+Traversal" class="legacy-anchor"></span>
+<h3 id="recursive-traversal"><a href="#recursive-traversal">Recursive Traversal</a></h3>
 
-<h4 id="label-Task-3A+Traverse+Each+Recursively"><a href="#label-Task-3A+Traverse+Each+Recursively">Task: Traverse Each Recursively</a></h4>
+<span id="label-Task-3A+Traverse+Each+Recursively" class="legacy-anchor"></span>
+<h4 id="task-traverse-each-recursively"><a href="#task-traverse-each-recursively">Task: Traverse Each Recursively</a></h4>
 
 <p>Use method <a href="../../../../REXML/Node.html#method-i-each_recursive">Node.each_recursive</a> to traverse a tree of nodes recursively:</p>
 
@@ -624,9 +637,11 @@
 &lt;b&gt; ... &lt;/&gt;
 &lt;c/&gt;</pre>
 
-<h3 id="label-Recursive+Search"><a href="#label-Recursive+Search">Recursive Search</a></h3>
+<span id="label-Recursive+Search" class="legacy-anchor"></span>
+<h3 id="recursive-search"><a href="#recursive-search">Recursive Search</a></h3>
 
-<h4 id="label-Task-3A+Traverse+Each+Recursively"><a href="#label-Task-3A+Traverse+Each+Recursively">Task: Traverse Each Recursively</a></h4>
+<span id="label-Task-3A+Traverse+Each+Recursively-1" class="legacy-anchor"></span>
+<h4 id="task-traverse-each-recursively-1"><a href="#task-traverse-each-recursively-1">Task: Traverse Each Recursively</a></h4>
 
 <p>Use method <a href="../../../../REXML/Node.html#method-i-find_first_recursive">Node.find_first_recursive</a> to search a tree of nodes recursively:</p>
 
@@ -635,9 +650,11 @@
 <span class="ruby-identifier">d</span>.<span class="ruby-identifier">root</span>.<span class="ruby-identifier">find_first_recursive</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">node</span><span class="ruby-operator">|</span> <span class="ruby-identifier">node</span>.<span class="ruby-identifier">name</span> <span class="ruby-operator">==</span> <span class="ruby-string">&#39;c&#39;</span> } <span class="ruby-comment"># =&gt; &lt;c/&gt;</span>
 </pre>
 
-<h3 id="label-Representation"><a href="#label-Representation">Representation</a></h3>
+<span id="label-Representation" class="legacy-anchor"></span>
+<h3 id="representation"><a href="#representation">Representation</a></h3>
 
-<h4 id="label-Task-3A+Represent+a+String"><a href="#label-Task-3A+Represent+a+String">Task: Represent a String</a></h4>
+<span id="label-Task-3A+Represent+a+String" class="legacy-anchor"></span>
+<h4 id="task-represent-a-string"><a href="#task-represent-a-string">Task: Represent a String</a></h4>
 
 <p>Use method <a href="../../../../REXML/Node.html#method-i-to_s">Node.to_s</a> to represent the node as a string:</p>
 
@@ -646,9 +663,11 @@
 <span class="ruby-identifier">d</span>.<span class="ruby-identifier">root</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-comment"># =&gt; &quot;&lt;root&gt;&lt;a&gt;&lt;b&gt;&lt;c/&gt;&lt;/b&gt;&lt;b&gt;&lt;c/&gt;&lt;/b&gt;&lt;/a&gt;&lt;/root&gt;&quot;</span>
 </pre>
 
-<h3 id="label-Parent-3F"><a href="#label-Parent-3F">Parent?</a></h3>
+<span id="label-Parent-3F" class="legacy-anchor"></span>
+<h3 id="parent"><a href="#parent">Parent?</a></h3>
 
-<h4 id="label-Task-3A+Determine+Whether+the+Node+is+a+Parent"><a href="#label-Task-3A+Determine+Whether+the+Node+is+a+Parent">Task: Determine Whether the Node is a Parent</a></h4>
+<span id="label-Task-3A+Determine+Whether+the+Node+is+a+Parent" class="legacy-anchor"></span>
+<h4 id="task-determine-whether-the-node-is-a-parent"><a href="#task-determine-whether-the-node-is-a-parent">Task: Determine Whether the Node is a Parent</a></h4>
 
 <p>Use method <a href="../../../../REXML/Node.html#method-i-parent-3F">Node.parent?</a> to determine whether the node is a parent; class Text derives from Node:</p>
 
@@ -680,7 +699,7 @@
 
   <div class="footer-bottom">
     <p>
-      Generated by <a href="https://ruby.github.io/rdoc/">RDoc 7.0.1</a>
+      Generated by <a href="https://ruby.github.io/rdoc/">RDoc 7.2.0</a>
       using the Aliki theme by <a href="http://st0012.dev">Stan Lo</a>
     </p>
   </div>

@@ -56,41 +56,46 @@
 </script>
 
 <script
-  src="../js/theme-toggle.js?v=7.0.1"
+  src="../js/theme-toggle.js?v=7.2.0"
 ></script>
 
 <script
-  src="../js/search_navigation.js?v=7.0.1"
+  src="../js/search_navigation.js?v=7.2.0"
   defer
 ></script>
 
 <script
-  src="../js/search_data.js?v=7.0.1"
+  src="../js/search_data.js?v=7.2.0"
   defer
 ></script>
 
 <script
-  src="../js/search_ranker.js?v=7.0.1"
+  src="../js/search_ranker.js?v=7.2.0"
   defer
 ></script>
 
 <script
-  src="../js/search_controller.js?v=7.0.1"
+  src="../js/search_controller.js?v=7.2.0"
   defer
 ></script>
 
 <script
-  src="../js/c_highlighter.js?v=7.0.1"
+  src="../js/c_highlighter.js?v=7.2.0"
   defer
 ></script>
 
 <script
-  src="../js/aliki.js?v=7.0.1"
+  src="../js/bash_highlighter.js?v=7.2.0"
+  defer
+></script>
+
+<script
+  src="../js/aliki.js?v=7.2.0"
   defer
 ></script>
 
 <link
-  href="../css/rdoc.css?v=7.0.1"
+  href="../css/rdoc.css?v=7.2.0"
   rel="stylesheet"
 >
 
@@ -369,7 +374,7 @@
 </div>
 
 
-<nav id="navigation" role="navigation">
+<nav id="navigation" role="navigation" hidden>
   
 
 
@@ -636,7 +641,7 @@
 
 </nav>
 
-<main role="main" aria-labelledby="class-REXML::QuickPath">
+<main role="main" aria-labelledby="class-rexml-quickpath">
   
   
     <ol role="navigation" aria-label="Breadcrumb navigation" class="breadcrumb">
@@ -656,7 +661,8 @@
     </ol>
   
 
-  <h1 id="class-REXML::QuickPath" class="anchor-link class">
+  <span id="class-REXML::QuickPath" class="legacy-anchor"></span>
+  <h1 id="class-rexml-quickpath" class="anchor-link class">
     class REXML::QuickPath
   </h1>
 
@@ -665,7 +671,8 @@
   </section>
 
 
-  <section id="5Buntitled-5D" class="documentation-section anchor-link">
+  <span id="5Buntitled-5D" class="legacy-anchor"></span>
+  <section class="documentation-section anchor-link">
 
 
 
@@ -673,7 +680,7 @@
 
     <section class="constants-list">
       <header>
-        <h3 id="constants"><a href="#constants">Constants</a></h3>
+        <h3 id="untitled-constants"><a href="#untitled-constants">Constants</a></h3>
       </header>
       <dl>
 
@@ -700,9 +707,12 @@
 
 
 
-     <section id="public-class-5Buntitled-5D-method-details" class="method-section anchor-link">
+
+
+
+     <section id="public-class-untitled-method-details" class="method-section anchor-link">
        <header>
-         <h3 id="public-class-methods"><a href="#public-class-methods">Public Class Methods</a></h3>
+         <h3 id="public-class-untitled-methods"><a href="#public-class-untitled-methods">Public Class Methods</a></h3>
        </header>
 
 
@@ -725,7 +735,7 @@
             </details>
           </div>
           <div class="method-source-code" id="attribute-source">
-            <pre class="ruby" data-language="ruby"><span class="ruby-comment"># File lib/rexml/quickpath.rb, line 207</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/quickpath.rb, line 207</span>
 <span class="ruby-keyword">def</span> <span class="ruby-constant">QuickPath</span><span class="ruby-operator">::</span><span class="ruby-identifier ruby-title">attribute</span>( <span class="ruby-identifier">name</span> )
   <span class="ruby-constant">Functions</span>.<span class="ruby-identifier">node</span>.<span class="ruby-identifier">attributes</span>[<span class="ruby-identifier">name</span>] <span class="ruby-keyword">if</span> <span class="ruby-constant">Functions</span>.<span class="ruby-identifier">node</span>.<span class="ruby-identifier">kind_of?</span> <span class="ruby-constant">Element</span>
 <span class="ruby-keyword">end</span></pre>
@@ -767,7 +777,7 @@
             </details>
           </div>
           <div class="method-source-code" id="axe-source">
-            <pre class="ruby" data-language="ruby"><span class="ruby-comment"># File lib/rexml/quickpath.rb, line 107</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/quickpath.rb, line 107</span>
 <span class="ruby-keyword">def</span> <span class="ruby-constant">QuickPath</span><span class="ruby-operator">::</span><span class="ruby-identifier ruby-title">axe</span>( <span class="ruby-identifier">elements</span>, <span class="ruby-identifier">axe_name</span>, <span class="ruby-identifier">rest</span> )
   <span class="ruby-identifier">matches</span> = []
   <span class="ruby-identifier">matches</span> = <span class="ruby-identifier">filter</span>( <span class="ruby-identifier">elements</span>.<span class="ruby-identifier">dup</span>, <span class="ruby-identifier">rest</span> ) <span class="ruby-keyword">if</span> <span class="ruby-identifier">axe_name</span> <span class="ruby-operator">=~</span> <span class="ruby-regexp">/-or-self$/u</span>
@@ -843,7 +853,7 @@
             </details>
           </div>
           <div class="method-source-code" id="each-source">
-            <pre class="ruby" data-language="ruby"><span class="ruby-comment"># File lib/rexml/quickpath.rb, line 18</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/quickpath.rb, line 18</span>
 <span class="ruby-keyword">def</span> <span class="ruby-constant">QuickPath</span><span class="ruby-operator">::</span><span class="ruby-identifier ruby-title">each</span> <span class="ruby-identifier">element</span>, <span class="ruby-identifier">path</span>, <span class="ruby-identifier">namespaces</span>=<span class="ruby-constant">EMPTY_HASH</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>
   <span class="ruby-identifier">path</span> = <span class="ruby-string">&quot;*&quot;</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">path</span>
   <span class="ruby-identifier">match</span>(<span class="ruby-identifier">element</span>, <span class="ruby-identifier">path</span>, <span class="ruby-identifier">namespaces</span>).<span class="ruby-identifier">each</span>( <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span> )
@@ -886,7 +896,7 @@
             </details>
           </div>
           <div class="method-source-code" id="filter-source">
-            <pre class="ruby" data-language="ruby"><span class="ruby-comment"># File lib/rexml/quickpath.rb, line 50</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/quickpath.rb, line 50</span>
 <span class="ruby-keyword">def</span> <span class="ruby-constant">QuickPath</span><span class="ruby-operator">::</span><span class="ruby-identifier ruby-title">filter</span> <span class="ruby-identifier">elements</span>, <span class="ruby-identifier">path</span>
   <span class="ruby-keyword">return</span> <span class="ruby-identifier">elements</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">path</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-keyword">or</span> <span class="ruby-identifier">path</span> <span class="ruby-operator">==</span> <span class="ruby-string">&#39;&#39;</span> <span class="ruby-keyword">or</span> <span class="ruby-identifier">elements</span>.<span class="ruby-identifier">size</span> <span class="ruby-operator">==</span> <span class="ruby-value">0</span>
   <span class="ruby-keyword">case</span> <span class="ruby-identifier">path</span>
@@ -981,7 +991,7 @@
             </details>
           </div>
           <div class="method-source-code" id="first-source">
-            <pre class="ruby" data-language="ruby"><span class="ruby-comment"># File lib/rexml/quickpath.rb, line 14</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/quickpath.rb, line 14</span>
 <span class="ruby-keyword">def</span> <span class="ruby-constant">QuickPath</span><span class="ruby-operator">::</span><span class="ruby-identifier ruby-title">first</span> <span class="ruby-identifier">element</span>, <span class="ruby-identifier">path</span>, <span class="ruby-identifier">namespaces</span>=<span class="ruby-constant">EMPTY_HASH</span>
   <span class="ruby-identifier">match</span>(<span class="ruby-identifier">element</span>, <span class="ruby-identifier">path</span>, <span class="ruby-identifier">namespaces</span>)[<span class="ruby-value">0</span>]
 <span class="ruby-keyword">end</span></pre>
@@ -1023,7 +1033,7 @@
             </details>
           </div>
           <div class="method-source-code" id="function-source">
-            <pre class="ruby" data-language="ruby"><span class="ruby-comment"># File lib/rexml/quickpath.rb, line 223</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/quickpath.rb, line 223</span>
 <span class="ruby-keyword">def</span> <span class="ruby-constant">QuickPath</span><span class="ruby-operator">::</span><span class="ruby-identifier ruby-title">function</span>( <span class="ruby-identifier">elements</span>, <span class="ruby-identifier">fname</span>, <span class="ruby-identifier">rest</span> )
   <span class="ruby-identifier">args</span> = <span class="ruby-identifier">parse_args</span>( <span class="ruby-identifier">elements</span>, <span class="ruby-identifier">rest</span> )
   <span class="ruby-constant">Functions</span>.<span class="ruby-identifier">pair</span> = [<span class="ruby-value">0</span>, <span class="ruby-identifier">elements</span>.<span class="ruby-identifier">size</span>]
@@ -1079,7 +1089,7 @@
             </details>
           </div>
           <div class="method-source-code" id="match-source">
-            <pre class="ruby" data-language="ruby"><span class="ruby-comment"># File lib/rexml/quickpath.rb, line 23</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/quickpath.rb, line 23</span>
 <span class="ruby-keyword">def</span> <span class="ruby-constant">QuickPath</span><span class="ruby-operator">::</span><span class="ruby-identifier ruby-title">match</span> <span class="ruby-identifier">element</span>, <span class="ruby-identifier">path</span>, <span class="ruby-identifier">namespaces</span>=<span class="ruby-constant">EMPTY_HASH</span>
   <span class="ruby-identifier">raise</span> <span class="ruby-string">&quot;nil is not a valid xpath&quot;</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">path</span>
   <span class="ruby-identifier">results</span> = <span class="ruby-keyword">nil</span>
@@ -1141,7 +1151,7 @@
             </details>
           </div>
           <div class="method-source-code" id="method_missing-source">
-            <pre class="ruby" data-language="ruby"><span class="ruby-comment"># File lib/rexml/quickpath.rb, line 215</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/quickpath.rb, line 215</span>
 <span class="ruby-keyword">def</span> <span class="ruby-constant">QuickPath</span><span class="ruby-operator">::</span><span class="ruby-identifier ruby-title">method_missing</span>( <span class="ruby-identifier">id</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">args</span> )
   <span class="ruby-keyword">begin</span>
     <span class="ruby-constant">Functions</span>.<span class="ruby-identifier">send</span>( <span class="ruby-identifier">id</span>.<span class="ruby-identifier">id2name</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">args</span> )
@@ -1187,7 +1197,7 @@
             </details>
           </div>
           <div class="method-source-code" id="name-source">
-            <pre class="ruby" data-language="ruby"><span class="ruby-comment"># File lib/rexml/quickpath.rb, line 211</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/quickpath.rb, line 211</span>
 <span class="ruby-keyword">def</span> <span class="ruby-constant">QuickPath</span><span class="ruby-operator">::</span><span class="ruby-identifier ruby-title">name</span>()
   <span class="ruby-constant">Functions</span>.<span class="ruby-identifier">node</span>.<span class="ruby-identifier">name</span> <span class="ruby-keyword">if</span> <span class="ruby-constant">Functions</span>.<span class="ruby-identifier">node</span>.<span class="ruby-identifier">kind_of?</span> <span class="ruby-constant">Element</span>
 <span class="ruby-keyword">end</span></pre>
@@ -1229,7 +1239,7 @@
             </details>
           </div>
           <div class="method-source-code" id="parse_args-source">
-            <pre class="ruby" data-language="ruby"><span class="ruby-comment"># File lib/rexml/quickpath.rb, line 241</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/quickpath.rb, line 241</span>
 <span class="ruby-keyword">def</span> <span class="ruby-constant">QuickPath</span><span class="ruby-operator">::</span><span class="ruby-identifier ruby-title">parse_args</span>( <span class="ruby-identifier">element</span>, <span class="ruby-identifier">string</span> )
   <span class="ruby-comment"># /.*?(?:\)|,)/</span>
   <span class="ruby-identifier">arguments</span> = []
@@ -1293,7 +1303,7 @@
             </details>
           </div>
           <div class="method-source-code" id="predicate-source">
-            <pre class="ruby" data-language="ruby"><span class="ruby-comment"># File lib/rexml/quickpath.rb, line 162</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/quickpath.rb, line 162</span>
 <span class="ruby-keyword">def</span> <span class="ruby-constant">QuickPath</span><span class="ruby-operator">::</span><span class="ruby-identifier ruby-title">predicate</span>( <span class="ruby-identifier">elements</span>, <span class="ruby-identifier">path</span> )
   <span class="ruby-identifier">ind</span> = <span class="ruby-value">1</span>
   <span class="ruby-identifier">bcount</span> = <span class="ruby-value">1</span>
@@ -1361,6 +1371,15 @@
 
     </section>
 
+
+
+
+
+
+
+
+
+
   </section>
 
 </main>
@@ -1380,7 +1399,7 @@
 
   <div class="footer-bottom">
     <p>
-      Generated by <a href="https://ruby.github.io/rdoc/">RDoc 7.0.1</a>
+      Generated by <a href="https://ruby.github.io/rdoc/">RDoc 7.2.0</a>
       using the Aliki theme by <a href="http://st0012.dev">Stan Lo</a>
     </p>
   </div>

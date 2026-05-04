@@ -45,41 +45,46 @@
 </script>
 
 <script
-  src="../../js/theme-toggle.js?v=7.0.1"
+  src="../../js/theme-toggle.js?v=7.2.0"
 ></script>
 
 <script
-  src="../../js/search_navigation.js?v=7.0.1"
+  src="../../js/search_navigation.js?v=7.2.0"
   defer
 ></script>
 
 <script
-  src="../../js/search_data.js?v=7.0.1"
+  src="../../js/search_data.js?v=7.2.0"
   defer
 ></script>
 
 <script
-  src="../../js/search_ranker.js?v=7.0.1"
+  src="../../js/search_ranker.js?v=7.2.0"
   defer
 ></script>
 
 <script
-  src="../../js/search_controller.js?v=7.0.1"
+  src="../../js/search_controller.js?v=7.2.0"
   defer
 ></script>
 
 <script
-  src="../../js/c_highlighter.js?v=7.0.1"
+  src="../../js/c_highlighter.js?v=7.2.0"
   defer
 ></script>
 
 <script
-  src="../../js/aliki.js?v=7.0.1"
+  src="../../js/bash_highlighter.js?v=7.2.0"
+  defer
+></script>
+
+<script
+  src="../../js/aliki.js?v=7.2.0"
   defer
 ></script>
 
 <link
-  href="../../css/rdoc.css?v=7.0.1"
+  href="../../css/rdoc.css?v=7.2.0"
   rel="stylesheet"
 >
 
@@ -358,7 +363,7 @@
 </div>
 
 
-<nav id="navigation" role="navigation">
+<nav id="navigation" role="navigation" hidden>
   
 
 
@@ -537,9 +542,11 @@
 
 <main role="main" aria-label="Page doc/rexml/tutorial.rdoc">
 
-<h1 id="label-REXML+Tutorial"><a href="#label-REXML+Tutorial">REXML Tutorial</a></h1>
+<span id="label-REXML+Tutorial" class="legacy-anchor"></span>
+<h1 id="rexml-tutorial"><a href="#rexml-tutorial">REXML Tutorial</a></h1>
 
-<h2 id="label-Why+REXML-3F"><a href="#label-Why+REXML-3F">Why REXML?</a></h2>
+<span id="label-Why+REXML-3F" class="legacy-anchor"></span>
+<h2 id="why-rexml"><a href="#why-rexml">Why REXML?</a></h2>
 <ul><li>
 <p>Ruby’s REXML library is part of the Ruby distribution, so using it requires no gem installations.</p>
 </li><li>
@@ -548,7 +555,8 @@
 <p>REXML is mature, having been in use for long years.</p>
 </li></ul>
 
-<h2 id="label-To+Include-2C+or+Not+to+Include-3F"><a href="#label-To+Include-2C+or+Not+to+Include-3F">To Include, or Not to Include?</a></h2>
+<span id="label-To+Include-2C+or+Not+to+Include-3F" class="legacy-anchor"></span>
+<h2 id="to-include-or-not-to-include"><a href="#to-include-or-not-to-include">To Include, or Not to Include?</a></h2>
 
 <p><a href="../../REXML.html"><code>REXML</code></a> is a module. To use it, you must require it:</p>
 
@@ -567,7 +575,8 @@
 <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Document</span> <span class="ruby-comment"># =&gt; REXML::Document</span>
 </pre>
 
-<h2 id="label-Preliminaries"><a href="#label-Preliminaries">Preliminaries</a></h2>
+<span id="label-Preliminaries" class="legacy-anchor"></span>
+<h2 id="preliminaries"><a href="#preliminaries">Preliminaries</a></h2>
 
 <p>All examples here assume that the following code has been executed:</p>
 
@@ -597,9 +606,11 @@
 <pre class="ruby"><span class="ruby-identifier">doc</span> = <span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">source_string</span>)
 </pre>
 
-<h2 id="label-Parsing+XML+Source"><a href="#label-Parsing+XML+Source">Parsing XML Source</a></h2>
+<span id="label-Parsing+XML+Source" class="legacy-anchor"></span>
+<h2 id="parsing-xml-source"><a href="#parsing-xml-source">Parsing XML Source</a></h2>
 
-<h3 id="label-Parsing+a+Document"><a href="#label-Parsing+a+Document">Parsing a Document</a></h3>
+<span id="label-Parsing+a+Document" class="legacy-anchor"></span>
+<h3 id="parsing-a-document"><a href="#parsing-a-document">Parsing a Document</a></h3>
 
 <p>Use method <a href="../../REXML/Document.html#method-c-new"><code>REXML::Document::new</code></a> to parse XML source.</p>
 
@@ -633,7 +644,8 @@
 
 <p>A parsed document may produce REXML objects of many classes, but the two that are likely to be of greatest interest are <a href="../../REXML/Document.html"><code>REXML::Document</code></a> and <a href="../../REXML/Element.html"><code>REXML::Element</code></a>. These two classes are covered in great detail in this tutorial.</p>
 
-<h3 id="label-Context+-28Parsing+Options-29"><a href="#label-Context+-28Parsing+Options-29">Context (Parsing Options)</a></h3>
+<span id="label-Context+-28Parsing+Options-29" class="legacy-anchor"></span>
+<h3 id="context-parsing-options"><a href="#context-parsing-options">Context (Parsing Options)</a></h3>
 
 <p>The context for parsing a document is a hash that influences the way the XML is read and stored.</p>
 
@@ -650,7 +662,8 @@
 
 <p>See <a href="../context_rdoc.html">Element Context</a>.</p>
 
-<h2 id="label-Exploring+the+Document"><a href="#label-Exploring+the+Document">Exploring the Document</a></h2>
+<span id="label-Exploring+the+Document" class="legacy-anchor"></span>
+<h2 id="exploring-the-document"><a href="#exploring-the-document">Exploring the Document</a></h2>
 
 <p>An <a href="../../REXML/Document.html"><code>REXML::Document</code></a> object represents an XML document.</p>
 
@@ -670,7 +683,8 @@
 
 <p>This section covers only those properties and methods that are unique to a document (that is, not inherited or included).</p>
 
-<h3 id="label-Document+Properties"><a href="#label-Document+Properties">Document Properties</a></h3>
+<span id="label-Document+Properties" class="legacy-anchor"></span>
+<h3 id="document-properties"><a href="#document-properties">Document Properties</a></h3>
 
 <p>A document has several properties (other than its children);</p>
 <ul><li>
@@ -719,7 +733,7 @@
 </pre>
 </dd><dt>XPath</dt>
 <dd>
-<p>method <a href="../../REXML/Element.html#method-i-xpath"><code>REXML::Element#xpath</code></a> returns the string xpath to the element, relative to its most distant ancestor:</p>
+<p>\method <a href="../../REXML/Element.html#method-i-xpath"><code>REXML::Element#xpath</code></a> returns the string xpath to the element, relative to its most distant ancestor:</p>
 
 <pre class="ruby"><span class="ruby-identifier">doc</span>.<span class="ruby-identifier">root</span>.<span class="ruby-identifier">class</span>             <span class="ruby-comment"># =&gt; REXML::Element</span>
 <span class="ruby-identifier">doc</span>.<span class="ruby-identifier">root</span>.<span class="ruby-identifier">xpath</span>             <span class="ruby-comment"># =&gt; &quot;/bookstore&quot;</span>
@@ -733,7 +747,8 @@
 </pre>
 </dd></dl>
 
-<h3 id="label-Document+Children"><a href="#label-Document+Children">Document Children</a></h3>
+<span id="label-Document+Children" class="legacy-anchor"></span>
+<h3 id="document-children"><a href="#document-children">Document Children</a></h3>
 
 <p>A document may have children of these types:</p>
 <ul><li>
@@ -804,8 +819,8 @@
 
 <pre class="ruby"><span class="ruby-identifier">my_xml</span> = <span class="ruby-identifier">&lt;&lt;-EOT</span>
 <span class="ruby-value">  &lt;!--foo--&gt;
-  &lt;!--bar--&gt;
-</span><span class="ruby-identifier">EOT</span>
+  &lt;!--bar--&gt;</span>
+<span class="ruby-identifier">EOT</span>
 <span class="ruby-identifier">my_doc</span> = <span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">my_xml</span>)
 <span class="ruby-identifier">my_doc</span>.<span class="ruby-identifier">comments</span>.<span class="ruby-identifier">each</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">c</span><span class="ruby-operator">|</span> <span class="ruby-identifier">p</span> [<span class="ruby-identifier">c</span>.<span class="ruby-identifier">class</span>, <span class="ruby-identifier">c</span>] }
 </pre>
@@ -820,8 +835,8 @@
 
 <pre class="ruby"><span class="ruby-identifier">my_xml</span> = <span class="ruby-identifier">&lt;&lt;-EOT</span>
 <span class="ruby-value">  &lt;![CDATA[foo]]&gt;
-  &lt;![CDATA[bar]]&gt;
-</span><span class="ruby-identifier">EOT</span>
+  &lt;![CDATA[bar]]&gt;</span>
+<span class="ruby-identifier">EOT</span>
 <span class="ruby-identifier">my_doc</span> = <span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">my_xml</span>)
 <span class="ruby-identifier">my_doc</span>.<span class="ruby-identifier">cdatas</span>.<span class="ruby-identifier">each</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">cd</span><span class="ruby-operator">|</span> <span class="ruby-identifier">p</span> [<span class="ruby-identifier">cd</span>.<span class="ruby-identifier">class</span>, <span class="ruby-identifier">cd</span>] }
 </pre>
@@ -852,7 +867,8 @@
 [REXML::Element, &lt;book category=&#39;web&#39; cover=&#39;paperback&#39;&gt; ... &lt;/&gt;]
 [REXML::Text, &quot;\n\n&quot;]</pre>
 
-<h2 id="label-Exploring+an+Element"><a href="#label-Exploring+an+Element">Exploring an Element</a></h2>
+<span id="label-Exploring+an+Element" class="legacy-anchor"></span>
+<h2 id="exploring-an-element"><a href="#exploring-an-element">Exploring an Element</a></h2>
 
 <p>An <a href="../../REXML/Element.html"><code>REXML::Element</code></a> object represents an XML element.</p>
 
@@ -876,7 +892,8 @@
 <p>Included from <a href="../../REXML/Node.html"><code>REXML::Node</code></a>.</p>
 </li></ul>
 
-<h3 id="label-Inside+the+Element"><a href="#label-Inside+the+Element">Inside the Element</a></h3>
+<span id="label-Inside+the+Element" class="legacy-anchor"></span>
+<h3 id="inside-the-element"><a href="#inside-the-element">Inside the Element</a></h3>
 <dl class="rdoc-list label-list"><dt>Brief String Representation</dt>
 <dd>
 <p>Use method <a href="../../REXML/Element.html#method-i-inspect"><code>REXML::Element#inspect</code></a> to retrieve a brief string representation.</p>
@@ -919,7 +936,8 @@
 </pre>
 </dd></dl>
 
-<h3 id="label-Relationships"><a href="#label-Relationships">Relationships</a></h3>
+<span id="label-Relationships" class="legacy-anchor"></span>
+<h3 id="relationships"><a href="#relationships">Relationships</a></h3>
 
 <p>An element may have:</p>
 <ul><li>
@@ -930,7 +948,8 @@
 <p>Children.</p>
 </li></ul>
 
-<h4 id="label-Ancestors"><a href="#label-Ancestors">Ancestors</a></h4>
+<span id="label-Ancestors" class="legacy-anchor"></span>
+<h4 id="ancestors"><a href="#ancestors">Ancestors</a></h4>
 <dl class="rdoc-list label-list"><dt>Containing Document</dt>
 <dd>
 <p>Use method <a href="../../REXML/Element.html#method-i-document"><code>REXML::Element#document</code></a> to retrieve the containing document, if any:</p>
@@ -987,7 +1006,8 @@
 </pre>
 </dd></dl>
 
-<h4 id="label-Siblings"><a href="#label-Siblings">Siblings</a></h4>
+<span id="label-Siblings" class="legacy-anchor"></span>
+<h4 id="siblings"><a href="#siblings">Siblings</a></h4>
 <dl class="rdoc-list label-list"><dt>Next Element</dt>
 <dd>
 <p>Use method <a href="../../REXML/Element.html#method-i-next_element"><code>REXML::Element#next_element</code></a> to retrieve the first following sibling that is itself an element (<code>nil</code> if there is none):</p>
@@ -1072,7 +1092,8 @@
 [REXML::Text, &quot;\n\n&quot;]</pre>
 </dd></dl>
 
-<h4 id="label-Children"><a href="#label-Children">Children</a></h4>
+<span id="label-Children" class="legacy-anchor"></span>
+<h4 id="children"><a href="#children">Children</a></h4>
 <dl class="rdoc-list label-list"><dt>Child Count</dt>
 <dd>
 <p>Use inherited method <a href="../../REXML/Parent.html#method-i-size"><code>REXML::Parent.size</code></a> to retrieve the count of nodes (of all types) in the element:</p>
@@ -1157,8 +1178,8 @@
 <span class="ruby-value">  &lt;root&gt;
     &lt;![CDATA[foo]]&gt;
     &lt;![CDATA[bar]]&gt;
-  &lt;/root&gt;
-</span><span class="ruby-identifier">EOT</span>
+  &lt;/root&gt;</span>
+<span class="ruby-identifier">EOT</span>
 <span class="ruby-identifier">my_doc</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">my_xml</span>)
 <span class="ruby-identifier">cdatas</span> <span class="ruby-identifier">my_doc</span>.<span class="ruby-identifier">root</span>.<span class="ruby-identifier">cdatas</span>
 <span class="ruby-identifier">cdatas</span>.<span class="ruby-identifier">frozen?</span>              <span class="ruby-comment"># =&gt; true</span>
@@ -1172,8 +1193,8 @@
 <span class="ruby-value">  &lt;root&gt;
     &lt;!--foo--&gt;
     &lt;!--bar--&gt;
-  &lt;/root&gt;
-</span><span class="ruby-identifier">EOT</span>
+  &lt;/root&gt;</span>
+<span class="ruby-identifier">EOT</span>
 <span class="ruby-identifier">my_doc</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">my_xml</span>)
 <span class="ruby-identifier">comments</span> = <span class="ruby-identifier">my_doc</span>.<span class="ruby-identifier">root</span>.<span class="ruby-identifier">comments</span>
 <span class="ruby-identifier">comments</span>.<span class="ruby-identifier">frozen?</span>            <span class="ruby-comment"># =&gt; true</span>
@@ -1188,8 +1209,8 @@
 <span class="ruby-value">  &lt;root&gt;
     &lt;?target0 foo?&gt;
     &lt;?target1 bar?&gt;
-  &lt;/root&gt;
-</span><span class="ruby-identifier">EOT</span>
+  &lt;/root&gt;</span>
+<span class="ruby-identifier">EOT</span>
 <span class="ruby-identifier">my_doc</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">my_xml</span>)
 <span class="ruby-identifier">instrs</span> = <span class="ruby-identifier">my_doc</span>.<span class="ruby-identifier">root</span>.<span class="ruby-identifier">instructions</span>
 <span class="ruby-identifier">instrs</span>.<span class="ruby-identifier">frozen?</span>            <span class="ruby-comment"># =&gt; true</span>
@@ -1221,7 +1242,8 @@
 </pre>
 </dd></dl>
 
-<h3 id="label-Element+Attributes"><a href="#label-Element+Attributes">Element Attributes</a></h3>
+<span id="label-Element+Attributes" class="legacy-anchor"></span>
+<h3 id="element-attributes"><a href="#element-attributes">Element Attributes</a></h3>
 
 <p>Use method <a href="../../REXML/Element.html#method-i-has_attributes-3F"><code>REXML::Element#has_attributes?</code></a> to return whether the element has attributes:</p>
 
@@ -1261,13 +1283,15 @@
 <span class="ruby-identifier">my_doc</span>.<span class="ruby-identifier">root</span>.<span class="ruby-identifier">attribute</span>(<span class="ruby-string">&quot;x&quot;</span>, <span class="ruby-string">&quot;a&quot;</span>) <span class="ruby-comment"># =&gt; a:x=&#39;a:x&#39;</span>
 </pre>
 
-<h2 id="label-Whitespace"><a href="#label-Whitespace">Whitespace</a></h2>
+<span id="label-Whitespace" class="legacy-anchor"></span>
+<h2 id="whitespace"><a href="#whitespace">Whitespace</a></h2>
 
 <p>Use method <a href="../../REXML/Element.html#method-i-ignore_whitespace_nodes"><code>REXML::Element#ignore_whitespace_nodes</code></a> to determine whether whitespace nodes were ignored when the XML was parsed; returns <code>true</code> if so, <code>nil</code> otherwise.</p>
 
 <p>Use method <a href="../../REXML/Element.html#method-i-whitespace"><code>REXML::Element#whitespace</code></a> to determine whether whitespace is respected for the element; returns <code>true</code> if so, <code>false</code> otherwise.</p>
 
-<h2 id="label-Namespaces"><a href="#label-Namespaces">Namespaces</a></h2>
+<span id="label-Namespaces" class="legacy-anchor"></span>
+<h2 id="namespaces"><a href="#namespaces">Namespaces</a></h2>
 
 <p>Use method <a href="../../REXML/Element.html#method-i-namespace"><code>REXML::Element#namespace</code></a> to retrieve the string namespace URI for the element, which may derive from one of its ancestors:</p>
 
@@ -1277,8 +1301,8 @@
        &lt;b/&gt;
        &lt;c xmlns:z=&#39;3&#39;/&gt;
      &lt;/a&gt;
-  &lt;/root&gt;
-</span><span class="ruby-identifier">EOT</span>
+  &lt;/root&gt;</span>
+<span class="ruby-identifier">EOT</span>
 <span class="ruby-identifier">d</span> = <span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">xml_string</span>)
 <span class="ruby-identifier">b</span> = <span class="ruby-identifier">d</span>.<span class="ruby-identifier">elements</span>[<span class="ruby-string">&#39;//b&#39;</span>]
 <span class="ruby-identifier">b</span>.<span class="ruby-identifier">namespace</span>      <span class="ruby-comment"># =&gt; &quot;1&quot;</span>
@@ -1294,8 +1318,8 @@
        &lt;b/&gt;
        &lt;c xmlns:z=&#39;3&#39;/&gt;
      &lt;/a&gt;
-  &lt;/root&gt;
-</span><span class="ruby-identifier">EOT</span>
+  &lt;/root&gt;</span>
+<span class="ruby-identifier">EOT</span>
 <span class="ruby-identifier">d</span> = <span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">xml_string</span>)
 <span class="ruby-identifier">d</span>.<span class="ruby-identifier">elements</span>[<span class="ruby-string">&#39;//a&#39;</span>].<span class="ruby-identifier">namespaces</span> <span class="ruby-comment"># =&gt; {&quot;x&quot;=&gt;&quot;1&quot;, &quot;y&quot;=&gt;&quot;2&quot;}</span>
 <span class="ruby-identifier">d</span>.<span class="ruby-identifier">elements</span>[<span class="ruby-string">&#39;//b&#39;</span>].<span class="ruby-identifier">namespaces</span> <span class="ruby-comment"># =&gt; {&quot;x&quot;=&gt;&quot;1&quot;, &quot;y&quot;=&gt;&quot;2&quot;}</span>
@@ -1310,15 +1334,16 @@
        &lt;b/&gt;
        &lt;c xmlns:z=&#39;3&#39;/&gt;
      &lt;/a&gt;
-  &lt;/root&gt;
-</span><span class="ruby-identifier">EOT</span>
+  &lt;/root&gt;</span>
+<span class="ruby-identifier">EOT</span>
 <span class="ruby-identifier">d</span> = <span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">xml_string</span>, {<span class="ruby-value">compress_whitespace:</span> <span class="ruby-value">:all</span>})
 <span class="ruby-identifier">d</span>.<span class="ruby-identifier">elements</span>[<span class="ruby-string">&#39;//a&#39;</span>].<span class="ruby-identifier">prefixes</span> <span class="ruby-comment"># =&gt; [&quot;x&quot;, &quot;y&quot;]</span>
 <span class="ruby-identifier">d</span>.<span class="ruby-identifier">elements</span>[<span class="ruby-string">&#39;//b&#39;</span>].<span class="ruby-identifier">prefixes</span> <span class="ruby-comment"># =&gt; [&quot;x&quot;, &quot;y&quot;]</span>
 <span class="ruby-identifier">d</span>.<span class="ruby-identifier">elements</span>[<span class="ruby-string">&#39;//c&#39;</span>].<span class="ruby-identifier">prefixes</span> <span class="ruby-comment"># =&gt; [&quot;x&quot;, &quot;y&quot;, &quot;z&quot;]</span>
 </pre>
 
-<h2 id="label-Traversing"><a href="#label-Traversing">Traversing</a></h2>
+<span id="label-Traversing" class="legacy-anchor"></span>
+<h2 id="traversing"><a href="#traversing">Traversing</a></h2>
 
 <p>You can use certain methods to traverse children of the element. Each child that meets given criteria is yielded to the given block.</p>
 <dl class="rdoc-list label-list"><dt>Traverse All Children</dt>
@@ -1479,7 +1504,8 @@
 [REXML::Element, &lt;price&gt; ... &lt;/&gt;]</pre>
 </dd></dl>
 
-<h2 id="label-Searching"><a href="#label-Searching">Searching</a></h2>
+<span id="label-Searching" class="legacy-anchor"></span>
+<h2 id="searching"><a href="#searching">Searching</a></h2>
 
 <p>You can use certain methods to search among the descendants of an element.</p>
 
@@ -1490,8 +1516,8 @@
   &lt;a level=&#39;1&#39;&gt;
     &lt;a level=&#39;2&#39;/&gt;
   &lt;/a&gt;
-&lt;/root&gt;
-</span><span class="ruby-identifier">EOT</span>
+&lt;/root&gt;</span>
+<span class="ruby-identifier">EOT</span>
 <span class="ruby-identifier">d</span> = <span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">xml_string</span>)
 <span class="ruby-identifier">d</span>.<span class="ruby-identifier">root</span>.<span class="ruby-identifier">get_elements</span>(<span class="ruby-string">&#39;//a&#39;</span>) <span class="ruby-comment"># =&gt; [&lt;a level=&#39;1&#39;&gt; ... &lt;/&gt;, &lt;a level=&#39;2&#39;/&gt;]</span>
 </pre>
@@ -1532,9 +1558,11 @@
 <span class="ruby-keyword">end</span> <span class="ruby-comment"># =&gt; nil</span>
 </pre>
 
-<h2 id="label-Editing"><a href="#label-Editing">Editing</a></h2>
+<span id="label-Editing" class="legacy-anchor"></span>
+<h2 id="editing"><a href="#editing">Editing</a></h2>
 
-<h3 id="label-Editing+a+Document"><a href="#label-Editing+a+Document">Editing a Document</a></h3>
+<span id="label-Editing+a+Document" class="legacy-anchor"></span>
+<h3 id="editing-a-document"><a href="#editing-a-document">Editing a Document</a></h3>
 <dl class="rdoc-list label-list"><dt>Creating a Document</dt>
 <dd>
 <p>Create a new document with method <a href="../../REXML/Document.html#method-c-new"><code>REXML::Document::new</code></a>:</p>
@@ -1583,16 +1611,19 @@
 </pre>
 </dd></dl>
 
-<h3 id="label-Editing+an+Element"><a href="#label-Editing+an+Element">Editing an Element</a></h3>
+<span id="label-Editing+an+Element" class="legacy-anchor"></span>
+<h3 id="editing-an-element"><a href="#editing-an-element">Editing an Element</a></h3>
 
-<h4 id="label-Creating+an+Element"><a href="#label-Creating+an+Element">Creating an Element</a></h4>
+<span id="label-Creating+an+Element" class="legacy-anchor"></span>
+<h4 id="creating-an-element"><a href="#creating-an-element">Creating an Element</a></h4>
 
 <p>Create a new element with method <a href="../../REXML/Element.html#method-c-new"><code>REXML::Element::new</code></a>:</p>
 
 <pre class="ruby"><span class="ruby-identifier">ele</span> = <span class="ruby-constant">Element</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;foo&#39;</span>) <span class="ruby-comment"># =&gt; &lt;foo/&gt;</span>
 </pre>
 
-<h4 id="label-Setting+Element+Properties"><a href="#label-Setting+Element+Properties">Setting Element Properties</a></h4>
+<span id="label-Setting+Element+Properties" class="legacy-anchor"></span>
+<h4 id="setting-element-properties"><a href="#setting-element-properties">Setting Element Properties</a></h4>
 
 <p>Set the context for an element with method <a href="../../REXML/Element.html#attribute-i-context"><code>REXML::Element#context=</code></a> (see <a href="../context_rdoc.html">Element Context</a>):</p>
 
@@ -1615,7 +1646,8 @@
 <span class="ruby-identifier">ele</span>.<span class="ruby-identifier">text</span> <span class="ruby-comment"># =&gt; &quot;bar&quot;</span>
 </pre>
 
-<h4 id="label-Adding+to+an+Element"><a href="#label-Adding+to+an+Element">Adding to an Element</a></h4>
+<span id="label-Adding+to+an+Element" class="legacy-anchor"></span>
+<h4 id="adding-to-an-element"><a href="#adding-to-an-element">Adding to an Element</a></h4>
 
 <p>Add a node as the last child with inherited method <a href="../../REXML/Parent.html#method-i-add"><code>REXML::Parent#add</code></a> (or its alias push):</p>
 
@@ -1695,7 +1727,8 @@
 <span class="ruby-identifier">ele</span>.<span class="ruby-identifier">namespaces</span> <span class="ruby-comment"># =&gt; {&quot;xmlns&quot;=&gt;&quot;bar&quot;, &quot;baz&quot;=&gt;&quot;bat&quot;}</span>
 </pre>
 
-<h4 id="label-Deleting+from+an+Element"><a href="#label-Deleting+from+an+Element">Deleting from an Element</a></h4>
+<span id="label-Deleting+from+an+Element" class="legacy-anchor"></span>
+<h4 id="deleting-from-an-element"><a href="#deleting-from-an-element">Deleting from an Element</a></h4>
 
 <p>Delete a specific child object with inherited method <a href="../../REXML/Parent.html#method-i-delete"><code>REXML::Parent#delete</code></a>:</p>
 
@@ -1807,7 +1840,8 @@
 <span class="ruby-identifier">parent</span>.<span class="ruby-identifier">children</span>.<span class="ruby-identifier">size</span>        <span class="ruby-comment"># =&gt; 0</span>
 </pre>
 
-<h4 id="label-Replacing+Nodes"><a href="#label-Replacing+Nodes">Replacing Nodes</a></h4>
+<span id="label-Replacing+Nodes" class="legacy-anchor"></span>
+<h4 id="replacing-nodes"><a href="#replacing-nodes">Replacing Nodes</a></h4>
 
 <p>Replace the node at a given 0-based index with inherited method <a href="../../REXML/Parent.html#method-i-5B-5D-3D"><code>REXML::Parent#[]=</code></a>:</p>
 
@@ -1847,7 +1881,8 @@
 <span class="ruby-identifier">ele</span>.<span class="ruby-identifier">children</span>             <span class="ruby-comment"># =&gt; [&lt;bar/&gt;, &quot;baz&quot;, &quot;bah&quot;, &quot;bam&quot;]</span>
 </pre>
 
-<h3 id="label-Cloning"><a href="#label-Cloning">Cloning</a></h3>
+<span id="label-Cloning" class="legacy-anchor"></span>
+<h3 id="cloning"><a href="#cloning">Cloning</a></h3>
 
 <p>Create a shallow clone of an element with method <a href="../../REXML/Element.html#method-i-clone"><code>REXML::Element#clone</code></a>. The clone contains the name and attributes, but not the parent or children:</p>
 
@@ -1879,7 +1914,8 @@
 <span class="ruby-identifier">clone</span>.<span class="ruby-identifier">to_s</span>.<span class="ruby-identifier">size</span> <span class="ruby-comment"># =&gt; 825</span>
 </pre>
 
-<h2 id="label-Writing+the+Document"><a href="#label-Writing+the+Document">Writing the Document</a></h2>
+<span id="label-Writing+the+Document" class="legacy-anchor"></span>
+<h2 id="writing-the-document"><a href="#writing-the-document">Writing the Document</a></h2>
 
 <p>Write a document to an IO stream (defaults to <code>$stdout</code>) with method <a href="../../REXML/Document.html#method-i-write"><code>REXML::Document#write</code></a>:</p>
 
@@ -1942,7 +1978,7 @@
 
   <div class="footer-bottom">
     <p>
-      Generated by <a href="https://ruby.github.io/rdoc/">RDoc 7.0.1</a>
+      Generated by <a href="https://ruby.github.io/rdoc/">RDoc 7.2.0</a>
       using the Aliki theme by <a href="http://st0012.dev">Stan Lo</a>
     </p>
   </div>

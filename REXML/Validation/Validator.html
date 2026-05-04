@@ -56,41 +56,46 @@
 </script>
 
 <script
-  src="../../js/theme-toggle.js?v=7.0.1"
+  src="../../js/theme-toggle.js?v=7.2.0"
 ></script>
 
 <script
-  src="../../js/search_navigation.js?v=7.0.1"
+  src="../../js/search_navigation.js?v=7.2.0"
   defer
 ></script>
 
 <script
-  src="../../js/search_data.js?v=7.0.1"
+  src="../../js/search_data.js?v=7.2.0"
   defer
 ></script>
 
 <script
-  src="../../js/search_ranker.js?v=7.0.1"
+  src="../../js/search_ranker.js?v=7.2.0"
   defer
 ></script>
 
 <script
-  src="../../js/search_controller.js?v=7.0.1"
+  src="../../js/search_controller.js?v=7.2.0"
   defer
 ></script>
 
 <script
-  src="../../js/c_highlighter.js?v=7.0.1"
+  src="../../js/c_highlighter.js?v=7.2.0"
   defer
 ></script>
 
 <script
-  src="../../js/aliki.js?v=7.0.1"
+  src="../../js/bash_highlighter.js?v=7.2.0"
+  defer
+></script>
+
+<script
+  src="../../js/aliki.js?v=7.2.0"
   defer
 ></script>
 
 <link
-  href="../../css/rdoc.css?v=7.0.1"
+  href="../../css/rdoc.css?v=7.2.0"
   rel="stylesheet"
 >
 
@@ -369,7 +374,7 @@
 </div>
 
 
-<nav id="navigation" role="navigation">
+<nav id="navigation" role="navigation" hidden>
   
 
 
@@ -579,7 +584,7 @@
 
 </nav>
 
-<main role="main" aria-labelledby="module-REXML::Validation::Validator">
+<main role="main" aria-labelledby="module-rexml-validation-validator">
   
   
     <ol role="navigation" aria-label="Breadcrumb navigation" class="breadcrumb">
@@ -605,7 +610,8 @@
     </ol>
   
 
-  <h1 id="module-REXML::Validation::Validator" class="anchor-link module">
+  <span id="module-REXML::Validation::Validator" class="legacy-anchor"></span>
+  <h1 id="module-rexml-validation-validator" class="anchor-link module">
     module REXML::Validation::Validator
   </h1>
 
@@ -614,7 +620,8 @@
   </section>
 
 
-  <section id="5Buntitled-5D" class="documentation-section anchor-link">
+  <span id="5Buntitled-5D" class="legacy-anchor"></span>
+  <section class="documentation-section anchor-link">
 
 
 
@@ -622,7 +629,7 @@
 
     <section class="constants-list">
       <header>
-        <h3 id="constants"><a href="#constants">Constants</a></h3>
+        <h3 id="untitled-constants"><a href="#untitled-constants">Constants</a></h3>
       </header>
       <dl>
 
@@ -641,9 +648,18 @@
 
 
 
-     <section id="public-instance-5Buntitled-5D-method-details" class="method-section anchor-link">
+
+
+
+
+
+
+
+
+
+     <section id="public-instance-untitled-method-details" class="method-section anchor-link">
        <header>
-         <h3 id="public-instance-methods"><a href="#public-instance-methods">Public Instance Methods</a></h3>
+         <h3 id="public-instance-untitled-methods"><a href="#public-instance-untitled-methods">Public Instance Methods</a></h3>
        </header>
 
 
@@ -666,7 +682,7 @@
             </details>
           </div>
           <div class="method-source-code" id="dump-source">
-            <pre class="ruby" data-language="ruby"><span class="ruby-comment"># File lib/rexml/validation/validation.rb, line 15</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/validation/validation.rb, line 15</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">dump</span>
   <span class="ruby-identifier">puts</span> <span class="ruby-ivar">@root</span>.<span class="ruby-identifier">inspect</span>
 <span class="ruby-keyword">end</span></pre>
@@ -708,7 +724,7 @@
             </details>
           </div>
           <div class="method-source-code" id="reset-source">
-            <pre class="ruby" data-language="ruby"><span class="ruby-comment"># File lib/rexml/validation/validation.rb, line 8</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/validation/validation.rb, line 8</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">reset</span>
   <span class="ruby-ivar">@current</span> = <span class="ruby-ivar">@root</span>
   <span class="ruby-ivar">@root</span>.<span class="ruby-identifier">reset</span>
@@ -754,7 +770,7 @@
             </details>
           </div>
           <div class="method-source-code" id="validate-source">
-            <pre class="ruby" data-language="ruby"><span class="ruby-comment"># File lib/rexml/validation/validation.rb, line 18</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/validation/validation.rb, line 18</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">validate</span>( <span class="ruby-identifier">event</span> )
   <span class="ruby-ivar">@attr_stack</span> = [] <span class="ruby-keyword">unless</span> <span class="ruby-keyword">defined?</span> <span class="ruby-ivar">@attr_stack</span>
   <span class="ruby-identifier">match</span> = <span class="ruby-ivar">@current</span>.<span class="ruby-identifier">next</span>(<span class="ruby-identifier">event</span>)
@@ -825,6 +841,9 @@
 
     </section>
 
+
+
+
   </section>
 
 </main>
@@ -844,7 +863,7 @@
 
   <div class="footer-bottom">
     <p>
-      Generated by <a href="https://ruby.github.io/rdoc/">RDoc 7.0.1</a>
+      Generated by <a href="https://ruby.github.io/rdoc/">RDoc 7.2.0</a>
       using the Aliki theme by <a href="http://st0012.dev">Stan Lo</a>
     </p>
   </div>

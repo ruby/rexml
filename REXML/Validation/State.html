@@ -56,41 +56,46 @@
 </script>
 
 <script
-  src="../../js/theme-toggle.js?v=7.0.1"
+  src="../../js/theme-toggle.js?v=7.2.0"
 ></script>
 
 <script
-  src="../../js/search_navigation.js?v=7.0.1"
+  src="../../js/search_navigation.js?v=7.2.0"
   defer
 ></script>
 
 <script
-  src="../../js/search_data.js?v=7.0.1"
+  src="../../js/search_data.js?v=7.2.0"
   defer
 ></script>
 
 <script
-  src="../../js/search_ranker.js?v=7.0.1"
+  src="../../js/search_ranker.js?v=7.2.0"
   defer
 ></script>
 
 <script
-  src="../../js/search_controller.js?v=7.0.1"
+  src="../../js/search_controller.js?v=7.2.0"
   defer
 ></script>
 
 <script
-  src="../../js/c_highlighter.js?v=7.0.1"
+  src="../../js/c_highlighter.js?v=7.2.0"
   defer
 ></script>
 
 <script
-  src="../../js/aliki.js?v=7.0.1"
+  src="../../js/bash_highlighter.js?v=7.2.0"
+  defer
+></script>
+
+<script
+  src="../../js/aliki.js?v=7.2.0"
   defer
 ></script>
 
 <link
-  href="../../css/rdoc.css?v=7.0.1"
+  href="../../css/rdoc.css?v=7.2.0"
   rel="stylesheet"
 >
 
@@ -369,7 +374,7 @@
 </div>
 
 
-<nav id="navigation" role="navigation">
+<nav id="navigation" role="navigation" hidden>
   
 
 
@@ -627,7 +632,7 @@
 
 </nav>
 
-<main role="main" aria-labelledby="class-REXML::Validation::State">
+<main role="main" aria-labelledby="class-rexml-validation-state">
   
   
     <ol role="navigation" aria-label="Breadcrumb navigation" class="breadcrumb">
@@ -653,7 +658,8 @@
     </ol>
   
 
-  <h1 id="class-REXML::Validation::State" class="anchor-link class">
+  <span id="class-REXML::Validation::State" class="legacy-anchor"></span>
+  <h1 id="class-rexml-validation-state" class="anchor-link class">
     class REXML::Validation::State
   </h1>
 
@@ -662,7 +668,8 @@
   </section>
 
 
-  <section id="5Buntitled-5D" class="documentation-section anchor-link">
+  <span id="5Buntitled-5D" class="legacy-anchor"></span>
+  <section class="documentation-section anchor-link">
 
 
 
@@ -672,9 +679,12 @@
 
 
 
-     <section id="public-class-5Buntitled-5D-method-details" class="method-section anchor-link">
+
+
+
+     <section id="public-class-untitled-method-details" class="method-section anchor-link">
        <header>
-         <h3 id="public-class-methods"><a href="#public-class-methods">Public Class Methods</a></h3>
+         <h3 id="public-class-untitled-methods"><a href="#public-class-untitled-methods">Public Class Methods</a></h3>
        </header>
 
 
@@ -697,7 +707,7 @@
             </details>
           </div>
           <div class="method-source-code" id="new-source">
-            <pre class="ruby" data-language="ruby"><span class="ruby-comment"># File lib/rexml/validation/relaxng.rb, line 128</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/validation/relaxng.rb, line 128</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>( <span class="ruby-identifier">context</span> )
   <span class="ruby-ivar">@previous</span> = []
   <span class="ruby-ivar">@events</span> = []
@@ -727,9 +737,15 @@
 
     </section>
 
-     <section id="public-instance-5Buntitled-5D-method-details" class="method-section anchor-link">
+
+
+
+
+
+
+     <section id="public-instance-untitled-method-details" class="method-section anchor-link">
        <header>
-         <h3 id="public-instance-methods"><a href="#public-instance-methods">Public Instance Methods</a></h3>
+         <h3 id="public-instance-untitled-methods"><a href="#public-instance-untitled-methods">Public Instance Methods</a></h3>
        </header>
 
 
@@ -752,7 +768,7 @@
             </details>
           </div>
           <div class="method-source-code" id="3C-3C-source">
-            <pre class="ruby" data-language="ruby"><span class="ruby-comment"># File lib/rexml/validation/relaxng.rb, line 192</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/validation/relaxng.rb, line 192</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">&lt;&lt;</span>( <span class="ruby-identifier">event</span> )
   <span class="ruby-identifier">add_event_to_arry</span>( <span class="ruby-ivar">@events</span>, <span class="ruby-identifier">event</span> )
 <span class="ruby-keyword">end</span></pre>
@@ -794,7 +810,7 @@
             </details>
           </div>
           <div class="method-source-code" id="expected-source">
-            <pre class="ruby" data-language="ruby"><span class="ruby-comment"># File lib/rexml/validation/relaxng.rb, line 188</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/validation/relaxng.rb, line 188</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">expected</span>
   [<span class="ruby-ivar">@events</span>[<span class="ruby-ivar">@current</span>]]
 <span class="ruby-keyword">end</span></pre>
@@ -836,7 +852,7 @@
             </details>
           </div>
           <div class="method-source-code" id="inspect-source">
-            <pre class="ruby" data-language="ruby"><span class="ruby-comment"># File lib/rexml/validation/relaxng.rb, line 181</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/validation/relaxng.rb, line 181</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">inspect</span>
   <span class="ruby-node">&quot;&lt; #{to_s} #{@events.collect{|e|
     pre = e == @events[@current] ? &#39;#&#39; : &#39;&#39;
@@ -881,7 +897,7 @@
             </details>
           </div>
           <div class="method-source-code" id="next-source">
-            <pre class="ruby" data-language="ruby"><span class="ruby-comment"># File lib/rexml/validation/relaxng.rb, line 147</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/validation/relaxng.rb, line 147</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">next</span>( <span class="ruby-identifier ruby-title">event</span> )
   <span class="ruby-comment">#print &quot;In next with #{event.inspect}.  &quot;</span>
   <span class="ruby-comment">#p @previous</span>
@@ -945,7 +961,7 @@
             </details>
           </div>
           <div class="method-source-code" id="previous-3D-source">
-            <pre class="ruby" data-language="ruby"><span class="ruby-comment"># File lib/rexml/validation/relaxng.rb, line 143</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/validation/relaxng.rb, line 143</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">previous=</span>( <span class="ruby-identifier">previous</span> )
   <span class="ruby-ivar">@previous</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">previous</span>
 <span class="ruby-keyword">end</span></pre>
@@ -987,7 +1003,7 @@
             </details>
           </div>
           <div class="method-source-code" id="reset-source">
-            <pre class="ruby" data-language="ruby"><span class="ruby-comment"># File lib/rexml/validation/relaxng.rb, line 137</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/validation/relaxng.rb, line 137</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">reset</span>
   <span class="ruby-keyword">return</span> <span class="ruby-keyword">if</span> <span class="ruby-ivar">@current</span> <span class="ruby-operator">==</span> <span class="ruby-value">0</span>
   <span class="ruby-ivar">@current</span> = <span class="ruby-value">0</span>
@@ -1031,7 +1047,7 @@
             </details>
           </div>
           <div class="method-source-code" id="to_s-source">
-            <pre class="ruby" data-language="ruby"><span class="ruby-comment"># File lib/rexml/validation/relaxng.rb, line 173</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/validation/relaxng.rb, line 173</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">to_s</span>
   <span class="ruby-comment"># Abbreviated:</span>
   <span class="ruby-keyword">self</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">name</span> <span class="ruby-operator">=~</span> <span class="ruby-regexp">/(?:::)(\w)\w+$/</span>
@@ -1060,9 +1076,10 @@
 
     </section>
 
-     <section id="protected-instance-5Buntitled-5D-method-details" class="method-section anchor-link">
+
+     <section id="protected-instance-untitled-method-details" class="method-section anchor-link">
        <header>
-         <h3 id="protected-instance-methods"><a href="#protected-instance-methods">Protected Instance Methods</a></h3>
+         <h3 id="protected-instance-untitled-methods"><a href="#protected-instance-untitled-methods">Protected Instance Methods</a></h3>
        </header>
 
 
@@ -1085,7 +1102,7 @@
             </details>
           </div>
           <div class="method-source-code" id="add_event_to_arry-source">
-            <pre class="ruby" data-language="ruby"><span class="ruby-comment"># File lib/rexml/validation/relaxng.rb, line 206</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/validation/relaxng.rb, line 206</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">add_event_to_arry</span>( <span class="ruby-identifier">arry</span>, <span class="ruby-identifier">evt</span> )
   <span class="ruby-identifier">evt</span> = <span class="ruby-identifier">generate_event</span>( <span class="ruby-identifier">evt</span> )
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">evt</span>.<span class="ruby-identifier">kind_of?</span> <span class="ruby-constant">String</span>
@@ -1133,7 +1150,7 @@
             </details>
           </div>
           <div class="method-source-code" id="expand_ref_in-source">
-            <pre class="ruby" data-language="ruby"><span class="ruby-comment"># File lib/rexml/validation/relaxng.rb, line 198</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/validation/relaxng.rb, line 198</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">expand_ref_in</span>( <span class="ruby-identifier">arry</span>, <span class="ruby-identifier">ind</span> )
   <span class="ruby-identifier">new_events</span> = []
   <span class="ruby-ivar">@references</span>[ <span class="ruby-identifier">arry</span>[<span class="ruby-identifier">ind</span>].<span class="ruby-identifier">to_s</span> ].<span class="ruby-identifier">each</span>{ <span class="ruby-operator">|</span><span class="ruby-identifier">evt</span><span class="ruby-operator">|</span>
@@ -1179,7 +1196,7 @@
             </details>
           </div>
           <div class="method-source-code" id="generate_event-source">
-            <pre class="ruby" data-language="ruby"><span class="ruby-comment"># File lib/rexml/validation/relaxng.rb, line 216</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/validation/relaxng.rb, line 216</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">generate_event</span>( <span class="ruby-identifier">event</span> )
   <span class="ruby-keyword">return</span> <span class="ruby-identifier">event</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">event</span>.<span class="ruby-identifier">kind_of?</span> <span class="ruby-constant">State</span> <span class="ruby-keyword">or</span> <span class="ruby-identifier">event</span>.<span class="ruby-identifier">class</span> <span class="ruby-operator">==</span> <span class="ruby-constant">Ref</span>
   <span class="ruby-identifier">evt</span> = <span class="ruby-keyword">nil</span>
@@ -1234,6 +1251,8 @@
 
     </section>
 
+
+
   </section>
 
 </main>
@@ -1253,7 +1272,7 @@
 
   <div class="footer-bottom">
     <p>
-      Generated by <a href="https://ruby.github.io/rdoc/">RDoc 7.0.1</a>
+      Generated by <a href="https://ruby.github.io/rdoc/">RDoc 7.2.0</a>
       using the Aliki theme by <a href="http://st0012.dev">Stan Lo</a>
     </p>
   </div>

@@ -56,41 +56,46 @@
 </script>
 
 <script
-  src="../js/theme-toggle.js?v=7.0.1"
+  src="../js/theme-toggle.js?v=7.2.0"
 ></script>
 
 <script
-  src="../js/search_navigation.js?v=7.0.1"
+  src="../js/search_navigation.js?v=7.2.0"
   defer
 ></script>
 
 <script
-  src="../js/search_data.js?v=7.0.1"
+  src="../js/search_data.js?v=7.2.0"
   defer
 ></script>
 
 <script
-  src="../js/search_ranker.js?v=7.0.1"
+  src="../js/search_ranker.js?v=7.2.0"
   defer
 ></script>
 
 <script
-  src="../js/search_controller.js?v=7.0.1"
+  src="../js/search_controller.js?v=7.2.0"
   defer
 ></script>
 
 <script
-  src="../js/c_highlighter.js?v=7.0.1"
+  src="../js/c_highlighter.js?v=7.2.0"
   defer
 ></script>
 
 <script
-  src="../js/aliki.js?v=7.0.1"
+  src="../js/bash_highlighter.js?v=7.2.0"
+  defer
+></script>
+
+<script
+  src="../js/aliki.js?v=7.2.0"
   defer
 ></script>
 
 <link
-  href="../css/rdoc.css?v=7.0.1"
+  href="../css/rdoc.css?v=7.2.0"
   rel="stylesheet"
 >
 
@@ -369,7 +374,7 @@
 </div>
 
 
-<nav id="navigation" role="navigation">
+<nav id="navigation" role="navigation" hidden>
   
 
 
@@ -581,7 +586,7 @@
 
 </nav>
 
-<main role="main" aria-labelledby="module-REXML::Security">
+<main role="main" aria-labelledby="module-rexml-security">
   
   
     <ol role="navigation" aria-label="Breadcrumb navigation" class="breadcrumb">
@@ -601,7 +606,8 @@
     </ol>
   
 
-  <h1 id="module-REXML::Security" class="anchor-link module">
+  <span id="module-REXML::Security" class="legacy-anchor"></span>
+  <h1 id="module-rexml-security" class="anchor-link module">
     module REXML::Security
   </h1>
 
@@ -610,7 +616,8 @@
   </section>
 
 
-  <section id="5Buntitled-5D" class="documentation-section anchor-link">
+  <span id="5Buntitled-5D" class="legacy-anchor"></span>
+  <section class="documentation-section anchor-link">
 
 
 
@@ -620,9 +627,12 @@
 
 
 
-     <section id="public-class-5Buntitled-5D-method-details" class="method-section anchor-link">
+
+
+
+     <section id="public-class-untitled-method-details" class="method-section anchor-link">
        <header>
-         <h3 id="public-class-methods"><a href="#public-class-methods">Public Class Methods</a></h3>
+         <h3 id="public-class-untitled-methods"><a href="#public-class-untitled-methods">Public Class Methods</a></h3>
        </header>
 
 
@@ -645,7 +655,7 @@
             </details>
           </div>
           <div class="method-source-code" id="entity_expansion_limit-source">
-            <pre class="ruby" data-language="ruby"><span class="ruby-comment"># File lib/rexml/security.rb, line 12</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/security.rb, line 12</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">entity_expansion_limit</span>
   <span class="ruby-identifier">@@entity_expansion_limit</span>
 <span class="ruby-keyword">end</span></pre>
@@ -687,7 +697,7 @@
             </details>
           </div>
           <div class="method-source-code" id="entity_expansion_limit-3D-source">
-            <pre class="ruby" data-language="ruby"><span class="ruby-comment"># File lib/rexml/security.rb, line 7</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/security.rb, line 7</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">entity_expansion_limit=</span>( <span class="ruby-identifier">val</span> )
   <span class="ruby-identifier">@@entity_expansion_limit</span> = <span class="ruby-identifier">val</span>
 <span class="ruby-keyword">end</span></pre>
@@ -729,7 +739,7 @@
             </details>
           </div>
           <div class="method-source-code" id="entity_expansion_text_limit-source">
-            <pre class="ruby" data-language="ruby"><span class="ruby-comment"># File lib/rexml/security.rb, line 24</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/security.rb, line 24</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">entity_expansion_text_limit</span>
   <span class="ruby-identifier">@@entity_expansion_text_limit</span>
 <span class="ruby-keyword">end</span></pre>
@@ -771,7 +781,7 @@
             </details>
           </div>
           <div class="method-source-code" id="entity_expansion_text_limit-3D-source">
-            <pre class="ruby" data-language="ruby"><span class="ruby-comment"># File lib/rexml/security.rb, line 19</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/security.rb, line 19</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">entity_expansion_text_limit=</span>( <span class="ruby-identifier">val</span> )
   <span class="ruby-identifier">@@entity_expansion_text_limit</span> = <span class="ruby-identifier">val</span>
 <span class="ruby-keyword">end</span></pre>
@@ -796,6 +806,15 @@
 
     </section>
 
+
+
+
+
+
+
+
+
+
   </section>
 
 </main>
@@ -815,7 +834,7 @@
 
   <div class="footer-bottom">
     <p>
-      Generated by <a href="https://ruby.github.io/rdoc/">RDoc 7.0.1</a>
+      Generated by <a href="https://ruby.github.io/rdoc/">RDoc 7.2.0</a>
       using the Aliki theme by <a href="http://st0012.dev">Stan Lo</a>
     </p>
   </div>

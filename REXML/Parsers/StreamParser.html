@@ -56,41 +56,46 @@
 </script>
 
 <script
-  src="../../js/theme-toggle.js?v=7.0.1"
+  src="../../js/theme-toggle.js?v=7.2.0"
 ></script>
 
 <script
-  src="../../js/search_navigation.js?v=7.0.1"
+  src="../../js/search_navigation.js?v=7.2.0"
   defer
 ></script>
 
 <script
-  src="../../js/search_data.js?v=7.0.1"
+  src="../../js/search_data.js?v=7.2.0"
   defer
 ></script>
 
 <script
-  src="../../js/search_ranker.js?v=7.0.1"
+  src="../../js/search_ranker.js?v=7.2.0"
   defer
 ></script>
 
 <script
-  src="../../js/search_controller.js?v=7.0.1"
+  src="../../js/search_controller.js?v=7.2.0"
   defer
 ></script>
 
 <script
-  src="../../js/c_highlighter.js?v=7.0.1"
+  src="../../js/c_highlighter.js?v=7.2.0"
   defer
 ></script>
 
 <script
-  src="../../js/aliki.js?v=7.0.1"
+  src="../../js/bash_highlighter.js?v=7.2.0"
+  defer
+></script>
+
+<script
+  src="../../js/aliki.js?v=7.2.0"
   defer
 ></script>
 
 <link
-  href="../../css/rdoc.css?v=7.0.1"
+  href="../../css/rdoc.css?v=7.2.0"
   rel="stylesheet"
 >
 
@@ -369,7 +374,7 @@
 </div>
 
 
-<nav id="navigation" role="navigation">
+<nav id="navigation" role="navigation" hidden>
   
 
 
@@ -617,7 +622,7 @@
 
 </nav>
 
-<main role="main" aria-labelledby="class-REXML::Parsers::StreamParser">
+<main role="main" aria-labelledby="class-rexml-parsers-streamparser">
   
   
     <ol role="navigation" aria-label="Breadcrumb navigation" class="breadcrumb">
@@ -643,7 +648,8 @@
     </ol>
   
 
-  <h1 id="class-REXML::Parsers::StreamParser" class="anchor-link class">
+  <span id="class-REXML::Parsers::StreamParser" class="legacy-anchor"></span>
+  <h1 id="class-rexml-parsers-streamparser" class="anchor-link class">
     class REXML::Parsers::StreamParser
   </h1>
 
@@ -652,7 +658,8 @@
   </section>
 
 
-  <section id="5Buntitled-5D" class="documentation-section anchor-link">
+  <span id="5Buntitled-5D" class="legacy-anchor"></span>
+  <section class="documentation-section anchor-link">
 
 
 
@@ -662,9 +669,12 @@
 
 
 
-     <section id="public-class-5Buntitled-5D-method-details" class="method-section anchor-link">
+
+
+
+     <section id="public-class-untitled-method-details" class="method-section anchor-link">
        <header>
-         <h3 id="public-class-methods"><a href="#public-class-methods">Public Class Methods</a></h3>
+         <h3 id="public-class-untitled-methods"><a href="#public-class-untitled-methods">Public Class Methods</a></h3>
        </header>
 
 
@@ -687,7 +697,7 @@
             </details>
           </div>
           <div class="method-source-code" id="new-source">
-            <pre class="ruby" data-language="ruby"><span class="ruby-comment"># File lib/rexml/parsers/streamparser.rb, line 7</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/parsers/streamparser.rb, line 7</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span> <span class="ruby-identifier">source</span>, <span class="ruby-identifier">listener</span>
   <span class="ruby-ivar">@listener</span> = <span class="ruby-identifier">listener</span>
   <span class="ruby-ivar">@parser</span> = <span class="ruby-constant">BaseParser</span>.<span class="ruby-identifier">new</span>( <span class="ruby-identifier">source</span> )
@@ -714,9 +724,15 @@
 
     </section>
 
-     <section id="public-instance-5Buntitled-5D-method-details" class="method-section anchor-link">
+
+
+
+
+
+
+     <section id="public-instance-untitled-method-details" class="method-section anchor-link">
        <header>
-         <h3 id="public-instance-methods"><a href="#public-instance-methods">Public Instance Methods</a></h3>
+         <h3 id="public-instance-untitled-methods"><a href="#public-instance-untitled-methods">Public Instance Methods</a></h3>
        </header>
 
 
@@ -739,7 +755,7 @@
             </details>
           </div>
           <div class="method-source-code" id="add_listener-source">
-            <pre class="ruby" data-language="ruby"><span class="ruby-comment"># File lib/rexml/parsers/streamparser.rb, line 13</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/parsers/streamparser.rb, line 13</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">add_listener</span>( <span class="ruby-identifier">listener</span> )
   <span class="ruby-ivar">@parser</span>.<span class="ruby-identifier">add_listener</span>( <span class="ruby-identifier">listener</span> )
 <span class="ruby-keyword">end</span></pre>
@@ -781,7 +797,7 @@
             </details>
           </div>
           <div class="method-source-code" id="entity_expansion_count-source">
-            <pre class="ruby" data-language="ruby"><span class="ruby-comment"># File lib/rexml/parsers/streamparser.rb, line 17</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/parsers/streamparser.rb, line 17</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">entity_expansion_count</span>
   <span class="ruby-ivar">@parser</span>.<span class="ruby-identifier">entity_expansion_count</span>
 <span class="ruby-keyword">end</span></pre>
@@ -823,7 +839,7 @@
             </details>
           </div>
           <div class="method-source-code" id="entity_expansion_limit-3D-source">
-            <pre class="ruby" data-language="ruby"><span class="ruby-comment"># File lib/rexml/parsers/streamparser.rb, line 21</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/parsers/streamparser.rb, line 21</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">entity_expansion_limit=</span>( <span class="ruby-identifier">limit</span> )
   <span class="ruby-ivar">@parser</span>.<span class="ruby-identifier">entity_expansion_limit</span> = <span class="ruby-identifier">limit</span>
 <span class="ruby-keyword">end</span></pre>
@@ -865,7 +881,7 @@
             </details>
           </div>
           <div class="method-source-code" id="entity_expansion_text_limit-3D-source">
-            <pre class="ruby" data-language="ruby"><span class="ruby-comment"># File lib/rexml/parsers/streamparser.rb, line 25</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/parsers/streamparser.rb, line 25</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">entity_expansion_text_limit=</span>( <span class="ruby-identifier">limit</span> )
   <span class="ruby-ivar">@parser</span>.<span class="ruby-identifier">entity_expansion_text_limit</span> = <span class="ruby-identifier">limit</span>
 <span class="ruby-keyword">end</span></pre>
@@ -907,7 +923,7 @@
             </details>
           </div>
           <div class="method-source-code" id="parse-source">
-            <pre class="ruby" data-language="ruby"><span class="ruby-comment"># File lib/rexml/parsers/streamparser.rb, line 29</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/parsers/streamparser.rb, line 29</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">parse</span>
   <span class="ruby-comment"># entity string</span>
   <span class="ruby-keyword">while</span> <span class="ruby-keyword">true</span>
@@ -965,6 +981,9 @@
 
     </section>
 
+
+
+
   </section>
 
 </main>
@@ -984,7 +1003,7 @@
 
   <div class="footer-bottom">
     <p>
-      Generated by <a href="https://ruby.github.io/rdoc/">RDoc 7.0.1</a>
+      Generated by <a href="https://ruby.github.io/rdoc/">RDoc 7.2.0</a>
       using the Aliki theme by <a href="http://st0012.dev">Stan Lo</a>
     </p>
   </div>

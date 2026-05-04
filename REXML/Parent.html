@@ -50,41 +50,46 @@
 </script>
 
 <script
-  src="../js/theme-toggle.js?v=7.0.1"
+  src="../js/theme-toggle.js?v=7.2.0"
 ></script>
 
 <script
-  src="../js/search_navigation.js?v=7.0.1"
+  src="../js/search_navigation.js?v=7.2.0"
   defer
 ></script>
 
 <script
-  src="../js/search_data.js?v=7.0.1"
+  src="../js/search_data.js?v=7.2.0"
   defer
 ></script>
 
 <script
-  src="../js/search_ranker.js?v=7.0.1"
+  src="../js/search_ranker.js?v=7.2.0"
   defer
 ></script>
 
 <script
-  src="../js/search_controller.js?v=7.0.1"
+  src="../js/search_controller.js?v=7.2.0"
   defer
 ></script>
 
 <script
-  src="../js/c_highlighter.js?v=7.0.1"
+  src="../js/c_highlighter.js?v=7.2.0"
   defer
 ></script>
 
 <script
-  src="../js/aliki.js?v=7.0.1"
+  src="../js/bash_highlighter.js?v=7.2.0"
+  defer
+></script>
+
+<script
+  src="../js/aliki.js?v=7.2.0"
   defer
 ></script>
 
 <link
-  href="../css/rdoc.css?v=7.0.1"
+  href="../css/rdoc.css?v=7.2.0"
   rel="stylesheet"
 >
 
@@ -363,7 +368,7 @@
 </div>
 
 
-<nav id="navigation" role="navigation">
+<nav id="navigation" role="navigation" hidden>
   
 
 
@@ -667,7 +672,7 @@
 
 </nav>
 
-<main role="main" aria-labelledby="class-REXML::Parent">
+<main role="main" aria-labelledby="class-rexml-parent">
   
   
     <ol role="navigation" aria-label="Breadcrumb navigation" class="breadcrumb">
@@ -687,7 +692,8 @@
     </ol>
   
 
-  <h1 id="class-REXML::Parent" class="anchor-link class">
+  <span id="class-REXML::Parent" class="legacy-anchor"></span>
+  <h1 id="class-rexml-parent" class="anchor-link class">
     class REXML::Parent
   </h1>
 
@@ -698,7 +704,8 @@
   </section>
 
 
-  <section id="5Buntitled-5D" class="documentation-section anchor-link">
+  <span id="5Buntitled-5D" class="legacy-anchor"></span>
+  <section class="documentation-section anchor-link">
 
 
 
@@ -708,9 +715,12 @@
 
 
 
-     <section id="public-class-5Buntitled-5D-method-details" class="method-section anchor-link">
+
+
+
+     <section id="public-class-untitled-method-details" class="method-section anchor-link">
        <header>
-         <h3 id="public-class-methods"><a href="#public-class-methods">Public Class Methods</a></h3>
+         <h3 id="public-class-untitled-methods"><a href="#public-class-untitled-methods">Public Class Methods</a></h3>
        </header>
 
 
@@ -733,7 +743,7 @@
             </details>
           </div>
           <div class="method-source-code" id="new-source">
-            <pre class="ruby" data-language="ruby"><span class="ruby-comment"># File lib/rexml/parent.rb, line 13</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/parent.rb, line 13</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span> <span class="ruby-identifier">parent</span>=<span class="ruby-keyword">nil</span>
   <span class="ruby-keyword">super</span>(<span class="ruby-identifier">parent</span>)
   <span class="ruby-ivar">@children</span> = []
@@ -764,9 +774,15 @@
 
     </section>
 
-     <section id="public-instance-5Buntitled-5D-method-details" class="method-section anchor-link">
+
+
+
+
+
+
+     <section id="public-instance-untitled-method-details" class="method-section anchor-link">
        <header>
-         <h3 id="public-instance-methods"><a href="#public-instance-methods">Public Instance Methods</a></h3>
+         <h3 id="public-instance-untitled-methods"><a href="#public-instance-untitled-methods">Public Instance Methods</a></h3>
        </header>
 
 
@@ -823,7 +839,7 @@
             </details>
           </div>
           <div class="method-source-code" id="5B-5D-source">
-            <pre class="ruby" data-language="ruby"><span class="ruby-comment"># File lib/rexml/parent.rb, line 57</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/parent.rb, line 57</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">[]</span>( <span class="ruby-identifier">index</span> )
   <span class="ruby-ivar">@children</span>[<span class="ruby-identifier">index</span>]
 <span class="ruby-keyword">end</span></pre>
@@ -865,7 +881,7 @@
             </details>
           </div>
           <div class="method-source-code" id="5B-5D-3D-source">
-            <pre class="ruby" data-language="ruby"><span class="ruby-comment"># File lib/rexml/parent.rb, line 70</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/parent.rb, line 70</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">[]=</span>( <span class="ruby-operator">*</span><span class="ruby-identifier">args</span> )
   <span class="ruby-identifier">args</span>[<span class="ruby-value">-1</span>].<span class="ruby-identifier">parent</span> = <span class="ruby-keyword">self</span>
   <span class="ruby-ivar">@children</span>[<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>[<span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-value">-2</span>]] = <span class="ruby-identifier">args</span>[<span class="ruby-value">-1</span>]
@@ -908,7 +924,7 @@
             </details>
           </div>
           <div class="method-source-code" id="add-source">
-            <pre class="ruby" data-language="ruby"><span class="ruby-comment"># File lib/rexml/parent.rb, line 18</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/parent.rb, line 18</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">add</span>( <span class="ruby-identifier">object</span> )
   <span class="ruby-identifier">object</span>.<span class="ruby-identifier">parent</span> = <span class="ruby-keyword">self</span>
   <span class="ruby-ivar">@children</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">object</span>
@@ -990,7 +1006,7 @@
             </details>
           </div>
           <div class="method-source-code" id="deep_clone-source">
-            <pre class="ruby" data-language="ruby"><span class="ruby-comment"># File lib/rexml/parent.rb, line 148</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/parent.rb, line 148</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">deep_clone</span>
   <span class="ruby-identifier">cl</span> = <span class="ruby-identifier">clone</span>()
   <span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">child</span><span class="ruby-operator">|</span>
@@ -1040,7 +1056,7 @@
             </details>
           </div>
           <div class="method-source-code" id="delete-source">
-            <pre class="ruby" data-language="ruby"><span class="ruby-comment"># File lib/rexml/parent.rb, line 32</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/parent.rb, line 32</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">delete</span>( <span class="ruby-identifier">object</span> )
   <span class="ruby-identifier">found</span> = <span class="ruby-keyword">false</span>
   <span class="ruby-ivar">@children</span>.<span class="ruby-identifier">delete_if</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">c</span><span class="ruby-operator">|</span> <span class="ruby-identifier">c</span>.<span class="ruby-identifier">equal?</span>(<span class="ruby-identifier">object</span>) <span class="ruby-keyword">and</span> <span class="ruby-identifier">found</span> = <span class="ruby-keyword">true</span> }
@@ -1085,7 +1101,7 @@
             </details>
           </div>
           <div class="method-source-code" id="delete_at-source">
-            <pre class="ruby" data-language="ruby"><span class="ruby-comment"># File lib/rexml/parent.rb, line 47</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/parent.rb, line 47</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">delete_at</span>( <span class="ruby-identifier">index</span> )
   <span class="ruby-ivar">@children</span>.<span class="ruby-identifier">delete_at</span> <span class="ruby-identifier">index</span>
 <span class="ruby-keyword">end</span></pre>
@@ -1127,7 +1143,7 @@
             </details>
           </div>
           <div class="method-source-code" id="delete_if-source">
-            <pre class="ruby" data-language="ruby"><span class="ruby-comment"># File lib/rexml/parent.rb, line 43</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/parent.rb, line 43</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">delete_if</span>( <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span> )
   <span class="ruby-ivar">@children</span>.<span class="ruby-identifier">delete_if</span>(<span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -1169,7 +1185,7 @@
             </details>
           </div>
           <div class="method-source-code" id="each-source">
-            <pre class="ruby" data-language="ruby"><span class="ruby-comment"># File lib/rexml/parent.rb, line 39</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/parent.rb, line 39</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">each</span>(<span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
   <span class="ruby-ivar">@children</span>.<span class="ruby-identifier">each</span>(<span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -1249,7 +1265,7 @@
             </details>
           </div>
           <div class="method-source-code" id="each_index-source">
-            <pre class="ruby" data-language="ruby"><span class="ruby-comment"># File lib/rexml/parent.rb, line 51</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/parent.rb, line 51</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">each_index</span>( <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span> )
   <span class="ruby-ivar">@children</span>.<span class="ruby-identifier">each_index</span>(<span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -1291,7 +1307,7 @@
             </details>
           </div>
           <div class="method-source-code" id="index-source">
-            <pre class="ruby" data-language="ruby"><span class="ruby-comment"># File lib/rexml/parent.rb, line 123</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/parent.rb, line 123</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">index</span>( <span class="ruby-identifier">child</span> )
   <span class="ruby-identifier">count</span> = <span class="ruby-value">-1</span>
   <span class="ruby-ivar">@children</span>.<span class="ruby-identifier">find</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span> <span class="ruby-identifier">count</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span> ; <span class="ruby-identifier">i</span>.<span class="ruby-identifier">hash</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">child</span>.<span class="ruby-identifier">hash</span> }
@@ -1335,7 +1351,7 @@
             </details>
           </div>
           <div class="method-source-code" id="insert_after-source">
-            <pre class="ruby" data-language="ruby"><span class="ruby-comment"># File lib/rexml/parent.rb, line 102</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/parent.rb, line 102</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">insert_after</span>( <span class="ruby-identifier">child1</span>, <span class="ruby-identifier">child2</span> )
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">child1</span>.<span class="ruby-identifier">kind_of?</span> <span class="ruby-constant">String</span>
     <span class="ruby-identifier">child1</span> = <span class="ruby-constant">XPath</span>.<span class="ruby-identifier">first</span>( <span class="ruby-keyword">self</span>, <span class="ruby-identifier">child1</span> )
@@ -1386,7 +1402,7 @@
             </details>
           </div>
           <div class="method-source-code" id="insert_before-source">
-            <pre class="ruby" data-language="ruby"><span class="ruby-comment"># File lib/rexml/parent.rb, line 82</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/parent.rb, line 82</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">insert_before</span>( <span class="ruby-identifier">child1</span>, <span class="ruby-identifier">child2</span> )
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">child1</span>.<span class="ruby-identifier">kind_of?</span> <span class="ruby-constant">String</span>
     <span class="ruby-identifier">child1</span> = <span class="ruby-constant">XPath</span>.<span class="ruby-identifier">first</span>( <span class="ruby-keyword">self</span>, <span class="ruby-identifier">child1</span> )
@@ -1471,7 +1487,7 @@
             </details>
           </div>
           <div class="method-source-code" id="parent-3F-source">
-            <pre class="ruby" data-language="ruby"><span class="ruby-comment"># File lib/rexml/parent.rb, line 162</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/parent.rb, line 162</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">parent?</span>
   <span class="ruby-keyword">true</span>
 <span class="ruby-keyword">end</span></pre>
@@ -1551,7 +1567,7 @@
             </details>
           </div>
           <div class="method-source-code" id="replace_child-source">
-            <pre class="ruby" data-language="ruby"><span class="ruby-comment"># File lib/rexml/parent.rb, line 140</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/parent.rb, line 140</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">replace_child</span>( <span class="ruby-identifier">to_replace</span>, <span class="ruby-identifier">replacement</span> )
   <span class="ruby-ivar">@children</span>.<span class="ruby-identifier">map!</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">c</span><span class="ruby-operator">|</span> <span class="ruby-identifier">c</span>.<span class="ruby-identifier">equal?</span>( <span class="ruby-identifier">to_replace</span> ) <span class="ruby-operator">?</span> <span class="ruby-identifier">replacement</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">c</span> }
   <span class="ruby-identifier">to_replace</span>.<span class="ruby-identifier">parent</span> = <span class="ruby-keyword">nil</span>
@@ -1595,7 +1611,7 @@
             </details>
           </div>
           <div class="method-source-code" id="size-source">
-            <pre class="ruby" data-language="ruby"><span class="ruby-comment"># File lib/rexml/parent.rb, line 130</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/parent.rb, line 130</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">size</span>
   <span class="ruby-ivar">@children</span>.<span class="ruby-identifier">size</span>
 <span class="ruby-keyword">end</span></pre>
@@ -1641,7 +1657,7 @@
             </details>
           </div>
           <div class="method-source-code" id="to_a-source">
-            <pre class="ruby" data-language="ruby"><span class="ruby-comment"># File lib/rexml/parent.rb, line 115</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/parent.rb, line 115</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">to_a</span>
   <span class="ruby-ivar">@children</span>.<span class="ruby-identifier">dup</span>
 <span class="ruby-keyword">end</span></pre>
@@ -1687,7 +1703,7 @@
             </details>
           </div>
           <div class="method-source-code" id="unshift-source">
-            <pre class="ruby" data-language="ruby"><span class="ruby-comment"># File lib/rexml/parent.rb, line 27</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/parent.rb, line 27</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">unshift</span>( <span class="ruby-identifier">object</span> )
   <span class="ruby-identifier">object</span>.<span class="ruby-identifier">parent</span> = <span class="ruby-keyword">self</span>
   <span class="ruby-ivar">@children</span>.<span class="ruby-identifier">unshift</span> <span class="ruby-identifier">object</span>
@@ -1713,6 +1729,9 @@
 
     </section>
 
+
+
+
   </section>
 
 </main>
@@ -1732,7 +1751,7 @@
 
   <div class="footer-bottom">
     <p>
-      Generated by <a href="https://ruby.github.io/rdoc/">RDoc 7.0.1</a>
+      Generated by <a href="https://ruby.github.io/rdoc/">RDoc 7.2.0</a>
       using the Aliki theme by <a href="http://st0012.dev">Stan Lo</a>
     </p>
   </div>

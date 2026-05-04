@@ -45,41 +45,46 @@
 </script>
 
 <script
-  src="../../../../js/theme-toggle.js?v=7.0.1"
+  src="../../../../js/theme-toggle.js?v=7.2.0"
 ></script>
 
 <script
-  src="../../../../js/search_navigation.js?v=7.0.1"
+  src="../../../../js/search_navigation.js?v=7.2.0"
   defer
 ></script>
 
 <script
-  src="../../../../js/search_data.js?v=7.0.1"
+  src="../../../../js/search_data.js?v=7.2.0"
   defer
 ></script>
 
 <script
-  src="../../../../js/search_ranker.js?v=7.0.1"
+  src="../../../../js/search_ranker.js?v=7.2.0"
   defer
 ></script>
 
 <script
-  src="../../../../js/search_controller.js?v=7.0.1"
+  src="../../../../js/search_controller.js?v=7.2.0"
   defer
 ></script>
 
 <script
-  src="../../../../js/c_highlighter.js?v=7.0.1"
+  src="../../../../js/c_highlighter.js?v=7.2.0"
   defer
 ></script>
 
 <script
-  src="../../../../js/aliki.js?v=7.0.1"
+  src="../../../../js/bash_highlighter.js?v=7.2.0"
+  defer
+></script>
+
+<script
+  src="../../../../js/aliki.js?v=7.2.0"
   defer
 ></script>
 
 <link
-  href="../../../../css/rdoc.css?v=7.0.1"
+  href="../../../../css/rdoc.css?v=7.2.0"
   rel="stylesheet"
 >
 
@@ -358,7 +363,7 @@
 </div>
 
 
-<nav id="navigation" role="navigation">
+<nav id="navigation" role="navigation" hidden>
   
 
 
@@ -537,7 +542,8 @@
 
 <main role="main" aria-label="Page doc/rexml/tasks/rdoc/element.rdoc">
 
-<h2 id="label-Class+Element"><a href="#label-Class+Element">Class Element</a></h2>
+<span id="label-Class+Element" class="legacy-anchor"></span>
+<h2 id="class-element"><a href="#class-element">Class Element</a></h2>
 
 <p>Class Element has methods from its superclasses and included modules; see:</p>
 <ul><li>
@@ -662,9 +668,11 @@
 <p><a href="#label-Other+Getters">Other Getters</a></p>
 </li></ul>
 
-<h3 id="label-New+Element"><a href="#label-New+Element">New Element</a></h3>
+<span id="label-New+Element" class="legacy-anchor"></span>
+<h3 id="new-element"><a href="#new-element">New Element</a></h3>
 
-<h4 id="label-Task-3A+Create+a+Default+Element"><a href="#label-Task-3A+Create+a+Default+Element">Task: Create a Default Element</a></h4>
+<span id="label-Task-3A+Create+a+Default+Element" class="legacy-anchor"></span>
+<h4 id="task-create-a-default-element"><a href="#task-create-a-default-element">Task: Create a Default Element</a></h4>
 
 <p>Use method <a href="../../../../REXML/Element.html#method-c-new">Element::new</a> with no arguments to create a default element:</p>
 
@@ -674,7 +682,8 @@
 <span class="ruby-identifier">e</span>.<span class="ruby-identifier">context</span> <span class="ruby-comment"># =&gt; nil</span>
 </pre>
 
-<h4 id="label-Task-3A+Create+a+Named+Element"><a href="#label-Task-3A+Create+a+Named+Element">Task: Create a Named Element</a></h4>
+<span id="label-Task-3A+Create+a+Named+Element" class="legacy-anchor"></span>
+<h4 id="task-create-a-named-element"><a href="#task-create-a-named-element">Task: Create a Named Element</a></h4>
 
 <p>Use method <a href="../../../../REXML/Element.html#method-c-new">Element::new</a> with a string name argument to create a named element:</p>
 
@@ -684,7 +693,8 @@
 <span class="ruby-identifier">e</span>.<span class="ruby-identifier">context</span> <span class="ruby-comment"># =&gt; nil</span>
 </pre>
 
-<h4 id="label-Task-3A+Create+an+Element+with+Name+and+Parent"><a href="#label-Task-3A+Create+an+Element+with+Name+and+Parent">Task: Create an Element with Name and Parent</a></h4>
+<span id="label-Task-3A+Create+an+Element+with+Name+and+Parent" class="legacy-anchor"></span>
+<h4 id="task-create-an-element-with-name-and-parent"><a href="#task-create-an-element-with-name-and-parent">Task: Create an Element with Name and Parent</a></h4>
 
 <p>Use method <a href="../../../../REXML/Element.html#method-c-new">Element::new</a> with name and parent arguments to create an element with name and parent:</p>
 
@@ -695,7 +705,8 @@
 <span class="ruby-identifier">e</span>.<span class="ruby-identifier">context</span> <span class="ruby-comment"># =&gt; nil</span>
 </pre>
 
-<h4 id="label-Task-3A+Create+an+Element+with+Name-2C+Parent-2C+and+Context"><a href="#label-Task-3A+Create+an+Element+with+Name-2C+Parent-2C+and+Context">Task: Create an Element with Name, Parent, and Context</a></h4>
+<span id="label-Task-3A+Create+an+Element+with+Name-2C+Parent-2C+and+Context" class="legacy-anchor"></span>
+<h4 id="task-create-an-element-with-name-parent-and-context"><a href="#task-create-an-element-with-name-parent-and-context">Task: Create an Element with Name, Parent, and Context</a></h4>
 
 <p>Use method <a href="../../../../REXML/Element.html#method-c-new">Element::new</a> with name, parent, and context arguments to create an element with name, parent, and context:</p>
 
@@ -706,7 +717,8 @@
 <span class="ruby-identifier">e</span>.<span class="ruby-identifier">context</span> <span class="ruby-comment"># =&gt; {:compress_whitespace=&gt;:all}</span>
 </pre>
 
-<h4 id="label-Task-3A+Create+a+Shallow+Clone"><a href="#label-Task-3A+Create+a+Shallow+Clone">Task: Create a Shallow Clone</a></h4>
+<span id="label-Task-3A+Create+a+Shallow+Clone" class="legacy-anchor"></span>
+<h4 id="task-create-a-shallow-clone"><a href="#task-create-a-shallow-clone">Task: Create a Shallow Clone</a></h4>
 
 <p>Use method <a href="../../../../REXML/Element.html#method-i-clone">Element#clone</a> to create a shallow clone of an element, copying only the name, attributes, and context:</p>
 
@@ -718,9 +730,11 @@
 <span class="ruby-identifier">e1</span>.<span class="ruby-identifier">context</span> <span class="ruby-comment"># =&gt; {:compress_whitespace=&gt;:all}</span>
 </pre>
 
-<h3 id="label-Attributes"><a href="#label-Attributes">Attributes</a></h3>
+<span id="label-Attributes" class="legacy-anchor"></span>
+<h3 id="attributes"><a href="#attributes">Attributes</a></h3>
 
-<h4 id="label-Task-3A+Create+and+Add+an+Attribute"><a href="#label-Task-3A+Create+and+Add+an+Attribute">Task: Create and Add an Attribute</a></h4>
+<span id="label-Task-3A+Create+and+Add+an+Attribute" class="legacy-anchor"></span>
+<h4 id="task-create-and-add-an-attribute"><a href="#task-create-and-add-an-attribute">Task: Create and Add an Attribute</a></h4>
 
 <p>Use method <a href="../../../../REXML/Element.html#method-i-add_attribute">Element#add_attribute</a> to create and add an attribute:</p>
 
@@ -731,7 +745,8 @@
 <span class="ruby-identifier">e</span>[<span class="ruby-string">&#39;attr&#39;</span>] <span class="ruby-comment"># =&gt; &quot;VALUE&quot;</span>
 </pre>
 
-<h4 id="label-Task-3A+Add+an+Existing+Attribute"><a href="#label-Task-3A+Add+an+Existing+Attribute">Task: Add an Existing Attribute</a></h4>
+<span id="label-Task-3A+Add+an+Existing+Attribute" class="legacy-anchor"></span>
+<h4 id="task-add-an-existing-attribute"><a href="#task-add-an-existing-attribute">Task: Add an Existing Attribute</a></h4>
 
 <p>Use method <a href="../../../../REXML/Element.html#method-i-add_attribute">Element#add_attribute</a> to add an existing attribute:</p>
 
@@ -744,7 +759,8 @@
 <span class="ruby-identifier">e</span>[<span class="ruby-string">&#39;attr&#39;</span>] <span class="ruby-comment"># =&gt; &quot;VALUE&quot;</span>
 </pre>
 
-<h4 id="label-Task-3A+Add+Multiple+Attributes+from+a+Hash"><a href="#label-Task-3A+Add+Multiple+Attributes+from+a+Hash">Task: Add Multiple Attributes from a Hash</a></h4>
+<span id="label-Task-3A+Add+Multiple+Attributes+from+a+Hash" class="legacy-anchor"></span>
+<h4 id="task-add-multiple-attributes-from-a-hash"><a href="#task-add-multiple-attributes-from-a-hash">Task: Add Multiple Attributes from a Hash</a></h4>
 
 <p>Use method <a href="../../../../REXML/Element.html#method-i-add_attributes">Element#add_attributes</a> to add multiple attributes from a hash:</p>
 
@@ -755,7 +771,8 @@
 <span class="ruby-identifier">e</span>[<span class="ruby-string">&#39;bar&#39;</span>] <span class="ruby-comment"># =&gt; &quot;1&quot;</span>
 </pre>
 
-<h4 id="label-Task-3A+Add+Multiple+Attributes+from+an+Array"><a href="#label-Task-3A+Add+Multiple+Attributes+from+an+Array">Task: Add Multiple Attributes from an Array</a></h4>
+<span id="label-Task-3A+Add+Multiple+Attributes+from+an+Array" class="legacy-anchor"></span>
+<h4 id="task-add-multiple-attributes-from-an-array"><a href="#task-add-multiple-attributes-from-an-array">Task: Add Multiple Attributes from an Array</a></h4>
 
 <p>Use method <a href="../../../../REXML/Element.html#method-i-add_attributes">Element#add_attributes</a> to add multiple attributes from an array:</p>
 
@@ -766,7 +783,8 @@
 <span class="ruby-identifier">e</span>[<span class="ruby-string">&#39;bar&#39;</span>] <span class="ruby-comment"># =&gt; &quot;1&quot;</span>
 </pre>
 
-<h4 id="label-Task-3A+Retrieve+the+Value+for+an+Attribute+Name"><a href="#label-Task-3A+Retrieve+the+Value+for+an+Attribute+Name">Task: Retrieve the Value for an Attribute Name</a></h4>
+<span id="label-Task-3A+Retrieve+the+Value+for+an+Attribute+Name" class="legacy-anchor"></span>
+<h4 id="task-retrieve-the-value-for-an-attribute-name"><a href="#task-retrieve-the-value-for-an-attribute-name">Task: Retrieve the Value for an Attribute Name</a></h4>
 
 <p>Use method <a href="../../../../REXML/Element.html#method-i-5B-5D">Element#[]</a> to retrieve the value for an attribute name:</p>
 
@@ -775,7 +793,8 @@
 <span class="ruby-identifier">e</span>[<span class="ruby-string">&#39;attr&#39;</span>] <span class="ruby-comment"># =&gt; &quot;value&quot;</span>
 </pre>
 
-<h4 id="label-Task-3A+Retrieve+the+Attribute+Value+for+a+Name+and+Namespace"><a href="#label-Task-3A+Retrieve+the+Attribute+Value+for+a+Name+and+Namespace">Task: Retrieve the Attribute Value for a Name and Namespace</a></h4>
+<span id="label-Task-3A+Retrieve+the+Attribute+Value+for+a+Name+and+Namespace" class="legacy-anchor"></span>
+<h4 id="task-retrieve-the-attribute-value-for-a-name-and-namespace"><a href="#task-retrieve-the-attribute-value-for-a-name-and-namespace">Task: Retrieve the Attribute Value for a Name and Namespace</a></h4>
 
 <p>Use method <a href="../../../../REXML/Element.html#method-i-attribute">Element#attribute</a> to retrieve the value for an attribute name:</p>
 
@@ -786,7 +805,8 @@
 <span class="ruby-identifier">e</span>.<span class="ruby-identifier">attribute</span>(<span class="ruby-string">&quot;x&quot;</span>, <span class="ruby-string">&quot;a&quot;</span>) <span class="ruby-comment"># =&gt; a:x=&#39;a:x&#39;</span>
 </pre>
 
-<h4 id="label-Task-3A+Delete+an+Attribute"><a href="#label-Task-3A+Delete+an+Attribute">Task: Delete an Attribute</a></h4>
+<span id="label-Task-3A+Delete+an+Attribute" class="legacy-anchor"></span>
+<h4 id="task-delete-an-attribute"><a href="#task-delete-an-attribute">Task: Delete an Attribute</a></h4>
 
 <p>Use method <a href="../../../../REXML/Element.html#method-i-delete_attribute">Element#delete_attribute</a> to remove an attribute:</p>
 
@@ -797,7 +817,8 @@
 <span class="ruby-identifier">e</span>[<span class="ruby-string">&#39;bar&#39;</span>] <span class="ruby-comment"># =&gt; nil</span>
 </pre>
 
-<h4 id="label-Task-3A+Determine+Whether+the+Element+Has+Attributes"><a href="#label-Task-3A+Determine+Whether+the+Element+Has+Attributes">Task: Determine Whether the Element Has Attributes</a></h4>
+<span id="label-Task-3A+Determine+Whether+the+Element+Has+Attributes" class="legacy-anchor"></span>
+<h4 id="task-determine-whether-the-element-has-attributes"><a href="#task-determine-whether-the-element-has-attributes">Task: Determine Whether the Element Has Attributes</a></h4>
 
 <p>Use method <a href="../../../../REXML/Element.html#method-i-has_attributes-3F">Element#has_attributes?</a> to determine whether the element has attributes:</p>
 
@@ -807,11 +828,13 @@
 <span class="ruby-identifier">e</span>.<span class="ruby-identifier">has_attributes?</span> <span class="ruby-comment"># =&gt; true</span>
 </pre>
 
-<h3 id="label-Children"><a href="#label-Children">Children</a></h3>
+<span id="label-Children" class="legacy-anchor"></span>
+<h3 id="children"><a href="#children">Children</a></h3>
 
 <p><em>Element Children</em></p>
 
-<h4 id="label-Task-3A+Create+and+Add+an+Element"><a href="#label-Task-3A+Create+and+Add+an+Element">Task: Create and Add an Element</a></h4>
+<span id="label-Task-3A+Create+and+Add+an+Element" class="legacy-anchor"></span>
+<h4 id="task-create-and-add-an-element"><a href="#task-create-and-add-an-element">Task: Create and Add an Element</a></h4>
 
 <p>Use method <a href="../../../../REXML/Element.html#method-i-add_element">Element#add_element</a> to create a new element and add it to this element:</p>
 
@@ -820,7 +843,8 @@
 <span class="ruby-identifier">e0</span>.<span class="ruby-identifier">children</span> <span class="ruby-comment"># =&gt; [&lt;bar/&gt;]</span>
 </pre>
 
-<h4 id="label-Task-3A+Add+an+Existing+Element"><a href="#label-Task-3A+Add+an+Existing+Element">Task: Add an Existing Element</a></h4>
+<span id="label-Task-3A+Add+an+Existing+Element" class="legacy-anchor"></span>
+<h4 id="task-add-an-existing-element"><a href="#task-add-an-existing-element">Task: Add an Existing Element</a></h4>
 
 <p>Use method <a href="../../../../REXML/Element.html#method-i-add_element">Element#add_element</a> to add an element to this element:</p>
 
@@ -830,7 +854,8 @@
 <span class="ruby-identifier">e0</span>.<span class="ruby-identifier">children</span> <span class="ruby-comment"># =&gt; [&lt;bar/&gt;]</span>
 </pre>
 
-<h4 id="label-Task-3A+Create+and+Add+an+Element+with+Attributes"><a href="#label-Task-3A+Create+and+Add+an+Element+with+Attributes">Task: Create and Add an Element with Attributes</a></h4>
+<span id="label-Task-3A+Create+and+Add+an+Element+with+Attributes" class="legacy-anchor"></span>
+<h4 id="task-create-and-add-an-element-with-attributes"><a href="#task-create-and-add-an-element-with-attributes">Task: Create and Add an Element with Attributes</a></h4>
 
 <p>Use method <a href="../../../../REXML/Element.html#method-i-add_element">Element#add_element</a> to create a new element with attributes, and add it to this element:</p>
 
@@ -839,7 +864,8 @@
 <span class="ruby-identifier">e0</span>.<span class="ruby-identifier">children</span> <span class="ruby-comment"># =&gt; [&lt;bar name=&#39;value&#39;/&gt;]</span>
 </pre>
 
-<h4 id="label-Task-3A+Add+an+Existing+Element+with+Added+Attributes"><a href="#label-Task-3A+Add+an+Existing+Element+with+Added+Attributes">Task: Add an Existing Element with Added Attributes</a></h4>
+<span id="label-Task-3A+Add+an+Existing+Element+with+Added+Attributes" class="legacy-anchor"></span>
+<h4 id="task-add-an-existing-element-with-added-attributes"><a href="#task-add-an-existing-element-with-added-attributes">Task: Add an Existing Element with Added Attributes</a></h4>
 
 <p>Use method <a href="../../../../REXML/Element.html#method-i-add_element">Element#add_element</a> to add an element to this element:</p>
 
@@ -849,7 +875,8 @@
 <span class="ruby-identifier">e0</span>.<span class="ruby-identifier">children</span> <span class="ruby-comment"># =&gt; [&lt;bar name=&#39;value&#39;/&gt;]</span>
 </pre>
 
-<h4 id="label-Task-3A+Delete+a+Specified+Element"><a href="#label-Task-3A+Delete+a+Specified+Element">Task: Delete a Specified Element</a></h4>
+<span id="label-Task-3A+Delete+a+Specified+Element" class="legacy-anchor"></span>
+<h4 id="task-delete-a-specified-element"><a href="#task-delete-a-specified-element">Task: Delete a Specified Element</a></h4>
 
 <p>Use method <a href="../../../../REXML/Element.html#method-i-delete_element">Element#delete_element</a> to remove a specified element from this element:</p>
 
@@ -861,7 +888,8 @@
 <span class="ruby-identifier">e0</span>.<span class="ruby-identifier">children</span> <span class="ruby-comment"># =&gt; []</span>
 </pre>
 
-<h4 id="label-Task-3A+Delete+an+Element+by+Index"><a href="#label-Task-3A+Delete+an+Element+by+Index">Task: Delete an Element by Index</a></h4>
+<span id="label-Task-3A+Delete+an+Element+by+Index" class="legacy-anchor"></span>
+<h4 id="task-delete-an-element-by-index"><a href="#task-delete-an-element-by-index">Task: Delete an Element by Index</a></h4>
 
 <p>Use method <a href="../../../../REXML/Element.html#method-i-delete_element">Element#delete_element</a> to remove an element from this element by index:</p>
 
@@ -873,7 +901,8 @@
 <span class="ruby-identifier">e0</span>.<span class="ruby-identifier">children</span> <span class="ruby-comment"># =&gt; []</span>
 </pre>
 
-<h4 id="label-Task-3A+Delete+an+Element+by+XPath"><a href="#label-Task-3A+Delete+an+Element+by+XPath">Task: Delete an Element by XPath</a></h4>
+<span id="label-Task-3A+Delete+an+Element+by+XPath" class="legacy-anchor"></span>
+<h4 id="task-delete-an-element-by-xpath"><a href="#task-delete-an-element-by-xpath">Task: Delete an Element by XPath</a></h4>
 
 <p>Use method <a href="../../../../REXML/Element.html#method-i-delete_element">Element#delete_element</a> to remove an element from this element by XPath:</p>
 
@@ -885,7 +914,8 @@
 <span class="ruby-identifier">e0</span>.<span class="ruby-identifier">children</span> <span class="ruby-comment"># =&gt; []</span>
 </pre>
 
-<h4 id="label-Task-3A+Determine+Whether+Element+Children"><a href="#label-Task-3A+Determine+Whether+Element+Children">Task: Determine Whether Element Children</a></h4>
+<span id="label-Task-3A+Determine+Whether+Element+Children" class="legacy-anchor"></span>
+<h4 id="task-determine-whether-element-children"><a href="#task-determine-whether-element-children">Task: Determine Whether Element Children</a></h4>
 
 <p>Use method <a href="../../../../REXML/Element.html#method-i-has_elements-3F">Element#has_elements?</a> to determine whether the element has element children:</p>
 
@@ -895,7 +925,8 @@
 <span class="ruby-identifier">e0</span>.<span class="ruby-identifier">has_elements?</span> <span class="ruby-comment"># =&gt; true</span>
 </pre>
 
-<h4 id="label-Task-3A+Get+Element+Descendants+by+XPath"><a href="#label-Task-3A+Get+Element+Descendants+by+XPath">Task: Get Element Descendants by XPath</a></h4>
+<span id="label-Task-3A+Get+Element+Descendants+by+XPath" class="legacy-anchor"></span>
+<h4 id="task-get-element-descendants-by-xpath"><a href="#task-get-element-descendants-by-xpath">Task: Get Element Descendants by XPath</a></h4>
 
 <p>Use method <a href="../../../../REXML/Element.html#method-i-get_elements">Element#get_elements</a> to fetch all element descendant children by XPath:</p>
 
@@ -904,13 +935,14 @@
   &lt;a level=&#39;1&#39;&gt;
     &lt;a level=&#39;2&#39;/&gt;
   &lt;/a&gt;
-&lt;/root&gt;
-</span><span class="ruby-identifier">EOT</span>
+&lt;/root&gt;</span>
+<span class="ruby-identifier">EOT</span>
 <span class="ruby-identifier">d</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">xml_string</span>)
 <span class="ruby-identifier">d</span>.<span class="ruby-identifier">root</span>.<span class="ruby-identifier">get_elements</span>(<span class="ruby-string">&#39;//a&#39;</span>) <span class="ruby-comment"># =&gt; [&lt;a level=&#39;1&#39;&gt; ... &lt;/&gt;, &lt;a level=&#39;2&#39;/&gt;]</span>
 </pre>
 
-<h4 id="label-Task-3A+Get+Next+Element+Sibling"><a href="#label-Task-3A+Get+Next+Element+Sibling">Task: Get Next Element Sibling</a></h4>
+<span id="label-Task-3A+Get+Next+Element+Sibling" class="legacy-anchor"></span>
+<h4 id="task-get-next-element-sibling"><a href="#task-get-next-element-sibling">Task: Get Next Element Sibling</a></h4>
 
 <p>Use method <a href="../../../../REXML/Element.html#method-i-next_element">Element#next_element</a> to retrieve the next element sibling:</p>
 
@@ -919,7 +951,8 @@
 <span class="ruby-identifier">d</span>.<span class="ruby-identifier">root</span>.<span class="ruby-identifier">elements</span>[<span class="ruby-string">&#39;c&#39;</span>].<span class="ruby-identifier">next_element</span> <span class="ruby-comment">#-&gt; nil</span>
 </pre>
 
-<h4 id="label-Task-3A+Get+Previous+Element+Sibling"><a href="#label-Task-3A+Get+Previous+Element+Sibling">Task: Get Previous Element Sibling</a></h4>
+<span id="label-Task-3A+Get+Previous+Element+Sibling" class="legacy-anchor"></span>
+<h4 id="task-get-previous-element-sibling"><a href="#task-get-previous-element-sibling">Task: Get Previous Element Sibling</a></h4>
 
 <p>Use method <a href="../../../../REXML/Element.html#method-i-previous_element">Element#previous_element</a> to retrieve the previous element sibling:</p>
 
@@ -930,7 +963,8 @@
 
 <p><em>Text Children</em></p>
 
-<h4 id="label-Task-3A+Add+a+Text+Node"><a href="#label-Task-3A+Add+a+Text+Node">Task: Add a Text Node</a></h4>
+<span id="label-Task-3A+Add+a+Text+Node" class="legacy-anchor"></span>
+<h4 id="task-add-a-text-node"><a href="#task-add-a-text-node">Task: Add a Text Node</a></h4>
 
 <p>Use method <a href="../../../../REXML/Element.html#method-i-add_text">Element#add_text</a> to add a text node to the element:</p>
 
@@ -942,7 +976,8 @@
 <span class="ruby-identifier">e</span>.<span class="ruby-identifier">to_a</span> <span class="ruby-comment"># =&gt; [&quot;foo&quot;, &lt;b/&gt;, &quot;bar&quot;, &quot;baz&quot;, &quot;baz&quot;]</span>
 </pre>
 
-<h4 id="label-Task-3A+Replace+the+First+Text+Node"><a href="#label-Task-3A+Replace+the+First+Text+Node">Task: Replace the First Text Node</a></h4>
+<span id="label-Task-3A+Replace+the+First+Text+Node" class="legacy-anchor"></span>
+<h4 id="task-replace-the-first-text-node"><a href="#task-replace-the-first-text-node">Task: Replace the First Text Node</a></h4>
 
 <p>Use method <a href="../../../../REXML/Element.html#method-i-text-3D">Element#text=</a> to replace the first text node in the element:</p>
 
@@ -953,7 +988,8 @@
 <span class="ruby-identifier">e</span>.<span class="ruby-identifier">to_a</span> <span class="ruby-comment"># =&gt; [&lt;a/&gt;, &quot;oops&quot;, &lt;b/&gt;, &quot;more&quot;, &lt;c/&gt;]</span>
 </pre>
 
-<h4 id="label-Task-3A+Remove+the+First+Text+Node"><a href="#label-Task-3A+Remove+the+First+Text+Node">Task: Remove the First Text Node</a></h4>
+<span id="label-Task-3A+Remove+the+First+Text+Node" class="legacy-anchor"></span>
+<h4 id="task-remove-the-first-text-node"><a href="#task-remove-the-first-text-node">Task: Remove the First Text Node</a></h4>
 
 <p>Use method <a href="../../../../REXML/Element.html#method-i-text-3D">Element#text=</a> to remove the first text node in the element:</p>
 
@@ -964,7 +1000,8 @@
 <span class="ruby-identifier">e</span>.<span class="ruby-identifier">to_a</span> <span class="ruby-comment"># =&gt; [&lt;a/&gt;, &lt;b/&gt;, &quot;more&quot;, &lt;c/&gt;]</span>
 </pre>
 
-<h4 id="label-Task-3A+Retrieve+the+First+Text+Node"><a href="#label-Task-3A+Retrieve+the+First+Text+Node">Task: Retrieve the First Text Node</a></h4>
+<span id="label-Task-3A+Retrieve+the+First+Text+Node" class="legacy-anchor"></span>
+<h4 id="task-retrieve-the-first-text-node"><a href="#task-retrieve-the-first-text-node">Task: Retrieve the First Text Node</a></h4>
 
 <p>Use method <a href="../../../../REXML/Element.html#method-i-get_text">Element#get_text</a> to retrieve the first text node in the element:</p>
 
@@ -974,7 +1011,8 @@
 <span class="ruby-identifier">e</span>.<span class="ruby-identifier">get_text</span> <span class="ruby-comment"># =&gt; &quot;text&quot;</span>
 </pre>
 
-<h4 id="label-Task-3A+Retrieve+a+Specific+Text+Node"><a href="#label-Task-3A+Retrieve+a+Specific+Text+Node">Task: Retrieve a Specific Text Node</a></h4>
+<span id="label-Task-3A+Retrieve+a+Specific+Text+Node" class="legacy-anchor"></span>
+<h4 id="task-retrieve-a-specific-text-node"><a href="#task-retrieve-a-specific-text-node">Task: Retrieve a Specific Text Node</a></h4>
 
 <p>Use method <a href="../../../../REXML/Element.html#method-i-get_text">Element#get_text</a> to retrieve the first text node in a specified element:</p>
 
@@ -984,7 +1022,8 @@
 <span class="ruby-identifier">e</span>.<span class="ruby-identifier">get_text</span>(<span class="ruby-string">&#39;//b&#39;</span>)    <span class="ruby-comment"># =&gt; &quot;this is bold!&quot;</span>
 </pre>
 
-<h4 id="label-Task-3A+Determine+Whether+the+Element+has+Text+Nodes"><a href="#label-Task-3A+Determine+Whether+the+Element+has+Text+Nodes">Task: Determine Whether the Element has Text Nodes</a></h4>
+<span id="label-Task-3A+Determine+Whether+the+Element+has+Text+Nodes" class="legacy-anchor"></span>
+<h4 id="task-determine-whether-the-element-has-text-nodes"><a href="#task-determine-whether-the-element-has-text-nodes">Task: Determine Whether the Element has Text Nodes</a></h4>
 
 <p>Use method <a href="../../../../REXML/Element.html#method-i-has_text-3F">Element#has_text?</a> to determine whether the element has text:</p>
 
@@ -996,7 +1035,8 @@
 
 <p><em>Other Children</em></p>
 
-<h4 id="label-Task-3A+Get+the+Child+at+a+Given+Index"><a href="#label-Task-3A+Get+the+Child+at+a+Given+Index">Task: Get the Child at a Given Index</a></h4>
+<span id="label-Task-3A+Get+the+Child+at+a+Given+Index" class="legacy-anchor"></span>
+<h4 id="task-get-the-child-at-a-given-index"><a href="#task-get-the-child-at-a-given-index">Task: Get the Child at a Given Index</a></h4>
 
 <p>Use method <a href="../../../../REXML/Element.html#method-i-5B-5D">Element#[]</a> to retrieve the child at a given index:</p>
 
@@ -1007,7 +1047,8 @@
 <span class="ruby-identifier">e</span>[<span class="ruby-value">2</span>] <span class="ruby-comment"># =&gt; &lt;b/&gt;</span>
 </pre>
 
-<h4 id="label-Task-3A+Get+All+CDATA+Children"><a href="#label-Task-3A+Get+All+CDATA+Children">Task: Get All CDATA Children</a></h4>
+<span id="label-Task-3A+Get+All+CDATA+Children" class="legacy-anchor"></span>
+<h4 id="task-get-all-cdata-children"><a href="#task-get-all-cdata-children">Task: Get All CDATA Children</a></h4>
 
 <p>Use method <a href="../../../../REXML/Element.html#method-i-cdatas">Element#cdatas</a> to retrieve all CDATA children:</p>
 
@@ -1015,13 +1056,14 @@
 <span class="ruby-value">  &lt;root&gt;
     &lt;![CDATA[foo]]&gt;
     &lt;![CDATA[bar]]&gt;
-  &lt;/root&gt;
-</span><span class="ruby-identifier">EOT</span>
+  &lt;/root&gt;</span>
+<span class="ruby-identifier">EOT</span>
 <span class="ruby-identifier">d</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">xml_string</span>)
 <span class="ruby-identifier">d</span>.<span class="ruby-identifier">root</span>.<span class="ruby-identifier">cdatas</span> <span class="ruby-comment"># =&gt; [&quot;foo&quot;, &quot;bar&quot;]</span>
 </pre>
 
-<h4 id="label-Task-3A+Get+All+Comment+Children"><a href="#label-Task-3A+Get+All+Comment+Children">Task: Get All Comment Children</a></h4>
+<span id="label-Task-3A+Get+All+Comment+Children" class="legacy-anchor"></span>
+<h4 id="task-get-all-comment-children"><a href="#task-get-all-comment-children">Task: Get All Comment Children</a></h4>
 
 <p>Use method <a href="../../../../REXML/Element.html#method-i-comments">Element#comments</a> to retrieve all comment children:</p>
 
@@ -1029,13 +1071,14 @@
 <span class="ruby-value">  &lt;root&gt;
     &lt;!--foo--&gt;
     &lt;!--bar--&gt;
-  &lt;/root&gt;
-</span><span class="ruby-identifier">EOT</span>
+  &lt;/root&gt;</span>
+<span class="ruby-identifier">EOT</span>
 <span class="ruby-identifier">d</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">xml_string</span>)
 <span class="ruby-identifier">d</span>.<span class="ruby-identifier">root</span>.<span class="ruby-identifier">comments</span>.<span class="ruby-identifier">map</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">comment</span><span class="ruby-operator">|</span> <span class="ruby-identifier">comment</span>.<span class="ruby-identifier">to_s</span> } <span class="ruby-comment"># =&gt; [&quot;foo&quot;, &quot;bar&quot;]</span>
 </pre>
 
-<h4 id="label-Task-3A+Get+All+Processing+Instruction+Children"><a href="#label-Task-3A+Get+All+Processing+Instruction+Children">Task: Get All Processing Instruction Children</a></h4>
+<span id="label-Task-3A+Get+All+Processing+Instruction+Children" class="legacy-anchor"></span>
+<h4 id="task-get-all-processing-instruction-children"><a href="#task-get-all-processing-instruction-children">Task: Get All Processing Instruction Children</a></h4>
 
 <p>Use method <a href="../../../../REXML/Element.html#method-i-instructions">Element#instructions</a> to retrieve all processing instruction children:</p>
 
@@ -1043,14 +1086,15 @@
 <span class="ruby-value">  &lt;root&gt;
     &lt;?target0 foo?&gt;
     &lt;?target1 bar?&gt;
-  &lt;/root&gt;
-</span><span class="ruby-identifier">EOT</span>
+  &lt;/root&gt;</span>
+<span class="ruby-identifier">EOT</span>
 <span class="ruby-identifier">d</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">xml_string</span>)
 <span class="ruby-identifier">instructions</span> = <span class="ruby-identifier">d</span>.<span class="ruby-identifier">root</span>.<span class="ruby-identifier">instructions</span>.<span class="ruby-identifier">map</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">instruction</span><span class="ruby-operator">|</span> <span class="ruby-identifier">instruction</span>.<span class="ruby-identifier">to_s</span> }
 <span class="ruby-identifier">instructions</span> <span class="ruby-comment"># =&gt; [&quot;&lt;?target0 foo?&gt;&quot;, &quot;&lt;?target1 bar?&gt;&quot;]</span>
 </pre>
 
-<h4 id="label-Task-3A+Get+All+Text+Children"><a href="#label-Task-3A+Get+All+Text+Children">Task: Get All Text Children</a></h4>
+<span id="label-Task-3A+Get+All+Text+Children" class="legacy-anchor"></span>
+<h4 id="task-get-all-text-children"><a href="#task-get-all-text-children">Task: Get All Text Children</a></h4>
 
 <p>Use method <a href="../../../../REXML/Element.html#method-i-texts">Element#texts</a> to retrieve all text children:</p>
 
@@ -1059,9 +1103,11 @@
 <span class="ruby-identifier">d</span>.<span class="ruby-identifier">root</span>.<span class="ruby-identifier">texts</span> <span class="ruby-comment"># =&gt; [&quot;text&quot;, &quot;more&quot;]</span>
 </pre>
 
-<h3 id="label-Namespaces"><a href="#label-Namespaces">Namespaces</a></h3>
+<span id="label-Namespaces" class="legacy-anchor"></span>
+<h3 id="namespaces"><a href="#namespaces">Namespaces</a></h3>
 
-<h4 id="label-Task-3A+Add+a+Namespace"><a href="#label-Task-3A+Add+a+Namespace">Task: Add a Namespace</a></h4>
+<span id="label-Task-3A+Add+a+Namespace" class="legacy-anchor"></span>
+<h4 id="task-add-a-namespace"><a href="#task-add-a-namespace">Task: Add a Namespace</a></h4>
 
 <p>Use method <a href="../../../../REXML/Element.html#method-i-add_namespace">Element#add_namespace</a> to add a namespace to the element:</p>
 
@@ -1070,7 +1116,8 @@
 <span class="ruby-identifier">e</span>.<span class="ruby-identifier">namespaces</span> <span class="ruby-comment"># =&gt; {&quot;xmlns&quot;=&gt;&quot;bar&quot;}</span>
 </pre>
 
-<h4 id="label-Task-3A+Delete+the+Default+Namespace"><a href="#label-Task-3A+Delete+the+Default+Namespace">Task: Delete the Default Namespace</a></h4>
+<span id="label-Task-3A+Delete+the+Default+Namespace" class="legacy-anchor"></span>
+<h4 id="task-delete-the-default-namespace"><a href="#task-delete-the-default-namespace">Task: Delete the Default Namespace</a></h4>
 
 <p>Use method <a href="../../../../REXML/Element.html#method-i-delete_namespace">Element#delete_namespace</a> to remove the default namespace from the element:</p>
 
@@ -1080,7 +1127,8 @@
 <span class="ruby-identifier">d</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-comment"># =&gt; &quot;&lt;a xmlns:foo=&#39;bar&#39;/&gt;&quot;</span>
 </pre>
 
-<h4 id="label-Task-3A+Delete+a+Specific+Namespace"><a href="#label-Task-3A+Delete+a+Specific+Namespace">Task: Delete a Specific Namespace</a></h4>
+<span id="label-Task-3A+Delete+a+Specific+Namespace" class="legacy-anchor"></span>
+<h4 id="task-delete-a-specific-namespace"><a href="#task-delete-a-specific-namespace">Task: Delete a Specific Namespace</a></h4>
 
 <p>Use method <a href="../../../../REXML/Element.html#method-i-delete_namespace">Element#delete_namespace</a> to remove a specific namespace from the element:</p>
 
@@ -1092,7 +1140,8 @@
 <span class="ruby-identifier">d</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-comment"># =&gt; &quot;&lt;a/&gt;&quot;</span>
 </pre>
 
-<h4 id="label-Task-3A+Get+a+Namespace+URI"><a href="#label-Task-3A+Get+a+Namespace+URI">Task: Get a Namespace URI</a></h4>
+<span id="label-Task-3A+Get+a+Namespace+URI" class="legacy-anchor"></span>
+<h4 id="task-get-a-namespace-uri"><a href="#task-get-a-namespace-uri">Task: Get a Namespace URI</a></h4>
 
 <p>Use method <a href="../../../../REXML/Element.html#method-i-namespace">Element#namespace</a> to retrieve a specific namespace URI for the element:</p>
 
@@ -1102,15 +1151,16 @@
        &lt;b/&gt;
        &lt;c xmlns:z=&#39;3&#39;/&gt;
      &lt;/a&gt;
-  &lt;/root&gt;
-</span><span class="ruby-identifier">EOT</span>
+  &lt;/root&gt;</span>
+<span class="ruby-identifier">EOT</span>
 <span class="ruby-identifier">d</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">xml_string</span>)
 <span class="ruby-identifier">b</span> = <span class="ruby-identifier">d</span>.<span class="ruby-identifier">elements</span>[<span class="ruby-string">&#39;//b&#39;</span>]
 <span class="ruby-identifier">b</span>.<span class="ruby-identifier">namespace</span>      <span class="ruby-comment"># =&gt; &quot;1&quot;</span>
 <span class="ruby-identifier">b</span>.<span class="ruby-identifier">namespace</span>(<span class="ruby-string">&#39;y&#39;</span>) <span class="ruby-comment"># =&gt; &quot;2&quot;</span>
 </pre>
 
-<h4 id="label-Task-3A+Retrieve+Namespaces"><a href="#label-Task-3A+Retrieve+Namespaces">Task: Retrieve Namespaces</a></h4>
+<span id="label-Task-3A+Retrieve+Namespaces" class="legacy-anchor"></span>
+<h4 id="task-retrieve-namespaces"><a href="#task-retrieve-namespaces">Task: Retrieve Namespaces</a></h4>
 
 <p>Use method <a href="../../../../REXML/Element.html#method-i-namespaces">Element#namespaces</a> to retrieve all namespaces for the element:</p>
 
@@ -1119,7 +1169,8 @@
 <span class="ruby-identifier">d</span>.<span class="ruby-identifier">root</span>.<span class="ruby-identifier">attributes</span>.<span class="ruby-identifier">namespaces</span> <span class="ruby-comment"># =&gt; {&quot;xmlns&quot;=&gt;&quot;foo&quot;, &quot;x&quot;=&gt;&quot;bar&quot;, &quot;y&quot;=&gt;&quot;twee&quot;}</span>
 </pre>
 
-<h4 id="label-Task-3A+Retrieve+Namespace+Prefixes"><a href="#label-Task-3A+Retrieve+Namespace+Prefixes">Task: Retrieve Namespace Prefixes</a></h4>
+<span id="label-Task-3A+Retrieve+Namespace+Prefixes" class="legacy-anchor"></span>
+<h4 id="task-retrieve-namespace-prefixes"><a href="#task-retrieve-namespace-prefixes">Task: Retrieve Namespace Prefixes</a></h4>
 
 <p>Use method <a href="../../../../REXML/Element.html#method-i-prefixes">Element#prefixes</a> to retrieve all prefixes (namespace names) for the element:</p>
 
@@ -1129,17 +1180,19 @@
        &lt;b/&gt;
        &lt;c xmlns:z=&#39;3&#39;/&gt;
      &lt;/a&gt;
-  &lt;/root&gt;
-</span><span class="ruby-identifier">EOT</span>
+  &lt;/root&gt;</span>
+<span class="ruby-identifier">EOT</span>
 <span class="ruby-identifier">d</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">xml_string</span>, {<span class="ruby-value">compress_whitespace:</span> <span class="ruby-value">:all</span>})
 <span class="ruby-identifier">d</span>.<span class="ruby-identifier">elements</span>[<span class="ruby-string">&#39;//a&#39;</span>].<span class="ruby-identifier">prefixes</span> <span class="ruby-comment"># =&gt; [&quot;x&quot;, &quot;y&quot;]</span>
 <span class="ruby-identifier">d</span>.<span class="ruby-identifier">elements</span>[<span class="ruby-string">&#39;//b&#39;</span>].<span class="ruby-identifier">prefixes</span> <span class="ruby-comment"># =&gt; [&quot;x&quot;, &quot;y&quot;]</span>
 <span class="ruby-identifier">d</span>.<span class="ruby-identifier">elements</span>[<span class="ruby-string">&#39;//c&#39;</span>].<span class="ruby-identifier">prefixes</span> <span class="ruby-comment"># =&gt; [&quot;x&quot;, &quot;y&quot;, &quot;z&quot;]</span>
 </pre>
 
-<h3 id="label-Iteration"><a href="#label-Iteration">Iteration</a></h3>
+<span id="label-Iteration" class="legacy-anchor"></span>
+<h3 id="iteration"><a href="#iteration">Iteration</a></h3>
 
-<h4 id="label-Task-3A+Iterate+Over+Elements"><a href="#label-Task-3A+Iterate+Over+Elements">Task: Iterate Over Elements</a></h4>
+<span id="label-Task-3A+Iterate+Over+Elements" class="legacy-anchor"></span>
+<h4 id="task-iterate-over-elements"><a href="#task-iterate-over-elements">Task: Iterate Over Elements</a></h4>
 
 <p>Use method <a href="../../../../REXML/Element.html#method-i-each_element">Element#each_element</a> to iterate over element children:</p>
 
@@ -1154,7 +1207,8 @@
 &lt;d&gt; ... &lt;/&gt;
 &lt;e/&gt;</pre>
 
-<h4 id="label-Task-3A+Iterate+Over+Elements+Having+a+Specified+Attribute"><a href="#label-Task-3A+Iterate+Over+Elements+Having+a+Specified+Attribute">Task: Iterate Over Elements Having a Specified Attribute</a></h4>
+<span id="label-Task-3A+Iterate+Over+Elements+Having+a+Specified+Attribute" class="legacy-anchor"></span>
+<h4 id="task-iterate-over-elements-having-a-specified-attribute"><a href="#task-iterate-over-elements-having-a-specified-attribute">Task: Iterate Over Elements Having a Specified Attribute</a></h4>
 
 <p>Use method <a href="../../../../REXML/Element.html#method-i-each_element_with_attribute">Element#each_element_with_attribute</a> to iterate over element children that have a specified attribute:</p>
 
@@ -1169,7 +1223,8 @@
 &lt;c id=&#39;2&#39;/&gt;
 &lt;d id=&#39;1&#39;/&gt;</pre>
 
-<h4 id="label-Task-3A+Iterate+Over+Elements+Having+a+Specified+Attribute+and+Value"><a href="#label-Task-3A+Iterate+Over+Elements+Having+a+Specified+Attribute+and+Value">Task: Iterate Over Elements Having a Specified Attribute and Value</a></h4>
+<span id="label-Task-3A+Iterate+Over+Elements+Having+a+Specified+Attribute+and+Value" class="legacy-anchor"></span>
+<h4 id="task-iterate-over-elements-having-a-specified-attribute-and-value"><a href="#task-iterate-over-elements-having-a-specified-attribute-and-value">Task: Iterate Over Elements Having a Specified Attribute and Value</a></h4>
 
 <p>Use method <a href="../../../../REXML/Element.html#method-i-each_element_with_attribute">Element#each_element_with_attribute</a> to iterate over element children that have a specified attribute and value:</p>
 
@@ -1183,15 +1238,18 @@
 <pre>&lt;b id=&#39;1&#39;/&gt;
 &lt;d id=&#39;1&#39;/&gt;</pre>
 
-<h4 id="label-Task-3A+Iterate+Over+Elements+Having+Specified+Text"><a href="#label-Task-3A+Iterate+Over+Elements+Having+Specified+Text">Task: Iterate Over Elements Having Specified Text</a></h4>
+<span id="label-Task-3A+Iterate+Over+Elements+Having+Specified+Text" class="legacy-anchor"></span>
+<h4 id="task-iterate-over-elements-having-specified-text"><a href="#task-iterate-over-elements-having-specified-text">Task: Iterate Over Elements Having Specified Text</a></h4>
 
 <p>Use method <a href="../../../../REXML/Element.html#method-i-each_element_with_text">Element#each_element_with_text</a> to iterate over element children that have specified text:</p>
 
-<h3 id="label-Context"><a href="#label-Context">Context</a></h3>
+<span id="label-Context" class="legacy-anchor"></span>
+<h3 id="context"><a href="#context">Context</a></h3>
 
 <p>whitespace ignore_whitespace_nodes raw</p>
 
-<h3 id="label-Other+Getters"><a href="#label-Other+Getters">Other Getters</a></h3>
+<span id="label-Other+Getters" class="legacy-anchor"></span>
+<h3 id="other-getters"><a href="#other-getters">Other Getters</a></h3>
 
 <p>document root root_node node_type xpath inspect</p>
 
@@ -1212,7 +1270,7 @@
 
   <div class="footer-bottom">
     <p>
-      Generated by <a href="https://ruby.github.io/rdoc/">RDoc 7.0.1</a>
+      Generated by <a href="https://ruby.github.io/rdoc/">RDoc 7.2.0</a>
       using the Aliki theme by <a href="http://st0012.dev">Stan Lo</a>
     </p>
   </div>

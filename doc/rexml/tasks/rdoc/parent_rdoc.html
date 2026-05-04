@@ -45,41 +45,46 @@
 </script>
 
 <script
-  src="../../../../js/theme-toggle.js?v=7.0.1"
+  src="../../../../js/theme-toggle.js?v=7.2.0"
 ></script>
 
 <script
-  src="../../../../js/search_navigation.js?v=7.0.1"
+  src="../../../../js/search_navigation.js?v=7.2.0"
   defer
 ></script>
 
 <script
-  src="../../../../js/search_data.js?v=7.0.1"
+  src="../../../../js/search_data.js?v=7.2.0"
   defer
 ></script>
 
 <script
-  src="../../../../js/search_ranker.js?v=7.0.1"
+  src="../../../../js/search_ranker.js?v=7.2.0"
   defer
 ></script>
 
 <script
-  src="../../../../js/search_controller.js?v=7.0.1"
+  src="../../../../js/search_controller.js?v=7.2.0"
   defer
 ></script>
 
 <script
-  src="../../../../js/c_highlighter.js?v=7.0.1"
+  src="../../../../js/c_highlighter.js?v=7.2.0"
   defer
 ></script>
 
 <script
-  src="../../../../js/aliki.js?v=7.0.1"
+  src="../../../../js/bash_highlighter.js?v=7.2.0"
+  defer
+></script>
+
+<script
+  src="../../../../js/aliki.js?v=7.2.0"
   defer
 ></script>
 
 <link
-  href="../../../../css/rdoc.css?v=7.0.1"
+  href="../../../../css/rdoc.css?v=7.2.0"
   rel="stylesheet"
 >
 
@@ -358,7 +363,7 @@
 </div>
 
 
-<nav id="navigation" role="navigation">
+<nav id="navigation" role="navigation" hidden>
   
 
 
@@ -537,7 +542,8 @@
 
 <main role="main" aria-label="Page doc/rexml/tasks/rdoc/parent.rdoc">
 
-<h2 id="label-Class+Parent"><a href="#label-Class+Parent">Class Parent</a></h2>
+<span id="label-Class+Parent" class="legacy-anchor"></span>
+<h2 id="class-parent"><a href="#class-parent">Class Parent</a></h2>
 
 <p>Class Parent has methods from its superclasses and included modules; see:</p>
 <ul><li>
@@ -600,9 +606,11 @@
 </li></ul>
 </li></ul>
 
-<h3 id="label-Queries"><a href="#label-Queries">Queries</a></h3>
+<span id="label-Queries" class="legacy-anchor"></span>
+<h3 id="queries"><a href="#queries">Queries</a></h3>
 
-<h4 id="label-Task-3A+Get+the+Count+of+Children"><a href="#label-Task-3A+Get+the+Count+of+Children">Task: Get the Count of Children</a></h4>
+<span id="label-Task-3A+Get+the+Count+of+Children" class="legacy-anchor"></span>
+<h4 id="task-get-the-count-of-children"><a href="#task-get-the-count-of-children">Task: Get the Count of Children</a></h4>
 
 <p>Use method <a href="../../../../REXML/Parent.html#method-i-size">Parent#size</a> (or its alias <code>length</code>) to get the count of the parent’s children:</p>
 
@@ -613,7 +621,8 @@
 <span class="ruby-identifier">d</span>.<span class="ruby-identifier">root</span>.<span class="ruby-identifier">size</span> <span class="ruby-comment"># =&gt; 3</span>
 </pre>
 
-<h4 id="label-Task-3A+Get+the+Child+at+a+Given+Index"><a href="#label-Task-3A+Get+the+Child+at+a+Given+Index">Task: Get the Child at a Given Index</a></h4>
+<span id="label-Task-3A+Get+the+Child+at+a+Given+Index" class="legacy-anchor"></span>
+<h4 id="task-get-the-child-at-a-given-index"><a href="#task-get-the-child-at-a-given-index">Task: Get the Child at a Given Index</a></h4>
 
 <p>Use method <a href="../../../../REXML/Parent.html#method-i-5B-5D">Parent#[]</a> to get the child at a given index:</p>
 
@@ -624,7 +633,8 @@
 <span class="ruby-identifier">d</span>.<span class="ruby-identifier">root</span>[<span class="ruby-value">50</span>] <span class="ruby-comment"># =&gt; nil</span>
 </pre>
 
-<h4 id="label-Task-3A+Get+the+Index+of+a+Given+Child"><a href="#label-Task-3A+Get+the+Index+of+a+Given+Child">Task: Get the Index of a Given Child</a></h4>
+<span id="label-Task-3A+Get+the+Index+of+a+Given+Child" class="legacy-anchor"></span>
+<h4 id="task-get-the-index-of-a-given-child"><a href="#task-get-the-index-of-a-given-child">Task: Get the Index of a Given Child</a></h4>
 
 <p>Use method <a href="../../../../REXML/Parent.html#method-i-index">Parent#index</a> to get the index (0-based offset) of a child:</p>
 
@@ -640,7 +650,8 @@
 <span class="ruby-identifier">root</span>.<span class="ruby-identifier">index</span>(<span class="ruby-identifier">e1</span>) <span class="ruby-comment"># =&gt; 1</span>
 </pre>
 
-<h4 id="label-Task-3A+Get+the+Children"><a href="#label-Task-3A+Get+the+Children">Task: Get the Children</a></h4>
+<span id="label-Task-3A+Get+the+Children" class="legacy-anchor"></span>
+<h4 id="task-get-the-children"><a href="#task-get-the-children">Task: Get the Children</a></h4>
 
 <p>Use method <a href="../../../../REXML/Parent.html#method-i-children">Parent#children</a> (or its alias <code>to_a</code>) to get the parent’s children:</p>
 
@@ -649,7 +660,8 @@
 <span class="ruby-identifier">d</span>.<span class="ruby-identifier">root</span>.<span class="ruby-identifier">children</span> <span class="ruby-comment"># =&gt; [&lt;a/&gt;, &lt;b/&gt;, &lt;c/&gt;]</span>
 </pre>
 
-<h4 id="label-Task-3A+Determine+Whether+the+Node+is+a+Parent"><a href="#label-Task-3A+Determine+Whether+the+Node+is+a+Parent">Task: Determine Whether the Node is a Parent</a></h4>
+<span id="label-Task-3A+Determine+Whether+the+Node+is+a+Parent" class="legacy-anchor"></span>
+<h4 id="task-determine-whether-the-node-is-a-parent"><a href="#task-determine-whether-the-node-is-a-parent">Task: Determine Whether the Node is a Parent</a></h4>
 
 <p>Use method <a href="../../../../REXML/Parent.html#method-i-parent-3F">Parent#parent?</a> to determine whether the node is a parent; class Text derives from Node:</p>
 
@@ -664,9 +676,11 @@
 <span class="ruby-identifier">p</span>.<span class="ruby-identifier">parent?</span> <span class="ruby-comment"># =&gt; true</span>
 </pre>
 
-<h3 id="label-Additions"><a href="#label-Additions">Additions</a></h3>
+<span id="label-Additions" class="legacy-anchor"></span>
+<h3 id="additions"><a href="#additions">Additions</a></h3>
 
-<h4 id="label-Task-3A+Add+a+Child+at+the+Beginning"><a href="#label-Task-3A+Add+a+Child+at+the+Beginning">Task: Add a Child at the Beginning</a></h4>
+<span id="label-Task-3A+Add+a+Child+at+the+Beginning" class="legacy-anchor"></span>
+<h4 id="task-add-a-child-at-the-beginning"><a href="#task-add-a-child-at-the-beginning">Task: Add a Child at the Beginning</a></h4>
 
 <p>Use method <a href="../../../../REXML/Parent.html#method-i-unshift">Parent#unshift</a> to add a child as at the beginning of the children:</p>
 
@@ -677,7 +691,8 @@
 <span class="ruby-identifier">d</span>.<span class="ruby-identifier">root</span>.<span class="ruby-identifier">children</span> <span class="ruby-comment"># =&gt; [&lt;d/&gt;, &lt;a/&gt;, &lt;b/&gt;, &lt;c/&gt;]</span>
 </pre>
 
-<h4 id="label-Task-3A+Add+a+Child+at+the+End"><a href="#label-Task-3A+Add+a+Child+at+the+End">Task: Add a Child at the End</a></h4>
+<span id="label-Task-3A+Add+a+Child+at+the+End" class="legacy-anchor"></span>
+<h4 id="task-add-a-child-at-the-end"><a href="#task-add-a-child-at-the-end">Task: Add a Child at the End</a></h4>
 
 <p>Use method <a href="../../../../REXML/Parent.html#method-i-3C-3C">Parent#&lt;&lt;</a> (or an alias <code>push</code> or <code>add</code>) to add a child as at the end of the children:</p>
 
@@ -688,7 +703,8 @@
 <span class="ruby-identifier">d</span>.<span class="ruby-identifier">root</span>.<span class="ruby-identifier">children</span> <span class="ruby-comment"># =&gt; [&lt;a/&gt;, &lt;b/&gt;, &lt;c/&gt;, &lt;d/&gt;]</span>
 </pre>
 
-<h4 id="label-Task-3A+Replace+a+Child+with+Another+Child"><a href="#label-Task-3A+Replace+a+Child+with+Another+Child">Task: Replace a Child with Another Child</a></h4>
+<span id="label-Task-3A+Replace+a+Child+with+Another+Child" class="legacy-anchor"></span>
+<h4 id="task-replace-a-child-with-another-child"><a href="#task-replace-a-child-with-another-child">Task: Replace a Child with Another Child</a></h4>
 
 <p>Use method <a href="../../../../REXML/Parent.html#method-i-replace">Parent#replace</a></p>
 
@@ -700,7 +716,8 @@
 <span class="ruby-identifier">d</span>.<span class="ruby-identifier">root</span>.<span class="ruby-identifier">children</span> <span class="ruby-comment"># =&gt; [&lt;a/&gt;, &lt;c/&gt;]</span>
 </pre>
 
-<h4 id="label-Task-3A+Replace+Multiple+Children+with+Another+Child"><a href="#label-Task-3A+Replace+Multiple+Children+with+Another+Child">Task: Replace Multiple Children with Another Child</a></h4>
+<span id="label-Task-3A+Replace+Multiple+Children+with+Another+Child" class="legacy-anchor"></span>
+<h4 id="task-replace-multiple-children-with-another-child"><a href="#task-replace-multiple-children-with-another-child">Task: Replace Multiple Children with Another Child</a></h4>
 
 <p>Use method <a href="../../../../REXML/Parent.html#method-i-parent-5B-5D-3D">Parent#[]=</a> to replace multiple consecutive children with another child:</p>
 
@@ -713,7 +730,8 @@
 <span class="ruby-identifier">d</span>.<span class="ruby-identifier">root</span>.<span class="ruby-identifier">children</span> <span class="ruby-comment"># =&gt; [&lt;a/&gt;, &lt;x/&gt;] # BUG?</span>
 </pre>
 
-<h4 id="label-Task-3A+Insert+Child+Before+a+Given+Child"><a href="#label-Task-3A+Insert+Child+Before+a+Given+Child">Task: Insert Child Before a Given Child</a></h4>
+<span id="label-Task-3A+Insert+Child+Before+a+Given+Child" class="legacy-anchor"></span>
+<h4 id="task-insert-child-before-a-given-child"><a href="#task-insert-child-before-a-given-child">Task: Insert Child Before a Given Child</a></h4>
 
 <p>Use method <a href="../../../../REXML/Parent.html#method-i-insert_before">Parent#insert_before</a> to insert a child immediately before a given child:</p>
 
@@ -726,7 +744,8 @@
 <span class="ruby-identifier">d</span>.<span class="ruby-identifier">root</span>.<span class="ruby-identifier">children</span> <span class="ruby-comment"># =&gt; [&lt;a/&gt;, &lt;x/&gt;, &lt;b/&gt;, &lt;c/&gt;]</span>
 </pre>
 
-<h4 id="label-Task-3A+Insert+Child+After+a+Given+Child"><a href="#label-Task-3A+Insert+Child+After+a+Given+Child">Task: Insert Child After a Given Child</a></h4>
+<span id="label-Task-3A+Insert+Child+After+a+Given+Child" class="legacy-anchor"></span>
+<h4 id="task-insert-child-after-a-given-child"><a href="#task-insert-child-after-a-given-child">Task: Insert Child After a Given Child</a></h4>
 
 <p>Use method <a href="../../../../REXML/Parent.html#method-i-insert_after">Parent#insert_after</a> to insert a child immediately after a given child:</p>
 
@@ -739,9 +758,11 @@
 <span class="ruby-identifier">d</span>.<span class="ruby-identifier">root</span>.<span class="ruby-identifier">children</span> <span class="ruby-comment"># =&gt; [&lt;a/&gt;, &lt;b/&gt;, &lt;x/&gt;, &lt;c/&gt;]</span>
 </pre>
 
-<h3 id="label-Deletions"><a href="#label-Deletions">Deletions</a></h3>
+<span id="label-Deletions" class="legacy-anchor"></span>
+<h3 id="deletions"><a href="#deletions">Deletions</a></h3>
 
-<h4 id="label-Task-3A+Remove+a+Given+Child"><a href="#label-Task-3A+Remove+a+Given+Child">Task: Remove a Given Child</a></h4>
+<span id="label-Task-3A+Remove+a+Given+Child" class="legacy-anchor"></span>
+<h4 id="task-remove-a-given-child"><a href="#task-remove-a-given-child">Task: Remove a Given Child</a></h4>
 
 <p>Use method <a href="../../../../REXML/Parent.html#method-i-delete">Parent#delete</a> to remove all occurrences of a given child:</p>
 
@@ -757,7 +778,8 @@
 <span class="ruby-identifier">d</span>.<span class="ruby-identifier">root</span>.<span class="ruby-identifier">children</span> <span class="ruby-comment"># =&gt; [&lt;a/&gt;, &lt;a/&gt;]</span>
 </pre>
 
-<h4 id="label-Task-3A+Remove+the+Child+at+a+Specified+Offset"><a href="#label-Task-3A+Remove+the+Child+at+a+Specified+Offset">Task: Remove the Child at a Specified Offset</a></h4>
+<span id="label-Task-3A+Remove+the+Child+at+a+Specified+Offset" class="legacy-anchor"></span>
+<h4 id="task-remove-the-child-at-a-specified-offset"><a href="#task-remove-the-child-at-a-specified-offset">Task: Remove the Child at a Specified Offset</a></h4>
 
 <p>Use method <a href="../../../../REXML/Parent.html#method-i-delete_at">Parent#delete_at</a> to remove the child at a specified offset:</p>
 
@@ -773,7 +795,8 @@
 <span class="ruby-identifier">d</span>.<span class="ruby-identifier">root</span>.<span class="ruby-identifier">children</span> <span class="ruby-comment"># =&gt; [&lt;a/&gt;, &lt;b/&gt;, &lt;b/&gt;]</span>
 </pre>
 
-<h4 id="label-Task-3A+Remove+Children+That+Meet+Specified+Criteria"><a href="#label-Task-3A+Remove+Children+That+Meet+Specified+Criteria">Task: Remove Children That Meet Specified Criteria</a></h4>
+<span id="label-Task-3A+Remove+Children+That+Meet+Specified+Criteria" class="legacy-anchor"></span>
+<h4 id="task-remove-children-that-meet-specified-criteria"><a href="#task-remove-children-that-meet-specified-criteria">Task: Remove Children That Meet Specified Criteria</a></h4>
 
 <p>Use method <a href="../../../../REXML/Parent.html#method-i-delete_if">Parent#delete_if</a> to remove children that meet criteria specified in the given block:</p>
 
@@ -787,9 +810,11 @@
 <span class="ruby-identifier">d</span>.<span class="ruby-identifier">root</span>.<span class="ruby-identifier">children</span> <span class="ruby-comment"># =&gt; [&lt;xx/&gt;, &lt;xxxx/&gt;]</span>
 </pre>
 
-<h3 id="label-Iterations"><a href="#label-Iterations">Iterations</a></h3>
+<span id="label-Iterations" class="legacy-anchor"></span>
+<h3 id="iterations"><a href="#iterations">Iterations</a></h3>
 
-<h4 id="label-Task-3A+Iterate+Over+Children"><a href="#label-Task-3A+Iterate+Over+Children">Task: Iterate Over Children</a></h4>
+<span id="label-Task-3A+Iterate+Over+Children" class="legacy-anchor"></span>
+<h4 id="task-iterate-over-children"><a href="#task-iterate-over-children">Task: Iterate Over Children</a></h4>
 
 <p>Use method <a href="../../../../REXML/Parent.html#method-i-each_child">Parent#each_child</a> (or its alias <code>each</code>) to iterate over all children:</p>
 
@@ -805,7 +830,8 @@
 &lt;b/&gt;
 &lt;c/&gt;</pre>
 
-<h4 id="label-Task-3A+Iterate+Over+Child+Indexes"><a href="#label-Task-3A+Iterate+Over+Child+Indexes">Task: Iterate Over Child Indexes</a></h4>
+<span id="label-Task-3A+Iterate+Over+Child+Indexes" class="legacy-anchor"></span>
+<h4 id="task-iterate-over-child-indexes"><a href="#task-iterate-over-child-indexes">Task: Iterate Over Child Indexes</a></h4>
 
 <p>Use method <a href="../../../../REXML/Parent.html#method-i-each_index">Parent#each_index</a> to iterate over all child indexes:</p>
 
@@ -822,9 +848,11 @@
 <span class="ruby-value">2</span>
 </pre>
 
-<h3 id="label-Clones"><a href="#label-Clones">Clones</a></h3>
+<span id="label-Clones" class="legacy-anchor"></span>
+<h3 id="clones"><a href="#clones">Clones</a></h3>
 
-<h4 id="label-Task-3A+Clone+Deeply"><a href="#label-Task-3A+Clone+Deeply">Task: Clone Deeply</a></h4>
+<span id="label-Task-3A+Clone+Deeply" class="legacy-anchor"></span>
+<h4 id="task-clone-deeply"><a href="#task-clone-deeply">Task: Clone Deeply</a></h4>
 
 <p>Use method <a href="../../../../REXML/Parent.html#method-i-deep_clone">Parent#deep_clone</a> to clone deeply; that is, to clone every nested node that is a Parent object:</p>
 
@@ -849,8 +877,8 @@
       &lt;year&gt;2003&lt;/year&gt;
       &lt;price&gt;39.95&lt;/price&gt;
     &lt;/book&gt;
-  &lt;/bookstore&gt;
-</span><span class="ruby-identifier">EOT</span>
+  &lt;/bookstore&gt;</span>
+<span class="ruby-identifier">EOT</span>
 <span class="ruby-identifier">d</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">xml_string</span>)
 <span class="ruby-identifier">root</span> = <span class="ruby-identifier">d</span>.<span class="ruby-identifier">root</span>
 <span class="ruby-identifier">shallow</span> = <span class="ruby-identifier">root</span>.<span class="ruby-identifier">clone</span>
@@ -876,7 +904,7 @@
 
   <div class="footer-bottom">
     <p>
-      Generated by <a href="https://ruby.github.io/rdoc/">RDoc 7.0.1</a>
+      Generated by <a href="https://ruby.github.io/rdoc/">RDoc 7.2.0</a>
       using the Aliki theme by <a href="http://st0012.dev">Stan Lo</a>
     </p>
   </div>

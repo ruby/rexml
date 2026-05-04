@@ -56,41 +56,46 @@
 </script>
 
 <script
-  src="../js/theme-toggle.js?v=7.0.1"
+  src="../js/theme-toggle.js?v=7.2.0"
 ></script>
 
 <script
-  src="../js/search_navigation.js?v=7.0.1"
+  src="../js/search_navigation.js?v=7.2.0"
   defer
 ></script>
 
 <script
-  src="../js/search_data.js?v=7.0.1"
+  src="../js/search_data.js?v=7.2.0"
   defer
 ></script>
 
 <script
-  src="../js/search_ranker.js?v=7.0.1"
+  src="../js/search_ranker.js?v=7.2.0"
   defer
 ></script>
 
 <script
-  src="../js/search_controller.js?v=7.0.1"
+  src="../js/search_controller.js?v=7.2.0"
   defer
 ></script>
 
 <script
-  src="../js/c_highlighter.js?v=7.0.1"
+  src="../js/c_highlighter.js?v=7.2.0"
   defer
 ></script>
 
 <script
-  src="../js/aliki.js?v=7.0.1"
+  src="../js/bash_highlighter.js?v=7.2.0"
+  defer
+></script>
+
+<script
+  src="../js/aliki.js?v=7.2.0"
   defer
 ></script>
 
 <link
-  href="../css/rdoc.css?v=7.0.1"
+  href="../css/rdoc.css?v=7.2.0"
   rel="stylesheet"
 >
 
@@ -369,7 +374,7 @@
 </div>
 
 
-<nav id="navigation" role="navigation">
+<nav id="navigation" role="navigation" hidden>
   
 
 
@@ -633,7 +638,7 @@
 
 </nav>
 
-<main role="main" aria-labelledby="class-REXML::Output">
+<main role="main" aria-labelledby="class-rexml-output">
   
   
     <ol role="navigation" aria-label="Breadcrumb navigation" class="breadcrumb">
@@ -653,7 +658,8 @@
     </ol>
   
 
-  <h1 id="class-REXML::Output" class="anchor-link class">
+  <span id="class-REXML::Output" class="legacy-anchor"></span>
+  <h1 id="class-rexml-output" class="anchor-link class">
     class REXML::Output
   </h1>
 
@@ -662,7 +668,8 @@
   </section>
 
 
-  <section id="5Buntitled-5D" class="documentation-section anchor-link">
+  <span id="5Buntitled-5D" class="legacy-anchor"></span>
+  <section class="documentation-section anchor-link">
 
 
 
@@ -672,7 +679,7 @@
 
     <section class="attribute-method-details method-section">
       <header>
-        <h3 id="attributes"><a href="#attributes">Attributes</a></h3>
+        <h3 id="untitled-attributes"><a href="#untitled-attributes">Attributes</a></h3>
       </header>
 
 
@@ -696,9 +703,12 @@
 
 
 
-     <section id="public-class-5Buntitled-5D-method-details" class="method-section anchor-link">
+
+
+
+     <section id="public-class-untitled-method-details" class="method-section anchor-link">
        <header>
-         <h3 id="public-class-methods"><a href="#public-class-methods">Public Class Methods</a></h3>
+         <h3 id="public-class-untitled-methods"><a href="#public-class-untitled-methods">Public Class Methods</a></h3>
        </header>
 
 
@@ -721,7 +731,7 @@
             </details>
           </div>
           <div class="method-source-code" id="new-source">
-            <pre class="ruby" data-language="ruby"><span class="ruby-comment"># File lib/rexml/output.rb, line 10</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/output.rb, line 10</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span> <span class="ruby-identifier">real_IO</span>, <span class="ruby-identifier">encd</span>=<span class="ruby-string">&quot;iso-8859-1&quot;</span>
   <span class="ruby-ivar">@output</span> = <span class="ruby-identifier">real_IO</span>
   <span class="ruby-keyword">self</span>.<span class="ruby-identifier">encoding</span> = <span class="ruby-identifier">encd</span>
@@ -754,9 +764,15 @@
 
     </section>
 
-     <section id="public-instance-5Buntitled-5D-method-details" class="method-section anchor-link">
+
+
+
+
+
+
+     <section id="public-instance-untitled-method-details" class="method-section anchor-link">
        <header>
-         <h3 id="public-instance-methods"><a href="#public-instance-methods">Public Instance Methods</a></h3>
+         <h3 id="public-instance-untitled-methods"><a href="#public-instance-untitled-methods">Public Instance Methods</a></h3>
        </header>
 
 
@@ -779,7 +795,7 @@
             </details>
           </div>
           <div class="method-source-code" id="3C-3C-source">
-            <pre class="ruby" data-language="ruby"><span class="ruby-comment"># File lib/rexml/output.rb, line 22</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/output.rb, line 22</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">&lt;&lt;</span>( <span class="ruby-identifier">content</span> )
   <span class="ruby-ivar">@output</span> <span class="ruby-operator">&lt;&lt;</span> (<span class="ruby-ivar">@to_utf</span> <span class="ruby-operator">?</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">encode</span>(<span class="ruby-identifier">content</span>) <span class="ruby-operator">:</span> <span class="ruby-identifier">content</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -821,7 +837,7 @@
             </details>
           </div>
           <div class="method-source-code" id="to_s-source">
-            <pre class="ruby" data-language="ruby"><span class="ruby-comment"># File lib/rexml/output.rb, line 26</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/output.rb, line 26</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">to_s</span>
   <span class="ruby-node">&quot;Output[#{encoding}]&quot;</span>
 <span class="ruby-keyword">end</span></pre>
@@ -846,6 +862,9 @@
 
     </section>
 
+
+
+
   </section>
 
 </main>
@@ -865,7 +884,7 @@
 
   <div class="footer-bottom">
     <p>
-      Generated by <a href="https://ruby.github.io/rdoc/">RDoc 7.0.1</a>
+      Generated by <a href="https://ruby.github.io/rdoc/">RDoc 7.2.0</a>
       using the Aliki theme by <a href="http://st0012.dev">Stan Lo</a>
     </p>
   </div>

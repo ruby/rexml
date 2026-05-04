@@ -50,41 +50,46 @@
 </script>
 
 <script
-  src="../js/theme-toggle.js?v=7.0.1"
+  src="../js/theme-toggle.js?v=7.2.0"
 ></script>
 
 <script
-  src="../js/search_navigation.js?v=7.0.1"
+  src="../js/search_navigation.js?v=7.2.0"
   defer
 ></script>
 
 <script
-  src="../js/search_data.js?v=7.0.1"
+  src="../js/search_data.js?v=7.2.0"
   defer
 ></script>
 
 <script
-  src="../js/search_ranker.js?v=7.0.1"
+  src="../js/search_ranker.js?v=7.2.0"
   defer
 ></script>
 
 <script
-  src="../js/search_controller.js?v=7.0.1"
+  src="../js/search_controller.js?v=7.2.0"
   defer
 ></script>
 
 <script
-  src="../js/c_highlighter.js?v=7.0.1"
+  src="../js/c_highlighter.js?v=7.2.0"
   defer
 ></script>
 
 <script
-  src="../js/aliki.js?v=7.0.1"
+  src="../js/bash_highlighter.js?v=7.2.0"
+  defer
+></script>
+
+<script
+  src="../js/aliki.js?v=7.2.0"
   defer
 ></script>
 
 <link
-  href="../css/rdoc.css?v=7.0.1"
+  href="../css/rdoc.css?v=7.2.0"
   rel="stylesheet"
 >
 
@@ -363,7 +368,7 @@
 </div>
 
 
-<nav id="navigation" role="navigation">
+<nav id="navigation" role="navigation" hidden>
   
 
 
@@ -583,7 +588,7 @@
 
 </nav>
 
-<main role="main" aria-labelledby="module-REXML::Node">
+<main role="main" aria-labelledby="module-rexml-node">
   
   
     <ol role="navigation" aria-label="Breadcrumb navigation" class="breadcrumb">
@@ -603,7 +608,8 @@
     </ol>
   
 
-  <h1 id="module-REXML::Node" class="anchor-link module">
+  <span id="module-REXML::Node" class="legacy-anchor"></span>
+  <h1 id="module-rexml-node" class="anchor-link module">
     module REXML::Node
   </h1>
 
@@ -614,7 +620,8 @@
   </section>
 
 
-  <section id="5Buntitled-5D" class="documentation-section anchor-link">
+  <span id="5Buntitled-5D" class="legacy-anchor"></span>
+  <section class="documentation-section anchor-link">
 
 
 
@@ -624,9 +631,18 @@
 
 
 
-     <section id="public-instance-5Buntitled-5D-method-details" class="method-section anchor-link">
+
+
+
+
+
+
+
+
+
+     <section id="public-instance-untitled-method-details" class="method-section anchor-link">
        <header>
-         <h3 id="public-instance-methods"><a href="#public-instance-methods">Public Instance Methods</a></h3>
+         <h3 id="public-instance-untitled-methods"><a href="#public-instance-untitled-methods">Public Instance Methods</a></h3>
        </header>
 
 
@@ -649,7 +665,7 @@
             </details>
           </div>
           <div class="method-source-code" id="each_recursive-source">
-            <pre class="ruby" data-language="ruby"><span class="ruby-comment"># File lib/rexml/node.rb, line 54</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/node.rb, line 54</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">each_recursive</span>(<span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>) <span class="ruby-comment"># :yields: node</span>
   <span class="ruby-identifier">stack</span> = []
   <span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">child</span><span class="ruby-operator">|</span> <span class="ruby-identifier">stack</span>.<span class="ruby-identifier">unshift</span> <span class="ruby-identifier">child</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">child</span>.<span class="ruby-identifier">node_type</span> <span class="ruby-operator">==</span> <span class="ruby-value">:element</span> }
@@ -698,7 +714,7 @@
             </details>
           </div>
           <div class="method-source-code" id="find_first_recursive-source">
-            <pre class="ruby" data-language="ruby"><span class="ruby-comment"># File lib/rexml/node.rb, line 67</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/node.rb, line 67</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">find_first_recursive</span>(<span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>) <span class="ruby-comment"># :yields: node</span>
   <span class="ruby-identifier">each_recursive</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">node</span><span class="ruby-operator">|</span>
     <span class="ruby-keyword">return</span> <span class="ruby-identifier">node</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">block</span>.<span class="ruby-identifier">call</span>(<span class="ruby-identifier">node</span>)
@@ -743,7 +759,7 @@
             </details>
           </div>
           <div class="method-source-code" id="indent-source">
-            <pre class="ruby" data-language="ruby"><span class="ruby-comment"># File lib/rexml/node.rb, line 39</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/node.rb, line 39</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">indent</span> <span class="ruby-identifier">to</span>, <span class="ruby-identifier">ind</span>
                     <span class="ruby-keyword">if</span> <span class="ruby-ivar">@parent</span> <span class="ruby-keyword">and</span> <span class="ruby-ivar">@parent</span>.<span class="ruby-identifier">context</span> <span class="ruby-keyword">and</span> <span class="ruby-keyword">not</span> <span class="ruby-ivar">@parent</span>.<span class="ruby-identifier">context</span>[<span class="ruby-value">:indentstyle</span>].<span class="ruby-identifier">nil?</span> <span class="ruby-keyword">then</span>
                             <span class="ruby-identifier">indentstyle</span> = <span class="ruby-ivar">@parent</span>.<span class="ruby-identifier">context</span>[<span class="ruby-value">:indentstyle</span>]
@@ -790,7 +806,7 @@
             </details>
           </div>
           <div class="method-source-code" id="index_in_parent-source">
-            <pre class="ruby" data-language="ruby"><span class="ruby-comment"># File lib/rexml/node.rb, line 76</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/node.rb, line 76</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">index_in_parent</span>
   <span class="ruby-identifier">parent</span>.<span class="ruby-identifier">index</span>(<span class="ruby-keyword">self</span>)<span class="ruby-value">+1</span>
 <span class="ruby-keyword">end</span></pre>
@@ -832,7 +848,7 @@
             </details>
           </div>
           <div class="method-source-code" id="next_sibling_node-source">
-            <pre class="ruby" data-language="ruby"><span class="ruby-comment"># File lib/rexml/node.rb, line 11</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/node.rb, line 11</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">next_sibling_node</span>
   <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span> <span class="ruby-keyword">if</span> <span class="ruby-ivar">@parent</span>.<span class="ruby-identifier">nil?</span>
   <span class="ruby-ivar">@parent</span>[ <span class="ruby-ivar">@parent</span>.<span class="ruby-identifier">index</span>(<span class="ruby-keyword">self</span>) <span class="ruby-operator">+</span> <span class="ruby-value">1</span> ]
@@ -875,7 +891,7 @@
             </details>
           </div>
           <div class="method-source-code" id="parent-3F-source">
-            <pre class="ruby" data-language="ruby"><span class="ruby-comment"># File lib/rexml/node.rb, line 48</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/node.rb, line 48</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">parent?</span>
   <span class="ruby-keyword">false</span>;
 <span class="ruby-keyword">end</span></pre>
@@ -917,7 +933,7 @@
             </details>
           </div>
           <div class="method-source-code" id="previous_sibling_node-source">
-            <pre class="ruby" data-language="ruby"><span class="ruby-comment"># File lib/rexml/node.rb, line 17</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/node.rb, line 17</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">previous_sibling_node</span>
   <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span> <span class="ruby-keyword">if</span> <span class="ruby-ivar">@parent</span>.<span class="ruby-identifier">nil?</span>
   <span class="ruby-identifier">ind</span> = <span class="ruby-ivar">@parent</span>.<span class="ruby-identifier">index</span>(<span class="ruby-keyword">self</span>)
@@ -962,7 +978,7 @@
             </details>
           </div>
           <div class="method-source-code" id="to_s-source">
-            <pre class="ruby" data-language="ruby"><span class="ruby-comment"># File lib/rexml/node.rb, line 27</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/node.rb, line 27</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">to_s</span> <span class="ruby-identifier">indent</span>=<span class="ruby-keyword">nil</span>
   <span class="ruby-keyword">unless</span> <span class="ruby-identifier">indent</span>.<span class="ruby-identifier">nil?</span>
     <span class="ruby-constant">Kernel</span>.<span class="ruby-identifier">warn</span>( <span class="ruby-node">&quot;#{self.class.name}#to_s(indent) parameter is deprecated&quot;</span>, <span class="ruby-value">uplevel:</span> <span class="ruby-value">1</span>)
@@ -998,6 +1014,9 @@
 
     </section>
 
+
+
+
   </section>
 
 </main>
@@ -1017,7 +1036,7 @@
 
   <div class="footer-bottom">
     <p>
-      Generated by <a href="https://ruby.github.io/rdoc/">RDoc 7.0.1</a>
+      Generated by <a href="https://ruby.github.io/rdoc/">RDoc 7.2.0</a>
       using the Aliki theme by <a href="http://st0012.dev">Stan Lo</a>
     </p>
   </div>

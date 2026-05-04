@@ -56,41 +56,46 @@
 </script>
 
 <script
-  src="../js/theme-toggle.js?v=7.0.1"
+  src="../js/theme-toggle.js?v=7.2.0"
 ></script>
 
 <script
-  src="../js/search_navigation.js?v=7.0.1"
+  src="../js/search_navigation.js?v=7.2.0"
   defer
 ></script>
 
 <script
-  src="../js/search_data.js?v=7.0.1"
+  src="../js/search_data.js?v=7.2.0"
   defer
 ></script>
 
 <script
-  src="../js/search_ranker.js?v=7.0.1"
+  src="../js/search_ranker.js?v=7.2.0"
   defer
 ></script>
 
 <script
-  src="../js/search_controller.js?v=7.0.1"
+  src="../js/search_controller.js?v=7.2.0"
   defer
 ></script>
 
 <script
-  src="../js/c_highlighter.js?v=7.0.1"
+  src="../js/c_highlighter.js?v=7.2.0"
   defer
 ></script>
 
 <script
-  src="../js/aliki.js?v=7.0.1"
+  src="../js/bash_highlighter.js?v=7.2.0"
+  defer
+></script>
+
+<script
+  src="../js/aliki.js?v=7.2.0"
   defer
 ></script>
 
 <link
-  href="../css/rdoc.css?v=7.0.1"
+  href="../css/rdoc.css?v=7.2.0"
   rel="stylesheet"
 >
 
@@ -369,7 +374,7 @@
 </div>
 
 
-<nav id="navigation" role="navigation">
+<nav id="navigation" role="navigation" hidden>
   
 
 
@@ -579,7 +584,7 @@
 
 </nav>
 
-<main role="main" aria-labelledby="module-REXML::Encoding">
+<main role="main" aria-labelledby="module-rexml-encoding">
   
   
     <ol role="navigation" aria-label="Breadcrumb navigation" class="breadcrumb">
@@ -599,7 +604,8 @@
     </ol>
   
 
-  <h1 id="module-REXML::Encoding" class="anchor-link module">
+  <span id="module-REXML::Encoding" class="legacy-anchor"></span>
+  <h1 id="module-rexml-encoding" class="anchor-link module">
     module REXML::Encoding
   </h1>
 
@@ -608,7 +614,8 @@
   </section>
 
 
-  <section id="5Buntitled-5D" class="documentation-section anchor-link">
+  <span id="5Buntitled-5D" class="legacy-anchor"></span>
+  <section class="documentation-section anchor-link">
 
 
 
@@ -618,7 +625,7 @@
 
     <section class="attribute-method-details method-section">
       <header>
-        <h3 id="attributes"><a href="#attributes">Attributes</a></h3>
+        <h3 id="untitled-attributes"><a href="#untitled-attributes">Attributes</a></h3>
       </header>
 
 
@@ -642,9 +649,18 @@
 
 
 
-     <section id="public-instance-5Buntitled-5D-method-details" class="method-section anchor-link">
+
+
+
+
+
+
+
+
+
+     <section id="public-instance-untitled-method-details" class="method-section anchor-link">
        <header>
-         <h3 id="public-instance-methods"><a href="#public-instance-methods">Public Instance Methods</a></h3>
+         <h3 id="public-instance-untitled-methods"><a href="#public-instance-untitled-methods">Public Instance Methods</a></h3>
        </header>
 
 
@@ -667,7 +683,7 @@
             </details>
           </div>
           <div class="method-source-code" id="decode-source">
-            <pre class="ruby" data-language="ruby"><span class="ruby-comment"># File lib/rexml/encoding.rb, line 26</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/encoding.rb, line 26</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">decode</span>(<span class="ruby-identifier">string</span>)
   <span class="ruby-identifier">string</span>.<span class="ruby-identifier">encode</span>(<span class="ruby-operator">::</span><span class="ruby-constant">Encoding</span><span class="ruby-operator">::</span><span class="ruby-constant">UTF_8</span>, <span class="ruby-ivar">@encoding</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -709,7 +725,7 @@
             </details>
           </div>
           <div class="method-source-code" id="encode-source">
-            <pre class="ruby" data-language="ruby"><span class="ruby-comment"># File lib/rexml/encoding.rb, line 22</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/encoding.rb, line 22</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">encode</span>(<span class="ruby-identifier">string</span>)
   <span class="ruby-identifier">string</span>.<span class="ruby-identifier">encode</span>(<span class="ruby-ivar">@encoding</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -751,7 +767,7 @@
             </details>
           </div>
           <div class="method-source-code" id="encoding-3D-source">
-            <pre class="ruby" data-language="ruby"><span class="ruby-comment"># File lib/rexml/encoding.rb, line 7</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/encoding.rb, line 7</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">encoding=</span>(<span class="ruby-identifier">encoding</span>)
   <span class="ruby-identifier">encoding</span> = <span class="ruby-identifier">encoding</span>.<span class="ruby-identifier">name</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">encoding</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-operator">::</span><span class="ruby-constant">Encoding</span>)
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">encoding</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">String</span>)
@@ -787,6 +803,9 @@
 
     </section>
 
+
+
+
   </section>
 
 </main>
@@ -806,7 +825,7 @@
 
   <div class="footer-bottom">
     <p>
-      Generated by <a href="https://ruby.github.io/rdoc/">RDoc 7.0.1</a>
+      Generated by <a href="https://ruby.github.io/rdoc/">RDoc 7.2.0</a>
       using the Aliki theme by <a href="http://st0012.dev">Stan Lo</a>
     </p>
   </div>

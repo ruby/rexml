@@ -56,41 +56,46 @@
 </script>
 
 <script
-  src="../js/theme-toggle.js?v=7.0.1"
+  src="../js/theme-toggle.js?v=7.2.0"
 ></script>
 
 <script
-  src="../js/search_navigation.js?v=7.0.1"
+  src="../js/search_navigation.js?v=7.2.0"
   defer
 ></script>
 
 <script
-  src="../js/search_data.js?v=7.0.1"
+  src="../js/search_data.js?v=7.2.0"
   defer
 ></script>
 
 <script
-  src="../js/search_ranker.js?v=7.0.1"
+  src="../js/search_ranker.js?v=7.2.0"
   defer
 ></script>
 
 <script
-  src="../js/search_controller.js?v=7.0.1"
+  src="../js/search_controller.js?v=7.2.0"
   defer
 ></script>
 
 <script
-  src="../js/c_highlighter.js?v=7.0.1"
+  src="../js/c_highlighter.js?v=7.2.0"
   defer
 ></script>
 
 <script
-  src="../js/aliki.js?v=7.0.1"
+  src="../js/bash_highlighter.js?v=7.2.0"
+  defer
+></script>
+
+<script
+  src="../js/aliki.js?v=7.2.0"
   defer
 ></script>
 
 <link
-  href="../css/rdoc.css?v=7.0.1"
+  href="../css/rdoc.css?v=7.2.0"
   rel="stylesheet"
 >
 
@@ -369,7 +374,7 @@
 </div>
 
 
-<nav id="navigation" role="navigation">
+<nav id="navigation" role="navigation" hidden>
   
 
 
@@ -615,7 +620,7 @@
 
 </nav>
 
-<main role="main" aria-labelledby="class-REXML::ParseException">
+<main role="main" aria-labelledby="class-rexml-parseexception">
   
   
     <ol role="navigation" aria-label="Breadcrumb navigation" class="breadcrumb">
@@ -635,7 +640,8 @@
     </ol>
   
 
-  <h1 id="class-REXML::ParseException" class="anchor-link class">
+  <span id="class-REXML::ParseException" class="legacy-anchor"></span>
+  <h1 id="class-rexml-parseexception" class="anchor-link class">
     class REXML::ParseException
   </h1>
 
@@ -644,7 +650,8 @@
   </section>
 
 
-  <section id="5Buntitled-5D" class="documentation-section anchor-link">
+  <span id="5Buntitled-5D" class="legacy-anchor"></span>
+  <section class="documentation-section anchor-link">
 
 
 
@@ -654,7 +661,7 @@
 
     <section class="attribute-method-details method-section">
       <header>
-        <h3 id="attributes"><a href="#attributes">Attributes</a></h3>
+        <h3 id="untitled-attributes"><a href="#untitled-attributes">Attributes</a></h3>
       </header>
 
 
@@ -710,9 +717,12 @@
 
 
 
-     <section id="public-class-5Buntitled-5D-method-details" class="method-section anchor-link">
+
+
+
+     <section id="public-class-untitled-method-details" class="method-section anchor-link">
        <header>
-         <h3 id="public-class-methods"><a href="#public-class-methods">Public Class Methods</a></h3>
+         <h3 id="public-class-untitled-methods"><a href="#public-class-untitled-methods">Public Class Methods</a></h3>
        </header>
 
 
@@ -735,7 +745,7 @@
             </details>
           </div>
           <div class="method-source-code" id="new-source">
-            <pre class="ruby" data-language="ruby"><span class="ruby-comment"># File lib/rexml/parseexception.rb, line 6</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/parseexception.rb, line 6</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>( <span class="ruby-identifier">message</span>, <span class="ruby-identifier">source</span>=<span class="ruby-keyword">nil</span>, <span class="ruby-identifier">parser</span>=<span class="ruby-keyword">nil</span>, <span class="ruby-identifier">exception</span>=<span class="ruby-keyword">nil</span> )
   <span class="ruby-keyword">super</span>(<span class="ruby-identifier">message</span>)
   <span class="ruby-ivar">@source</span> = <span class="ruby-identifier">source</span>
@@ -768,9 +778,15 @@
 
     </section>
 
-     <section id="public-instance-5Buntitled-5D-method-details" class="method-section anchor-link">
+
+
+
+
+
+
+     <section id="public-instance-untitled-method-details" class="method-section anchor-link">
        <header>
-         <h3 id="public-instance-methods"><a href="#public-instance-methods">Public Instance Methods</a></h3>
+         <h3 id="public-instance-untitled-methods"><a href="#public-instance-untitled-methods">Public Instance Methods</a></h3>
        </header>
 
 
@@ -793,7 +809,7 @@
             </details>
           </div>
           <div class="method-source-code" id="context-source">
-            <pre class="ruby" data-language="ruby"><span class="ruby-comment"># File lib/rexml/parseexception.rb, line 49</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/parseexception.rb, line 49</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">context</span>
   <span class="ruby-ivar">@source</span>.<span class="ruby-identifier">current_line</span>
 <span class="ruby-keyword">end</span></pre>
@@ -835,7 +851,7 @@
             </details>
           </div>
           <div class="method-source-code" id="line-source">
-            <pre class="ruby" data-language="ruby"><span class="ruby-comment"># File lib/rexml/parseexception.rb, line 44</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/parseexception.rb, line 44</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">line</span>
   <span class="ruby-ivar">@source</span>.<span class="ruby-identifier">current_line</span>[<span class="ruby-value">2</span>] <span class="ruby-keyword">if</span> <span class="ruby-ivar">@source</span> <span class="ruby-keyword">and</span> <span class="ruby-keyword">defined?</span> <span class="ruby-ivar">@source</span>.<span class="ruby-identifier">current_line</span> <span class="ruby-keyword">and</span>
   <span class="ruby-ivar">@source</span>.<span class="ruby-identifier">current_line</span>
@@ -878,7 +894,7 @@
             </details>
           </div>
           <div class="method-source-code" id="position-source">
-            <pre class="ruby" data-language="ruby"><span class="ruby-comment"># File lib/rexml/parseexception.rb, line 39</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/parseexception.rb, line 39</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">position</span>
   <span class="ruby-ivar">@source</span>.<span class="ruby-identifier">current_line</span>[<span class="ruby-value">0</span>] <span class="ruby-keyword">if</span> <span class="ruby-ivar">@source</span> <span class="ruby-keyword">and</span> <span class="ruby-keyword">defined?</span> <span class="ruby-ivar">@source</span>.<span class="ruby-identifier">current_line</span> <span class="ruby-keyword">and</span>
   <span class="ruby-ivar">@source</span>.<span class="ruby-identifier">current_line</span>
@@ -921,7 +937,7 @@
             </details>
           </div>
           <div class="method-source-code" id="to_s-source">
-            <pre class="ruby" data-language="ruby"><span class="ruby-comment"># File lib/rexml/parseexception.rb, line 13</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/parseexception.rb, line 13</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">to_s</span>
   <span class="ruby-comment"># Quote the original exception, if there was one</span>
   <span class="ruby-keyword">if</span> <span class="ruby-ivar">@continued_exception</span>
@@ -973,6 +989,9 @@
 
     </section>
 
+
+
+
   </section>
 
 </main>
@@ -992,7 +1011,7 @@
 
   <div class="footer-bottom">
     <p>
-      Generated by <a href="https://ruby.github.io/rdoc/">RDoc 7.0.1</a>
+      Generated by <a href="https://ruby.github.io/rdoc/">RDoc 7.2.0</a>
       using the Aliki theme by <a href="http://st0012.dev">Stan Lo</a>
     </p>
   </div>

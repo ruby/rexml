@@ -67,18 +67,8 @@ function createSearchInstance(input, result) {
   }
 
   search.select = function(result) {
-    let href = result.firstChild.firstChild.href;
-    const query = this.input.value;
-    if (query) {
-      const url = new URL(href, window.location.origin);
-      url.searchParams.set('q', query);
-      url.searchParams.set('nav', '0');
-      href = url.toString();
-    }
-    window.location.href = href;
+    window.location.href = result.firstChild.firstChild.href;
   }
-
-  search.scrollIntoView = search.scrollInWindow;
 
   return search;
 }
@@ -97,15 +87,35 @@ function hookSearch() {
   const search = createSearchInstance(input, result);
   if (!search) return;
 
+  // Hide search results when clicking outside the search area
+  document.addEventListener('click', (e) => {
+    if (!e.target.closest('.navbar-search-desktop')) {
+      search.hide();
+    }
+  });
+
+  // Hide search results on Escape key on desktop too
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && input.matches(":focus")) {
+      search.hide();
+      input.blur();
+    }
+  });
+
+  // Show search results when focusing on input (if there's a query)
+  input.addEventListener('focus', () => {
+    if (input.value.trim()) {
+      search.show();
+    }
+  });
+
   // Check for ?q= URL parameter and trigger search automatically
   if (typeof URLSearchParams !== 'undefined') {
     const urlParams = new URLSearchParams(window.location.search);
     const queryParam = urlParams.get('q');
     if (queryParam) {
-      const navParam = urlParams.get('nav');
-      const autoSelect = navParam !== '0';
       input.value = queryParam;
-      search.search(queryParam, autoSelect);
+      search.search(queryParam, false);
     }
   }
 }
@@ -158,9 +168,12 @@ function hookSidebar() {
   });
 
   const isSmallViewport = window.matchMedia("(max-width: 1023px)").matches;
-  if (isSmallViewport) {
-    closeNav();
 
+  // The sidebar is hidden by default with the `hidden` attribute
+  // On large viewports, we display the sidebar with JavaScript
+  // This is better than the opposite approach of hiding it with JavaScript
+  // because it avoids flickering the sidebar when the page is loaded, especially on mobile devices
+  if (isSmallViewport) {
     // Close nav when clicking links inside it
     document.addEventListener('click', (e) => {
       if (e.target.closest('#navigation a')) {
@@ -176,6 +189,8 @@ function hookSidebar() {
         closeNav();
       }
     });
+  } else {
+    openNav();
   }
 }
 
@@ -378,9 +393,7 @@ function hookSearchModal() {
     if (queryParam && isSmallViewport) {
       openSearchModal();
       searchInput.value = queryParam;
-      const navParam = urlParams.get('nav');
-      const autoSelect = navParam !== '0';
-      mobileSearch.search(queryParam, autoSelect);
+      mobileSearch.search(queryParam, false);
     }
   }
 }

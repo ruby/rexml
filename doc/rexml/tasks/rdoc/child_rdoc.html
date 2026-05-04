@@ -45,41 +45,46 @@
 </script>
 
 <script
-  src="../../../../js/theme-toggle.js?v=7.0.1"
+  src="../../../../js/theme-toggle.js?v=7.2.0"
 ></script>
 
 <script
-  src="../../../../js/search_navigation.js?v=7.0.1"
+  src="../../../../js/search_navigation.js?v=7.2.0"
   defer
 ></script>
 
 <script
-  src="../../../../js/search_data.js?v=7.0.1"
+  src="../../../../js/search_data.js?v=7.2.0"
   defer
 ></script>
 
 <script
-  src="../../../../js/search_ranker.js?v=7.0.1"
+  src="../../../../js/search_ranker.js?v=7.2.0"
   defer
 ></script>
 
 <script
-  src="../../../../js/search_controller.js?v=7.0.1"
+  src="../../../../js/search_controller.js?v=7.2.0"
   defer
 ></script>
 
 <script
-  src="../../../../js/c_highlighter.js?v=7.0.1"
+  src="../../../../js/c_highlighter.js?v=7.2.0"
   defer
 ></script>
 
 <script
-  src="../../../../js/aliki.js?v=7.0.1"
+  src="../../../../js/bash_highlighter.js?v=7.2.0"
+  defer
+></script>
+
+<script
+  src="../../../../js/aliki.js?v=7.2.0"
   defer
 ></script>
 
 <link
-  href="../../../../css/rdoc.css?v=7.0.1"
+  href="../../../../css/rdoc.css?v=7.2.0"
   rel="stylesheet"
 >
 
@@ -358,7 +363,7 @@
 </div>
 
 
-<nav id="navigation" role="navigation">
+<nav id="navigation" role="navigation" hidden>
   
 
 
@@ -537,7 +542,8 @@
 
 <main role="main" aria-label="Page doc/rexml/tasks/rdoc/child.rdoc">
 
-<h2 id="label-Class+Child"><a href="#label-Class+Child">Class Child</a></h2>
+<span id="label-Class+Child" class="legacy-anchor"></span>
+<h2 id="class-child"><a href="#class-child">Class Child</a></h2>
 
 <p>Class Child includes module Node; see <a href="node_rdoc.html">Tasks for Node</a>.</p>
 
@@ -565,9 +571,11 @@
 </li></ul>
 </li></ul>
 
-<h3 id="label-Relationships"><a href="#label-Relationships">Relationships</a></h3>
+<span id="label-Relationships" class="legacy-anchor"></span>
+<h3 id="relationships"><a href="#relationships">Relationships</a></h3>
 
-<h4 id="label-Task-3A+Set+the+Parent"><a href="#label-Task-3A+Set+the+Parent">Task: Set the Parent</a></h4>
+<span id="label-Task-3A+Set+the+Parent" class="legacy-anchor"></span>
+<h4 id="task-set-the-parent"><a href="#task-set-the-parent">Task: Set the Parent</a></h4>
 
 <p>Use method <a href="../../../../REXML/Parent.html#method-i-parent-3D">Child#parent=</a> to set the parent:</p>
 
@@ -578,7 +586,8 @@
 <span class="ruby-identifier">e1</span>.<span class="ruby-identifier">parent</span> <span class="ruby-comment"># =&gt; &lt;foo/&gt;</span>
 </pre>
 
-<h4 id="label-Task-3A+Insert+Previous+Sibling"><a href="#label-Task-3A+Insert+Previous+Sibling">Task: Insert Previous Sibling</a></h4>
+<span id="label-Task-3A+Insert+Previous+Sibling" class="legacy-anchor"></span>
+<h4 id="task-insert-previous-sibling"><a href="#task-insert-previous-sibling">Task: Insert Previous Sibling</a></h4>
 
 <p>Use method <a href="../../../../REXML/Parent.html#method-i-previous_sibling-3D">Child#previous_sibling=</a> to insert a previous sibling:</p>
 
@@ -591,7 +600,8 @@
 <span class="ruby-identifier">d</span>.<span class="ruby-identifier">root</span>.<span class="ruby-identifier">to_a</span>   <span class="ruby-comment"># =&gt; [&lt;a/&gt;, &lt;b/&gt;, &lt;c/&gt;]</span>
 </pre>
 
-<h4 id="label-Task-3A+Insert+Next+Sibling"><a href="#label-Task-3A+Insert+Next+Sibling">Task: Insert Next Sibling</a></h4>
+<span id="label-Task-3A+Insert+Next+Sibling" class="legacy-anchor"></span>
+<h4 id="task-insert-next-sibling"><a href="#task-insert-next-sibling">Task: Insert Next Sibling</a></h4>
 
 <p>Use method <a href="../../../../REXML/Parent.html#method-i-next-sibling-3D">Child#next_sibling=</a> to insert a previous sibling:</p>
 
@@ -604,9 +614,11 @@
 <span class="ruby-identifier">d</span>.<span class="ruby-identifier">root</span>.<span class="ruby-identifier">to_a</span>   <span class="ruby-comment"># =&gt; [&lt;a/&gt;, &lt;b/&gt;, &lt;c/&gt;]</span>
 </pre>
 
-<h3 id="label-Removal+or+Replacement"><a href="#label-Removal+or+Replacement">Removal or Replacement</a></h3>
+<span id="label-Removal+or+Replacement" class="legacy-anchor"></span>
+<h3 id="removal-or-replacement"><a href="#removal-or-replacement">Removal or Replacement</a></h3>
 
-<h4 id="label-Task-3A+Remove+Child+from+Parent"><a href="#label-Task-3A+Remove+Child+from+Parent">Task: Remove Child from Parent</a></h4>
+<span id="label-Task-3A+Remove+Child+from+Parent" class="legacy-anchor"></span>
+<h4 id="task-remove-child-from-parent"><a href="#task-remove-child-from-parent">Task: Remove Child from Parent</a></h4>
 
 <p>Use method <a href="../../../../REXML/Parent.html#method-i-remove">Child#remove</a> to remove a child from its parent; returns the removed child:</p>
 
@@ -618,7 +630,8 @@
 <span class="ruby-identifier">d</span>.<span class="ruby-identifier">root</span>.<span class="ruby-identifier">to_a</span>   <span class="ruby-comment"># =&gt; [&lt;a/&gt;, &lt;c/&gt;]</span>
 </pre>
 
-<h4 id="label-Task-3A+Replace+Child"><a href="#label-Task-3A+Replace+Child">Task: Replace Child</a></h4>
+<span id="label-Task-3A+Replace+Child" class="legacy-anchor"></span>
+<h4 id="task-replace-child"><a href="#task-replace-child">Task: Replace Child</a></h4>
 
 <p>Use method <a href="../../../../REXML/Parent.html#method-i-replace">Child#replace_with</a> to replace a child; returns the replaced child:</p>
 
@@ -631,9 +644,11 @@
 <span class="ruby-identifier">d</span>.<span class="ruby-identifier">root</span>.<span class="ruby-identifier">to_a</span>       <span class="ruby-comment"># =&gt; [&lt;a/&gt;, &lt;d/&gt;, &lt;c/&gt;]</span>
 </pre>
 
-<h3 id="label-Document"><a href="#label-Document">Document</a></h3>
+<span id="label-Document" class="legacy-anchor"></span>
+<h3 id="document"><a href="#document">Document</a></h3>
 
-<h4 id="label-Task-3A+Get+the+Document"><a href="#label-Task-3A+Get+the+Document">Task: Get the Document</a></h4>
+<span id="label-Task-3A+Get+the+Document" class="legacy-anchor"></span>
+<h4 id="task-get-the-document"><a href="#task-get-the-document">Task: Get the Document</a></h4>
 
 <p>Use method <a href="../../../../REXML/Parent.html#method-i-document">Child#document</a> to get the document for the child:</p>
 
@@ -662,7 +677,7 @@
 
   <div class="footer-bottom">
     <p>
-      Generated by <a href="https://ruby.github.io/rdoc/">RDoc 7.0.1</a>
+      Generated by <a href="https://ruby.github.io/rdoc/">RDoc 7.2.0</a>
       using the Aliki theme by <a href="http://st0012.dev">Stan Lo</a>
     </p>
   </div>

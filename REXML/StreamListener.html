@@ -50,41 +50,46 @@
 </script>
 
 <script
-  src="../js/theme-toggle.js?v=7.0.1"
+  src="../js/theme-toggle.js?v=7.2.0"
 ></script>
 
 <script
-  src="../js/search_navigation.js?v=7.0.1"
+  src="../js/search_navigation.js?v=7.2.0"
   defer
 ></script>
 
 <script
-  src="../js/search_data.js?v=7.0.1"
+  src="../js/search_data.js?v=7.2.0"
   defer
 ></script>
 
 <script
-  src="../js/search_ranker.js?v=7.0.1"
+  src="../js/search_ranker.js?v=7.2.0"
   defer
 ></script>
 
 <script
-  src="../js/search_controller.js?v=7.0.1"
+  src="../js/search_controller.js?v=7.2.0"
   defer
 ></script>
 
 <script
-  src="../js/c_highlighter.js?v=7.0.1"
+  src="../js/c_highlighter.js?v=7.2.0"
   defer
 ></script>
 
 <script
-  src="../js/aliki.js?v=7.0.1"
+  src="../js/bash_highlighter.js?v=7.2.0"
+  defer
+></script>
+
+<script
+  src="../js/aliki.js?v=7.2.0"
   defer
 ></script>
 
 <link
-  href="../css/rdoc.css?v=7.0.1"
+  href="../css/rdoc.css?v=7.2.0"
   rel="stylesheet"
 >
 
@@ -363,7 +368,7 @@
 </div>
 
 
-<nav id="navigation" role="navigation">
+<nav id="navigation" role="navigation" hidden>
   
 
 
@@ -595,7 +600,7 @@
 
 </nav>
 
-<main role="main" aria-labelledby="module-REXML::StreamListener">
+<main role="main" aria-labelledby="module-rexml-streamlistener">
   
   
     <ol role="navigation" aria-label="Breadcrumb navigation" class="breadcrumb">
@@ -615,7 +620,8 @@
     </ol>
   
 
-  <h1 id="module-REXML::StreamListener" class="anchor-link module">
+  <span id="module-REXML::StreamListener" class="legacy-anchor"></span>
+  <h1 id="module-rexml-streamlistener" class="anchor-link module">
     module REXML::StreamListener
   </h1>
 
@@ -626,7 +632,8 @@
   </section>
 
 
-  <section id="5Buntitled-5D" class="documentation-section anchor-link">
+  <span id="5Buntitled-5D" class="legacy-anchor"></span>
+  <section class="documentation-section anchor-link">
 
 
 
@@ -636,9 +643,18 @@
 
 
 
-     <section id="public-instance-5Buntitled-5D-method-details" class="method-section anchor-link">
+
+
+
+
+
+
+
+
+
+     <section id="public-instance-untitled-method-details" class="method-section anchor-link">
        <header>
-         <h3 id="public-instance-methods"><a href="#public-instance-methods">Public Instance Methods</a></h3>
+         <h3 id="public-instance-untitled-methods"><a href="#public-instance-untitled-methods">Public Instance Methods</a></h3>
        </header>
 
 
@@ -661,7 +677,7 @@
             </details>
           </div>
           <div class="method-source-code" id="attlistdecl-source">
-            <pre class="ruby" data-language="ruby"><span class="ruby-comment"># File lib/rexml/streamlistener.rb, line 51</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/streamlistener.rb, line 51</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">attlistdecl</span> <span class="ruby-identifier">element_name</span>, <span class="ruby-identifier">attributes</span>, <span class="ruby-identifier">raw_content</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
@@ -702,7 +718,7 @@
             </details>
           </div>
           <div class="method-source-code" id="cdata-source">
-            <pre class="ruby" data-language="ruby"><span class="ruby-comment"># File lib/rexml/streamlistener.rb, line 83</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/streamlistener.rb, line 83</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">cdata</span> <span class="ruby-identifier">content</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
@@ -743,7 +759,7 @@
             </details>
           </div>
           <div class="method-source-code" id="comment-source">
-            <pre class="ruby" data-language="ruby"><span class="ruby-comment"># File lib/rexml/streamlistener.rb, line 33</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/streamlistener.rb, line 33</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">comment</span> <span class="ruby-identifier">comment</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
@@ -784,7 +800,7 @@
             </details>
           </div>
           <div class="method-source-code" id="doctype-source">
-            <pre class="ruby" data-language="ruby"><span class="ruby-comment"># File lib/rexml/streamlistener.rb, line 41</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/streamlistener.rb, line 41</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">doctype</span> <span class="ruby-identifier">name</span>, <span class="ruby-identifier">pub_sys</span>, <span class="ruby-identifier">long_name</span>, <span class="ruby-identifier">uri</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
@@ -825,7 +841,7 @@
             </details>
           </div>
           <div class="method-source-code" id="doctype_end-source">
-            <pre class="ruby" data-language="ruby"><span class="ruby-comment"># File lib/rexml/streamlistener.rb, line 44</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/streamlistener.rb, line 44</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">doctype_end</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
@@ -866,7 +882,7 @@
             </details>
           </div>
           <div class="method-source-code" id="elementdecl-source">
-            <pre class="ruby" data-language="ruby"><span class="ruby-comment"># File lib/rexml/streamlistener.rb, line 54</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/streamlistener.rb, line 54</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">elementdecl</span> <span class="ruby-identifier">content</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
@@ -907,7 +923,7 @@
             </details>
           </div>
           <div class="method-source-code" id="entity-source">
-            <pre class="ruby" data-language="ruby"><span class="ruby-comment"># File lib/rexml/streamlistener.rb, line 79</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/streamlistener.rb, line 79</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">entity</span> <span class="ruby-identifier">content</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
@@ -948,7 +964,7 @@
             </details>
           </div>
           <div class="method-source-code" id="entitydecl-source">
-            <pre class="ruby" data-language="ruby"><span class="ruby-comment"># File lib/rexml/streamlistener.rb, line 72</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/streamlistener.rb, line 72</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">entitydecl</span> <span class="ruby-identifier">content</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
@@ -1002,7 +1018,7 @@
             </details>
           </div>
           <div class="method-source-code" id="instruction-source">
-            <pre class="ruby" data-language="ruby"><span class="ruby-comment"># File lib/rexml/streamlistener.rb, line 29</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/streamlistener.rb, line 29</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">instruction</span> <span class="ruby-identifier">name</span>, <span class="ruby-identifier">instruction</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
@@ -1043,7 +1059,7 @@
             </details>
           </div>
           <div class="method-source-code" id="notationdecl-source">
-            <pre class="ruby" data-language="ruby"><span class="ruby-comment"># File lib/rexml/streamlistener.rb, line 75</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/streamlistener.rb, line 75</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">notationdecl</span> <span class="ruby-identifier">content</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
@@ -1084,7 +1100,7 @@
             </details>
           </div>
           <div class="method-source-code" id="tag_end-source">
-            <pre class="ruby" data-language="ruby"><span class="ruby-comment"># File lib/rexml/streamlistener.rb, line 19</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/streamlistener.rb, line 19</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">tag_end</span> <span class="ruby-identifier">name</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
@@ -1125,7 +1141,7 @@
             </details>
           </div>
           <div class="method-source-code" id="tag_start-source">
-            <pre class="ruby" data-language="ruby"><span class="ruby-comment"># File lib/rexml/streamlistener.rb, line 14</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/streamlistener.rb, line 14</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">tag_start</span> <span class="ruby-identifier">name</span>, <span class="ruby-identifier">attrs</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
@@ -1135,7 +1151,7 @@
         <div class="method-description">
 
 
-          <p>Called when a tag is encountered. @p name the tag name @p attrs an array of arrays of attribute/value pairs, suitable for use with assoc or rassoc.  IE, &lt;tag attr1=“value1” attr2=“value2”&gt; will result in <a href="StreamListener.html#method-i-tag_start"><code>tag_start</code></a>( “tag”, # [[“<a href="&quot;attr2&quot;,&quot;value2&quot;">attr1“,”value1“],</a>])</p>
+          <p>Called when a tag is encountered. @p name the tag name @p attrs an array of arrays of attribute/value pairs, suitable for use with assoc or rassoc.  IE, &lt;tag attr1=“value1” attr2=“value2”&gt; will result in <a href="StreamListener.html#method-i-tag_start"><code>tag_start</code></a>( “tag”, # [[“attr1”,“value1”],[“attr2”,“value2”]])</p>
 
 
         </div>
@@ -1166,7 +1182,7 @@
             </details>
           </div>
           <div class="method-source-code" id="text-source">
-            <pre class="ruby" data-language="ruby"><span class="ruby-comment"># File lib/rexml/streamlistener.rb, line 23</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/streamlistener.rb, line 23</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">text</span> <span class="ruby-identifier">text</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
@@ -1207,7 +1223,7 @@
             </details>
           </div>
           <div class="method-source-code" id="xmldecl-source">
-            <pre class="ruby" data-language="ruby"><span class="ruby-comment"># File lib/rexml/streamlistener.rb, line 90</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/streamlistener.rb, line 90</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">xmldecl</span> <span class="ruby-identifier">version</span>, <span class="ruby-identifier">encoding</span>, <span class="ruby-identifier">standalone</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
@@ -1231,6 +1247,9 @@
 
     </section>
 
+
+
+
   </section>
 
 </main>
@@ -1250,7 +1269,7 @@
 
   <div class="footer-bottom">
     <p>
-      Generated by <a href="https://ruby.github.io/rdoc/">RDoc 7.0.1</a>
+      Generated by <a href="https://ruby.github.io/rdoc/">RDoc 7.2.0</a>
       using the Aliki theme by <a href="http://st0012.dev">Stan Lo</a>
     </p>
   </div>

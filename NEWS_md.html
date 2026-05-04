@@ -45,41 +45,46 @@
 </script>
 
 <script
-  src="./js/theme-toggle.js?v=7.0.1"
+  src="./js/theme-toggle.js?v=7.2.0"
 ></script>
 
 <script
-  src="./js/search_navigation.js?v=7.0.1"
+  src="./js/search_navigation.js?v=7.2.0"
   defer
 ></script>
 
 <script
-  src="./js/search_data.js?v=7.0.1"
+  src="./js/search_data.js?v=7.2.0"
   defer
 ></script>
 
 <script
-  src="./js/search_ranker.js?v=7.0.1"
+  src="./js/search_ranker.js?v=7.2.0"
   defer
 ></script>
 
 <script
-  src="./js/search_controller.js?v=7.0.1"
+  src="./js/search_controller.js?v=7.2.0"
   defer
 ></script>
 
 <script
-  src="./js/c_highlighter.js?v=7.0.1"
+  src="./js/c_highlighter.js?v=7.2.0"
   defer
 ></script>
 
 <script
-  src="./js/aliki.js?v=7.0.1"
+  src="./js/bash_highlighter.js?v=7.2.0"
+  defer
+></script>
+
+<script
+  src="./js/aliki.js?v=7.2.0"
   defer
 ></script>
 
 <link
-  href="./css/rdoc.css?v=7.0.1"
+  href="./css/rdoc.css?v=7.2.0"
   rel="stylesheet"
 >
 
@@ -358,7 +363,7 @@
 </div>
 
 
-<nav id="navigation" role="navigation">
+<nav id="navigation" role="navigation" hidden>
   
 
 
@@ -537,11 +542,14 @@
 
 <main role="main" aria-label="Page NEWS.md">
 
-<h1 id="label-News"><a href="#label-News">News</a></h1>
+<span id="label-News" class="legacy-anchor"></span>
+<h1 id="news"><a href="#news">News</a></h1>
 
-<h2 id="label-3.4.4+-+2025-09-10+-7B-23version-3-4-4-7D"><a href="#label-3.4.4+-+2025-09-10+-7B-23version-3-4-4-7D">3.4.4 - 2025-09-10 {#version-3-4-4}</a></h2>
+<span id="label-3.4.4+-+2025-09-10+-7B-23version-3-4-4-7D" class="legacy-anchor"></span>
+<h2 id="344---2025-09-10-version-3-4-4"><a href="#344---2025-09-10-version-3-4-4">3.4.4 - 2025-09-10 {#version-3-4-4}</a></h2>
 
-<h3 id="label-Improvement"><a href="#label-Improvement">Improvement</a></h3>
+<span id="label-Improvement" class="legacy-anchor"></span>
+<h3 id="improvement"><a href="#improvement">Improvement</a></h3>
 <ul><li>
 <p>Accept <a href="REXML/Document.html#method-c-new"><code>REXML::Document.new(&quot;&quot;)</code></a> for backward compatibility</p>
 <ul><li>
@@ -555,16 +563,19 @@
 </li></ul>
 </li></ul>
 
-<h3 id="label-Thanks"><a href="#label-Thanks">Thanks</a></h3>
+<span id="label-Thanks" class="legacy-anchor"></span>
+<h3 id="thanks"><a href="#thanks">Thanks</a></h3>
 <ul><li>
 <p>NAITOH Jun</p>
 </li><li>
 <p>Joe Rafaniello</p>
 </li></ul>
 
-<h2 id="label-3.4.3+-+2025-09-07+-7B-23version-3-4-3-7D"><a href="#label-3.4.3+-+2025-09-07+-7B-23version-3-4-3-7D">3.4.3 - 2025-09-07 {#version-3-4-3}</a></h2>
+<span id="label-3.4.3+-+2025-09-07+-7B-23version-3-4-3-7D" class="legacy-anchor"></span>
+<h2 id="343---2025-09-07-version-3-4-3"><a href="#343---2025-09-07-version-3-4-3">3.4.3 - 2025-09-07 {#version-3-4-3}</a></h2>
 
-<h3 id="label-Improvement"><a href="#label-Improvement">Improvement</a></h3>
+<span id="label-Improvement-1" class="legacy-anchor"></span>
+<h3 id="improvement-1"><a href="#improvement-1">Improvement</a></h3>
 <ul><li>
 <p>Reject no root element XML as an invalid XML</p>
 <ul><li>
@@ -578,7 +589,8 @@
 </li></ul>
 </li></ul>
 
-<h3 id="label-Fixes"><a href="#label-Fixes">Fixes</a></h3>
+<span id="label-Fixes" class="legacy-anchor"></span>
+<h3 id="fixes"><a href="#fixes">Fixes</a></h3>
 <ul><li>
 <p>Fixed an issue with <code>IOSource#read_until</code> when reaching the end of a file</p>
 <ul><li>
@@ -592,7 +604,8 @@
 </li></ul>
 </li></ul>
 
-<h3 id="label-Thanks"><a href="#label-Thanks">Thanks</a></h3>
+<span id="label-Thanks-1" class="legacy-anchor"></span>
+<h3 id="thanks-1"><a href="#thanks-1">Thanks</a></h3>
 <ul><li>
 <p>NAITOH Jun</p>
 </li><li>
@@ -601,9 +614,11 @@
 <p>Jason Thomas</p>
 </li></ul>
 
-<h2 id="label-3.4.2+-+2025-08-26+-7B-23version-3-4-2-7D"><a href="#label-3.4.2+-+2025-08-26+-7B-23version-3-4-2-7D">3.4.2 - 2025-08-26 {#version-3-4-2}</a></h2>
+<span id="label-3.4.2+-+2025-08-26+-7B-23version-3-4-2-7D" class="legacy-anchor"></span>
+<h2 id="342---2025-08-26-version-3-4-2"><a href="#342---2025-08-26-version-3-4-2">3.4.2 - 2025-08-26 {#version-3-4-2}</a></h2>
 
-<h3 id="label-Improvement"><a href="#label-Improvement">Improvement</a></h3>
+<span id="label-Improvement-2" class="legacy-anchor"></span>
+<h3 id="improvement-2"><a href="#improvement-2">Improvement</a></h3>
 <ul><li>
 <p>Improved performance.</p>
 <ul><li>
@@ -646,7 +661,7 @@
 <p>Patch by tomoya ishida</p>
 </li></ul>
 </li><li>
-<p>Don't call needless encoding_updated</p>
+<p>Don’t call needless encoding_updated</p>
 <ul><li>
 <p>GH-259</p>
 </li><li>
@@ -691,7 +706,8 @@
 </li></ul>
 </li></ul>
 
-<h3 id="label-Fixes"><a href="#label-Fixes">Fixes</a></h3>
+<span id="label-Fixes-1" class="legacy-anchor"></span>
+<h3 id="fixes-1"><a href="#fixes-1">Fixes</a></h3>
 <ul><li>
 <p>Fix docs typo</p>
 <ul><li>
@@ -771,7 +787,8 @@
 </li></ul>
 </li></ul>
 
-<h3 id="label-Thanks"><a href="#label-Thanks">Thanks</a></h3>
+<span id="label-Thanks-2" class="legacy-anchor"></span>
+<h3 id="thanks-2"><a href="#thanks-2">Thanks</a></h3>
 <ul><li>
 <p>NAITOH Jun</p>
 </li><li>
@@ -786,9 +803,11 @@
 <p>Sofi Aberegg</p>
 </li></ul>
 
-<h2 id="label-3.4.1+-+2025-02-16+-7B-23version-3-4-1-7D"><a href="#label-3.4.1+-+2025-02-16+-7B-23version-3-4-1-7D">3.4.1 - 2025-02-16 {#version-3-4-1}</a></h2>
+<span id="label-3.4.1+-+2025-02-16+-7B-23version-3-4-1-7D" class="legacy-anchor"></span>
+<h2 id="341---2025-02-16-version-3-4-1"><a href="#341---2025-02-16-version-3-4-1">3.4.1 - 2025-02-16 {#version-3-4-1}</a></h2>
 
-<h3 id="label-Improvement"><a href="#label-Improvement">Improvement</a></h3>
+<span id="label-Improvement-3" class="legacy-anchor"></span>
+<h3 id="improvement-3"><a href="#improvement-3">Improvement</a></h3>
 <ul><li>
 <p>Improved performance.</p>
 <ul><li>
@@ -802,7 +821,8 @@
 </li></ul>
 </li></ul>
 
-<h3 id="label-Fixes"><a href="#label-Fixes">Fixes</a></h3>
+<span id="label-Fixes-2" class="legacy-anchor"></span>
+<h3 id="fixes-2"><a href="#fixes-2">Fixes</a></h3>
 <ul><li>
 <p>Fix serialization of ATTLIST is incorrect</p>
 <ul><li>
@@ -816,16 +836,19 @@
 </li></ul>
 </li></ul>
 
-<h3 id="label-Thanks"><a href="#label-Thanks">Thanks</a></h3>
+<span id="label-Thanks-3" class="legacy-anchor"></span>
+<h3 id="thanks-3"><a href="#thanks-3">Thanks</a></h3>
 <ul><li>
 <p>NAITOH Jun</p>
 </li><li>
 <p>OlofKalufs</p>
 </li></ul>
 
-<h2 id="label-3.4.0+-+2024-12-15+-7B-23version-3-4-0-7D"><a href="#label-3.4.0+-+2024-12-15+-7B-23version-3-4-0-7D">3.4.0 - 2024-12-15 {#version-3-4-0}</a></h2>
+<span id="label-3.4.0+-+2024-12-15+-7B-23version-3-4-0-7D" class="legacy-anchor"></span>
+<h2 id="340---2024-12-15-version-3-4-0"><a href="#340---2024-12-15-version-3-4-0">3.4.0 - 2024-12-15 {#version-3-4-0}</a></h2>
 
-<h3 id="label-Improvement"><a href="#label-Improvement">Improvement</a></h3>
+<span id="label-Improvement-4" class="legacy-anchor"></span>
+<h3 id="improvement-4"><a href="#improvement-4">Improvement</a></h3>
 <ul><li>
 <p>Improved performance.</p>
 <ul><li>
@@ -862,7 +885,8 @@
 </li></ul>
 </li></ul>
 
-<h3 id="label-Thanks"><a href="#label-Thanks">Thanks</a></h3>
+<span id="label-Thanks-4" class="legacy-anchor"></span>
+<h3 id="thanks-4"><a href="#thanks-4">Thanks</a></h3>
 <ul><li>
 <p>NAITOH Jun</p>
 </li><li>
@@ -871,9 +895,11 @@
 <p>Dmitry Pogrebnoy</p>
 </li></ul>
 
-<h2 id="label-3.3.9+-+2024-10-24+-7B-23version-3-3-9-7D"><a href="#label-3.3.9+-+2024-10-24+-7B-23version-3-3-9-7D">3.3.9 - 2024-10-24 {#version-3-3-9}</a></h2>
+<span id="label-3.3.9+-+2024-10-24+-7B-23version-3-3-9-7D" class="legacy-anchor"></span>
+<h2 id="339---2024-10-24-version-3-3-9"><a href="#339---2024-10-24-version-3-3-9">3.3.9 - 2024-10-24 {#version-3-3-9}</a></h2>
 
-<h3 id="label-Improvements"><a href="#label-Improvements">Improvements</a></h3>
+<span id="label-Improvements" class="legacy-anchor"></span>
+<h3 id="improvements"><a href="#improvements">Improvements</a></h3>
 <ul><li>
 <p>Improved performance.</p>
 <ul><li>
@@ -883,7 +909,8 @@
 </li></ul>
 </li></ul>
 
-<h3 id="label-Fixes"><a href="#label-Fixes">Fixes</a></h3>
+<span id="label-Fixes-3" class="legacy-anchor"></span>
+<h3 id="fixes-3"><a href="#fixes-3">Fixes</a></h3>
 <ul><li>
 <p>Fixed a parse bug for text only invalid XML.</p>
 <ul><li>
@@ -899,14 +926,17 @@
 <p>Fixed a parse bug that <code>&amp;#0x...;</code> is accepted as a character reference.</p>
 </li></ul>
 
-<h3 id="label-Thanks"><a href="#label-Thanks">Thanks</a></h3>
+<span id="label-Thanks-5" class="legacy-anchor"></span>
+<h3 id="thanks-5"><a href="#thanks-5">Thanks</a></h3>
 <ul><li>
 <p>NAITOH Jun</p>
 </li></ul>
 
-<h2 id="label-3.3.8+-+2024-09-29+-7B-23version-3-3-8-7D"><a href="#label-3.3.8+-+2024-09-29+-7B-23version-3-3-8-7D">3.3.8 - 2024-09-29 {#version-3-3-8}</a></h2>
+<span id="label-3.3.8+-+2024-09-29+-7B-23version-3-3-8-7D" class="legacy-anchor"></span>
+<h2 id="338---2024-09-29-version-3-3-8"><a href="#338---2024-09-29-version-3-3-8">3.3.8 - 2024-09-29 {#version-3-3-8}</a></h2>
 
-<h3 id="label-Improvements"><a href="#label-Improvements">Improvements</a></h3>
+<span id="label-Improvements-1" class="legacy-anchor"></span>
+<h3 id="improvements-1"><a href="#improvements-1">Improvements</a></h3>
 <ul><li>
 <p>SAX2: Improve parse performance.</p>
 <ul><li>
@@ -916,7 +946,8 @@
 </li></ul>
 </li></ul>
 
-<h3 id="label-Fixes"><a href="#label-Fixes">Fixes</a></h3>
+<span id="label-Fixes-4" class="legacy-anchor"></span>
+<h3 id="fixes-4"><a href="#fixes-4">Fixes</a></h3>
 <ul><li>
 <p>Fixed a bug that unexpected attribute namespace conflict error for the predefined “xml” namespace is reported.</p>
 <ul><li>
@@ -926,16 +957,19 @@
 </li></ul>
 </li></ul>
 
-<h3 id="label-Thanks"><a href="#label-Thanks">Thanks</a></h3>
+<span id="label-Thanks-6" class="legacy-anchor"></span>
+<h3 id="thanks-6"><a href="#thanks-6">Thanks</a></h3>
 <ul><li>
 <p>NAITOH Jun</p>
 </li><li>
 <p>KITAITI Makoto</p>
 </li></ul>
 
-<h2 id="label-3.3.7+-+2024-09-04+-7B-23version-3-3-7-7D"><a href="#label-3.3.7+-+2024-09-04+-7B-23version-3-3-7-7D">3.3.7 - 2024-09-04 {#version-3-3-7}</a></h2>
+<span id="label-3.3.7+-+2024-09-04+-7B-23version-3-3-7-7D" class="legacy-anchor"></span>
+<h2 id="337---2024-09-04-version-3-3-7"><a href="#337---2024-09-04-version-3-3-7">3.3.7 - 2024-09-04 {#version-3-3-7}</a></h2>
 
-<h3 id="label-Improvements"><a href="#label-Improvements">Improvements</a></h3>
+<span id="label-Improvements-2" class="legacy-anchor"></span>
+<h3 id="improvements-2"><a href="#improvements-2">Improvements</a></h3>
 <ul><li>
 <p>Added local entity expansion limit methods</p>
 <ul><li>
@@ -964,7 +998,8 @@
 </li></ul>
 </li></ul>
 
-<h3 id="label-Thanks"><a href="#label-Thanks">Thanks</a></h3>
+<span id="label-Thanks-7" class="legacy-anchor"></span>
+<h3 id="thanks-7"><a href="#thanks-7">Thanks</a></h3>
 <ul><li>
 <p>takuya kodama</p>
 </li><li>
@@ -973,9 +1008,11 @@
 <p>Bo Anderson</p>
 </li></ul>
 
-<h2 id="label-3.3.6+-+2024-08-22+-7B-23version-3-3-6-7D"><a href="#label-3.3.6+-+2024-08-22+-7B-23version-3-3-6-7D">3.3.6 - 2024-08-22 {#version-3-3-6}</a></h2>
+<span id="label-3.3.6+-+2024-08-22+-7B-23version-3-3-6-7D" class="legacy-anchor"></span>
+<h2 id="336---2024-08-22-version-3-3-6"><a href="#336---2024-08-22-version-3-3-6">3.3.6 - 2024-08-22 {#version-3-3-6}</a></h2>
 
-<h3 id="label-Improvements"><a href="#label-Improvements">Improvements</a></h3>
+<span id="label-Improvements-3" class="legacy-anchor"></span>
+<h3 id="improvements-3"><a href="#improvements-3">Improvements</a></h3>
 <ul><li>
 <p>Removed duplicated entity expansions for performance.</p>
 <ul><li>
@@ -994,7 +1031,8 @@
 </li></ul>
 </li></ul>
 
-<h3 id="label-Fixes"><a href="#label-Fixes">Fixes</a></h3>
+<span id="label-Fixes-5" class="legacy-anchor"></span>
+<h3 id="fixes-5"><a href="#fixes-5">Fixes</a></h3>
 <ul><li>
 <p>Fixed a bug that default entity expansions are counted for security check. Default entity expansions should not be counted because they don’t have a security risk.</p>
 <ul><li>
@@ -1026,7 +1064,8 @@
 </li></ul>
 </li></ul>
 
-<h3 id="label-Thanks"><a href="#label-Thanks">Thanks</a></h3>
+<span id="label-Thanks-8" class="legacy-anchor"></span>
+<h3 id="thanks-8"><a href="#thanks-8">Thanks</a></h3>
 <ul><li>
 <p>Viktor Ivarsson</p>
 </li><li>
@@ -1035,9 +1074,11 @@
 <p>l33thaxor</p>
 </li></ul>
 
-<h2 id="label-3.3.5+-+2024-08-12+-7B-23version-3-3-5-7D"><a href="#label-3.3.5+-+2024-08-12+-7B-23version-3-3-5-7D">3.3.5 - 2024-08-12 {#version-3-3-5}</a></h2>
+<span id="label-3.3.5+-+2024-08-12+-7B-23version-3-3-5-7D" class="legacy-anchor"></span>
+<h2 id="335---2024-08-12-version-3-3-5"><a href="#335---2024-08-12-version-3-3-5">3.3.5 - 2024-08-12 {#version-3-3-5}</a></h2>
 
-<h3 id="label-Fixes"><a href="#label-Fixes">Fixes</a></h3>
+<span id="label-Fixes-6" class="legacy-anchor"></span>
+<h3 id="fixes-6"><a href="#fixes-6">Fixes</a></h3>
 <ul><li>
 <p>Fixed a bug that <a href="REXML/Security.html#method-c-entity_expansion_text_limit"><code>REXML::Security.entity_expansion_text_limit</code></a> check has wrong text size calculation in SAX and pull parsers.</p>
 <ul><li>
@@ -1051,16 +1092,19 @@
 </li></ul>
 </li></ul>
 
-<h3 id="label-Thanks"><a href="#label-Thanks">Thanks</a></h3>
+<span id="label-Thanks-9" class="legacy-anchor"></span>
+<h3 id="thanks-9"><a href="#thanks-9">Thanks</a></h3>
 <ul><li>
 <p>Viktor Ivarsson</p>
 </li><li>
 <p>NAITOH Jun</p>
 </li></ul>
 
-<h2 id="label-3.3.4+-+2024-08-01+-7B-23version-3-3-4-7D"><a href="#label-3.3.4+-+2024-08-01+-7B-23version-3-3-4-7D">3.3.4 - 2024-08-01 {#version-3-3-4}</a></h2>
+<span id="label-3.3.4+-+2024-08-01+-7B-23version-3-3-4-7D" class="legacy-anchor"></span>
+<h2 id="334---2024-08-01-version-3-3-4"><a href="#334---2024-08-01-version-3-3-4">3.3.4 - 2024-08-01 {#version-3-3-4}</a></h2>
 
-<h3 id="label-Fixes"><a href="#label-Fixes">Fixes</a></h3>
+<span id="label-Fixes-7" class="legacy-anchor"></span>
+<h3 id="fixes-7"><a href="#fixes-7">Fixes</a></h3>
 <ul><li>
 <p>Fixed a bug that <a href="REXML/Security.html"><code>REXML::Security</code></a> isn’t defined when <a href="REXML/Parsers/StreamParser.html"><code>REXML::Parsers::StreamParser</code></a> is used and <code>rexml/parsers/streamparser</code> is only required.</p>
 <ul><li>
@@ -1070,14 +1114,17 @@
 </li></ul>
 </li></ul>
 
-<h3 id="label-Thanks"><a href="#label-Thanks">Thanks</a></h3>
+<span id="label-Thanks-10" class="legacy-anchor"></span>
+<h3 id="thanks-10"><a href="#thanks-10">Thanks</a></h3>
 <ul><li>
 <p>takuya kodama</p>
 </li></ul>
 
-<h2 id="label-3.3.3+-+2024-08-01+-7B-23version-3-3-3-7D"><a href="#label-3.3.3+-+2024-08-01+-7B-23version-3-3-3-7D">3.3.3 - 2024-08-01 {#version-3-3-3}</a></h2>
+<span id="label-3.3.3+-+2024-08-01+-7B-23version-3-3-3-7D" class="legacy-anchor"></span>
+<h2 id="333---2024-08-01-version-3-3-3"><a href="#333---2024-08-01-version-3-3-3">3.3.3 - 2024-08-01 {#version-3-3-3}</a></h2>
 
-<h3 id="label-Improvements"><a href="#label-Improvements">Improvements</a></h3>
+<span id="label-Improvements-4" class="legacy-anchor"></span>
+<h3 id="improvements-4"><a href="#improvements-4">Improvements</a></h3>
 <ul><li>
 <p>Added support for detecting invalid XML that has unsupported content before root element</p>
 <ul><li>
@@ -1117,7 +1164,8 @@
 </li></ul>
 </li></ul>
 
-<h3 id="label-Thanks"><a href="#label-Thanks">Thanks</a></h3>
+<span id="label-Thanks-11" class="legacy-anchor"></span>
+<h3 id="thanks-11"><a href="#thanks-11">Thanks</a></h3>
 <ul><li>
 <p>NAITOH Jun</p>
 </li><li>
@@ -1126,9 +1174,11 @@
 <p>tomoya ishida</p>
 </li></ul>
 
-<h2 id="label-3.3.2+-+2024-07-16+-7B-23version-3-3-2-7D"><a href="#label-3.3.2+-+2024-07-16+-7B-23version-3-3-2-7D">3.3.2 - 2024-07-16 {#version-3-3-2}</a></h2>
+<span id="label-3.3.2+-+2024-07-16+-7B-23version-3-3-2-7D" class="legacy-anchor"></span>
+<h2 id="332---2024-07-16-version-3-3-2"><a href="#332---2024-07-16-version-3-3-2">3.3.2 - 2024-07-16 {#version-3-3-2}</a></h2>
 
-<h3 id="label-Improvements"><a href="#label-Improvements">Improvements</a></h3>
+<span id="label-Improvements-5" class="legacy-anchor"></span>
+<h3 id="improvements-5"><a href="#improvements-5">Improvements</a></h3>
 <ul><li>
 <p>Improved parse performance.</p>
 <ul><li>
@@ -1193,7 +1243,8 @@
 </li></ul>
 </li></ul>
 
-<h3 id="label-Fixes"><a href="#label-Fixes">Fixes</a></h3>
+<span id="label-Fixes-8" class="legacy-anchor"></span>
+<h3 id="fixes-8"><a href="#fixes-8">Fixes</a></h3>
 <ul><li>
 <p>Fixed a bug that SAX2 parser doesn’t expand predefined entities for <code>characters</code> callback.</p>
 <ul><li>
@@ -1203,16 +1254,19 @@
 </li></ul>
 </li></ul>
 
-<h3 id="label-Thanks"><a href="#label-Thanks">Thanks</a></h3>
+<span id="label-Thanks-12" class="legacy-anchor"></span>
+<h3 id="thanks-12"><a href="#thanks-12">Thanks</a></h3>
 <ul><li>
 <p>NAITOH Jun</p>
 </li><li>
 <p>Watson</p>
 </li></ul>
 
-<h2 id="label-3.3.1+-+2024-06-25+-7B-23version-3-3-1-7D"><a href="#label-3.3.1+-+2024-06-25+-7B-23version-3-3-1-7D">3.3.1 - 2024-06-25 {#version-3-3-1}</a></h2>
+<span id="label-3.3.1+-+2024-06-25+-7B-23version-3-3-1-7D" class="legacy-anchor"></span>
+<h2 id="331---2024-06-25-version-3-3-1"><a href="#331---2024-06-25-version-3-3-1">3.3.1 - 2024-06-25 {#version-3-3-1}</a></h2>
 
-<h3 id="label-Improvements"><a href="#label-Improvements">Improvements</a></h3>
+<span id="label-Improvements-6" class="legacy-anchor"></span>
+<h3 id="improvements-6"><a href="#improvements-6">Improvements</a></h3>
 <ul><li>
 <p>Added support for detecting malformed top-level comments.</p>
 <ul><li>
@@ -1263,7 +1317,8 @@
 </li></ul>
 </li></ul>
 
-<h3 id="label-Fixes"><a href="#label-Fixes">Fixes</a></h3>
+<span id="label-Fixes-9" class="legacy-anchor"></span>
+<h3 id="fixes-9"><a href="#fixes-9">Fixes</a></h3>
 <ul><li>
 <p>Fixed a bug that large XML can’t be parsed.</p>
 <ul><li>
@@ -1284,7 +1339,8 @@
 </li></ul>
 </li></ul>
 
-<h3 id="label-Thanks"><a href="#label-Thanks">Thanks</a></h3>
+<span id="label-Thanks-13" class="legacy-anchor"></span>
+<h3 id="thanks-13"><a href="#thanks-13">Thanks</a></h3>
 <ul><li>
 <p>Hiroya Fujinami</p>
 </li><li>
@@ -1293,9 +1349,11 @@
 <p>fynsta</p>
 </li></ul>
 
-<h2 id="label-3.3.0+-+2024-06-11+-7B-23version-3-3-0-7D"><a href="#label-3.3.0+-+2024-06-11+-7B-23version-3-3-0-7D">3.3.0 - 2024-06-11 {#version-3-3-0}</a></h2>
+<span id="label-3.3.0+-+2024-06-11+-7B-23version-3-3-0-7D" class="legacy-anchor"></span>
+<h2 id="330---2024-06-11-version-3-3-0"><a href="#330---2024-06-11-version-3-3-0">3.3.0 - 2024-06-11 {#version-3-3-0}</a></h2>
 
-<h3 id="label-Improvements"><a href="#label-Improvements">Improvements</a></h3>
+<span id="label-Improvements-7" class="legacy-anchor"></span>
+<h3 id="improvements-7"><a href="#improvements-7">Improvements</a></h3>
 <ul><li>
 <p>Added support for strscan 0.7.0 installed with Ruby 2.6.</p>
 <ul><li>
@@ -1305,14 +1363,17 @@
 </li></ul>
 </li></ul>
 
-<h3 id="label-Thanks"><a href="#label-Thanks">Thanks</a></h3>
+<span id="label-Thanks-14" class="legacy-anchor"></span>
+<h3 id="thanks-14"><a href="#thanks-14">Thanks</a></h3>
 <ul><li>
 <p>Fernando Trigoso</p>
 </li></ul>
 
-<h2 id="label-3.2.9+-+2024-06-09+-7B-23version-3-2-9-7D"><a href="#label-3.2.9+-+2024-06-09+-7B-23version-3-2-9-7D">3.2.9 - 2024-06-09 {#version-3-2-9}</a></h2>
+<span id="label-3.2.9+-+2024-06-09+-7B-23version-3-2-9-7D" class="legacy-anchor"></span>
+<h2 id="329---2024-06-09-version-3-2-9"><a href="#329---2024-06-09-version-3-2-9">3.2.9 - 2024-06-09 {#version-3-2-9}</a></h2>
 
-<h3 id="label-Improvements"><a href="#label-Improvements">Improvements</a></h3>
+<span id="label-Improvements-8" class="legacy-anchor"></span>
+<h3 id="improvements-8"><a href="#improvements-8">Improvements</a></h3>
 <ul><li>
 <p>Added support for old strscan.</p>
 <ul><li>
@@ -1347,7 +1408,8 @@
 </li></ul>
 </li></ul>
 
-<h3 id="label-Thanks"><a href="#label-Thanks">Thanks</a></h3>
+<span id="label-Thanks-15" class="legacy-anchor"></span>
+<h3 id="thanks-15"><a href="#thanks-15">Thanks</a></h3>
 <ul><li>
 <p>Adam</p>
 </li><li>
@@ -1358,16 +1420,20 @@
 <p>mprogrammer</p>
 </li></ul>
 
-<h2 id="label-3.2.8+-+2024-05-16+-7B-23version-3-2-8-7D"><a href="#label-3.2.8+-+2024-05-16+-7B-23version-3-2-8-7D">3.2.8 - 2024-05-16 {#version-3-2-8}</a></h2>
+<span id="label-3.2.8+-+2024-05-16+-7B-23version-3-2-8-7D" class="legacy-anchor"></span>
+<h2 id="328---2024-05-16-version-3-2-8"><a href="#328---2024-05-16-version-3-2-8">3.2.8 - 2024-05-16 {#version-3-2-8}</a></h2>
 
-<h3 id="label-Fixes"><a href="#label-Fixes">Fixes</a></h3>
+<span id="label-Fixes-10" class="legacy-anchor"></span>
+<h3 id="fixes-10"><a href="#fixes-10">Fixes</a></h3>
 <ul><li>
 <p>Suppressed a warning</p>
 </li></ul>
 
-<h2 id="label-3.2.7+-+2024-05-16+-7B-23version-3-2-7-7D"><a href="#label-3.2.7+-+2024-05-16+-7B-23version-3-2-7-7D">3.2.7 - 2024-05-16 {#version-3-2-7}</a></h2>
+<span id="label-3.2.7+-+2024-05-16+-7B-23version-3-2-7-7D" class="legacy-anchor"></span>
+<h2 id="327---2024-05-16-version-3-2-7"><a href="#327---2024-05-16-version-3-2-7">3.2.7 - 2024-05-16 {#version-3-2-7}</a></h2>
 
-<h3 id="label-Improvements"><a href="#label-Improvements">Improvements</a></h3>
+<span id="label-Improvements-9" class="legacy-anchor"></span>
+<h3 id="improvements-9"><a href="#improvements-9">Improvements</a></h3>
 <ul><li>
 <p>Improve parse performance by using <code>StringScanner</code>.</p>
 <ul><li>
@@ -1406,7 +1472,8 @@
 </li></ul>
 </li></ul>
 
-<h3 id="label-Fixes"><a href="#label-Fixes">Fixes</a></h3>
+<span id="label-Fixes-11" class="legacy-anchor"></span>
+<h3 id="fixes-11"><a href="#fixes-11">Fixes</a></h3>
 <ul><li>
 <p>XPath: Fixed a bug of <code>normalize_space(array)</code>.</p>
 <ul><li>
@@ -1440,7 +1507,8 @@
 </li></ul>
 </li></ul>
 
-<h3 id="label-Thanks"><a href="#label-Thanks">Thanks</a></h3>
+<span id="label-Thanks-16" class="legacy-anchor"></span>
+<h3 id="thanks-16"><a href="#thanks-16">Thanks</a></h3>
 <ul><li>
 <p>NAITOH Jun</p>
 </li><li>
@@ -1451,15 +1519,17 @@
 <p>DuKewu</p>
 </li></ul>
 
-<h2 id="label-3.2.6+-+2023-07-27+-7B-23version-3-2-6-7D"><a href="#label-3.2.6+-+2023-07-27+-7B-23version-3-2-6-7D">3.2.6 - 2023-07-27 {#version-3-2-6}</a></h2>
+<span id="label-3.2.6+-+2023-07-27+-7B-23version-3-2-6-7D" class="legacy-anchor"></span>
+<h2 id="326---2023-07-27-version-3-2-6"><a href="#326---2023-07-27-version-3-2-6">3.2.6 - 2023-07-27 {#version-3-2-6}</a></h2>
 
-<h3 id="label-Improvements"><a href="#label-Improvements">Improvements</a></h3>
+<span id="label-Improvements-10" class="legacy-anchor"></span>
+<h3 id="improvements-10"><a href="#improvements-10">Improvements</a></h3>
 <ul><li>
 <p>Required Ruby 2.5 or later explicitly. <a href="https://github.com/ruby/rexml/issues/69">GH-69</a> [Patch by Ivo Anjo]</p>
 </li><li>
 <p>Added documentation for maintenance cycle. <a href="https://github.com/ruby/rexml/issues/71">GH-71</a> [Patch by Ivo Anjo]</p>
 </li><li>
-<p>Added tutorial. <a href="https://github.com/ruby/rexml/issues/77">GH-77</a> [<a href="gh-78">GH-78]</a> [Patch by Burdette Lamar]</p>
+<p>Added tutorial. <a href="https://github.com/ruby/rexml/issues/77">GH-77</a> [GH-78][gh-78] [Patch by Burdette Lamar]</p>
 </li><li>
 <p>Improved performance and memory usage. <a href="https://github.com/ruby/rexml/issues/94">GH-94</a> [Patch by fatkodima]</p>
 </li><li>
@@ -1472,7 +1542,8 @@
 <p><a href="REXML/Parsers/XPathParser.html#method-i-abbreviate"><code>REXML::Parsers::XPathParser#abbreviate</code></a>: Added support for more patterns. <a href="https://github.com/ruby/rexml/issues/97">GH-97</a> [Reported by pulver]</p>
 </li></ul>
 
-<h3 id="label-Fixes"><a href="#label-Fixes">Fixes</a></h3>
+<span id="label-Fixes-12" class="legacy-anchor"></span>
+<h3 id="fixes-12"><a href="#fixes-12">Fixes</a></h3>
 <ul><li>
 <p>Fixed a typo in <a href="NEWS_md.html">NEWS</a>. <a href="https://github.com/ruby/rexml/issues/72">GH-72</a> [Patch by Spencer Goodman]</p>
 </li><li>
@@ -1485,7 +1556,8 @@
 <p>Fixed links in tutorial. <a href="https://github.com/ruby/rexml/issues/99">GH-99</a> [Patch by gemmaro]</p>
 </li></ul>
 
-<h3 id="label-Thanks"><a href="#label-Thanks">Thanks</a></h3>
+<span id="label-Thanks-17" class="legacy-anchor"></span>
+<h3 id="thanks-17"><a href="#thanks-17">Thanks</a></h3>
 <ul><li>
 <p>Ivo Anjo</p>
 </li><li>
@@ -1506,29 +1578,33 @@
 <p>gemmaro</p>
 </li></ul>
 
-<h2 id="label-3.2.5+-+2021-04-05+-7B-23version-3-2-5-7D"><a href="#label-3.2.5+-+2021-04-05+-7B-23version-3-2-5-7D">3.2.5 - 2021-04-05 {#version-3-2-5}</a></h2>
+<span id="label-3.2.5+-+2021-04-05+-7B-23version-3-2-5-7D" class="legacy-anchor"></span>
+<h2 id="325---2021-04-05-version-3-2-5"><a href="#325---2021-04-05-version-3-2-5">3.2.5 - 2021-04-05 {#version-3-2-5}</a></h2>
 
-<h3 id="label-Improvements"><a href="#label-Improvements">Improvements</a></h3>
+<span id="label-Improvements-11" class="legacy-anchor"></span>
+<h3 id="improvements-11"><a href="#improvements-11">Improvements</a></h3>
 <ul><li>
 <p>Add more validations to XPath parser.</p>
 </li><li>
 <p><code>require &quot;rexml/document&quot;</code> by default. [GitHub#36][Patch by Koichi ITO]</p>
 </li><li>
-<p>Don't add dclone method to core classes globally. [GitHub#37][Patch by Akira Matsuda]</p>
+<p>Don’t add dclone method to core classes globally. [GitHub#37][Patch by Akira Matsuda]</p>
 </li><li>
 <p>Add more documentations. [Patch by Burdette Lamar]</p>
 </li><li>
 <p>Added <a href="REXML/Elements.html#method-i-parent"><code>REXML::Elements#parent</code></a>. [GitHub#52][Patch by Burdette Lamar]</p>
 </li></ul>
 
-<h3 id="label-Fixes"><a href="#label-Fixes">Fixes</a></h3>
+<span id="label-Fixes-13" class="legacy-anchor"></span>
+<h3 id="fixes-13"><a href="#fixes-13">Fixes</a></h3>
 <ul><li>
 <p>Fixed a bug that <a href="REXML/DocType.html#method-i-clone"><code>REXML::DocType#clone</code></a> doesn’t copy external ID information.</p>
 </li><li>
-<p>Fixed round-trip vulnerability bugs. See also: <a href="https://www.ruby-lang.org/en/news/2021/04/05/xml-round-trip-vulnerability-in-rexml-cve-2021-28965">www.ruby-lang.org/en/news/2021/04/05/xml-round-trip-vulnerability-in-rexml-cve-2021-28965</a>/ [<a href="CVE-2021-28965">HackerOne#1104077]</a>[Reported by Juho Nurminen]</p>
+<p>Fixed round-trip vulnerability bugs. See also: <a href="https://www.ruby-lang.org/en/news/2021/04/05/xml-round-trip-vulnerability-in-rexml-cve-2021-28965">www.ruby-lang.org/en/news/2021/04/05/xml-round-trip-vulnerability-in-rexml-cve-2021-28965</a>/ [HackerOne#1104077][CVE-2021-28965][Reported by Juho Nurminen]</p>
 </li></ul>
 
-<h3 id="label-Thanks"><a href="#label-Thanks">Thanks</a></h3>
+<span id="label-Thanks-18" class="legacy-anchor"></span>
+<h3 id="thanks-18"><a href="#thanks-18">Thanks</a></h3>
 <ul><li>
 <p>Koichi ITO</p>
 </li><li>
@@ -1539,40 +1615,49 @@
 <p>Juho Nurminen</p>
 </li></ul>
 
-<h2 id="label-3.2.4+-+2020-01-31+-7B-23version-3-2-4-7D"><a href="#label-3.2.4+-+2020-01-31+-7B-23version-3-2-4-7D">3.2.4 - 2020-01-31 {#version-3-2-4}</a></h2>
+<span id="label-3.2.4+-+2020-01-31+-7B-23version-3-2-4-7D" class="legacy-anchor"></span>
+<h2 id="324---2020-01-31-version-3-2-4"><a href="#324---2020-01-31-version-3-2-4">3.2.4 - 2020-01-31 {#version-3-2-4}</a></h2>
 
-<h3 id="label-Improvements"><a href="#label-Improvements">Improvements</a></h3>
+<span id="label-Improvements-12" class="legacy-anchor"></span>
+<h3 id="improvements-12"><a href="#improvements-12">Improvements</a></h3>
 <ul><li>
 <p>Don’t use <code>taint</code> with Ruby 2.7 or later. [GitHub#21][Patch by Jeremy Evans]</p>
 </li></ul>
 
-<h3 id="label-Fixes"><a href="#label-Fixes">Fixes</a></h3>
+<span id="label-Fixes-14" class="legacy-anchor"></span>
+<h3 id="fixes-14"><a href="#fixes-14">Fixes</a></h3>
 <ul><li>
 <p>Fixed a <code>elsif</code> typo. [GitHub#22][Patch by Nobuyoshi Nakada]</p>
 </li></ul>
 
-<h3 id="label-Thanks"><a href="#label-Thanks">Thanks</a></h3>
+<span id="label-Thanks-19" class="legacy-anchor"></span>
+<h3 id="thanks-19"><a href="#thanks-19">Thanks</a></h3>
 <ul><li>
 <p>Jeremy Evans</p>
 </li><li>
 <p>Nobuyoshi Nakada</p>
 </li></ul>
 
-<h2 id="label-3.2.3+-+2019-10-12+-7B-23version-3-2-3-7D"><a href="#label-3.2.3+-+2019-10-12+-7B-23version-3-2-3-7D">3.2.3 - 2019-10-12 {#version-3-2-3}</a></h2>
+<span id="label-3.2.3+-+2019-10-12+-7B-23version-3-2-3-7D" class="legacy-anchor"></span>
+<h2 id="323---2019-10-12-version-3-2-3"><a href="#323---2019-10-12-version-3-2-3">3.2.3 - 2019-10-12 {#version-3-2-3}</a></h2>
 
-<h3 id="label-Fixes"><a href="#label-Fixes">Fixes</a></h3>
+<span id="label-Fixes-15" class="legacy-anchor"></span>
+<h3 id="fixes-15"><a href="#fixes-15">Fixes</a></h3>
 <ul><li>
 <p>Fixed a bug that <code>REXML::XMLDecl#close</code> doesn’t copy <code>@writethis</code>. [GitHub#20][Patch by hirura]</p>
 </li></ul>
 
-<h3 id="label-Thanks"><a href="#label-Thanks">Thanks</a></h3>
+<span id="label-Thanks-20" class="legacy-anchor"></span>
+<h3 id="thanks-20"><a href="#thanks-20">Thanks</a></h3>
 <ul><li>
 <p>hirura</p>
 </li></ul>
 
-<h2 id="label-3.2.2+-+2019-06-03+-7B-23version-3-2-2-7D"><a href="#label-3.2.2+-+2019-06-03+-7B-23version-3-2-2-7D">3.2.2 - 2019-06-03 {#version-3-2-2}</a></h2>
+<span id="label-3.2.2+-+2019-06-03+-7B-23version-3-2-2-7D" class="legacy-anchor"></span>
+<h2 id="322---2019-06-03-version-3-2-2"><a href="#322---2019-06-03-version-3-2-2">3.2.2 - 2019-06-03 {#version-3-2-2}</a></h2>
 
-<h3 id="label-Fixes"><a href="#label-Fixes">Fixes</a></h3>
+<span id="label-Fixes-16" class="legacy-anchor"></span>
+<h3 id="fixes-16"><a href="#fixes-16">Fixes</a></h3>
 <ul><li>
 <p>xpath: Fixed a bug for equality and relational expressions. [GitHub#17][Reported by Mirko Budszuhn]</p>
 </li><li>
@@ -1583,14 +1668,17 @@
 <p>xpath: Fixed <code>number()</code> implementation with node set. [GitHub#18][Reported by Mirko Budszuhn]</p>
 </li></ul>
 
-<h3 id="label-Thanks"><a href="#label-Thanks">Thanks</a></h3>
+<span id="label-Thanks-21" class="legacy-anchor"></span>
+<h3 id="thanks-21"><a href="#thanks-21">Thanks</a></h3>
 <ul><li>
 <p>Mirko Budszuhn</p>
 </li></ul>
 
-<h2 id="label-3.2.1+-+2019-05-04+-7B-23version-3-2-1-7D"><a href="#label-3.2.1+-+2019-05-04+-7B-23version-3-2-1-7D">3.2.1 - 2019-05-04 {#version-3-2-1}</a></h2>
+<span id="label-3.2.1+-+2019-05-04+-7B-23version-3-2-1-7D" class="legacy-anchor"></span>
+<h2 id="321---2019-05-04-version-3-2-1"><a href="#321---2019-05-04-version-3-2-1">3.2.1 - 2019-05-04 {#version-3-2-1}</a></h2>
 
-<h3 id="label-Improvements"><a href="#label-Improvements">Improvements</a></h3>
+<span id="label-Improvements-13" class="legacy-anchor"></span>
+<h3 id="improvements-13"><a href="#improvements-13">Improvements</a></h3>
 <ul><li>
 <p>Improved error message. [GitHub#12][Patch by FUJI Goro]</p>
 </li><li>
@@ -1599,12 +1687,14 @@
 <p>Improved documentation markup. [GitHub#14][Patch by Alyssa Ross]</p>
 </li></ul>
 
-<h3 id="label-Fixes"><a href="#label-Fixes">Fixes</a></h3>
+<span id="label-Fixes-17" class="legacy-anchor"></span>
+<h3 id="fixes-17"><a href="#fixes-17">Fixes</a></h3>
 <ul><li>
 <p>Fixed a bug that <code>nil</code> variable value raises an unexpected exception. [GitHub#13][Patch by Alyssa Ross]</p>
 </li></ul>
 
-<h3 id="label-Thanks"><a href="#label-Thanks">Thanks</a></h3>
+<span id="label-Thanks-22" class="legacy-anchor"></span>
+<h3 id="thanks-22"><a href="#thanks-22">Thanks</a></h3>
 <ul><li>
 <p>FUJI Goro</p>
 </li><li>
@@ -1613,9 +1703,11 @@
 <p>ujihisa</p>
 </li></ul>
 
-<h2 id="label-3.2.0+-+2019-01-01+-7B-23version-3-2-0-7D"><a href="#label-3.2.0+-+2019-01-01+-7B-23version-3-2-0-7D">3.2.0 - 2019-01-01 {#version-3-2-0}</a></h2>
+<span id="label-3.2.0+-+2019-01-01+-7B-23version-3-2-0-7D" class="legacy-anchor"></span>
+<h2 id="320---2019-01-01-version-3-2-0"><a href="#320---2019-01-01-version-3-2-0">3.2.0 - 2019-01-01 {#version-3-2-0}</a></h2>
 
-<h3 id="label-Fixes"><a href="#label-Fixes">Fixes</a></h3>
+<span id="label-Fixes-18" class="legacy-anchor"></span>
+<h3 id="fixes-18"><a href="#fixes-18">Fixes</a></h3>
 <ul><li>
 <p>Fixed a bug that no namespace attribute isn’t matched with prefix.</p>
 
@@ -1623,7 +1715,7 @@
 </li><li>
 <p>Fixed a bug that the default namespace is applied to attribute names.</p>
 
-<p>NOTE: It's a backward incompatible change. If your program has any problem with this change, please report it. We may revert this fix.</p>
+<p>NOTE: It’s a backward incompatible change. If your program has any problem with this change, please report it. We may revert this fix.</p>
 <ul><li>
 <p><a href="REXML/Attribute.html#method-i-prefix"><code>REXML::Attribute#prefix</code></a> returns <code>&quot;&quot;</code> for no namespace attribute.</p>
 </li><li>
@@ -1631,23 +1723,28 @@
 </li></ul>
 </li></ul>
 
-<h3 id="label-Thanks"><a href="#label-Thanks">Thanks</a></h3>
+<span id="label-Thanks-23" class="legacy-anchor"></span>
+<h3 id="thanks-23"><a href="#thanks-23">Thanks</a></h3>
 <ul><li>
 <p>Yasuhiro KIMURA</p>
 </li></ul>
 
-<h2 id="label-3.1.9+-+2018-12-20+-7B-23version-3-1-9-7D"><a href="#label-3.1.9+-+2018-12-20+-7B-23version-3-1-9-7D">3.1.9 - 2018-12-20 {#version-3-1-9}</a></h2>
+<span id="label-3.1.9+-+2018-12-20+-7B-23version-3-1-9-7D" class="legacy-anchor"></span>
+<h2 id="319---2018-12-20-version-3-1-9"><a href="#319---2018-12-20-version-3-1-9">3.1.9 - 2018-12-20 {#version-3-1-9}</a></h2>
 
-<h3 id="label-Improvements"><a href="#label-Improvements">Improvements</a></h3>
+<span id="label-Improvements-14" class="legacy-anchor"></span>
+<h3 id="improvements-14"><a href="#improvements-14">Improvements</a></h3>
 <ul><li>
 <p>Improved backward compatibility.</p>
 
-<p>Restored <code>REXML::Parsers::BaseParser::UNQME_STR</code> because it's used by kramdown.</p>
+<p>Restored <code>REXML::Parsers::BaseParser::UNQME_STR</code> because it’s used by kramdown.</p>
 </li></ul>
 
-<h2 id="label-3.1.8+-+2018-12-20+-7B-23version-3-1-8-7D"><a href="#label-3.1.8+-+2018-12-20+-7B-23version-3-1-8-7D">3.1.8 - 2018-12-20 {#version-3-1-8}</a></h2>
+<span id="label-3.1.8+-+2018-12-20+-7B-23version-3-1-8-7D" class="legacy-anchor"></span>
+<h2 id="318---2018-12-20-version-3-1-8"><a href="#318---2018-12-20-version-3-1-8">3.1.8 - 2018-12-20 {#version-3-1-8}</a></h2>
 
-<h3 id="label-Improvements"><a href="#label-Improvements">Improvements</a></h3>
+<span id="label-Improvements-15" class="legacy-anchor"></span>
+<h3 id="improvements-15"><a href="#improvements-15">Improvements</a></h3>
 <ul><li>
 <p>Added support for customizing quote character in prologue. [GitHub#8][Bug #9367][Reported by Takashi Oguma]</p>
 <ul><li>
@@ -1663,12 +1760,14 @@
 <p>Stopped to use <code>Exception</code>. [GitHub#9][Patch by Jean Boussier]</p>
 </li></ul>
 
-<h3 id="label-Fixes"><a href="#label-Fixes">Fixes</a></h3>
+<span id="label-Fixes-19" class="legacy-anchor"></span>
+<h3 id="fixes-19"><a href="#fixes-19">Fixes</a></h3>
 <ul><li>
 <p>Fixed a bug that <a href="REXML/Text.html#method-i-clone"><code>REXML::Text#clone</code></a> escapes value twice. [ruby-dev:50626][Bug #15058][Reported by Ryosuke Nanba]</p>
 </li></ul>
 
-<h3 id="label-Thanks"><a href="#label-Thanks">Thanks</a></h3>
+<span id="label-Thanks-24" class="legacy-anchor"></span>
+<h3 id="thanks-24"><a href="#thanks-24">Thanks</a></h3>
 <ul><li>
 <p>Takashi Oguma</p>
 </li><li>
@@ -1696,7 +1795,7 @@
 
   <div class="footer-bottom">
     <p>
-      Generated by <a href="https://ruby.github.io/rdoc/">RDoc 7.0.1</a>
+      Generated by <a href="https://ruby.github.io/rdoc/">RDoc 7.2.0</a>
       using the Aliki theme by <a href="http://st0012.dev">Stan Lo</a>
     </p>
   </div>

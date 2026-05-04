@@ -50,41 +50,46 @@
 </script>
 
 <script
-  src="../../js/theme-toggle.js?v=7.0.1"
+  src="../../js/theme-toggle.js?v=7.2.0"
 ></script>
 
 <script
-  src="../../js/search_navigation.js?v=7.0.1"
+  src="../../js/search_navigation.js?v=7.2.0"
   defer
 ></script>
 
 <script
-  src="../../js/search_data.js?v=7.0.1"
+  src="../../js/search_data.js?v=7.2.0"
   defer
 ></script>
 
 <script
-  src="../../js/search_ranker.js?v=7.0.1"
+  src="../../js/search_ranker.js?v=7.2.0"
   defer
 ></script>
 
 <script
-  src="../../js/search_controller.js?v=7.0.1"
+  src="../../js/search_controller.js?v=7.2.0"
   defer
 ></script>
 
 <script
-  src="../../js/c_highlighter.js?v=7.0.1"
+  src="../../js/c_highlighter.js?v=7.2.0"
   defer
 ></script>
 
 <script
-  src="../../js/aliki.js?v=7.0.1"
+  src="../../js/bash_highlighter.js?v=7.2.0"
+  defer
+></script>
+
+<script
+  src="../../js/aliki.js?v=7.2.0"
   defer
 ></script>
 
 <link
-  href="../../css/rdoc.css?v=7.0.1"
+  href="../../css/rdoc.css?v=7.2.0"
   rel="stylesheet"
 >
 
@@ -363,7 +368,7 @@
 </div>
 
 
-<nav id="navigation" role="navigation">
+<nav id="navigation" role="navigation" hidden>
   
 
 
@@ -611,7 +616,7 @@
 
 </nav>
 
-<main role="main" aria-labelledby="class-REXML::Formatters::Pretty">
+<main role="main" aria-labelledby="class-rexml-formatters-pretty">
   
   
     <ol role="navigation" aria-label="Breadcrumb navigation" class="breadcrumb">
@@ -637,7 +642,8 @@
     </ol>
   
 
-  <h1 id="class-REXML::Formatters::Pretty" class="anchor-link class">
+  <span id="class-REXML::Formatters::Pretty" class="legacy-anchor"></span>
+  <h1 id="class-rexml-formatters-pretty" class="anchor-link class">
     class REXML::Formatters::Pretty
   </h1>
 
@@ -650,7 +656,8 @@
   </section>
 
 
-  <section id="5Buntitled-5D" class="documentation-section anchor-link">
+  <span id="5Buntitled-5D" class="legacy-anchor"></span>
+  <section class="documentation-section anchor-link">
 
 
 
@@ -660,7 +667,7 @@
 
     <section class="attribute-method-details method-section">
       <header>
-        <h3 id="attributes"><a href="#attributes">Attributes</a></h3>
+        <h3 id="untitled-attributes"><a href="#untitled-attributes">Attributes</a></h3>
       </header>
 
 
@@ -700,9 +707,12 @@
 
 
 
-     <section id="public-class-5Buntitled-5D-method-details" class="method-section anchor-link">
+
+
+
+     <section id="public-class-untitled-method-details" class="method-section anchor-link">
        <header>
-         <h3 id="public-class-methods"><a href="#public-class-methods">Public Class Methods</a></h3>
+         <h3 id="public-class-untitled-methods"><a href="#public-class-untitled-methods">Public Class Methods</a></h3>
        </header>
 
 
@@ -725,7 +735,7 @@
             </details>
           </div>
           <div class="method-source-code" id="new-source">
-            <pre class="ruby" data-language="ruby"><span class="ruby-comment"># File lib/rexml/formatters/pretty.rb, line 30</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/formatters/pretty.rb, line 30</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>( <span class="ruby-identifier">indentation</span>=<span class="ruby-value">2</span>, <span class="ruby-identifier">ie_hack</span>=<span class="ruby-keyword">false</span> )
   <span class="ruby-ivar">@indentation</span> = <span class="ruby-identifier">indentation</span>
   <span class="ruby-ivar">@level</span> = <span class="ruby-value">0</span>
@@ -764,9 +774,16 @@
 
     </section>
 
-     <section id="protected-instance-5Buntitled-5D-method-details" class="method-section anchor-link">
+
+
+
+
+
+
+
+     <section id="protected-instance-untitled-method-details" class="method-section anchor-link">
        <header>
-         <h3 id="protected-instance-methods"><a href="#protected-instance-methods">Protected Instance Methods</a></h3>
+         <h3 id="protected-instance-untitled-methods"><a href="#protected-instance-untitled-methods">Protected Instance Methods</a></h3>
        </header>
 
 
@@ -789,7 +806,7 @@
             </details>
           </div>
           <div class="method-source-code" id="write_cdata-source">
-            <pre class="ruby" data-language="ruby"><span class="ruby-comment"># File lib/rexml/formatters/pretty.rb, line 102</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/formatters/pretty.rb, line 102</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">write_cdata</span>( <span class="ruby-identifier">node</span>, <span class="ruby-identifier">output</span>)
   <span class="ruby-identifier">output</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-string">&#39; &#39;</span> <span class="ruby-operator">*</span> <span class="ruby-ivar">@level</span>
   <span class="ruby-keyword">super</span>
@@ -837,7 +854,7 @@
             </details>
           </div>
           <div class="method-source-code" id="write_comment-source">
-            <pre class="ruby" data-language="ruby"><span class="ruby-comment"># File lib/rexml/formatters/pretty.rb, line 97</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/formatters/pretty.rb, line 97</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">write_comment</span>( <span class="ruby-identifier">node</span>, <span class="ruby-identifier">output</span>)
   <span class="ruby-identifier">output</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-string">&#39; &#39;</span> <span class="ruby-operator">*</span> <span class="ruby-ivar">@level</span>
   <span class="ruby-keyword">super</span>
@@ -885,7 +902,7 @@
             </details>
           </div>
           <div class="method-source-code" id="write_document-source">
-            <pre class="ruby" data-language="ruby"><span class="ruby-comment"># File lib/rexml/formatters/pretty.rb, line 107</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/formatters/pretty.rb, line 107</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">write_document</span>( <span class="ruby-identifier">node</span>, <span class="ruby-identifier">output</span> )
   <span class="ruby-comment"># Ok, this is a bit odd.  All XML documents have an XML declaration,</span>
   <span class="ruby-comment"># but it may not write itself if the user didn&#39;t specifically add it,</span>
@@ -939,7 +956,7 @@
             </details>
           </div>
           <div class="method-source-code" id="write_element-source">
-            <pre class="ruby" data-language="ruby"><span class="ruby-comment"># File lib/rexml/formatters/pretty.rb, line 39</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/formatters/pretty.rb, line 39</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">write_element</span>(<span class="ruby-identifier">node</span>, <span class="ruby-identifier">output</span>)
   <span class="ruby-identifier">output</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-string">&#39; &#39;</span><span class="ruby-operator">*</span><span class="ruby-ivar">@level</span>
   <span class="ruby-identifier">output</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">&quot;&lt;#{node.expanded_name}&quot;</span>
@@ -1026,7 +1043,7 @@
             </details>
           </div>
           <div class="method-source-code" id="write_text-source">
-            <pre class="ruby" data-language="ruby"><span class="ruby-comment"># File lib/rexml/formatters/pretty.rb, line 88</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/formatters/pretty.rb, line 88</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">write_text</span>( <span class="ruby-identifier">node</span>, <span class="ruby-identifier">output</span> )
   <span class="ruby-identifier">s</span> = <span class="ruby-identifier">node</span>.<span class="ruby-identifier">to_s</span>()
   <span class="ruby-identifier">s</span>.<span class="ruby-identifier">gsub!</span>(<span class="ruby-regexp">/\s/</span>,<span class="ruby-string">&#39; &#39;</span>)
@@ -1056,6 +1073,8 @@
 
     </section>
 
+
+
   </section>
 
 </main>
@@ -1075,7 +1094,7 @@
 
   <div class="footer-bottom">
     <p>
-      Generated by <a href="https://ruby.github.io/rdoc/">RDoc 7.0.1</a>
+      Generated by <a href="https://ruby.github.io/rdoc/">RDoc 7.2.0</a>
       using the Aliki theme by <a href="http://st0012.dev">Stan Lo</a>
     </p>
   </div>

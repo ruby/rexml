@@ -50,41 +50,46 @@
 </script>
 
 <script
-  src="../../js/theme-toggle.js?v=7.0.1"
+  src="../../js/theme-toggle.js?v=7.2.0"
 ></script>
 
 <script
-  src="../../js/search_navigation.js?v=7.0.1"
+  src="../../js/search_navigation.js?v=7.2.0"
   defer
 ></script>
 
 <script
-  src="../../js/search_data.js?v=7.0.1"
+  src="../../js/search_data.js?v=7.2.0"
   defer
 ></script>
 
 <script
-  src="../../js/search_ranker.js?v=7.0.1"
+  src="../../js/search_ranker.js?v=7.2.0"
   defer
 ></script>
 
 <script
-  src="../../js/search_controller.js?v=7.0.1"
+  src="../../js/search_controller.js?v=7.2.0"
   defer
 ></script>
 
 <script
-  src="../../js/c_highlighter.js?v=7.0.1"
+  src="../../js/c_highlighter.js?v=7.2.0"
   defer
 ></script>
 
 <script
-  src="../../js/aliki.js?v=7.0.1"
+  src="../../js/bash_highlighter.js?v=7.2.0"
+  defer
+></script>
+
+<script
+  src="../../js/aliki.js?v=7.2.0"
   defer
 ></script>
 
 <link
-  href="../../css/rdoc.css?v=7.0.1"
+  href="../../css/rdoc.css?v=7.2.0"
   rel="stylesheet"
 >
 
@@ -363,7 +368,7 @@
 </div>
 
 
-<nav id="navigation" role="navigation">
+<nav id="navigation" role="navigation" hidden>
   
 
 
@@ -663,7 +668,7 @@
 
 </nav>
 
-<main role="main" aria-labelledby="class-REXML::Parsers::PullParser">
+<main role="main" aria-labelledby="class-rexml-parsers-pullparser">
   
   
     <ol role="navigation" aria-label="Breadcrumb navigation" class="breadcrumb">
@@ -689,13 +694,15 @@
     </ol>
   
 
-  <h1 id="class-REXML::Parsers::PullParser" class="anchor-link class">
+  <span id="class-REXML::Parsers::PullParser" class="legacy-anchor"></span>
+  <h1 id="class-rexml-parsers-pullparser" class="anchor-link class">
     class REXML::Parsers::PullParser
   </h1>
 
   <section class="description">
     
-<h1 id="class-REXML::Parsers::PullParser-label-Using+the+Pull+Parser"><a href="#class-REXML::Parsers::PullParser-label-Using+the+Pull+Parser">Using the Pull Parser</a></h1>
+<span id="class-REXML::Parsers::PullParser-label-Using+the+Pull+Parser" class="legacy-anchor"></span>
+<h1 id="class-rexml-parsers-pullparser-using-the-pull-parser"><a href="#class-rexml-parsers-pullparser-using-the-pull-parser">Using the Pull Parser</a></h1>
 
 <p><em>This API is experimental, and subject to change.</em></p>
 
@@ -722,7 +729,8 @@
   </section>
 
 
-  <section id="5Buntitled-5D" class="documentation-section anchor-link">
+  <span id="5Buntitled-5D" class="legacy-anchor"></span>
+  <section class="documentation-section anchor-link">
 
 
 
@@ -732,9 +740,12 @@
 
 
 
-     <section id="public-class-5Buntitled-5D-method-details" class="method-section anchor-link">
+
+
+
+     <section id="public-class-untitled-method-details" class="method-section anchor-link">
        <header>
-         <h3 id="public-class-methods"><a href="#public-class-methods">Public Class Methods</a></h3>
+         <h3 id="public-class-untitled-methods"><a href="#public-class-untitled-methods">Public Class Methods</a></h3>
        </header>
 
 
@@ -757,7 +768,7 @@
             </details>
           </div>
           <div class="method-source-code" id="new-source">
-            <pre class="ruby" data-language="ruby"><span class="ruby-comment"># File lib/rexml/parsers/pullparser.rb, line 38</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/parsers/pullparser.rb, line 38</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span> <span class="ruby-identifier">stream</span>
   <span class="ruby-ivar">@entities</span> = {}
   <span class="ruby-ivar">@listeners</span> = <span class="ruby-keyword">nil</span>
@@ -785,9 +796,15 @@
 
     </section>
 
-     <section id="public-instance-5Buntitled-5D-method-details" class="method-section anchor-link">
+
+
+
+
+
+
+     <section id="public-instance-untitled-method-details" class="method-section anchor-link">
        <header>
-         <h3 id="public-instance-methods"><a href="#public-instance-methods">Public Instance Methods</a></h3>
+         <h3 id="public-instance-untitled-methods"><a href="#public-instance-untitled-methods">Public Instance Methods</a></h3>
        </header>
 
 
@@ -810,7 +827,7 @@
             </details>
           </div>
           <div class="method-source-code" id="add_listener-source">
-            <pre class="ruby" data-language="ruby"><span class="ruby-comment"># File lib/rexml/parsers/pullparser.rb, line 45</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/parsers/pullparser.rb, line 45</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">add_listener</span>( <span class="ruby-identifier">listener</span> )
   <span class="ruby-ivar">@listeners</span> = [] <span class="ruby-keyword">unless</span> <span class="ruby-ivar">@listeners</span>
   <span class="ruby-ivar">@listeners</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">listener</span>
@@ -853,7 +870,7 @@
             </details>
           </div>
           <div class="method-source-code" id="each-source">
-            <pre class="ruby" data-language="ruby"><span class="ruby-comment"># File lib/rexml/parsers/pullparser.rb, line 62</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/parsers/pullparser.rb, line 62</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">each</span>
   <span class="ruby-keyword">while</span> <span class="ruby-identifier">has_next?</span>
     <span class="ruby-keyword">yield</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">pull</span>
@@ -897,7 +914,7 @@
             </details>
           </div>
           <div class="method-source-code" id="entity_expansion_count-source">
-            <pre class="ruby" data-language="ruby"><span class="ruby-comment"># File lib/rexml/parsers/pullparser.rb, line 50</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/parsers/pullparser.rb, line 50</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">entity_expansion_count</span>
   <span class="ruby-ivar">@parser</span>.<span class="ruby-identifier">entity_expansion_count</span>
 <span class="ruby-keyword">end</span></pre>
@@ -939,7 +956,7 @@
             </details>
           </div>
           <div class="method-source-code" id="entity_expansion_limit-3D-source">
-            <pre class="ruby" data-language="ruby"><span class="ruby-comment"># File lib/rexml/parsers/pullparser.rb, line 54</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/parsers/pullparser.rb, line 54</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">entity_expansion_limit=</span>( <span class="ruby-identifier">limit</span> )
   <span class="ruby-ivar">@parser</span>.<span class="ruby-identifier">entity_expansion_limit</span> = <span class="ruby-identifier">limit</span>
 <span class="ruby-keyword">end</span></pre>
@@ -981,7 +998,7 @@
             </details>
           </div>
           <div class="method-source-code" id="entity_expansion_text_limit-3D-source">
-            <pre class="ruby" data-language="ruby"><span class="ruby-comment"># File lib/rexml/parsers/pullparser.rb, line 58</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/parsers/pullparser.rb, line 58</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">entity_expansion_text_limit=</span>( <span class="ruby-identifier">limit</span> )
   <span class="ruby-ivar">@parser</span>.<span class="ruby-identifier">entity_expansion_text_limit</span> = <span class="ruby-identifier">limit</span>
 <span class="ruby-keyword">end</span></pre>
@@ -1023,7 +1040,7 @@
             </details>
           </div>
           <div class="method-source-code" id="peek-source">
-            <pre class="ruby" data-language="ruby"><span class="ruby-comment"># File lib/rexml/parsers/pullparser.rb, line 68</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/parsers/pullparser.rb, line 68</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">peek</span> <span class="ruby-identifier">depth</span>=<span class="ruby-value">0</span>
   <span class="ruby-keyword">if</span> <span class="ruby-ivar">@my_stack</span>.<span class="ruby-identifier">length</span> <span class="ruby-operator">&lt;=</span> <span class="ruby-identifier">depth</span>
     (<span class="ruby-identifier">depth</span> <span class="ruby-operator">-</span> <span class="ruby-ivar">@my_stack</span>.<span class="ruby-identifier">length</span> <span class="ruby-operator">+</span> <span class="ruby-value">1</span>).<span class="ruby-identifier">times</span> {
@@ -1071,7 +1088,7 @@
             </details>
           </div>
           <div class="method-source-code" id="pull-source">
-            <pre class="ruby" data-language="ruby"><span class="ruby-comment"># File lib/rexml/parsers/pullparser.rb, line 78</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/parsers/pullparser.rb, line 78</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">pull</span>
   <span class="ruby-keyword">return</span> <span class="ruby-ivar">@my_stack</span>.<span class="ruby-identifier">shift</span> <span class="ruby-keyword">if</span> <span class="ruby-ivar">@my_stack</span>.<span class="ruby-identifier">length</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">0</span>
 
@@ -1124,7 +1141,7 @@
             </details>
           </div>
           <div class="method-source-code" id="reset-source">
-            <pre class="ruby" data-language="ruby"><span class="ruby-comment"># File lib/rexml/parsers/pullparser.rb, line 97</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/parsers/pullparser.rb, line 97</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">reset</span>
   <span class="ruby-ivar">@parser</span>.<span class="ruby-identifier">reset</span>
 <span class="ruby-keyword">end</span></pre>
@@ -1166,7 +1183,7 @@
             </details>
           </div>
           <div class="method-source-code" id="unshift-source">
-            <pre class="ruby" data-language="ruby"><span class="ruby-comment"># File lib/rexml/parsers/pullparser.rb, line 93</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/parsers/pullparser.rb, line 93</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">unshift</span> <span class="ruby-identifier">token</span>
   <span class="ruby-ivar">@my_stack</span>.<span class="ruby-identifier">unshift</span> <span class="ruby-identifier">token</span>
 <span class="ruby-keyword">end</span></pre>
@@ -1191,6 +1208,9 @@
 
     </section>
 
+
+
+
   </section>
 
 </main>
@@ -1210,7 +1230,7 @@
 
   <div class="footer-bottom">
     <p>
-      Generated by <a href="https://ruby.github.io/rdoc/">RDoc 7.0.1</a>
+      Generated by <a href="https://ruby.github.io/rdoc/">RDoc 7.2.0</a>
       using the Aliki theme by <a href="http://st0012.dev">Stan Lo</a>
     </p>
   </div>

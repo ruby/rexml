@@ -56,41 +56,46 @@
 </script>
 
 <script
-  src="../../js/theme-toggle.js?v=7.0.1"
+  src="../../js/theme-toggle.js?v=7.2.0"
 ></script>
 
 <script
-  src="../../js/search_navigation.js?v=7.0.1"
+  src="../../js/search_navigation.js?v=7.2.0"
   defer
 ></script>
 
 <script
-  src="../../js/search_data.js?v=7.0.1"
+  src="../../js/search_data.js?v=7.2.0"
   defer
 ></script>
 
 <script
-  src="../../js/search_ranker.js?v=7.0.1"
+  src="../../js/search_ranker.js?v=7.2.0"
   defer
 ></script>
 
 <script
-  src="../../js/search_controller.js?v=7.0.1"
+  src="../../js/search_controller.js?v=7.2.0"
   defer
 ></script>
 
 <script
-  src="../../js/c_highlighter.js?v=7.0.1"
+  src="../../js/c_highlighter.js?v=7.2.0"
   defer
 ></script>
 
 <script
-  src="../../js/aliki.js?v=7.0.1"
+  src="../../js/bash_highlighter.js?v=7.2.0"
+  defer
+></script>
+
+<script
+  src="../../js/aliki.js?v=7.2.0"
   defer
 ></script>
 
 <link
-  href="../../css/rdoc.css?v=7.0.1"
+  href="../../css/rdoc.css?v=7.2.0"
   rel="stylesheet"
 >
 
@@ -369,7 +374,7 @@
 </div>
 
 
-<nav id="navigation" role="navigation">
+<nav id="navigation" role="navigation" hidden>
   
 
 
@@ -615,7 +620,7 @@
 
 </nav>
 
-<main role="main" aria-labelledby="class-REXML::Validation::OneOrMore">
+<main role="main" aria-labelledby="class-rexml-validation-oneormore">
   
   
     <ol role="navigation" aria-label="Breadcrumb navigation" class="breadcrumb">
@@ -641,7 +646,8 @@
     </ol>
   
 
-  <h1 id="class-REXML::Validation::OneOrMore" class="anchor-link class">
+  <span id="class-REXML::Validation::OneOrMore" class="legacy-anchor"></span>
+  <h1 id="class-rexml-validation-oneormore" class="anchor-link class">
     class REXML::Validation::OneOrMore
   </h1>
 
@@ -650,7 +656,8 @@
   </section>
 
 
-  <section id="5Buntitled-5D" class="documentation-section anchor-link">
+  <span id="5Buntitled-5D" class="legacy-anchor"></span>
+  <section class="documentation-section anchor-link">
 
 
 
@@ -660,9 +667,12 @@
 
 
 
-     <section id="public-class-5Buntitled-5D-method-details" class="method-section anchor-link">
+
+
+
+     <section id="public-class-untitled-method-details" class="method-section anchor-link">
        <header>
-         <h3 id="public-class-methods"><a href="#public-class-methods">Public Class Methods</a></h3>
+         <h3 id="public-class-untitled-methods"><a href="#public-class-untitled-methods">Public Class Methods</a></h3>
        </header>
 
 
@@ -685,7 +695,7 @@
             </details>
           </div>
           <div class="method-source-code" id="new-source">
-            <pre class="ruby" data-language="ruby"><span class="ruby-comment"># File lib/rexml/validation/relaxng.rb, line 313</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/validation/relaxng.rb, line 313</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span> <span class="ruby-identifier">context</span>
   <span class="ruby-keyword">super</span>
   <span class="ruby-ivar">@ord</span> = <span class="ruby-value">0</span>
@@ -716,9 +726,15 @@
 
     </section>
 
-     <section id="public-instance-5Buntitled-5D-method-details" class="method-section anchor-link">
+
+
+
+
+
+
+     <section id="public-instance-untitled-method-details" class="method-section anchor-link">
        <header>
-         <h3 id="public-instance-methods"><a href="#public-instance-methods">Public Instance Methods</a></h3>
+         <h3 id="public-instance-untitled-methods"><a href="#public-instance-untitled-methods">Public Instance Methods</a></h3>
        </header>
 
 
@@ -741,7 +757,7 @@
             </details>
           </div>
           <div class="method-source-code" id="expected-source">
-            <pre class="ruby" data-language="ruby"><span class="ruby-comment"># File lib/rexml/validation/relaxng.rb, line 349</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/validation/relaxng.rb, line 349</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">expected</span>
   <span class="ruby-keyword">if</span> <span class="ruby-ivar">@current</span> <span class="ruby-operator">==</span> <span class="ruby-value">0</span> <span class="ruby-keyword">and</span> <span class="ruby-ivar">@ord</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">0</span>
     [<span class="ruby-ivar">@previous</span>[<span class="ruby-value">-1</span>].<span class="ruby-identifier">expected</span>, <span class="ruby-ivar">@events</span>[<span class="ruby-value">0</span>]].<span class="ruby-identifier">flatten</span>
@@ -787,7 +803,7 @@
             </details>
           </div>
           <div class="method-source-code" id="matches-3F-source">
-            <pre class="ruby" data-language="ruby"><span class="ruby-comment"># File lib/rexml/validation/relaxng.rb, line 344</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/validation/relaxng.rb, line 344</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">matches?</span>( <span class="ruby-identifier">event</span> )
   <span class="ruby-ivar">@events</span>[<span class="ruby-ivar">@current</span>].<span class="ruby-identifier">matches?</span>(<span class="ruby-identifier">event</span>) <span class="ruby-operator">||</span>
   (<span class="ruby-ivar">@current</span> <span class="ruby-operator">==</span> <span class="ruby-value">0</span> <span class="ruby-keyword">and</span> <span class="ruby-ivar">@ord</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">0</span> <span class="ruby-keyword">and</span> <span class="ruby-ivar">@previous</span>[<span class="ruby-value">-1</span>].<span class="ruby-identifier">matches?</span>(<span class="ruby-identifier">event</span>))
@@ -830,7 +846,7 @@
             </details>
           </div>
           <div class="method-source-code" id="next-source">
-            <pre class="ruby" data-language="ruby"><span class="ruby-comment"># File lib/rexml/validation/relaxng.rb, line 323</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/validation/relaxng.rb, line 323</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">next</span>( <span class="ruby-identifier ruby-title">event</span> )
   <span class="ruby-identifier">expand_ref_in</span>( <span class="ruby-ivar">@events</span>, <span class="ruby-ivar">@current</span> ) <span class="ruby-keyword">if</span> <span class="ruby-ivar">@events</span>[<span class="ruby-ivar">@current</span>].<span class="ruby-identifier">class</span> <span class="ruby-operator">==</span> <span class="ruby-constant">Ref</span>
   <span class="ruby-keyword">if</span> ( <span class="ruby-ivar">@events</span>[<span class="ruby-ivar">@current</span>].<span class="ruby-identifier">matches?</span>(<span class="ruby-identifier">event</span>) )
@@ -889,7 +905,7 @@
             </details>
           </div>
           <div class="method-source-code" id="reset-source">
-            <pre class="ruby" data-language="ruby"><span class="ruby-comment"># File lib/rexml/validation/relaxng.rb, line 318</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/validation/relaxng.rb, line 318</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">reset</span>
   <span class="ruby-keyword">super</span>
   <span class="ruby-ivar">@ord</span> = <span class="ruby-value">0</span>
@@ -920,6 +936,9 @@
 
     </section>
 
+
+
+
   </section>
 
 </main>
@@ -939,7 +958,7 @@
 
   <div class="footer-bottom">
     <p>
-      Generated by <a href="https://ruby.github.io/rdoc/">RDoc 7.0.1</a>
+      Generated by <a href="https://ruby.github.io/rdoc/">RDoc 7.2.0</a>
       using the Aliki theme by <a href="http://st0012.dev">Stan Lo</a>
     </p>
   </div>

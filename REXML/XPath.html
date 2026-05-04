@@ -50,41 +50,46 @@
 </script>
 
 <script
-  src="../js/theme-toggle.js?v=7.0.1"
+  src="../js/theme-toggle.js?v=7.2.0"
 ></script>
 
 <script
-  src="../js/search_navigation.js?v=7.0.1"
+  src="../js/search_navigation.js?v=7.2.0"
   defer
 ></script>
 
 <script
-  src="../js/search_data.js?v=7.0.1"
+  src="../js/search_data.js?v=7.2.0"
   defer
 ></script>
 
 <script
-  src="../js/search_ranker.js?v=7.0.1"
+  src="../js/search_ranker.js?v=7.2.0"
   defer
 ></script>
 
 <script
-  src="../js/search_controller.js?v=7.0.1"
+  src="../js/search_controller.js?v=7.2.0"
   defer
 ></script>
 
 <script
-  src="../js/c_highlighter.js?v=7.0.1"
+  src="../js/c_highlighter.js?v=7.2.0"
   defer
 ></script>
 
 <script
-  src="../js/aliki.js?v=7.0.1"
+  src="../js/bash_highlighter.js?v=7.2.0"
+  defer
+></script>
+
+<script
+  src="../js/aliki.js?v=7.2.0"
   defer
 ></script>
 
 <link
-  href="../css/rdoc.css?v=7.0.1"
+  href="../css/rdoc.css?v=7.2.0"
   rel="stylesheet"
 >
 
@@ -363,7 +368,7 @@
 </div>
 
 
-<nav id="navigation" role="navigation">
+<nav id="navigation" role="navigation" hidden>
   
 
 
@@ -610,7 +615,7 @@
 
 </nav>
 
-<main role="main" aria-labelledby="class-REXML::XPath">
+<main role="main" aria-labelledby="class-rexml-xpath">
   
   
     <ol role="navigation" aria-label="Breadcrumb navigation" class="breadcrumb">
@@ -630,7 +635,8 @@
     </ol>
   
 
-  <h1 id="class-REXML::XPath" class="anchor-link class">
+  <span id="class-REXML::XPath" class="legacy-anchor"></span>
+  <h1 id="class-rexml-xpath" class="anchor-link class">
     class REXML::XPath
   </h1>
 
@@ -641,7 +647,8 @@
   </section>
 
 
-  <section id="5Buntitled-5D" class="documentation-section anchor-link">
+  <span id="5Buntitled-5D" class="legacy-anchor"></span>
+  <section class="documentation-section anchor-link">
 
 
 
@@ -649,7 +656,7 @@
 
     <section class="constants-list">
       <header>
-        <h3 id="constants"><a href="#constants">Constants</a></h3>
+        <h3 id="untitled-constants"><a href="#untitled-constants">Constants</a></h3>
       </header>
       <dl>
 
@@ -668,9 +675,12 @@
 
 
 
-     <section id="public-class-5Buntitled-5D-method-details" class="method-section anchor-link">
+
+
+
+     <section id="public-class-untitled-method-details" class="method-section anchor-link">
        <header>
-         <h3 id="public-class-methods"><a href="#public-class-methods">Public Class Methods</a></h3>
+         <h3 id="public-class-untitled-methods"><a href="#public-class-untitled-methods">Public Class Methods</a></h3>
        </header>
 
 
@@ -693,7 +703,7 @@
             </details>
           </div>
           <div class="method-source-code" id="each-source">
-            <pre class="ruby" data-language="ruby"><span class="ruby-comment"># File lib/rexml/xpath.rb, line 55</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/xpath.rb, line 55</span>
 <span class="ruby-keyword">def</span> <span class="ruby-constant">XPath</span><span class="ruby-operator">::</span><span class="ruby-identifier ruby-title">each</span>(<span class="ruby-identifier">element</span>, <span class="ruby-identifier">path</span>=<span class="ruby-keyword">nil</span>, <span class="ruby-identifier">namespaces</span>=<span class="ruby-keyword">nil</span>, <span class="ruby-identifier">variables</span>={}, <span class="ruby-identifier">options</span>={}, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
   <span class="ruby-identifier">raise</span> <span class="ruby-string">&quot;The namespaces argument, if supplied, must be a hash object.&quot;</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">namespaces</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-keyword">or</span> <span class="ruby-identifier">namespaces</span>.<span class="ruby-identifier">kind_of?</span>(<span class="ruby-constant">Hash</span>)
   <span class="ruby-identifier">raise</span> <span class="ruby-string">&quot;The variables argument, if supplied, must be a hash object.&quot;</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">variables</span>.<span class="ruby-identifier">kind_of?</span>(<span class="ruby-constant">Hash</span>)
@@ -756,7 +766,7 @@ XPath.each( node, &#39;/book/publisher/text()=$publisher&#39;, {}, {&quot;publis
             </details>
           </div>
           <div class="method-source-code" id="first-source">
-            <pre class="ruby" data-language="ruby"><span class="ruby-comment"># File lib/rexml/xpath.rb, line 31</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/xpath.rb, line 31</span>
 <span class="ruby-keyword">def</span> <span class="ruby-constant">XPath</span><span class="ruby-operator">::</span><span class="ruby-identifier ruby-title">first</span>(<span class="ruby-identifier">element</span>, <span class="ruby-identifier">path</span>=<span class="ruby-keyword">nil</span>, <span class="ruby-identifier">namespaces</span>=<span class="ruby-keyword">nil</span>, <span class="ruby-identifier">variables</span>={}, <span class="ruby-identifier">options</span>={})
   <span class="ruby-identifier">raise</span> <span class="ruby-string">&quot;The namespaces argument, if supplied, must be a hash object.&quot;</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">namespaces</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-keyword">or</span> <span class="ruby-identifier">namespaces</span>.<span class="ruby-identifier">kind_of?</span>(<span class="ruby-constant">Hash</span>)
   <span class="ruby-identifier">raise</span> <span class="ruby-string">&quot;The variables argument, if supplied, must be a hash object.&quot;</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">variables</span>.<span class="ruby-identifier">kind_of?</span>(<span class="ruby-constant">Hash</span>)
@@ -818,7 +828,7 @@ XPath.first( node, &#39;/book/publisher/text()=$publisher&#39;, {}, {&quot;publi
             </details>
           </div>
           <div class="method-source-code" id="match-source">
-            <pre class="ruby" data-language="ruby"><span class="ruby-comment"># File lib/rexml/xpath.rb, line 62</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/xpath.rb, line 62</span>
 <span class="ruby-keyword">def</span> <span class="ruby-constant">XPath</span><span class="ruby-operator">::</span><span class="ruby-identifier ruby-title">match</span>(<span class="ruby-identifier">element</span>, <span class="ruby-identifier">path</span>=<span class="ruby-keyword">nil</span>, <span class="ruby-identifier">namespaces</span>=<span class="ruby-keyword">nil</span>, <span class="ruby-identifier">variables</span>={}, <span class="ruby-identifier">options</span>={})
   <span class="ruby-identifier">parser</span> = <span class="ruby-constant">XPathParser</span>.<span class="ruby-identifier">new</span>(<span class="ruby-operator">**</span><span class="ruby-identifier">options</span>)
   <span class="ruby-identifier">parser</span>.<span class="ruby-identifier">namespaces</span> = <span class="ruby-identifier">namespaces</span>
@@ -847,6 +857,15 @@ XPath.first( node, &#39;/book/publisher/text()=$publisher&#39;, {}, {&quot;publi
 
     </section>
 
+
+
+
+
+
+
+
+
+
   </section>
 
 </main>
@@ -866,7 +885,7 @@ XPath.first( node, &#39;/book/publisher/text()=$publisher&#39;, {}, {&quot;publi
 
   <div class="footer-bottom">
     <p>
-      Generated by <a href="https://ruby.github.io/rdoc/">RDoc 7.0.1</a>
+      Generated by <a href="https://ruby.github.io/rdoc/">RDoc 7.2.0</a>
       using the Aliki theme by <a href="http://st0012.dev">Stan Lo</a>
     </p>
   </div>
