@@ -1276,5 +1276,35 @@ EOF
     ensure
       $VERBOSE = verbose
     end
+
+    def test_descendant_no_duplicates
+      doc = <<-XML
+      <a>
+        <a id='1'>
+          <a id='2'/>
+        </a>
+        <a id='3'/>
+      </a>
+      XML
+
+      xmldoc = Document.new(doc)
+      result = XPath.match(xmldoc, "//a//a")
+      assert_equal(["1", "2", "3"], result.map { |e| e.attributes["id"] })
+    end
+
+    def test_descendant_document_order
+      doc = <<-XML
+      <a>
+        <a id='1'>
+          <a id='2'>
+            <a id='3'/>
+          </a>
+        </a>
+      </a>
+      XML
+      xmldoc = Document.new(doc)
+      result = XPath.match(xmldoc, "//a//a")
+      assert_equal(["1", "2", "3"], result.map { |e| e.attributes["id"] })
+    end
   end
 end
