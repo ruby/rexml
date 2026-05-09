@@ -811,7 +811,7 @@
             </details>
           </div>
           <div class="method-source-code" id="entity_expansion_limit-source">
-            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/document.rb, line 419</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/document.rb, line 417</span>
 <span class="ruby-keyword">def</span> <span class="ruby-constant">Document</span><span class="ruby-operator">::</span><span class="ruby-identifier ruby-title">entity_expansion_limit</span>
   <span class="ruby-constant">Security</span>.<span class="ruby-identifier">entity_expansion_limit</span>
 <span class="ruby-keyword">end</span></pre>
@@ -855,7 +855,7 @@
             </details>
           </div>
           <div class="method-source-code" id="entity_expansion_limit-3D-source">
-            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/document.rb, line 412</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/document.rb, line 410</span>
 <span class="ruby-keyword">def</span> <span class="ruby-constant">Document</span><span class="ruby-operator">::</span><span class="ruby-identifier ruby-title">entity_expansion_limit=</span>( <span class="ruby-identifier">val</span> )
   <span class="ruby-constant">Security</span>.<span class="ruby-identifier">entity_expansion_limit</span> = <span class="ruby-identifier">val</span>
 <span class="ruby-keyword">end</span></pre>
@@ -899,7 +899,7 @@
             </details>
           </div>
           <div class="method-source-code" id="entity_expansion_text_limit-source">
-            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/document.rb, line 433</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/document.rb, line 431</span>
 <span class="ruby-keyword">def</span> <span class="ruby-constant">Document</span><span class="ruby-operator">::</span><span class="ruby-identifier ruby-title">entity_expansion_text_limit</span>
   <span class="ruby-constant">Security</span>.<span class="ruby-identifier">entity_expansion_text_limit</span>
 <span class="ruby-keyword">end</span></pre>
@@ -943,7 +943,7 @@
             </details>
           </div>
           <div class="method-source-code" id="entity_expansion_text_limit-3D-source">
-            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/document.rb, line 426</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/document.rb, line 424</span>
 <span class="ruby-keyword">def</span> <span class="ruby-constant">Document</span><span class="ruby-operator">::</span><span class="ruby-identifier ruby-title">entity_expansion_text_limit=</span>( <span class="ruby-identifier">val</span> )
   <span class="ruby-constant">Security</span>.<span class="ruby-identifier">entity_expansion_text_limit</span> = <span class="ruby-identifier">val</span>
 <span class="ruby-keyword">end</span></pre>
@@ -1107,7 +1107,7 @@
             </details>
           </div>
           <div class="method-source-code" id="parse_stream-source">
-            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/document.rb, line 405</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/document.rb, line 403</span>
 <span class="ruby-keyword">def</span> <span class="ruby-constant">Document</span><span class="ruby-operator">::</span><span class="ruby-identifier ruby-title">parse_stream</span>( <span class="ruby-identifier">source</span>, <span class="ruby-identifier">listener</span> )
   <span class="ruby-constant">Parsers</span><span class="ruby-operator">::</span><span class="ruby-constant">StreamParser</span>.<span class="ruby-identifier">new</span>( <span class="ruby-identifier">source</span>, <span class="ruby-identifier">listener</span> ).<span class="ruby-identifier">parse</span>
 <span class="ruby-keyword">end</span></pre>
@@ -1234,9 +1234,8 @@
     <span class="ruby-keyword">end</span>
     <span class="ruby-identifier">child</span>.<span class="ruby-identifier">parent</span> = <span class="ruby-keyword">self</span>
   <span class="ruby-keyword">else</span>
-    <span class="ruby-identifier">rv</span> = <span class="ruby-keyword">super</span>
-    <span class="ruby-identifier">raise</span> <span class="ruby-string">&quot;attempted adding second root element to document&quot;</span> <span class="ruby-keyword">if</span> <span class="ruby-ivar">@elements</span>.<span class="ruby-identifier">size</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">1</span>
-    <span class="ruby-identifier">rv</span>
+    <span class="ruby-identifier">raise</span> <span class="ruby-string">&quot;attempted adding second root element to document&quot;</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">child</span>.<span class="ruby-identifier">kind_of?</span>(<span class="ruby-constant">Element</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">root</span>
+    <span class="ruby-keyword">super</span>
   <span class="ruby-keyword">end</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
@@ -1312,11 +1311,10 @@
             </details>
           </div>
           <div class="method-source-code" id="add_element-source">
-            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/document.rb, line 213</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/document.rb, line 212</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">add_element</span>(<span class="ruby-identifier">arg</span>=<span class="ruby-keyword">nil</span>, <span class="ruby-identifier">arg2</span>=<span class="ruby-keyword">nil</span>)
-  <span class="ruby-identifier">rv</span> = <span class="ruby-keyword">super</span>
-  <span class="ruby-identifier">raise</span> <span class="ruby-string">&quot;attempted adding second root element to document&quot;</span> <span class="ruby-keyword">if</span> <span class="ruby-ivar">@elements</span>.<span class="ruby-identifier">size</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">1</span>
-  <span class="ruby-identifier">rv</span>
+  <span class="ruby-identifier">raise</span> <span class="ruby-string">&quot;attempted adding second root element to document&quot;</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">root</span>
+  <span class="ruby-keyword">super</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
 
@@ -1412,7 +1410,7 @@
             </details>
           </div>
           <div class="method-source-code" id="doctype-source">
-            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/document.rb, line 245</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/document.rb, line 243</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">doctype</span>
   <span class="ruby-ivar">@children</span>.<span class="ruby-identifier">find</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">item</span><span class="ruby-operator">|</span> <span class="ruby-identifier">item</span>.<span class="ruby-identifier">kind_of?</span> <span class="ruby-constant">DocType</span> }
 <span class="ruby-keyword">end</span></pre>
@@ -1460,7 +1458,7 @@
             </details>
           </div>
           <div class="method-source-code" id="document-source">
-            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/document.rb, line 448</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/document.rb, line 446</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">document</span>
   <span class="ruby-keyword">self</span>
 <span class="ruby-keyword">end</span></pre>
@@ -1505,7 +1503,7 @@
             </details>
           </div>
           <div class="method-source-code" id="encoding-source">
-            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/document.rb, line 294</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/document.rb, line 292</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">encoding</span>
   <span class="ruby-identifier">xml_decl</span>().<span class="ruby-identifier">encoding</span>
 <span class="ruby-keyword">end</span></pre>
@@ -1674,7 +1672,7 @@
             </details>
           </div>
           <div class="method-source-code" id="record_entity_expansion-source">
-            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/document.rb, line 441</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/document.rb, line 439</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">record_entity_expansion</span>
   <span class="ruby-ivar">@entity_expansion_count</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
   <span class="ruby-keyword">if</span> <span class="ruby-ivar">@entity_expansion_count</span> <span class="ruby-operator">&gt;</span> <span class="ruby-ivar">@entity_expansion_limit</span>
@@ -1722,7 +1720,7 @@
             </details>
           </div>
           <div class="method-source-code" id="root-source">
-            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/document.rb, line 229</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/document.rb, line 227</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">root</span>
   <span class="ruby-identifier">elements</span>[<span class="ruby-value">1</span>]
   <span class="ruby-comment">#self</span>
@@ -1775,7 +1773,7 @@
             </details>
           </div>
           <div class="method-source-code" id="stand_alone-3F-source">
-            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/document.rb, line 309</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/document.rb, line 307</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">stand_alone?</span>
   <span class="ruby-identifier">xml_decl</span>().<span class="ruby-identifier">stand_alone?</span>
 <span class="ruby-keyword">end</span></pre>
@@ -1826,7 +1824,7 @@
             </details>
           </div>
           <div class="method-source-code" id="version-source">
-            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/document.rb, line 279</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/document.rb, line 277</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">version</span>
   <span class="ruby-identifier">xml_decl</span>().<span class="ruby-identifier">version</span>
 <span class="ruby-keyword">end</span></pre>
@@ -1885,7 +1883,7 @@
             </details>
           </div>
           <div class="method-source-code" id="write-source">
-            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/document.rb, line 369</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/document.rb, line 367</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">write</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">arguments</span>)
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">arguments</span>.<span class="ruby-identifier">size</span> <span class="ruby-operator">==</span> <span class="ruby-value">1</span> <span class="ruby-keyword">and</span> <span class="ruby-identifier">arguments</span>[<span class="ruby-value">0</span>].<span class="ruby-identifier">class</span> <span class="ruby-operator">==</span> <span class="ruby-constant">Hash</span>
     <span class="ruby-identifier">options</span> = <span class="ruby-identifier">arguments</span>[<span class="ruby-value">0</span>]
@@ -2001,7 +1999,7 @@
             </details>
           </div>
           <div class="method-source-code" id="xml_decl-source">
-            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/document.rb, line 262</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/document.rb, line 260</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">xml_decl</span>
   <span class="ruby-identifier">rv</span> = <span class="ruby-ivar">@children</span>[<span class="ruby-value">0</span>]
   <span class="ruby-keyword">return</span> <span class="ruby-identifier">rv</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">rv</span>.<span class="ruby-identifier">kind_of?</span> <span class="ruby-constant">XMLDecl</span>
