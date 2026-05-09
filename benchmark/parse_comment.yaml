@@ -24,13 +24,15 @@ contexts:
 prelude: |
   require 'rexml/document'
 
-  SIZE = 100000
+  SIZE = 1000
 
   top_level_xml     = "<!--" + "a" * SIZE + "-->\n<root/>"
   in_doctype_xml    = "<!DOCTYPE foo [<!--" + "a" * SIZE + "-->]><root/>"
   after_doctype_xml = "<root/><!--" + "a" * SIZE + "-->"
+  many_comments_xml = "<!---->" * SIZE + "<a/>"
 
 benchmark:
   'top_level'      : REXML::Document.new(top_level_xml)
   'in_doctype'     : REXML::Document.new(in_doctype_xml)
   'after_doctype'  : REXML::Document.new(after_doctype_xml)
+  'many_comments'  : REXML::Document.new(many_comments_xml)

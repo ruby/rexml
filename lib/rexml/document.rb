@@ -197,9 +197,8 @@ module REXML
         end
         child.parent = self
       else
-        rv = super
-        raise "attempted adding second root element to document" if @elements.size > 1
-        rv
+        raise "attempted adding second root element to document" if child.kind_of?(Element) && root
+        super
       end
     end
     alias :<< :add
@@ -211,9 +210,8 @@ module REXML
     #
     #   REXML::Element.add_element(name_or_element, attributes)
     def add_element(arg=nil, arg2=nil)
-      rv = super
-      raise "attempted adding second root element to document" if @elements.size > 1
-      rv
+      raise "attempted adding second root element to document" if root
+      super
     end
 
     # :call-seq:

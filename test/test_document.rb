@@ -320,6 +320,50 @@ EOX
       end
     end
 
+    class AddTest < Test::Unit::TestCase
+      def test_add_second_root_element_raises
+        doc = REXML::Document.new("<root/>")
+        assert_raise(RuntimeError, "attempted adding second root element to document") do
+          doc.add(REXML::Element.new("second"))
+        end
+      end
+
+      def test_append_operator_second_root_element_raises
+        doc = REXML::Document.new("<root/>")
+        assert_raise(RuntimeError, "attempted adding second root element to document") do
+          doc << REXML::Element.new("second")
+        end
+      end
+
+      def test_add_element_second_root_raises
+        doc = REXML::Document.new("<root/>")
+        assert_raise(RuntimeError, "attempted adding second root element to document") do
+          doc.add_element("second")
+        end
+      end
+
+      def test_add_element_with_element_second_root_raises
+        doc = REXML::Document.new("<root/>")
+        assert_raise(RuntimeError, "attempted adding second root element to document") do
+          doc.add_element(REXML::Element.new("second"))
+        end
+      end
+
+      def test_add_xml_decl_allowed
+        doc = REXML::Document.new("<root/>")
+        assert_nothing_raised do
+          doc.add(REXML::XMLDecl.new("1.0"))
+        end
+      end
+
+      def test_add_doctype_allowed
+        doc = REXML::Document.new("<root/>")
+        assert_nothing_raised do
+          doc.add(REXML::DocType.new("root"))
+        end
+      end
+    end
+
     class BomTest < Test::Unit::TestCase
       class HaveEncodingTest < self
         def test_utf_8
