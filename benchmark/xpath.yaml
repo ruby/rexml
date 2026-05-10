@@ -24,9 +24,10 @@ contexts:
 prelude: |
   require 'rexml/document'
 
-  DEPTH = 100
+  DEPTH = 30
   xml   = '<a>' * DEPTH + '</a>' * DEPTH
   doc   = REXML::Document.new(xml)
 
 benchmark:
   "REXML::XPath.match(REXML::Document.new(xml), 'a//a')" : REXML::XPath.match(doc, "a//a")
+  "REXML::XPath.match(REXML::Document.new(xml), '//a//a')" : REXML::XPath.match(doc, "//a//a")

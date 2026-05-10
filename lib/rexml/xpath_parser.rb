@@ -462,21 +462,20 @@ module REXML
         if nodesets.size == 1
           ordered_nodeset = nodesets[0]
         else
+          seen = {}.compare_by_identity
           raw_nodes = []
           nodesets.each do |nodeset|
             nodeset.each do |node|
-              if node.respond_to?(:raw_node)
-                raw_nodes << node.raw_node
-              else
-                raw_nodes << node
-              end
+              raw_node = node.respond_to?(:raw_node) ? node.raw_node : node
+              next if seen.key?(raw_node)
+              seen[raw_node] = true
+              raw_nodes << raw_node
             end
           end
           ordered_nodeset = sort(raw_nodes, order)
         end
         new_nodeset = []
         ordered_nodeset.each do |node|
-          # TODO: Remove duplicated
           new_nodeset << XPathNode.new(node, position: new_nodeset.size + 1)
         end
         new_nodeset
