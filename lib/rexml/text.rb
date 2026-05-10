@@ -384,11 +384,11 @@ module REXML
     end
 
     # Unescapes all possible entities
-    def Text::unnormalize( string, doctype=nil, filter=nil, illegal=nil, entity_expansion_text_limit: nil )
+    def Text::unnormalize( string, doctype=nil, filter=nil, illegal=nil, entity_expansion_text_limit: nil, expanding: nil )
       entity_expansion_text_limit ||= Security.entity_expansion_text_limit
       sum = 0
       string.gsub( /\r\n?/, "\n" ).gsub( REFERENCE ) {
-        s = Text.expand($&, doctype, filter)
+        s = Text.expand($&, doctype, filter, expanding: expanding)
         if sum + s.bytesize > entity_expansion_text_limit
           raise "entity expansion has grown too large"
         else
@@ -398,7 +398,7 @@ module REXML
       }
     end
 
-    def Text.expand(ref, doctype, filter)
+    def Text.expand(ref, doctype, filter, expanding: nil)
       if ref[1] == ?#
         if ref[2] == ?x
           [ref[3...-1].to_i(16)].pack('U*')
@@ -410,7 +410,7 @@ module REXML
       elsif filter and filter.include?( ref[1...-1] )
         ref
       elsif doctype
-        doctype.entity( ref[1...-1] ) or ref
+        doctype.entity( ref[1...-1], expanding: expanding ) or ref
       else
         entity_value = DocType::DEFAULT_ENTITIES[ ref[1...-1] ]
         entity_value ? entity_value.value : ref

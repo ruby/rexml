@@ -1,5 +1,6 @@
 # frozen_string_literal: false
 
+require 'rexml/document'
 require 'rexml/entity'
 require 'rexml/source'
 require 'rexml/parsers/streamparser'
@@ -305,6 +306,50 @@ Position: 557
 Last 80 unconsumed characters:
 </root>\x20
       DETAIL
+    end
+
+    def test_entity_direct_circular_reference_via_dom
+      source = <<~XML
+        <!DOCTYPE root [
+          <!ENTITY x "&x;">
+        ]>
+        <root>&x;</root>
+      XML
+      doc = REXML::Document.new(source)
+      exception = assert_raise(REXML::ParseException) do
+        doc.root.text
+      end
+      assert_equal("Detected an entity reference loop: x", exception.to_s)
+    end
+
+    def test_entity_indirect_circular_reference_via_dom
+      source = <<~XML
+        <!DOCTYPE root [
+          <!ENTITY a "&b;">
+          <!ENTITY b "&a;">
+        ]>
+        <root>&a;</root>
+      XML
+      doc = REXML::Document.new(source)
+      exception = assert_raise(REXML::ParseException) do
+        doc.root.text
+      end
+      assert_equal("Detected an entity reference loop: a", exception.to_s)
+    end
+
+    def test_entity_unnormalized_direct_circular_reference
+      source = <<~XML
+        <!DOCTYPE root [
+          <!ENTITY x "&x;">
+        ]>
+        <root/>
+      XML
+      doc = REXML::Document.new(source)
+      entity = doc.doctype.entities["x"]
+      exception = assert_raise(REXML::ParseException) do
+        entity.unnormalized
+      end
+      assert_equal("Detected an entity reference loop: x", exception.to_s)
     end
 
     def test_entity_filter

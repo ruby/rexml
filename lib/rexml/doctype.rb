@@ -174,8 +174,8 @@ module REXML
       @parent&.context
     end
 
-    def entity( name )
-      @entities[name]&.unnormalized
+    def entity( name, expanding: nil )
+      @entities[name]&.unnormalized(expanding: expanding)
     end
 
     def add child
