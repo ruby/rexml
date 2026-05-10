@@ -2,6 +2,8 @@
 
 require 'rexml/entity'
 require 'rexml/source'
+require 'rexml/parsers/streamparser'
+require 'rexml/streamlistener'
 
 module REXMLTests
   class EntityTester < Test::Unit::TestCase
@@ -239,6 +241,70 @@ Last 80 unconsumed characters:
 
     def test_single_pass_unnormalization # ticket 123
       assert_equal '&amp;&', REXML::Text::unnormalize('&#38;amp;&amp;')
+    end
+
+    def test_entity_direct_circular_reference
+      source = <<~XML
+        <!DOCTYPE root [
+          <!ENTITY x "&x;">
+        ]>
+        <root>&x;</root>
+      XML
+      listener = Class.new { include REXML::StreamListener }.new
+      parser = REXML::Parsers::StreamParser.new(source, listener)
+      exception = assert_raise(REXML::ParseException) do
+        parser.parse
+      end
+      assert_equal(<<-DETAIL.chomp, exception.to_s)
+Detected an entity reference loop: x
+Line: 4
+Position: 57
+Last 80 unconsumed characters:
+</root>\x20
+      DETAIL
+    end
+
+    def test_entity_indirect_circular_reference
+      source = <<~XML
+        <!DOCTYPE root [
+          <!ENTITY a "&b;">
+          <!ENTITY b "&a;">
+        ]>
+        <root>&a;</root>
+      XML
+      listener = Class.new { include REXML::StreamListener }.new
+      parser = REXML::Parsers::StreamParser.new(source, listener)
+      exception = assert_raise(REXML::ParseException) do
+        parser.parse
+      end
+      assert_equal(<<-DETAIL.chomp, exception.to_s)
+Detected an entity reference loop: a
+Line: 5
+Position: 77
+Last 80 unconsumed characters:
+</root>\x20
+      DETAIL
+    end
+
+    def test_entity_circular_reference_with_long_value
+      source = <<~XML
+        <!DOCTYPE root [
+          <!ENTITY x "#{"&amp;" * 100}&x;">
+        ]>
+        <root>&x;</root>
+      XML
+      listener = Class.new { include REXML::StreamListener }.new
+      parser = REXML::Parsers::StreamParser.new(source, listener)
+      exception = assert_raise(REXML::ParseException) do
+        parser.parse
+      end
+      assert_equal(<<-DETAIL.chomp, exception.to_s)
+Detected an entity reference loop: x
+Line: 4
+Position: 557
+Last 80 unconsumed characters:
+</root>\x20
+      DETAIL
     end
 
     def test_entity_filter
