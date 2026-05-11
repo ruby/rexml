@@ -1,5 +1,7 @@
 # frozen_string_literal: false
+require 'set'
 require_relative 'child'
+require_relative 'parseexception'
 require_relative 'source'
 require_relative 'xmltokens'
 
@@ -70,13 +72,20 @@ module REXML
 
     # Evaluates to the unnormalized value of this entity; that is, replacing
     # &ent; entities.
-    def unnormalized
+    def unnormalized(expanding: nil)
       document&.record_entity_expansion
 
       return nil if @value.nil?
 
-      @unnormalized = Text::unnormalize(@value, parent,
-                                        entity_expansion_text_limit: document&.entity_expansion_text_limit)
+      expanding ||= Set.new
+      raise REXML::ParseException.new("Detected an entity reference loop: #{@name}") if expanding.include?(@name)
+
+      expanding.add(@name)
+      result = Text::unnormalize(@value, parent,
+                                 entity_expansion_text_limit: document&.entity_expansion_text_limit,
+                                 expanding: expanding)
+      expanding.delete(@name)
+      result
     end
 
     #once :unnormalized

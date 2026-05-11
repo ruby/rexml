@@ -1,0 +1,77 @@
+loop_count: 100
+contexts:
+  - gems:
+      rexml: 3.2.6
+    require: false
+    prelude: require 'rexml'
+  - name: master
+    prelude: |
+      $LOAD_PATH.unshift(File.expand_path("lib"))
+      require 'rexml'
+  - name: 3.2.6(YJIT)
+    gems:
+      rexml: 3.2.6
+    require: false
+    prelude: |
+      require 'rexml'
+      RubyVM::YJIT.enable
+  - name: master(YJIT)
+    prelude: |
+      $LOAD_PATH.unshift(File.expand_path("lib"))
+      require 'rexml'
+      RubyVM::YJIT.enable
+
+prelude: |
+  require 'rexml/document'
+  require 'rexml/parsers/sax2parser'
+  require 'rexml/parsers/streamparser'
+  require 'rexml/streamlistener'
+
+  # Single entity reference: <!ENTITY foo "bar">  ->  &foo;
+  single_entity_xml = <<~XML
+    <!DOCTYPE root [
+      <!ENTITY word "hello">
+    ]>
+    <root>&word;</root>
+  XML
+
+  # Chained entity references: a -> b -> c -> ... -> value (n_depth levels deep)
+  n_depth = 100
+  chained_entities_xml = <<~XML
+    <!DOCTYPE root [
+      #{(1..n_depth).map {|i| i == n_depth ? "<!ENTITY e#{i} \"value\">" : "<!ENTITY e#{i} \"&e#{i+1};\">" }.join("\n")}
+    ]>
+    <root>&e1;</root>
+  XML
+
+  # Many distinct entities referenced in document content
+  n_entities = 100
+  many_entities_xml = <<~XML
+    <!DOCTYPE root [
+      #{(1..n_entities).map {|i| "<!ENTITY ent#{i} \"value#{i}\">" }.join("\n")}
+    ]>
+    <root>#{(1..n_entities).map {|i| "&ent#{i};" }.join}</root>
+  XML
+
+  # Same entity referenced repeatedly in attribute values
+  n_items = 100
+  repeated_entity_xml = <<~XML
+    <!DOCTYPE root [
+      <!ENTITY word "hello">
+    ]>
+    <root>#{'<item val="&word;">&word;</item>' * n_items}</root>
+  XML
+
+  class Listener
+    include REXML::StreamListener
+  end
+
+benchmark:
+  'single_entity(dom)'      : REXML::Document.new(single_entity_xml).root.text
+  'single_entity(stream)'   : REXML::Parsers::StreamParser.new(single_entity_xml, Listener.new).parse
+  'chained_entities(dom)'   : REXML::Document.new(chained_entities_xml).root.text
+  'chained_entities(stream)': REXML::Parsers::StreamParser.new(chained_entities_xml, Listener.new).parse
+  'many_entities(dom)'      : REXML::Document.new(many_entities_xml).root.text
+  'many_entities(stream)'   : REXML::Parsers::StreamParser.new(many_entities_xml, Listener.new).parse
+  'repeated_entity(dom)'    : REXML::Document.new(repeated_entity_xml).root.text
+  'repeated_entity(stream)' : REXML::Parsers::StreamParser.new(repeated_entity_xml, Listener.new).parse

@@ -535,14 +535,20 @@ module REXML
       end
       private :pull_event
 
-      def entity( reference, entities )
+      def entity( reference, entities, expanding: nil )
         return unless entities
 
         value = entities[ reference ]
         return if value.nil?
 
+        expanding ||= Set.new
+        raise REXML::ParseException.new("Detected an entity reference loop: #{reference}", @source) if expanding.include?(reference)
+
         record_entity_expansion
-        unnormalize( value, entities )
+        expanding.add(reference)
+        result = unnormalize( value, entities, nil, expanding: expanding )
+        expanding.delete(reference)
+        result
       end
 
       # Escapes all possible entities
@@ -562,7 +568,7 @@ module REXML
       end
 
       # Unescapes all possible entities
-      def unnormalize( string, entities=nil, filter=nil )
+      def unnormalize( string, entities=nil, filter=nil, expanding: nil )
         if string.include?("\r")
           rv = string.gsub( Private::CARRIAGE_RETURN_NEWLINE_PATTERN, "\n" )
         else
@@ -588,7 +594,7 @@ module REXML
         if matches.size > 0
           matches.tally.each do |entity_reference, n|
             entity_expansion_count_before = @entity_expansion_count
-            entity_value = entity( entity_reference, entities )
+            entity_value = entity( entity_reference, entities, expanding: expanding )
             if entity_value
               if n > 1
                 entity_expansion_count_delta =
