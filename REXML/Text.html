@@ -933,7 +933,7 @@
             <div class="method-heading">
               <a href="#method-c-expand" title="Link to this method">
                 <span class="method-name">expand</span>
-                <span class="method-args">(ref, doctype, filter)</span>
+                <span class="method-args">(ref, doctype, filter, expanding: nil)</span>
               </a>
             </div>
 
@@ -947,7 +947,7 @@
           </div>
           <div class="method-source-code" id="expand-source">
             <pre class="ruby"><span class="ruby-comment"># File lib/rexml/text.rb, line 401</span>
-<span class="ruby-keyword">def</span> <span class="ruby-constant">Text</span>.<span class="ruby-identifier ruby-title">expand</span>(<span class="ruby-identifier">ref</span>, <span class="ruby-identifier">doctype</span>, <span class="ruby-identifier">filter</span>)
+<span class="ruby-keyword">def</span> <span class="ruby-constant">Text</span>.<span class="ruby-identifier ruby-title">expand</span>(<span class="ruby-identifier">ref</span>, <span class="ruby-identifier">doctype</span>, <span class="ruby-identifier">filter</span>, <span class="ruby-value">expanding:</span> <span class="ruby-keyword">nil</span>)
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">ref</span>[<span class="ruby-value">1</span>] <span class="ruby-operator">==</span> <span class="ruby-value">?#</span>
     <span class="ruby-keyword">if</span> <span class="ruby-identifier">ref</span>[<span class="ruby-value">2</span>] <span class="ruby-operator">==</span> <span class="ruby-value">?x</span>
       [<span class="ruby-identifier">ref</span>[<span class="ruby-value">3</span><span class="ruby-operator">...</span><span class="ruby-value">-1</span>].<span class="ruby-identifier">to_i</span>(<span class="ruby-value">16</span>)].<span class="ruby-identifier">pack</span>(<span class="ruby-string">&#39;U*&#39;</span>)
@@ -959,7 +959,7 @@
   <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">filter</span> <span class="ruby-keyword">and</span> <span class="ruby-identifier">filter</span>.<span class="ruby-identifier">include?</span>( <span class="ruby-identifier">ref</span>[<span class="ruby-value">1</span><span class="ruby-operator">...</span><span class="ruby-value">-1</span>] )
     <span class="ruby-identifier">ref</span>
   <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">doctype</span>
-    <span class="ruby-identifier">doctype</span>.<span class="ruby-identifier">entity</span>( <span class="ruby-identifier">ref</span>[<span class="ruby-value">1</span><span class="ruby-operator">...</span><span class="ruby-value">-1</span>] ) <span class="ruby-keyword">or</span> <span class="ruby-identifier">ref</span>
+    <span class="ruby-identifier">doctype</span>.<span class="ruby-identifier">entity</span>( <span class="ruby-identifier">ref</span>[<span class="ruby-value">1</span><span class="ruby-operator">...</span><span class="ruby-value">-1</span>], <span class="ruby-value">expanding:</span> <span class="ruby-identifier">expanding</span> ) <span class="ruby-keyword">or</span> <span class="ruby-identifier">ref</span>
   <span class="ruby-keyword">else</span>
     <span class="ruby-identifier">entity_value</span> = <span class="ruby-constant">DocType</span><span class="ruby-operator">::</span><span class="ruby-constant">DEFAULT_ENTITIES</span>[ <span class="ruby-identifier">ref</span>[<span class="ruby-value">1</span><span class="ruby-operator">...</span><span class="ruby-value">-1</span>] ]
     <span class="ruby-identifier">entity_value</span> <span class="ruby-operator">?</span> <span class="ruby-identifier">entity_value</span>.<span class="ruby-identifier">value</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">ref</span>
@@ -1213,7 +1213,7 @@
             <div class="method-heading">
               <a href="#method-c-unnormalize" title="Link to this method">
                 <span class="method-name">unnormalize</span>
-                <span class="method-args">( string, doctype=nil, filter=nil, illegal=nil, entity_expansion_text_limit: nil )</span>
+                <span class="method-args">( string, doctype=nil, filter=nil, illegal=nil, entity_expansion_text_limit: nil, expanding: nil )</span>
               </a>
             </div>
 
@@ -1227,11 +1227,11 @@
           </div>
           <div class="method-source-code" id="unnormalize-source">
             <pre class="ruby"><span class="ruby-comment"># File lib/rexml/text.rb, line 387</span>
-<span class="ruby-keyword">def</span> <span class="ruby-constant">Text</span><span class="ruby-operator">::</span><span class="ruby-identifier ruby-title">unnormalize</span>( <span class="ruby-identifier">string</span>, <span class="ruby-identifier">doctype</span>=<span class="ruby-keyword">nil</span>, <span class="ruby-identifier">filter</span>=<span class="ruby-keyword">nil</span>, <span class="ruby-identifier">illegal</span>=<span class="ruby-keyword">nil</span>, <span class="ruby-value">entity_expansion_text_limit:</span> <span class="ruby-keyword">nil</span> )
+<span class="ruby-keyword">def</span> <span class="ruby-constant">Text</span><span class="ruby-operator">::</span><span class="ruby-identifier ruby-title">unnormalize</span>( <span class="ruby-identifier">string</span>, <span class="ruby-identifier">doctype</span>=<span class="ruby-keyword">nil</span>, <span class="ruby-identifier">filter</span>=<span class="ruby-keyword">nil</span>, <span class="ruby-identifier">illegal</span>=<span class="ruby-keyword">nil</span>, <span class="ruby-value">entity_expansion_text_limit:</span> <span class="ruby-keyword">nil</span>, <span class="ruby-value">expanding:</span> <span class="ruby-keyword">nil</span> )
   <span class="ruby-identifier">entity_expansion_text_limit</span> <span class="ruby-operator">||=</span> <span class="ruby-constant">Security</span>.<span class="ruby-identifier">entity_expansion_text_limit</span>
   <span class="ruby-identifier">sum</span> = <span class="ruby-value">0</span>
   <span class="ruby-identifier">string</span>.<span class="ruby-identifier">gsub</span>( <span class="ruby-regexp">/\r\n?/</span>, <span class="ruby-string">&quot;\n&quot;</span> ).<span class="ruby-identifier">gsub</span>( <span class="ruby-constant">REFERENCE</span> ) {
-    <span class="ruby-identifier">s</span> = <span class="ruby-constant">Text</span>.<span class="ruby-identifier">expand</span>(<span class="ruby-node">$&amp;</span>, <span class="ruby-identifier">doctype</span>, <span class="ruby-identifier">filter</span>)
+    <span class="ruby-identifier">s</span> = <span class="ruby-constant">Text</span>.<span class="ruby-identifier">expand</span>(<span class="ruby-node">$&amp;</span>, <span class="ruby-identifier">doctype</span>, <span class="ruby-identifier">filter</span>, <span class="ruby-value">expanding:</span> <span class="ruby-identifier">expanding</span>)
     <span class="ruby-keyword">if</span> <span class="ruby-identifier">sum</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">s</span>.<span class="ruby-identifier">bytesize</span> <span class="ruby-operator">&gt;</span> <span class="ruby-identifier">entity_expansion_text_limit</span>
       <span class="ruby-identifier">raise</span> <span class="ruby-string">&quot;entity expansion has grown too large&quot;</span>
     <span class="ruby-keyword">else</span>

@@ -1457,7 +1457,7 @@
             <div class="method-heading">
               <a href="#method-i-entity" title="Link to this method">
                 <span class="method-name">entity</span>
-                <span class="method-args">( reference, entities )</span>
+                <span class="method-args">( reference, entities, expanding: nil )</span>
               </a>
             </div>
 
@@ -1471,14 +1471,20 @@
           </div>
           <div class="method-source-code" id="entity-source">
             <pre class="ruby"><span class="ruby-comment"># File lib/rexml/parsers/baseparser.rb, line 538</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">entity</span>( <span class="ruby-identifier">reference</span>, <span class="ruby-identifier">entities</span> )
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">entity</span>( <span class="ruby-identifier">reference</span>, <span class="ruby-identifier">entities</span>, <span class="ruby-value">expanding:</span> <span class="ruby-keyword">nil</span> )
   <span class="ruby-keyword">return</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">entities</span>
 
   <span class="ruby-identifier">value</span> = <span class="ruby-identifier">entities</span>[ <span class="ruby-identifier">reference</span> ]
   <span class="ruby-keyword">return</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">value</span>.<span class="ruby-identifier">nil?</span>
 
+  <span class="ruby-identifier">expanding</span> <span class="ruby-operator">||=</span> <span class="ruby-constant">Set</span>.<span class="ruby-identifier">new</span>
+  <span class="ruby-identifier">raise</span> <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">ParseException</span>.<span class="ruby-identifier">new</span>(<span class="ruby-node">&quot;Detected an entity reference loop: #{reference}&quot;</span>, <span class="ruby-ivar">@source</span>) <span class="ruby-keyword">if</span> <span class="ruby-identifier">expanding</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">reference</span>)
+
   <span class="ruby-identifier">record_entity_expansion</span>
-  <span class="ruby-identifier">unnormalize</span>( <span class="ruby-identifier">value</span>, <span class="ruby-identifier">entities</span> )
+  <span class="ruby-identifier">expanding</span>.<span class="ruby-identifier">add</span>(<span class="ruby-identifier">reference</span>)
+  <span class="ruby-identifier">result</span> = <span class="ruby-identifier">unnormalize</span>( <span class="ruby-identifier">value</span>, <span class="ruby-identifier">entities</span>, <span class="ruby-keyword">nil</span>, <span class="ruby-value">expanding:</span> <span class="ruby-identifier">expanding</span> )
+  <span class="ruby-identifier">expanding</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-identifier">reference</span>)
+  <span class="ruby-identifier">result</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
 
@@ -1560,7 +1566,7 @@
             </details>
           </div>
           <div class="method-source-code" id="normalize-source">
-            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/parsers/baseparser.rb, line 549</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/parsers/baseparser.rb, line 555</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">normalize</span>( <span class="ruby-identifier">input</span>, <span class="ruby-identifier">entities</span>=<span class="ruby-keyword">nil</span>, <span class="ruby-identifier">entity_filter</span>=<span class="ruby-keyword">nil</span> )
   <span class="ruby-identifier">copy</span> = <span class="ruby-identifier">input</span>.<span class="ruby-identifier">clone</span>
   <span class="ruby-comment"># Doing it like this rather than in a loop improves the speed</span>
@@ -1839,7 +1845,7 @@
             <div class="method-heading">
               <a href="#method-i-unnormalize" title="Link to this method">
                 <span class="method-name">unnormalize</span>
-                <span class="method-args">( string, entities=nil, filter=nil )</span>
+                <span class="method-args">( string, entities=nil, filter=nil, expanding: nil )</span>
               </a>
             </div>
 
@@ -1852,8 +1858,8 @@
             </details>
           </div>
           <div class="method-source-code" id="unnormalize-source">
-            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/parsers/baseparser.rb, line 565</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">unnormalize</span>( <span class="ruby-identifier">string</span>, <span class="ruby-identifier">entities</span>=<span class="ruby-keyword">nil</span>, <span class="ruby-identifier">filter</span>=<span class="ruby-keyword">nil</span> )
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/parsers/baseparser.rb, line 571</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">unnormalize</span>( <span class="ruby-identifier">string</span>, <span class="ruby-identifier">entities</span>=<span class="ruby-keyword">nil</span>, <span class="ruby-identifier">filter</span>=<span class="ruby-keyword">nil</span>, <span class="ruby-value">expanding:</span> <span class="ruby-keyword">nil</span> )
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">string</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-string">&quot;\r&quot;</span>)
     <span class="ruby-identifier">rv</span> = <span class="ruby-identifier">string</span>.<span class="ruby-identifier">gsub</span>( <span class="ruby-constant">Private</span><span class="ruby-operator">::</span><span class="ruby-constant">CARRIAGE_RETURN_NEWLINE_PATTERN</span>, <span class="ruby-string">&quot;\n&quot;</span> )
   <span class="ruby-keyword">else</span>
@@ -1879,7 +1885,7 @@
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">matches</span>.<span class="ruby-identifier">size</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">0</span>
     <span class="ruby-identifier">matches</span>.<span class="ruby-identifier">tally</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">entity_reference</span>, <span class="ruby-identifier">n</span><span class="ruby-operator">|</span>
       <span class="ruby-identifier">entity_expansion_count_before</span> = <span class="ruby-ivar">@entity_expansion_count</span>
-      <span class="ruby-identifier">entity_value</span> = <span class="ruby-identifier">entity</span>( <span class="ruby-identifier">entity_reference</span>, <span class="ruby-identifier">entities</span> )
+      <span class="ruby-identifier">entity_value</span> = <span class="ruby-identifier">entity</span>( <span class="ruby-identifier">entity_reference</span>, <span class="ruby-identifier">entities</span>, <span class="ruby-value">expanding:</span> <span class="ruby-identifier">expanding</span> )
       <span class="ruby-keyword">if</span> <span class="ruby-identifier">entity_value</span>
         <span class="ruby-keyword">if</span> <span class="ruby-identifier">n</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">1</span>
           <span class="ruby-identifier">entity_expansion_count_delta</span> =

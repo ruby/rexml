@@ -1161,7 +1161,7 @@
             <div class="method-heading">
               <a href="#method-i-entity" title="Link to this method">
                 <span class="method-name">entity</span>
-                <span class="method-args">( name )</span>
+                <span class="method-args">( name, expanding: nil )</span>
               </a>
             </div>
 
@@ -1175,8 +1175,8 @@
           </div>
           <div class="method-source-code" id="entity-source">
             <pre class="ruby"><span class="ruby-comment"># File lib/rexml/doctype.rb, line 177</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">entity</span>( <span class="ruby-identifier">name</span> )
-  <span class="ruby-ivar">@entities</span>[<span class="ruby-identifier">name</span>]&amp;.<span class="ruby-identifier">unnormalized</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">entity</span>( <span class="ruby-identifier">name</span>, <span class="ruby-value">expanding:</span> <span class="ruby-keyword">nil</span> )
+  <span class="ruby-ivar">@entities</span>[<span class="ruby-identifier">name</span>]&amp;.<span class="ruby-identifier">unnormalized</span>(<span class="ruby-value">expanding:</span> <span class="ruby-identifier">expanding</span>)
 <span class="ruby-keyword">end</span></pre>
           </div>
 
