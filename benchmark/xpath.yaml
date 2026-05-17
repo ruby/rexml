@@ -28,6 +28,14 @@ prelude: |
   xml   = '<a>' * DEPTH + '</a>' * DEPTH
   doc   = REXML::Document.new(xml)
 
+  WIDTH = 200
+  xml_wide = '<root>' + '<child/>' * WIDTH + '</root>'
+  doc_wide = REXML::Document.new(xml_wide)
+  first_child = doc_wide.root.children.first
+  last_child  = doc_wide.root.children.last
+
 benchmark:
   "REXML::XPath.match(REXML::Document.new(xml), 'a//a')" : REXML::XPath.match(doc, "a//a")
   "REXML::XPath.match(REXML::Document.new(xml), '//a//a')" : REXML::XPath.match(doc, "//a//a")
+  "REXML::Document.new(xml_wide).root.children.first.next_sibling_node" : first_child.next_sibling_node
+  "REXML::Document.new(xml_wide).root.children.last.previous_sibling_node" : last_child.previous_sibling_node
