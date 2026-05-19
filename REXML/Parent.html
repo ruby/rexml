@@ -1006,7 +1006,7 @@
             </details>
           </div>
           <div class="method-source-code" id="deep_clone-source">
-            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/parent.rb, line 148</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/parent.rb, line 146</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">deep_clone</span>
   <span class="ruby-identifier">cl</span> = <span class="ruby-identifier">clone</span>()
   <span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">child</span><span class="ruby-operator">|</span>
@@ -1309,9 +1309,7 @@
           <div class="method-source-code" id="index-source">
             <pre class="ruby"><span class="ruby-comment"># File lib/rexml/parent.rb, line 123</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">index</span>( <span class="ruby-identifier">child</span> )
-  <span class="ruby-identifier">count</span> = <span class="ruby-value">-1</span>
-  <span class="ruby-ivar">@children</span>.<span class="ruby-identifier">find</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span> <span class="ruby-identifier">count</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span> ; <span class="ruby-identifier">i</span>.<span class="ruby-identifier">hash</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">child</span>.<span class="ruby-identifier">hash</span> }
-  <span class="ruby-identifier">count</span>
+  <span class="ruby-ivar">@children</span>.<span class="ruby-identifier">index</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">c</span><span class="ruby-operator">|</span> <span class="ruby-identifier">c</span>.<span class="ruby-identifier">equal?</span>(<span class="ruby-identifier">child</span>) }
 <span class="ruby-keyword">end</span></pre>
           </div>
 
@@ -1487,7 +1485,7 @@
             </details>
           </div>
           <div class="method-source-code" id="parent-3F-source">
-            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/parent.rb, line 162</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/parent.rb, line 160</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">parent?</span>
   <span class="ruby-keyword">true</span>
 <span class="ruby-keyword">end</span></pre>
@@ -1567,7 +1565,7 @@
             </details>
           </div>
           <div class="method-source-code" id="replace_child-source">
-            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/parent.rb, line 140</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/parent.rb, line 138</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">replace_child</span>( <span class="ruby-identifier">to_replace</span>, <span class="ruby-identifier">replacement</span> )
   <span class="ruby-ivar">@children</span>.<span class="ruby-identifier">map!</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">c</span><span class="ruby-operator">|</span> <span class="ruby-identifier">c</span>.<span class="ruby-identifier">equal?</span>( <span class="ruby-identifier">to_replace</span> ) <span class="ruby-operator">?</span> <span class="ruby-identifier">replacement</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">c</span> }
   <span class="ruby-identifier">to_replace</span>.<span class="ruby-identifier">parent</span> = <span class="ruby-keyword">nil</span>
@@ -1611,7 +1609,7 @@
             </details>
           </div>
           <div class="method-source-code" id="size-source">
-            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/parent.rb, line 130</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/parent.rb, line 128</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">size</span>
   <span class="ruby-ivar">@children</span>.<span class="ruby-identifier">size</span>
 <span class="ruby-keyword">end</span></pre>
