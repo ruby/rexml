@@ -24,11 +24,11 @@ contexts:
 prelude: |
   require 'rexml/document'
 
-  DEPTH = 30
+  DEPTH = 40
   xml   = '<a>' * DEPTH + '</a>' * DEPTH
   doc   = REXML::Document.new(xml)
 
-  WIDTH = 200
+  WIDTH = 1000
   xml_wide = '<root>' + '<child/>' * WIDTH + '</root>'
   doc_wide = REXML::Document.new(xml_wide)
   first_child = doc_wide.root.children.first
