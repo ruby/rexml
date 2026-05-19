@@ -121,9 +121,7 @@ module REXML
     # @return the index of the child, or nil if the object is not a child
     # of this parent.
     def index( child )
-      count = -1
-      @children.find { |i| count += 1 ; i.hash == child.hash }
-      count
+      @children.index { |c| c.equal?(child) }
     end
 
     # @return the number of children of this parent
