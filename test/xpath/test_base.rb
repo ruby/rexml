@@ -500,6 +500,14 @@ module REXMLTests
       assert_equal(["w", "x", "y", "z"], matches.map(&:name))
     end
 
+    def test_following_sibling_position_less_than
+      source = "<r><a/><b/><c/><d/></r>"
+      doc = REXML::Document.new(source)
+      assert_equal([], REXML::XPath.match(doc, "/r/a/following-sibling::*[position() < 1]"))
+      assert_equal(["b"], REXML::XPath.match(doc, "/r/a/following-sibling::*[position() < 2]").map(&:name))
+      assert_equal(["b", "c"], REXML::XPath.match(doc, "/r/a/following-sibling::*[position() < 3]").map(&:name))
+    end
+
     def test_preceding_sibling_across_multiple_nodes
       source = <<-XML
 <a>
