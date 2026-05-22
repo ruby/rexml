@@ -654,7 +654,7 @@ module REXML
           contents = contents[1..-2]
           n = []
           OrExpr( contents, n )
-          parsed.concat(n)
+          parsed.push(:group, n)
         end
         path
       end

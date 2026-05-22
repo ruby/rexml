@@ -575,18 +575,45 @@ module REXMLTests
       matches = XPath.match(doc, '(/div/div/test[3])').map(&:text)
       assert_equal [], matches
 
+      matches = XPath.match(doc, '/div/div/test[1][1]').map(&:text)
+      assert_equal ["ab", "ef", "hi"], matches
       matches = XPath.match(doc, '(/div/div/test[1])[1]').map(&:text)
       assert_equal ["ab"], matches
+      matches = XPath.match(doc, '/div/div/test[1][2]').map(&:text)
+      assert_equal [], matches
       matches = XPath.match(doc, '(/div/div/test[1])[2]').map(&:text)
       assert_equal ["ef"], matches
       matches = XPath.match(doc, '(/div/div/test[1])[3]').map(&:text)
       assert_equal ["hi"], matches
+      matches = XPath.match(doc, '/div/div/test[2][1]').map(&:text)
+      assert_equal ["cd", "gh"], matches
       matches = XPath.match(doc, '(/div/div/test[2])[1]').map(&:text)
       assert_equal ["cd"], matches
+      matches = XPath.match(doc, '/div/div/test[2][2]').map(&:text)
+      assert_equal [], matches
       matches = XPath.match(doc, '(/div/div/test[2])[2]').map(&:text)
       assert_equal ["gh"], matches
       matches = XPath.match(doc, '(/div/div/test[2])[3]').map(&:text)
       assert_equal [], matches
+      matches = XPath.match(doc, '//div[1]/test|//div[2]/test[2]').map(&:text)
+      assert_equal ["ab", "cd", "gh"], matches
+      matches = XPath.match(doc, '(//div[1]/test|//div[2]/test)[2]').map(&:text)
+      assert_equal ["cd"], matches
+
+      xpath = '/div/div/test/preceding::*'
+      without_parentheses = XPath.match(doc, xpath).map(&:text)
+      with_parentheses = XPath.match(doc, "(#{xpath})").map(&:text)
+      assert_equal without_parentheses, with_parentheses
+
+      xpath = '/div/div/test/preceding-sibling::*'
+      without_parentheses = XPath.match(doc, xpath).map(&:text)
+      with_parentheses = XPath.match(doc, "(#{xpath})").map(&:text)
+      assert_equal without_parentheses, with_parentheses
+
+      xpath = '/div/div/test/ancestor::*'
+      without_parentheses = XPath.match(doc, xpath).map(&:text)
+      with_parentheses = XPath.match(doc, "(#{xpath})").map(&:text)
+      assert_equal without_parentheses, with_parentheses
     end
 
     # Contributed by Mike Stok

@@ -439,7 +439,18 @@ module REXML
           end
           Functions.context = target_context
           return Functions.send(func_name, *args)
-
+        when :group
+          sub_expression = path_stack.shift
+          result = expr(sub_expression, nodeset, context)
+          if result.is_a?(Array)
+            # If result is a nodeset, apply following predicates
+            path_stack.unshift(:node)
+            nodeset = step(path_stack) do
+              [result]
+            end
+          else
+            return result
+          end
         else
           raise "[BUG] Unexpected path: <#{op.inspect}>: <#{path_stack.inspect}>"
         end
@@ -594,7 +605,6 @@ module REXML
 
     def evaluate_predicate(expression, nodesets)
       enter(:predicate, expression, nodesets) if @debug
-      new_nodeset_count = 0
       new_nodesets = nodesets.collect do |nodeset|
         new_nodeset = []
         subcontext = { :size => nodeset.size }
@@ -611,20 +621,17 @@ module REXML
           result = result[0] if result.kind_of? Array and result.length == 1
           if result.kind_of? Numeric
             if result == node.position
-              new_nodeset_count += 1
-              new_nodeset << XPathNode.new(node, position: new_nodeset_count)
+              new_nodeset << XPathNode.new(node, position: new_nodeset.size + 1)
             end
           elsif result.instance_of? Array
             if result.size > 0 and result.inject(false) {|k,s| s or k}
               if result.size > 0
-                new_nodeset_count += 1
-                new_nodeset << XPathNode.new(node, position: new_nodeset_count)
+                new_nodeset << XPathNode.new(node, position: new_nodeset.size + 1)
               end
             end
           else
             if result
-              new_nodeset_count += 1
-              new_nodeset << XPathNode.new(node, position: new_nodeset_count)
+              new_nodeset << XPathNode.new(node, position: new_nodeset.size + 1)
             end
           end
         end
