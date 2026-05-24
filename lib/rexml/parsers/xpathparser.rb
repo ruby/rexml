@@ -19,9 +19,6 @@ module REXML
       end
 
       def parse path
-        path = path.dup
-        path.gsub!(/([\(\[])\s+/, '\1') # Strip ignorable spaces
-        path.gsub!( /\s+([\]\)])/, '\1')
         parsed = []
         rest = OrExpr(path, parsed)
         if rest
@@ -359,17 +356,15 @@ module REXML
           path = $'
           parsed << type.tr('-', '_').intern
         when PI
-          path = $'
+          path = $'.lstrip
           literal = nil
-          if path =~ /^\s*\)/
-            path = $'
-          else
+          unless path.start_with?(')')
             path =~ LITERAL
             literal = $1
-            path = $'
+            path = $'.lstrip
             raise ParseException.new("Missing ')' after processing instruction") if path[0] != ?)
-            path = path[1..-1]
           end
+          path = path[1..-1]
           parsed << :processing_instruction
           parsed << (literal || '')
         when LOCAL_NAME_WILDCARD
@@ -400,6 +395,7 @@ module REXML
         while path[0] == ?[
           path, expr = get_group(path)
           predicates << expr[1..-2] if expr
+          path = path.lstrip
         end
         predicates.each{ |pred|
           preds = []
@@ -678,12 +674,20 @@ module REXML
         depth = 0
         st = string[0,1]
         en = (st == "(" ? ")" : "]")
+        quote = nil
         begin
-          case string[ind,1]
-          when st
-            depth += 1
-          when en
-            depth -= 1
+          if quote
+            # ignore () [] inside quotes
+            quote = nil if string[ind] == quote
+          else
+            case string[ind]
+            when st
+              depth += 1
+            when en
+              depth -= 1
+            when '"', "'"
+              quote = string[ind]
+            end
           end
           ind += 1
         end while depth > 0 and ind < string.length
