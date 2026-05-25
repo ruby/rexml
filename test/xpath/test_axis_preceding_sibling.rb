@@ -23,7 +23,7 @@ module REXMLTests
       assert_equal "6", context.attributes["id"]
 
       prev = XPath.first(context, "preceding-sibling::f")
-      assert_equal "5", prev.attributes["id"]
+      assert_equal "3", prev.attributes["id"]
 
       prev = XPath.first(context, "preceding-sibling::f[1]")
       assert_equal "5", prev.attributes["id"]

@@ -382,32 +382,39 @@ module REXMLTests
       start = XPath.first( d, "/a/b[@id='1']" )
       assert_equal 'b', start.name
       c = XPath.first( start, "preceding::c" )
-      assert_equal '2', c.attributes['id']
+      assert_equal '0', c.attributes['id']
 
-      c1, c0 = XPath.match( d, "/a/b/c[@id='2']/preceding::node()" )
-      assert_equal '1', c1.attributes['id']
-      assert_equal '0', c0.attributes['id']
-
-      c2, c1, c0, b, b2, b0 = XPath.match( start, "preceding::node()" )
-
-      assert_equal 'c', c2.name
-      assert_equal 'c', c1.name
-      assert_equal 'c', c0.name
-      assert_equal 'b', b.name
-      assert_equal 'b', b2.name
+      b0, b2, c0, c1 = XPath.match( d, "/a/b/c[@id='2']/preceding::node()" )
       assert_equal 'b', b0.name
+      assert_equal 'b', b2.name
+      assert_equal 'c', c0.name
+      assert_equal 'c', c1.name
 
-      assert_equal '2', c2.attributes['id']
-      assert_equal '1', c1.attributes['id']
-      assert_equal '0', c0.attributes['id']
-      assert b.attributes.empty?
-      assert_equal '2', b2.attributes['id']
       assert_equal '0', b0.attributes['id']
+      assert_equal '2', b2.attributes['id']
+      assert_equal '0', c0.attributes['id']
+      assert_equal '1', c1.attributes['id']
+
+      b0, b2, b, c0, c1, c2 = XPath.match( start, "preceding::node()" )
+
+      assert_equal 'c', c0.name
+      assert_equal 'c', c1.name
+      assert_equal 'c', c2.name
+      assert_equal 'b', b0.name
+      assert_equal 'b', b2.name
+      assert_equal 'b', b.name
+
+      assert_equal '0', c0.attributes['id']
+      assert_equal '1', c1.attributes['id']
+      assert_equal '2', c2.attributes['id']
+      assert_equal '0', b0.attributes['id']
+      assert_equal '2', b2.attributes['id']
+      assert b.attributes.empty?
 
       d = REXML::Document.new("<a><b/><c/><d/></a>")
       matches = REXML::XPath.match(d, "/a/d/preceding::node()")
-      assert_equal("c", matches[0].name)
-      assert_equal("b", matches[1].name)
+      assert_equal("b", matches[0].name)
+      assert_equal("c", matches[1].name)
 
       s = "<a><b><c id='1'/></b><b><b><c id='2'/><c id='3'/></b><c id='4'/></b><c id='NOMATCH'><c id='5'/></c></a>"
       d = REXML::Document.new(s)
@@ -425,7 +432,7 @@ module REXMLTests
       XML
       doc = REXML::Document.new(source)
       matches = REXML::XPath.match(doc, "a/d/preceding::*")
-      assert_equal(["d", "c", "b"], matches.map(&:name))
+      assert_equal(["b", "c", "d"], matches.map(&:name))
     end
 
     def test_following_multiple
@@ -498,7 +505,7 @@ module REXMLTests
       XML
       doc = REXML::Document.new(source)
       matches = REXML::XPath.match(doc, "a/b/x/preceding-sibling::*")
-      assert_equal(["e", "d", "c"], matches.map(&:name))
+      assert_equal(["c", "d", "e"], matches.map(&:name))
     end
 
     def test_preceding_sibling_within_single_node
@@ -511,7 +518,7 @@ module REXMLTests
       XML
       doc = REXML::Document.new(source)
       matches = REXML::XPath.match(doc, "a/b/x/preceding-sibling::*")
-      assert_equal(["e", "x", "d", "c"], matches.map(&:name))
+      assert_equal(["c", "d", "x", "e"], matches.map(&:name))
     end
 
     def test_following
@@ -899,6 +906,30 @@ module REXMLTests
       r = REXML::XPath.match( d, %q{/a/*/*[1]} )
       assert_equal(["1", "3"],
                    r.collect {|element| element.attribute("id").value})
+    end
+
+    def test_order_consistency
+      doc = REXML::Document.new('<a><b><c><d id="1"><d id="2"/></d></c></b></a>')
+      assert_equal('a', REXML::XPath.first(doc, '//d/ancestor::*').name)
+      assert_equal('a', REXML::XPath.first(doc, '//d[@id="2"]/ancestor::*').name)
+      assert_equal(%w[a b c d], REXML::XPath.match(doc, '//d/ancestor::*').map(&:name))
+      assert_equal(%w[a b c d], REXML::XPath.match(doc, '//d[@id="2"]/ancestor::*').map(&:name))
+
+      assert_equal('a', REXML::XPath.first(doc, '//d/ancestor-or-self::*').name)
+      assert_equal('a', REXML::XPath.first(doc, '//d[@id="2"]/ancestor-or-self::*').name)
+      assert_equal(%w[a b c d d], REXML::XPath.match(doc, '//d/ancestor-or-self::*').map(&:name))
+      assert_equal(%w[a b c d d], REXML::XPath.match(doc, '//d[@id="2"]/ancestor-or-self::*').map(&:name))
+
+      doc = REXML::Document.new('<a><b/><c/><d id="1"/><d id="2"/></a>')
+      assert_equal('b', REXML::XPath.first(doc, '//d/preceding::*').name)
+      assert_equal('b', REXML::XPath.first(doc, '//d[@id="2"]/preceding::*').name)
+      assert_equal(%w[b c d], REXML::XPath.match(doc, '//d/preceding::*').map(&:name))
+      assert_equal(%w[b c d], REXML::XPath.match(doc, '//d[@id="2"]/preceding::*').map(&:name))
+
+      assert_equal('b', REXML::XPath.first(doc, '//d/preceding-sibling::*').name)
+      assert_equal('b', REXML::XPath.first(doc, '//d[@id="2"]/preceding-sibling::*').name)
+      assert_equal(%w[b c d], REXML::XPath.match(doc, '//d/preceding-sibling::*').map(&:name))
+      assert_equal(%w[b c d], REXML::XPath.match(doc, '//d[@id="2"]/preceding-sibling::*').map(&:name))
     end
 
     def test_descendant_or_self_ordering
