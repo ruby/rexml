@@ -111,5 +111,18 @@ module REXMLTests
                      abbreviate("a/b[attribute::name='double \" quote']/c"))
       end
     end
+
+    def test_mult_and_spaces
+      parser = REXML::Parsers::XPathParser.new
+      assert_equal(parser.parse("1 * 2 * 3"), parser.parse("1*2*3"))
+      assert_equal(parser.parse("a[( ( 1 + 2 ) * 3 + 4 * ( 5 + 6 ) ) * 7 < 8]"), parser.parse("a[((1+2)*3+4*(5+6))*7<8]"))
+      # number(a/b) * 2
+      assert_equal(parser.parse("(a/b) * 2"), parser.parse("(a/b)*2"))
+      assert_equal(parser.parse("a/b * 2"), parser.parse("a/b*2"))
+      # number(a/b/*) * 2
+      assert_equal(parser.parse("a/b/* * 2"), parser.parse("a/b/**2"))
+      # number(*) * number(*/*) * number(*)
+      assert_equal(parser.parse("* * */* * *"), parser.parse("***/***"))
+    end
   end
 end

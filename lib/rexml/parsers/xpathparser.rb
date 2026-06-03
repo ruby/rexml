@@ -591,14 +591,15 @@ module REXML
         path = path.lstrip
         n = []
         rest = FilterExpr( path, n )
-        if rest != path
+        if rest == path
+          rest = LocationPath(rest, n)
+        else
           if rest and rest[0] == ?/
             rest = RelativeLocationPath(rest, n)
             parsed.concat(n)
             return rest
           end
         end
-        rest = LocationPath(rest, n) if rest =~ /\A[\/\.\@\[\w*]/
         parsed.concat(n)
         rest
       end
