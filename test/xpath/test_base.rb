@@ -616,6 +616,33 @@ module REXMLTests
       assert_equal without_parentheses, with_parentheses
     end
 
+    def test_parenthesized_xpath
+      doc = Document.new <<-EOF
+        <div>
+          <div id='1'>
+            <test>ab</test>
+            <div><test>cd</test></div>
+          </div>
+          <div id='2'>
+            <test>ef</test>
+            <div><test>gh</test></div>
+          </div>
+          <div>
+            <test>hi</test>
+          </div>
+        </div>
+      EOF
+      parenthesized_xpath = '(//div[@id="1"] | //div[@id="2"])'
+      assert_equal(%w[ab ef], XPath.match(doc, "#{parenthesized_xpath}/test").map(&:text))
+      assert_equal(%w[ab ef], XPath.match(doc, "#{parenthesized_xpath} / test").map(&:text))
+      assert_equal(%w[ab cd ef gh], XPath.match(doc, "#{parenthesized_xpath}//test").map(&:text))
+      assert_equal(%w[ab cd ef gh], XPath.match(doc, "#{parenthesized_xpath} // test").map(&:text))
+      assert_equal(%w[ab], XPath.match(doc, "#{parenthesized_xpath}[@id='1']/test").map(&:text))
+      assert_equal(%w[ef gh], XPath.match(doc, "#{parenthesized_xpath}[@id='2']//test").map(&:text))
+      assert_equal(%w[ef], XPath.match(doc, "#{parenthesized_xpath}[2] / test").map(&:text))
+      assert_equal(%w[ab cd], XPath.match(doc, "#{parenthesized_xpath}[1] // test").map(&:text))
+    end
+
     # Contributed by Mike Stok
     def test_starts_with
       source = <<-EOF
