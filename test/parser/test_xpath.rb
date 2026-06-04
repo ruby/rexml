@@ -111,5 +111,23 @@ module REXMLTests
                      abbreviate("a/b[attribute::name='double \" quote']/c"))
       end
     end
+
+    def test_spaces_between_tokens
+      # REXML doesn't support space between function-name and opening paren.
+      # Spaces after `(` and spaces around `)`, `[`, `]` are tested here.
+      parser = REXML::Parsers::XPathParser.new
+      assert_equal(
+        parser.parse('//a/b[c][d]/e'),
+        parser.parse(' // a / b [ c ] [ d ] / e '),
+      )
+      assert_equal(
+        parser.parse('/a/b[string-length("1")<(2+3)]/c'),
+        parser.parse(' / a / b [ string-length( "1" ) < ( 2 + 3 ) ] / c '),
+      )
+      assert_equal(
+        parser.parse('//processing-instruction("a")'),
+        parser.parse('//processing-instruction( "a" )'),
+      )
+    end
   end
 end

@@ -830,6 +830,24 @@ module REXMLTests
                    match.call('/ a / child:: c [( @id )] /'))
     end
 
+    def test_space_paren_brace_inside_xpath_string
+      doc = Document.new(<<~XML)
+        <a>
+          <b id=" [ ' 1 ) "/>
+          <b id=' ( " 2 ] '/>
+        </a>
+      XML
+
+      assert_equal(
+        [" [ ' 1 ) "],
+        REXML::XPath.match(doc, "/a/b[@id=\" [ ' 1 ) \"]").map { |e| e.attributes['id'] }
+      )
+      assert_equal(
+        [' ( " 2 ] '],
+        REXML::XPath.match(doc, "/a/b[@id=' ( \" 2 ] ']").map { |e| e.attributes['id'] }
+      )
+    end
+
     def test_text_nodes
       #  source = "<root>
       #<child/>
