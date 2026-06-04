@@ -814,7 +814,7 @@ The contents of the resulting array are either:
             </details>
           </div>
           <div class="method-source-code" id="abbreviate-source">
-            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/parsers/xpathparser.rb, line 42</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/parsers/xpathparser.rb, line 39</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">abbreviate</span>(<span class="ruby-identifier">path_or_parsed</span>)
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">path_or_parsed</span>.<span class="ruby-identifier">kind_of?</span>(<span class="ruby-constant">String</span>)
     <span class="ruby-identifier">parsed</span> = <span class="ruby-identifier">parse</span>(<span class="ruby-identifier">path_or_parsed</span>)
@@ -942,7 +942,7 @@ The contents of the resulting array are either:
             </details>
           </div>
           <div class="method-source-code" id="expand-source">
-            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/parsers/xpathparser.rb, line 132</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/parsers/xpathparser.rb, line 129</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">expand</span>(<span class="ruby-identifier">path_or_parsed</span>)
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">path_or_parsed</span>.<span class="ruby-identifier">kind_of?</span>(<span class="ruby-constant">String</span>)
     <span class="ruby-identifier">parsed</span> = <span class="ruby-identifier">parse</span>(<span class="ruby-identifier">path_or_parsed</span>)
@@ -1067,9 +1067,6 @@ The contents of the resulting array are either:
           <div class="method-source-code" id="parse-source">
             <pre class="ruby"><span class="ruby-comment"># File lib/rexml/parsers/xpathparser.rb, line 21</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">parse</span> <span class="ruby-identifier">path</span>
-  <span class="ruby-identifier">path</span> = <span class="ruby-identifier">path</span>.<span class="ruby-identifier">dup</span>
-  <span class="ruby-identifier">path</span>.<span class="ruby-identifier">gsub!</span>(<span class="ruby-regexp">/([\(\[])\s+/</span>, <span class="ruby-string">&#39;\1&#39;</span>) <span class="ruby-comment"># Strip ignorable spaces</span>
-  <span class="ruby-identifier">path</span>.<span class="ruby-identifier">gsub!</span>( <span class="ruby-regexp">/\s+([\]\)])/</span>, <span class="ruby-string">&#39;\1&#39;</span>)
   <span class="ruby-identifier">parsed</span> = []
   <span class="ruby-identifier">rest</span> = <span class="ruby-constant">OrExpr</span>(<span class="ruby-identifier">path</span>, <span class="ruby-identifier">parsed</span>)
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">rest</span>
@@ -1152,7 +1149,7 @@ The contents of the resulting array are either:
             </details>
           </div>
           <div class="method-source-code" id="predicate-source">
-            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/parsers/xpathparser.rb, line 36</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/parsers/xpathparser.rb, line 33</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">predicate</span> <span class="ruby-identifier">path</span>
   <span class="ruby-identifier">parsed</span> = []
   <span class="ruby-constant">Predicate</span>( <span class="ruby-node">&quot;[#{path}]&quot;</span>, <span class="ruby-identifier">parsed</span> )
@@ -1196,7 +1193,7 @@ The contents of the resulting array are either:
             </details>
           </div>
           <div class="method-source-code" id="predicate_to_path-source">
-            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/parsers/xpathparser.rb, line 174</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/parsers/xpathparser.rb, line 171</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">predicate_to_path</span>(<span class="ruby-identifier">parsed</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
   <span class="ruby-identifier">path</span> = <span class="ruby-string">&quot;&quot;</span>
   <span class="ruby-keyword">case</span> <span class="ruby-identifier">parsed</span>[<span class="ruby-value">0</span>]
