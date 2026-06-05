@@ -37,16 +37,6 @@ module REXML
 
     def Functions::context=(value); @@context = value; end
 
-    def Functions::text( )
-      if @@context[:node].node_type == :element
-        @@context[:node].find_all{|n| n.node_type == :text}.collect{|n| n.value}
-      elsif @@context[:node].node_type == :text
-        @@context[:node].value
-      else
-        false
-      end
-    end
-
     # Returns the last node of the given list of nodes.
     def Functions::last( )
       @@context[:size]
