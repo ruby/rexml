@@ -313,7 +313,7 @@ module REXML
           end
         when :variable
           var_name = path_stack.shift
-          return [@variables[var_name]]
+          return @variables[var_name]
 
         when :eq, :neq, :lt, :lteq, :gt, :gteq
           left = expr( path_stack.shift, nodeset.dup, context )
