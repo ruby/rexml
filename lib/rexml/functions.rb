@@ -262,13 +262,8 @@ module REXML
       string(string).length
     end
 
-    def Functions::normalize_space( string=nil )
-      string = string(@@context[:node]) if string.nil?
-      if string.kind_of? Array
-        string.collect{|x| x.to_s.strip.gsub(/\s+/um, ' ') if x}
-      else
-        string.to_s.strip.gsub(/\s+/um, ' ')
-      end
+    def Functions::normalize_space( object=@@context[:node] )
+      string(object).strip.gsub(/\s+/um, ' ')
     end
 
     # This is entirely Mike Stok's beast
