@@ -1499,5 +1499,21 @@ EOF
       result = XPath.match(xmldoc, "//a/descendant::b[1]")
       assert_equal(["b1", "b2"], result.map { |e| e.attributes["id"] })
     end
+
+    def test_reverse_axis_document_order_sort
+      doc = Document.new("<a><b>1</b><c>2</c><d>3</d><e/></a>")
+      assert_equal(["b", "c", "d"], XPath.match(doc, "//e/preceding-sibling::*").map(&:name))
+      assert_equal(["d"], XPath.match(doc, "//e/preceding-sibling::*[1]").map(&:name))
+      assert_equal(["b"], XPath.match(doc, "(//e/preceding-sibling::*)[1]").map(&:name))
+    end
+
+    def test_reverse_axis_function_argument_sort
+      doc = Document.new("<a><b>1</b><c>2</c><d>3</d><e/></a>")
+      assert_equal(["e"], XPath.match(doc, "//e[name(preceding-sibling::*)='b']").map(&:name))
+      assert_equal(["e"], XPath.match(doc, "//e[string(preceding-sibling::*)='1']").map(&:name))
+      assert_equal(["e"], XPath.match(doc, "//e[number(preceding-sibling::*)=1]").map(&:name))
+      assert_equal(["e"], XPath.match(doc, "//e[10 + preceding-sibling::* = 11]").map(&:name))
+      assert_equal(["e"], XPath.match(doc, "//e[preceding-sibling::* = '1']").map(&:name))
+    end
   end
 end
