@@ -533,16 +533,13 @@ module REXML
           subcontext[:position] = position
           result = expr(expression.dclone, [node], subcontext)
           trace(:predicate_evaluate, expression, node, subcontext, result) if @debug
-          result = result[0] if result.kind_of? Array and result.length == 1
           if result.kind_of? Numeric
             if result == position
               new_nodeset << node
             end
           elsif result.instance_of? Array
-            if result.size > 0 and result.inject(false) {|k,s| s or k}
-              if result.size > 0
-                new_nodeset << node
-              end
+            if result.size > 0
+              new_nodeset << node
             end
           else
             if result
