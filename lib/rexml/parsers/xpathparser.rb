@@ -587,14 +587,21 @@ module REXML
         path = path.lstrip
         n = []
         rest = FilterExpr( path, n )
-        if rest != path
-          if rest and rest[0] == ?/
+        if rest == path
+          rest = LocationPath(rest, n)
+        else
+          if /\A\s*\//.match?(rest)
+            rest = rest.lstrip
+            if rest.start_with?('//')
+              n << :descendant_or_self
+              n << :node
+              rest = rest[2..-1]
+            else # starts with '/'
+              rest = rest[1..-1]
+            end
             rest = RelativeLocationPath(rest, n)
-            parsed.concat(n)
-            return rest
           end
         end
-        rest = LocationPath(rest, n) if rest =~ /\A[\/\.\@\[\w*]/
         parsed.concat(n)
         rest
       end
