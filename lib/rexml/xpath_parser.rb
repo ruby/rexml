@@ -223,30 +223,9 @@ module REXML
             nodesets
           end
         when :namespace
-          pre_defined_namespaces = {
-            "xml" => "http://www.w3.org/XML/1998/namespace",
-          }
-          nodeset = step(path_stack, any_type: :namespace) do
-            nodesets = []
-            nodeset.each do |node|
-              raw_node = node.raw_node
-              case raw_node.node_type
-              when :element
-                if @namespaces
-                  nodesets << pre_defined_namespaces.merge(@namespaces)
-                else
-                  nodesets << pre_defined_namespaces.merge(raw_node.namespaces)
-                end
-              when :attribute
-                if @namespaces
-                  nodesets << pre_defined_namespaces.merge(@namespaces)
-                else
-                  nodesets << pre_defined_namespaces.merge(raw_node.element.namespaces)
-                end
-              end
-            end
-            nodesets
-          end
+          warn 'Namespace axis is not supported in REXML::XPathParser', uplevel: 1
+          # TODO: We need to create NamespaceNode class to support this feature
+          nodeset = step(path_stack) { [] }
         when :parent
           nodeset = step(path_stack) do
             nodesets = []

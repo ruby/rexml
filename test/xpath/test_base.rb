@@ -248,6 +248,14 @@ module REXMLTests
       assert_equal 19, q.attributes["id"].to_i
     end
 
+    def test_axe_namespace_no_error
+      $VERBOSE, verbose = nil, $VERBOSE
+      # Although namespace axis is not implemented yet, it should not raise NoMethodError
+      XPath.match(@@doc, "a/d/c/namespace::*")
+    ensure
+      $VERBOSE = verbose
+    end
+
     def test_abbreviated_attribute
       assert_equal 'a', XPath::first( @@doc, "a[@id='1']" ).name
       c = XPath::first( @@doc, "a/b/c[@id='4']" )
