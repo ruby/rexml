@@ -262,7 +262,7 @@ module REXML
             nodesets
           end
         when :ancestor
-          nodeset = step(path_stack) do
+          nodeset = step(path_stack, axis_order: :reverse) do
             nodesets = []
             # new_nodes = {}
             nodeset.each do |node|
@@ -280,7 +280,7 @@ module REXML
             nodesets
           end
         when :ancestor_or_self
-          nodeset = step(path_stack) do
+          nodeset = step(path_stack, axis_order: :reverse) do
             nodesets = []
             # new_nodes = {}
             nodeset.each do |node|
@@ -325,7 +325,7 @@ module REXML
             nodesets
           end
         when :preceding_sibling
-          nodeset = step(path_stack, order: :reverse) do
+          nodeset = step(path_stack, axis_order: :reverse) do
             nodesets = []
             nodeset.each do |node|
               raw_node = node.raw_node
@@ -342,7 +342,7 @@ module REXML
             nodesets
           end
         when :preceding
-          nodeset = step(path_stack, order: :reverse) do
+          nodeset = step(path_stack, axis_order: :reverse) do
             unnode(nodeset) do |node|
               preceding(node)
             end
@@ -460,7 +460,7 @@ module REXML
       leave(:expr, path_stack, nodeset) if @debug
     end
 
-    def step(path_stack, any_type: :element, order: :forward)
+    def step(path_stack, any_type: :element, axis_order: :forward)
       nodesets = yield
       begin
         enter(:step, path_stack, nodesets) if @debug
@@ -471,7 +471,7 @@ module REXML
           nodesets = evaluate_predicate(predicate_expression, nodesets)
         end
         if nodesets.size == 1
-          ordered_nodeset = nodesets[0]
+          ordered_nodeset = axis_order == :forward ? nodesets.first : nodesets.first.reverse
         else
           seen = {}.compare_by_identity
           raw_nodes = []
@@ -483,7 +483,7 @@ module REXML
               raw_nodes << raw_node
             end
           end
-          ordered_nodeset = sort(raw_nodes, order)
+          ordered_nodeset = sort(raw_nodes)
         end
         new_nodeset = []
         ordered_nodeset.each do |node|
@@ -667,7 +667,7 @@ module REXML
     # in and out of function calls.  If I knew what the index of the nodes was,
     # I wouldn't have to do this.  Maybe add a document IDX for each node?
     # Problems with mutable documents.  Or, rewrite everything.
-    def sort(array_of_nodes, order)
+    def sort(array_of_nodes)
       new_arry = []
       array_of_nodes.each { |node|
         node_idx = []
@@ -679,11 +679,7 @@ module REXML
         new_arry << [ node_idx.reverse, node ]
       }
       ordered = new_arry.sort_by do |index, node|
-        if order == :forward
-          index
-        else
-          index.map(&:-@)
-        end
+        index
       end
       ordered.collect do |_index, node|
         node
