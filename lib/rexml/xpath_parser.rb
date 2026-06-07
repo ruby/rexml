@@ -62,17 +62,18 @@ module REXML
       @parser = REXML::Parsers::XPathParser.new
       @namespaces = nil
       @variables = {}
+      @functions = FunctionsClass.new
       @nest = 0
       @strict = strict
     end
 
     def namespaces=( namespaces={} )
-      Functions::namespace_context = namespaces
+      @functions.namespace_context = namespaces
       @namespaces = namespaces
     end
 
     def variables=( vars={} )
-      Functions::variables = vars
+      @functions.variables = vars
       @variables = vars
     end
 
@@ -324,21 +325,21 @@ module REXML
 
         when :or
           left = expr(path_stack.shift, nodeset.dup, context)
-          return true if Functions.boolean(left)
+          return true if @functions.boolean(left)
           right = expr(path_stack.shift, nodeset.dup, context)
-          return Functions.boolean(right)
+          return @functions.boolean(right)
 
         when :and
           left = expr(path_stack.shift, nodeset.dup, context)
-          return false unless Functions.boolean(left)
+          return false unless @functions.boolean(left)
           right = expr(path_stack.shift, nodeset.dup, context)
-          return Functions.boolean(right)
+          return @functions.boolean(right)
 
         when :div, :mod, :mult, :plus, :minus
           left = expr(path_stack.shift, nodeset, context)
           right = expr(path_stack.shift, nodeset, context)
-          left = Functions::number(left)
-          right = Functions::number(right)
+          left = @functions.number(left)
+          right = @functions.number(right)
           case op
           when :div
             return left / right
@@ -359,7 +360,7 @@ module REXML
           return (left | right)
         when :neg
           res = expr( path_stack, nodeset, context )
-          return -Functions.number(res)
+          return -@functions.number(res)
         when :not
         when :function
           func_name = path_stack.shift.tr('-','_')
@@ -384,8 +385,8 @@ module REXML
             result = expr(arg, nodeset, target_context)
             result
           end
-          Functions.context = target_context
-          return Functions.send(func_name, *args)
+          @functions.context = target_context
+          return @functions.send(func_name, *args)
         when :group
           sub_expression = path_stack.shift
           result = expr(sub_expression, nodeset, context)
@@ -716,11 +717,11 @@ module REXML
       when true, false
         b
       when 'true', 'false'
-        Functions::boolean( b )
+        @functions.boolean( b )
       when /^\d+(\.\d+)?$/, Numeric
-        Functions::number( b )
+        @functions.number( b )
       else
-        Functions::string( b )
+        @functions.string( b )
       end
     end
 
@@ -732,8 +733,8 @@ module REXML
         # result of performing the comparison on the string-values of
         # the two nodes is true.
         set1.product(set2).any? do |node1, node2|
-          node_string1 = Functions.string(node1)
-          node_string2 = Functions.string(node2)
+          node_string1 = @functions.string(node1)
+          node_string2 = @functions.string(node2)
           compare(node_string1, op, node_string2)
         end
       elsif set1.kind_of? Array or set2.kind_of? Array
@@ -754,21 +755,21 @@ module REXML
         case b
         when true, false
           a.any? do |node|
-            compare(Functions.boolean(node), op, b)
+            compare(@functions.boolean(node), op, b)
           end
         when Numeric
           a.any? do |node|
-            compare(Functions.number(node), op, b)
+            compare(@functions.number(node), op, b)
           end
         when /\A\d+(\.\d+)?\z/
-          b = Functions.number(b)
+          b = @functions.number(b)
           a.any? do |node|
-            compare(Functions.number(node), op, b)
+            compare(@functions.number(node), op, b)
           end
         else
-          b = Functions::string(b)
+          b = @functions.string(b)
           a.any? do |node|
-            compare(Functions::string(node), op, b)
+            compare(@functions.string(node), op, b)
           end
         end
       else
@@ -802,18 +803,18 @@ module REXML
       case operator
       when :eq, :neq
         if a_type == :boolean or b_type == :boolean
-          a = Functions.boolean(a) unless a_type == :boolean
-          b = Functions.boolean(b) unless b_type == :boolean
+          a = @functions.boolean(a) unless a_type == :boolean
+          b = @functions.boolean(b) unless b_type == :boolean
         elsif a_type == :number or b_type == :number
-          a = Functions.number(a) unless a_type == :number
-          b = Functions.number(b) unless b_type == :number
+          a = @functions.number(a) unless a_type == :number
+          b = @functions.number(b) unless b_type == :number
         else
-          a = Functions.string(a) unless a_type == :string
-          b = Functions.string(b) unless b_type == :string
+          a = @functions.string(a) unless a_type == :string
+          b = @functions.string(b) unless b_type == :string
         end
       when :lt, :lteq, :gt, :gteq
-        a = Functions.number(a) unless a_type == :number
-        b = Functions.number(b) unless b_type == :number
+        a = @functions.number(a) unless a_type == :number
+        b = @functions.number(b) unless b_type == :number
       else
         message = "[BUG] Unexpected compare operator: " +
           "<#{operator.inspect}>: <#{a.inspect}>: <#{b.inspect}>"

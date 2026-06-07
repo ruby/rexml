@@ -7,11 +7,14 @@ module REXML
   # (2) all method calls from XML will have "-" replaced with "_".
   # Therefore, in XML, "local-name()" is identical (and actually becomes)
   # "local_name()"
-  module Functions
+  class FunctionsClass
     @@available_functions = {}
-    @@context = nil
-    @@namespace_context = {}
-    @@variables = {}
+
+    def initialize
+      @context = nil
+      @namespace_context = {}
+      @variables = {}
+    end
 
     INTERNAL_METHODS = [
       :namespace_context,
@@ -23,54 +26,54 @@ module REXML
       :send,
     ]
     class << self
-      def singleton_method_added(name)
+      def method_added(name)
         unless INTERNAL_METHODS.include?(name)
           @@available_functions[name] = true
         end
       end
     end
 
-    def Functions::namespace_context=(x) ; @@namespace_context=x ; end
-    def Functions::variables=(x) ; @@variables=x ; end
-    def Functions::namespace_context ; @@namespace_context ; end
-    def Functions::variables ; @@variables ; end
+    def namespace_context=(x) ; @namespace_context=x ; end
+    def variables=(x) ; @variables=x ; end
+    def namespace_context ; @namespace_context ; end
+    def variables ; @variables ; end
 
-    def Functions::context=(value); @@context = value; end
+    def context=(value); @context = value; end
 
     # Returns the last node of the given list of nodes.
-    def Functions::last( )
-      @@context[:size]
+    def last( )
+      @context[:size]
     end
 
-    def Functions::position( )
-      @@context[:position]
+    def position( )
+      @context[:position]
     end
 
     # Returns the size of the given list of nodes.
-    def Functions::count( node_set )
+    def count( node_set )
       node_set.size
     end
 
     # Since REXML is non-validating, this method is not implemented as it
     # requires a DTD
-    def Functions::id( object )
+    def id( object )
     end
 
-    def Functions::local_name(node_set=nil)
+    def local_name(node_set=nil)
       get_namespace(node_set) do |node|
         return node.local_name
       end
       ""
     end
 
-    def Functions::namespace_uri( node_set=nil )
+    def namespace_uri( node_set=nil )
       get_namespace( node_set ) do |node|
         return node.namespace
       end
       ""
     end
 
-    def Functions::name( node_set=nil )
+    def name( node_set=nil )
       get_namespace( node_set ) do |node|
         return node.expanded_name
       end
@@ -78,9 +81,9 @@ module REXML
     end
 
     # Helper method.
-    def Functions::get_namespace( node_set = nil )
+    def get_namespace( node_set = nil )
       if node_set == nil
-        yield @@context[:node] if @@context[:node].respond_to?(:namespace)
+        yield @context[:node] if @context[:node].respond_to?(:namespace)
       else
         if node_set.respond_to? :each
           result = []
@@ -129,7 +132,7 @@ module REXML
     #
     # An object of a type other than the four basic types is converted to a
     # string in a way that is dependent on that type.
-    def Functions::string( object=@@context[:node] )
+    def string( object=@context[:node] )
       if object.respond_to?(:node_type)
         case object.node_type
         when :attribute
@@ -169,7 +172,7 @@ module REXML
     # of each of the children of the node in the
     # node-set that is first in document order.
     # If the node-set is empty, an empty string is returned.
-    def Functions::string_value( o )
+    def string_value( o )
       rv = ""
       o.children.each { |e|
         if e.node_type == :text
@@ -181,7 +184,7 @@ module REXML
       rv
     end
 
-    def Functions::concat( *objects )
+    def concat( *objects )
       concatenated = ""
       objects.each do |object|
         concatenated << string(object)
@@ -190,17 +193,17 @@ module REXML
     end
 
     # Fixed by Mike Stok
-    def Functions::starts_with( string, test )
+    def starts_with( string, test )
       string(string).index(string(test)) == 0
     end
 
     # Fixed by Mike Stok
-    def Functions::contains( string, test )
+    def contains( string, test )
       string(string).include?(string(test))
     end
 
     # Kouhei fixed this
-    def Functions::substring_before( string, test )
+    def substring_before( string, test )
       ruby_string = string(string)
       ruby_index = ruby_string.index(string(test))
       if ruby_index.nil?
@@ -211,7 +214,7 @@ module REXML
     end
 
     # Kouhei fixed this too
-    def Functions::substring_after( string, test )
+    def substring_after( string, test )
       ruby_string = string(string)
       return $1 if ruby_string =~ /#{test}(.*)/
       ""
@@ -219,7 +222,7 @@ module REXML
 
     # Take equal portions of Mike Stok and Sean Russell; mix
     # vigorously, and pour into a tall, chilled glass.  Serves 10,000.
-    def Functions::substring( string, start, length=nil )
+    def substring( string, start, length=nil )
       ruby_string = string(string)
       ruby_length = if length.nil?
                       ruby_string.length.to_f
@@ -252,16 +255,16 @@ module REXML
     end
 
     # UNTESTED
-    def Functions::string_length( string )
+    def string_length( string )
       string(string).length
     end
 
-    def Functions::normalize_space( object=@@context[:node] )
+    def normalize_space( object=@context[:node] )
       string(object).strip.gsub(/\s+/um, ' ')
     end
 
     # This is entirely Mike Stok's beast
-    def Functions::translate( string, tr1, tr2 )
+    def translate( string, tr1, tr2 )
       from = string(tr1)
       to = string(tr2)
 
@@ -303,7 +306,7 @@ module REXML
       end
     end
 
-    def Functions::boolean(object=@@context[:node])
+    def boolean(object=@context[:node])
       case object
       when true, false
         object
@@ -323,24 +326,24 @@ module REXML
     end
 
     # UNTESTED
-    def Functions::not( object )
+    def not( object )
       not boolean( object )
     end
 
     # UNTESTED
-    def Functions::true( )
+    def true( )
       true
     end
 
     # UNTESTED
-    def Functions::false(  )
+    def false(  )
       false
     end
 
     # UNTESTED
-    def Functions::lang( language )
+    def lang( language )
       lang = false
-      node = @@context[:node]
+      node = @context[:node]
       attr = nil
       until node.nil?
         if node.node_type == :element
@@ -356,7 +359,7 @@ module REXML
       lang
     end
 
-    def Functions::compare_language lang1, lang2
+    def compare_language lang1, lang2
       lang2.downcase.index(lang1.downcase) == 0
     end
 
@@ -373,7 +376,7 @@ module REXML
     #
     # an object of a type other than the four basic types is converted to a
     # number in a way that is dependent on that type
-    def Functions::number(object=@@context[:node])
+    def number(object=@context[:node])
       case object
       when true
         Float(1)
@@ -394,20 +397,20 @@ module REXML
       end
     end
 
-    def Functions::sum( nodes )
+    def sum( nodes )
       nodes = [nodes] unless nodes.kind_of? Array
       nodes.inject(0) { |r,n| r + number(string(n)) }
     end
 
-    def Functions::floor( number )
+    def floor( number )
       number(number).floor
     end
 
-    def Functions::ceiling( number )
+    def ceiling( number )
       number(number).ceil
     end
 
-    def Functions::round( number )
+    def round( number )
       number = number(number)
       begin
         neg = number.negative?
@@ -418,14 +421,19 @@ module REXML
       end
     end
 
-    def Functions::send(name, *args)
+    def send(name, *args)
       if @@available_functions[name.to_sym]
         super
       else
         # TODO: Maybe, this is not XPath spec behavior.
         # This behavior must be reconsidered.
-        XPath.match(@@context[:node], name.to_s)
+        XPath.match(@context[:node], name.to_s)
       end
     end
   end
+
+  # Using this singleton instance may cause thread-safety issues
+  # especially when accessing variables, context and namespace_context.
+  # Consider instantiating your own FunctionsClass object.
+  Functions = FunctionsClass.new
 end
