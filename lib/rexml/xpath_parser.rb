@@ -262,7 +262,7 @@ module REXML
             nodesets
           end
         when :ancestor
-          nodeset = step(path_stack, order: :reverse) do
+          nodeset = step(path_stack, axis_order: :reverse) do
             nodesets = []
             # new_nodes = {}
             nodeset.each do |node|
@@ -280,7 +280,7 @@ module REXML
             nodesets
           end
         when :ancestor_or_self
-          nodeset = step(path_stack, order: :reverse) do
+          nodeset = step(path_stack, axis_order: :reverse) do
             nodesets = []
             # new_nodes = {}
             nodeset.each do |node|
@@ -325,7 +325,7 @@ module REXML
             nodesets
           end
         when :preceding_sibling
-          nodeset = step(path_stack, order: :reverse) do
+          nodeset = step(path_stack, axis_order: :reverse) do
             nodesets = []
             nodeset.each do |node|
               raw_node = node.raw_node
@@ -342,7 +342,7 @@ module REXML
             nodesets
           end
         when :preceding
-          nodeset = step(path_stack, order: :reverse) do
+          nodeset = step(path_stack, axis_order: :reverse) do
             unnode(nodeset) do |node|
               preceding(node)
             end
@@ -460,7 +460,7 @@ module REXML
       leave(:expr, path_stack, nodeset) if @debug
     end
 
-    def step(path_stack, any_type: :element, order: :forward)
+    def step(path_stack, any_type: :element, axis_order: :forward)
       nodesets = yield
       begin
         enter(:step, path_stack, nodesets) if @debug
@@ -471,7 +471,7 @@ module REXML
           nodesets = evaluate_predicate(predicate_expression, nodesets)
         end
         if nodesets.size == 1
-          ordered_nodeset = order == :forward ? nodesets.first : nodesets.first.reverse
+          ordered_nodeset = axis_order == :forward ? nodesets.first : nodesets.first.reverse
         else
           seen = {}.compare_by_identity
           raw_nodes = []
