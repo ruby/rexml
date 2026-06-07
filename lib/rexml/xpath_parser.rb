@@ -659,35 +659,48 @@ module REXML
       trace(:leave, tag, *args)
     end
 
-    # Reorders an array of nodes so that they are in document order
-    # It tries to do this efficiently.
-    #
-    # FIXME: I need to get rid of this, but the issue is that most of the XPath
-    # interpreter functions as a filter, which means that we lose context going
-    # in and out of function calls.  If I knew what the index of the nodes was,
-    # I wouldn't have to do this.  Maybe add a document IDX for each node?
-    # Problems with mutable documents.  Or, rewrite everything.
+    # Reorders an array of nodes so that they are in document order.
+    # Assigns each node in the relevant subtree(s) an integer document-order
+    # position via a single depth-first search (DFS) pass, then sorts the
+    # input by those positions.
     def sort(array_of_nodes, order)
-      new_arry = []
-      array_of_nodes.each { |node|
-        node_idx = []
-        np = node.node_type == :attribute ? node.element : node
-        while np.parent and np.parent.node_type == :element
-          node_idx << np.parent.index( np )
-          np = np.parent
+      return array_of_nodes if array_of_nodes.size <= 1
+
+      positions = document_order_positions(array_of_nodes)
+      if order == :forward
+        array_of_nodes.sort_by { |node| positions[sort_anchor(node)] }
+      else
+        array_of_nodes.sort_by { |node| -positions[sort_anchor(node)] }
+      end
+    end
+
+    def sort_anchor(node)
+      node.node_type == :attribute ? node.element : node
+    end
+
+    def document_order_positions(nodes)
+      positions = {}.compare_by_identity
+      visited_roots = {}.compare_by_identity
+      counter = 0
+      nodes.each do |node|
+        anchor = sort_anchor(node)
+        root = anchor
+        while (parent = root.parent)
+          root = parent
         end
-        new_arry << [ node_idx.reverse, node ]
-      }
-      ordered = new_arry.sort_by do |index, node|
-        if order == :forward
-          index
-        else
-          index.map(&:-@)
+        next if visited_roots.key?(root)
+        visited_roots[root] = true
+        stack = [root]
+        until stack.empty?
+          current = stack.pop
+          positions[current] = (counter += 1)
+          type = current.node_type
+          if type == :element or type == :document
+            current.children.reverse_each { |child| stack.push(child) }
+          end
         end
       end
-      ordered.collect do |_index, node|
-        node
-      end
+      positions
     end
 
     def descendant(nodeset, include_self)

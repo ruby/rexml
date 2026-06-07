@@ -951,6 +951,35 @@ module REXMLTests
       1.upto(4) {|x| assert_equal( x.to_s, cs[x-1].attributes['id'] ) }
     end
 
+    def test_attribute_axis_document_order_across_elements
+      # When the attribute axis is applied to multiple input elements, the
+      # resulting attributes must be ordered by the document position of their
+      # owning elements.
+      doc = Document.new('<root><a id="1"/><a id="2"/><a id="3"/></root>')
+      attrs = XPath.match(doc, "//a/@id")
+      assert_equal(["1", "2", "3"], attrs.map(&:value))
+    end
+
+    def test_mixed_text_and_element_children_document_order
+      # When sort merges per-input nodesets containing mixed text and element
+      # children, document order must be preserved across the boundary.
+      source = <<-XML
+<root>
+  <a>t0<b id="0"/>u0</a>
+  <a>t1<b id="1"/>u1</a>
+</root>
+      XML
+      doc = Document.new(source)
+      nodes = XPath.match(doc, "//a/node()")
+      values = nodes.map do |node|
+        case node
+        when Element then "b##{node.attributes['id']}"
+        else node.value
+        end
+      end
+      assert_equal(["t0", "b#0", "u0", "t1", "b#1", "u1"], values)
+    end
+
     def test_and
       d = Document.new %q{<doc><route run='*' title='HNO'
       destination='debian_production1' date='*' edition='*'
