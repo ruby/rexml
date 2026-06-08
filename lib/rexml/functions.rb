@@ -419,10 +419,6 @@ module REXML
       end
     end
 
-    def Functions::processing_instruction( node )
-      node.node_type == :processing_instruction
-    end
-
     def Functions::send(name, *args)
       if @@available_functions[name.to_sym]
         super
