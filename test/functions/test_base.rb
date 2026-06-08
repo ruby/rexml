@@ -242,13 +242,18 @@ Coffee beans
 </c><d>        Dessert
  \t\t    after    dinner</d></a>
       XML
-      normalized_texts = REXML::XPath.each(REXML::Document.new(source), "normalize-space(//text())").to_a
-      assert_equal([
-                     "breakfast boosts concentration",
-                     "Coffee beans aroma",
-                     "Dessert after dinner",
-                   ],
-                   normalized_texts)
+      doc = REXML::Document.new(source)
+      # First node should be used for normalize-space, and the rest should be ignored.
+      assert_equal(["breakfast boosts concentration"], REXML::XPath.match(doc, "normalize-space(//text())"))
+      assert_equal(["Coffee beans aroma"], REXML::XPath.match(doc, "normalize-space(//c/text())"))
+      assert_equal(["Dessert after dinner"], REXML::XPath.match(doc, "normalize-space(//d/text())"))
+    end
+
+    def test_normalize_space_without_argument
+      source = "<root><item> foo </item><item> bar </item><item> baz </item></root>"
+      doc = REXML::Document.new(source)
+      match = REXML::XPath.match(doc, "//item[normalize-space()='bar']")
+      assert_equal([" bar "], match.map(&:text))
     end
 
     def test_string_nil_without_context
