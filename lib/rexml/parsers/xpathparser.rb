@@ -103,14 +103,16 @@ module REXML
             component << ']'
           when :document
             components << ""
-          when :function
-            component << parsed.shift
-            component << "( "
-            component << predicate_to_path(parsed.shift[0]) {|x| abbreviate(x)}
-            component << " )"
-          when :literal
-            component << quote_literal(parsed.shift)
+          when :function, :literal, :group, :neg, :and, :or, :mult, :plus, :minus, :neq, :eq, :lt, :gt, :lteq, :gteq, :div, :mod, :union
+            component = ''
+            components << component
+            parsed.unshift(op)
+            component << predicate_to_path(parsed) {|x| abbreviate(x)}
           else
+            unless component
+              component = ''
+              components << component
+            end
             component << "UNKNOWN("
             component << op.inspect
             component << ")"
@@ -188,6 +190,12 @@ module REXML
             op = "!="
           when :union
             op = "|"
+          when :plus
+            op = "+"
+          when :minus
+            op = "-"
+          when :mult
+            op = "*"
           end
           left = predicate_to_path( parsed.shift, &block )
           right = predicate_to_path( parsed.shift, &block )
@@ -196,6 +204,10 @@ module REXML
           path << op.to_s
           path << " "
           path << right
+        when :neg
+          parsed.shift
+          path << "-"
+          path << predicate_to_path( parsed, &block )
         when :function
           parsed.shift
           name = parsed.shift
@@ -209,6 +221,11 @@ module REXML
         when :literal
           parsed.shift
           path << quote_literal(parsed.shift)
+        when :group
+          parsed.shift
+          path << "("
+          path << yield(parsed.shift)
+          path << ")"
         else
           path << yield( parsed )
         end

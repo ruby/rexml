@@ -16,6 +16,56 @@ module REXMLTests
                      abbreviate("/"))
       end
 
+      def test_raw_literal
+        assert_equal("1",
+                     abbreviate("1"))
+      end
+
+      def test_unary_operator
+        assert_equal("-1",
+                     abbreviate("-1"))
+        assert_equal("/a[-/b]",
+                     abbreviate("/a[-/b]"))
+      end
+
+      def test_binary_operator
+        assert_equal("1 * 2 + 3 - 4",
+                     abbreviate("1 * 2 + 3 - 4"))
+        assert_equal("/a | /b",
+                     abbreviate("/a | /b"))
+        assert_equal("/a[1 + /b * 2]",
+                     abbreviate("/a[1 + /b * 2]"))
+      end
+
+      def test_operand_with_path
+        assert_equal("/a/b + 1",
+                     abbreviate("/a/b + 1"))
+      end
+
+      def test_paren
+        assert_equal("(1 + 2) * 3",
+                     abbreviate("(1 + 2) * 3"))
+      end
+
+      def test_predicate_paren
+        assert_equal("/a[(b + c) * d]",
+                      abbreviate("/a[(b + c) * d]"))
+      end
+
+      def test_path_paren
+        assert_equal("(a/b)[2]",
+                     abbreviate("(a/b)[2]"))
+      end
+
+      def test_unknown_not_infinitely_recursing
+        assert_instance_of(String, abbreviate([:unknown]))
+      end
+
+      def test_function
+        assert_equal("string-length(a/b[last()])",
+                     abbreviate("string-length(a/b[last()])"))
+      end
+
       def test_descendant_or_self_only
         assert_equal("//",
                      abbreviate("/descendant-or-self::node()/"))
