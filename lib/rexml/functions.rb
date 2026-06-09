@@ -74,13 +74,17 @@ module REXML
     end
 
     def Functions::namespace_uri( node_set=nil )
-      get_namespace( node_set ) {|node| node.namespace}
+      get_namespace( node_set ) do |node|
+        return node.namespace
+      end
+      ""
     end
 
     def Functions::name( node_set=nil )
       get_namespace( node_set ) do |node|
-        node.expanded_name
+        return node.expanded_name
       end
+      ""
     end
 
     # Helper method.
