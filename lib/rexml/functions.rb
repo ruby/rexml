@@ -53,7 +53,7 @@ module REXML
     end
 
     def Functions::position( )
-      @@context[:index]
+      @@context[:position]
     end
 
     # Returns the size of the given list of nodes.

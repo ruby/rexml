@@ -151,11 +151,11 @@ module REXML
 
 
     def match(path_stack, node)
-      nodeset = [XPathNode.new(node, position: 1)]
+      nodeset = [node]
       result = expr(path_stack, nodeset)
       case result
       when Array # nodeset
-        unnode(result).uniq
+        result.uniq
       else
         [result]
       end
@@ -195,8 +195,7 @@ module REXML
         op = path_stack.shift
         case op
         when :document
-          first_raw_node = nodeset.first.raw_node
-          nodeset = [XPathNode.new(first_raw_node.root_node, position: 1)]
+          nodeset = [nodeset.first.root_node]
         when :self
           nodeset = step(path_stack) do
             [nodeset]
@@ -210,17 +209,12 @@ module REXML
           return path_stack.shift
         when :attribute
           nodeset = step(path_stack, any_type: :attribute) do
-            nodesets = []
-            nodeset.each do |node|
-              raw_node = node.raw_node
-              next unless raw_node.node_type == :element
-              attributes = raw_node.attributes
+            nodeset.map do |node|
+              next unless node.node_type == :element
+              attributes = node.attributes
               next if attributes.empty?
-              nodesets << attributes.each_attribute.collect.with_index do |attribute, i|
-                XPathNode.new(attribute, position: i + 1)
-              end
-            end
-            nodesets
+              attributes.each_attribute.to_a
+            end.compact
           end
         when :namespace
           warn 'Namespace axis is not supported in REXML::XPathParser', uplevel: 1
@@ -230,13 +224,12 @@ module REXML
           nodeset = step(path_stack) do
             nodesets = []
             nodeset.each do |node|
-              raw_node = node.raw_node
-              if raw_node.node_type == :attribute
-                parent = raw_node.element
+              if node.node_type == :attribute
+                parent = node.element
               else
-                parent = raw_node.parent
+                parent = node.parent
               end
-              nodesets << [XPathNode.new(parent, position: 1)] if parent
+              nodesets << [parent] if parent
             end
             nodesets
           end
@@ -245,13 +238,11 @@ module REXML
             nodesets = []
             # new_nodes = {}
             nodeset.each do |node|
-              raw_node = node.raw_node
               new_nodeset = []
-              while raw_node.parent
-                raw_node = raw_node.parent
+              while node.parent
+                node = node.parent
                 # next if new_nodes.key?(node)
-                new_nodeset << XPathNode.new(raw_node,
-                                             position: new_nodeset.size + 1)
+                new_nodeset << node
                 # new_nodes[node] = true
               end
               nodesets << new_nodeset unless new_nodeset.empty?
@@ -263,15 +254,13 @@ module REXML
             nodesets = []
             # new_nodes = {}
             nodeset.each do |node|
-              raw_node = node.raw_node
-              next unless raw_node.node_type == :element
-              new_nodeset = [XPathNode.new(raw_node, position: 1)]
+              next unless node.node_type == :element
+              new_nodeset = [node]
               # new_nodes[node] = true
-              while raw_node.parent
-                raw_node = raw_node.parent
+              while node.parent
+                node = node.parent
                 # next if new_nodes.key?(node)
-                new_nodeset << XPathNode.new(raw_node,
-                                             position: new_nodeset.size + 1)
+                new_nodeset << node
                 # new_nodes[node] = true
               end
               nodesets << new_nodeset unless new_nodeset.empty?
@@ -288,47 +277,37 @@ module REXML
           end
         when :following_sibling
           nodeset = step(path_stack) do
-            nodesets = []
-            nodeset.each do |node|
-              raw_node = node.raw_node
-              next unless raw_node.respond_to?(:parent)
-              next if raw_node.parent.nil?
-              all_siblings = raw_node.parent.children
-              current_index = all_siblings.index(raw_node)
+            nodeset.map do |node|
+              next unless node.respond_to?(:parent)
+              next if node.parent.nil?
+              all_siblings = node.parent.children
+              current_index = all_siblings.index(node)
               following_siblings = all_siblings[(current_index + 1)..-1]
               next if following_siblings.empty?
-              nodesets << following_siblings.collect.with_index do |sibling, i|
-                XPathNode.new(sibling, position: i + 1)
-              end
-            end
-            nodesets
+              following_siblings
+            end.compact
           end
         when :preceding_sibling
           nodeset = step(path_stack, axis_order: :reverse) do
-            nodesets = []
-            nodeset.each do |node|
-              raw_node = node.raw_node
-              next unless raw_node.respond_to?(:parent)
-              next if raw_node.parent.nil?
-              all_siblings = raw_node.parent.children
-              current_index = all_siblings.index(raw_node)
+            nodeset.map do |node|
+              next unless node.respond_to?(:parent)
+              next if node.parent.nil?
+              all_siblings = node.parent.children
+              current_index = all_siblings.index(node)
               preceding_siblings = all_siblings[0, current_index].reverse
               next if preceding_siblings.empty?
-              nodesets << preceding_siblings.collect.with_index do |sibling, i|
-                XPathNode.new(sibling, position: i + 1)
-              end
-            end
-            nodesets
+              preceding_siblings
+            end.compact
           end
         when :preceding
           nodeset = step(path_stack, axis_order: :reverse) do
-            unnode(nodeset) do |node|
+            nodeset.map do |node|
               preceding(node)
             end
           end
         when :following
           nodeset = step(path_stack) do
-            unnode(nodeset) do |node|
+            nodeset.map do |node|
               following(node)
             end
           end
@@ -358,8 +337,6 @@ module REXML
         when :div, :mod, :mult, :plus, :minus
           left = expr(path_stack.shift, nodeset, context)
           right = expr(path_stack.shift, nodeset, context)
-          left = unnode(left) if left.is_a?(Array)
-          right = unnode(right) if right.is_a?(Array)
           left = Functions::number(left)
           right = Functions::number(right)
           case op
@@ -379,12 +356,9 @@ module REXML
         when :union
           left = expr( path_stack.shift, nodeset, context )
           right = expr( path_stack.shift, nodeset, context )
-          left = unnode(left) if left.is_a?(Array)
-          right = unnode(right) if right.is_a?(Array)
           return (left | right)
         when :neg
           res = expr( path_stack, nodeset, context )
-          res = unnode(res) if res.is_a?(Array)
           return -Functions.number(res)
         when :not
         when :function
@@ -403,17 +377,11 @@ module REXML
             target_context = context
           else
             target_context = {:size => nodeset.size}
-            if node.is_a?(XPathNode)
-              target_context[:node]  = node.raw_node
-              target_context[:index] = node.position
-            else
-              target_context[:node]  = node
-              target_context[:index] = 1
-            end
+            target_context[:node]  = node
+            target_context[:position] = 1
           end
           args = arguments.dclone.collect do |arg|
             result = expr(arg, nodeset, target_context)
-            result = unnode(result) if result.is_a?(Array)
             result
           end
           Functions.context = target_context
@@ -450,23 +418,15 @@ module REXML
           nodesets = evaluate_predicate(predicate_expression, nodesets)
         end
         if nodesets.size == 1
-          ordered_nodeset = axis_order == :forward ? nodesets.first : nodesets.first.reverse
+          new_nodeset = axis_order == :forward ? nodesets.first : nodesets.first.reverse
         else
-          seen = {}.compare_by_identity
-          raw_nodes = []
+          nodes = Set.new.compare_by_identity
           nodesets.each do |nodeset|
             nodeset.each do |node|
-              raw_node = node.respond_to?(:raw_node) ? node.raw_node : node
-              next if seen.key?(raw_node)
-              seen[raw_node] = true
-              raw_nodes << raw_node
+              nodes << node
             end
           end
-          ordered_nodeset = sort(raw_nodes)
-        end
-        new_nodeset = []
-        ordered_nodeset.each do |node|
-          new_nodeset << XPathNode.new(node, position: new_nodeset.size + 1)
+          new_nodeset = sort(nodes.to_a)
         end
         new_nodeset
       ensure
@@ -482,28 +442,27 @@ module REXML
         prefix = path_stack.shift
         name = path_stack.shift
         new_nodesets = nodesets.collect do |nodeset|
-          filter_nodeset(nodeset) do |node|
-            raw_node = node.raw_node
-            case raw_node.node_type
+          nodeset.select do |node|
+            case node.node_type
             when :element
               if prefix.nil?
-                raw_node.name == name
+                node.name == name
               elsif prefix.empty?
                 if strict?
-                  raw_node.name == name and raw_node.namespace == ""
+                  node.name == name and node.namespace == ""
                 else
-                  raw_node.name == name and raw_node.namespace == get_namespace(raw_node, prefix)
+                  node.name == name and node.namespace == get_namespace(node, prefix)
                 end
               else
-                raw_node.name == name and raw_node.namespace == get_namespace(raw_node, prefix)
+                node.name == name and node.namespace == get_namespace(node, prefix)
               end
             when :attribute
               if prefix.nil?
-                raw_node.name == name
+                node.name == name
               elsif prefix.empty?
-                raw_node.name == name and raw_node.namespace == ""
+                node.name == name and node.namespace == ""
               else
-                raw_node.name == name and raw_node.namespace == get_namespace(raw_node.element, prefix)
+                node.name == name and node.namespace == get_namespace(node.element, prefix)
               end
             else
               false
@@ -513,15 +472,14 @@ module REXML
       when :namespace
         prefix = path_stack.shift
         new_nodesets = nodesets.collect do |nodeset|
-          filter_nodeset(nodeset) do |node|
-            raw_node = node.raw_node
-            case raw_node.node_type
+          nodeset.select do |node|
+            case node.node_type
             when :element
-              namespaces = @namespaces || raw_node.namespaces
-              raw_node.namespace == namespaces[prefix]
+              namespaces = @namespaces || node.namespaces
+              node.namespace == namespaces[prefix]
             when :attribute
-              namespaces = @namespaces || raw_node.element.namespaces
-              raw_node.namespace == namespaces[prefix]
+              namespaces = @namespaces || node.element.namespaces
+              node.namespace == namespaces[prefix]
             else
               false
             end
@@ -529,40 +487,32 @@ module REXML
         end
       when :any
         new_nodesets = nodesets.collect do |nodeset|
-          filter_nodeset(nodeset) do |node|
-            raw_node = node.raw_node
-            raw_node.node_type == any_type
+          nodeset.select do |node|
+            node.node_type == any_type
           end
         end
       when :comment
         new_nodesets = nodesets.collect do |nodeset|
-          filter_nodeset(nodeset) do |node|
-            raw_node = node.raw_node
-            raw_node.node_type == :comment
+          nodeset.select do |node|
+            node.node_type == :comment
           end
         end
       when :text
         new_nodesets = nodesets.collect do |nodeset|
-          filter_nodeset(nodeset) do |node|
-            raw_node = node.raw_node
-            raw_node.node_type == :text
+          nodeset.select do |node|
+            node.node_type == :text
           end
         end
       when :processing_instruction
         target = path_stack.shift
         new_nodesets = nodesets.collect do |nodeset|
-          filter_nodeset(nodeset) do |node|
-            raw_node = node.raw_node
-            (raw_node.node_type == :processing_instruction) and
-              (target.empty? or (raw_node.target == target))
+          nodeset.select do |node|
+            (node.node_type == :processing_instruction) and
+              (target.empty? or (node.target == target))
           end
         end
       when :node
-        new_nodesets = nodesets.collect do |nodeset|
-          filter_nodeset(nodeset) do |node|
-            true
-          end
-        end
+        new_nodesets = nodesets
       else
         message = "[BUG] Unexpected node test: " +
           "<#{operator.inspect}>: <#{path_stack.inspect}>"
@@ -573,44 +523,30 @@ module REXML
       leave(:node_test, path_stack, new_nodesets) if @debug
     end
 
-    def filter_nodeset(nodeset)
-      new_nodeset = []
-      nodeset.each do |node|
-        next unless yield(node)
-        new_nodeset << XPathNode.new(node, position: new_nodeset.size + 1)
-      end
-      new_nodeset
-    end
-
     def evaluate_predicate(expression, nodesets)
       enter(:predicate, expression, nodesets) if @debug
       new_nodesets = nodesets.collect do |nodeset|
         new_nodeset = []
         subcontext = { :size => nodeset.size }
-        nodeset.each_with_index do |node, index|
-          if node.is_a?(XPathNode)
-            subcontext[:node] = node.raw_node
-            subcontext[:index] = node.position
-          else
-            subcontext[:node] = node
-            subcontext[:index] = index + 1
-          end
+        nodeset.each.with_index(1) do |node, position|
+          subcontext[:node] = node
+          subcontext[:position] = position
           result = expr(expression.dclone, [node], subcontext)
           trace(:predicate_evaluate, expression, node, subcontext, result) if @debug
           result = result[0] if result.kind_of? Array and result.length == 1
           if result.kind_of? Numeric
-            if result == node.position
-              new_nodeset << XPathNode.new(node, position: new_nodeset.size + 1)
+            if result == position
+              new_nodeset << node
             end
           elsif result.instance_of? Array
             if result.size > 0 and result.inject(false) {|k,s| s or k}
               if result.size > 0
-                new_nodeset << XPathNode.new(node, position: new_nodeset.size + 1)
+                new_nodeset << node
               end
             end
           else
             if result
-              new_nodeset << XPathNode.new(node, position: new_nodeset.size + 1)
+              new_nodeset << node
             end
           end
         end
@@ -670,22 +606,22 @@ module REXML
       nodeset.each do |node|
         new_nodeset = []
         new_nodes = {}
-        descendant_recursive(node.raw_node, new_nodeset, new_nodes, include_self)
+        descendant_recursive(node, new_nodeset, new_nodes, include_self)
         nodesets << new_nodeset unless new_nodeset.empty?
       end
       nodesets
     end
 
-    def descendant_recursive(raw_node, new_nodeset, new_nodes, include_self)
+    def descendant_recursive(node, new_nodeset, new_nodes, include_self)
       if include_self
-        return if new_nodes.key?(raw_node)
-        new_nodeset << XPathNode.new(raw_node, position: new_nodeset.size + 1)
-        new_nodes[raw_node] = true
+        return if new_nodes.key?(node)
+        new_nodeset << node
+        new_nodes[node] = true
       end
 
-      node_type = raw_node.node_type
+      node_type = node.node_type
       if node_type == :element or node_type == :document
-        raw_node.children.each do |child|
+        node.children.each do |child|
           descendant_recursive(child, new_nodeset, new_nodes, true)
         end
       end
@@ -709,8 +645,7 @@ module REXML
         if ancestors.include?(preceding_node)
           ancestors.delete(preceding_node)
         else
-          precedings << XPathNode.new(preceding_node,
-                                      position: precedings.size + 1)
+          precedings << preceding_node
         end
         preceding_node = preceding_node_of(preceding_node)
       end
@@ -736,8 +671,7 @@ module REXML
       followings = []
       following_node = next_sibling_node(node)
       while following_node
-        followings << XPathNode.new(following_node,
-                                    position: followings.size + 1)
+        followings << following_node
         following_node = following_node_of(following_node)
       end
       followings
@@ -762,22 +696,16 @@ module REXML
     def child(nodeset)
       nodesets = []
       nodeset.each do |node|
-        raw_node = node.raw_node
-        node_type = raw_node.node_type
+        node_type = node.node_type
         # trace(:child, node_type, node)
         case node_type
         when :element
-          nodesets << raw_node.children.collect.with_index do |child_node, i|
-            XPathNode.new(child_node, position: i + 1)
-          end
+          nodesets << node.children
         when :document
-          new_nodeset = []
-          raw_node.children.each do |child|
+          new_nodeset = node.children.reject do |child|
             case child
             when XMLDecl, Text
-              # Ignore
-            else
-              new_nodeset << XPathNode.new(child, position: new_nodeset.size + 1)
+              true # Ignore
             end
           end
           nodesets << new_nodeset unless new_nodeset.empty?
@@ -800,9 +728,6 @@ module REXML
     end
 
     def equality_relational_compare(set1, op, set2)
-      set1 = unnode(set1) if set1.is_a?(Array)
-      set2 = unnode(set2) if set2.is_a?(Array)
-
       if set1.kind_of? Array and set2.kind_of? Array
         # If both objects to be compared are node-sets, then the
         # comparison will be true if and only if there is a node in the
@@ -831,22 +756,22 @@ module REXML
 
         case b
         when true, false
-          each_unnode(a).any? do |unnoded|
-            compare(Functions.boolean(unnoded), op, b)
+          a.any? do |node|
+            compare(Functions.boolean(node), op, b)
           end
         when Numeric
-          each_unnode(a).any? do |unnoded|
-            compare(Functions.number(unnoded), op, b)
+          a.any? do |node|
+            compare(Functions.number(node), op, b)
           end
         when /\A\d+(\.\d+)?\z/
           b = Functions.number(b)
-          each_unnode(a).any? do |unnoded|
-            compare(Functions.number(unnoded), op, b)
+          a.any? do |node|
+            compare(Functions.number(node), op, b)
           end
         else
           b = Functions::string(b)
-          each_unnode(a).any? do |unnoded|
-            compare(Functions::string(unnoded), op, b)
+          a.any? do |node|
+            compare(Functions::string(node), op, b)
           end
         end
       else
@@ -920,42 +845,6 @@ module REXML
           "<#{operator.inspect}>: <#{a.inspect}>: <#{b.inspect}>"
         raise message
       end
-    end
-
-    def each_unnode(nodeset)
-      return to_enum(__method__, nodeset) unless block_given?
-      nodeset.each do |node|
-        if node.is_a?(XPathNode)
-          unnoded = node.raw_node
-        else
-          unnoded = node
-        end
-        yield(unnoded)
-      end
-    end
-
-    def unnode(nodeset)
-      each_unnode(nodeset).collect do |unnoded|
-        unnoded = yield(unnoded) if block_given?
-        unnoded
-      end
-    end
-  end
-
-  # @private
-  class XPathNode
-    attr_reader :raw_node, :context
-    def initialize(node, context=nil)
-      if node.is_a?(XPathNode)
-        @raw_node = node.raw_node
-      else
-        @raw_node = node
-      end
-      @context = context || {}
-    end
-
-    def position
-      @context[:position]
     end
   end
 end
