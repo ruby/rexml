@@ -4,7 +4,6 @@ require_relative 'xmltokens'
 
 module REXML
   class QuickPath
-    include Functions
     include XMLTokens
 
     # A base Hash object to be used when initializing a

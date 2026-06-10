@@ -5,7 +5,6 @@ require_relative 'xpath_parser'
 module REXML
   # Wrapper class.  Use this class to access the XPath functions.
   class XPath
-    include Functions
     # A base Hash object, supposing to be used when initializing a
     # default empty namespaces set, but is currently unused.
     # TODO: either set the namespaces=EMPTY_HASH, or deprecate this.
