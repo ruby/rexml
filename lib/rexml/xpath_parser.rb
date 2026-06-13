@@ -338,15 +338,11 @@ module REXML
     end
 
     # Determines if a predicate expression is dependent on the position of nodes.
-    # nil if the predicate is position-independent,
-    # :simple if the predicate is a simple position query that can be optimized in axis scanning
-    # :complex if the predicate is a complex query that might be dependent on the position of nodes
-    def position_dependency(predicate_expr)
-      # [number], [position()=number], [position() < number], [position() > number]
-      return :simple if position_operation(predicate_expr)
-
-      # expressions that contain position-dependent functions
-      return :complex if calls_position_dependent_function?(predicate_expr)
+    # Returns false if the expression is guaranteed to be position-independent.
+    # Returns true if the expression might be position-dependent.
+    def position_dependent?(predicate_expr)
+      # expressions that contain position-dependent functions are position-dependent.
+      return true if calls_position_dependent_function?(predicate_expr)
 
       # Even if expression is followed by path steps, the analysis of
       # position dependency is the same as the expression itself.
@@ -354,32 +350,31 @@ module REXML
       when :union, :or, :and, :eq, :neq, :lt, :lteq, :gt, :gteq, :not
         # Expressions that don't evaluate to a number are position independent
         # if it doesn't contain position-dependent functions.
-        nil
+        false
       when :div, :mod, :mult, :plus, :minus, :neg
-        # expressions that return number. eg. `[position() = @attr + 1]`
-        :complex
+        # expressions that return number. eg. `[@attr + 1]`
+        true
       when :literal
-        # Integer literal is handled in `position_operation(predicate_expr)`.
-        # We treat this as complex(no-optimization) because this is not a normal case
-        # eg. `/foo["hi"]` `/bar[true]` `/baz[3.14]`
-        :complex
+        # Numeric literal is position dependent. String and boolean literal is useless
+        # and not worth optimizing
+        true
       when :variable
         # A variable could resolve to a number at runtime.
         # It's possible to optimize this by checking the actual value of the variable.
-        :complex
+        true
       when :function
         # functions that return number is position dependent. eg. `[position() = string-length(@attr)]`
-        %w[number ceiling round floor string-length sum count].include?(predicate_expr[1]) ? :complex : nil
+        %w[number ceiling round floor string-length sum count].include?(predicate_expr[1])
       when :group
-        position_dependency(predicate_expr[1])
+        position_dependent?(predicate_expr[1])
       when :descendant, :descendant_or_self, :ancestor, :ancestor_or_self,
            :following, :following_sibling, :preceding, :preceding_sibling,
            :document, :child, :self, :parent, :attribute, :namespace
         # paths are position independent. `foo[path[1]]` doesn't depend on the position of `foo`
-        nil
+        false
       else
-        # Every other unhandled expressions are treated as complex for safety
-        :complex
+        # Every other unhandled expressions are treated position dependent for safety
+        true
       end
     end
 
@@ -563,12 +558,12 @@ module REXML
     # If there are multiple position-based predicates or complex position-based predicates,
     # return [position_independent_predicates, nil, nil, complex_predicates]
     def split_positional_predicates(predicates)
-      pre_independent = predicates.take_while {|predicate| position_dependency(predicate).nil? }
+      pre_independent = predicates.take_while {|predicate| !position_dependent?(predicate) }
       predicates = predicates.drop(pre_independent.size)
       return [pre_independent, nil, [], nil] if predicates.empty?
 
       op = position_operation(predicates.first)
-      if op && predicates[1..-1].all? {|predicate| position_dependency(predicate).nil? }
+      if op && predicates[1..-1].all? {|predicate| !position_dependent?(predicate) }
         [pre_independent, op, predicates[1..-1], nil]
       else
         [pre_independent, nil, nil, predicates]
