@@ -345,16 +345,42 @@ module REXML
       # [number], [position()=number], [position() < number], [position() > number]
       return :simple if position_operation(predicate_expr)
 
-      # expressions that return number.
-      return :complex if %i[div mod mult plus minus neg].include?(predicate_expr[0])
-      return :complex if predicate_expr[0] == :function && %w[number ceiling round floor string-length sum count].include?(predicate_expr[1])
-      # Numeric literal including Integer and Float: [2] means [position() = 2]
-      return :complex if predicate_expr[0] == :literal && Numeric === predicate_expr[1]
-      # A variable could resolve to a number at runtime: [$n] means [position() = $n].
-      return :complex if predicate_expr[0] == :variable
-
       # expressions that contain position-dependent functions
       return :complex if calls_position_dependent_function?(predicate_expr)
+
+      # Even if expression is followed by path steps, the analysis of
+      # position dependency is the same as the expression itself.
+      case predicate_expr[0]
+      when :union, :or, :and, :eq, :neq, :lt, :lteq, :gt, :gteq, :not
+        # Expressions that don't evaluate to a number are position independent
+        # if it doesn't contain position-dependent functions.
+        nil
+      when :div, :mod, :mult, :plus, :minus, :neg
+        # expressions that return number. eg. `[position() = @attr + 1]`
+        :complex
+      when :literal
+        # Integer literal is handled in `position_operation(predicate_expr)`.
+        # We treat this as complex(no-optimization) because this is not a normal case
+        # eg. `/foo["hi"]` `/bar[true]` `/baz[3.14]`
+        :complex
+      when :variable
+        # A variable could resolve to a number at runtime.
+        # It's possible to optimize this by checking the actual value of the variable.
+        :complex
+      when :function
+        # functions that return number is position dependent. eg. `[position() = string-length(@attr)]`
+        %w[number ceiling round floor string-length sum count].include?(predicate_expr[1]) ? :complex : nil
+      when :group
+        position_dependency(predicate_expr[1])
+      when :descendant, :descendant_or_self, :ancestor, :ancestor_or_self,
+           :following, :following_sibling, :preceding, :preceding_sibling,
+           :document, :child, :self, :parent, :attribute, :namespace
+        # paths are position independent. `foo[path[1]]` doesn't depend on the position of `foo`
+        nil
+      else
+        # Every other unhandled expressions are treated as complex for safety
+        :complex
+      end
     end
 
     # Recursively checks if the expression contains position-dependent functions such as position() or last()
@@ -514,15 +540,14 @@ module REXML
         seen.to_a
       else
         operator, value = selector
-        nodes = nodesets.flatten
         nodes =
           case operator
           when :==
             nodesets.map {|nodeset| nodeset[value - 1] if value >= 1 }.compact
           when :<
-            nodesets.map {|nodeset| nodeset[0...value - 1] if value >= 1 }.compact.flatten
+            nodesets.flat_map {|nodeset| nodeset[0...value - 1] if value >= 1 }.compact
           when :>
-            nodesets.map {|nodeset| value < 0 ? nodeset : nodeset[value..-1] }.flatten
+            nodesets.flat_map {|nodeset| value <= 0 ? nodeset : nodeset.drop(value) }
           end
         seen = Set.new.compare_by_identity
         nodes.each {|node| seen << node }
@@ -553,7 +578,7 @@ module REXML
     # Performs an axis scanning step.
     # The caller provides a scanner method and its argument, which determines the axis to scan and the nodes to scan from:
     #   step(path_stack) { [scanner_method, scanner_argument] }
-    # Scanner method are called with `(scanner_argument, tester_block, selector)`
+    # Scanner methods are called with `(scanner_argument, tester_block, selector)`
     # selector is a flag for the scanner to determine how to return the scan result.
     # It can be: `:uniq`, `:nodesets` or `[position_comparator, value]`.
     # `:uniq` means the scanner should return unique nodes. Predicates are position-independent.

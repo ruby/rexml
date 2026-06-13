@@ -103,6 +103,46 @@ module REXMLTests
       assert_equal(["b"], parser.parse("/r/*[$x]", doc).map(&:name))
     end
 
+    def test_predicate_out_of_range_position
+      doc = REXML::Document.new("<r><a/><b/><c/><d/></r>")
+      parser = REXML::XPathParser.new
+      base = '/r/*'
+      assert_equal([], parser.parse("#{base}[-1]", doc).map(&:name))
+      assert_equal([], parser.parse("#{base}[0]", doc).map(&:name))
+      assert_equal([], parser.parse("#{base}[5]", doc).map(&:name))
+      assert_equal([], parser.parse("#{base}[position()>5]", doc).map(&:name))
+      assert_equal([], parser.parse("#{base}[position()<0]", doc).map(&:name))
+      assert_equal([], parser.parse("#{base}[position()<-1]", doc).map(&:name))
+      assert_equal(%w[a b c d], parser.parse("#{base}[position()>0]", doc).map(&:name))
+      assert_equal(%w[a b c d], parser.parse("#{base}[position()>-1]", doc).map(&:name))
+      assert_equal(%w[a b c d], parser.parse("#{base}[position()<10]", doc).map(&:name))
+
+      # non-optimizable case
+      base_no_opt = '/r/*[position()!=name()]'
+      assert_equal([], parser.parse("#{base_no_opt}[-1]", doc).map(&:name))
+      assert_equal([], parser.parse("#{base_no_opt}[0]", doc).map(&:name))
+      assert_equal([], parser.parse("#{base_no_opt}[5]", doc).map(&:name))
+      assert_equal([], parser.parse("#{base_no_opt}[position()>5]", doc).map(&:name))
+      assert_equal([], parser.parse("#{base_no_opt}[position()<0]", doc).map(&:name))
+      assert_equal([], parser.parse("#{base_no_opt}[position()<-1]", doc).map(&:name))
+      assert_equal(%w[a b c d], parser.parse("#{base_no_opt}[position()>0]", doc).map(&:name))
+      assert_equal(%w[a b c d], parser.parse("#{base_no_opt}[position()>-1]", doc).map(&:name))
+      assert_equal(%w[a b c d], parser.parse("#{base_no_opt}[position()<10]", doc).map(&:name))
+    end
+
+    def test_predicate_parenthesized_position
+      doc = REXML::Document.new("<r><a/><b/><c/><d/></r>")
+      parser = REXML::XPathParser.new
+      assert_equal(["b"], parser.parse("/r/*[(2)]", doc).map(&:name))
+    end
+
+    def test_position_dependent_function_predicates
+      doc = REXML::Document.new("<r><a/><b/><c/><d/></r>")
+      parser = REXML::XPathParser.new
+      assert_equal(["b"], parser.parse("/r/*['2'=string(-(0 - position())*1)]", doc).map(&:name))
+      assert_equal(%w[a b c d], parser.parse("/r/*['4'=string(-(0 - last())*1)]", doc).map(&:name))
+    end
+
     def test_get_no_siblings_terminal_nodes
       source = <<-XML
 <a>
