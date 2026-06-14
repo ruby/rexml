@@ -199,118 +199,48 @@ module REXML
           nodeset = [nodeset.first.root_node]
         when :self
           nodeset = step(path_stack) do
-            [nodeset]
+            [:iterate_nodesets, [nodeset]]
           end
         when :child
           nodeset = step(path_stack) do
-            child(nodeset)
+            [:iterate_nodesets, child(nodeset)]
           end
         when :literal
           trace(:literal, path_stack, nodeset) if @debug
           return path_stack.shift
         when :attribute
           nodeset = step(path_stack, any_type: :attribute) do
-            nodeset.map do |node|
+            nodesets = nodeset.map do |node|
               next unless node.node_type == :element
               attributes = node.attributes
               next if attributes.empty?
               attributes.each_attribute.to_a
             end.compact
+            [:iterate_nodesets, nodesets]
           end
         when :namespace
           warn 'Namespace axis is not supported in REXML::XPathParser', uplevel: 1
           # TODO: We need to create NamespaceNode class to support this feature
-          nodeset = step(path_stack) { [] }
+          nodeset = step(path_stack) { [:iterate_nodesets, []] }
         when :parent
           nodeset = step(path_stack) do
-            nodesets = []
+            parents = Set.new.compare_by_identity
             nodeset.each do |node|
               if node.node_type == :attribute
                 parent = node.element
               else
                 parent = node.parent
               end
-              nodesets << [parent] if parent
+              parents << parent if parent
             end
-            nodesets
+            [:iterate_nodesets, parents.map {|parent| [parent] }]
           end
-        when :ancestor
-          nodeset = step(path_stack, axis_order: :reverse) do
-            nodesets = []
-            # new_nodes = {}
-            nodeset.each do |node|
-              new_nodeset = []
-              while node.parent
-                node = node.parent
-                # next if new_nodes.key?(node)
-                new_nodeset << node
-                # new_nodes[node] = true
-              end
-              nodesets << new_nodeset unless new_nodeset.empty?
-            end
-            nodesets
-          end
-        when :ancestor_or_self
-          nodeset = step(path_stack, axis_order: :reverse) do
-            nodesets = []
-            # new_nodes = {}
-            nodeset.each do |node|
-              next unless node.node_type == :element
-              new_nodeset = [node]
-              # new_nodes[node] = true
-              while node.parent
-                node = node.parent
-                # next if new_nodes.key?(node)
-                new_nodeset << node
-                # new_nodes[node] = true
-              end
-              nodesets << new_nodeset unless new_nodeset.empty?
-            end
-            nodesets
-          end
-        when :descendant_or_self
+        when :ancestor, :ancestor_or_self,
+            :descendant, :descendant_or_self,
+            :preceding, :preceding_sibling,
+            :following, :following_sibling
           nodeset = step(path_stack) do
-            descendant(nodeset, true)
-          end
-        when :descendant
-          nodeset = step(path_stack) do
-            descendant(nodeset, false)
-          end
-        when :following_sibling
-          nodeset = step(path_stack) do
-            nodeset.map do |node|
-              next unless node.respond_to?(:parent)
-              next if node.parent.nil?
-              all_siblings = node.parent.children
-              current_index = all_siblings.index(node)
-              following_siblings = all_siblings[(current_index + 1)..-1]
-              next if following_siblings.empty?
-              following_siblings
-            end.compact
-          end
-        when :preceding_sibling
-          nodeset = step(path_stack, axis_order: :reverse) do
-            nodeset.map do |node|
-              next unless node.respond_to?(:parent)
-              next if node.parent.nil?
-              all_siblings = node.parent.children
-              current_index = all_siblings.index(node)
-              preceding_siblings = all_siblings[0, current_index].reverse
-              next if preceding_siblings.empty?
-              preceding_siblings
-            end.compact
-          end
-        when :preceding
-          nodeset = step(path_stack, axis_order: :reverse) do
-            nodeset.map do |node|
-              preceding(node)
-            end
-          end
-        when :following
-          nodeset = step(path_stack) do
-            nodeset.map do |node|
-              following(node)
-            end
+            [op, nodeset]
           end
         when :variable
           var_name = path_stack.shift
@@ -382,8 +312,7 @@ module REXML
             target_context[:position] = 1
           end
           args = arguments.dclone.collect do |arg|
-            result = expr(arg, nodeset, target_context)
-            result
+            expr(arg, nodeset, target_context)
           end
           @functions.context = target_context
           return @functions.send(func_name, *args)
@@ -394,7 +323,7 @@ module REXML
             # If result is a nodeset, apply following predicates
             path_stack.unshift(:node)
             nodeset = step(path_stack) do
-              [result]
+              [:iterate_nodesets, [result]]
             end
           else
             return result
@@ -408,120 +337,372 @@ module REXML
       leave(:expr, path_stack, nodeset) if @debug
     end
 
-    def step(path_stack, any_type: :element, axis_order: :forward)
-      nodesets = yield
-      begin
-        enter(:step, path_stack, nodesets) if @debug
-        nodesets = node_test(path_stack, nodesets, any_type: any_type)
-        while path_stack[0] == :predicate
-          path_stack.shift # :predicate
-          predicate_expression = path_stack.shift.dclone
-          nodesets = evaluate_predicate(predicate_expression, nodesets)
+    # Determines if a predicate expression is dependent on the position of nodes.
+    # Returns false if the expression is guaranteed to be position-independent.
+    # Returns true if the expression might be position-dependent.
+    def position_dependent?(predicate_expr)
+      # expressions that contain position-dependent functions are position-dependent.
+      return true if calls_position_dependent_function?(predicate_expr)
+
+      # Even if expression is followed by path steps, the analysis of
+      # position dependency is the same as the expression itself.
+      case predicate_expr[0]
+      when :union, :or, :and, :eq, :neq, :lt, :lteq, :gt, :gteq, :not
+        # Expressions that don't evaluate to a number are position independent
+        # if it doesn't contain position-dependent functions.
+        false
+      when :div, :mod, :mult, :plus, :minus, :neg
+        # expressions that return number. eg. `[@attr + 1]`
+        true
+      when :literal
+        # Numeric literal is position dependent. String and boolean literal is useless
+        # and not worth optimizing
+        true
+      when :variable
+        # A variable could resolve to a number at runtime.
+        # It's possible to optimize this by checking the actual value of the variable.
+        true
+      when :function
+        # functions that return number is position dependent. eg. `[position() = string-length(@attr)]`
+        %w[number ceiling round floor string-length sum count].include?(predicate_expr[1])
+      when :group
+        position_dependent?(predicate_expr[1])
+      when :descendant, :descendant_or_self, :ancestor, :ancestor_or_self,
+           :following, :following_sibling, :preceding, :preceding_sibling,
+           :document, :child, :self, :parent, :attribute, :namespace
+        # paths are position independent. `foo[path[1]]` doesn't depend on the position of `foo`
+        false
+      else
+        # Every other unhandled expressions are treated position dependent for safety
+        true
+      end
+    end
+
+    # Recursively checks if the expression contains position-dependent functions such as position() or last()
+    def calls_position_dependent_function?(expr)
+      return false unless Array === expr
+      return true if expr[0] == :function && (expr[1] == 'position' || expr[1] == 'last')
+      expr.any? {|part| calls_position_dependent_function?(part) }
+    end
+
+    # Detects simple position-based predicates that can be optimized in axis scanning, such as [1], [position()=1], [position() < 2], [position() > 3]
+    # Returns operators and values such as [:==, 1], [:<, 2], [:>, 3]
+    # Returns nil if the predicate is not a simple position-based predicate
+    def position_operation(predicate_expr)
+      return [:==, predicate_expr[1]] if predicate_expr[0] == :literal && predicate_expr[1].is_a?(Integer)
+
+      op, left, right = predicate_expr
+      return unless op == :eq || op == :lt || op == :lteq || op == :gt || op == :gteq
+      return unless [left, right].include?([:function, 'position', []])
+
+      literal = [left, right].find {|part| part[0] == :literal && part[1].is_a?(Integer) }
+      return unless literal
+
+      value = literal[1]
+      case op
+      when :eq
+        [:==, value]
+      when :lt
+        literal == right ? [:<, value] : [:>, value]
+      when :lteq
+        literal == right ? [:<, value + 1] : [:>, value - 1]
+      when :gt
+        literal == right ? [:>, value]: [:<, value]
+      when :gteq
+        literal == right ? [:>, value - 1] : [:<, value + 1]
+      end
+    end
+
+    # Pseudo scanner for axis scanning step that nodesets are already collected
+    def iterate_nodesets(nodesets, tester, selector)
+      non_optimized_nodesets_select(nodesets, tester, selector)
+    end
+
+    # Scanner for ancestor-or-self axis
+    def ancestor_or_self(nodeset, tester, selector)
+      ancestor(nodeset, tester, selector, include_self: true)
+    end
+
+    # Scanner for preceding-sibling axis
+    def preceding_sibling(nodeset, tester, selector)
+      preceding_following_sibling(nodeset, tester, selector, reverse: true)
+    end
+
+    # Scanner for following-sibling axis
+    def following_sibling(nodeset, tester, selector)
+      preceding_following_sibling(nodeset, tester, selector, reverse: false)
+    end
+
+    def preceding_following_sibling(nodeset, tester, selector, reverse:)
+      nodeset = nodeset.select {|node| node.respond_to?(:parent) && node.parent }
+      case selector
+      when :uniq
+        nodeset.group_by(&:parent).flat_map do |parent, sibling_nodes|
+          sets = Set.new.compare_by_identity
+          sibling_nodes.each {|sibling| sets << sibling }
+          children = parent.children
+          children = children.reverse if reverse
+          children.drop_while {|child| !sets.include?(child) }.drop(1)
+        end.select(&tester)
+      when :nodesets
+        nodesets = nodeset.map do |node|
+          parent = node.parent
+          index = parent.children.index(node)
+          reverse ? parent.children[0...index].reverse : parent.children[index + 1..-1]
         end
-        if nodesets.size == 1
-          new_nodeset = axis_order == :forward ? nodesets.first : nodesets.first.reverse
-        else
-          nodes = Set.new.compare_by_identity
-          nodesets.each do |nodeset|
-            nodeset.each do |node|
-              nodes << node
+        non_optimized_nodesets_select(nodesets, tester, selector)
+      else
+        operator, value = selector
+        nodeset.group_by(&:parent).flat_map do |parent, sibling_nodes|
+          anchors = Set.new.compare_by_identity
+          sibling_nodes.each {|sibling| anchors << sibling }
+          children = parent.children
+          children = children.reverse if reverse
+          followings = children.drop_while {|child| !anchors.include?(child) }.drop(1)
+          anchor_indexes = Set[0]
+          last_anchor = 0
+          index = 0
+          matched = []
+          followings.each do |node|
+            if tester.call(node)
+              case operator
+              when :==
+                # anchor_indexes only contain values smaller or equal to `index`,
+                # so value <= 0 case doesn't accidentally match any node.
+                matched << node if anchor_indexes.include?(index - value + 1)
+              when :<
+                # Position from the last anchor will be the minimum possible position for the node
+                matched << node if index - last_anchor + 1 < value
+              when :>
+                # Position from the first anchor(==0) will be the maximum possible position for the node
+                matched << node if index + 1 > value
+              end
+              index += 1
+            end
+            if anchors.include?(node)
+              anchor_indexes << index
+              last_anchor = index
             end
           end
-          new_nodeset = sort(nodes.to_a)
+          matched
         end
-        new_nodeset
+      end
+    end
+
+    # Scanner for ancestor axis
+    def ancestor(nodeset, tester, selector, include_self: false)
+      nodeset = nodeset.select {|node| node.respond_to?(:parent) && node.parent }
+      case selector
+      when :uniq
+        ancestors = Set.new.compare_by_identity
+        nodeset.each do |node|
+          ancestors << node if include_self
+          parent = node.parent
+          while parent
+            break if ancestors.include?(parent)
+            ancestors << parent
+            parent = parent.parent
+          end
+        end
+        ancestors.select(&tester)
+      else
+        # Slow pass
+        nodesets = nodeset.map do |node|
+          ancestors = []
+          ancestors << node if include_self
+          parent = node.parent
+          while parent
+            ancestors << parent
+            parent = parent.parent
+          end
+          ancestors
+        end
+        non_optimized_nodesets_select(nodesets, tester, selector)
+      end
+    end
+
+    # Scanner fallback step for axis that is not optimized for position-based predicates.
+    def non_optimized_nodesets_select(nodesets, tester, selector)
+      nodesets = nodesets.map do |nodeset|
+        nodeset.select(&tester)
+      end.reject(&:empty?)
+      case selector
+      when :nodesets
+        nodesets
+      when :uniq
+        seen = Set.new.compare_by_identity
+        nodesets.flatten.each {|node| seen << node }
+        seen.to_a
+      else
+        operator, value = selector
+        nodes =
+          case operator
+          when :==
+            nodesets.map {|nodeset| nodeset[value - 1] if value >= 1 }.compact
+          when :<
+            nodesets.flat_map {|nodeset| nodeset[0...value - 1] if value >= 1 }.compact
+          when :>
+            nodesets.flat_map {|nodeset| value <= 0 ? nodeset : nodeset.drop(value) }
+          end
+        seen = Set.new.compare_by_identity
+        nodes.each {|node| seen << node }
+        seen.to_a
+      end
+    end
+
+    # Split predicates into several groups based on their dependency on the position of nodes
+    # If there are no position-based predicates,
+    # return [position_independent_predicates, nil, [], nil]
+    # If there are only one simple position-based predicate,
+    # return [position_independent_predicates, position_operator, post_position_independent_predicates, nil]
+    # If there are multiple position-based predicates or complex position-based predicates,
+    # return [position_independent_predicates, nil, nil, complex_predicates]
+    def split_positional_predicates(predicates)
+      pre_independent = predicates.take_while {|predicate| !position_dependent?(predicate) }
+      predicates = predicates.drop(pre_independent.size)
+      return [pre_independent, nil, [], nil] if predicates.empty?
+
+      op = position_operation(predicates.first)
+      if op && predicates[1..-1].all? {|predicate| !position_dependent?(predicate) }
+        [pre_independent, op, predicates[1..-1], nil]
+      else
+        [pre_independent, nil, nil, predicates]
+      end
+    end
+
+    # Performs an axis scanning step.
+    # The caller provides a scanner method and its argument, which determines the axis to scan and the nodes to scan from:
+    #   step(path_stack) { [scanner_method, scanner_argument] }
+    # Scanner methods are called with `(scanner_argument, tester_block, selector)`
+    # selector is a flag for the scanner to determine how to return the scan result.
+    # It can be: `:uniq`, `:nodesets` or `[position_comparator, value]`.
+    # `:uniq` means the scanner should return unique nodes. Predicates are position-independent.
+    # `:nodesets` means the scanner should return nodesets. Predicates are complex position queries that can't be optimized in axis scanning.
+    # `[position_comparator, value]` means the scanner should return nodes matching the position comparator and value.
+    # Each scanner method can implement optimized scanning strategy for each selector.
+
+    def step(path_stack, any_type: :element)
+      scanner, scanner_argument = yield
+      begin
+        enter(:step, path_stack, scanner, scanner_argument) if @debug
+        tester = node_test(path_stack, any_type: any_type)
+        predicates = []
+        while path_stack.first == :predicate
+          path_stack.shift
+          predicates << path_stack.shift
+        end
+        pre_predicates, position_operator, post_predicates, complex_predicates = split_positional_predicates(predicates)
+
+        if pre_predicates.any?
+          original_tester = tester
+          tester = -> (node) do
+            original_tester.call(node) &&
+            pre_predicates.all? do |predicate_expr|
+              evaluate_predicate(predicate_expr.dclone, [[node]]).flatten.size == 1
+            end
+          end
+        end
+        if complex_predicates
+          nodesets = send(scanner, scanner_argument, tester, :nodesets)
+        elsif position_operator
+          nodeset = send(scanner, scanner_argument, tester, position_operator)
+          nodesets = [nodeset]
+        else
+          nodeset = send(scanner, scanner_argument, tester, :uniq)
+          nodesets = [nodeset]
+        end
+
+        (complex_predicates || post_predicates).each do |predicate_expr|
+          nodesets = evaluate_predicate(predicate_expr.dclone, nodesets)
+        end
+        nodes = Set.new.compare_by_identity
+        nodesets.each do |nodeset|
+          nodeset.each do |node|
+            nodes << node
+          end
+        end
+        new_nodeset = sort(nodes.to_a)
       ensure
         leave(:step, path_stack, new_nodeset) if @debug
       end
     end
 
-    def node_test(path_stack, nodesets, any_type: :element)
-      enter(:node_test, path_stack, nodesets) if @debug
+    def node_test(path_stack, any_type: :element)
+      enter(:node_test, path_stack) if @debug
       operator = path_stack.shift
       case operator
       when :qname
         prefix = path_stack.shift
         name = path_stack.shift
-        new_nodesets = nodesets.collect do |nodeset|
-          nodeset.select do |node|
-            case node.node_type
-            when :element
-              if prefix.nil?
-                node.name == name
-              elsif prefix.empty?
-                if strict?
-                  node.name == name and node.namespace == ""
-                else
-                  node.name == name and node.namespace == get_namespace(node, prefix)
-                end
+        ->(node) do
+          case node.node_type
+          when :element
+            if prefix.nil?
+              node.name == name
+            elsif prefix.empty?
+              if strict?
+                node.name == name and node.namespace == ""
               else
                 node.name == name and node.namespace == get_namespace(node, prefix)
               end
-            when :attribute
-              if prefix.nil?
-                node.name == name
-              elsif prefix.empty?
-                node.name == name and node.namespace == ""
-              else
-                node.name == name and node.namespace == get_namespace(node.element, prefix)
-              end
             else
-              false
+              node.name == name and node.namespace == get_namespace(node, prefix)
             end
+          when :attribute
+            if prefix.nil?
+              node.name == name
+            elsif prefix.empty?
+              node.name == name and node.namespace == ""
+            else
+              node.name == name and node.namespace == get_namespace(node.element, prefix)
+            end
+          else
+            false
           end
         end
       when :namespace
         prefix = path_stack.shift
-        new_nodesets = nodesets.collect do |nodeset|
-          nodeset.select do |node|
-            case node.node_type
-            when :element
-              namespaces = @namespaces || node.namespaces
-              node.namespace == namespaces[prefix]
-            when :attribute
-              namespaces = @namespaces || node.element.namespaces
-              node.namespace == namespaces[prefix]
-            else
-              false
-            end
+        ->(node) do
+          case node.node_type
+          when :element
+            namespaces = @namespaces || node.namespaces
+            node.namespace == namespaces[prefix]
+          when :attribute
+            namespaces = @namespaces || node.element.namespaces
+            node.namespace == namespaces[prefix]
+          else
+            false
           end
         end
       when :any
-        new_nodesets = nodesets.collect do |nodeset|
-          nodeset.select do |node|
-            node.node_type == any_type
-          end
+        ->(node) do
+          node.node_type == any_type
         end
       when :comment
-        new_nodesets = nodesets.collect do |nodeset|
-          nodeset.select do |node|
-            node.node_type == :comment
-          end
+        ->(node) do
+          node.node_type == :comment
         end
       when :text
-        new_nodesets = nodesets.collect do |nodeset|
-          nodeset.select do |node|
-            node.node_type == :text
-          end
+        ->(node) do
+          node.node_type == :text
         end
       when :processing_instruction
         target = path_stack.shift
-        new_nodesets = nodesets.collect do |nodeset|
-          nodeset.select do |node|
-            (node.node_type == :processing_instruction) and
-              (target.empty? or (node.target == target))
-          end
+        ->(node) do
+          (node.node_type == :processing_instruction) and
+            (target.empty? or (node.target == target))
         end
       when :node
-        new_nodesets = nodesets
+        ->(_node) do
+          true
+        end
       else
         message = "[BUG] Unexpected node test: " +
           "<#{operator.inspect}>: <#{path_stack.inspect}>"
         raise message
       end
-      new_nodesets
     ensure
-      leave(:node_test, path_stack, new_nodesets) if @debug
+      leave(:node_test, path_stack) if @debug
     end
 
     def evaluate_predicate(expression, nodesets)
@@ -581,6 +762,8 @@ module REXML
     # I wouldn't have to do this.  Maybe add a document IDX for each node?
     # Problems with mutable documents.  Or, rewrite everything.
     def sort(array_of_nodes)
+      return array_of_nodes if array_of_nodes.size <= 1
+
       new_arry = []
       array_of_nodes.each { |node|
         node_idx = []
@@ -599,15 +782,43 @@ module REXML
       end
     end
 
-    def descendant(nodeset, include_self)
-      nodesets = []
-      nodeset.each do |node|
-        new_nodeset = []
-        new_nodes = {}
-        descendant_recursive(node, new_nodeset, new_nodes, include_self)
-        nodesets << new_nodeset unless new_nodeset.empty?
+    # Scanner for descendant-or-self axis
+    def descendant_or_self(nodeset, tester, selector)
+      descendant(nodeset, tester, selector, include_self: true)
+    end
+
+    # Scanner for descendant axis
+    def descendant(nodeset, tester, selector, include_self: false)
+      nodeset = nodeset.select {|node| node.respond_to?(:children) }
+      case selector
+      when :uniq
+        seen = Set.new.compare_by_identity
+        recursive = ->(node) do
+          node_type = node.node_type
+          return if seen.include?(node)
+          seen << node if node_type != :xmldecl
+          return unless node_type == :element || node_type == :document
+          node.children.each do |child|
+            recursive.call(child)
+          end
+        end
+        nodeset.each do |node|
+          if include_self
+            recursive.call(node)
+          else
+            node.children.each(&recursive)
+          end
+        end
+        seen.select(&tester)
+      else
+        nodesets = nodeset.map do |node|
+          new_nodeset = []
+          new_nodes = {}
+          descendant_recursive(node, new_nodeset, new_nodes, include_self)
+          new_nodeset
+        end
+        non_optimized_nodesets_select(nodesets, tester, selector)
       end
-      nodesets
     end
 
     def descendant_recursive(node, new_nodeset, new_nodes, include_self)
@@ -625,11 +836,17 @@ module REXML
       end
     end
 
+    # Scanner for preceding axis
+    def preceding(nodeset, tester, selector)
+      nodesets = nodeset.select {|node| node.respond_to?(:parent) }.map {|node| preceding_nodes(node) }
+      non_optimized_nodesets_select(nodesets, tester, selector)
+    end
+
     # Builds a nodeset of all of the preceding nodes of the supplied node,
     # in reverse document order
     # preceding:: includes every element in the document that precedes this node,
     # except for ancestors
-    def preceding(node)
+    def preceding_nodes(node)
       ancestors = []
       parent = node.parent
       while parent
@@ -665,7 +882,15 @@ module REXML
       psn
     end
 
-    def following(node)
+    # Scanner for following axis
+    def following(nodeset, tester, selector)
+      nodesets = nodeset.select {|node| node.respond_to?(:parent) }.map do |node|
+        following_nodes(node)
+      end
+      non_optimized_nodesets_select(nodesets, tester, selector)
+    end
+
+    def following_nodes(node)
       followings = []
       following_node = next_sibling_node(node)
       while following_node
