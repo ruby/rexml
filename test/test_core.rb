@@ -889,15 +889,24 @@ EOL
       <!ATTLIST a
         bar          CDATA "gobble"
         xmlns:one    CDATA  "two"
+        one:baz      CDATA "three"
       >
       ]>
       <a xmlns:three='xxx' three='yyy'><one:b/><three:c/></a>
       EOL
       assert_equal '<!ATTLIST blah xmlns CDATA "foo">', doc.doctype.children[0].to_s.gsub(/\s+/, " ")
       assert_equal 'gobble', doc.root.attributes['bar']
+      assert_equal 'gobble', doc.root.attributes.get_attribute('bar').value
+      assert_equal 'three', doc.root.attributes.get_attribute('one:baz').value
+      assert_equal 'three', doc.root.attributes.get_attribute_ns('two', 'baz').value
       assert_equal 'xxx', doc.root.elements[2].namespace
       assert_equal 'two', doc.root.elements[1].namespace
       assert_equal 'foo', doc.root.namespace
+
+      # Not used in REXML internal any more, keep for backward compatibility
+      assert_equal 'gobble', doc.doctype.attribute_of('a', 'bar')
+      expected_attributes = [Attribute.new('bar', 'gobble'), Attribute.new('xmlns:one', 'two'), Attribute.new('one:baz', 'three')]
+      assert_equal expected_attributes, doc.doctype.attributes_of('a')
 
       doc = Document.new <<~EOL
       <?xml version="1.0"?>
@@ -1537,12 +1546,10 @@ ENDXML
            'inkscape:version="0.44" version="1.0"/>'
       )
       expected = {
-        "inkscape" => attribute("xmlns:inkscape",
+        "xmlns:inkscape" => attribute("xmlns:inkscape",
                                 "http://www.inkscape.org/namespaces/inkscape"),
-        "version" => {
-          "inkscape" => attribute("inkscape:version", "0.44"),
-          "" => attribute("version", "1.0"),
-        },
+        "inkscape:version" => attribute("inkscape:version", "0.44"),
+        "version" => attribute("version", "1.0"),
       }
       assert_equal(expected,
                    doc.root.attributes.to_h)
