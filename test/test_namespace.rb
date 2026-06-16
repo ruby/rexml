@@ -1,7 +1,9 @@
 # frozen_string_literal: false
+require "core_assertions"
 
 module REXMLTests
   class TestNamespace < Test::Unit::TestCase
+    include Test::Unit::CoreAssertions
     include Helper::Fixture
     include REXML
 
@@ -33,6 +35,26 @@ XML
       document = Document.new(xml)
       assert_equal("http://www.w3.org/XML/1998/namespace",
                    document.root.namespace("xml"))
+    end
+
+    def test_deep_element_namespace_linear
+      omit('Recursion too deep on JRuby') if RUBY_ENGINE == "jruby"
+
+      max_depth = 3000
+      xml = <<~XML
+        <root xmlns="one">#{'<a>' * max_depth + '</a>' * max_depth}</root>
+      XML
+      doc = Document.new(xml)
+      prepare_element = ->(depth) do
+        node = doc.root
+        depth.times { node = node.first }
+        node || raise
+      end
+
+      assert_linear_performance([30, 100, 300, 1000, 3000], rehearsal: 10) do |depth|
+        elem = prepare_element.call(depth)
+        elem.namespace
+      end
     end
   end
 end
