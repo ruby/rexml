@@ -276,6 +276,12 @@ module REXMLTests
       assert_equal "c", XPath::first( c, "self::node()" ).name
     end
 
+    def test_axe_self_order
+      doc = REXML::Document.new "<a><b/><c/><d/></a>"
+      assert_equal(["b", "c", "d"], XPath.match(doc, "a/*/self::*[1]").map(&:name))
+      assert_equal([], XPath.match(doc, "a/*/self::*[2]").map(&:name))
+    end
+
     def test_axe_ancestor
       doc = REXML::Document.new "
       <a>

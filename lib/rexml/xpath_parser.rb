@@ -199,7 +199,7 @@ module REXML
           nodeset = [nodeset.first.root_node]
         when :self
           nodeset = step(path_stack) do
-            [:iterate_nodesets, [nodeset]]
+            [:iterate_nodesets, nodeset.map {|node| [node] }]
           end
         when :child
           nodeset = step(path_stack) do
