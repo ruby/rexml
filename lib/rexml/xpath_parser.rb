@@ -156,7 +156,7 @@ module REXML
       result = expr(path_stack, nodeset)
       case result
       when Array # nodeset
-        result.uniq
+        XPathParser.sort(result)
       else
         [result]
       end
@@ -323,7 +323,7 @@ module REXML
             # If result is a nodeset, apply following predicates
             path_stack.unshift(:node)
             nodeset = step(path_stack) do
-              [:iterate_nodesets, [result]]
+              [:iterate_nodesets, [XPathParser.sort(result)]]
             end
           else
             return result
@@ -571,6 +571,7 @@ module REXML
     end
 
     # Performs an axis scanning step.
+    # Returns an unordered non-duplicated nodeset of matching nodes.
     # The caller provides a scanner method and its argument, which determines the axis to scan and the nodes to scan from:
     #   step(path_stack) { [scanner_method, scanner_argument] }
     # Scanner methods are called with `(scanner_argument, tester_block, selector)`
@@ -621,7 +622,7 @@ module REXML
             nodes << node
           end
         end
-        new_nodeset = sort(nodes.to_a)
+        new_nodeset = nodes.to_a
       ensure
         leave(:step, path_stack, new_nodeset) if @debug
       end
@@ -761,7 +762,7 @@ module REXML
     # in and out of function calls.  If I knew what the index of the nodes was,
     # I wouldn't have to do this.  Maybe add a document IDX for each node?
     # Problems with mutable documents.  Or, rewrite everything.
-    def sort(array_of_nodes)
+    def self.sort(array_of_nodes)
       return array_of_nodes if array_of_nodes.size <= 1
 
       new_arry = []

@@ -85,9 +85,9 @@ module REXML
       if node_set == nil
         yield @context[:node] if @context[:node].respond_to?(:namespace)
       else
-        if node_set.respond_to? :each
+        if node_set.kind_of? Array
           result = []
-          node_set.each do |node|
+          XPathParser.sort(node_set).each do |node|
             result << yield(node) if node.respond_to?(:namespace)
           end
           result
@@ -149,7 +149,7 @@ module REXML
       else
         case object
         when Array
-          string(object[0])
+          string(XPathParser.sort(object).first)
         when Float
           if object.nan?
             "NaN"

@@ -87,6 +87,13 @@ module REXMLTests
       xpath = value_of.attributes["select"]
       matched = XPath.match(context, xpath, namespaces, variables, strict: true)
 
+      # XPath.match can be a nodeset or a primitive value wrapped in an array.
+      # We need to unwrap primitive value because Functions doesn't accept array which is not a nodeset.
+      unless matched.all? { |node| node.is_a?(REXML::Node) }
+        assert_equal(1, matched.size, 'Primitive value should be a single value')
+        matched = matched.first
+      end
+
       message = user_message(context, xpath, matched)
       assert_equal(expected || "",
                    REXML::Functions.string(matched),
