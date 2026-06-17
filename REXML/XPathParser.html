@@ -586,6 +586,8 @@
 
         <li ><a href="#method-c-new">new</a></li>
 
+        <li ><a href="#method-c-sort">sort</a></li>
+
       </ul>
     </details>
   </div>
@@ -758,6 +760,67 @@
 
 
           
+
+
+        </div>
+
+
+
+
+
+      </div>
+
+
+      <div id="method-c-sort" class="method-detail anchor-link ">
+        <div class="method-header">
+
+            <div class="method-heading">
+              <a href="#method-c-sort" title="Link to this method">
+                <span class="method-name">sort</span>
+                <span class="method-args">(array_of_nodes)</span>
+              </a>
+            </div>
+
+        </div>
+
+
+          <div class="method-controls">
+            <details class="method-source-toggle">
+              <summary>Source</summary>
+            </details>
+          </div>
+          <div class="method-source-code" id="sort-source">
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/xpath_parser.rb, line 765</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">sort</span>(<span class="ruby-identifier">array_of_nodes</span>)
+  <span class="ruby-keyword">return</span> <span class="ruby-identifier">array_of_nodes</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">array_of_nodes</span>.<span class="ruby-identifier">size</span> <span class="ruby-operator">&lt;=</span> <span class="ruby-value">1</span>
+
+  <span class="ruby-identifier">new_arry</span> = []
+  <span class="ruby-identifier">array_of_nodes</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">node</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">node_idx</span> = []
+    <span class="ruby-identifier">np</span> = <span class="ruby-identifier">node</span>.<span class="ruby-identifier">node_type</span> <span class="ruby-operator">==</span> <span class="ruby-value">:attribute</span> <span class="ruby-operator">?</span> <span class="ruby-identifier">node</span>.<span class="ruby-identifier">element</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">node</span>
+    <span class="ruby-keyword">while</span> <span class="ruby-identifier">np</span>.<span class="ruby-identifier">parent</span> <span class="ruby-keyword">and</span> <span class="ruby-identifier">np</span>.<span class="ruby-identifier">parent</span>.<span class="ruby-identifier">node_type</span> <span class="ruby-operator">==</span> <span class="ruby-value">:element</span>
+      <span class="ruby-identifier">node_idx</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">np</span>.<span class="ruby-identifier">parent</span>.<span class="ruby-identifier">index</span>( <span class="ruby-identifier">np</span> )
+      <span class="ruby-identifier">np</span> = <span class="ruby-identifier">np</span>.<span class="ruby-identifier">parent</span>
+    <span class="ruby-keyword">end</span>
+    <span class="ruby-identifier">new_arry</span> <span class="ruby-operator">&lt;&lt;</span> [ <span class="ruby-identifier">node_idx</span>.<span class="ruby-identifier">reverse</span>, <span class="ruby-identifier">node</span> ]
+  }
+  <span class="ruby-identifier">ordered</span> = <span class="ruby-identifier">new_arry</span>.<span class="ruby-identifier">sort_by</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">index</span>, <span class="ruby-identifier">node</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">index</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-identifier">ordered</span>.<span class="ruby-identifier">collect</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">_index</span>, <span class="ruby-identifier">node</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">node</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+
+
+
+        <div class="method-description">
+
+
+          <p>Reorders an array of nodes so that they are in document order It tries to do this efficiently.</p>
+
+<p>FIXME: I need to get rid of this, but the issue is that most of the <a href="XPath.html"><code>XPath</code></a> interpreter functions as a filter, which means that we lose context going in and out of function calls.  If I knew what the index of the nodes was, I wouldn’t have to do this.  Maybe add a document IDX for each node? Problems with mutable documents.  Or, rewrite everything.</p>
 
 
         </div>
@@ -969,7 +1032,7 @@
   <span class="ruby-identifier">result</span> = <span class="ruby-identifier">expr</span>(<span class="ruby-identifier">path_stack</span>, <span class="ruby-identifier">nodeset</span>)
   <span class="ruby-keyword">case</span> <span class="ruby-identifier">result</span>
   <span class="ruby-keyword">when</span> <span class="ruby-constant">Array</span> <span class="ruby-comment"># nodeset</span>
-    <span class="ruby-identifier">result</span>.<span class="ruby-identifier">uniq</span>
+    <span class="ruby-constant">XPathParser</span>.<span class="ruby-identifier">sort</span>(<span class="ruby-identifier">result</span>)
   <span class="ruby-keyword">else</span>
     [<span class="ruby-identifier">result</span>]
   <span class="ruby-keyword">end</span>
