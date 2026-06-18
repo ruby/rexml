@@ -116,6 +116,9 @@ module REXMLTests
       assert_equal(%w[a b c d], parser.parse("#{base}[position()>0]", doc).map(&:name))
       assert_equal(%w[a b c d], parser.parse("#{base}[position()>-1]", doc).map(&:name))
       assert_equal(%w[a b c d], parser.parse("#{base}[position()<10]", doc).map(&:name))
+      assert_equal(%w[], parser.parse("#{base}[position()<last()-10]", doc).map(&:name))
+      assert_equal(%w[a b c d], parser.parse("#{base}[position()>last()-10]", doc).map(&:name))
+      assert_equal(%w[], parser.parse("#{base}[last()-10]", doc).map(&:name))
 
       # non-optimizable case
       base_no_opt = '/r/*[position()!=name()]'
@@ -128,6 +131,9 @@ module REXMLTests
       assert_equal(%w[a b c d], parser.parse("#{base_no_opt}[position()>0]", doc).map(&:name))
       assert_equal(%w[a b c d], parser.parse("#{base_no_opt}[position()>-1]", doc).map(&:name))
       assert_equal(%w[a b c d], parser.parse("#{base_no_opt}[position()<10]", doc).map(&:name))
+      assert_equal(%w[], parser.parse("#{base_no_opt}[position()<last()-10]", doc).map(&:name))
+      assert_equal(%w[a b c d], parser.parse("#{base_no_opt}[position()>last()-10]", doc).map(&:name))
+      assert_equal(%w[], parser.parse("#{base_no_opt}[last()-10]", doc).map(&:name))
     end
 
     def test_predicate_parenthesized_position

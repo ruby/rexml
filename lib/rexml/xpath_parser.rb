@@ -385,31 +385,63 @@ module REXML
       expr.any? {|part| calls_position_dependent_function?(part) }
     end
 
-    # Detects simple position-based predicates that can be optimized in axis scanning, such as [1], [position()=1], [position() < 2], [position() > 3]
-    # Returns operators and values such as [:==, 1], [:<, 2], [:>, 3]
+    # Detects simple position-based predicates that can be optimized in axis scanning, such as [1], [position()=1], [position() < 2], [last()-3], etc.
+    # Returns operators and values such as [:index_eq, 0], [:index_lt, 1], [:index_gt, 2], [:reverse_index_eq, 0], [:reverse_index_lt, 1], [:reverse_index_gt, 2]
     # Returns nil if the predicate is not a simple position-based predicate
     def position_operation(predicate_expr)
-      return [:==, predicate_expr[1]] if predicate_expr[0] == :literal && predicate_expr[1].is_a?(Integer)
+      return [:index_eq, predicate_expr[1] - 1] if predicate_expr[0] == :literal && predicate_expr[1].is_a?(Integer)
+
+      reverse_index = last_minus_integer(predicate_expr)
+      return [:reverse_index_eq, reverse_index] if reverse_index
 
       op, left, right = predicate_expr
       return unless op == :eq || op == :lt || op == :lteq || op == :gt || op == :gteq
       return unless [left, right].include?([:function, 'position', []])
 
-      literal = [left, right].find {|part| part[0] == :literal && part[1].is_a?(Integer) }
-      return unless literal
+      if right == [:function, 'position', []]
+        op = { eq: :eq, lt: :gt, lteq: :gteq, gt: :lt, gteq: :lteq }[op]
+        left, right = right, left
+      end
 
-      value = literal[1]
-      case op
-      when :eq
-        [:==, value]
-      when :lt
-        literal == right ? [:<, value] : [:>, value]
-      when :lteq
-        literal == right ? [:<, value + 1] : [:>, value - 1]
-      when :gt
-        literal == right ? [:>, value]: [:<, value]
-      when :gteq
-        literal == right ? [:>, value - 1] : [:<, value + 1]
+      index = right[1] - 1 if right[0] == :literal && right[1].is_a?(Integer)
+      reverse_index = last_minus_integer(right)
+
+      if index
+        case op
+        when :eq
+          [:index_eq, index]
+        when :lt
+          [:index_lt, index]
+        when :lteq
+          [:index_lt, index + 1]
+        when :gt
+          [:index_gt, index]
+        when :gteq
+          [:index_gt, index - 1]
+        end
+      elsif reverse_index
+        case op
+        when :eq
+          [:reverse_index_eq, reverse_index]
+        when :lt
+          [:reverse_index_gt, reverse_index]
+        when :lteq
+          [:reverse_index_gt, reverse_index - 1]
+        when :gt
+          [:reverse_index_lt, reverse_index]
+        when :gteq
+          [:reverse_index_lt, reverse_index + 1]
+        end
+      end
+    end
+
+    # If the expression is `last()-INTEGER` or `last()` (equivalent to `last()-0`), returns the integer part.
+    # Otherwise, returns nil.
+    def last_minus_integer(expr)
+      if expr == [:function, 'last', []]
+        0
+      elsif expr[0] == :minus && expr[1] == [:function, 'last', []] && expr[2][0] == :literal && expr[2][1].is_a?(Integer)
+        expr[2][1]
       end
     end
 
@@ -435,7 +467,8 @@ module REXML
 
     def preceding_following_sibling(nodeset, tester, selector, reverse:)
       nodeset = nodeset.select {|node| node.respond_to?(:parent) && node.parent }
-      case selector
+      operator, value = selector
+      case operator
       when :uniq
         nodeset.group_by(&:parent).flat_map do |parent, sibling_nodes|
           sets = Set.new.compare_by_identity
@@ -444,15 +477,7 @@ module REXML
           children = children.reverse if reverse
           children.drop_while {|child| !sets.include?(child) }.drop(1)
         end.select(&tester)
-      when :nodesets
-        nodesets = nodeset.map do |node|
-          parent = node.parent
-          index = parent.children.index(node)
-          reverse ? parent.children[0...index].reverse : parent.children[index + 1..-1]
-        end
-        non_optimized_nodesets_select(nodesets, tester, selector)
-      else
-        operator, value = selector
+      when :index_eq, :index_lt, :index_gt
         nodeset.group_by(&:parent).flat_map do |parent, sibling_nodes|
           anchors = Set.new.compare_by_identity
           sibling_nodes.each {|sibling| anchors << sibling }
@@ -466,16 +491,16 @@ module REXML
           followings.each do |node|
             if tester.call(node)
               case operator
-              when :==
+              when :index_eq
                 # anchor_indexes only contain values smaller or equal to `index`,
-                # so value <= 0 case doesn't accidentally match any node.
-                matched << node if anchor_indexes.include?(index - value + 1)
-              when :<
+                # so value < 0 case doesn't accidentally match any node.
+                matched << node if anchor_indexes.include?(index - value)
+              when :index_lt
                 # Position from the last anchor will be the minimum possible position for the node
-                matched << node if index - last_anchor + 1 < value
-              when :>
+                matched << node if index - last_anchor < value
+              when :index_gt
                 # Position from the first anchor(==0) will be the maximum possible position for the node
-                matched << node if index + 1 > value
+                matched << node if index > value
               end
               index += 1
             end
@@ -486,6 +511,13 @@ module REXML
           end
           matched
         end
+      else # Slow path for :nodesets, :reverse_index_eq, :reverse_index_lt, :reverse_index_gt
+        nodesets = nodeset.map do |node|
+          parent = node.parent
+          index = parent.children.index(node)
+          reverse ? parent.children[0...index].reverse : parent.children[index + 1..-1]
+        end
+        non_optimized_nodesets_select(nodesets, tester, selector)
       end
     end
 
@@ -506,7 +538,7 @@ module REXML
         end
         ancestors.select(&tester)
       else
-        # Slow pass
+        # Slow path
         nodesets = nodeset.map do |node|
           ancestors = []
           ancestors << node if include_self
@@ -537,12 +569,18 @@ module REXML
         operator, value = selector
         nodes =
           case operator
-          when :==
-            nodesets.map {|nodeset| nodeset[value - 1] if value >= 1 }.compact
-          when :<
-            nodesets.flat_map {|nodeset| nodeset[0...value - 1] if value >= 1 }.compact
-          when :>
-            nodesets.flat_map {|nodeset| value <= 0 ? nodeset : nodeset.drop(value) }
+          when :index_eq
+            nodesets.map {|nodeset| nodeset[value] if value >= 0 }.compact
+          when :index_lt
+            nodesets.flat_map {|nodeset| nodeset[0...value] if value >= 0 }.compact
+          when :index_gt
+            nodesets.flat_map {|nodeset| value < 0 ? nodeset : nodeset.drop(value + 1) }
+          when :reverse_index_eq
+            nodesets.map {|nodeset| nodeset[-(value + 1)] if value >= 0 }.compact
+          when :reverse_index_lt
+            nodesets.flat_map {|nodeset| nodeset.last(value) if value > 0 }.compact
+          when :reverse_index_gt
+            nodesets.flat_map {|nodeset| value < 0 ? nodeset : nodeset[0...-(value + 1)] }
           end
         seen = Set.new.compare_by_identity
         nodes.each {|node| seen << node }
