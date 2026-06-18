@@ -251,7 +251,9 @@ module REXMLTests
     def test_axe_namespace_no_error
       $VERBOSE, verbose = nil, $VERBOSE
       # Although namespace axis is not implemented yet, it should not raise NoMethodError
-      XPath.match(@@doc, "a/d/c/namespace::*")
+      assert_nothing_raised do
+        XPath.match(@@doc, "a/d/c/namespace::*")
+      end
     ensure
       $VERBOSE = verbose
     end
@@ -883,7 +885,7 @@ module REXMLTests
       assert_equal(["<c id='b'/>", "<c id='c'/>"],
                    match.call(' / a / c [ ( @id ) ] '))
       assert_equal(["<c id='b'/>", "<c id='c'/>"],
-                   match.call('/ a / child:: c [( @id )] /'))
+                   match.call('/ a / child:: c [( @id )]'))
     end
 
     def test_space_paren_brace_inside_xpath_string
