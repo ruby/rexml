@@ -113,23 +113,26 @@ module REXML
     end
 
     def attributes_of element
-      rv = []
-      each do |child|
-        child.each do |key,val|
-          rv << Attribute.new(key,val)
-        end if child.kind_of? AttlistDecl and child.element_name == element
+      raw_attributes = _attlist_mappings[element] || {}
+      raw_attributes.map do |key, value|
+        Attribute.new(key, value)
       end
-      rv
     end
 
     def attribute_of element, attribute
-      att_decl = find do |child|
-        child.kind_of? AttlistDecl and
-        child.element_name == element and
-        child.include? attribute
+      _attlist_mappings[element]&.[](attribute)
+    end
+
+    def _attlist_mappings
+      mapping = {}
+      grep(AttlistDecl).each do |child|
+        raw_attributes = mapping[child.element_name] ||= {}
+        child.each do |key, val|
+          # First declaration wins
+          raw_attributes[key] = val unless raw_attributes.key? key
+        end
       end
-      return nil unless att_decl
-      att_decl[attribute]
+      mapping
     end
 
     def clone
