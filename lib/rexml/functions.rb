@@ -254,9 +254,8 @@ module REXML
       ruby_string[ruby_start,ruby_length]
     end
 
-    # UNTESTED
-    def string_length( string )
-      string(string).length
+    def string_length( object=@context[:node] )
+      string(object).length
     end
 
     def normalize_space( object=@context[:node] )
