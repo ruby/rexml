@@ -286,10 +286,10 @@ EOF
       aDoc = REXML::Document.new '<h1 tpl:content="title" xmlns:tpl="1">Dummy title</h1>'
 
       anElement = anElement = aDoc.elements[1]
-      elementAttrPrefix = anElement.attributes.get_attribute('content').prefix
+      elementAttrPrefix = anElement.attributes.get_attribute('tpl:content').prefix
 
       aClone = anElement.clone
-      cloneAttrPrefix = aClone.attributes.get_attribute('content').prefix
+      cloneAttrPrefix = aClone.attributes.get_attribute('tpl:content').prefix
 
       assert_equal( elementAttrPrefix , cloneAttrPrefix )
     end

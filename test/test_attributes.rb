@@ -74,6 +74,16 @@ module REXMLTests
       assert_equal '4', doc.root.attributes['z:foo']
     end
 
+    def test_delete_all
+      doc = Document.new("<a xmlns:x='x' xmlns:y='y' x:x='0' y:x='1' x='2' y='3' x:y='4' x:z='5' y:y='6'/>")
+      doc.root.attributes.delete_all 'x'
+      assert_equal ['xmlns:x', 'xmlns:y', 'y', 'x:y', 'x:z', 'y:y'], doc.root.attributes.each_attribute.map(&:expanded_name)
+      doc.root.attributes.delete_all 'x:y'
+      assert_equal ['xmlns:x', 'xmlns:y', 'y', 'x:z', 'y:y'], doc.root.attributes.each_attribute.map(&:expanded_name)
+      doc.root.attributes.delete_all 'xmlns:y'
+      assert_equal ['xmlns:x', 'y', 'x:z', 'y:y'], doc.root.attributes.each_attribute.map(&:expanded_name)
+    end
+
     def test_prefixes
       doc = Document.new("<a xmlns='foo' xmlns:x='bar' xmlns:y='twee' z='glorp' x:k='gru'/>")
       prefixes = doc.root.attributes.prefixes

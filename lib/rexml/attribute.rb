@@ -180,7 +180,7 @@ module REXML
     #
     # This method is usually not called directly.
     def remove
-      @element.attributes.delete self.name unless @element.nil?
+      @element.attributes.delete self unless @element.nil?
     end
 
     # Writes this attribute (EG, puts 'key="value"' to the output)
@@ -204,6 +204,15 @@ module REXML
 
     def document
       @element&.document
+    end
+
+    # Returns true if this attribute is a namespace declaration, false otherwise.
+    #   "foo" => false
+    #   "xmlns" => true
+    #   "xmlns:foo" => true
+    #   "foo:xmlns" => false
+    def namespace_declaration?
+      prefix == 'xmlns' || (prefix.empty? && name == 'xmlns')
     end
   end
 end
