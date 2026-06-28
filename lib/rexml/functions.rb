@@ -22,8 +22,10 @@ module REXML
       :variables,
       :variables=,
       :context=,
-      :get_namespace,
+      :target_named_node,
       :send,
+      :compare_language,
+      :string_value,
     ]
     class << self
       def method_added(name)
