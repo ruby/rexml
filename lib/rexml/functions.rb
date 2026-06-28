@@ -60,41 +60,27 @@ module REXML
     end
 
     def local_name(node_set=nil)
-      get_namespace(node_set) do |node|
-        return node.local_name
-      end
-      ""
+      target_named_node(node_set)&.local_name || ""
     end
 
     def namespace_uri( node_set=nil )
-      get_namespace( node_set ) do |node|
-        return node.namespace
-      end
-      ""
+      target_named_node(node_set)&.namespace || ""
     end
 
     def name( node_set=nil )
-      get_namespace( node_set ) do |node|
-        return node.expanded_name
-      end
-      ""
+      target_named_node(node_set)&.expanded_name || ""
     end
 
     # Helper method.
-    def get_namespace( node_set = nil )
-      if node_set == nil
-        yield @context[:node] if @context[:node].respond_to?(:namespace)
-      else
-        if node_set.kind_of? Array
-          result = []
-          XPathParser.sort(node_set).each do |node|
-            result << yield(node) if node.respond_to?(:namespace)
-          end
-          result
-        elsif node_set.respond_to? :namespace
-          yield node_set
+    def target_named_node(node_set = nil)
+      node =
+        case node_set
+        when nil
+          node = @context[:node]
+        when Array
+          node = XPathParser.sort(node_set).first
         end
-      end
+      node if node.respond_to?(:namespace)
     end
 
     # A node-set is converted to a string by returning the string-value of the
