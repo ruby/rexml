@@ -57,6 +57,7 @@ module REXML
     # Since REXML is non-validating, this method is not implemented as it
     # requires a DTD
     def id( object )
+      []
     end
 
     def local_name(node_set=nil)

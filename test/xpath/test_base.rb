@@ -1573,5 +1573,37 @@ EOF
       assert_equal(["e"], XPath.match(doc, "//e[10 + preceding-sibling::* = 11]").map(&:name))
       assert_equal(["e"], XPath.match(doc, "//e[preceding-sibling::* = '1']").map(&:name))
     end
+
+    def test_unimplemented_id_should_not_contaminate_nil
+      doc = Document.new("<root/>")
+      assert_equal([], XPath.match(doc, 'id("foo")'))
+      assert_equal([], XPath.match(doc, 'id("foo")[1]'))
+      assert_equal([], XPath.match(doc, 'id("foo")/bar'))
+    end
+
+    def test_variables
+      doc = Document.new("<a><b><c/></b><d><e/></d></a>")
+      a, b, c, d, e = XPath.match(doc, '//*')
+      assert_equal([''], XPath.match(doc, '$x', nil, {}))
+      assert_equal([''], XPath.match(doc, '$x', nil, { 'x' => nil }))
+      assert_equal([''], XPath.match(doc, '$x', nil, { 'x' => Object.new }))
+      assert_equal([3], XPath.match(doc, 'count($x)', nil, { 'x' => [b, c, d] }))
+      assert_equal([3], XPath.match(doc, 'count($x)', nil, { 'x' => [a, a, b, b, c, c] }))
+      assert_equal([b, c, d], XPath.match(doc, '$x', nil, { 'x' => [d, c, b] }))
+      assert_equal([a], XPath.match(doc, '//*[name()=$x]', nil, { 'x' => 'a' }))
+      assert_equal([c, e], XPath.match(doc, '$x/*', nil, { 'x' => [b, d] }))
+    end
+
+    def test_variables_invalid_predicates
+      doc = Document.new("<root/>")
+      # Predicates after variable may be invalid depending on variable type.
+      # It can raise an exception such as TypeError, or treat the predicate result as an empty node set,
+      # but it should not return the variable value itself.
+      valid_result = [:exception, []]
+      actual = (XPath.match(doc, '$x[1<2]', nil, { 'x' => 42 }) rescue :exception)
+      assert_includes(valid_result, actual)
+      actual = (XPath.match(doc, '($x)[1<2]', nil, { 'x' => 42 }) rescue :exception)
+      assert_includes(valid_result, actual)
+    end
   end
 end
