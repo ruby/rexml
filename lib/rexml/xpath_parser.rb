@@ -244,8 +244,10 @@ module REXML
           end
         when :variable
           var_name = path_stack.shift
-          return @variables[var_name]
+          value = coerce_variable(@variables[var_name])
+          return value if path_stack.empty?
 
+          nodeset = apply_remaining_predicates(path_stack, value)
         when :eq, :neq, :lt, :lteq, :gt, :gteq
           left = expr( path_stack.shift, nodeset.dup, context )
           right = expr( path_stack.shift, nodeset.dup, context )
@@ -319,15 +321,9 @@ module REXML
         when :group
           sub_expression = path_stack.shift
           result = expr(sub_expression, nodeset, context)
-          if result.is_a?(Array)
-            # If result is a nodeset, apply following predicates
-            path_stack.unshift(:node)
-            nodeset = step(path_stack) do
-              [:iterate_nodesets, [XPathParser.sort(result)]]
-            end
-          else
-            return result
-          end
+          return result if path_stack.empty?
+
+          nodeset = apply_remaining_predicates(path_stack, result)
         else
           raise "[BUG] Unexpected path: <#{op.inspect}>: <#{path_stack.inspect}>"
         end
@@ -335,6 +331,29 @@ module REXML
       return nodeset
     ensure
       leave(:expr, path_stack, nodeset) if @debug
+    end
+
+    def apply_remaining_predicates(path_stack, value)
+      # If evaluated value is not a nodeset, treat it as an empty nodeset.
+      # TODO: Decide whether REXML should raise type error or keep this behavior.
+      value = [] unless value.is_a?(Array)
+      path_stack.unshift(:node)
+      step(path_stack) do
+        [:iterate_nodesets, [XPathParser.sort(value)]]
+      end
+    end
+
+    # Coerces a variable value to a type that can be used in XPath expressions.
+    # TODO: Decide whether REXML should warn, raise, or ignore when a variable value is invalid.
+    def coerce_variable(value)
+      case value
+      when Array
+        value.grep(REXML::Node).uniq
+      when Numeric, String, true, false
+        value
+      else
+        ""
+      end
     end
 
     # Determines if a predicate expression is dependent on the position of nodes.
