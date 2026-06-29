@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+# frozen_string_literal: true
 require_relative "parent"
 require_relative "namespace"
 require_relative "attribute"
@@ -623,7 +623,7 @@ module REXML
       prefix = (prefix == '') ? 'xmlns' : prefix.delete_prefix("xmlns:")
       ns = namespaces[prefix]
 
-      ns = '' if ns.nil? and prefix == 'xmlns'
+      ns = +'' if ns.nil? and prefix == 'xmlns'
       ns
     end
 
