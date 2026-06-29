@@ -19,7 +19,8 @@ module REXMLTests
         name namespace-uri normalize-space not number position round starts-with
         string string-length substring substring-after substring-before sum translate true
       ]
-      methods = REXML::FunctionsClass.class_variable_get(:@@available_functions).keys.sort
+      methods = REXML::FunctionsClass.instance_methods(false) -
+        REXML::FunctionsClass::INTERNAL_METHODS
       assert_equal expected_functions, methods.map { |m| m.to_s.tr('_', '-') }.sort
     end
 
