@@ -1,5 +1,5 @@
 # coding: US-ASCII
-# frozen_string_literal: false
+# frozen_string_literal: true
 
 require "stringio"
 require "strscan"
@@ -78,6 +78,7 @@ module REXML
           PRE_DEFINED_TERM_PATTERNS[term] = term
         end
       end
+      PRE_DEFINED_TERM_PATTERNS.freeze
     end
     private_constant :Private
 
@@ -227,9 +228,9 @@ module REXML
       @pending_buffer = nil
 
       if encoding
-        super("", encoding)
+        super(+"", encoding)
       else
-        super(@source.read(3) || "")
+        super(@source.read(3) || +"")
       end
 
       if !@to_utf and
@@ -380,7 +381,7 @@ module REXML
         @source.set_encoding(@encoding, @encoding)
       end
       @line_break = encode(">")
-      @pending_buffer, @scanner.string = @scanner.rest, ""
+      @pending_buffer, @scanner.string = @scanner.rest, +""
       @pending_buffer.force_encoding(@encoding)
       super
     end
