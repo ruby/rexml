@@ -59,7 +59,7 @@ module REXML
       'lt'=>EntityConst::LT,
       'quot'=>EntityConst::QUOT,
       "apos"=>EntityConst::APOS
-    }
+    }.freeze
 
     # name is the name of the doctype
     # external_id is the referenced DTD, if given
@@ -180,7 +180,7 @@ module REXML
 
     def add child
       super(child)
-      @entities = DEFAULT_ENTITIES.clone if @entities == DEFAULT_ENTITIES
+      @entities = DEFAULT_ENTITIES.dup if @entities == DEFAULT_ENTITIES
       @entities[ child.name ] = child if child.kind_of? Entity
     end
 
