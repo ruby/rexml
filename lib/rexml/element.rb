@@ -356,7 +356,7 @@ module REXML
     #   e.inspect # => "<foo bar='0' baz='1'> ... </>"
     #
     def inspect
-      rv = "<#@expanded_name"
+      rv = +"<#@expanded_name"
 
       @attributes.each_attribute do |attr|
         rv << " "

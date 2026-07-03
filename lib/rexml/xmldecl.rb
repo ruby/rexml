@@ -117,7 +117,7 @@ module REXML
         quote = "'"
       end
 
-      rv = "version=#{quote}#{@version}#{quote}"
+      rv = +"version=#{quote}#{@version}#{quote}"
       if @writeencoding or enc !~ /\Autf-8\z/i
         rv << " encoding=#{quote}#{enc}#{quote}"
       end
