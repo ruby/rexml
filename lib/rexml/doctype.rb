@@ -123,7 +123,7 @@ module REXML
       _attlist_mappings[element]&.[](attribute)
     end
 
-    def _attlist_mappings
+    def _attlist_mappings # :nodoc:
       mapping = {}
       grep(AttlistDecl).each do |child|
         raw_attributes = mapping[child.element_name] ||= {}

@@ -2527,7 +2527,8 @@ module REXML
     # the element's attribute takes precedence.
     def each_effective_attribute(attlist_mappings = nil)
       return to_enum(__method__, attlist_mappings) unless block_given?
-      attributes = attlist_attributes(attlist_mappings).merge(self)
+      attlist = attlist_attributes(attlist_mappings)
+      attributes = attlist.empty? ? self : attlist.merge(self)
       attributes.each_value do |attribute|
         yield attribute
       end
