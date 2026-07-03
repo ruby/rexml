@@ -88,12 +88,12 @@ module REXML
         node = node.first
       end
 
-      @document = node.document
       match(path_stack, node)
     end
 
     def get_first path, node
       path_stack = @parser.parse( path )
+      @document = node.document
       first( path_stack, node )
     end
 
@@ -149,6 +149,7 @@ module REXML
 
 
     def match(path_stack, node)
+      @document = node.document
       nodeset = [node]
       result = expr(path_stack, nodeset)
       case result
