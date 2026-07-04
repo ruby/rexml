@@ -2430,7 +2430,7 @@ module REXML
     #   d = REXML::Document.new(xml_string)
     #   ele = d.root.elements['//ele'] # => <a foo:att='1' bar:att='2' att='&lt;'/>
     #   attrs = ele.attributes
-    #   attrs # => {"att"=>{"foo"=>foo:att='1', "bar"=>bar:att='2', ""=>att='&lt;'}}
+    #   attrs # => {"foo:att" => foo:att='1', "bar:att" => bar:att='2', "att" => att='&lt;'}
     #   attrs.add(REXML::Attribute.new('foo:att', '2')) # => foo:att='2'
     #   attrs.add(REXML::Attribute.new('baz', '3')) # => baz='3'
     #   attrs.include?('baz') # => true

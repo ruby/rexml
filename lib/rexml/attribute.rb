@@ -176,7 +176,7 @@ module REXML
       self
     end
 
-    # Removes this Attribute from the tree, and returns true if successful
+    # Removes this Attribute from the tree
     #
     # This method is usually not called directly.
     def remove
