@@ -2240,15 +2240,10 @@ module REXML
     #   [REXML::Attribute, bar:att='2']
     #   [REXML::Attribute, att='&lt;']
     #
-    def each_attribute # :yields: attribute
-      return to_enum(__method__) unless block_given?
-      each_value do |val|
-        if val.kind_of? Attribute
-          yield val
-        else
-          val.each_value { |atr| yield atr }
-        end
-      end
+    # This method doesn't iterate attributes in the DTD. This may be a bug.
+    #
+    def each_attribute(&block) # :yields: attribute
+      each_own_attribute(&block)
     end
 
     # :call-seq:
@@ -2272,6 +2267,8 @@ module REXML
     #   ["foo:att", "1"]
     #   ["bar:att", "2"]
     #   ["att", "<"]
+    #
+    # This method doesn't iterate attributes in the DTD. This may be a bug.
     #
     def each
       return to_enum(__method__) unless block_given?
@@ -2300,36 +2297,7 @@ module REXML
     #   attrs.get_attribute('nosuch')        # => nil
     #
     def get_attribute( name )
-      attr = fetch( name, nil )
-      if attr.nil?
-        return nil if name.nil?
-        # Look for prefix
-        name =~ Namespace::NAMESPLIT
-        prefix, n = $1, $2
-        if prefix
-          attr = fetch( n, nil )
-          # check prefix
-          if attr == nil
-          elsif attr.kind_of? Attribute
-            return attr if prefix == attr.prefix
-          else
-            attr = attr[ prefix ]
-            return attr
-          end
-        end
-        doctype = @element.document&.doctype
-        if doctype
-          expn = @element.expanded_name
-          expn = doctype.name if expn.size == 0
-          attr_val = doctype.attribute_of(expn, name)
-          return Attribute.new( name, attr_val ) if attr_val
-        end
-        return nil
-      end
-      if attr.kind_of? Hash
-        attr = attr[ @element.prefix ]
-      end
-      attr
+      fetch(name, nil) || attlist_attributes&.[](name)
     end
 
     # :call-seq:
@@ -2357,12 +2325,15 @@ module REXML
     #
     def []=( name, value )
       if value.nil?             # Delete the named attribute
-        attr = get_attribute(name)
-        delete attr
+        delete name
         return
       end
 
-      unless value.kind_of? Attribute
+      if value.kind_of? Attribute
+        # Use attribute's expanded name to avoid inconsistency.
+        # TODO: Explicitly document that inconsistent names are allowed, or raise/warn about inconsistency.
+        name = value.expanded_name
+      else
         doctype = @element.document&.doctype
         if doctype
           value = Text::normalize( value, doctype )
@@ -2372,17 +2343,7 @@ module REXML
         value = Attribute.new(name, value)
       end
       value.element = @element
-      old_attr = fetch(value.name, nil)
-      if old_attr.nil?
-        store(value.name, value)
-      elsif old_attr.kind_of? Hash
-        old_attr[value.prefix] = value
-      elsif old_attr.prefix != value.prefix
-        store value.name, {old_attr.prefix => old_attr,
-                           value.prefix    => value}
-      else
-        store value.name, value
-      end
+      store name, value
       @element
     end
 
@@ -2398,20 +2359,7 @@ module REXML
     #   d.root.attributes.prefixes # => ["x", "y"]
     #
     def prefixes
-      ns = []
-      each_attribute do |attribute|
-        ns << attribute.name if attribute.prefix == 'xmlns'
-      end
-      doctype = @element.document&.doctype
-      if doctype
-        expn = @element.expanded_name
-        expn = doctype.name if expn.size == 0
-        doctype.attributes_of(expn).each {
-          |attribute|
-          ns << attribute.name if attribute.prefix == 'xmlns'
-        }
-      end
-      ns
+      namespaces.keys - ['xmlns']
     end
 
     # :call-seq:
@@ -2425,17 +2373,8 @@ module REXML
     #
     def namespaces
       namespaces = {}
-      each_attribute do |attribute|
-        namespaces[attribute.name] = attribute.value if attribute.prefix == 'xmlns' or attribute.name == 'xmlns'
-      end
-      doctype = @element.document&.doctype
-      if doctype
-        expn = @element.expanded_name
-        expn = doctype.name if expn.size == 0
-        doctype.attributes_of(expn).each {
-          |attribute|
-          namespaces[attribute.name] = attribute.value if attribute.prefix == 'xmlns' or attribute.name == 'xmlns'
-        }
+      each_effective_attribute do |attribute|
+        namespaces[attribute.name] = attribute.value if attribute.namespace_declaration?
       end
       namespaces
     end
@@ -2468,28 +2407,11 @@ module REXML
     #   attrs.delete(attr) # => <ele att='&lt;'/> # => <ele att='&lt;'/>
     #   attrs.delete(attr) # => <ele att='&lt;'/> # => <ele/>
     #
-    def delete( attribute )
-      name = nil
-      prefix = nil
-      if attribute.kind_of? Attribute
-        name = attribute.name
-        prefix = attribute.prefix
-      else
-        attribute =~ Namespace::NAMESPLIT
-        prefix, name = $1, $2
-        prefix = '' unless prefix
-      end
-      old = fetch(name, nil)
-      if old.kind_of? Hash # the supplied attribute is one of many
-        old.delete(prefix)
-        if old.size == 1
-          repl = nil
-          old.each_value{|v| repl = v}
-          store name, repl
-        end
-      elsif old # the supplied attribute is a top-level one
-        super(name)
-      end
+    def delete(attribute_or_name)
+      key = attribute_or_name
+      key = attribute_or_name.expanded_name if attribute_or_name.kind_of? Attribute
+      super(key)
+
       @element
     end
 
@@ -2508,13 +2430,13 @@ module REXML
     #   d = REXML::Document.new(xml_string)
     #   ele = d.root.elements['//ele'] # => <a foo:att='1' bar:att='2' att='&lt;'/>
     #   attrs = ele.attributes
-    #   attrs # => {"att"=>{"foo"=>foo:att='1', "bar"=>bar:att='2', ""=>att='&lt;'}}
+    #   attrs # => {"foo:att" => foo:att='1', "bar:att" => bar:att='2', "att" => att='&lt;'}
     #   attrs.add(REXML::Attribute.new('foo:att', '2')) # => foo:att='2'
     #   attrs.add(REXML::Attribute.new('baz', '3')) # => baz='3'
     #   attrs.include?('baz') # => true
     #
     def add( attribute )
-      self[attribute.name] = attribute
+      self[attribute.expanded_name] = attribute
     end
 
     alias :<< :add
@@ -2527,21 +2449,26 @@ module REXML
     #
     #   xml_string = <<-EOT
     #     <root xmlns:foo="http://foo" xmlns:bar="http://bar">
-    #        <ele foo:att='1' bar:att='2' att='&lt;'/>
+    #        <ele foo:att='1' att='&lt;' foo:other='2' other='3'/>
     #     </root>
     #   EOT
     #   d = REXML::Document.new(xml_string)
-    #   ele = d.root.elements['//ele'] # => <a foo:att='1' bar:att='2' att='&lt;'/>
+    #   ele = d.root.elements['//ele'] # => <a foo:att='1' att='&lt;' foo:other='2' other='3'/>
     #   attrs = ele.attributes
-    #   attrs.delete_all('att') # => [att='&lt;']
+    #   attrs.delete_all('att') # => [foo:att='1', att='&lt;']
+    #   attrs.each_attribute.map(&:expanded_name) #=> ['foo:other', 'other']
     #
     def delete_all( name )
-      rv = []
-      each_attribute { |attribute|
-        rv << attribute if attribute.expanded_name == name
-      }
-      rv.each{ |attr| attr.remove }
-      rv
+      attributes = each_attribute.select do |attribute|
+        # For <element xmlns:foo="url" ns:foo="value"/>
+        # delete_all('foo') should not delete xmlns:foo="url"
+        # because it is a namespace declaration, not a normal attribute.
+        (!attribute.namespace_declaration? && attribute.name == name) || attribute.expanded_name == name
+      end
+      attributes.each do |attribute|
+        delete attribute.expanded_name
+      end
+      attributes
     end
 
     # :call-seq:
@@ -2562,17 +2489,51 @@ module REXML
     #   attrs.get_attribute_ns('http://foo', 'nosuch') # => nil
     #
     def get_attribute_ns(namespace, name)
-      result = nil
-      each_attribute() { |attribute|
-        if name == attribute.name &&
-          namespace == attribute.namespace() &&
-          ( !namespace.empty? || !attribute.fully_expanded_name.index(':') )
-          # foo will match xmlns:foo, but only if foo isn't also an attribute
-          result = attribute if !result or !namespace.empty? or
-                                !attribute.fully_expanded_name.index(':')
+      each_effective_attribute.find do |attribute|
+        if attribute.namespace_declaration?
+          # namespace declarations are not considered as attributes in this method.
+          # For example: <elem1 xmlns="" xmlns:foo="url" /><elem2 xmlns="bar" xmlns:foo="url" />
+          # Both elem1.get_attribute_ns('', 'foo') and elem2.get_attribute_ns('bar', 'foo')
+          # should not match.
+          false
+        elsif namespace.empty? && !attribute.prefix.empty?
+          # If prefix is present, namespace url shouldn't be empty, so it never matches.
+          # For example, <elem foo:att="value" />, even if attribute.namespace returns '',
+          # it just means that namespace lookup failed, it shouldn't match.
+          false
+        else
+          name == attribute.name && namespace == attribute.namespace()
         end
-      }
-      result
+      end
+    end
+
+    private
+
+    # Iterates over the attributes of the element and those in the DTD.
+    # If the element has an attribute with the same name as one in the DTD,
+    # the element's attribute takes precedence.
+    def each_effective_attribute
+      return to_enum(__method__) unless block_given?
+      attr = attlist_attributes
+      attr = attr ? attr.merge(self) : self
+      attr.each_value do |attribute|
+        yield attribute
+      end
+    end
+
+    alias each_own_attribute each_value
+    private :each_own_attribute
+
+    def attlist_attributes
+      doctype = @element.document&.doctype
+      if doctype
+        expn = @element.is_a?(Document) ? doctype.name : @element.expanded_name
+        doctype.attribute_declarations_of(expn).map do |key, value|
+          attr = Attribute.new(key, value)
+          attr.element = @element
+          [key, attr]
+        end.to_h
+      end
     end
   end
 end
