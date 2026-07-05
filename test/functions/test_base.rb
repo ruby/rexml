@@ -70,6 +70,12 @@ module REXMLTests
       assert_equal 3, set.size, "nodes with names length > 3"
     end
 
+    def test_string_length_without_argument
+      doc = Document.new("<root><item>123</item><item>1234</item><item>12345</item></root>")
+      set = doc.elements.to_a("//item[string-length()=4]")
+      assert_equal ["1234"], set.collect(&:text)
+    end
+
     # Test provided by Mike Stok
     def test_contains
       source = <<-EOF
