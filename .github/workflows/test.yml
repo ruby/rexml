@@ -7,7 +7,7 @@ jobs:
     uses: ruby/actions/.github/workflows/ruby_versions.yml@master
     with:
       engine: cruby-jruby
-      min_version: 2.5
+      min_version: 2.6
 
   inplace:
     needs: ruby-versions-inplace
@@ -21,8 +21,6 @@ jobs:
           - macos-latest
           - windows-latest
         ruby-version: ${{ fromJson(needs.ruby-versions-inplace.outputs.versions) }}
-        exclude:
-          - {runs-on: macos-latest, ruby-version: 2.5}
         # include:
         #   - runs-on: ubuntu-latest
         #     ruby-version: truffleruby
