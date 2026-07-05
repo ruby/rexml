@@ -56,46 +56,46 @@
 </script>
 
 <script
-  src="../../js/theme-toggle.js?v=7.2.0"
+  src="../../js/theme-toggle.js?v=8.0.0"
 ></script>
 
 <script
-  src="../../js/search_navigation.js?v=7.2.0"
+  src="../../js/search_navigation.js?v=8.0.0"
   defer
 ></script>
 
 <script
-  src="../../js/search_data.js?v=7.2.0"
+  src="../../js/search_data.js?v=8.0.0"
   defer
 ></script>
 
 <script
-  src="../../js/search_ranker.js?v=7.2.0"
+  src="../../js/search_ranker.js?v=8.0.0"
   defer
 ></script>
 
 <script
-  src="../../js/search_controller.js?v=7.2.0"
+  src="../../js/search_controller.js?v=8.0.0"
   defer
 ></script>
 
 <script
-  src="../../js/c_highlighter.js?v=7.2.0"
+  src="../../js/c_highlighter.js?v=8.0.0"
   defer
 ></script>
 
 <script
-  src="../../js/bash_highlighter.js?v=7.2.0"
+  src="../../js/bash_highlighter.js?v=8.0.0"
   defer
 ></script>
 
 <script
-  src="../../js/aliki.js?v=7.2.0"
+  src="../../js/aliki.js?v=8.0.0"
   defer
 ></script>
 
 <link
-  href="../../css/rdoc.css?v=7.2.0"
+  href="../../css/rdoc.css?v=8.0.0"
   rel="stylesheet"
 >
 
@@ -369,12 +369,12 @@
   </div>
 </div>
 
-<div id="navigation-toggle" role="button" tabindex="0" aria-label="Toggle sidebar" aria-expanded="true" aria-controls="navigation">
+<div id="sidebar-navigation-toggle" role="button" tabindex="0" aria-label="Toggle sidebar" aria-expanded="false" aria-controls="sidebar-navigation">
   <span aria-hidden="true">&#9776;</span>
 </div>
 
 
-<nav id="navigation" role="navigation" hidden>
+<nav id="sidebar-navigation" role="navigation" hidden>
   
 
 
@@ -417,15 +417,6 @@
             <li>
               <a href="../../NEWS_md.html">
                 NEWS
-              </a>
-            </li>
-
-
-
-
-            <li>
-              <a href="../../README_md.html">
-                README
               </a>
             </li>
 
@@ -639,13 +630,13 @@
       
       <li>
         
-        <a href="../../REXML.html">REXML</a><span>::</span>
+        <a href="../../REXML.html">REXML</a><span class="separator">::</span>
         
       </li>
       
       <li>
         
-        <a href="../../REXML/Validation.html">Validation</a><span>::</span>
+        <a href="../../REXML/Validation.html">Validation</a><span class="separator">::</span>
         
       </li>
       
@@ -659,8 +650,9 @@
   
 
   <span id="class-REXML::Validation::State" class="legacy-anchor"></span>
-  <h1 id="class-rexml-validation-state" class="anchor-link class">
-    class REXML::Validation::State
+  <h1 id="class-rexml-validation-state" class="anchor-link class page-title">
+    <span class="page-title-kind">class</span>
+    <span class="page-title-name">REXML::Validation::State</span>
   </h1>
 
   <section class="description">
@@ -690,29 +682,36 @@
 
       <div id="method-c-new" class="method-detail anchor-link ">
         <div class="method-header">
+          <div class="method-heading-group">
 
-            <div class="method-heading">
-              <a href="#method-c-new" title="Link to this method">
-                <span class="method-name">new</span>
-                <span class="method-args">( context )</span>
-              </a>
+              <div class="method-heading">
+                <a href="#method-c-new" title="Link to this method">
+                  <span class="method-name">new</span>
+                  <span class="method-args">(context)</span>
+                </a>
+              </div>
+
+
+
+          </div>
+
+
+            <div class="method-controls">
+              <details class="method-source-toggle">
+                <summary><span class="method-source-icon" aria-hidden="true">{}</span> Source</summary>
+              </details>
             </div>
 
         </div>
 
 
-          <div class="method-controls">
-            <details class="method-source-toggle">
-              <summary>Source</summary>
-            </details>
-          </div>
           <div class="method-source-code" id="new-source">
             <pre class="ruby"><span class="ruby-comment"># File lib/rexml/validation/relaxng.rb, line 128</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>( <span class="ruby-identifier">context</span> )
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span>( <span class="ruby-identifier">context</span> )
   <span class="ruby-ivar">@previous</span> = []
   <span class="ruby-ivar">@events</span> = []
   <span class="ruby-ivar">@current</span> = <span class="ruby-value">0</span>
-  <span class="ruby-ivar">@count</span> = <span class="ruby-identifier">context</span>.<span class="ruby-identifier">count</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
+  <span class="ruby-ivar">@count</span> = <span class="ruby-identifier">context</span>.<span class="ruby-identifier">count</span> += <span class="ruby-value">1</span>
   <span class="ruby-ivar">@references</span> = <span class="ruby-identifier">context</span>.<span class="ruby-identifier">references</span>
   <span class="ruby-ivar">@value</span> = <span class="ruby-keyword">false</span>
 <span class="ruby-keyword">end</span></pre>
@@ -751,25 +750,32 @@
 
       <div id="method-i-3C-3C" class="method-detail anchor-link ">
         <div class="method-header">
+          <div class="method-heading-group">
 
-            <div class="method-heading">
-              <a href="#method-i-3C-3C" title="Link to this method">
-                <span class="method-name">&lt;&lt;</span>
-                <span class="method-args">( event )</span>
-              </a>
+              <div class="method-heading">
+                <a href="#method-i-3C-3C" title="Link to this method">
+                  <span class="method-name">&lt;&lt;</span>
+                  <span class="method-args">(event)</span>
+                </a>
+              </div>
+
+
+
+          </div>
+
+
+            <div class="method-controls">
+              <details class="method-source-toggle">
+                <summary><span class="method-source-icon" aria-hidden="true">{}</span> Source</summary>
+              </details>
             </div>
 
         </div>
 
 
-          <div class="method-controls">
-            <details class="method-source-toggle">
-              <summary>Source</summary>
-            </details>
-          </div>
           <div class="method-source-code" id="3C-3C-source">
             <pre class="ruby"><span class="ruby-comment"># File lib/rexml/validation/relaxng.rb, line 192</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">&lt;&lt;</span>( <span class="ruby-identifier">event</span> )
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">&lt;&lt;</span>( <span class="ruby-identifier">event</span> )
   <span class="ruby-identifier">add_event_to_arry</span>( <span class="ruby-ivar">@events</span>, <span class="ruby-identifier">event</span> )
 <span class="ruby-keyword">end</span></pre>
           </div>
@@ -793,25 +799,32 @@
 
       <div id="method-i-expected" class="method-detail anchor-link ">
         <div class="method-header">
+          <div class="method-heading-group">
 
-            <div class="method-heading">
-              <a href="#method-i-expected" title="Link to this method">
-                <span class="method-name">expected</span>
-                <span class="method-args">()</span>
-              </a>
+              <div class="method-heading">
+                <a href="#method-i-expected" title="Link to this method">
+                  <span class="method-name">expected</span>
+                  <span class="method-args">()</span>
+                </a>
+              </div>
+
+
+
+          </div>
+
+
+            <div class="method-controls">
+              <details class="method-source-toggle">
+                <summary><span class="method-source-icon" aria-hidden="true">{}</span> Source</summary>
+              </details>
             </div>
 
         </div>
 
 
-          <div class="method-controls">
-            <details class="method-source-toggle">
-              <summary>Source</summary>
-            </details>
-          </div>
           <div class="method-source-code" id="expected-source">
             <pre class="ruby"><span class="ruby-comment"># File lib/rexml/validation/relaxng.rb, line 188</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">expected</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">expected</span>
   [<span class="ruby-ivar">@events</span>[<span class="ruby-ivar">@current</span>]]
 <span class="ruby-keyword">end</span></pre>
           </div>
@@ -835,29 +848,36 @@
 
       <div id="method-i-inspect" class="method-detail anchor-link ">
         <div class="method-header">
+          <div class="method-heading-group">
 
-            <div class="method-heading">
-              <a href="#method-i-inspect" title="Link to this method">
-                <span class="method-name">inspect</span>
-                <span class="method-args">()</span>
-              </a>
+              <div class="method-heading">
+                <a href="#method-i-inspect" title="Link to this method">
+                  <span class="method-name">inspect</span>
+                  <span class="method-args">()</span>
+                </a>
+              </div>
+
+
+
+          </div>
+
+
+            <div class="method-controls">
+              <details class="method-source-toggle">
+                <summary><span class="method-source-icon" aria-hidden="true">{}</span> Source</summary>
+              </details>
             </div>
 
         </div>
 
 
-          <div class="method-controls">
-            <details class="method-source-toggle">
-              <summary>Source</summary>
-            </details>
-          </div>
           <div class="method-source-code" id="inspect-source">
             <pre class="ruby"><span class="ruby-comment"># File lib/rexml/validation/relaxng.rb, line 181</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">inspect</span>
-  <span class="ruby-node">&quot;&lt; #{to_s} #{@events.collect{|e|
-    pre = e == @events[@current] ? &#39;#&#39; : &#39;&#39;
-    pre + e.inspect unless self == e
-  }.join(&#39;, &#39;)} &gt;&quot;</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">inspect</span>
+  <span class="ruby-string">&quot;</span><span class="ruby-string">&lt; </span><span class="ruby-string">#{</span><span class="ruby-identifier">to_s</span><span class="ruby-string">}</span><span class="ruby-string"> </span><span class="ruby-string">#{</span><span class="ruby-ivar">@events</span>.<span class="ruby-identifier">collect</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">e</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">pre</span> = <span class="ruby-identifier">e</span> <span class="ruby-operator">==</span> <span class="ruby-ivar">@events</span>[<span class="ruby-ivar">@current</span>] <span class="ruby-operator">?</span> <span class="ruby-string">&#39;</span><span class="ruby-string">#</span><span class="ruby-string">&#39;</span> <span class="ruby-operator">:</span> <span class="ruby-string">&#39;</span><span class="ruby-string">&#39;</span>
+    <span class="ruby-identifier">pre</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">e</span>.<span class="ruby-identifier">inspect</span> <span class="ruby-keyword">unless</span> <span class="ruby-keyword">self</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">e</span>
+  }.<span class="ruby-identifier">join</span>(<span class="ruby-string">&#39;</span><span class="ruby-string">, </span><span class="ruby-string">&#39;</span>)<span class="ruby-string">}</span><span class="ruby-string"> &gt;</span><span class="ruby-string">&quot;</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
 
@@ -880,42 +900,49 @@
 
       <div id="method-i-next" class="method-detail anchor-link ">
         <div class="method-header">
+          <div class="method-heading-group">
 
-            <div class="method-heading">
-              <a href="#method-i-next" title="Link to this method">
-                <span class="method-name">next</span>
-                <span class="method-args">( event )</span>
-              </a>
+              <div class="method-heading">
+                <a href="#method-i-next" title="Link to this method">
+                  <span class="method-name">next</span>
+                  <span class="method-args">(event)</span>
+                </a>
+              </div>
+
+
+
+          </div>
+
+
+            <div class="method-controls">
+              <details class="method-source-toggle">
+                <summary><span class="method-source-icon" aria-hidden="true">{}</span> Source</summary>
+              </details>
             </div>
 
         </div>
 
 
-          <div class="method-controls">
-            <details class="method-source-toggle">
-              <summary>Source</summary>
-            </details>
-          </div>
           <div class="method-source-code" id="next-source">
             <pre class="ruby"><span class="ruby-comment"># File lib/rexml/validation/relaxng.rb, line 147</span>
-<span class="ruby-keyword">def</span> <span class="ruby-keyword">next</span>( <span class="ruby-identifier ruby-title">event</span> )
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">next</span>( <span class="ruby-identifier">event</span> )
   <span class="ruby-comment">#print &quot;In next with #{event.inspect}.  &quot;</span>
   <span class="ruby-comment">#p @previous</span>
   <span class="ruby-keyword">return</span> <span class="ruby-ivar">@previous</span>.<span class="ruby-identifier">pop</span>.<span class="ruby-identifier">next</span>( <span class="ruby-identifier">event</span> ) <span class="ruby-keyword">if</span> <span class="ruby-ivar">@events</span>[<span class="ruby-ivar">@current</span>].<span class="ruby-identifier">nil?</span>
   <span class="ruby-identifier">expand_ref_in</span>( <span class="ruby-ivar">@events</span>, <span class="ruby-ivar">@current</span> ) <span class="ruby-keyword">if</span> <span class="ruby-ivar">@events</span>[<span class="ruby-ivar">@current</span>].<span class="ruby-identifier">class</span> <span class="ruby-operator">==</span> <span class="ruby-constant">Ref</span>
   <span class="ruby-keyword">if</span> ( <span class="ruby-ivar">@events</span>[<span class="ruby-ivar">@current</span>].<span class="ruby-identifier">kind_of?</span> <span class="ruby-constant">State</span> )
-    <span class="ruby-ivar">@current</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
-    <span class="ruby-ivar">@events</span>[<span class="ruby-ivar">@current</span><span class="ruby-value">-1</span>].<span class="ruby-identifier">previous</span> = <span class="ruby-keyword">self</span>
-    <span class="ruby-keyword">return</span> <span class="ruby-ivar">@events</span>[<span class="ruby-ivar">@current</span><span class="ruby-value">-1</span>].<span class="ruby-identifier">next</span>( <span class="ruby-identifier">event</span> )
+    <span class="ruby-ivar">@current</span> += <span class="ruby-value">1</span>
+    <span class="ruby-ivar">@events</span>[<span class="ruby-ivar">@current</span><span class="ruby-operator">-</span><span class="ruby-value">1</span>].<span class="ruby-identifier">previous</span> = <span class="ruby-keyword">self</span>
+    <span class="ruby-keyword">return</span> <span class="ruby-ivar">@events</span>[<span class="ruby-ivar">@current</span><span class="ruby-operator">-</span><span class="ruby-value">1</span>].<span class="ruby-identifier">next</span>( <span class="ruby-identifier">event</span> )
   <span class="ruby-keyword">end</span>
   <span class="ruby-keyword">if</span> ( <span class="ruby-ivar">@events</span>[<span class="ruby-ivar">@current</span>].<span class="ruby-identifier">matches?</span>(<span class="ruby-identifier">event</span>) )
-    <span class="ruby-ivar">@current</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
+    <span class="ruby-ivar">@current</span> += <span class="ruby-value">1</span>
     <span class="ruby-keyword">if</span> <span class="ruby-ivar">@events</span>[<span class="ruby-ivar">@current</span>].<span class="ruby-identifier">nil?</span>
       <span class="ruby-ivar">@previous</span>.<span class="ruby-identifier">pop</span>
     <span class="ruby-keyword">elsif</span> <span class="ruby-ivar">@events</span>[<span class="ruby-ivar">@current</span>].<span class="ruby-identifier">kind_of?</span> <span class="ruby-constant">State</span>
-      <span class="ruby-ivar">@current</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
-      <span class="ruby-ivar">@events</span>[<span class="ruby-ivar">@current</span><span class="ruby-value">-1</span>].<span class="ruby-identifier">previous</span> = <span class="ruby-keyword">self</span>
-      <span class="ruby-ivar">@events</span>[<span class="ruby-ivar">@current</span><span class="ruby-value">-1</span>]
+      <span class="ruby-ivar">@current</span> += <span class="ruby-value">1</span>
+      <span class="ruby-ivar">@events</span>[<span class="ruby-ivar">@current</span><span class="ruby-operator">-</span><span class="ruby-value">1</span>].<span class="ruby-identifier">previous</span> = <span class="ruby-keyword">self</span>
+      <span class="ruby-ivar">@events</span>[<span class="ruby-ivar">@current</span><span class="ruby-operator">-</span><span class="ruby-value">1</span>]
     <span class="ruby-keyword">else</span>
       <span class="ruby-keyword">self</span>
     <span class="ruby-keyword">end</span>
@@ -944,25 +971,32 @@
 
       <div id="method-i-previous-3D" class="method-detail anchor-link ">
         <div class="method-header">
+          <div class="method-heading-group">
 
-            <div class="method-heading">
-              <a href="#method-i-previous-3D" title="Link to this method">
-                <span class="method-name">previous=</span>
-                <span class="method-args">( previous )</span>
-              </a>
+              <div class="method-heading">
+                <a href="#method-i-previous-3D" title="Link to this method">
+                  <span class="method-name">previous=</span>
+                  <span class="method-args">(previous)</span>
+                </a>
+              </div>
+
+
+
+          </div>
+
+
+            <div class="method-controls">
+              <details class="method-source-toggle">
+                <summary><span class="method-source-icon" aria-hidden="true">{}</span> Source</summary>
+              </details>
             </div>
 
         </div>
 
 
-          <div class="method-controls">
-            <details class="method-source-toggle">
-              <summary>Source</summary>
-            </details>
-          </div>
           <div class="method-source-code" id="previous-3D-source">
             <pre class="ruby"><span class="ruby-comment"># File lib/rexml/validation/relaxng.rb, line 143</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">previous=</span>( <span class="ruby-identifier">previous</span> )
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">previous=</span>( <span class="ruby-identifier">previous</span> )
   <span class="ruby-ivar">@previous</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">previous</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
@@ -986,25 +1020,32 @@
 
       <div id="method-i-reset" class="method-detail anchor-link ">
         <div class="method-header">
+          <div class="method-heading-group">
 
-            <div class="method-heading">
-              <a href="#method-i-reset" title="Link to this method">
-                <span class="method-name">reset</span>
-                <span class="method-args">()</span>
-              </a>
+              <div class="method-heading">
+                <a href="#method-i-reset" title="Link to this method">
+                  <span class="method-name">reset</span>
+                  <span class="method-args">()</span>
+                </a>
+              </div>
+
+
+
+          </div>
+
+
+            <div class="method-controls">
+              <details class="method-source-toggle">
+                <summary><span class="method-source-icon" aria-hidden="true">{}</span> Source</summary>
+              </details>
             </div>
 
         </div>
 
 
-          <div class="method-controls">
-            <details class="method-source-toggle">
-              <summary>Source</summary>
-            </details>
-          </div>
           <div class="method-source-code" id="reset-source">
             <pre class="ruby"><span class="ruby-comment"># File lib/rexml/validation/relaxng.rb, line 137</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">reset</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">reset</span>
   <span class="ruby-keyword">return</span> <span class="ruby-keyword">if</span> <span class="ruby-ivar">@current</span> <span class="ruby-operator">==</span> <span class="ruby-value">0</span>
   <span class="ruby-ivar">@current</span> = <span class="ruby-value">0</span>
   <span class="ruby-ivar">@events</span>.<span class="ruby-identifier">each</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">s</span><span class="ruby-operator">|</span> <span class="ruby-identifier">s</span>.<span class="ruby-identifier">reset</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">s</span>.<span class="ruby-identifier">kind_of?</span> <span class="ruby-constant">State</span> }
@@ -1030,30 +1071,37 @@
 
       <div id="method-i-to_s" class="method-detail anchor-link ">
         <div class="method-header">
+          <div class="method-heading-group">
 
-            <div class="method-heading">
-              <a href="#method-i-to_s" title="Link to this method">
-                <span class="method-name">to_s</span>
-                <span class="method-args">()</span>
-              </a>
+              <div class="method-heading">
+                <a href="#method-i-to_s" title="Link to this method">
+                  <span class="method-name">to_s</span>
+                  <span class="method-args">()</span>
+                </a>
+              </div>
+
+
+
+          </div>
+
+
+            <div class="method-controls">
+              <details class="method-source-toggle">
+                <summary><span class="method-source-icon" aria-hidden="true">{}</span> Source</summary>
+              </details>
             </div>
 
         </div>
 
 
-          <div class="method-controls">
-            <details class="method-source-toggle">
-              <summary>Source</summary>
-            </details>
-          </div>
           <div class="method-source-code" id="to_s-source">
             <pre class="ruby"><span class="ruby-comment"># File lib/rexml/validation/relaxng.rb, line 173</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">to_s</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">to_s</span>
   <span class="ruby-comment"># Abbreviated:</span>
   <span class="ruby-keyword">self</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">name</span> <span class="ruby-operator">=~</span> <span class="ruby-regexp">/(?:::)(\w)\w+$/</span>
   <span class="ruby-comment"># Full:</span>
   <span class="ruby-comment">#self.class.name =~ /(?:::)(\w+)$/</span>
-  <span class="ruby-string">&quot;#$1.#@count&quot;</span>
+  <span class="ruby-string">&quot;</span><span class="ruby-string">#</span><span class="ruby-identifier">$1</span><span class="ruby-string">.</span><span class="ruby-string">#</span><span class="ruby-ivar">@count</span><span class="ruby-string">&quot;</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
 
@@ -1085,28 +1133,35 @@
 
       <div id="method-i-add_event_to_arry" class="method-detail anchor-link ">
         <div class="method-header">
+          <div class="method-heading-group">
 
-            <div class="method-heading">
-              <a href="#method-i-add_event_to_arry" title="Link to this method">
-                <span class="method-name">add_event_to_arry</span>
-                <span class="method-args">( arry, evt )</span>
-              </a>
+              <div class="method-heading">
+                <a href="#method-i-add_event_to_arry" title="Link to this method">
+                  <span class="method-name">add_event_to_arry</span>
+                  <span class="method-args">(arry, evt)</span>
+                </a>
+              </div>
+
+
+
+          </div>
+
+
+            <div class="method-controls">
+              <details class="method-source-toggle">
+                <summary><span class="method-source-icon" aria-hidden="true">{}</span> Source</summary>
+              </details>
             </div>
 
         </div>
 
 
-          <div class="method-controls">
-            <details class="method-source-toggle">
-              <summary>Source</summary>
-            </details>
-          </div>
           <div class="method-source-code" id="add_event_to_arry-source">
             <pre class="ruby"><span class="ruby-comment"># File lib/rexml/validation/relaxng.rb, line 206</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">add_event_to_arry</span>( <span class="ruby-identifier">arry</span>, <span class="ruby-identifier">evt</span> )
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">add_event_to_arry</span>( <span class="ruby-identifier">arry</span>, <span class="ruby-identifier">evt</span> )
   <span class="ruby-identifier">evt</span> = <span class="ruby-identifier">generate_event</span>( <span class="ruby-identifier">evt</span> )
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">evt</span>.<span class="ruby-identifier">kind_of?</span> <span class="ruby-constant">String</span>
-    <span class="ruby-identifier">arry</span>[<span class="ruby-value">-1</span>].<span class="ruby-identifier">event_arg</span> = <span class="ruby-identifier">evt</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">arry</span>[<span class="ruby-value">-1</span>].<span class="ruby-identifier">kind_of?</span> <span class="ruby-constant">Event</span> <span class="ruby-keyword">and</span> <span class="ruby-ivar">@value</span>
+    <span class="ruby-identifier">arry</span>[-<span class="ruby-value">1</span>].<span class="ruby-identifier">event_arg</span> = <span class="ruby-identifier">evt</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">arry</span>[-<span class="ruby-value">1</span>].<span class="ruby-identifier">kind_of?</span> <span class="ruby-constant">Event</span> <span class="ruby-keyword">and</span> <span class="ruby-ivar">@value</span>
     <span class="ruby-ivar">@value</span> = <span class="ruby-keyword">false</span>
   <span class="ruby-keyword">else</span>
     <span class="ruby-identifier">arry</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">evt</span>
@@ -1133,25 +1188,32 @@
 
       <div id="method-i-expand_ref_in" class="method-detail anchor-link ">
         <div class="method-header">
+          <div class="method-heading-group">
 
-            <div class="method-heading">
-              <a href="#method-i-expand_ref_in" title="Link to this method">
-                <span class="method-name">expand_ref_in</span>
-                <span class="method-args">( arry, ind )</span>
-              </a>
+              <div class="method-heading">
+                <a href="#method-i-expand_ref_in" title="Link to this method">
+                  <span class="method-name">expand_ref_in</span>
+                  <span class="method-args">(arry, ind)</span>
+                </a>
+              </div>
+
+
+
+          </div>
+
+
+            <div class="method-controls">
+              <details class="method-source-toggle">
+                <summary><span class="method-source-icon" aria-hidden="true">{}</span> Source</summary>
+              </details>
             </div>
 
         </div>
 
 
-          <div class="method-controls">
-            <details class="method-source-toggle">
-              <summary>Source</summary>
-            </details>
-          </div>
           <div class="method-source-code" id="expand_ref_in-source">
             <pre class="ruby"><span class="ruby-comment"># File lib/rexml/validation/relaxng.rb, line 198</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">expand_ref_in</span>( <span class="ruby-identifier">arry</span>, <span class="ruby-identifier">ind</span> )
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">expand_ref_in</span>( <span class="ruby-identifier">arry</span>, <span class="ruby-identifier">ind</span> )
   <span class="ruby-identifier">new_events</span> = []
   <span class="ruby-ivar">@references</span>[ <span class="ruby-identifier">arry</span>[<span class="ruby-identifier">ind</span>].<span class="ruby-identifier">to_s</span> ].<span class="ruby-identifier">each</span>{ <span class="ruby-operator">|</span><span class="ruby-identifier">evt</span><span class="ruby-operator">|</span>
     <span class="ruby-identifier">add_event_to_arry</span>(<span class="ruby-identifier">new_events</span>,<span class="ruby-identifier">evt</span>)
@@ -1179,53 +1241,60 @@
 
       <div id="method-i-generate_event" class="method-detail anchor-link ">
         <div class="method-header">
+          <div class="method-heading-group">
 
-            <div class="method-heading">
-              <a href="#method-i-generate_event" title="Link to this method">
-                <span class="method-name">generate_event</span>
-                <span class="method-args">( event )</span>
-              </a>
+              <div class="method-heading">
+                <a href="#method-i-generate_event" title="Link to this method">
+                  <span class="method-name">generate_event</span>
+                  <span class="method-args">(event)</span>
+                </a>
+              </div>
+
+
+
+          </div>
+
+
+            <div class="method-controls">
+              <details class="method-source-toggle">
+                <summary><span class="method-source-icon" aria-hidden="true">{}</span> Source</summary>
+              </details>
             </div>
 
         </div>
 
 
-          <div class="method-controls">
-            <details class="method-source-toggle">
-              <summary>Source</summary>
-            </details>
-          </div>
           <div class="method-source-code" id="generate_event-source">
             <pre class="ruby"><span class="ruby-comment"># File lib/rexml/validation/relaxng.rb, line 216</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">generate_event</span>( <span class="ruby-identifier">event</span> )
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">generate_event</span>( <span class="ruby-identifier">event</span> )
   <span class="ruby-keyword">return</span> <span class="ruby-identifier">event</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">event</span>.<span class="ruby-identifier">kind_of?</span> <span class="ruby-constant">State</span> <span class="ruby-keyword">or</span> <span class="ruby-identifier">event</span>.<span class="ruby-identifier">class</span> <span class="ruby-operator">==</span> <span class="ruby-constant">Ref</span>
   <span class="ruby-identifier">evt</span> = <span class="ruby-keyword">nil</span>
   <span class="ruby-identifier">arg</span> = <span class="ruby-keyword">nil</span>
   <span class="ruby-keyword">case</span> <span class="ruby-identifier">event</span>[<span class="ruby-value">0</span>]
-  <span class="ruby-keyword">when</span> <span class="ruby-value">:start_element</span>
+  <span class="ruby-keyword">when</span> <span class="ruby-value">:</span><span class="ruby-value">start_element</span>
     <span class="ruby-keyword">case</span> <span class="ruby-identifier">event</span>[<span class="ruby-value">1</span>]
-    <span class="ruby-keyword">when</span> <span class="ruby-string">&quot;element&quot;</span>
-      <span class="ruby-identifier">evt</span> = <span class="ruby-value">:start_element</span>
-      <span class="ruby-identifier">arg</span> = <span class="ruby-identifier">event</span>[<span class="ruby-value">2</span>][<span class="ruby-string">&quot;name&quot;</span>]
-    <span class="ruby-keyword">when</span> <span class="ruby-string">&quot;attribute&quot;</span>
-      <span class="ruby-identifier">evt</span> = <span class="ruby-value">:start_attribute</span>
-      <span class="ruby-identifier">arg</span> = <span class="ruby-identifier">event</span>[<span class="ruby-value">2</span>][<span class="ruby-string">&quot;name&quot;</span>]
-    <span class="ruby-keyword">when</span> <span class="ruby-string">&quot;text&quot;</span>
-      <span class="ruby-identifier">evt</span> = <span class="ruby-value">:text</span>
-    <span class="ruby-keyword">when</span> <span class="ruby-string">&quot;value&quot;</span>
-      <span class="ruby-identifier">evt</span> = <span class="ruby-value">:text</span>
+    <span class="ruby-keyword">when</span> <span class="ruby-string">&quot;</span><span class="ruby-string">element</span><span class="ruby-string">&quot;</span>
+      <span class="ruby-identifier">evt</span> = <span class="ruby-value">:</span><span class="ruby-value">start_element</span>
+      <span class="ruby-identifier">arg</span> = <span class="ruby-identifier">event</span>[<span class="ruby-value">2</span>][<span class="ruby-string">&quot;</span><span class="ruby-string">name</span><span class="ruby-string">&quot;</span>]
+    <span class="ruby-keyword">when</span> <span class="ruby-string">&quot;</span><span class="ruby-string">attribute</span><span class="ruby-string">&quot;</span>
+      <span class="ruby-identifier">evt</span> = <span class="ruby-value">:</span><span class="ruby-value">start_attribute</span>
+      <span class="ruby-identifier">arg</span> = <span class="ruby-identifier">event</span>[<span class="ruby-value">2</span>][<span class="ruby-string">&quot;</span><span class="ruby-string">name</span><span class="ruby-string">&quot;</span>]
+    <span class="ruby-keyword">when</span> <span class="ruby-string">&quot;</span><span class="ruby-string">text</span><span class="ruby-string">&quot;</span>
+      <span class="ruby-identifier">evt</span> = <span class="ruby-value">:</span><span class="ruby-value">text</span>
+    <span class="ruby-keyword">when</span> <span class="ruby-string">&quot;</span><span class="ruby-string">value</span><span class="ruby-string">&quot;</span>
+      <span class="ruby-identifier">evt</span> = <span class="ruby-value">:</span><span class="ruby-value">text</span>
       <span class="ruby-ivar">@value</span> = <span class="ruby-keyword">true</span>
     <span class="ruby-keyword">end</span>
-  <span class="ruby-keyword">when</span> <span class="ruby-value">:text</span>
+  <span class="ruby-keyword">when</span> <span class="ruby-value">:</span><span class="ruby-value">text</span>
     <span class="ruby-keyword">return</span> <span class="ruby-identifier">event</span>[<span class="ruby-value">1</span>]
-  <span class="ruby-keyword">when</span> <span class="ruby-value">:end_document</span>
+  <span class="ruby-keyword">when</span> <span class="ruby-value">:</span><span class="ruby-value">end_document</span>
     <span class="ruby-keyword">return</span> <span class="ruby-constant">Event</span>.<span class="ruby-identifier">new</span>( <span class="ruby-identifier">event</span>[<span class="ruby-value">0</span>] )
   <span class="ruby-keyword">else</span> <span class="ruby-comment"># then :end_element</span>
     <span class="ruby-keyword">case</span> <span class="ruby-identifier">event</span>[<span class="ruby-value">1</span>]
-    <span class="ruby-keyword">when</span> <span class="ruby-string">&quot;element&quot;</span>
-      <span class="ruby-identifier">evt</span> = <span class="ruby-value">:end_element</span>
-    <span class="ruby-keyword">when</span> <span class="ruby-string">&quot;attribute&quot;</span>
-      <span class="ruby-identifier">evt</span> = <span class="ruby-value">:end_attribute</span>
+    <span class="ruby-keyword">when</span> <span class="ruby-string">&quot;</span><span class="ruby-string">element</span><span class="ruby-string">&quot;</span>
+      <span class="ruby-identifier">evt</span> = <span class="ruby-value">:</span><span class="ruby-value">end_element</span>
+    <span class="ruby-keyword">when</span> <span class="ruby-string">&quot;</span><span class="ruby-string">attribute</span><span class="ruby-string">&quot;</span>
+      <span class="ruby-identifier">evt</span> = <span class="ruby-value">:</span><span class="ruby-value">end_attribute</span>
     <span class="ruby-keyword">end</span>
   <span class="ruby-keyword">end</span>
   <span class="ruby-constant">Event</span>.<span class="ruby-identifier">new</span>( <span class="ruby-identifier">evt</span>, <span class="ruby-identifier">arg</span> )
@@ -1257,7 +1326,7 @@
 
 </main>
 
-<aside class="table-of-contents" role="complementary" aria-label="Table of Contents">
+<aside id="table-of-contents" class="table-of-contents" role="complementary" aria-label="Table of Contents">
   <div class="toc-sticky">
     <h3 class="toc-heading">On This Page</h3>
     <nav class="toc-nav" id="toc-nav" aria-label="Page sections">
@@ -1272,7 +1341,7 @@
 
   <div class="footer-bottom">
     <p>
-      Generated by <a href="https://ruby.github.io/rdoc/">RDoc 7.2.0</a>
+      Generated by <a href="https://ruby.github.io/rdoc/">RDoc 8.0.0</a>
       using the Aliki theme by <a href="http://st0012.dev">Stan Lo</a>
     </p>
   </div>

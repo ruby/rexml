@@ -50,46 +50,46 @@
 </script>
 
 <script
-  src="../js/theme-toggle.js?v=7.2.0"
+  src="../js/theme-toggle.js?v=8.0.0"
 ></script>
 
 <script
-  src="../js/search_navigation.js?v=7.2.0"
+  src="../js/search_navigation.js?v=8.0.0"
   defer
 ></script>
 
 <script
-  src="../js/search_data.js?v=7.2.0"
+  src="../js/search_data.js?v=8.0.0"
   defer
 ></script>
 
 <script
-  src="../js/search_ranker.js?v=7.2.0"
+  src="../js/search_ranker.js?v=8.0.0"
   defer
 ></script>
 
 <script
-  src="../js/search_controller.js?v=7.2.0"
+  src="../js/search_controller.js?v=8.0.0"
   defer
 ></script>
 
 <script
-  src="../js/c_highlighter.js?v=7.2.0"
+  src="../js/c_highlighter.js?v=8.0.0"
   defer
 ></script>
 
 <script
-  src="../js/bash_highlighter.js?v=7.2.0"
+  src="../js/bash_highlighter.js?v=8.0.0"
   defer
 ></script>
 
 <script
-  src="../js/aliki.js?v=7.2.0"
+  src="../js/aliki.js?v=8.0.0"
   defer
 ></script>
 
 <link
-  href="../css/rdoc.css?v=7.2.0"
+  href="../css/rdoc.css?v=8.0.0"
   rel="stylesheet"
 >
 
@@ -363,12 +363,12 @@
   </div>
 </div>
 
-<div id="navigation-toggle" role="button" tabindex="0" aria-label="Toggle sidebar" aria-expanded="true" aria-controls="navigation">
+<div id="sidebar-navigation-toggle" role="button" tabindex="0" aria-label="Toggle sidebar" aria-expanded="false" aria-controls="sidebar-navigation">
   <span aria-hidden="true">&#9776;</span>
 </div>
 
 
-<nav id="navigation" role="navigation" hidden>
+<nav id="sidebar-navigation" role="navigation" hidden>
   
 
 
@@ -411,15 +411,6 @@
             <li>
               <a href="../NEWS_md.html">
                 NEWS
-              </a>
-            </li>
-
-
-
-
-            <li>
-              <a href="../README_md.html">
-                README
               </a>
             </li>
 
@@ -613,7 +604,7 @@
       
       <li>
         
-        <a href="../REXML.html">REXML</a><span>::</span>
+        <a href="../REXML.html">REXML</a><span class="separator">::</span>
         
       </li>
       
@@ -627,8 +618,9 @@
   
 
   <span id="module-REXML::SAX2Listener" class="legacy-anchor"></span>
-  <h1 id="module-rexml-sax2listener" class="anchor-link module">
-    module REXML::SAX2Listener
+  <h1 id="module-rexml-sax2listener" class="anchor-link module page-title">
+    <span class="page-title-kind">module</span>
+    <span class="page-title-name">REXML::SAX2Listener</span>
   </h1>
 
   <section class="description">
@@ -689,25 +681,32 @@
 
       <div id="method-i-attlistdecl" class="method-detail anchor-link ">
         <div class="method-header">
+          <div class="method-heading-group">
 
-            <div class="method-heading">
-              <a href="#method-i-attlistdecl" title="Link to this method">
-                <span class="method-name">attlistdecl</span>
-                <span class="method-args">(element, pairs, contents)</span>
-              </a>
+              <div class="method-heading">
+                <a href="#method-i-attlistdecl" title="Link to this method">
+                  <span class="method-name">attlistdecl</span>
+                  <span class="method-args">(element, pairs, contents)</span>
+                </a>
+              </div>
+
+
+
+          </div>
+
+
+            <div class="method-controls">
+              <details class="method-source-toggle">
+                <summary><span class="method-source-icon" aria-hidden="true">{}</span> Source</summary>
+              </details>
             </div>
 
         </div>
 
 
-          <div class="method-controls">
-            <details class="method-source-toggle">
-              <summary>Source</summary>
-            </details>
-          </div>
           <div class="method-source-code" id="attlistdecl-source">
             <pre class="ruby"><span class="ruby-comment"># File lib/rexml/sax2listener.rb, line 53</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">attlistdecl</span>(<span class="ruby-identifier">element</span>, <span class="ruby-identifier">pairs</span>, <span class="ruby-identifier">contents</span>)
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">attlistdecl</span>(<span class="ruby-identifier">element</span>, <span class="ruby-identifier">pairs</span>, <span class="ruby-identifier">contents</span>)
 <span class="ruby-keyword">end</span></pre>
           </div>
 
@@ -716,7 +715,7 @@
         <div class="method-description">
 
 
-          <p>If a doctype includes an ATTLIST declaration, it will cause this method to be called.  The content is the declaration itself, unparsed. EG, &lt;!ATTLIST el attr CDATA REQUIRED&gt; will come to this method as “el attr CDATA REQUIRED”.  This is the same for all of the .*decl methods.</p>
+          <p>If a doctype includes an ATTLIST declaration, it will cause this method to be called.  The content is the declaration itself, unparsed. EG, &lt;!ATTLIST el attr CDATA #REQUIRED&gt; will come to this method as “el attr CDATA #REQUIRED”.  This is the same for all of the .*decl methods.</p>
 
 
         </div>
@@ -730,25 +729,32 @@
 
       <div id="method-i-cdata" class="method-detail anchor-link ">
         <div class="method-header">
+          <div class="method-heading-group">
 
-            <div class="method-heading">
-              <a href="#method-i-cdata" title="Link to this method">
-                <span class="method-name">cdata</span>
-                <span class="method-args">(content)</span>
-              </a>
+              <div class="method-heading">
+                <a href="#method-i-cdata" title="Link to this method">
+                  <span class="method-name">cdata</span>
+                  <span class="method-args">(content)</span>
+                </a>
+              </div>
+
+
+
+          </div>
+
+
+            <div class="method-controls">
+              <details class="method-source-toggle">
+                <summary><span class="method-source-icon" aria-hidden="true">{}</span> Source</summary>
+              </details>
             </div>
 
         </div>
 
 
-          <div class="method-controls">
-            <details class="method-source-toggle">
-              <summary>Source</summary>
-            </details>
-          </div>
           <div class="method-source-code" id="cdata-source">
             <pre class="ruby"><span class="ruby-comment"># File lib/rexml/sax2listener.rb, line 81</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">cdata</span> <span class="ruby-identifier">content</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">cdata</span> <span class="ruby-identifier">content</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
 
@@ -771,25 +777,32 @@
 
       <div id="method-i-characters" class="method-detail anchor-link ">
         <div class="method-header">
+          <div class="method-heading-group">
 
-            <div class="method-heading">
-              <a href="#method-i-characters" title="Link to this method">
-                <span class="method-name">characters</span>
-                <span class="method-args">(text)</span>
-              </a>
+              <div class="method-heading">
+                <a href="#method-i-characters" title="Link to this method">
+                  <span class="method-name">characters</span>
+                  <span class="method-args">(text)</span>
+                </a>
+              </div>
+
+
+
+          </div>
+
+
+            <div class="method-controls">
+              <details class="method-source-toggle">
+                <summary><span class="method-source-icon" aria-hidden="true">{}</span> Source</summary>
+              </details>
             </div>
 
         </div>
 
 
-          <div class="method-controls">
-            <details class="method-source-toggle">
-              <summary>Source</summary>
-            </details>
-          </div>
           <div class="method-source-code" id="characters-source">
             <pre class="ruby"><span class="ruby-comment"># File lib/rexml/sax2listener.rb, line 36</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">characters</span> <span class="ruby-identifier">text</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">characters</span> <span class="ruby-identifier">text</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
 
@@ -812,25 +825,32 @@
 
       <div id="method-i-comment" class="method-detail anchor-link ">
         <div class="method-header">
+          <div class="method-heading-group">
 
-            <div class="method-heading">
-              <a href="#method-i-comment" title="Link to this method">
-                <span class="method-name">comment</span>
-                <span class="method-args">(comment)</span>
-              </a>
+              <div class="method-heading">
+                <a href="#method-i-comment" title="Link to this method">
+                  <span class="method-name">comment</span>
+                  <span class="method-args">(comment)</span>
+                </a>
+              </div>
+
+
+
+          </div>
+
+
+            <div class="method-controls">
+              <details class="method-source-toggle">
+                <summary><span class="method-source-icon" aria-hidden="true">{}</span> Source</summary>
+              </details>
             </div>
 
         </div>
 
 
-          <div class="method-controls">
-            <details class="method-source-toggle">
-              <summary>Source</summary>
-            </details>
-          </div>
           <div class="method-source-code" id="comment-source">
             <pre class="ruby"><span class="ruby-comment"># File lib/rexml/sax2listener.rb, line 93</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">comment</span> <span class="ruby-identifier">comment</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">comment</span> <span class="ruby-identifier">comment</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
 
@@ -853,25 +873,32 @@
 
       <div id="method-i-doctype" class="method-detail anchor-link ">
         <div class="method-header">
+          <div class="method-heading-group">
 
-            <div class="method-heading">
-              <a href="#method-i-doctype" title="Link to this method">
-                <span class="method-name">doctype</span>
-                <span class="method-args">(name, pub_sys, long_name, uri)</span>
-              </a>
+              <div class="method-heading">
+                <a href="#method-i-doctype" title="Link to this method">
+                  <span class="method-name">doctype</span>
+                  <span class="method-args">(name, pub_sys, long_name, uri)</span>
+                </a>
+              </div>
+
+
+
+          </div>
+
+
+            <div class="method-controls">
+              <details class="method-source-toggle">
+                <summary><span class="method-source-icon" aria-hidden="true">{}</span> Source</summary>
+              </details>
             </div>
 
         </div>
 
 
-          <div class="method-controls">
-            <details class="method-source-toggle">
-              <summary>Source</summary>
-            </details>
-          </div>
           <div class="method-source-code" id="doctype-source">
             <pre class="ruby"><span class="ruby-comment"># File lib/rexml/sax2listener.rb, line 46</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">doctype</span> <span class="ruby-identifier">name</span>, <span class="ruby-identifier">pub_sys</span>, <span class="ruby-identifier">long_name</span>, <span class="ruby-identifier">uri</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">doctype</span> <span class="ruby-identifier">name</span>, <span class="ruby-identifier">pub_sys</span>, <span class="ruby-identifier">long_name</span>, <span class="ruby-identifier">uri</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
 
@@ -894,25 +921,32 @@
 
       <div id="method-i-elementdecl" class="method-detail anchor-link ">
         <div class="method-header">
+          <div class="method-heading-group">
 
-            <div class="method-heading">
-              <a href="#method-i-elementdecl" title="Link to this method">
-                <span class="method-name">elementdecl</span>
-                <span class="method-args">(content)</span>
-              </a>
+              <div class="method-heading">
+                <a href="#method-i-elementdecl" title="Link to this method">
+                  <span class="method-name">elementdecl</span>
+                  <span class="method-args">(content)</span>
+                </a>
+              </div>
+
+
+
+          </div>
+
+
+            <div class="method-controls">
+              <details class="method-source-toggle">
+                <summary><span class="method-source-icon" aria-hidden="true">{}</span> Source</summary>
+              </details>
             </div>
 
         </div>
 
 
-          <div class="method-controls">
-            <details class="method-source-toggle">
-              <summary>Source</summary>
-            </details>
-          </div>
           <div class="method-source-code" id="elementdecl-source">
             <pre class="ruby"><span class="ruby-comment"># File lib/rexml/sax2listener.rb, line 56</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">elementdecl</span> <span class="ruby-identifier">content</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">elementdecl</span> <span class="ruby-identifier">content</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
 
@@ -935,25 +969,32 @@
 
       <div id="method-i-end_document" class="method-detail anchor-link ">
         <div class="method-header">
+          <div class="method-heading-group">
 
-            <div class="method-heading">
-              <a href="#method-i-end_document" title="Link to this method">
-                <span class="method-name">end_document</span>
-                <span class="method-args">()</span>
-              </a>
+              <div class="method-heading">
+                <a href="#method-i-end_document" title="Link to this method">
+                  <span class="method-name">end_document</span>
+                  <span class="method-args">()</span>
+                </a>
+              </div>
+
+
+
+          </div>
+
+
+            <div class="method-controls">
+              <details class="method-source-toggle">
+                <summary><span class="method-source-icon" aria-hidden="true">{}</span> Source</summary>
+              </details>
             </div>
 
         </div>
 
 
-          <div class="method-controls">
-            <details class="method-source-toggle">
-              <summary>Source</summary>
-            </details>
-          </div>
           <div class="method-source-code" id="end_document-source">
             <pre class="ruby"><span class="ruby-comment"># File lib/rexml/sax2listener.rb, line 26</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">end_document</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">end_document</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
 
@@ -976,25 +1017,32 @@
 
       <div id="method-i-end_element" class="method-detail anchor-link ">
         <div class="method-header">
+          <div class="method-heading-group">
 
-            <div class="method-heading">
-              <a href="#method-i-end_element" title="Link to this method">
-                <span class="method-name">end_element</span>
-                <span class="method-args">(uri, localname, qname)</span>
-              </a>
+              <div class="method-heading">
+                <a href="#method-i-end_element" title="Link to this method">
+                  <span class="method-name">end_element</span>
+                  <span class="method-args">(uri, localname, qname)</span>
+                </a>
+              </div>
+
+
+
+          </div>
+
+
+            <div class="method-controls">
+              <details class="method-source-toggle">
+                <summary><span class="method-source-icon" aria-hidden="true">{}</span> Source</summary>
+              </details>
             </div>
 
         </div>
 
 
-          <div class="method-controls">
-            <details class="method-source-toggle">
-              <summary>Source</summary>
-            </details>
-          </div>
           <div class="method-source-code" id="end_element-source">
             <pre class="ruby"><span class="ruby-comment"># File lib/rexml/sax2listener.rb, line 34</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">end_element</span> <span class="ruby-identifier">uri</span>, <span class="ruby-identifier">localname</span>, <span class="ruby-identifier">qname</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">end_element</span> <span class="ruby-identifier">uri</span>, <span class="ruby-identifier">localname</span>, <span class="ruby-identifier">qname</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
 
@@ -1017,25 +1065,32 @@
 
       <div id="method-i-end_prefix_mapping" class="method-detail anchor-link ">
         <div class="method-header">
+          <div class="method-heading-group">
 
-            <div class="method-heading">
-              <a href="#method-i-end_prefix_mapping" title="Link to this method">
-                <span class="method-name">end_prefix_mapping</span>
-                <span class="method-args">(prefix)</span>
-              </a>
+              <div class="method-heading">
+                <a href="#method-i-end_prefix_mapping" title="Link to this method">
+                  <span class="method-name">end_prefix_mapping</span>
+                  <span class="method-args">(prefix)</span>
+                </a>
+              </div>
+
+
+
+          </div>
+
+
+            <div class="method-controls">
+              <details class="method-source-toggle">
+                <summary><span class="method-source-icon" aria-hidden="true">{}</span> Source</summary>
+              </details>
             </div>
 
         </div>
 
 
-          <div class="method-controls">
-            <details class="method-source-toggle">
-              <summary>Source</summary>
-            </details>
-          </div>
           <div class="method-source-code" id="end_prefix_mapping-source">
             <pre class="ruby"><span class="ruby-comment"># File lib/rexml/sax2listener.rb, line 30</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">end_prefix_mapping</span> <span class="ruby-identifier">prefix</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">end_prefix_mapping</span> <span class="ruby-identifier">prefix</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
 
@@ -1058,25 +1113,32 @@
 
       <div id="method-i-entitydecl" class="method-detail anchor-link ">
         <div class="method-header">
+          <div class="method-heading-group">
 
-            <div class="method-heading">
-              <a href="#method-i-entitydecl" title="Link to this method">
-                <span class="method-name">entitydecl</span>
-                <span class="method-args">(declaration)</span>
-              </a>
+              <div class="method-heading">
+                <a href="#method-i-entitydecl" title="Link to this method">
+                  <span class="method-name">entitydecl</span>
+                  <span class="method-args">(declaration)</span>
+                </a>
+              </div>
+
+
+
+          </div>
+
+
+            <div class="method-controls">
+              <details class="method-source-toggle">
+                <summary><span class="method-source-icon" aria-hidden="true">{}</span> Source</summary>
+              </details>
             </div>
 
         </div>
 
 
-          <div class="method-controls">
-            <details class="method-source-toggle">
-              <summary>Source</summary>
-            </details>
-          </div>
           <div class="method-source-code" id="entitydecl-source">
             <pre class="ruby"><span class="ruby-comment"># File lib/rexml/sax2listener.rb, line 74</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">entitydecl</span> <span class="ruby-identifier">declaration</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">entitydecl</span> <span class="ruby-identifier">declaration</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
 
@@ -1115,25 +1177,32 @@
 
       <div id="method-i-notationdecl" class="method-detail anchor-link ">
         <div class="method-header">
+          <div class="method-heading-group">
 
-            <div class="method-heading">
-              <a href="#method-i-notationdecl" title="Link to this method">
-                <span class="method-name">notationdecl</span>
-                <span class="method-args">(name, public_or_system, public_id, system_id)</span>
-              </a>
+              <div class="method-heading">
+                <a href="#method-i-notationdecl" title="Link to this method">
+                  <span class="method-name">notationdecl</span>
+                  <span class="method-args">(name, public_or_system, public_id, system_id)</span>
+                </a>
+              </div>
+
+
+
+          </div>
+
+
+            <div class="method-controls">
+              <details class="method-source-toggle">
+                <summary><span class="method-source-icon" aria-hidden="true">{}</span> Source</summary>
+              </details>
             </div>
 
         </div>
 
 
-          <div class="method-controls">
-            <details class="method-source-toggle">
-              <summary>Source</summary>
-            </details>
-          </div>
           <div class="method-source-code" id="notationdecl-source">
             <pre class="ruby"><span class="ruby-comment"># File lib/rexml/sax2listener.rb, line 77</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">notationdecl</span> <span class="ruby-identifier">name</span>, <span class="ruby-identifier">public_or_system</span>, <span class="ruby-identifier">public_id</span>, <span class="ruby-identifier">system_id</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">notationdecl</span> <span class="ruby-identifier">name</span>, <span class="ruby-identifier">public_or_system</span>, <span class="ruby-identifier">public_id</span>, <span class="ruby-identifier">system_id</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
 
@@ -1156,25 +1225,32 @@
 
       <div id="method-i-processing_instruction" class="method-detail anchor-link ">
         <div class="method-header">
+          <div class="method-heading-group">
 
-            <div class="method-heading">
-              <a href="#method-i-processing_instruction" title="Link to this method">
-                <span class="method-name">processing_instruction</span>
-                <span class="method-args">(target, data)</span>
-              </a>
+              <div class="method-heading">
+                <a href="#method-i-processing_instruction" title="Link to this method">
+                  <span class="method-name">processing_instruction</span>
+                  <span class="method-args">(target, data)</span>
+                </a>
+              </div>
+
+
+
+          </div>
+
+
+            <div class="method-controls">
+              <details class="method-source-toggle">
+                <summary><span class="method-source-icon" aria-hidden="true">{}</span> Source</summary>
+              </details>
             </div>
 
         </div>
 
 
-          <div class="method-controls">
-            <details class="method-source-toggle">
-              <summary>Source</summary>
-            </details>
-          </div>
           <div class="method-source-code" id="processing_instruction-source">
             <pre class="ruby"><span class="ruby-comment"># File lib/rexml/sax2listener.rb, line 38</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">processing_instruction</span> <span class="ruby-identifier">target</span>, <span class="ruby-identifier">data</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">processing_instruction</span> <span class="ruby-identifier">target</span>, <span class="ruby-identifier">data</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
 
@@ -1197,25 +1273,32 @@
 
       <div id="method-i-progress" class="method-detail anchor-link ">
         <div class="method-header">
+          <div class="method-heading-group">
 
-            <div class="method-heading">
-              <a href="#method-i-progress" title="Link to this method">
-                <span class="method-name">progress</span>
-                <span class="method-args">(position)</span>
-              </a>
+              <div class="method-heading">
+                <a href="#method-i-progress" title="Link to this method">
+                  <span class="method-name">progress</span>
+                  <span class="method-args">(position)</span>
+                </a>
+              </div>
+
+
+
+          </div>
+
+
+            <div class="method-controls">
+              <details class="method-source-toggle">
+                <summary><span class="method-source-icon" aria-hidden="true">{}</span> Source</summary>
+              </details>
             </div>
 
         </div>
 
 
-          <div class="method-controls">
-            <details class="method-source-toggle">
-              <summary>Source</summary>
-            </details>
-          </div>
           <div class="method-source-code" id="progress-source">
             <pre class="ruby"><span class="ruby-comment"># File lib/rexml/sax2listener.rb, line 95</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">progress</span> <span class="ruby-identifier">position</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">progress</span> <span class="ruby-identifier">position</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
 
@@ -1238,25 +1321,32 @@
 
       <div id="method-i-start_document" class="method-detail anchor-link ">
         <div class="method-header">
+          <div class="method-heading-group">
 
-            <div class="method-heading">
-              <a href="#method-i-start_document" title="Link to this method">
-                <span class="method-name">start_document</span>
-                <span class="method-args">()</span>
-              </a>
+              <div class="method-heading">
+                <a href="#method-i-start_document" title="Link to this method">
+                  <span class="method-name">start_document</span>
+                  <span class="method-args">()</span>
+                </a>
+              </div>
+
+
+
+          </div>
+
+
+            <div class="method-controls">
+              <details class="method-source-toggle">
+                <summary><span class="method-source-icon" aria-hidden="true">{}</span> Source</summary>
+              </details>
             </div>
 
         </div>
 
 
-          <div class="method-controls">
-            <details class="method-source-toggle">
-              <summary>Source</summary>
-            </details>
-          </div>
           <div class="method-source-code" id="start_document-source">
             <pre class="ruby"><span class="ruby-comment"># File lib/rexml/sax2listener.rb, line 24</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">start_document</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">start_document</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
 
@@ -1279,25 +1369,32 @@
 
       <div id="method-i-start_element" class="method-detail anchor-link ">
         <div class="method-header">
+          <div class="method-heading-group">
 
-            <div class="method-heading">
-              <a href="#method-i-start_element" title="Link to this method">
-                <span class="method-name">start_element</span>
-                <span class="method-args">(uri, localname, qname, attributes)</span>
-              </a>
+              <div class="method-heading">
+                <a href="#method-i-start_element" title="Link to this method">
+                  <span class="method-name">start_element</span>
+                  <span class="method-args">(uri, localname, qname, attributes)</span>
+                </a>
+              </div>
+
+
+
+          </div>
+
+
+            <div class="method-controls">
+              <details class="method-source-toggle">
+                <summary><span class="method-source-icon" aria-hidden="true">{}</span> Source</summary>
+              </details>
             </div>
 
         </div>
 
 
-          <div class="method-controls">
-            <details class="method-source-toggle">
-              <summary>Source</summary>
-            </details>
-          </div>
           <div class="method-source-code" id="start_element-source">
             <pre class="ruby"><span class="ruby-comment"># File lib/rexml/sax2listener.rb, line 32</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">start_element</span> <span class="ruby-identifier">uri</span>, <span class="ruby-identifier">localname</span>, <span class="ruby-identifier">qname</span>, <span class="ruby-identifier">attributes</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">start_element</span> <span class="ruby-identifier">uri</span>, <span class="ruby-identifier">localname</span>, <span class="ruby-identifier">qname</span>, <span class="ruby-identifier">attributes</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
 
@@ -1320,25 +1417,32 @@
 
       <div id="method-i-start_prefix_mapping" class="method-detail anchor-link ">
         <div class="method-header">
+          <div class="method-heading-group">
 
-            <div class="method-heading">
-              <a href="#method-i-start_prefix_mapping" title="Link to this method">
-                <span class="method-name">start_prefix_mapping</span>
-                <span class="method-args">(prefix, uri)</span>
-              </a>
+              <div class="method-heading">
+                <a href="#method-i-start_prefix_mapping" title="Link to this method">
+                  <span class="method-name">start_prefix_mapping</span>
+                  <span class="method-args">(prefix, uri)</span>
+                </a>
+              </div>
+
+
+
+          </div>
+
+
+            <div class="method-controls">
+              <details class="method-source-toggle">
+                <summary><span class="method-source-icon" aria-hidden="true">{}</span> Source</summary>
+              </details>
             </div>
 
         </div>
 
 
-          <div class="method-controls">
-            <details class="method-source-toggle">
-              <summary>Source</summary>
-            </details>
-          </div>
           <div class="method-source-code" id="start_prefix_mapping-source">
             <pre class="ruby"><span class="ruby-comment"># File lib/rexml/sax2listener.rb, line 28</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">start_prefix_mapping</span> <span class="ruby-identifier">prefix</span>, <span class="ruby-identifier">uri</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">start_prefix_mapping</span> <span class="ruby-identifier">prefix</span>, <span class="ruby-identifier">uri</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
 
@@ -1361,25 +1465,32 @@
 
       <div id="method-i-xmldecl" class="method-detail anchor-link ">
         <div class="method-header">
+          <div class="method-heading-group">
 
-            <div class="method-heading">
-              <a href="#method-i-xmldecl" title="Link to this method">
-                <span class="method-name">xmldecl</span>
-                <span class="method-args">(version, encoding, standalone)</span>
-              </a>
+              <div class="method-heading">
+                <a href="#method-i-xmldecl" title="Link to this method">
+                  <span class="method-name">xmldecl</span>
+                  <span class="method-args">(version, encoding, standalone)</span>
+                </a>
+              </div>
+
+
+
+          </div>
+
+
+            <div class="method-controls">
+              <details class="method-source-toggle">
+                <summary><span class="method-source-icon" aria-hidden="true">{}</span> Source</summary>
+              </details>
             </div>
 
         </div>
 
 
-          <div class="method-controls">
-            <details class="method-source-toggle">
-              <summary>Source</summary>
-            </details>
-          </div>
           <div class="method-source-code" id="xmldecl-source">
             <pre class="ruby"><span class="ruby-comment"># File lib/rexml/sax2listener.rb, line 89</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">xmldecl</span> <span class="ruby-identifier">version</span>, <span class="ruby-identifier">encoding</span>, <span class="ruby-identifier">standalone</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">xmldecl</span> <span class="ruby-identifier">version</span>, <span class="ruby-identifier">encoding</span>, <span class="ruby-identifier">standalone</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
 
@@ -1409,7 +1520,7 @@
 
 </main>
 
-<aside class="table-of-contents" role="complementary" aria-label="Table of Contents">
+<aside id="table-of-contents" class="table-of-contents" role="complementary" aria-label="Table of Contents">
   <div class="toc-sticky">
     <h3 class="toc-heading">On This Page</h3>
     <nav class="toc-nav" id="toc-nav" aria-label="Page sections">
@@ -1424,7 +1535,7 @@
 
   <div class="footer-bottom">
     <p>
-      Generated by <a href="https://ruby.github.io/rdoc/">RDoc 7.2.0</a>
+      Generated by <a href="https://ruby.github.io/rdoc/">RDoc 8.0.0</a>
       using the Aliki theme by <a href="http://st0012.dev">Stan Lo</a>
     </p>
   </div>

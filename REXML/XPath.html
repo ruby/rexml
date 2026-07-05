@@ -50,46 +50,46 @@
 </script>
 
 <script
-  src="../js/theme-toggle.js?v=7.2.0"
+  src="../js/theme-toggle.js?v=8.0.0"
 ></script>
 
 <script
-  src="../js/search_navigation.js?v=7.2.0"
+  src="../js/search_navigation.js?v=8.0.0"
   defer
 ></script>
 
 <script
-  src="../js/search_data.js?v=7.2.0"
+  src="../js/search_data.js?v=8.0.0"
   defer
 ></script>
 
 <script
-  src="../js/search_ranker.js?v=7.2.0"
+  src="../js/search_ranker.js?v=8.0.0"
   defer
 ></script>
 
 <script
-  src="../js/search_controller.js?v=7.2.0"
+  src="../js/search_controller.js?v=8.0.0"
   defer
 ></script>
 
 <script
-  src="../js/c_highlighter.js?v=7.2.0"
+  src="../js/c_highlighter.js?v=8.0.0"
   defer
 ></script>
 
 <script
-  src="../js/bash_highlighter.js?v=7.2.0"
+  src="../js/bash_highlighter.js?v=8.0.0"
   defer
 ></script>
 
 <script
-  src="../js/aliki.js?v=7.2.0"
+  src="../js/aliki.js?v=8.0.0"
   defer
 ></script>
 
 <link
-  href="../css/rdoc.css?v=7.2.0"
+  href="../css/rdoc.css?v=8.0.0"
   rel="stylesheet"
 >
 
@@ -363,12 +363,12 @@
   </div>
 </div>
 
-<div id="navigation-toggle" role="button" tabindex="0" aria-label="Toggle sidebar" aria-expanded="true" aria-controls="navigation">
+<div id="sidebar-navigation-toggle" role="button" tabindex="0" aria-label="Toggle sidebar" aria-expanded="false" aria-controls="sidebar-navigation">
   <span aria-hidden="true">&#9776;</span>
 </div>
 
 
-<nav id="navigation" role="navigation" hidden>
+<nav id="sidebar-navigation" role="navigation" hidden>
   
 
 
@@ -411,15 +411,6 @@
             <li>
               <a href="../NEWS_md.html">
                 NEWS
-              </a>
-            </li>
-
-
-
-
-            <li>
-              <a href="../README_md.html">
-                README
               </a>
             </li>
 
@@ -600,7 +591,7 @@
       
       <li>
         
-        <a href="../REXML.html">REXML</a><span>::</span>
+        <a href="../REXML.html">REXML</a><span class="separator">::</span>
         
       </li>
       
@@ -614,8 +605,9 @@
   
 
   <span id="class-REXML::XPath" class="legacy-anchor"></span>
-  <h1 id="class-rexml-xpath" class="anchor-link class">
-    class REXML::XPath
+  <h1 id="class-rexml-xpath" class="anchor-link class page-title">
+    <span class="page-title-kind">class</span>
+    <span class="page-title-name">REXML::XPath</span>
   </h1>
 
   <section class="description">
@@ -664,27 +656,34 @@
 
       <div id="method-c-each" class="method-detail anchor-link ">
         <div class="method-header">
+          <div class="method-heading-group">
 
-            <div class="method-heading">
-              <a href="#method-c-each" title="Link to this method">
-                <span class="method-name">each</span>
-                <span class="method-args">(element, path=nil, namespaces=nil, variables={}, options={}, &amp;block)</span>
-              </a>
+              <div class="method-heading">
+                <a href="#method-c-each" title="Link to this method">
+                  <span class="method-name">each</span>
+                  <span class="method-args">(element, path=nil, namespaces=nil, variables={}, options={}, &amp;block)</span>
+                </a>
+              </div>
+
+
+
+          </div>
+
+
+            <div class="method-controls">
+              <details class="method-source-toggle">
+                <summary><span class="method-source-icon" aria-hidden="true">{}</span> Source</summary>
+              </details>
             </div>
 
         </div>
 
 
-          <div class="method-controls">
-            <details class="method-source-toggle">
-              <summary>Source</summary>
-            </details>
-          </div>
           <div class="method-source-code" id="each-source">
             <pre class="ruby"><span class="ruby-comment"># File lib/rexml/xpath.rb, line 54</span>
-<span class="ruby-keyword">def</span> <span class="ruby-constant">XPath</span><span class="ruby-operator">::</span><span class="ruby-identifier ruby-title">each</span>(<span class="ruby-identifier">element</span>, <span class="ruby-identifier">path</span>=<span class="ruby-keyword">nil</span>, <span class="ruby-identifier">namespaces</span>=<span class="ruby-keyword">nil</span>, <span class="ruby-identifier">variables</span>={}, <span class="ruby-identifier">options</span>={}, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
-  <span class="ruby-identifier">raise</span> <span class="ruby-string">&quot;The namespaces argument, if supplied, must be a hash object.&quot;</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">namespaces</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-keyword">or</span> <span class="ruby-identifier">namespaces</span>.<span class="ruby-identifier">kind_of?</span>(<span class="ruby-constant">Hash</span>)
-  <span class="ruby-identifier">raise</span> <span class="ruby-string">&quot;The variables argument, if supplied, must be a hash object.&quot;</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">variables</span>.<span class="ruby-identifier">kind_of?</span>(<span class="ruby-constant">Hash</span>)
+<span class="ruby-keyword">def</span> <span class="ruby-constant">XPath</span><span class="ruby-operator">::</span><span class="ruby-identifier">each</span>(<span class="ruby-identifier">element</span>, <span class="ruby-identifier">path</span>=<span class="ruby-keyword">nil</span>, <span class="ruby-identifier">namespaces</span>=<span class="ruby-keyword">nil</span>, <span class="ruby-identifier">variables</span>={}, <span class="ruby-identifier">options</span>={}, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+  <span class="ruby-identifier">raise</span> <span class="ruby-string">&quot;</span><span class="ruby-string">The namespaces argument, if supplied, must be a hash object.</span><span class="ruby-string">&quot;</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">namespaces</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-keyword">or</span> <span class="ruby-identifier">namespaces</span>.<span class="ruby-identifier">kind_of?</span>(<span class="ruby-constant">Hash</span>)
+  <span class="ruby-identifier">raise</span> <span class="ruby-string">&quot;</span><span class="ruby-string">The variables argument, if supplied, must be a hash object.</span><span class="ruby-string">&quot;</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">variables</span>.<span class="ruby-identifier">kind_of?</span>(<span class="ruby-constant">Hash</span>)
   <span class="ruby-identifier">match</span>(<span class="ruby-identifier">element</span>, <span class="ruby-identifier">path</span>, <span class="ruby-identifier">namespaces</span>, <span class="ruby-identifier">variables</span>, <span class="ruby-identifier">options</span>).<span class="ruby-identifier">each</span>( <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span> )
 <span class="ruby-keyword">end</span></pre>
           </div>
@@ -727,27 +726,34 @@ XPath.each( node, &#39;/book/publisher/text()=$publisher&#39;, {}, {&quot;publis
 
       <div id="method-c-first" class="method-detail anchor-link ">
         <div class="method-header">
+          <div class="method-heading-group">
 
-            <div class="method-heading">
-              <a href="#method-c-first" title="Link to this method">
-                <span class="method-name">first</span>
-                <span class="method-args">(element, path=nil, namespaces=nil, variables={}, options={})</span>
-              </a>
+              <div class="method-heading">
+                <a href="#method-c-first" title="Link to this method">
+                  <span class="method-name">first</span>
+                  <span class="method-args">(element, path=nil, namespaces=nil, variables={}, options={})</span>
+                </a>
+              </div>
+
+
+
+          </div>
+
+
+            <div class="method-controls">
+              <details class="method-source-toggle">
+                <summary><span class="method-source-icon" aria-hidden="true">{}</span> Source</summary>
+              </details>
             </div>
 
         </div>
 
 
-          <div class="method-controls">
-            <details class="method-source-toggle">
-              <summary>Source</summary>
-            </details>
-          </div>
           <div class="method-source-code" id="first-source">
             <pre class="ruby"><span class="ruby-comment"># File lib/rexml/xpath.rb, line 30</span>
-<span class="ruby-keyword">def</span> <span class="ruby-constant">XPath</span><span class="ruby-operator">::</span><span class="ruby-identifier ruby-title">first</span>(<span class="ruby-identifier">element</span>, <span class="ruby-identifier">path</span>=<span class="ruby-keyword">nil</span>, <span class="ruby-identifier">namespaces</span>=<span class="ruby-keyword">nil</span>, <span class="ruby-identifier">variables</span>={}, <span class="ruby-identifier">options</span>={})
-  <span class="ruby-identifier">raise</span> <span class="ruby-string">&quot;The namespaces argument, if supplied, must be a hash object.&quot;</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">namespaces</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-keyword">or</span> <span class="ruby-identifier">namespaces</span>.<span class="ruby-identifier">kind_of?</span>(<span class="ruby-constant">Hash</span>)
-  <span class="ruby-identifier">raise</span> <span class="ruby-string">&quot;The variables argument, if supplied, must be a hash object.&quot;</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">variables</span>.<span class="ruby-identifier">kind_of?</span>(<span class="ruby-constant">Hash</span>)
+<span class="ruby-keyword">def</span> <span class="ruby-constant">XPath</span><span class="ruby-operator">::</span><span class="ruby-identifier">first</span>(<span class="ruby-identifier">element</span>, <span class="ruby-identifier">path</span>=<span class="ruby-keyword">nil</span>, <span class="ruby-identifier">namespaces</span>=<span class="ruby-keyword">nil</span>, <span class="ruby-identifier">variables</span>={}, <span class="ruby-identifier">options</span>={})
+  <span class="ruby-identifier">raise</span> <span class="ruby-string">&quot;</span><span class="ruby-string">The namespaces argument, if supplied, must be a hash object.</span><span class="ruby-string">&quot;</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">namespaces</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-keyword">or</span> <span class="ruby-identifier">namespaces</span>.<span class="ruby-identifier">kind_of?</span>(<span class="ruby-constant">Hash</span>)
+  <span class="ruby-identifier">raise</span> <span class="ruby-string">&quot;</span><span class="ruby-string">The variables argument, if supplied, must be a hash object.</span><span class="ruby-string">&quot;</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">variables</span>.<span class="ruby-identifier">kind_of?</span>(<span class="ruby-constant">Hash</span>)
   <span class="ruby-identifier">match</span>(<span class="ruby-identifier">element</span>, <span class="ruby-identifier">path</span>, <span class="ruby-identifier">namespaces</span>, <span class="ruby-identifier">variables</span>, <span class="ruby-identifier">options</span>).<span class="ruby-identifier">flatten</span>[<span class="ruby-value">0</span>]
 <span class="ruby-keyword">end</span></pre>
           </div>
@@ -789,29 +795,36 @@ XPath.first( node, &#39;/book/publisher/text()=$publisher&#39;, {}, {&quot;publi
 
       <div id="method-c-match" class="method-detail anchor-link ">
         <div class="method-header">
+          <div class="method-heading-group">
 
-            <div class="method-heading">
-              <a href="#method-c-match" title="Link to this method">
-                <span class="method-name">match</span>
-                <span class="method-args">(element, path=nil, namespaces=nil, variables={}, options={})</span>
-              </a>
+              <div class="method-heading">
+                <a href="#method-c-match" title="Link to this method">
+                  <span class="method-name">match</span>
+                  <span class="method-args">(element, path=nil, namespaces=nil, variables={}, options={})</span>
+                </a>
+              </div>
+
+
+
+          </div>
+
+
+            <div class="method-controls">
+              <details class="method-source-toggle">
+                <summary><span class="method-source-icon" aria-hidden="true">{}</span> Source</summary>
+              </details>
             </div>
 
         </div>
 
 
-          <div class="method-controls">
-            <details class="method-source-toggle">
-              <summary>Source</summary>
-            </details>
-          </div>
           <div class="method-source-code" id="match-source">
             <pre class="ruby"><span class="ruby-comment"># File lib/rexml/xpath.rb, line 61</span>
-<span class="ruby-keyword">def</span> <span class="ruby-constant">XPath</span><span class="ruby-operator">::</span><span class="ruby-identifier ruby-title">match</span>(<span class="ruby-identifier">element</span>, <span class="ruby-identifier">path</span>=<span class="ruby-keyword">nil</span>, <span class="ruby-identifier">namespaces</span>=<span class="ruby-keyword">nil</span>, <span class="ruby-identifier">variables</span>={}, <span class="ruby-identifier">options</span>={})
+<span class="ruby-keyword">def</span> <span class="ruby-constant">XPath</span><span class="ruby-operator">::</span><span class="ruby-identifier">match</span>(<span class="ruby-identifier">element</span>, <span class="ruby-identifier">path</span>=<span class="ruby-keyword">nil</span>, <span class="ruby-identifier">namespaces</span>=<span class="ruby-keyword">nil</span>, <span class="ruby-identifier">variables</span>={}, <span class="ruby-identifier">options</span>={})
   <span class="ruby-identifier">parser</span> = <span class="ruby-constant">XPathParser</span>.<span class="ruby-identifier">new</span>(<span class="ruby-operator">**</span><span class="ruby-identifier">options</span>)
   <span class="ruby-identifier">parser</span>.<span class="ruby-identifier">namespaces</span> = <span class="ruby-identifier">namespaces</span>
   <span class="ruby-identifier">parser</span>.<span class="ruby-identifier">variables</span> = <span class="ruby-identifier">variables</span>
-  <span class="ruby-identifier">path</span> = <span class="ruby-string">&quot;*&quot;</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">path</span>
+  <span class="ruby-identifier">path</span> = <span class="ruby-string">&quot;</span><span class="ruby-string">*</span><span class="ruby-string">&quot;</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">path</span>
   <span class="ruby-identifier">parser</span>.<span class="ruby-identifier">parse</span>(<span class="ruby-identifier">path</span>,<span class="ruby-identifier">element</span>)
 <span class="ruby-keyword">end</span></pre>
           </div>
@@ -848,7 +861,7 @@ XPath.first( node, &#39;/book/publisher/text()=$publisher&#39;, {}, {&quot;publi
 
 </main>
 
-<aside class="table-of-contents" role="complementary" aria-label="Table of Contents">
+<aside id="table-of-contents" class="table-of-contents" role="complementary" aria-label="Table of Contents">
   <div class="toc-sticky">
     <h3 class="toc-heading">On This Page</h3>
     <nav class="toc-nav" id="toc-nav" aria-label="Page sections">
@@ -863,7 +876,7 @@ XPath.first( node, &#39;/book/publisher/text()=$publisher&#39;, {}, {&quot;publi
 
   <div class="footer-bottom">
     <p>
-      Generated by <a href="https://ruby.github.io/rdoc/">RDoc 7.2.0</a>
+      Generated by <a href="https://ruby.github.io/rdoc/">RDoc 8.0.0</a>
       using the Aliki theme by <a href="http://st0012.dev">Stan Lo</a>
     </p>
   </div>

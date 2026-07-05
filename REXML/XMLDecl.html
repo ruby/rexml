@@ -50,46 +50,46 @@
 </script>
 
 <script
-  src="../js/theme-toggle.js?v=7.2.0"
+  src="../js/theme-toggle.js?v=8.0.0"
 ></script>
 
 <script
-  src="../js/search_navigation.js?v=7.2.0"
+  src="../js/search_navigation.js?v=8.0.0"
   defer
 ></script>
 
 <script
-  src="../js/search_data.js?v=7.2.0"
+  src="../js/search_data.js?v=8.0.0"
   defer
 ></script>
 
 <script
-  src="../js/search_ranker.js?v=7.2.0"
+  src="../js/search_ranker.js?v=8.0.0"
   defer
 ></script>
 
 <script
-  src="../js/search_controller.js?v=7.2.0"
+  src="../js/search_controller.js?v=8.0.0"
   defer
 ></script>
 
 <script
-  src="../js/c_highlighter.js?v=7.2.0"
+  src="../js/c_highlighter.js?v=8.0.0"
   defer
 ></script>
 
 <script
-  src="../js/bash_highlighter.js?v=7.2.0"
+  src="../js/bash_highlighter.js?v=8.0.0"
   defer
 ></script>
 
 <script
-  src="../js/aliki.js?v=7.2.0"
+  src="../js/aliki.js?v=8.0.0"
   defer
 ></script>
 
 <link
-  href="../css/rdoc.css?v=7.2.0"
+  href="../css/rdoc.css?v=8.0.0"
   rel="stylesheet"
 >
 
@@ -363,12 +363,12 @@
   </div>
 </div>
 
-<div id="navigation-toggle" role="button" tabindex="0" aria-label="Toggle sidebar" aria-expanded="true" aria-controls="navigation">
+<div id="sidebar-navigation-toggle" role="button" tabindex="0" aria-label="Toggle sidebar" aria-expanded="false" aria-controls="sidebar-navigation">
   <span aria-hidden="true">&#9776;</span>
 </div>
 
 
-<nav id="navigation" role="navigation" hidden>
+<nav id="sidebar-navigation" role="navigation" hidden>
   
 
 
@@ -411,15 +411,6 @@
             <li>
               <a href="../NEWS_md.html">
                 NEWS
-              </a>
-            </li>
-
-
-
-
-            <li>
-              <a href="../README_md.html">
-                README
               </a>
             </li>
 
@@ -559,9 +550,11 @@
 
     <ul class="nav-list">
 
+      <li>
 
-      <li><a class="include" href="Encoding.html">REXML::Encoding</a></li>
+        <a class="include" href="Encoding.html">REXML::Encoding</a>
 
+      </li>
 
     </ul>
   </details>
@@ -657,7 +650,7 @@
       
       <li>
         
-        <a href="../REXML.html">REXML</a><span>::</span>
+        <a href="../REXML.html">REXML</a><span class="separator">::</span>
         
       </li>
       
@@ -671,8 +664,9 @@
   
 
   <span id="class-REXML::XMLDecl" class="legacy-anchor"></span>
-  <h1 id="class-rexml-xmldecl" class="anchor-link class">
-    class REXML::XMLDecl
+  <h1 id="class-rexml-xmldecl" class="anchor-link class page-title">
+    <span class="page-title-kind">class</span>
+    <span class="page-title-name">REXML::XMLDecl</span>
   </h1>
 
   <section class="description">
@@ -752,6 +746,7 @@
             <span class="method-name">stand_alone?</span>
             <span class="attribute-access-type">[R]</span>
           </a>
+
         </div>
 
         <div class="method-description">
@@ -768,6 +763,7 @@
             <span class="method-name">standalone</span>
             <span class="attribute-access-type">[RW]</span>
           </a>
+
         </div>
 
         <div class="method-description">
@@ -784,6 +780,7 @@
             <span class="method-name">version</span>
             <span class="attribute-access-type">[RW]</span>
           </a>
+
         </div>
 
         <div class="method-description">
@@ -800,6 +797,7 @@
             <span class="method-name">writeencoding</span>
             <span class="attribute-access-type">[R]</span>
           </a>
+
         </div>
 
         <div class="method-description">
@@ -816,6 +814,7 @@
             <span class="method-name">writethis</span>
             <span class="attribute-access-type">[R]</span>
           </a>
+
         </div>
 
         <div class="method-description">
@@ -841,26 +840,33 @@
 
       <div id="method-c-default" class="method-detail anchor-link ">
         <div class="method-header">
+          <div class="method-heading-group">
 
-            <div class="method-heading">
-              <a href="#method-c-default" title="Link to this method">
-                <span class="method-name">default</span>
-                <span class="method-args">()</span>
-              </a>
+              <div class="method-heading">
+                <a href="#method-c-default" title="Link to this method">
+                  <span class="method-name">default</span>
+                  <span class="method-args">()</span>
+                </a>
+              </div>
+
+
+
+          </div>
+
+
+            <div class="method-controls">
+              <details class="method-source-toggle">
+                <summary><span class="method-source-icon" aria-hidden="true">{}</span> Source</summary>
+              </details>
             </div>
 
         </div>
 
 
-          <div class="method-controls">
-            <details class="method-source-toggle">
-              <summary>Source</summary>
-            </details>
-          </div>
           <div class="method-source-code" id="default-source">
             <pre class="ruby"><span class="ruby-comment"># File lib/rexml/xmldecl.rb, line 92</span>
-<span class="ruby-keyword">def</span> <span class="ruby-constant">XMLDecl</span>.<span class="ruby-identifier ruby-title">default</span>
-  <span class="ruby-identifier">rv</span> = <span class="ruby-constant">XMLDecl</span>.<span class="ruby-identifier">new</span>( <span class="ruby-string">&quot;1.0&quot;</span> )
+<span class="ruby-keyword">def</span> <span class="ruby-constant">XMLDecl</span>.<span class="ruby-identifier">default</span>
+  <span class="ruby-identifier">rv</span> = <span class="ruby-constant">XMLDecl</span>.<span class="ruby-identifier">new</span>( <span class="ruby-string">&quot;</span><span class="ruby-string">1.0</span><span class="ruby-string">&quot;</span> )
   <span class="ruby-identifier">rv</span>.<span class="ruby-identifier">nowrite</span>
   <span class="ruby-identifier">rv</span>
 <span class="ruby-keyword">end</span></pre>
@@ -887,25 +893,32 @@
 
       <div id="method-c-new" class="method-detail anchor-link ">
         <div class="method-header">
+          <div class="method-heading-group">
 
-            <div class="method-heading">
-              <a href="#method-c-new" title="Link to this method">
-                <span class="method-name">new</span>
-                <span class="method-args">(version=DEFAULT_VERSION, encoding=nil, standalone=nil)</span>
-              </a>
+              <div class="method-heading">
+                <a href="#method-c-new" title="Link to this method">
+                  <span class="method-name">new</span>
+                  <span class="method-args">(version=DEFAULT_VERSION, encoding=nil, standalone=nil)</span>
+                </a>
+              </div>
+
+
+
+          </div>
+
+
+            <div class="method-controls">
+              <details class="method-source-toggle">
+                <summary><span class="method-source-icon" aria-hidden="true">{}</span> Source</summary>
+              </details>
             </div>
 
         </div>
 
 
-          <div class="method-controls">
-            <details class="method-source-toggle">
-              <summary>Source</summary>
-            </details>
-          </div>
           <div class="method-source-code" id="new-source">
             <pre class="ruby"><span class="ruby-comment"># File lib/rexml/xmldecl.rb, line 20</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(<span class="ruby-identifier">version</span>=<span class="ruby-constant">DEFAULT_VERSION</span>, <span class="ruby-identifier">encoding</span>=<span class="ruby-keyword">nil</span>, <span class="ruby-identifier">standalone</span>=<span class="ruby-keyword">nil</span>)
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">version</span>=<span class="ruby-constant">DEFAULT_VERSION</span>, <span class="ruby-identifier">encoding</span>=<span class="ruby-keyword">nil</span>, <span class="ruby-identifier">standalone</span>=<span class="ruby-keyword">nil</span>)
   <span class="ruby-ivar">@writethis</span> = <span class="ruby-keyword">true</span>
   <span class="ruby-ivar">@writeencoding</span> = <span class="ruby-operator">!</span><span class="ruby-identifier">encoding</span>.<span class="ruby-identifier">nil?</span>
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">version</span>.<span class="ruby-identifier">kind_of?</span> <span class="ruby-constant">XMLDecl</span>
@@ -963,25 +976,32 @@
 
       <div id="method-i-3D-3D" class="method-detail anchor-link ">
         <div class="method-header">
+          <div class="method-heading-group">
 
-            <div class="method-heading">
-              <a href="#method-i-3D-3D" title="Link to this method">
-                <span class="method-name">==</span>
-                <span class="method-args">( other )</span>
-              </a>
+              <div class="method-heading">
+                <a href="#method-i-3D-3D" title="Link to this method">
+                  <span class="method-name">==</span>
+                  <span class="method-args">(other)</span>
+                </a>
+              </div>
+
+
+
+          </div>
+
+
+            <div class="method-controls">
+              <details class="method-source-toggle">
+                <summary><span class="method-source-icon" aria-hidden="true">{}</span> Source</summary>
+              </details>
             </div>
 
         </div>
 
 
-          <div class="method-controls">
-            <details class="method-source-toggle">
-              <summary>Source</summary>
-            </details>
-          </div>
           <div class="method-source-code" id="3D-3D-source">
             <pre class="ruby"><span class="ruby-comment"># File lib/rexml/xmldecl.rb, line 56</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">==</span>( <span class="ruby-identifier">other</span> )
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">==</span>( <span class="ruby-identifier">other</span> )
   <span class="ruby-identifier">other</span>.<span class="ruby-identifier">kind_of?</span>(<span class="ruby-constant">XMLDecl</span>) <span class="ruby-keyword">and</span>
   <span class="ruby-identifier">other</span>.<span class="ruby-identifier">version</span> <span class="ruby-operator">==</span> <span class="ruby-ivar">@version</span> <span class="ruby-keyword">and</span>
   <span class="ruby-identifier">other</span>.<span class="ruby-identifier">encoding</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">encoding</span> <span class="ruby-keyword">and</span>
@@ -1008,25 +1028,32 @@
 
       <div id="method-i-clone" class="method-detail anchor-link ">
         <div class="method-header">
+          <div class="method-heading-group">
 
-            <div class="method-heading">
-              <a href="#method-i-clone" title="Link to this method">
-                <span class="method-name">clone</span>
-                <span class="method-args">()</span>
-              </a>
+              <div class="method-heading">
+                <a href="#method-i-clone" title="Link to this method">
+                  <span class="method-name">clone</span>
+                  <span class="method-args">()</span>
+                </a>
+              </div>
+
+
+
+          </div>
+
+
+            <div class="method-controls">
+              <details class="method-source-toggle">
+                <summary><span class="method-source-icon" aria-hidden="true">{}</span> Source</summary>
+              </details>
             </div>
 
         </div>
 
 
-          <div class="method-controls">
-            <details class="method-source-toggle">
-              <summary>Source</summary>
-            </details>
-          </div>
           <div class="method-source-code" id="clone-source">
             <pre class="ruby"><span class="ruby-comment"># File lib/rexml/xmldecl.rb, line 39</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">clone</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">clone</span>
   <span class="ruby-constant">XMLDecl</span>.<span class="ruby-identifier">new</span>(<span class="ruby-keyword">self</span>)
 <span class="ruby-keyword">end</span></pre>
           </div>
@@ -1050,25 +1077,32 @@
 
       <div id="method-i-dowrite" class="method-detail anchor-link ">
         <div class="method-header">
+          <div class="method-heading-group">
 
-            <div class="method-heading">
-              <a href="#method-i-dowrite" title="Link to this method">
-                <span class="method-name">dowrite</span>
-                <span class="method-args">()</span>
-              </a>
+              <div class="method-heading">
+                <a href="#method-i-dowrite" title="Link to this method">
+                  <span class="method-name">dowrite</span>
+                  <span class="method-args">()</span>
+                </a>
+              </div>
+
+
+
+          </div>
+
+
+            <div class="method-controls">
+              <details class="method-source-toggle">
+                <summary><span class="method-source-icon" aria-hidden="true">{}</span> Source</summary>
+              </details>
             </div>
 
         </div>
 
 
-          <div class="method-controls">
-            <details class="method-source-toggle">
-              <summary>Source</summary>
-            </details>
-          </div>
           <div class="method-source-code" id="dowrite-source">
             <pre class="ruby"><span class="ruby-comment"># File lib/rexml/xmldecl.rb, line 102</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">dowrite</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">dowrite</span>
   <span class="ruby-ivar">@writethis</span> = <span class="ruby-keyword">true</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
@@ -1092,27 +1126,34 @@
 
       <div id="method-i-encoding-3D" class="method-detail anchor-link ">
         <div class="method-header">
+          <div class="method-heading-group">
 
-            <div class="method-heading">
-              <a href="#method-i-encoding-3D" title="Link to this method">
-                <span class="method-name">encoding=</span>
-                <span class="method-args">( enc )</span>
-              </a>
+              <div class="method-heading">
+                <a href="#method-i-encoding-3D" title="Link to this method">
+                  <span class="method-name">encoding=</span>
+                  <span class="method-args">(enc)</span>
+                </a>
+              </div>
+
+
+
+          </div>
+
+
+            <div class="method-controls">
+              <details class="method-source-toggle">
+                <summary><span class="method-source-icon" aria-hidden="true">{}</span> Source</summary>
+              </details>
             </div>
 
         </div>
 
 
-          <div class="method-controls">
-            <details class="method-source-toggle">
-              <summary>Source</summary>
-            </details>
-          </div>
           <div class="method-source-code" id="encoding-3D-source">
             <pre class="ruby"><span class="ruby-comment"># File lib/rexml/xmldecl.rb, line 76</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">encoding=</span>( <span class="ruby-identifier">enc</span> )
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">encoding=</span>( <span class="ruby-identifier">enc</span> )
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">enc</span>.<span class="ruby-identifier">nil?</span>
-    <span class="ruby-keyword">self</span>.<span class="ruby-identifier">old_enc</span> = <span class="ruby-string">&quot;UTF-8&quot;</span>
+    <span class="ruby-keyword">self</span>.<span class="ruby-identifier">old_enc</span> = <span class="ruby-string">&quot;</span><span class="ruby-string">UTF-8</span><span class="ruby-string">&quot;</span>
     <span class="ruby-ivar">@writeencoding</span> = <span class="ruby-keyword">false</span>
   <span class="ruby-keyword">else</span>
     <span class="ruby-keyword">self</span>.<span class="ruby-identifier">old_enc</span> = <span class="ruby-identifier">enc</span>
@@ -1145,26 +1186,33 @@
 
       <div id="method-i-inspect" class="method-detail anchor-link ">
         <div class="method-header">
+          <div class="method-heading-group">
 
-            <div class="method-heading">
-              <a href="#method-i-inspect" title="Link to this method">
-                <span class="method-name">inspect</span>
-                <span class="method-args">()</span>
-              </a>
+              <div class="method-heading">
+                <a href="#method-i-inspect" title="Link to this method">
+                  <span class="method-name">inspect</span>
+                  <span class="method-args">()</span>
+                </a>
+              </div>
+
+
+
+          </div>
+
+
+            <div class="method-controls">
+              <details class="method-source-toggle">
+                <summary><span class="method-source-icon" aria-hidden="true">{}</span> Source</summary>
+              </details>
             </div>
 
         </div>
 
 
-          <div class="method-controls">
-            <details class="method-source-toggle">
-              <summary>Source</summary>
-            </details>
-          </div>
           <div class="method-source-code" id="inspect-source">
             <pre class="ruby"><span class="ruby-comment"># File lib/rexml/xmldecl.rb, line 106</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">inspect</span>
-  <span class="ruby-node">&quot;#{START} ... #{STOP}&quot;</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">inspect</span>
+  <span class="ruby-string">&quot;</span><span class="ruby-string">#{</span><span class="ruby-constant">START</span><span class="ruby-string">}</span><span class="ruby-string"> ... </span><span class="ruby-string">#{</span><span class="ruby-constant">STOP</span><span class="ruby-string">}</span><span class="ruby-string">&quot;</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
 
@@ -1187,26 +1235,33 @@
 
       <div id="method-i-node_type" class="method-detail anchor-link ">
         <div class="method-header">
+          <div class="method-heading-group">
 
-            <div class="method-heading">
-              <a href="#method-i-node_type" title="Link to this method">
-                <span class="method-name">node_type</span>
-                <span class="method-args">()</span>
-              </a>
+              <div class="method-heading">
+                <a href="#method-i-node_type" title="Link to this method">
+                  <span class="method-name">node_type</span>
+                  <span class="method-args">()</span>
+                </a>
+              </div>
+
+
+
+          </div>
+
+
+            <div class="method-controls">
+              <details class="method-source-toggle">
+                <summary><span class="method-source-icon" aria-hidden="true">{}</span> Source</summary>
+              </details>
             </div>
 
         </div>
 
 
-          <div class="method-controls">
-            <details class="method-source-toggle">
-              <summary>Source</summary>
-            </details>
-          </div>
           <div class="method-source-code" id="node_type-source">
             <pre class="ruby"><span class="ruby-comment"># File lib/rexml/xmldecl.rb, line 69</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">node_type</span>
-  <span class="ruby-value">:xmldecl</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">node_type</span>
+  <span class="ruby-value">:</span><span class="ruby-value">xmldecl</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
 
@@ -1229,25 +1284,32 @@
 
       <div id="method-i-nowrite" class="method-detail anchor-link ">
         <div class="method-header">
+          <div class="method-heading-group">
 
-            <div class="method-heading">
-              <a href="#method-i-nowrite" title="Link to this method">
-                <span class="method-name">nowrite</span>
-                <span class="method-args">()</span>
-              </a>
+              <div class="method-heading">
+                <a href="#method-i-nowrite" title="Link to this method">
+                  <span class="method-name">nowrite</span>
+                  <span class="method-args">()</span>
+                </a>
+              </div>
+
+
+
+          </div>
+
+
+            <div class="method-controls">
+              <details class="method-source-toggle">
+                <summary><span class="method-source-icon" aria-hidden="true">{}</span> Source</summary>
+              </details>
             </div>
 
         </div>
 
 
-          <div class="method-controls">
-            <details class="method-source-toggle">
-              <summary>Source</summary>
-            </details>
-          </div>
           <div class="method-source-code" id="nowrite-source">
             <pre class="ruby"><span class="ruby-comment"># File lib/rexml/xmldecl.rb, line 98</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">nowrite</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">nowrite</span>
   <span class="ruby-ivar">@writethis</span> = <span class="ruby-keyword">false</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
@@ -1271,13 +1333,19 @@
 
       <div id="method-i-old_enc-3D" class="method-detail anchor-link method-alias">
         <div class="method-header">
+          <div class="method-heading-group">
 
-            <div class="method-heading">
-              <a href="#method-i-old_enc-3D" title="Link to this method">
-                <span class="method-name">old_enc=</span>
-                <span class="method-args">( enc )</span>
-              </a>
-            </div>
+              <div class="method-heading">
+                <a href="#method-i-old_enc-3D" title="Link to this method">
+                  <span class="method-name">old_enc=</span>
+                  <span class="method-args"></span>
+                </a>
+              </div>
+
+
+
+          </div>
+
 
         </div>
 
@@ -1305,28 +1373,35 @@
 
       <div id="method-i-write" class="method-detail anchor-link ">
         <div class="method-header">
+          <div class="method-heading-group">
 
-            <div class="method-heading">
-              <a href="#method-i-write" title="Link to this method">
-                <span class="method-name">write</span>
-                <span class="method-args">(writer, indent=-1, transitive=false, ie_hack=false)</span>
-              </a>
+              <div class="method-heading">
+                <a href="#method-i-write" title="Link to this method">
+                  <span class="method-name">write</span>
+                  <span class="method-args">(writer, indent=-1, transitive=false, ie_hack=false)</span>
+                </a>
+              </div>
+
+
+
+          </div>
+
+
+            <div class="method-controls">
+              <details class="method-source-toggle">
+                <summary><span class="method-source-icon" aria-hidden="true">{}</span> Source</summary>
+              </details>
             </div>
 
         </div>
 
 
-          <div class="method-controls">
-            <details class="method-source-toggle">
-              <summary>Source</summary>
-            </details>
-          </div>
           <div class="method-source-code" id="write-source">
             <pre class="ruby"><span class="ruby-comment"># File lib/rexml/xmldecl.rb, line 49</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">write</span>(<span class="ruby-identifier">writer</span>, <span class="ruby-identifier">indent</span>=<span class="ruby-value">-1</span>, <span class="ruby-identifier">transitive</span>=<span class="ruby-keyword">false</span>, <span class="ruby-identifier">ie_hack</span>=<span class="ruby-keyword">false</span>)
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">write</span>(<span class="ruby-identifier">writer</span>, <span class="ruby-identifier">indent</span>=-<span class="ruby-value">1</span>, <span class="ruby-identifier">transitive</span>=<span class="ruby-keyword">false</span>, <span class="ruby-identifier">ie_hack</span>=<span class="ruby-keyword">false</span>)
   <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span> <span class="ruby-keyword">unless</span> <span class="ruby-ivar">@writethis</span> <span class="ruby-keyword">or</span> <span class="ruby-identifier">writer</span>.<span class="ruby-identifier">kind_of?</span> <span class="ruby-constant">Output</span>
   <span class="ruby-identifier">writer</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-constant">START</span>
-  <span class="ruby-identifier">writer</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">&quot; #{content encoding}&quot;</span>
+  <span class="ruby-identifier">writer</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-string">&quot;</span><span class="ruby-string"> </span><span class="ruby-string">#{</span><span class="ruby-identifier">content</span> <span class="ruby-identifier">encoding</span><span class="ruby-string">}</span><span class="ruby-string">&quot;</span>
   <span class="ruby-identifier">writer</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-constant">STOP</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
@@ -1359,25 +1434,32 @@
 
       <div id="method-i-xmldecl" class="method-detail anchor-link ">
         <div class="method-header">
+          <div class="method-heading-group">
 
-            <div class="method-heading">
-              <a href="#method-i-xmldecl" title="Link to this method">
-                <span class="method-name">xmldecl</span>
-                <span class="method-args">(version, encoding, standalone)</span>
-              </a>
+              <div class="method-heading">
+                <a href="#method-i-xmldecl" title="Link to this method">
+                  <span class="method-name">xmldecl</span>
+                  <span class="method-args">(version, encoding, standalone)</span>
+                </a>
+              </div>
+
+
+
+          </div>
+
+
+            <div class="method-controls">
+              <details class="method-source-toggle">
+                <summary><span class="method-source-icon" aria-hidden="true">{}</span> Source</summary>
+              </details>
             </div>
 
         </div>
 
 
-          <div class="method-controls">
-            <details class="method-source-toggle">
-              <summary>Source</summary>
-            </details>
-          </div>
           <div class="method-source-code" id="xmldecl-source">
             <pre class="ruby"><span class="ruby-comment"># File lib/rexml/xmldecl.rb, line 63</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">xmldecl</span> <span class="ruby-identifier">version</span>, <span class="ruby-identifier">encoding</span>, <span class="ruby-identifier">standalone</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">xmldecl</span> <span class="ruby-identifier">version</span>, <span class="ruby-identifier">encoding</span>, <span class="ruby-identifier">standalone</span>
   <span class="ruby-ivar">@version</span> = <span class="ruby-identifier">version</span>
   <span class="ruby-keyword">self</span>.<span class="ruby-identifier">encoding</span> = <span class="ruby-identifier">encoding</span>
   <span class="ruby-ivar">@standalone</span> = <span class="ruby-identifier">standalone</span>
@@ -1410,7 +1492,7 @@
 
 </main>
 
-<aside class="table-of-contents" role="complementary" aria-label="Table of Contents">
+<aside id="table-of-contents" class="table-of-contents" role="complementary" aria-label="Table of Contents">
   <div class="toc-sticky">
     <h3 class="toc-heading">On This Page</h3>
     <nav class="toc-nav" id="toc-nav" aria-label="Page sections">
@@ -1425,7 +1507,7 @@
 
   <div class="footer-bottom">
     <p>
-      Generated by <a href="https://ruby.github.io/rdoc/">RDoc 7.2.0</a>
+      Generated by <a href="https://ruby.github.io/rdoc/">RDoc 8.0.0</a>
       using the Aliki theme by <a href="http://st0012.dev">Stan Lo</a>
     </p>
   </div>

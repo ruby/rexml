@@ -50,46 +50,46 @@
 </script>
 
 <script
-  src="../js/theme-toggle.js?v=7.2.0"
+  src="../js/theme-toggle.js?v=8.0.0"
 ></script>
 
 <script
-  src="../js/search_navigation.js?v=7.2.0"
+  src="../js/search_navigation.js?v=8.0.0"
   defer
 ></script>
 
 <script
-  src="../js/search_data.js?v=7.2.0"
+  src="../js/search_data.js?v=8.0.0"
   defer
 ></script>
 
 <script
-  src="../js/search_ranker.js?v=7.2.0"
+  src="../js/search_ranker.js?v=8.0.0"
   defer
 ></script>
 
 <script
-  src="../js/search_controller.js?v=7.2.0"
+  src="../js/search_controller.js?v=8.0.0"
   defer
 ></script>
 
 <script
-  src="../js/c_highlighter.js?v=7.2.0"
+  src="../js/c_highlighter.js?v=8.0.0"
   defer
 ></script>
 
 <script
-  src="../js/bash_highlighter.js?v=7.2.0"
+  src="../js/bash_highlighter.js?v=8.0.0"
   defer
 ></script>
 
 <script
-  src="../js/aliki.js?v=7.2.0"
+  src="../js/aliki.js?v=8.0.0"
   defer
 ></script>
 
 <link
-  href="../css/rdoc.css?v=7.2.0"
+  href="../css/rdoc.css?v=8.0.0"
   rel="stylesheet"
 >
 
@@ -363,12 +363,12 @@
   </div>
 </div>
 
-<div id="navigation-toggle" role="button" tabindex="0" aria-label="Toggle sidebar" aria-expanded="true" aria-controls="navigation">
+<div id="sidebar-navigation-toggle" role="button" tabindex="0" aria-label="Toggle sidebar" aria-expanded="false" aria-controls="sidebar-navigation">
   <span aria-hidden="true">&#9776;</span>
 </div>
 
 
-<nav id="navigation" role="navigation" hidden>
+<nav id="sidebar-navigation" role="navigation" hidden>
   
 
 
@@ -411,15 +411,6 @@
             <li>
               <a href="../NEWS_md.html">
                 NEWS
-              </a>
-            </li>
-
-
-
-
-            <li>
-              <a href="../README_md.html">
-                README
               </a>
             </li>
 
@@ -559,9 +550,11 @@
 
     <ul class="nav-list">
 
+      <li>
 
-      <li><a class="include" href="Encoding.html">REXML::Encoding</a></li>
+        <a class="include" href="Encoding.html">REXML::Encoding</a>
 
+      </li>
 
     </ul>
   </details>
@@ -667,7 +660,7 @@
       
       <li>
         
-        <a href="../REXML.html">REXML</a><span>::</span>
+        <a href="../REXML.html">REXML</a><span class="separator">::</span>
         
       </li>
       
@@ -681,8 +674,9 @@
   
 
   <span id="class-REXML::Source" class="legacy-anchor"></span>
-  <h1 id="class-rexml-source" class="anchor-link class">
-    class REXML::Source
+  <h1 id="class-rexml-source" class="anchor-link class page-title">
+    <span class="page-title-kind">class</span>
+    <span class="page-title-name">REXML::Source</span>
   </h1>
 
   <section class="description">
@@ -713,6 +707,7 @@
             <span class="method-name">encoding</span>
             <span class="attribute-access-type">[R]</span>
           </a>
+
         </div>
 
         <div class="method-description">
@@ -729,6 +724,7 @@
             <span class="method-name">line</span>
             <span class="attribute-access-type">[R]</span>
           </a>
+
         </div>
 
         <div class="method-description">
@@ -754,25 +750,32 @@
 
       <div id="method-c-new" class="method-detail anchor-link ">
         <div class="method-header">
+          <div class="method-heading-group">
 
-            <div class="method-heading">
-              <a href="#method-c-new" title="Link to this method">
-                <span class="method-name">new</span>
-                <span class="method-args">(arg, encoding=nil)</span>
-              </a>
+              <div class="method-heading">
+                <a href="#method-c-new" title="Link to this method">
+                  <span class="method-name">new</span>
+                  <span class="method-args">(arg, encoding=nil)</span>
+                </a>
+              </div>
+
+
+
+          </div>
+
+
+            <div class="method-controls">
+              <details class="method-source-toggle">
+                <summary><span class="method-source-icon" aria-hidden="true">{}</span> Source</summary>
+              </details>
             </div>
 
         </div>
 
 
-          <div class="method-controls">
-            <details class="method-source-toggle">
-              <summary>Source</summary>
-            </details>
-          </div>
           <div class="method-source-code" id="new-source">
             <pre class="ruby"><span class="ruby-comment"># File lib/rexml/source.rb, line 88</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(<span class="ruby-identifier">arg</span>, <span class="ruby-identifier">encoding</span>=<span class="ruby-keyword">nil</span>)
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">arg</span>, <span class="ruby-identifier">encoding</span>=<span class="ruby-keyword">nil</span>)
   <span class="ruby-ivar">@orig</span> = <span class="ruby-identifier">arg</span>
   <span class="ruby-ivar">@scanner</span> = <span class="ruby-constant">StringScanner</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@orig</span>)
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">encoding</span>
@@ -818,25 +821,32 @@
 
       <div id="method-i-buffer" class="method-detail anchor-link ">
         <div class="method-header">
+          <div class="method-heading-group">
 
-            <div class="method-heading">
-              <a href="#method-i-buffer" title="Link to this method">
-                <span class="method-name">buffer</span>
-                <span class="method-args">()</span>
-              </a>
+              <div class="method-heading">
+                <a href="#method-i-buffer" title="Link to this method">
+                  <span class="method-name">buffer</span>
+                  <span class="method-args">()</span>
+                </a>
+              </div>
+
+
+
+          </div>
+
+
+            <div class="method-controls">
+              <details class="method-source-toggle">
+                <summary><span class="method-source-icon" aria-hidden="true">{}</span> Source</summary>
+              </details>
             </div>
 
         </div>
 
 
-          <div class="method-controls">
-            <details class="method-source-toggle">
-              <summary>Source</summary>
-            </details>
-          </div>
           <div class="method-source-code" id="buffer-source">
             <pre class="ruby"><span class="ruby-comment"># File lib/rexml/source.rb, line 101</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">buffer</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">buffer</span>
   <span class="ruby-ivar">@scanner</span>.<span class="ruby-identifier">rest</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
@@ -860,25 +870,32 @@
 
       <div id="method-i-buffer_encoding-3D" class="method-detail anchor-link ">
         <div class="method-header">
+          <div class="method-heading-group">
 
-            <div class="method-heading">
-              <a href="#method-i-buffer_encoding-3D" title="Link to this method">
-                <span class="method-name">buffer_encoding=</span>
-                <span class="method-args">(encoding)</span>
-              </a>
+              <div class="method-heading">
+                <a href="#method-i-buffer_encoding-3D" title="Link to this method">
+                  <span class="method-name">buffer_encoding=</span>
+                  <span class="method-args">(encoding)</span>
+                </a>
+              </div>
+
+
+
+          </div>
+
+
+            <div class="method-controls">
+              <details class="method-source-toggle">
+                <summary><span class="method-source-icon" aria-hidden="true">{}</span> Source</summary>
+              </details>
             </div>
 
         </div>
 
 
-          <div class="method-controls">
-            <details class="method-source-toggle">
-              <summary>Source</summary>
-            </details>
-          </div>
           <div class="method-source-code" id="buffer_encoding-3D-source">
             <pre class="ruby"><span class="ruby-comment"># File lib/rexml/source.rb, line 111</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">buffer_encoding=</span>(<span class="ruby-identifier">encoding</span>)
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">buffer_encoding=</span>(<span class="ruby-identifier">encoding</span>)
   <span class="ruby-ivar">@scanner</span>.<span class="ruby-identifier">string</span>.<span class="ruby-identifier">force_encoding</span>(<span class="ruby-identifier">encoding</span>)
 <span class="ruby-keyword">end</span></pre>
           </div>
@@ -902,28 +919,35 @@
 
       <div id="method-i-current_line" class="method-detail anchor-link ">
         <div class="method-header">
+          <div class="method-heading-group">
 
-            <div class="method-heading">
-              <a href="#method-i-current_line" title="Link to this method">
-                <span class="method-name">current_line</span>
-                <span class="method-args">()</span>
-              </a>
+              <div class="method-heading">
+                <a href="#method-i-current_line" title="Link to this method">
+                  <span class="method-name">current_line</span>
+                  <span class="method-args">()</span>
+                </a>
+              </div>
+
+
+
+          </div>
+
+
+            <div class="method-controls">
+              <details class="method-source-toggle">
+                <summary><span class="method-source-icon" aria-hidden="true">{}</span> Source</summary>
+              </details>
             </div>
 
         </div>
 
 
-          <div class="method-controls">
-            <details class="method-source-toggle">
-              <summary>Source</summary>
-            </details>
-          </div>
           <div class="method-source-code" id="current_line-source">
             <pre class="ruby"><span class="ruby-comment"># File lib/rexml/source.rb, line 180</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">current_line</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">current_line</span>
   <span class="ruby-identifier">lines</span> = <span class="ruby-ivar">@orig</span>.<span class="ruby-identifier">split</span>
-  <span class="ruby-identifier">res</span> = <span class="ruby-identifier">lines</span>.<span class="ruby-identifier">grep</span> <span class="ruby-ivar">@scanner</span>.<span class="ruby-identifier">rest</span>[<span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-value">30</span>]
-  <span class="ruby-identifier">res</span> = <span class="ruby-identifier">res</span>[<span class="ruby-value">-1</span>] <span class="ruby-keyword">if</span> <span class="ruby-identifier">res</span>.<span class="ruby-identifier">kind_of?</span> <span class="ruby-constant">Array</span>
+  <span class="ruby-identifier">res</span> = <span class="ruby-identifier">lines</span>.<span class="ruby-identifier">grep</span> <span class="ruby-ivar">@scanner</span>.<span class="ruby-identifier">rest</span>[<span class="ruby-value">0</span>..<span class="ruby-value">30</span>]
+  <span class="ruby-identifier">res</span> = <span class="ruby-identifier">res</span>[-<span class="ruby-value">1</span>] <span class="ruby-keyword">if</span> <span class="ruby-identifier">res</span>.<span class="ruby-identifier">kind_of?</span> <span class="ruby-constant">Array</span>
   <span class="ruby-identifier">lines</span>.<span class="ruby-identifier">index</span>( <span class="ruby-identifier">res</span> ) <span class="ruby-keyword">if</span> <span class="ruby-identifier">res</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
@@ -947,25 +971,32 @@
 
       <div id="method-i-drop_parsed_content" class="method-detail anchor-link ">
         <div class="method-header">
+          <div class="method-heading-group">
 
-            <div class="method-heading">
-              <a href="#method-i-drop_parsed_content" title="Link to this method">
-                <span class="method-name">drop_parsed_content</span>
-                <span class="method-args">()</span>
-              </a>
+              <div class="method-heading">
+                <a href="#method-i-drop_parsed_content" title="Link to this method">
+                  <span class="method-name">drop_parsed_content</span>
+                  <span class="method-args">()</span>
+                </a>
+              </div>
+
+
+
+          </div>
+
+
+            <div class="method-controls">
+              <details class="method-source-toggle">
+                <summary><span class="method-source-icon" aria-hidden="true">{}</span> Source</summary>
+              </details>
             </div>
 
         </div>
 
 
-          <div class="method-controls">
-            <details class="method-source-toggle">
-              <summary>Source</summary>
-            </details>
-          </div>
           <div class="method-source-code" id="drop_parsed_content-source">
             <pre class="ruby"><span class="ruby-comment"># File lib/rexml/source.rb, line 105</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">drop_parsed_content</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">drop_parsed_content</span>
   <span class="ruby-keyword">if</span> <span class="ruby-ivar">@scanner</span>.<span class="ruby-identifier">pos</span> <span class="ruby-operator">&gt;</span> <span class="ruby-constant">Private</span><span class="ruby-operator">::</span><span class="ruby-constant">SCANNER_RESET_SIZE</span>
     <span class="ruby-ivar">@scanner</span>.<span class="ruby-identifier">string</span> = <span class="ruby-ivar">@scanner</span>.<span class="ruby-identifier">rest</span>
   <span class="ruby-keyword">end</span>
@@ -991,25 +1022,32 @@
 
       <div id="method-i-empty-3F" class="method-detail anchor-link ">
         <div class="method-header">
+          <div class="method-heading-group">
 
-            <div class="method-heading">
-              <a href="#method-i-empty-3F" title="Link to this method">
-                <span class="method-name">empty?</span>
-                <span class="method-args">()</span>
-              </a>
+              <div class="method-heading">
+                <a href="#method-i-empty-3F" title="Link to this method">
+                  <span class="method-name">empty?</span>
+                  <span class="method-args">()</span>
+                </a>
+              </div>
+
+
+
+          </div>
+
+
+            <div class="method-controls">
+              <details class="method-source-toggle">
+                <summary><span class="method-source-icon" aria-hidden="true">{}</span> Source</summary>
+              </details>
             </div>
 
         </div>
 
 
-          <div class="method-controls">
-            <details class="method-source-toggle">
-              <summary>Source</summary>
-            </details>
-          </div>
           <div class="method-source-code" id="empty-3F-source">
             <pre class="ruby"><span class="ruby-comment"># File lib/rexml/source.rb, line 175</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">empty?</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">empty?</span>
   <span class="ruby-ivar">@scanner</span>.<span class="ruby-identifier">eos?</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
@@ -1033,25 +1071,32 @@
 
       <div id="method-i-encoding-3D" class="method-detail anchor-link ">
         <div class="method-header">
+          <div class="method-heading-group">
 
-            <div class="method-heading">
-              <a href="#method-i-encoding-3D" title="Link to this method">
-                <span class="method-name">encoding=</span>
-                <span class="method-args">(enc)</span>
-              </a>
+              <div class="method-heading">
+                <a href="#method-i-encoding-3D" title="Link to this method">
+                  <span class="method-name">encoding=</span>
+                  <span class="method-args">(enc)</span>
+                </a>
+              </div>
+
+
+
+          </div>
+
+
+            <div class="method-controls">
+              <details class="method-source-toggle">
+                <summary><span class="method-source-icon" aria-hidden="true">{}</span> Source</summary>
+              </details>
             </div>
 
         </div>
 
 
-          <div class="method-controls">
-            <details class="method-source-toggle">
-              <summary>Source</summary>
-            </details>
-          </div>
           <div class="method-source-code" id="encoding-3D-source">
             <pre class="ruby"><span class="ruby-comment"># File lib/rexml/source.rb, line 117</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">encoding=</span>(<span class="ruby-identifier">enc</span>)
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">encoding=</span>(<span class="ruby-identifier">enc</span>)
   <span class="ruby-keyword">return</span> <span class="ruby-keyword">unless</span> <span class="ruby-keyword">super</span>
   <span class="ruby-identifier">encoding_updated</span>
 <span class="ruby-keyword">end</span></pre>
@@ -1081,25 +1126,32 @@
 
       <div id="method-i-ensure_buffer" class="method-detail anchor-link ">
         <div class="method-header">
+          <div class="method-heading-group">
 
-            <div class="method-heading">
-              <a href="#method-i-ensure_buffer" title="Link to this method">
-                <span class="method-name">ensure_buffer</span>
-                <span class="method-args">()</span>
-              </a>
+              <div class="method-heading">
+                <a href="#method-i-ensure_buffer" title="Link to this method">
+                  <span class="method-name">ensure_buffer</span>
+                  <span class="method-args">()</span>
+                </a>
+              </div>
+
+
+
+          </div>
+
+
+            <div class="method-controls">
+              <details class="method-source-toggle">
+                <summary><span class="method-source-icon" aria-hidden="true">{}</span> Source</summary>
+              </details>
             </div>
 
         </div>
 
 
-          <div class="method-controls">
-            <details class="method-source-toggle">
-              <summary>Source</summary>
-            </details>
-          </div>
           <div class="method-source-code" id="ensure_buffer-source">
             <pre class="ruby"><span class="ruby-comment"># File lib/rexml/source.rb, line 135</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">ensure_buffer</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">ensure_buffer</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
 
@@ -1122,25 +1174,32 @@
 
       <div id="method-i-match" class="method-detail anchor-link ">
         <div class="method-header">
+          <div class="method-heading-group">
 
-            <div class="method-heading">
-              <a href="#method-i-match" title="Link to this method">
-                <span class="method-name">match</span>
-                <span class="method-args">(pattern, cons=false)</span>
-              </a>
+              <div class="method-heading">
+                <a href="#method-i-match" title="Link to this method">
+                  <span class="method-name">match</span>
+                  <span class="method-args">(pattern, cons=false)</span>
+                </a>
+              </div>
+
+
+
+          </div>
+
+
+            <div class="method-controls">
+              <details class="method-source-toggle">
+                <summary><span class="method-source-icon" aria-hidden="true">{}</span> Source</summary>
+              </details>
             </div>
 
         </div>
 
 
-          <div class="method-controls">
-            <details class="method-source-toggle">
-              <summary>Source</summary>
-            </details>
-          </div>
           <div class="method-source-code" id="match-source">
             <pre class="ruby"><span class="ruby-comment"># File lib/rexml/source.rb, line 138</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">match</span>(<span class="ruby-identifier">pattern</span>, <span class="ruby-identifier">cons</span>=<span class="ruby-keyword">false</span>)
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">match</span>(<span class="ruby-identifier">pattern</span>, <span class="ruby-identifier">cons</span>=<span class="ruby-keyword">false</span>)
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">cons</span>
     <span class="ruby-ivar">@scanner</span>.<span class="ruby-identifier">scan</span>(<span class="ruby-identifier">pattern</span>).<span class="ruby-identifier">nil?</span> <span class="ruby-operator">?</span> <span class="ruby-keyword">nil</span> <span class="ruby-operator">:</span> <span class="ruby-ivar">@scanner</span>
   <span class="ruby-keyword">else</span>
@@ -1168,25 +1227,32 @@
 
       <div id="method-i-match-3F" class="method-detail anchor-link ">
         <div class="method-header">
+          <div class="method-heading-group">
 
-            <div class="method-heading">
-              <a href="#method-i-match-3F" title="Link to this method">
-                <span class="method-name">match?</span>
-                <span class="method-args">(pattern, cons=false)</span>
-              </a>
+              <div class="method-heading">
+                <a href="#method-i-match-3F" title="Link to this method">
+                  <span class="method-name">match?</span>
+                  <span class="method-args">(pattern, cons=false)</span>
+                </a>
+              </div>
+
+
+
+          </div>
+
+
+            <div class="method-controls">
+              <details class="method-source-toggle">
+                <summary><span class="method-source-icon" aria-hidden="true">{}</span> Source</summary>
+              </details>
             </div>
 
         </div>
 
 
-          <div class="method-controls">
-            <details class="method-source-toggle">
-              <summary>Source</summary>
-            </details>
-          </div>
           <div class="method-source-code" id="match-3F-source">
             <pre class="ruby"><span class="ruby-comment"># File lib/rexml/source.rb, line 146</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">match?</span>(<span class="ruby-identifier">pattern</span>, <span class="ruby-identifier">cons</span>=<span class="ruby-keyword">false</span>)
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">match?</span>(<span class="ruby-identifier">pattern</span>, <span class="ruby-identifier">cons</span>=<span class="ruby-keyword">false</span>)
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">cons</span>
     <span class="ruby-operator">!</span><span class="ruby-ivar">@scanner</span>.<span class="ruby-identifier">skip</span>(<span class="ruby-identifier">pattern</span>).<span class="ruby-identifier">nil?</span>
   <span class="ruby-keyword">else</span>
@@ -1214,25 +1280,32 @@
 
       <div id="method-i-peek_byte" class="method-detail anchor-link ">
         <div class="method-header">
+          <div class="method-heading-group">
 
-            <div class="method-heading">
-              <a href="#method-i-peek_byte" title="Link to this method">
-                <span class="method-name">peek_byte</span>
-                <span class="method-args">()</span>
-              </a>
+              <div class="method-heading">
+                <a href="#method-i-peek_byte" title="Link to this method">
+                  <span class="method-name">peek_byte</span>
+                  <span class="method-args">()</span>
+                </a>
+              </div>
+
+
+
+          </div>
+
+
+            <div class="method-controls">
+              <details class="method-source-toggle">
+                <summary><span class="method-source-icon" aria-hidden="true">{}</span> Source</summary>
+              </details>
             </div>
 
         </div>
 
 
-          <div class="method-controls">
-            <details class="method-source-toggle">
-              <summary>Source</summary>
-            </details>
-          </div>
           <div class="method-source-code" id="peek_byte-source">
             <pre class="ruby"><span class="ruby-comment"># File lib/rexml/source.rb, line 166</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">peek_byte</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">peek_byte</span>
   <span class="ruby-ivar">@scanner</span>.<span class="ruby-identifier">peek_byte</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
@@ -1256,25 +1329,32 @@
 
       <div id="method-i-position" class="method-detail anchor-link ">
         <div class="method-header">
+          <div class="method-heading-group">
 
-            <div class="method-heading">
-              <a href="#method-i-position" title="Link to this method">
-                <span class="method-name">position</span>
-                <span class="method-args">()</span>
-              </a>
+              <div class="method-heading">
+                <a href="#method-i-position" title="Link to this method">
+                  <span class="method-name">position</span>
+                  <span class="method-args">()</span>
+                </a>
+              </div>
+
+
+
+          </div>
+
+
+            <div class="method-controls">
+              <details class="method-source-toggle">
+                <summary><span class="method-source-icon" aria-hidden="true">{}</span> Source</summary>
+              </details>
             </div>
 
         </div>
 
 
-          <div class="method-controls">
-            <details class="method-source-toggle">
-              <summary>Source</summary>
-            </details>
-          </div>
           <div class="method-source-code" id="position-source">
             <pre class="ruby"><span class="ruby-comment"># File lib/rexml/source.rb, line 158</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">position</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">position</span>
   <span class="ruby-ivar">@scanner</span>.<span class="ruby-identifier">pos</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
@@ -1298,25 +1378,32 @@
 
       <div id="method-i-position-3D" class="method-detail anchor-link ">
         <div class="method-header">
+          <div class="method-heading-group">
 
-            <div class="method-heading">
-              <a href="#method-i-position-3D" title="Link to this method">
-                <span class="method-name">position=</span>
-                <span class="method-args">(pos)</span>
-              </a>
+              <div class="method-heading">
+                <a href="#method-i-position-3D" title="Link to this method">
+                  <span class="method-name">position=</span>
+                  <span class="method-args">(pos)</span>
+                </a>
+              </div>
+
+
+
+          </div>
+
+
+            <div class="method-controls">
+              <details class="method-source-toggle">
+                <summary><span class="method-source-icon" aria-hidden="true">{}</span> Source</summary>
+              </details>
             </div>
 
         </div>
 
 
-          <div class="method-controls">
-            <details class="method-source-toggle">
-              <summary>Source</summary>
-            </details>
-          </div>
           <div class="method-source-code" id="position-3D-source">
             <pre class="ruby"><span class="ruby-comment"># File lib/rexml/source.rb, line 162</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">position=</span>(<span class="ruby-identifier">pos</span>)
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">position=</span>(<span class="ruby-identifier">pos</span>)
   <span class="ruby-ivar">@scanner</span>.<span class="ruby-identifier">pos</span> = <span class="ruby-identifier">pos</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
@@ -1340,25 +1427,32 @@
 
       <div id="method-i-read" class="method-detail anchor-link ">
         <div class="method-header">
+          <div class="method-heading-group">
 
-            <div class="method-heading">
-              <a href="#method-i-read" title="Link to this method">
-                <span class="method-name">read</span>
-                <span class="method-args">(term = nil)</span>
-              </a>
+              <div class="method-heading">
+                <a href="#method-i-read" title="Link to this method">
+                  <span class="method-name">read</span>
+                  <span class="method-args">(term = nil)</span>
+                </a>
+              </div>
+
+
+
+          </div>
+
+
+            <div class="method-controls">
+              <details class="method-source-toggle">
+                <summary><span class="method-source-icon" aria-hidden="true">{}</span> Source</summary>
+              </details>
             </div>
 
         </div>
 
 
-          <div class="method-controls">
-            <details class="method-source-toggle">
-              <summary>Source</summary>
-            </details>
-          </div>
           <div class="method-source-code" id="read-source">
             <pre class="ruby"><span class="ruby-comment"># File lib/rexml/source.rb, line 122</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">read</span>(<span class="ruby-identifier">term</span> = <span class="ruby-keyword">nil</span>)
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">read</span>(<span class="ruby-identifier">term</span> = <span class="ruby-keyword">nil</span>)
 <span class="ruby-keyword">end</span></pre>
           </div>
 
@@ -1381,26 +1475,33 @@
 
       <div id="method-i-read_until" class="method-detail anchor-link ">
         <div class="method-header">
+          <div class="method-heading-group">
 
-            <div class="method-heading">
-              <a href="#method-i-read_until" title="Link to this method">
-                <span class="method-name">read_until</span>
-                <span class="method-args">(term)</span>
-              </a>
+              <div class="method-heading">
+                <a href="#method-i-read_until" title="Link to this method">
+                  <span class="method-name">read_until</span>
+                  <span class="method-args">(term)</span>
+                </a>
+              </div>
+
+
+
+          </div>
+
+
+            <div class="method-controls">
+              <details class="method-source-toggle">
+                <summary><span class="method-source-icon" aria-hidden="true">{}</span> Source</summary>
+              </details>
             </div>
 
         </div>
 
 
-          <div class="method-controls">
-            <details class="method-source-toggle">
-              <summary>Source</summary>
-            </details>
-          </div>
           <div class="method-source-code" id="read_until-source">
             <pre class="ruby"><span class="ruby-comment"># File lib/rexml/source.rb, line 125</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">read_until</span>(<span class="ruby-identifier">term</span>)
-  <span class="ruby-identifier">pattern</span> = <span class="ruby-constant">Private</span><span class="ruby-operator">::</span><span class="ruby-constant">PRE_DEFINED_TERM_PATTERNS</span>[<span class="ruby-identifier">term</span>] <span class="ruby-operator">||</span> <span class="ruby-regexp">/#{Regexp.escape(term)}/</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">read_until</span>(<span class="ruby-identifier">term</span>)
+  <span class="ruby-identifier">pattern</span> = <span class="ruby-constant">Private</span><span class="ruby-operator">::</span><span class="ruby-constant">PRE_DEFINED_TERM_PATTERNS</span>[<span class="ruby-identifier">term</span>] <span class="ruby-operator">||</span> <span class="ruby-regexp">/</span><span class="ruby-regexp">#{</span><span class="ruby-constant">Regexp</span>.<span class="ruby-identifier">escape</span>(<span class="ruby-identifier">term</span>)<span class="ruby-regexp">}</span><span class="ruby-regexp">/</span>
   <span class="ruby-identifier">data</span> = <span class="ruby-ivar">@scanner</span>.<span class="ruby-identifier">scan_until</span>(<span class="ruby-identifier">pattern</span>)
   <span class="ruby-keyword">unless</span> <span class="ruby-identifier">data</span>
     <span class="ruby-identifier">data</span> = <span class="ruby-ivar">@scanner</span>.<span class="ruby-identifier">rest</span>
@@ -1429,25 +1530,32 @@
 
       <div id="method-i-scan_byte" class="method-detail anchor-link ">
         <div class="method-header">
+          <div class="method-heading-group">
 
-            <div class="method-heading">
-              <a href="#method-i-scan_byte" title="Link to this method">
-                <span class="method-name">scan_byte</span>
-                <span class="method-args">()</span>
-              </a>
+              <div class="method-heading">
+                <a href="#method-i-scan_byte" title="Link to this method">
+                  <span class="method-name">scan_byte</span>
+                  <span class="method-args">()</span>
+                </a>
+              </div>
+
+
+
+          </div>
+
+
+            <div class="method-controls">
+              <details class="method-source-toggle">
+                <summary><span class="method-source-icon" aria-hidden="true">{}</span> Source</summary>
+              </details>
             </div>
 
         </div>
 
 
-          <div class="method-controls">
-            <details class="method-source-toggle">
-              <summary>Source</summary>
-            </details>
-          </div>
           <div class="method-source-code" id="scan_byte-source">
             <pre class="ruby"><span class="ruby-comment"># File lib/rexml/source.rb, line 170</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">scan_byte</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">scan_byte</span>
   <span class="ruby-ivar">@scanner</span>.<span class="ruby-identifier">scan_byte</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
@@ -1471,25 +1579,32 @@
 
       <div id="method-i-skip_spaces" class="method-detail anchor-link ">
         <div class="method-header">
+          <div class="method-heading-group">
 
-            <div class="method-heading">
-              <a href="#method-i-skip_spaces" title="Link to this method">
-                <span class="method-name">skip_spaces</span>
-                <span class="method-args">()</span>
-              </a>
+              <div class="method-heading">
+                <a href="#method-i-skip_spaces" title="Link to this method">
+                  <span class="method-name">skip_spaces</span>
+                  <span class="method-args">()</span>
+                </a>
+              </div>
+
+
+
+          </div>
+
+
+            <div class="method-controls">
+              <details class="method-source-toggle">
+                <summary><span class="method-source-icon" aria-hidden="true">{}</span> Source</summary>
+              </details>
             </div>
 
         </div>
 
 
-          <div class="method-controls">
-            <details class="method-source-toggle">
-              <summary>Source</summary>
-            </details>
-          </div>
           <div class="method-source-code" id="skip_spaces-source">
             <pre class="ruby"><span class="ruby-comment"># File lib/rexml/source.rb, line 154</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">skip_spaces</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">skip_spaces</span>
   <span class="ruby-ivar">@scanner</span>.<span class="ruby-identifier">skip</span>(<span class="ruby-constant">Private</span><span class="ruby-operator">::</span><span class="ruby-constant">SPACES_PATTERN</span>) <span class="ruby-operator">?</span> <span class="ruby-keyword">true</span> <span class="ruby-operator">:</span> <span class="ruby-keyword">false</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
@@ -1520,7 +1635,7 @@
 
 </main>
 
-<aside class="table-of-contents" role="complementary" aria-label="Table of Contents">
+<aside id="table-of-contents" class="table-of-contents" role="complementary" aria-label="Table of Contents">
   <div class="toc-sticky">
     <h3 class="toc-heading">On This Page</h3>
     <nav class="toc-nav" id="toc-nav" aria-label="Page sections">
@@ -1535,7 +1650,7 @@
 
   <div class="footer-bottom">
     <p>
-      Generated by <a href="https://ruby.github.io/rdoc/">RDoc 7.2.0</a>
+      Generated by <a href="https://ruby.github.io/rdoc/">RDoc 8.0.0</a>
       using the Aliki theme by <a href="http://st0012.dev">Stan Lo</a>
     </p>
   </div>

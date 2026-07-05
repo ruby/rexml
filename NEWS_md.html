@@ -45,46 +45,46 @@
 </script>
 
 <script
-  src="./js/theme-toggle.js?v=7.2.0"
+  src="./js/theme-toggle.js?v=8.0.0"
 ></script>
 
 <script
-  src="./js/search_navigation.js?v=7.2.0"
+  src="./js/search_navigation.js?v=8.0.0"
   defer
 ></script>
 
 <script
-  src="./js/search_data.js?v=7.2.0"
+  src="./js/search_data.js?v=8.0.0"
   defer
 ></script>
 
 <script
-  src="./js/search_ranker.js?v=7.2.0"
+  src="./js/search_ranker.js?v=8.0.0"
   defer
 ></script>
 
 <script
-  src="./js/search_controller.js?v=7.2.0"
+  src="./js/search_controller.js?v=8.0.0"
   defer
 ></script>
 
 <script
-  src="./js/c_highlighter.js?v=7.2.0"
+  src="./js/c_highlighter.js?v=8.0.0"
   defer
 ></script>
 
 <script
-  src="./js/bash_highlighter.js?v=7.2.0"
+  src="./js/bash_highlighter.js?v=8.0.0"
   defer
 ></script>
 
 <script
-  src="./js/aliki.js?v=7.2.0"
+  src="./js/aliki.js?v=8.0.0"
   defer
 ></script>
 
 <link
-  href="./css/rdoc.css?v=7.2.0"
+  href="./css/rdoc.css?v=8.0.0"
   rel="stylesheet"
 >
 
@@ -358,12 +358,12 @@
   </div>
 </div>
 
-<div id="navigation-toggle" role="button" tabindex="0" aria-label="Toggle sidebar" aria-expanded="true" aria-controls="navigation">
+<div id="sidebar-navigation-toggle" role="button" tabindex="0" aria-label="Toggle sidebar" aria-expanded="false" aria-controls="sidebar-navigation">
   <span aria-hidden="true">&#9776;</span>
 </div>
 
 
-<nav id="navigation" role="navigation" hidden>
+<nav id="sidebar-navigation" role="navigation" hidden>
   
 
 
@@ -408,15 +408,6 @@
             <li>
               <a href="./NEWS_md.html">
                 NEWS
-              </a>
-            </li>
-
-
-
-
-            <li>
-              <a href="./README_md.html">
-                README
               </a>
             </li>
 
@@ -661,7 +652,7 @@
 <p>Patch by tomoya ishida</p>
 </li></ul>
 </li><li>
-<p>Don’t call needless encoding_updated</p>
+<p>Don't call needless encoding_updated</p>
 <ul><li>
 <p>GH-259</p>
 </li><li>
@@ -720,7 +711,7 @@
 <p>Patch by James Coleman</p>
 </li></ul>
 </li><li>
-<p>Fix reverse sort in <a href="lib/rexml/xpath_parser_rb.html">xpath_parser</a></p>
+<p>Fix reverse sort in xpath_parser</p>
 <ul><li>
 <p>GH-251</p>
 </li><li>
@@ -1034,7 +1025,7 @@
 <span id="label-Fixes-5" class="legacy-anchor"></span>
 <h3 id="fixes-5"><a href="#fixes-5">Fixes</a></h3>
 <ul><li>
-<p>Fixed a bug that default entity expansions are counted for security check. Default entity expansions should not be counted because they don’t have a security risk.</p>
+<p>Fixed a bug that default entity expansions are counted for security check. Default entity expansions should not be counted because they don't have a security risk.</p>
 <ul><li>
 <p>GH-198</p>
 </li><li>
@@ -1049,14 +1040,14 @@
 <p>Patch Viktor Ivarsson</p>
 </li></ul>
 </li><li>
-<p>Fixed a parser bug that parameter entity references in internal subsets are expanded. It’s not allowed in the XML specification.</p>
+<p>Fixed a parser bug that parameter entity references in internal subsets are expanded. It's not allowed in the XML specification.</p>
 <ul><li>
 <p>GH-191</p>
 </li><li>
 <p>Patch by NAITOH Jun.</p>
 </li></ul>
 </li><li>
-<p>Fixed a stream parser bug that user-defined entity references in text aren’t expanded.</p>
+<p>Fixed a stream parser bug that user-defined entity references in text aren't expanded.</p>
 <ul><li>
 <p>GH-200</p>
 </li><li>
@@ -1320,7 +1311,7 @@
 <span id="label-Fixes-9" class="legacy-anchor"></span>
 <h3 id="fixes-9"><a href="#fixes-9">Fixes</a></h3>
 <ul><li>
-<p>Fixed a bug that large XML can’t be parsed.</p>
+<p>Fixed a bug that large XML can't be parsed.</p>
 <ul><li>
 <p>GH-154</p>
 </li><li>
@@ -1495,7 +1486,7 @@
 <p>Patch by NAITOH Jun.</p>
 </li></ul>
 </li><li>
-<p>Fixed a bug that an exception message can’t be generated for invalid encoding XML.</p>
+<p>Fixed a bug that an exception message can't be generated for invalid encoding XML.</p>
 <ul><li>
 <p>GH-29</p>
 </li><li>
@@ -1588,7 +1579,7 @@
 </li><li>
 <p><code>require &quot;rexml/document&quot;</code> by default. [GitHub#36][Patch by Koichi ITO]</p>
 </li><li>
-<p>Don’t add dclone method to core classes globally. [GitHub#37][Patch by Akira Matsuda]</p>
+<p>Don't add <code>#dclone</code> method to core classes globally. [GitHub#37][Patch by Akira Matsuda]</p>
 </li><li>
 <p>Add more documentations. [Patch by Burdette Lamar]</p>
 </li><li>
@@ -1598,7 +1589,7 @@
 <span id="label-Fixes-13" class="legacy-anchor"></span>
 <h3 id="fixes-13"><a href="#fixes-13">Fixes</a></h3>
 <ul><li>
-<p>Fixed a bug that <a href="REXML/DocType.html#method-i-clone"><code>REXML::DocType#clone</code></a> doesn’t copy external ID information.</p>
+<p>Fixed a bug that <a href="REXML/DocType.html#method-i-clone"><code>REXML::DocType#clone</code></a> doesn't copy external ID information.</p>
 </li><li>
 <p>Fixed round-trip vulnerability bugs. See also: <a href="https://www.ruby-lang.org/en/news/2021/04/05/xml-round-trip-vulnerability-in-rexml-cve-2021-28965">www.ruby-lang.org/en/news/2021/04/05/xml-round-trip-vulnerability-in-rexml-cve-2021-28965</a>/ [HackerOne#1104077][CVE-2021-28965][Reported by Juho Nurminen]</p>
 </li></ul>
@@ -1709,13 +1700,13 @@
 <span id="label-Fixes-18" class="legacy-anchor"></span>
 <h3 id="fixes-18"><a href="#fixes-18">Fixes</a></h3>
 <ul><li>
-<p>Fixed a bug that no namespace attribute isn’t matched with prefix.</p>
+<p>Fixed a bug that no namespace attribute isn't matched with prefix.</p>
 
 <p>[ruby-list:50731][Reported by Yasuhiro KIMURA]</p>
 </li><li>
 <p>Fixed a bug that the default namespace is applied to attribute names.</p>
 
-<p>NOTE: It’s a backward incompatible change. If your program has any problem with this change, please report it. We may revert this fix.</p>
+<p>NOTE: It's a backward incompatible change. If your program has any problem with this change, please report it. We may revert this fix.</p>
 <ul><li>
 <p><a href="REXML/Attribute.html#method-i-prefix"><code>REXML::Attribute#prefix</code></a> returns <code>&quot;&quot;</code> for no namespace attribute.</p>
 </li><li>
@@ -1737,7 +1728,7 @@
 <ul><li>
 <p>Improved backward compatibility.</p>
 
-<p>Restored <code>REXML::Parsers::BaseParser::UNQME_STR</code> because it’s used by kramdown.</p>
+<p>Restored <code>REXML::Parsers::BaseParser::UNQME_STR</code> because it's used by kramdown.</p>
 </li></ul>
 
 <span id="label-3.1.8+-+2018-12-20+-7B-23version-3-1-8-7D" class="legacy-anchor"></span>
@@ -1780,7 +1771,7 @@
 
 </main>
 
-<aside class="table-of-contents" role="complementary" aria-label="Table of Contents">
+<aside id="table-of-contents" class="table-of-contents" role="complementary" aria-label="Table of Contents">
   <div class="toc-sticky">
     <h3 class="toc-heading">On This Page</h3>
     <nav class="toc-nav" id="toc-nav" aria-label="Page sections">
@@ -1795,7 +1786,7 @@
 
   <div class="footer-bottom">
     <p>
-      Generated by <a href="https://ruby.github.io/rdoc/">RDoc 7.2.0</a>
+      Generated by <a href="https://ruby.github.io/rdoc/">RDoc 8.0.0</a>
       using the Aliki theme by <a href="http://st0012.dev">Stan Lo</a>
     </p>
   </div>

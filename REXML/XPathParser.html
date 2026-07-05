@@ -50,46 +50,46 @@
 </script>
 
 <script
-  src="../js/theme-toggle.js?v=7.2.0"
+  src="../js/theme-toggle.js?v=8.0.0"
 ></script>
 
 <script
-  src="../js/search_navigation.js?v=7.2.0"
+  src="../js/search_navigation.js?v=8.0.0"
   defer
 ></script>
 
 <script
-  src="../js/search_data.js?v=7.2.0"
+  src="../js/search_data.js?v=8.0.0"
   defer
 ></script>
 
 <script
-  src="../js/search_ranker.js?v=7.2.0"
+  src="../js/search_ranker.js?v=8.0.0"
   defer
 ></script>
 
 <script
-  src="../js/search_controller.js?v=7.2.0"
+  src="../js/search_controller.js?v=8.0.0"
   defer
 ></script>
 
 <script
-  src="../js/c_highlighter.js?v=7.2.0"
+  src="../js/c_highlighter.js?v=8.0.0"
   defer
 ></script>
 
 <script
-  src="../js/bash_highlighter.js?v=7.2.0"
+  src="../js/bash_highlighter.js?v=8.0.0"
   defer
 ></script>
 
 <script
-  src="../js/aliki.js?v=7.2.0"
+  src="../js/aliki.js?v=8.0.0"
   defer
 ></script>
 
 <link
-  href="../css/rdoc.css?v=7.2.0"
+  href="../css/rdoc.css?v=8.0.0"
   rel="stylesheet"
 >
 
@@ -363,12 +363,12 @@
   </div>
 </div>
 
-<div id="navigation-toggle" role="button" tabindex="0" aria-label="Toggle sidebar" aria-expanded="true" aria-controls="navigation">
+<div id="sidebar-navigation-toggle" role="button" tabindex="0" aria-label="Toggle sidebar" aria-expanded="false" aria-controls="sidebar-navigation">
   <span aria-hidden="true">&#9776;</span>
 </div>
 
 
-<nav id="navigation" role="navigation" hidden>
+<nav id="sidebar-navigation" role="navigation" hidden>
   
 
 
@@ -411,15 +411,6 @@
             <li>
               <a href="../NEWS_md.html">
                 NEWS
-              </a>
-            </li>
-
-
-
-
-            <li>
-              <a href="../README_md.html">
-                README
               </a>
             </li>
 
@@ -559,9 +550,11 @@
 
     <ul class="nav-list">
 
+      <li>
 
-      <li><a class="include" href="XMLTokens.html">REXML::XMLTokens</a></li>
+        <a class="include" href="XMLTokens.html">REXML::XMLTokens</a>
 
+      </li>
 
     </ul>
   </details>
@@ -653,7 +646,7 @@
       
       <li>
         
-        <a href="../REXML.html">REXML</a><span>::</span>
+        <a href="../REXML.html">REXML</a><span class="separator">::</span>
         
       </li>
       
@@ -667,8 +660,9 @@
   
 
   <span id="class-REXML::XPathParser" class="legacy-anchor"></span>
-  <h1 id="class-rexml-xpathparser" class="anchor-link class">
-    class REXML::XPathParser
+  <h1 id="class-rexml-xpathparser" class="anchor-link class page-title">
+    <span class="page-title-kind">class</span>
+    <span class="page-title-name">REXML::XPathParser</span>
   </h1>
 
   <section class="description">
@@ -725,25 +719,32 @@
 
       <div id="method-c-new" class="method-detail anchor-link ">
         <div class="method-header">
+          <div class="method-heading-group">
 
-            <div class="method-heading">
-              <a href="#method-c-new" title="Link to this method">
-                <span class="method-name">new</span>
-                <span class="method-args">(strict: false)</span>
-              </a>
+              <div class="method-heading">
+                <a href="#method-c-new" title="Link to this method">
+                  <span class="method-name">new</span>
+                  <span class="method-args">(strict: false)</span>
+                </a>
+              </div>
+
+
+
+          </div>
+
+
+            <div class="method-controls">
+              <details class="method-source-toggle">
+                <summary><span class="method-source-icon" aria-hidden="true">{}</span> Source</summary>
+              </details>
             </div>
 
         </div>
 
 
-          <div class="method-controls">
-            <details class="method-source-toggle">
-              <summary>Source</summary>
-            </details>
-          </div>
           <div class="method-source-code" id="new-source">
             <pre class="ruby"><span class="ruby-comment"># File lib/rexml/xpath_parser.rb, line 60</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(<span class="ruby-value">strict:</span> <span class="ruby-keyword">false</span>)
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-value">strict:</span> <span class="ruby-keyword">false</span>)
   <span class="ruby-ivar">@debug</span> = <span class="ruby-constant">DEBUG</span>
   <span class="ruby-ivar">@parser</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Parsers</span><span class="ruby-operator">::</span><span class="ruby-constant">XPathParser</span>.<span class="ruby-identifier">new</span>
   <span class="ruby-ivar">@namespaces</span> = <span class="ruby-keyword">nil</span>
@@ -773,32 +774,39 @@
 
       <div id="method-c-sort" class="method-detail anchor-link ">
         <div class="method-header">
+          <div class="method-heading-group">
 
-            <div class="method-heading">
-              <a href="#method-c-sort" title="Link to this method">
-                <span class="method-name">sort</span>
-                <span class="method-args">(array_of_nodes)</span>
-              </a>
+              <div class="method-heading">
+                <a href="#method-c-sort" title="Link to this method">
+                  <span class="method-name">sort</span>
+                  <span class="method-args">(array_of_nodes)</span>
+                </a>
+              </div>
+
+
+
+          </div>
+
+
+            <div class="method-controls">
+              <details class="method-source-toggle">
+                <summary><span class="method-source-icon" aria-hidden="true">{}</span> Source</summary>
+              </details>
             </div>
 
         </div>
 
 
-          <div class="method-controls">
-            <details class="method-source-toggle">
-              <summary>Source</summary>
-            </details>
-          </div>
           <div class="method-source-code" id="sort-source">
             <pre class="ruby"><span class="ruby-comment"># File lib/rexml/xpath_parser.rb, line 765</span>
-<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">sort</span>(<span class="ruby-identifier">array_of_nodes</span>)
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">sort</span>(<span class="ruby-identifier">array_of_nodes</span>)
   <span class="ruby-keyword">return</span> <span class="ruby-identifier">array_of_nodes</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">array_of_nodes</span>.<span class="ruby-identifier">size</span> <span class="ruby-operator">&lt;=</span> <span class="ruby-value">1</span>
 
   <span class="ruby-identifier">new_arry</span> = []
   <span class="ruby-identifier">array_of_nodes</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">node</span><span class="ruby-operator">|</span>
     <span class="ruby-identifier">node_idx</span> = []
-    <span class="ruby-identifier">np</span> = <span class="ruby-identifier">node</span>.<span class="ruby-identifier">node_type</span> <span class="ruby-operator">==</span> <span class="ruby-value">:attribute</span> <span class="ruby-operator">?</span> <span class="ruby-identifier">node</span>.<span class="ruby-identifier">element</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">node</span>
-    <span class="ruby-keyword">while</span> <span class="ruby-identifier">np</span>.<span class="ruby-identifier">parent</span> <span class="ruby-keyword">and</span> <span class="ruby-identifier">np</span>.<span class="ruby-identifier">parent</span>.<span class="ruby-identifier">node_type</span> <span class="ruby-operator">==</span> <span class="ruby-value">:element</span>
+    <span class="ruby-identifier">np</span> = <span class="ruby-identifier">node</span>.<span class="ruby-identifier">node_type</span> <span class="ruby-operator">==</span> <span class="ruby-value">:</span><span class="ruby-value">attribute</span> <span class="ruby-operator">?</span> <span class="ruby-identifier">node</span>.<span class="ruby-identifier">element</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">node</span>
+    <span class="ruby-keyword">while</span> <span class="ruby-identifier">np</span>.<span class="ruby-identifier">parent</span> <span class="ruby-keyword">and</span> <span class="ruby-identifier">np</span>.<span class="ruby-identifier">parent</span>.<span class="ruby-identifier">node_type</span> <span class="ruby-operator">==</span> <span class="ruby-value">:</span><span class="ruby-value">element</span>
       <span class="ruby-identifier">node_idx</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">np</span>.<span class="ruby-identifier">parent</span>.<span class="ruby-identifier">index</span>( <span class="ruby-identifier">np</span> )
       <span class="ruby-identifier">np</span> = <span class="ruby-identifier">np</span>.<span class="ruby-identifier">parent</span>
     <span class="ruby-keyword">end</span>
@@ -848,25 +856,32 @@
 
       <div id="method-i-5B-5D-3D" class="method-detail anchor-link ">
         <div class="method-header">
+          <div class="method-heading-group">
 
-            <div class="method-heading">
-              <a href="#method-i-5B-5D-3D" title="Link to this method">
-                <span class="method-name">[]=</span>
-                <span class="method-args">( variable_name, value )</span>
-              </a>
+              <div class="method-heading">
+                <a href="#method-i-5B-5D-3D" title="Link to this method">
+                  <span class="method-name">[]=</span>
+                  <span class="method-args">(variable_name, value)</span>
+                </a>
+              </div>
+
+
+
+          </div>
+
+
+            <div class="method-controls">
+              <details class="method-source-toggle">
+                <summary><span class="method-source-icon" aria-hidden="true">{}</span> Source</summary>
+              </details>
             </div>
 
         </div>
 
 
-          <div class="method-controls">
-            <details class="method-source-toggle">
-              <summary>Source</summary>
-            </details>
-          </div>
           <div class="method-source-code" id="5B-5D-3D-source">
             <pre class="ruby"><span class="ruby-comment"># File lib/rexml/xpath_parser.rb, line 108</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">[]=</span>( <span class="ruby-identifier">variable_name</span>, <span class="ruby-identifier">value</span> )
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">[]=</span>( <span class="ruby-identifier">variable_name</span>, <span class="ruby-identifier">value</span> )
   <span class="ruby-ivar">@variables</span>[ <span class="ruby-identifier">variable_name</span> ] = <span class="ruby-identifier">value</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
@@ -890,55 +905,62 @@
 
       <div id="method-i-first" class="method-detail anchor-link ">
         <div class="method-header">
+          <div class="method-heading-group">
 
-            <div class="method-heading">
-              <a href="#method-i-first" title="Link to this method">
-                <span class="method-name">first</span>
-                <span class="method-args">( path_stack, node )</span>
-              </a>
+              <div class="method-heading">
+                <a href="#method-i-first" title="Link to this method">
+                  <span class="method-name">first</span>
+                  <span class="method-args">(path_stack, node)</span>
+                </a>
+              </div>
+
+
+
+          </div>
+
+
+            <div class="method-controls">
+              <details class="method-source-toggle">
+                <summary><span class="method-source-icon" aria-hidden="true">{}</span> Source</summary>
+              </details>
             </div>
 
         </div>
 
 
-          <div class="method-controls">
-            <details class="method-source-toggle">
-              <summary>Source</summary>
-            </details>
-          </div>
           <div class="method-source-code" id="first-source">
             <pre class="ruby"><span class="ruby-comment"># File lib/rexml/xpath_parser.rb, line 117</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">first</span>( <span class="ruby-identifier">path_stack</span>, <span class="ruby-identifier">node</span> )
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">first</span>( <span class="ruby-identifier">path_stack</span>, <span class="ruby-identifier">node</span> )
   <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">path</span>.<span class="ruby-identifier">size</span> <span class="ruby-operator">==</span> <span class="ruby-value">0</span>
 
   <span class="ruby-keyword">case</span> <span class="ruby-identifier">path</span>[<span class="ruby-value">0</span>]
-  <span class="ruby-keyword">when</span> <span class="ruby-value">:document</span>
+  <span class="ruby-keyword">when</span> <span class="ruby-value">:</span><span class="ruby-value">document</span>
     <span class="ruby-comment"># do nothing</span>
-    <span class="ruby-identifier">first</span>( <span class="ruby-identifier">path</span>[<span class="ruby-value">1</span><span class="ruby-operator">..</span><span class="ruby-value">-1</span>], <span class="ruby-identifier">node</span> )
-  <span class="ruby-keyword">when</span> <span class="ruby-value">:child</span>
+    <span class="ruby-identifier">first</span>( <span class="ruby-identifier">path</span>[<span class="ruby-value">1</span>..-<span class="ruby-value">1</span>], <span class="ruby-identifier">node</span> )
+  <span class="ruby-keyword">when</span> <span class="ruby-value">:</span><span class="ruby-value">child</span>
     <span class="ruby-keyword">for</span> <span class="ruby-identifier">c</span> <span class="ruby-keyword">in</span> <span class="ruby-identifier">node</span>.<span class="ruby-identifier">children</span>
-      <span class="ruby-identifier">r</span> = <span class="ruby-identifier">first</span>( <span class="ruby-identifier">path</span>[<span class="ruby-value">1</span><span class="ruby-operator">..</span><span class="ruby-value">-1</span>], <span class="ruby-identifier">c</span> )
+      <span class="ruby-identifier">r</span> = <span class="ruby-identifier">first</span>( <span class="ruby-identifier">path</span>[<span class="ruby-value">1</span>..-<span class="ruby-value">1</span>], <span class="ruby-identifier">c</span> )
       <span class="ruby-keyword">return</span> <span class="ruby-identifier">r</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">r</span>
     <span class="ruby-keyword">end</span>
-  <span class="ruby-keyword">when</span> <span class="ruby-value">:qname</span>
+  <span class="ruby-keyword">when</span> <span class="ruby-value">:</span><span class="ruby-value">qname</span>
     <span class="ruby-identifier">name</span> = <span class="ruby-identifier">path</span>[<span class="ruby-value">2</span>]
     <span class="ruby-keyword">if</span> <span class="ruby-identifier">node</span>.<span class="ruby-identifier">name</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">name</span>
       <span class="ruby-keyword">return</span> <span class="ruby-identifier">node</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">path</span>.<span class="ruby-identifier">size</span> <span class="ruby-operator">==</span> <span class="ruby-value">3</span>
-      <span class="ruby-identifier">first</span>( <span class="ruby-identifier">path</span>[<span class="ruby-value">3</span><span class="ruby-operator">..</span><span class="ruby-value">-1</span>], <span class="ruby-identifier">node</span> )
+      <span class="ruby-identifier">first</span>( <span class="ruby-identifier">path</span>[<span class="ruby-value">3</span>..-<span class="ruby-value">1</span>], <span class="ruby-identifier">node</span> )
     <span class="ruby-keyword">else</span>
       <span class="ruby-keyword">nil</span>
     <span class="ruby-keyword">end</span>
-  <span class="ruby-keyword">when</span> <span class="ruby-value">:descendant_or_self</span>
-    <span class="ruby-identifier">r</span> = <span class="ruby-identifier">first</span>( <span class="ruby-identifier">path</span>[<span class="ruby-value">1</span><span class="ruby-operator">..</span><span class="ruby-value">-1</span>], <span class="ruby-identifier">node</span> )
+  <span class="ruby-keyword">when</span> <span class="ruby-value">:</span><span class="ruby-value">descendant_or_self</span>
+    <span class="ruby-identifier">r</span> = <span class="ruby-identifier">first</span>( <span class="ruby-identifier">path</span>[<span class="ruby-value">1</span>..-<span class="ruby-value">1</span>], <span class="ruby-identifier">node</span> )
     <span class="ruby-keyword">return</span> <span class="ruby-identifier">r</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">r</span>
     <span class="ruby-keyword">for</span> <span class="ruby-identifier">c</span> <span class="ruby-keyword">in</span> <span class="ruby-identifier">node</span>.<span class="ruby-identifier">children</span>
       <span class="ruby-identifier">r</span> = <span class="ruby-identifier">first</span>( <span class="ruby-identifier">path</span>, <span class="ruby-identifier">c</span> )
       <span class="ruby-keyword">return</span> <span class="ruby-identifier">r</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">r</span>
     <span class="ruby-keyword">end</span>
-  <span class="ruby-keyword">when</span> <span class="ruby-value">:node</span>
-    <span class="ruby-identifier">first</span>( <span class="ruby-identifier">path</span>[<span class="ruby-value">1</span><span class="ruby-operator">..</span><span class="ruby-value">-1</span>], <span class="ruby-identifier">node</span> )
-  <span class="ruby-keyword">when</span> <span class="ruby-value">:any</span>
-    <span class="ruby-identifier">first</span>( <span class="ruby-identifier">path</span>[<span class="ruby-value">1</span><span class="ruby-operator">..</span><span class="ruby-value">-1</span>], <span class="ruby-identifier">node</span> )
+  <span class="ruby-keyword">when</span> <span class="ruby-value">:</span><span class="ruby-value">node</span>
+    <span class="ruby-identifier">first</span>( <span class="ruby-identifier">path</span>[<span class="ruby-value">1</span>..-<span class="ruby-value">1</span>], <span class="ruby-identifier">node</span> )
+  <span class="ruby-keyword">when</span> <span class="ruby-value">:</span><span class="ruby-value">any</span>
+    <span class="ruby-identifier">first</span>( <span class="ruby-identifier">path</span>[<span class="ruby-value">1</span>..-<span class="ruby-value">1</span>], <span class="ruby-identifier">node</span> )
   <span class="ruby-keyword">else</span>
     <span class="ruby-keyword">nil</span>
   <span class="ruby-keyword">end</span>
@@ -966,25 +988,32 @@
 
       <div id="method-i-get_first" class="method-detail anchor-link ">
         <div class="method-header">
+          <div class="method-heading-group">
 
-            <div class="method-heading">
-              <a href="#method-i-get_first" title="Link to this method">
-                <span class="method-name">get_first</span>
-                <span class="method-args">(path, node)</span>
-              </a>
+              <div class="method-heading">
+                <a href="#method-i-get_first" title="Link to this method">
+                  <span class="method-name">get_first</span>
+                  <span class="method-args">(path, node)</span>
+                </a>
+              </div>
+
+
+
+          </div>
+
+
+            <div class="method-controls">
+              <details class="method-source-toggle">
+                <summary><span class="method-source-icon" aria-hidden="true">{}</span> Source</summary>
+              </details>
             </div>
 
         </div>
 
 
-          <div class="method-controls">
-            <details class="method-source-toggle">
-              <summary>Source</summary>
-            </details>
-          </div>
           <div class="method-source-code" id="get_first-source">
             <pre class="ruby"><span class="ruby-comment"># File lib/rexml/xpath_parser.rb, line 98</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">get_first</span> <span class="ruby-identifier">path</span>, <span class="ruby-identifier">node</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">get_first</span> <span class="ruby-identifier">path</span>, <span class="ruby-identifier">node</span>
   <span class="ruby-identifier">path_stack</span> = <span class="ruby-ivar">@parser</span>.<span class="ruby-identifier">parse</span>( <span class="ruby-identifier">path</span> )
   <span class="ruby-identifier">first</span>( <span class="ruby-identifier">path_stack</span>, <span class="ruby-identifier">node</span> )
 <span class="ruby-keyword">end</span></pre>
@@ -1009,25 +1038,32 @@
 
       <div id="method-i-match" class="method-detail anchor-link ">
         <div class="method-header">
+          <div class="method-heading-group">
 
-            <div class="method-heading">
-              <a href="#method-i-match" title="Link to this method">
-                <span class="method-name">match</span>
-                <span class="method-args">(path_stack, node)</span>
-              </a>
+              <div class="method-heading">
+                <a href="#method-i-match" title="Link to this method">
+                  <span class="method-name">match</span>
+                  <span class="method-args">(path_stack, node)</span>
+                </a>
+              </div>
+
+
+
+          </div>
+
+
+            <div class="method-controls">
+              <details class="method-source-toggle">
+                <summary><span class="method-source-icon" aria-hidden="true">{}</span> Source</summary>
+              </details>
             </div>
 
         </div>
 
 
-          <div class="method-controls">
-            <details class="method-source-toggle">
-              <summary>Source</summary>
-            </details>
-          </div>
           <div class="method-source-code" id="match-source">
             <pre class="ruby"><span class="ruby-comment"># File lib/rexml/xpath_parser.rb, line 154</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">match</span>(<span class="ruby-identifier">path_stack</span>, <span class="ruby-identifier">node</span>)
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">match</span>(<span class="ruby-identifier">path_stack</span>, <span class="ruby-identifier">node</span>)
   <span class="ruby-identifier">nodeset</span> = [<span class="ruby-identifier">node</span>]
   <span class="ruby-identifier">result</span> = <span class="ruby-identifier">expr</span>(<span class="ruby-identifier">path_stack</span>, <span class="ruby-identifier">nodeset</span>)
   <span class="ruby-keyword">case</span> <span class="ruby-identifier">result</span>
@@ -1058,25 +1094,32 @@
 
       <div id="method-i-namespaces-3D" class="method-detail anchor-link ">
         <div class="method-header">
+          <div class="method-heading-group">
 
-            <div class="method-heading">
-              <a href="#method-i-namespaces-3D" title="Link to this method">
-                <span class="method-name">namespaces=</span>
-                <span class="method-args">( namespaces={} )</span>
-              </a>
+              <div class="method-heading">
+                <a href="#method-i-namespaces-3D" title="Link to this method">
+                  <span class="method-name">namespaces=</span>
+                  <span class="method-args">(namespaces={})</span>
+                </a>
+              </div>
+
+
+
+          </div>
+
+
+            <div class="method-controls">
+              <details class="method-source-toggle">
+                <summary><span class="method-source-icon" aria-hidden="true">{}</span> Source</summary>
+              </details>
             </div>
 
         </div>
 
 
-          <div class="method-controls">
-            <details class="method-source-toggle">
-              <summary>Source</summary>
-            </details>
-          </div>
           <div class="method-source-code" id="namespaces-3D-source">
             <pre class="ruby"><span class="ruby-comment"># File lib/rexml/xpath_parser.rb, line 70</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">namespaces=</span>( <span class="ruby-identifier">namespaces</span>={} )
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">namespaces=</span>( <span class="ruby-identifier">namespaces</span>={} )
   <span class="ruby-ivar">@functions</span>.<span class="ruby-identifier">namespace_context</span> = <span class="ruby-identifier">namespaces</span>
   <span class="ruby-ivar">@namespaces</span> = <span class="ruby-identifier">namespaces</span>
 <span class="ruby-keyword">end</span></pre>
@@ -1101,35 +1144,42 @@
 
       <div id="method-i-parse" class="method-detail anchor-link ">
         <div class="method-header">
+          <div class="method-heading-group">
 
-            <div class="method-heading">
-              <a href="#method-i-parse" title="Link to this method">
-                <span class="method-name">parse</span>
-                <span class="method-args">(path, node)</span>
-              </a>
+              <div class="method-heading">
+                <a href="#method-i-parse" title="Link to this method">
+                  <span class="method-name">parse</span>
+                  <span class="method-args">(path, node)</span>
+                </a>
+              </div>
+
+
+
+          </div>
+
+
+            <div class="method-controls">
+              <details class="method-source-toggle">
+                <summary><span class="method-source-icon" aria-hidden="true">{}</span> Source</summary>
+              </details>
             </div>
 
         </div>
 
 
-          <div class="method-controls">
-            <details class="method-source-toggle">
-              <summary>Source</summary>
-            </details>
-          </div>
           <div class="method-source-code" id="parse-source">
             <pre class="ruby"><span class="ruby-comment"># File lib/rexml/xpath_parser.rb, line 80</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">parse</span> <span class="ruby-identifier">path</span>, <span class="ruby-identifier">node</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">parse</span> <span class="ruby-identifier">path</span>, <span class="ruby-identifier">node</span>
   <span class="ruby-identifier">path_stack</span> = <span class="ruby-ivar">@parser</span>.<span class="ruby-identifier">parse</span>( <span class="ruby-identifier">path</span> )
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">node</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Array</span>)
-    <span class="ruby-constant">Kernel</span>.<span class="ruby-identifier">warn</span>(<span class="ruby-string">&quot;REXML::XPath.each, REXML::XPath.first, REXML::XPath.match dropped support for nodeset...&quot;</span>, <span class="ruby-value">uplevel:</span> <span class="ruby-value">1</span>)
+    <span class="ruby-constant">Kernel</span>.<span class="ruby-identifier">warn</span>(<span class="ruby-string">&quot;</span><span class="ruby-string">REXML::XPath.each, REXML::XPath.first, REXML::XPath.match dropped support for nodeset...</span><span class="ruby-string">&quot;</span>, <span class="ruby-value">uplevel</span><span class="ruby-value">:</span> <span class="ruby-value">1</span>)
     <span class="ruby-keyword">return</span> [] <span class="ruby-keyword">if</span> <span class="ruby-identifier">node</span>.<span class="ruby-identifier">empty?</span>
     <span class="ruby-identifier">node</span> = <span class="ruby-identifier">node</span>.<span class="ruby-identifier">first</span>
   <span class="ruby-keyword">end</span>
 
   <span class="ruby-identifier">document</span> = <span class="ruby-identifier">node</span>.<span class="ruby-identifier">document</span>
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">document</span>
-    <span class="ruby-identifier">document</span>.<span class="ruby-identifier">__send__</span>(<span class="ruby-value">:enable_cache</span>) <span class="ruby-keyword">do</span>
+    <span class="ruby-identifier">document</span>.<span class="ruby-identifier">__send__</span>(<span class="ruby-value">:</span><span class="ruby-value">enable_cache</span>) <span class="ruby-keyword">do</span>
       <span class="ruby-identifier">match</span>( <span class="ruby-identifier">path_stack</span>, <span class="ruby-identifier">node</span> )
     <span class="ruby-keyword">end</span>
   <span class="ruby-keyword">else</span>
@@ -1157,25 +1207,32 @@
 
       <div id="method-i-predicate" class="method-detail anchor-link ">
         <div class="method-header">
+          <div class="method-heading-group">
 
-            <div class="method-heading">
-              <a href="#method-i-predicate" title="Link to this method">
-                <span class="method-name">predicate</span>
-                <span class="method-args">(path, node)</span>
-              </a>
+              <div class="method-heading">
+                <a href="#method-i-predicate" title="Link to this method">
+                  <span class="method-name">predicate</span>
+                  <span class="method-args">(path, node)</span>
+                </a>
+              </div>
+
+
+
+          </div>
+
+
+            <div class="method-controls">
+              <details class="method-source-toggle">
+                <summary><span class="method-source-icon" aria-hidden="true">{}</span> Source</summary>
+              </details>
             </div>
 
         </div>
 
 
-          <div class="method-controls">
-            <details class="method-source-toggle">
-              <summary>Source</summary>
-            </details>
-          </div>
           <div class="method-source-code" id="predicate-source">
             <pre class="ruby"><span class="ruby-comment"># File lib/rexml/xpath_parser.rb, line 103</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">predicate</span> <span class="ruby-identifier">path</span>, <span class="ruby-identifier">node</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">predicate</span> <span class="ruby-identifier">path</span>, <span class="ruby-identifier">node</span>
   <span class="ruby-identifier">path_stack</span> = <span class="ruby-ivar">@parser</span>.<span class="ruby-identifier">parse</span>( <span class="ruby-identifier">path</span> )
   <span class="ruby-identifier">match</span>( <span class="ruby-identifier">path_stack</span>, <span class="ruby-identifier">node</span> )
 <span class="ruby-keyword">end</span></pre>
@@ -1200,25 +1257,32 @@
 
       <div id="method-i-variables-3D" class="method-detail anchor-link ">
         <div class="method-header">
+          <div class="method-heading-group">
 
-            <div class="method-heading">
-              <a href="#method-i-variables-3D" title="Link to this method">
-                <span class="method-name">variables=</span>
-                <span class="method-args">( vars={} )</span>
-              </a>
+              <div class="method-heading">
+                <a href="#method-i-variables-3D" title="Link to this method">
+                  <span class="method-name">variables=</span>
+                  <span class="method-args">(vars={})</span>
+                </a>
+              </div>
+
+
+
+          </div>
+
+
+            <div class="method-controls">
+              <details class="method-source-toggle">
+                <summary><span class="method-source-icon" aria-hidden="true">{}</span> Source</summary>
+              </details>
             </div>
 
         </div>
 
 
-          <div class="method-controls">
-            <details class="method-source-toggle">
-              <summary>Source</summary>
-            </details>
-          </div>
           <div class="method-source-code" id="variables-3D-source">
             <pre class="ruby"><span class="ruby-comment"># File lib/rexml/xpath_parser.rb, line 75</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">variables=</span>( <span class="ruby-identifier">vars</span>={} )
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">variables=</span>( <span class="ruby-identifier">vars</span>={} )
   <span class="ruby-ivar">@functions</span>.<span class="ruby-identifier">variables</span> = <span class="ruby-identifier">vars</span>
   <span class="ruby-ivar">@variables</span> = <span class="ruby-identifier">vars</span>
 <span class="ruby-keyword">end</span></pre>
@@ -1250,7 +1314,7 @@
 
 </main>
 
-<aside class="table-of-contents" role="complementary" aria-label="Table of Contents">
+<aside id="table-of-contents" class="table-of-contents" role="complementary" aria-label="Table of Contents">
   <div class="toc-sticky">
     <h3 class="toc-heading">On This Page</h3>
     <nav class="toc-nav" id="toc-nav" aria-label="Page sections">
@@ -1265,7 +1329,7 @@
 
   <div class="footer-bottom">
     <p>
-      Generated by <a href="https://ruby.github.io/rdoc/">RDoc 7.2.0</a>
+      Generated by <a href="https://ruby.github.io/rdoc/">RDoc 8.0.0</a>
       using the Aliki theme by <a href="http://st0012.dev">Stan Lo</a>
     </p>
   </div>

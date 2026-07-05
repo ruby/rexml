@@ -50,46 +50,46 @@
 </script>
 
 <script
-  src="../js/theme-toggle.js?v=7.2.0"
+  src="../js/theme-toggle.js?v=8.0.0"
 ></script>
 
 <script
-  src="../js/search_navigation.js?v=7.2.0"
+  src="../js/search_navigation.js?v=8.0.0"
   defer
 ></script>
 
 <script
-  src="../js/search_data.js?v=7.2.0"
+  src="../js/search_data.js?v=8.0.0"
   defer
 ></script>
 
 <script
-  src="../js/search_ranker.js?v=7.2.0"
+  src="../js/search_ranker.js?v=8.0.0"
   defer
 ></script>
 
 <script
-  src="../js/search_controller.js?v=7.2.0"
+  src="../js/search_controller.js?v=8.0.0"
   defer
 ></script>
 
 <script
-  src="../js/c_highlighter.js?v=7.2.0"
+  src="../js/c_highlighter.js?v=8.0.0"
   defer
 ></script>
 
 <script
-  src="../js/bash_highlighter.js?v=7.2.0"
+  src="../js/bash_highlighter.js?v=8.0.0"
   defer
 ></script>
 
 <script
-  src="../js/aliki.js?v=7.2.0"
+  src="../js/aliki.js?v=8.0.0"
   defer
 ></script>
 
 <link
-  href="../css/rdoc.css?v=7.2.0"
+  href="../css/rdoc.css?v=8.0.0"
   rel="stylesheet"
 >
 
@@ -363,12 +363,12 @@
   </div>
 </div>
 
-<div id="navigation-toggle" role="button" tabindex="0" aria-label="Toggle sidebar" aria-expanded="true" aria-controls="navigation">
+<div id="sidebar-navigation-toggle" role="button" tabindex="0" aria-label="Toggle sidebar" aria-expanded="false" aria-controls="sidebar-navigation">
   <span aria-hidden="true">&#9776;</span>
 </div>
 
 
-<nav id="navigation" role="navigation" hidden>
+<nav id="sidebar-navigation" role="navigation" hidden>
   
 
 
@@ -411,15 +411,6 @@
             <li>
               <a href="../NEWS_md.html">
                 NEWS
-              </a>
-            </li>
-
-
-
-
-            <li>
-              <a href="../README_md.html">
-                README
               </a>
             </li>
 
@@ -544,9 +535,11 @@
 
     <ul class="nav-list">
 
+      <li>
 
-      <li><a class="include" href="XMLTokens.html">REXML::XMLTokens</a></li>
+        <a class="include" href="XMLTokens.html">REXML::XMLTokens</a>
 
+      </li>
 
     </ul>
   </details>
@@ -607,7 +600,7 @@
       
       <li>
         
-        <a href="../REXML.html">REXML</a><span>::</span>
+        <a href="../REXML.html">REXML</a><span class="separator">::</span>
         
       </li>
       
@@ -621,8 +614,9 @@
   
 
   <span id="module-REXML::Namespace" class="legacy-anchor"></span>
-  <h1 id="module-rexml-namespace" class="anchor-link module">
-    module REXML::Namespace
+  <h1 id="module-rexml-namespace" class="anchor-link module page-title">
+    <span class="page-title-kind">module</span>
+    <span class="page-title-name">REXML::Namespace</span>
   </h1>
 
   <section class="description">
@@ -678,6 +672,7 @@
             <span class="method-name">expanded_name</span>
             <span class="attribute-access-type">[R]</span>
           </a>
+
         </div>
 
         <div class="method-description">
@@ -694,6 +689,7 @@
             <span class="method-name">local_name</span>
             <span class="attribute-access-type">[R]</span>
           </a>
+
         </div>
 
         <div class="method-description">
@@ -710,6 +706,7 @@
             <span class="method-name">name</span>
             <span class="attribute-access-type">[R]</span>
           </a>
+
         </div>
 
         <div class="method-description">
@@ -726,6 +723,7 @@
             <span class="method-name">prefix</span>
             <span class="attribute-access-type">[RW]</span>
           </a>
+
         </div>
 
         <div class="method-description">
@@ -757,27 +755,34 @@
 
       <div id="method-i-fully_expanded_name" class="method-detail anchor-link ">
         <div class="method-header">
+          <div class="method-heading-group">
 
-            <div class="method-heading">
-              <a href="#method-i-fully_expanded_name" title="Link to this method">
-                <span class="method-name">fully_expanded_name</span>
-                <span class="method-args">()</span>
-              </a>
+              <div class="method-heading">
+                <a href="#method-i-fully_expanded_name" title="Link to this method">
+                  <span class="method-name">fully_expanded_name</span>
+                  <span class="method-args">()</span>
+                </a>
+              </div>
+
+
+
+          </div>
+
+
+            <div class="method-controls">
+              <details class="method-source-toggle">
+                <summary><span class="method-source-icon" aria-hidden="true">{}</span> Source</summary>
+              </details>
             </div>
 
         </div>
 
 
-          <div class="method-controls">
-            <details class="method-source-toggle">
-              <summary>Source</summary>
-            </details>
-          </div>
           <div class="method-source-code" id="fully_expanded_name-source">
             <pre class="ruby"><span class="ruby-comment"># File lib/rexml/namespace.rb, line 57</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">fully_expanded_name</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">fully_expanded_name</span>
   <span class="ruby-identifier">ns</span> = <span class="ruby-identifier">prefix</span>
-  <span class="ruby-keyword">return</span> <span class="ruby-node">&quot;#{ns}:#@name&quot;</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">ns</span>.<span class="ruby-identifier">size</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">0</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-string">&quot;</span><span class="ruby-string">#{</span><span class="ruby-identifier">ns</span><span class="ruby-string">}</span><span class="ruby-string">:</span><span class="ruby-string">#</span><span class="ruby-ivar">@name</span><span class="ruby-string">&quot;</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">ns</span>.<span class="ruby-identifier">size</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">0</span>
   <span class="ruby-ivar">@name</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
@@ -801,28 +806,35 @@
 
       <div id="method-i-has_name-3F" class="method-detail anchor-link ">
         <div class="method-header">
+          <div class="method-heading-group">
 
-            <div class="method-heading">
-              <a href="#method-i-has_name-3F" title="Link to this method">
-                <span class="method-name">has_name?</span>
-                <span class="method-args">( other, ns=nil )</span>
-              </a>
+              <div class="method-heading">
+                <a href="#method-i-has_name-3F" title="Link to this method">
+                  <span class="method-name">has_name?</span>
+                  <span class="method-args">(other, ns=nil)</span>
+                </a>
+              </div>
+
+
+
+          </div>
+
+
+            <div class="method-controls">
+              <details class="method-source-toggle">
+                <summary><span class="method-source-icon" aria-hidden="true">{}</span> Source</summary>
+              </details>
             </div>
 
         </div>
 
 
-          <div class="method-controls">
-            <details class="method-source-toggle">
-              <summary>Source</summary>
-            </details>
-          </div>
           <div class="method-source-code" id="has_name-3F-source">
             <pre class="ruby"><span class="ruby-comment"># File lib/rexml/namespace.rb, line 43</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">has_name?</span>( <span class="ruby-identifier">other</span>, <span class="ruby-identifier">ns</span>=<span class="ruby-keyword">nil</span> )
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">has_name?</span>( <span class="ruby-identifier">other</span>, <span class="ruby-identifier">ns</span>=<span class="ruby-keyword">nil</span> )
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">ns</span>
     <span class="ruby-identifier">namespace</span>() <span class="ruby-operator">==</span> <span class="ruby-identifier">ns</span> <span class="ruby-keyword">and</span> <span class="ruby-identifier">name</span>() <span class="ruby-operator">==</span> <span class="ruby-identifier">other</span>
-  <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">other</span>.<span class="ruby-identifier">include?</span> <span class="ruby-string">&quot;:&quot;</span>
+  <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">other</span>.<span class="ruby-identifier">include?</span> <span class="ruby-string">&quot;</span><span class="ruby-string">:</span><span class="ruby-string">&quot;</span>
     <span class="ruby-identifier">fully_expanded_name</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">other</span>
   <span class="ruby-keyword">else</span>
     <span class="ruby-identifier">name</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">other</span>
@@ -849,45 +861,52 @@
 
       <div id="method-i-name-3D" class="method-detail anchor-link ">
         <div class="method-header">
+          <div class="method-heading-group">
 
-            <div class="method-heading">
-              <a href="#method-i-name-3D" title="Link to this method">
-                <span class="method-name">name=</span>
-                <span class="method-args">( name )</span>
-              </a>
+              <div class="method-heading">
+                <a href="#method-i-name-3D" title="Link to this method">
+                  <span class="method-name">name=</span>
+                  <span class="method-args">(name)</span>
+                </a>
+              </div>
+
+
+
+          </div>
+
+
+            <div class="method-controls">
+              <details class="method-source-toggle">
+                <summary><span class="method-source-icon" aria-hidden="true">{}</span> Source</summary>
+              </details>
             </div>
 
         </div>
 
 
-          <div class="method-controls">
-            <details class="method-source-toggle">
-              <summary>Source</summary>
-            </details>
-          </div>
           <div class="method-source-code" id="name-3D-source">
             <pre class="ruby"><span class="ruby-comment"># File lib/rexml/namespace.rb, line 17</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">name=</span>( <span class="ruby-identifier">name</span> )
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">name=</span>( <span class="ruby-identifier">name</span> )
   <span class="ruby-ivar">@expanded_name</span> = <span class="ruby-identifier">name</span>
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">name</span>.<span class="ruby-identifier">match?</span>(<span class="ruby-constant">NAME_WITHOUT_NAMESPACE</span>)
-    <span class="ruby-ivar">@prefix</span> = <span class="ruby-string">&quot;&quot;</span>
-    <span class="ruby-ivar">@namespace</span> = <span class="ruby-string">&quot;&quot;</span>
+    <span class="ruby-ivar">@prefix</span> = <span class="ruby-string">&quot;</span><span class="ruby-string">&quot;</span>
+    <span class="ruby-ivar">@namespace</span> = <span class="ruby-string">&quot;</span><span class="ruby-string">&quot;</span>
     <span class="ruby-ivar">@name</span> = <span class="ruby-identifier">name</span>
   <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">name</span> <span class="ruby-operator">=~</span> <span class="ruby-constant">NAMESPLIT</span>
-    <span class="ruby-keyword">if</span> <span class="ruby-node">$1</span>
-      <span class="ruby-ivar">@prefix</span> = <span class="ruby-node">$1</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">$1</span>
+      <span class="ruby-ivar">@prefix</span> = <span class="ruby-identifier">$1</span>
     <span class="ruby-keyword">else</span>
-      <span class="ruby-ivar">@prefix</span> = <span class="ruby-string">&quot;&quot;</span>
-      <span class="ruby-ivar">@namespace</span> = <span class="ruby-string">&quot;&quot;</span>
+      <span class="ruby-ivar">@prefix</span> = <span class="ruby-string">&quot;</span><span class="ruby-string">&quot;</span>
+      <span class="ruby-ivar">@namespace</span> = <span class="ruby-string">&quot;</span><span class="ruby-string">&quot;</span>
     <span class="ruby-keyword">end</span>
-    <span class="ruby-ivar">@name</span> = <span class="ruby-node">$2</span>
-  <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">name</span> <span class="ruby-operator">==</span> <span class="ruby-string">&quot;&quot;</span>
+    <span class="ruby-ivar">@name</span> = <span class="ruby-identifier">$2</span>
+  <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">name</span> <span class="ruby-operator">==</span> <span class="ruby-string">&quot;</span><span class="ruby-string">&quot;</span>
     <span class="ruby-ivar">@prefix</span> = <span class="ruby-keyword">nil</span>
     <span class="ruby-ivar">@namespace</span> = <span class="ruby-keyword">nil</span>
     <span class="ruby-ivar">@name</span> = <span class="ruby-keyword">nil</span>
   <span class="ruby-keyword">else</span>
-    <span class="ruby-identifier">message</span> = <span class="ruby-string">&quot;name must be \#{PREFIX}:\#{LOCAL_NAME} or \#{LOCAL_NAME}: &quot;</span>
-    <span class="ruby-identifier">message</span> <span class="ruby-operator">+=</span> <span class="ruby-node">&quot;&lt;#{name.inspect}&gt;&quot;</span>
+    <span class="ruby-identifier">message</span> = <span class="ruby-string">&quot;</span><span class="ruby-string">name must be \#{PREFIX}:\#{LOCAL_NAME} or \#{LOCAL_NAME}: </span><span class="ruby-string">&quot;</span>
+    <span class="ruby-identifier">message</span> += <span class="ruby-string">&quot;</span><span class="ruby-string">&lt;</span><span class="ruby-string">#{</span><span class="ruby-identifier">name</span>.<span class="ruby-identifier">inspect</span><span class="ruby-string">}</span><span class="ruby-string">&gt;</span><span class="ruby-string">&quot;</span>
     <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span>, <span class="ruby-identifier">message</span>
   <span class="ruby-keyword">end</span>
 <span class="ruby-keyword">end</span></pre>
@@ -919,7 +938,7 @@
 
 </main>
 
-<aside class="table-of-contents" role="complementary" aria-label="Table of Contents">
+<aside id="table-of-contents" class="table-of-contents" role="complementary" aria-label="Table of Contents">
   <div class="toc-sticky">
     <h3 class="toc-heading">On This Page</h3>
     <nav class="toc-nav" id="toc-nav" aria-label="Page sections">
@@ -934,7 +953,7 @@
 
   <div class="footer-bottom">
     <p>
-      Generated by <a href="https://ruby.github.io/rdoc/">RDoc 7.2.0</a>
+      Generated by <a href="https://ruby.github.io/rdoc/">RDoc 8.0.0</a>
       using the Aliki theme by <a href="http://st0012.dev">Stan Lo</a>
     </p>
   </div>

@@ -50,46 +50,46 @@
 </script>
 
 <script
-  src="../js/theme-toggle.js?v=7.2.0"
+  src="../js/theme-toggle.js?v=8.0.0"
 ></script>
 
 <script
-  src="../js/search_navigation.js?v=7.2.0"
+  src="../js/search_navigation.js?v=8.0.0"
   defer
 ></script>
 
 <script
-  src="../js/search_data.js?v=7.2.0"
+  src="../js/search_data.js?v=8.0.0"
   defer
 ></script>
 
 <script
-  src="../js/search_ranker.js?v=7.2.0"
+  src="../js/search_ranker.js?v=8.0.0"
   defer
 ></script>
 
 <script
-  src="../js/search_controller.js?v=7.2.0"
+  src="../js/search_controller.js?v=8.0.0"
   defer
 ></script>
 
 <script
-  src="../js/c_highlighter.js?v=7.2.0"
+  src="../js/c_highlighter.js?v=8.0.0"
   defer
 ></script>
 
 <script
-  src="../js/bash_highlighter.js?v=7.2.0"
+  src="../js/bash_highlighter.js?v=8.0.0"
   defer
 ></script>
 
 <script
-  src="../js/aliki.js?v=7.2.0"
+  src="../js/aliki.js?v=8.0.0"
   defer
 ></script>
 
 <link
-  href="../css/rdoc.css?v=7.2.0"
+  href="../css/rdoc.css?v=8.0.0"
   rel="stylesheet"
 >
 
@@ -363,12 +363,12 @@
   </div>
 </div>
 
-<div id="navigation-toggle" role="button" tabindex="0" aria-label="Toggle sidebar" aria-expanded="true" aria-controls="navigation">
+<div id="sidebar-navigation-toggle" role="button" tabindex="0" aria-label="Toggle sidebar" aria-expanded="false" aria-controls="sidebar-navigation">
   <span aria-hidden="true">&#9776;</span>
 </div>
 
 
-<nav id="navigation" role="navigation" hidden>
+<nav id="sidebar-navigation" role="navigation" hidden>
   
 
 
@@ -411,15 +411,6 @@
             <li>
               <a href="../NEWS_md.html">
                 NEWS
-              </a>
-            </li>
-
-
-
-
-            <li>
-              <a href="../README_md.html">
-                README
               </a>
             </li>
 
@@ -559,9 +550,11 @@
 
     <ul class="nav-list">
 
+      <li>
 
-      <li><span class="include">Comparable</span></li>
+        <span class="include">Comparable</span>
 
+      </li>
 
     </ul>
   </details>
@@ -677,7 +670,7 @@
       
       <li>
         
-        <a href="../REXML.html">REXML</a><span>::</span>
+        <a href="../REXML.html">REXML</a><span class="separator">::</span>
         
       </li>
       
@@ -691,8 +684,9 @@
   
 
   <span id="class-REXML::Text" class="legacy-anchor"></span>
-  <h1 id="class-rexml-text" class="anchor-link class">
-    class REXML::Text
+  <h1 id="class-rexml-text" class="anchor-link class page-title">
+    <span class="page-title-kind">class</span>
+    <span class="page-title-name">REXML::Text</span>
   </h1>
 
   <section class="description">
@@ -812,6 +806,7 @@
             <span class="method-name">raw</span>
             <span class="attribute-access-type">[RW]</span>
           </a>
+
         </div>
 
         <div class="method-description">
@@ -837,25 +832,32 @@
 
       <div id="method-c-check" class="method-detail anchor-link ">
         <div class="method-header">
+          <div class="method-heading-group">
 
-            <div class="method-heading">
-              <a href="#method-c-check" title="Link to this method">
-                <span class="method-name">check</span>
-                <span class="method-args">(string, pattern, doctype = nil)</span>
-              </a>
+              <div class="method-heading">
+                <a href="#method-c-check" title="Link to this method">
+                  <span class="method-name">check</span>
+                  <span class="method-args">(string, pattern, doctype = nil)</span>
+                </a>
+              </div>
+
+
+
+          </div>
+
+
+            <div class="method-controls">
+              <details class="method-source-toggle">
+                <summary><span class="method-source-icon" aria-hidden="true">{}</span> Source</summary>
+              </details>
             </div>
 
         </div>
 
 
-          <div class="method-controls">
-            <details class="method-source-toggle">
-              <summary>Source</summary>
-            </details>
-          </div>
           <div class="method-source-code" id="check-source">
             <pre class="ruby"><span class="ruby-comment"># File lib/rexml/text.rb, line 116</span>
-<span class="ruby-keyword">def</span> <span class="ruby-constant">Text</span>.<span class="ruby-identifier ruby-title">check</span> <span class="ruby-identifier">string</span>, <span class="ruby-identifier">pattern</span>, <span class="ruby-identifier">doctype</span> = <span class="ruby-keyword">nil</span>
+<span class="ruby-keyword">def</span> <span class="ruby-constant">Text</span>.<span class="ruby-identifier">check</span> <span class="ruby-identifier">string</span>, <span class="ruby-identifier">pattern</span>, <span class="ruby-identifier">doctype</span> = <span class="ruby-keyword">nil</span>
 
   <span class="ruby-comment"># illegal anywhere</span>
   <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span><span class="ruby-identifier">string</span>.<span class="ruby-identifier">match?</span>(<span class="ruby-constant">VALID_XML_CHARS</span>)
@@ -863,44 +865,44 @@
       <span class="ruby-keyword">case</span> <span class="ruby-identifier">c</span>.<span class="ruby-identifier">ord</span>
       <span class="ruby-keyword">when</span> <span class="ruby-operator">*</span><span class="ruby-constant">VALID_CHAR</span>
       <span class="ruby-keyword">else</span>
-        <span class="ruby-identifier">raise</span> <span class="ruby-node">&quot;Illegal character #{c.inspect} in raw string #{string.inspect}&quot;</span>
+        <span class="ruby-identifier">raise</span> <span class="ruby-string">&quot;</span><span class="ruby-string">Illegal character </span><span class="ruby-string">#{</span><span class="ruby-identifier">c</span>.<span class="ruby-identifier">inspect</span><span class="ruby-string">}</span><span class="ruby-string"> in raw string </span><span class="ruby-string">#{</span><span class="ruby-identifier">string</span>.<span class="ruby-identifier">inspect</span><span class="ruby-string">}</span><span class="ruby-string">&quot;</span>
       <span class="ruby-keyword">end</span>
     <span class="ruby-keyword">end</span>
   <span class="ruby-keyword">end</span>
 
   <span class="ruby-identifier">pos</span> = <span class="ruby-value">0</span>
   <span class="ruby-keyword">while</span> (<span class="ruby-identifier">index</span> = <span class="ruby-identifier">string</span>.<span class="ruby-identifier">index</span>(<span class="ruby-regexp">/&lt;|&amp;/</span>, <span class="ruby-identifier">pos</span>))
-    <span class="ruby-keyword">if</span> <span class="ruby-identifier">string</span>[<span class="ruby-identifier">index</span>] <span class="ruby-operator">==</span> <span class="ruby-string">&quot;&lt;&quot;</span>
-      <span class="ruby-identifier">raise</span> <span class="ruby-node">&quot;Illegal character \&quot;#{string[index]}\&quot; in raw string #{string.inspect}&quot;</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">string</span>[<span class="ruby-identifier">index</span>] <span class="ruby-operator">==</span> <span class="ruby-string">&quot;</span><span class="ruby-string">&lt;</span><span class="ruby-string">&quot;</span>
+      <span class="ruby-identifier">raise</span> <span class="ruby-string">&quot;</span><span class="ruby-string">Illegal character \&quot;</span><span class="ruby-string">#{</span><span class="ruby-identifier">string</span>[<span class="ruby-identifier">index</span>]<span class="ruby-string">}</span><span class="ruby-string">\&quot; in raw string </span><span class="ruby-string">#{</span><span class="ruby-identifier">string</span>.<span class="ruby-identifier">inspect</span><span class="ruby-string">}</span><span class="ruby-string">&quot;</span>
     <span class="ruby-keyword">end</span>
 
     <span class="ruby-keyword">unless</span> (<span class="ruby-identifier">end_index</span> = <span class="ruby-identifier">string</span>.<span class="ruby-identifier">index</span>(<span class="ruby-regexp">/[^\s];/</span>, <span class="ruby-identifier">index</span> <span class="ruby-operator">+</span> <span class="ruby-value">1</span>))
-      <span class="ruby-identifier">raise</span> <span class="ruby-node">&quot;Illegal character \&quot;#{string[index]}\&quot; in raw string #{string.inspect}&quot;</span>
+      <span class="ruby-identifier">raise</span> <span class="ruby-string">&quot;</span><span class="ruby-string">Illegal character \&quot;</span><span class="ruby-string">#{</span><span class="ruby-identifier">string</span>[<span class="ruby-identifier">index</span>]<span class="ruby-string">}</span><span class="ruby-string">\&quot; in raw string </span><span class="ruby-string">#{</span><span class="ruby-identifier">string</span>.<span class="ruby-identifier">inspect</span><span class="ruby-string">}</span><span class="ruby-string">&quot;</span>
     <span class="ruby-keyword">end</span>
 
-    <span class="ruby-identifier">value</span> = <span class="ruby-identifier">string</span>[(<span class="ruby-identifier">index</span> <span class="ruby-operator">+</span> <span class="ruby-value">1</span>)<span class="ruby-operator">..</span><span class="ruby-identifier">end_index</span>]
+    <span class="ruby-identifier">value</span> = <span class="ruby-identifier">string</span>[(<span class="ruby-identifier">index</span> <span class="ruby-operator">+</span> <span class="ruby-value">1</span>)..<span class="ruby-identifier">end_index</span>]
     <span class="ruby-keyword">if</span> <span class="ruby-regexp">/\s/</span>.<span class="ruby-identifier">match?</span>(<span class="ruby-identifier">value</span>)
-      <span class="ruby-identifier">raise</span> <span class="ruby-node">&quot;Illegal character \&quot;#{string[index]}\&quot; in raw string #{string.inspect}&quot;</span>
+      <span class="ruby-identifier">raise</span> <span class="ruby-string">&quot;</span><span class="ruby-string">Illegal character \&quot;</span><span class="ruby-string">#{</span><span class="ruby-identifier">string</span>[<span class="ruby-identifier">index</span>]<span class="ruby-string">}</span><span class="ruby-string">\&quot; in raw string </span><span class="ruby-string">#{</span><span class="ruby-identifier">string</span>.<span class="ruby-identifier">inspect</span><span class="ruby-string">}</span><span class="ruby-string">&quot;</span>
     <span class="ruby-keyword">end</span>
 
-    <span class="ruby-keyword">if</span> <span class="ruby-identifier">value</span>[<span class="ruby-value">0</span>] <span class="ruby-operator">==</span> <span class="ruby-string">&quot;#&quot;</span>
-      <span class="ruby-identifier">character_reference</span> = <span class="ruby-identifier">value</span>[<span class="ruby-value">1</span><span class="ruby-operator">..</span><span class="ruby-value">-1</span>]
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">value</span>[<span class="ruby-value">0</span>] <span class="ruby-operator">==</span> <span class="ruby-string">&quot;</span><span class="ruby-string">#</span><span class="ruby-string">&quot;</span>
+      <span class="ruby-identifier">character_reference</span> = <span class="ruby-identifier">value</span>[<span class="ruby-value">1</span>..-<span class="ruby-value">1</span>]
 
       <span class="ruby-keyword">unless</span> (<span class="ruby-regexp">/\A(\d+|x[0-9a-fA-F]+)\z/</span>.<span class="ruby-identifier">match?</span>(<span class="ruby-identifier">character_reference</span>))
-        <span class="ruby-keyword">if</span> <span class="ruby-identifier">character_reference</span>[<span class="ruby-value">0</span>] <span class="ruby-operator">==</span> <span class="ruby-string">&quot;x&quot;</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">character_reference</span>[<span class="ruby-value">-1</span>] <span class="ruby-operator">==</span> <span class="ruby-string">&quot;x&quot;</span>
-          <span class="ruby-identifier">raise</span> <span class="ruby-node">&quot;Illegal character \&quot;#{string[index]}\&quot; in raw string #{string.inspect}&quot;</span>
+        <span class="ruby-keyword">if</span> <span class="ruby-identifier">character_reference</span>[<span class="ruby-value">0</span>] <span class="ruby-operator">==</span> <span class="ruby-string">&quot;</span><span class="ruby-string">x</span><span class="ruby-string">&quot;</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">character_reference</span>[-<span class="ruby-value">1</span>] <span class="ruby-operator">==</span> <span class="ruby-string">&quot;</span><span class="ruby-string">x</span><span class="ruby-string">&quot;</span>
+          <span class="ruby-identifier">raise</span> <span class="ruby-string">&quot;</span><span class="ruby-string">Illegal character \&quot;</span><span class="ruby-string">#{</span><span class="ruby-identifier">string</span>[<span class="ruby-identifier">index</span>]<span class="ruby-string">}</span><span class="ruby-string">\&quot; in raw string </span><span class="ruby-string">#{</span><span class="ruby-identifier">string</span>.<span class="ruby-identifier">inspect</span><span class="ruby-string">}</span><span class="ruby-string">&quot;</span>
         <span class="ruby-keyword">else</span>
-          <span class="ruby-identifier">raise</span> <span class="ruby-node">&quot;Illegal character #{string.inspect} in raw string #{string.inspect}&quot;</span>
+          <span class="ruby-identifier">raise</span> <span class="ruby-string">&quot;</span><span class="ruby-string">Illegal character </span><span class="ruby-string">#{</span><span class="ruby-identifier">string</span>.<span class="ruby-identifier">inspect</span><span class="ruby-string">}</span><span class="ruby-string"> in raw string </span><span class="ruby-string">#{</span><span class="ruby-identifier">string</span>.<span class="ruby-identifier">inspect</span><span class="ruby-string">}</span><span class="ruby-string">&quot;</span>
         <span class="ruby-keyword">end</span>
       <span class="ruby-keyword">end</span>
 
-      <span class="ruby-keyword">case</span> (<span class="ruby-identifier">character_reference</span>[<span class="ruby-value">0</span>] <span class="ruby-operator">==</span> <span class="ruby-string">&quot;x&quot;</span> <span class="ruby-operator">?</span> <span class="ruby-identifier">character_reference</span>[<span class="ruby-value">1</span><span class="ruby-operator">..</span><span class="ruby-value">-1</span>].<span class="ruby-identifier">to_i</span>(<span class="ruby-value">16</span>) <span class="ruby-operator">:</span> <span class="ruby-identifier">character_reference</span>[<span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-value">-1</span>].<span class="ruby-identifier">to_i</span>)
+      <span class="ruby-keyword">case</span> (<span class="ruby-identifier">character_reference</span>[<span class="ruby-value">0</span>] <span class="ruby-operator">==</span> <span class="ruby-string">&quot;</span><span class="ruby-string">x</span><span class="ruby-string">&quot;</span> <span class="ruby-operator">?</span> <span class="ruby-identifier">character_reference</span>[<span class="ruby-value">1</span>..-<span class="ruby-value">1</span>].<span class="ruby-identifier">to_i</span>(<span class="ruby-value">16</span>) <span class="ruby-operator">:</span> <span class="ruby-identifier">character_reference</span>[<span class="ruby-value">0</span>..-<span class="ruby-value">1</span>].<span class="ruby-identifier">to_i</span>)
       <span class="ruby-keyword">when</span> <span class="ruby-operator">*</span><span class="ruby-constant">VALID_CHAR</span>
       <span class="ruby-keyword">else</span>
-        <span class="ruby-identifier">raise</span> <span class="ruby-node">&quot;Illegal character #{string.inspect} in raw string #{string.inspect}&quot;</span>
+        <span class="ruby-identifier">raise</span> <span class="ruby-string">&quot;</span><span class="ruby-string">Illegal character </span><span class="ruby-string">#{</span><span class="ruby-identifier">string</span>.<span class="ruby-identifier">inspect</span><span class="ruby-string">}</span><span class="ruby-string"> in raw string </span><span class="ruby-string">#{</span><span class="ruby-identifier">string</span>.<span class="ruby-identifier">inspect</span><span class="ruby-string">}</span><span class="ruby-string">&quot;</span>
       <span class="ruby-keyword">end</span>
-    <span class="ruby-keyword">elsif</span> <span class="ruby-operator">!</span>(<span class="ruby-regexp">/\A#{Entity::NAME}\z/um</span>.<span class="ruby-identifier">match?</span>(<span class="ruby-identifier">value</span>))
-      <span class="ruby-identifier">raise</span> <span class="ruby-node">&quot;Illegal character \&quot;#{string[index]}\&quot; in raw string #{string.inspect}&quot;</span>
+    <span class="ruby-keyword">elsif</span> <span class="ruby-operator">!</span>(<span class="ruby-regexp">/</span><span class="ruby-regexp">\A</span><span class="ruby-regexp">#{</span><span class="ruby-constant">Entity</span><span class="ruby-operator">::</span><span class="ruby-constant">NAME</span><span class="ruby-regexp">}</span><span class="ruby-regexp">\z</span><span class="ruby-regexp">/um</span>.<span class="ruby-identifier">match?</span>(<span class="ruby-identifier">value</span>))
+      <span class="ruby-identifier">raise</span> <span class="ruby-string">&quot;</span><span class="ruby-string">Illegal character \&quot;</span><span class="ruby-string">#{</span><span class="ruby-identifier">string</span>[<span class="ruby-identifier">index</span>]<span class="ruby-string">}</span><span class="ruby-string">\&quot; in raw string </span><span class="ruby-string">#{</span><span class="ruby-identifier">string</span>.<span class="ruby-identifier">inspect</span><span class="ruby-string">}</span><span class="ruby-string">&quot;</span>
     <span class="ruby-keyword">end</span>
 
     <span class="ruby-identifier">pos</span> = <span class="ruby-identifier">end_index</span> <span class="ruby-operator">+</span> <span class="ruby-value">1</span>
@@ -929,39 +931,46 @@
 
       <div id="method-c-expand" class="method-detail anchor-link ">
         <div class="method-header">
+          <div class="method-heading-group">
 
-            <div class="method-heading">
-              <a href="#method-c-expand" title="Link to this method">
-                <span class="method-name">expand</span>
-                <span class="method-args">(ref, doctype, filter, expanding: nil)</span>
-              </a>
+              <div class="method-heading">
+                <a href="#method-c-expand" title="Link to this method">
+                  <span class="method-name">expand</span>
+                  <span class="method-args">(ref, doctype, filter, expanding: nil)</span>
+                </a>
+              </div>
+
+
+
+          </div>
+
+
+            <div class="method-controls">
+              <details class="method-source-toggle">
+                <summary><span class="method-source-icon" aria-hidden="true">{}</span> Source</summary>
+              </details>
             </div>
 
         </div>
 
 
-          <div class="method-controls">
-            <details class="method-source-toggle">
-              <summary>Source</summary>
-            </details>
-          </div>
           <div class="method-source-code" id="expand-source">
             <pre class="ruby"><span class="ruby-comment"># File lib/rexml/text.rb, line 401</span>
-<span class="ruby-keyword">def</span> <span class="ruby-constant">Text</span>.<span class="ruby-identifier ruby-title">expand</span>(<span class="ruby-identifier">ref</span>, <span class="ruby-identifier">doctype</span>, <span class="ruby-identifier">filter</span>, <span class="ruby-value">expanding:</span> <span class="ruby-keyword">nil</span>)
-  <span class="ruby-keyword">if</span> <span class="ruby-identifier">ref</span>[<span class="ruby-value">1</span>] <span class="ruby-operator">==</span> <span class="ruby-value">?#</span>
-    <span class="ruby-keyword">if</span> <span class="ruby-identifier">ref</span>[<span class="ruby-value">2</span>] <span class="ruby-operator">==</span> <span class="ruby-value">?x</span>
-      [<span class="ruby-identifier">ref</span>[<span class="ruby-value">3</span><span class="ruby-operator">...</span><span class="ruby-value">-1</span>].<span class="ruby-identifier">to_i</span>(<span class="ruby-value">16</span>)].<span class="ruby-identifier">pack</span>(<span class="ruby-string">&#39;U*&#39;</span>)
+<span class="ruby-keyword">def</span> <span class="ruby-constant">Text</span>.<span class="ruby-identifier">expand</span>(<span class="ruby-identifier">ref</span>, <span class="ruby-identifier">doctype</span>, <span class="ruby-identifier">filter</span>, <span class="ruby-value">expanding:</span> <span class="ruby-keyword">nil</span>)
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">ref</span>[<span class="ruby-value">1</span>] <span class="ruby-operator">==</span> <span class="ruby-string">?</span><span class="ruby-string">#</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">ref</span>[<span class="ruby-value">2</span>] <span class="ruby-operator">==</span> <span class="ruby-string">?</span><span class="ruby-string">x</span>
+      [<span class="ruby-identifier">ref</span>[<span class="ruby-value">3</span>...-<span class="ruby-value">1</span>].<span class="ruby-identifier">to_i</span>(<span class="ruby-value">16</span>)].<span class="ruby-identifier">pack</span>(<span class="ruby-string">&#39;</span><span class="ruby-string">U*</span><span class="ruby-string">&#39;</span>)
     <span class="ruby-keyword">else</span>
-      [<span class="ruby-identifier">ref</span>[<span class="ruby-value">2</span><span class="ruby-operator">...</span><span class="ruby-value">-1</span>].<span class="ruby-identifier">to_i</span>].<span class="ruby-identifier">pack</span>(<span class="ruby-string">&#39;U*&#39;</span>)
+      [<span class="ruby-identifier">ref</span>[<span class="ruby-value">2</span>...-<span class="ruby-value">1</span>].<span class="ruby-identifier">to_i</span>].<span class="ruby-identifier">pack</span>(<span class="ruby-string">&#39;</span><span class="ruby-string">U*</span><span class="ruby-string">&#39;</span>)
     <span class="ruby-keyword">end</span>
-  <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">ref</span> <span class="ruby-operator">==</span> <span class="ruby-string">&#39;&amp;amp;&#39;</span>
-    <span class="ruby-string">&#39;&amp;&#39;</span>
-  <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">filter</span> <span class="ruby-keyword">and</span> <span class="ruby-identifier">filter</span>.<span class="ruby-identifier">include?</span>( <span class="ruby-identifier">ref</span>[<span class="ruby-value">1</span><span class="ruby-operator">...</span><span class="ruby-value">-1</span>] )
+  <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">ref</span> <span class="ruby-operator">==</span> <span class="ruby-string">&#39;</span><span class="ruby-string">&amp;amp;</span><span class="ruby-string">&#39;</span>
+    <span class="ruby-string">&#39;</span><span class="ruby-string">&amp;</span><span class="ruby-string">&#39;</span>
+  <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">filter</span> <span class="ruby-keyword">and</span> <span class="ruby-identifier">filter</span>.<span class="ruby-identifier">include?</span>( <span class="ruby-identifier">ref</span>[<span class="ruby-value">1</span>...-<span class="ruby-value">1</span>] )
     <span class="ruby-identifier">ref</span>
   <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">doctype</span>
-    <span class="ruby-identifier">doctype</span>.<span class="ruby-identifier">entity</span>( <span class="ruby-identifier">ref</span>[<span class="ruby-value">1</span><span class="ruby-operator">...</span><span class="ruby-value">-1</span>], <span class="ruby-value">expanding:</span> <span class="ruby-identifier">expanding</span> ) <span class="ruby-keyword">or</span> <span class="ruby-identifier">ref</span>
+    <span class="ruby-identifier">doctype</span>.<span class="ruby-identifier">entity</span>( <span class="ruby-identifier">ref</span>[<span class="ruby-value">1</span>...-<span class="ruby-value">1</span>], <span class="ruby-value">expanding</span><span class="ruby-value">:</span> <span class="ruby-identifier">expanding</span> ) <span class="ruby-keyword">or</span> <span class="ruby-identifier">ref</span>
   <span class="ruby-keyword">else</span>
-    <span class="ruby-identifier">entity_value</span> = <span class="ruby-constant">DocType</span><span class="ruby-operator">::</span><span class="ruby-constant">DEFAULT_ENTITIES</span>[ <span class="ruby-identifier">ref</span>[<span class="ruby-value">1</span><span class="ruby-operator">...</span><span class="ruby-value">-1</span>] ]
+    <span class="ruby-identifier">entity_value</span> = <span class="ruby-constant">DocType</span><span class="ruby-operator">::</span><span class="ruby-constant">DEFAULT_ENTITIES</span>[ <span class="ruby-identifier">ref</span>[<span class="ruby-value">1</span>...-<span class="ruby-value">1</span>] ]
     <span class="ruby-identifier">entity_value</span> <span class="ruby-operator">?</span> <span class="ruby-identifier">entity_value</span>.<span class="ruby-identifier">value</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">ref</span>
   <span class="ruby-keyword">end</span>
 <span class="ruby-keyword">end</span></pre>
@@ -986,25 +995,32 @@
 
       <div id="method-c-new" class="method-detail anchor-link ">
         <div class="method-header">
+          <div class="method-heading-group">
 
-            <div class="method-heading">
-              <a href="#method-c-new" title="Link to this method">
-                <span class="method-name">new</span>
-                <span class="method-args">(arg, respect_whitespace=false, parent=nil, raw=nil, entity_filter=nil, illegal=NEEDS_A_SECOND_CHECK )</span>
-              </a>
+              <div class="method-heading">
+                <a href="#method-c-new" title="Link to this method">
+                  <span class="method-name">new</span>
+                  <span class="method-args">(arg, respect_whitespace=false, parent=nil, raw=nil, entity_filter=nil, illegal=NEEDS_A_SECOND_CHECK)</span>
+                </a>
+              </div>
+
+
+
+          </div>
+
+
+            <div class="method-controls">
+              <details class="method-source-toggle">
+                <summary><span class="method-source-icon" aria-hidden="true">{}</span> Source</summary>
+              </details>
             </div>
 
         </div>
 
 
-          <div class="method-controls">
-            <details class="method-source-toggle">
-              <summary>Source</summary>
-            </details>
-          </div>
           <div class="method-source-code" id="new-source">
             <pre class="ruby"><span class="ruby-comment"># File lib/rexml/text.rb, line 79</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(<span class="ruby-identifier">arg</span>, <span class="ruby-identifier">respect_whitespace</span>=<span class="ruby-keyword">false</span>, <span class="ruby-identifier">parent</span>=<span class="ruby-keyword">nil</span>, <span class="ruby-identifier">raw</span>=<span class="ruby-keyword">nil</span>,
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">arg</span>, <span class="ruby-identifier">respect_whitespace</span>=<span class="ruby-keyword">false</span>, <span class="ruby-identifier">parent</span>=<span class="ruby-keyword">nil</span>, <span class="ruby-identifier">raw</span>=<span class="ruby-keyword">nil</span>,
   <span class="ruby-identifier">entity_filter</span>=<span class="ruby-keyword">nil</span>, <span class="ruby-identifier">illegal</span>=<span class="ruby-constant">NEEDS_A_SECOND_CHECK</span> )
 
   <span class="ruby-ivar">@raw</span> = <span class="ruby-keyword">false</span>
@@ -1019,15 +1035,15 @@
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">arg</span>.<span class="ruby-identifier">kind_of?</span> <span class="ruby-constant">String</span>
     <span class="ruby-ivar">@string</span> = <span class="ruby-identifier">arg</span>.<span class="ruby-identifier">dup</span>
   <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">arg</span>.<span class="ruby-identifier">kind_of?</span> <span class="ruby-constant">Text</span>
-    <span class="ruby-ivar">@string</span> = <span class="ruby-identifier">arg</span>.<span class="ruby-identifier">instance_variable_get</span>(<span class="ruby-value">:@string</span>).<span class="ruby-identifier">dup</span>
+    <span class="ruby-ivar">@string</span> = <span class="ruby-identifier">arg</span>.<span class="ruby-identifier">instance_variable_get</span>(<span class="ruby-value">:</span><span class="ruby-value">@string</span>).<span class="ruby-identifier">dup</span>
     <span class="ruby-ivar">@raw</span> = <span class="ruby-identifier">arg</span>.<span class="ruby-identifier">raw</span>
-    <span class="ruby-ivar">@entity_filter</span> = <span class="ruby-identifier">arg</span>.<span class="ruby-identifier">instance_variable_get</span>(<span class="ruby-value">:@entity_filter</span>)
+    <span class="ruby-ivar">@entity_filter</span> = <span class="ruby-identifier">arg</span>.<span class="ruby-identifier">instance_variable_get</span>(<span class="ruby-value">:</span><span class="ruby-value">@entity_filter</span>)
   <span class="ruby-keyword">else</span>
-    <span class="ruby-identifier">raise</span> <span class="ruby-node">&quot;Illegal argument of type #{arg.type} for Text constructor (#{arg})&quot;</span>
+    <span class="ruby-identifier">raise</span> <span class="ruby-string">&quot;</span><span class="ruby-string">Illegal argument of type </span><span class="ruby-string">#{</span><span class="ruby-identifier">arg</span>.<span class="ruby-identifier">type</span><span class="ruby-string">}</span><span class="ruby-string"> for Text constructor (</span><span class="ruby-string">#{</span><span class="ruby-identifier">arg</span><span class="ruby-string">}</span><span class="ruby-string">)</span><span class="ruby-string">&quot;</span>
   <span class="ruby-keyword">end</span>
 
-  <span class="ruby-ivar">@string</span>.<span class="ruby-identifier">squeeze!</span>(<span class="ruby-string">&quot; \n\t&quot;</span>) <span class="ruby-keyword">unless</span> <span class="ruby-identifier">respect_whitespace</span>
-  <span class="ruby-ivar">@string</span>.<span class="ruby-identifier">gsub!</span>(<span class="ruby-regexp">/\r\n?/</span>, <span class="ruby-string">&quot;\n&quot;</span>)
+  <span class="ruby-ivar">@string</span>.<span class="ruby-identifier">squeeze!</span>(<span class="ruby-string">&quot;</span><span class="ruby-string"> \n\t</span><span class="ruby-string">&quot;</span>) <span class="ruby-keyword">unless</span> <span class="ruby-identifier">respect_whitespace</span>
+  <span class="ruby-ivar">@string</span>.<span class="ruby-identifier">gsub!</span>(<span class="ruby-regexp">/\r\n?/</span>, <span class="ruby-string">&quot;</span><span class="ruby-string">\n</span><span class="ruby-string">&quot;</span>)
   <span class="ruby-ivar">@raw</span> = <span class="ruby-identifier">raw</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">raw</span>.<span class="ruby-identifier">nil?</span>
   <span class="ruby-ivar">@entity_filter</span> = <span class="ruby-identifier">entity_filter</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">entity_filter</span>
   <span class="ruby-identifier">clear_cache</span>
@@ -1049,20 +1065,20 @@
 
 <p><code>raw</code> (nil) This argument can be given three values. If true, then the value of used to construct this object is expected to contain no unescaped XML markup, and <a href="../REXML.html"><code>REXML</code></a> will not change the text. If this value is false, the string may contain any characters, and <a href="../REXML.html"><code>REXML</code></a> will escape any and all defined entities whose values are contained in the text.  If this value is nil (the default), then the raw value of the parent will be used as the raw value for this node.  If there is no raw value for the parent, and no value is supplied, the default is false. Use this field if you have entities defined for some text, and you don’t want <a href="../REXML.html"><code>REXML</code></a> to escape that text in output.</p>
 
-<pre class="ruby"><span class="ruby-constant">Text</span>.<span class="ruby-identifier">new</span>( <span class="ruby-string">&quot;&lt;&amp;&quot;</span>, <span class="ruby-keyword">false</span>, <span class="ruby-keyword">nil</span>, <span class="ruby-keyword">false</span> ) <span class="ruby-comment">#-&gt; &quot;&amp;lt;&amp;amp;&quot;</span>
-<span class="ruby-constant">Text</span>.<span class="ruby-identifier">new</span>( <span class="ruby-string">&quot;&amp;lt;&amp;amp;&quot;</span>, <span class="ruby-keyword">false</span>, <span class="ruby-keyword">nil</span>, <span class="ruby-keyword">false</span> ) <span class="ruby-comment">#-&gt; &quot;&amp;amp;lt;&amp;amp;amp;&quot;</span>
-<span class="ruby-constant">Text</span>.<span class="ruby-identifier">new</span>( <span class="ruby-string">&quot;&lt;&amp;&quot;</span>, <span class="ruby-keyword">false</span>, <span class="ruby-keyword">nil</span>, <span class="ruby-keyword">true</span> )  <span class="ruby-comment">#-&gt; Parse exception</span>
-<span class="ruby-constant">Text</span>.<span class="ruby-identifier">new</span>( <span class="ruby-string">&quot;&amp;lt;&amp;amp;&quot;</span>, <span class="ruby-keyword">false</span>, <span class="ruby-keyword">nil</span>, <span class="ruby-keyword">true</span> )  <span class="ruby-comment">#-&gt; &quot;&amp;lt;&amp;amp;&quot;</span>
+<pre class="ruby"><span class="ruby-constant">Text</span>.<span class="ruby-identifier">new</span>( <span class="ruby-string">&quot;</span><span class="ruby-string">&lt;&amp;</span><span class="ruby-string">&quot;</span>, <span class="ruby-keyword">false</span>, <span class="ruby-keyword">nil</span>, <span class="ruby-keyword">false</span> ) <span class="ruby-comment">#-&gt; &quot;&amp;lt;&amp;amp;&quot;</span>
+<span class="ruby-constant">Text</span>.<span class="ruby-identifier">new</span>( <span class="ruby-string">&quot;</span><span class="ruby-string">&amp;lt;&amp;amp;</span><span class="ruby-string">&quot;</span>, <span class="ruby-keyword">false</span>, <span class="ruby-keyword">nil</span>, <span class="ruby-keyword">false</span> ) <span class="ruby-comment">#-&gt; &quot;&amp;amp;lt;&amp;amp;amp;&quot;</span>
+<span class="ruby-constant">Text</span>.<span class="ruby-identifier">new</span>( <span class="ruby-string">&quot;</span><span class="ruby-string">&lt;&amp;</span><span class="ruby-string">&quot;</span>, <span class="ruby-keyword">false</span>, <span class="ruby-keyword">nil</span>, <span class="ruby-keyword">true</span> )  <span class="ruby-comment">#-&gt; Parse exception</span>
+<span class="ruby-constant">Text</span>.<span class="ruby-identifier">new</span>( <span class="ruby-string">&quot;</span><span class="ruby-string">&amp;lt;&amp;amp;</span><span class="ruby-string">&quot;</span>, <span class="ruby-keyword">false</span>, <span class="ruby-keyword">nil</span>, <span class="ruby-keyword">true</span> )  <span class="ruby-comment">#-&gt; &quot;&amp;lt;&amp;amp;&quot;</span>
 <span class="ruby-comment"># Assume that the entity &quot;s&quot; is defined to be &quot;sean&quot;</span>
 <span class="ruby-comment"># and that the entity    &quot;r&quot; is defined to be &quot;russell&quot;</span>
-<span class="ruby-constant">Text</span>.<span class="ruby-identifier">new</span>( <span class="ruby-string">&quot;sean russell&quot;</span> )          <span class="ruby-comment">#-&gt; &quot;&amp;s; &amp;r;&quot;</span>
-<span class="ruby-constant">Text</span>.<span class="ruby-identifier">new</span>( <span class="ruby-string">&quot;sean russell&quot;</span>, <span class="ruby-keyword">false</span>, <span class="ruby-keyword">nil</span>, <span class="ruby-keyword">true</span> ) <span class="ruby-comment">#-&gt; &quot;sean russell&quot;</span>
+<span class="ruby-constant">Text</span>.<span class="ruby-identifier">new</span>( <span class="ruby-string">&quot;</span><span class="ruby-string">sean russell</span><span class="ruby-string">&quot;</span> )          <span class="ruby-comment">#-&gt; &quot;&amp;s; &amp;r;&quot;</span>
+<span class="ruby-constant">Text</span>.<span class="ruby-identifier">new</span>( <span class="ruby-string">&quot;</span><span class="ruby-string">sean russell</span><span class="ruby-string">&quot;</span>, <span class="ruby-keyword">false</span>, <span class="ruby-keyword">nil</span>, <span class="ruby-keyword">true</span> ) <span class="ruby-comment">#-&gt; &quot;sean russell&quot;</span>
 </pre>
 
 <p><code>entity_filter</code> (nil) This can be an array of entities to match in the supplied text.  This argument is only useful if <code>raw</code> is set to false.</p>
 
-<pre class="ruby"><span class="ruby-constant">Text</span>.<span class="ruby-identifier">new</span>( <span class="ruby-string">&quot;sean russell&quot;</span>, <span class="ruby-keyword">false</span>, <span class="ruby-keyword">nil</span>, <span class="ruby-keyword">false</span>, [<span class="ruby-string">&quot;s&quot;</span>] ) <span class="ruby-comment">#-&gt; &quot;&amp;s; russell&quot;</span>
-<span class="ruby-constant">Text</span>.<span class="ruby-identifier">new</span>( <span class="ruby-string">&quot;sean russell&quot;</span>, <span class="ruby-keyword">false</span>, <span class="ruby-keyword">nil</span>, <span class="ruby-keyword">true</span>, [<span class="ruby-string">&quot;s&quot;</span>] ) <span class="ruby-comment">#-&gt; &quot;sean russell&quot;</span>
+<pre class="ruby"><span class="ruby-constant">Text</span>.<span class="ruby-identifier">new</span>( <span class="ruby-string">&quot;</span><span class="ruby-string">sean russell</span><span class="ruby-string">&quot;</span>, <span class="ruby-keyword">false</span>, <span class="ruby-keyword">nil</span>, <span class="ruby-keyword">false</span>, [<span class="ruby-string">&quot;</span><span class="ruby-string">s</span><span class="ruby-string">&quot;</span>] ) <span class="ruby-comment">#-&gt; &quot;&amp;s; russell&quot;</span>
+<span class="ruby-constant">Text</span>.<span class="ruby-identifier">new</span>( <span class="ruby-string">&quot;</span><span class="ruby-string">sean russell</span><span class="ruby-string">&quot;</span>, <span class="ruby-keyword">false</span>, <span class="ruby-keyword">nil</span>, <span class="ruby-keyword">true</span>, [<span class="ruby-string">&quot;</span><span class="ruby-string">s</span><span class="ruby-string">&quot;</span>] ) <span class="ruby-comment">#-&gt; &quot;sean russell&quot;</span>
 </pre>
 
 <p>In the last example, the <code>entity_filter</code> argument is ignored.</p>
@@ -1086,41 +1102,48 @@
 
       <div id="method-c-normalize" class="method-detail anchor-link ">
         <div class="method-header">
+          <div class="method-heading-group">
 
-            <div class="method-heading">
-              <a href="#method-c-normalize" title="Link to this method">
-                <span class="method-name">normalize</span>
-                <span class="method-args">( input, doctype=nil, entity_filter=nil )</span>
-              </a>
+              <div class="method-heading">
+                <a href="#method-c-normalize" title="Link to this method">
+                  <span class="method-name">normalize</span>
+                  <span class="method-args">(input, doctype=nil, entity_filter=nil)</span>
+                </a>
+              </div>
+
+
+
+          </div>
+
+
+            <div class="method-controls">
+              <details class="method-source-toggle">
+                <summary><span class="method-source-icon" aria-hidden="true">{}</span> Source</summary>
+              </details>
             </div>
 
         </div>
 
 
-          <div class="method-controls">
-            <details class="method-source-toggle">
-              <summary>Source</summary>
-            </details>
-          </div>
           <div class="method-source-code" id="normalize-source">
             <pre class="ruby"><span class="ruby-comment"># File lib/rexml/text.rb, line 363</span>
-<span class="ruby-keyword">def</span> <span class="ruby-constant">Text</span><span class="ruby-operator">::</span><span class="ruby-identifier ruby-title">normalize</span>( <span class="ruby-identifier">input</span>, <span class="ruby-identifier">doctype</span>=<span class="ruby-keyword">nil</span>, <span class="ruby-identifier">entity_filter</span>=<span class="ruby-keyword">nil</span> )
+<span class="ruby-keyword">def</span> <span class="ruby-constant">Text</span><span class="ruby-operator">::</span><span class="ruby-identifier">normalize</span>( <span class="ruby-identifier">input</span>, <span class="ruby-identifier">doctype</span>=<span class="ruby-keyword">nil</span>, <span class="ruby-identifier">entity_filter</span>=<span class="ruby-keyword">nil</span> )
   <span class="ruby-identifier">copy</span> = <span class="ruby-identifier">input</span>.<span class="ruby-identifier">to_s</span>
   <span class="ruby-comment"># Doing it like this rather than in a loop improves the speed</span>
   <span class="ruby-comment">#copy = copy.gsub( EREFERENCE, &#39;&amp;amp;&#39; )</span>
-  <span class="ruby-identifier">copy</span> = <span class="ruby-identifier">copy</span>.<span class="ruby-identifier">gsub</span>( <span class="ruby-string">&quot;&amp;&quot;</span>, <span class="ruby-string">&quot;&amp;amp;&quot;</span> ) <span class="ruby-keyword">if</span> <span class="ruby-identifier">copy</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-string">&quot;&amp;&quot;</span>)
+  <span class="ruby-identifier">copy</span> = <span class="ruby-identifier">copy</span>.<span class="ruby-identifier">gsub</span>( <span class="ruby-string">&quot;</span><span class="ruby-string">&amp;</span><span class="ruby-string">&quot;</span>, <span class="ruby-string">&quot;</span><span class="ruby-string">&amp;amp;</span><span class="ruby-string">&quot;</span> ) <span class="ruby-keyword">if</span> <span class="ruby-identifier">copy</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-string">&quot;</span><span class="ruby-string">&amp;</span><span class="ruby-string">&quot;</span>)
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">doctype</span>
     <span class="ruby-comment"># Replace all ampersands that aren&#39;t part of an entity</span>
     <span class="ruby-identifier">doctype</span>.<span class="ruby-identifier">entities</span>.<span class="ruby-identifier">each_value</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">entity</span><span class="ruby-operator">|</span>
       <span class="ruby-identifier">copy</span> = <span class="ruby-identifier">copy</span>.<span class="ruby-identifier">gsub</span>( <span class="ruby-identifier">entity</span>.<span class="ruby-identifier">value</span>,
-        <span class="ruby-node">&quot;&amp;#{entity.name};&quot;</span> ) <span class="ruby-keyword">if</span> <span class="ruby-identifier">entity</span>.<span class="ruby-identifier">value</span> <span class="ruby-keyword">and</span>
+        <span class="ruby-string">&quot;</span><span class="ruby-string">&amp;</span><span class="ruby-string">#{</span><span class="ruby-identifier">entity</span>.<span class="ruby-identifier">name</span><span class="ruby-string">}</span><span class="ruby-string">;</span><span class="ruby-string">&quot;</span> ) <span class="ruby-keyword">if</span> <span class="ruby-identifier">entity</span>.<span class="ruby-identifier">value</span> <span class="ruby-keyword">and</span>
           <span class="ruby-keyword">not</span>( <span class="ruby-identifier">entity_filter</span> <span class="ruby-keyword">and</span> <span class="ruby-identifier">entity_filter</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">entity</span>.<span class="ruby-identifier">name</span>) )
     <span class="ruby-keyword">end</span>
   <span class="ruby-keyword">else</span>
     <span class="ruby-comment"># Replace all ampersands that aren&#39;t part of an entity</span>
     <span class="ruby-constant">DocType</span><span class="ruby-operator">::</span><span class="ruby-constant">DEFAULT_ENTITIES</span>.<span class="ruby-identifier">each_value</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">entity</span><span class="ruby-operator">|</span>
       <span class="ruby-keyword">if</span> <span class="ruby-identifier">copy</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">entity</span>.<span class="ruby-identifier">value</span>)
-        <span class="ruby-identifier">copy</span> = <span class="ruby-identifier">copy</span>.<span class="ruby-identifier">gsub</span>(<span class="ruby-identifier">entity</span>.<span class="ruby-identifier">value</span>, <span class="ruby-node">&quot;&amp;#{entity.name};&quot;</span> )
+        <span class="ruby-identifier">copy</span> = <span class="ruby-identifier">copy</span>.<span class="ruby-identifier">gsub</span>(<span class="ruby-identifier">entity</span>.<span class="ruby-identifier">value</span>, <span class="ruby-string">&quot;</span><span class="ruby-string">&amp;</span><span class="ruby-string">#{</span><span class="ruby-identifier">entity</span>.<span class="ruby-identifier">name</span><span class="ruby-string">}</span><span class="ruby-string">;</span><span class="ruby-string">&quot;</span> )
       <span class="ruby-keyword">end</span>
     <span class="ruby-keyword">end</span>
   <span class="ruby-keyword">end</span>
@@ -1147,43 +1170,50 @@
 
       <div id="method-c-read_with_substitution" class="method-detail anchor-link ">
         <div class="method-header">
+          <div class="method-heading-group">
 
-            <div class="method-heading">
-              <a href="#method-c-read_with_substitution" title="Link to this method">
-                <span class="method-name">read_with_substitution</span>
-                <span class="method-args">( input, illegal=nil )</span>
-              </a>
+              <div class="method-heading">
+                <a href="#method-c-read_with_substitution" title="Link to this method">
+                  <span class="method-name">read_with_substitution</span>
+                  <span class="method-args">(input, illegal=nil)</span>
+                </a>
+              </div>
+
+
+
+          </div>
+
+
+            <div class="method-controls">
+              <details class="method-source-toggle">
+                <summary><span class="method-source-icon" aria-hidden="true">{}</span> Source</summary>
+              </details>
             </div>
 
         </div>
 
 
-          <div class="method-controls">
-            <details class="method-source-toggle">
-              <summary>Source</summary>
-            </details>
-          </div>
           <div class="method-source-code" id="read_with_substitution-source">
             <pre class="ruby"><span class="ruby-comment"># File lib/rexml/text.rb, line 337</span>
-<span class="ruby-keyword">def</span> <span class="ruby-constant">Text</span><span class="ruby-operator">::</span><span class="ruby-identifier ruby-title">read_with_substitution</span>( <span class="ruby-identifier">input</span>, <span class="ruby-identifier">illegal</span>=<span class="ruby-keyword">nil</span> )
+<span class="ruby-keyword">def</span> <span class="ruby-constant">Text</span><span class="ruby-operator">::</span><span class="ruby-identifier">read_with_substitution</span>( <span class="ruby-identifier">input</span>, <span class="ruby-identifier">illegal</span>=<span class="ruby-keyword">nil</span> )
   <span class="ruby-identifier">copy</span> = <span class="ruby-identifier">input</span>.<span class="ruby-identifier">clone</span>
 
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">copy</span> <span class="ruby-operator">=~</span> <span class="ruby-identifier">illegal</span>
-    <span class="ruby-identifier">raise</span> <span class="ruby-constant">ParseException</span>.<span class="ruby-identifier">new</span>( <span class="ruby-node">&quot;malformed text: Illegal character #$&amp; in \&quot;#{copy}\&quot;&quot;</span> )
+    <span class="ruby-identifier">raise</span> <span class="ruby-constant">ParseException</span>.<span class="ruby-identifier">new</span>( <span class="ruby-string">&quot;</span><span class="ruby-string">malformed text: Illegal character </span><span class="ruby-string">#</span><span class="ruby-identifier">$&amp;</span><span class="ruby-string"> in \&quot;</span><span class="ruby-string">#{</span><span class="ruby-identifier">copy</span><span class="ruby-string">}</span><span class="ruby-string">\&quot;</span><span class="ruby-string">&quot;</span> )
   <span class="ruby-keyword">end</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">illegal</span>
 
-  <span class="ruby-identifier">copy</span>.<span class="ruby-identifier">gsub!</span>( <span class="ruby-regexp">/\r\n?/</span>, <span class="ruby-string">&quot;\n&quot;</span> )
-  <span class="ruby-keyword">if</span> <span class="ruby-identifier">copy</span>.<span class="ruby-identifier">include?</span> <span class="ruby-value">?&amp;</span>
+  <span class="ruby-identifier">copy</span>.<span class="ruby-identifier">gsub!</span>( <span class="ruby-regexp">/\r\n?/</span>, <span class="ruby-string">&quot;</span><span class="ruby-string">\n</span><span class="ruby-string">&quot;</span> )
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">copy</span>.<span class="ruby-identifier">include?</span> <span class="ruby-string">?</span><span class="ruby-string">&amp;</span>
     <span class="ruby-identifier">copy</span>.<span class="ruby-identifier">gsub!</span>( <span class="ruby-constant">SETUTITSBUS</span>[<span class="ruby-value">0</span>], <span class="ruby-constant">SLAICEPS</span>[<span class="ruby-value">0</span>] )
     <span class="ruby-identifier">copy</span>.<span class="ruby-identifier">gsub!</span>( <span class="ruby-constant">SETUTITSBUS</span>[<span class="ruby-value">1</span>], <span class="ruby-constant">SLAICEPS</span>[<span class="ruby-value">1</span>] )
     <span class="ruby-identifier">copy</span>.<span class="ruby-identifier">gsub!</span>( <span class="ruby-constant">SETUTITSBUS</span>[<span class="ruby-value">2</span>], <span class="ruby-constant">SLAICEPS</span>[<span class="ruby-value">2</span>] )
     <span class="ruby-identifier">copy</span>.<span class="ruby-identifier">gsub!</span>( <span class="ruby-constant">SETUTITSBUS</span>[<span class="ruby-value">3</span>], <span class="ruby-constant">SLAICEPS</span>[<span class="ruby-value">3</span>] )
     <span class="ruby-identifier">copy</span>.<span class="ruby-identifier">gsub!</span>( <span class="ruby-constant">SETUTITSBUS</span>[<span class="ruby-value">4</span>], <span class="ruby-constant">SLAICEPS</span>[<span class="ruby-value">4</span>] )
     <span class="ruby-identifier">copy</span>.<span class="ruby-identifier">gsub!</span>( <span class="ruby-regexp">/&amp;#0*((?:\d+)|(?:x[a-f0-9]+));/</span> ) {
-      <span class="ruby-identifier">m</span>=<span class="ruby-node">$1</span>
+      <span class="ruby-identifier">m</span>=<span class="ruby-identifier">$1</span>
       <span class="ruby-comment">#m=&#39;0&#39; if m==&#39;&#39;</span>
-      <span class="ruby-identifier">m</span> = <span class="ruby-node">&quot;0#{m}&quot;</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">m</span>[<span class="ruby-value">0</span>] <span class="ruby-operator">==</span> <span class="ruby-value">?x</span>
-      [<span class="ruby-constant">Integer</span>(<span class="ruby-identifier">m</span>)].<span class="ruby-identifier">pack</span>(<span class="ruby-string">&#39;U*&#39;</span>)
+      <span class="ruby-identifier">m</span> = <span class="ruby-string">&quot;</span><span class="ruby-string">0</span><span class="ruby-string">#{</span><span class="ruby-identifier">m</span><span class="ruby-string">}</span><span class="ruby-string">&quot;</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">m</span>[<span class="ruby-value">0</span>] <span class="ruby-operator">==</span> <span class="ruby-string">?</span><span class="ruby-string">x</span>
+      [<span class="ruby-constant">Integer</span>(<span class="ruby-identifier">m</span>)].<span class="ruby-identifier">pack</span>(<span class="ruby-string">&#39;</span><span class="ruby-string">U*</span><span class="ruby-string">&#39;</span>)
     }
   <span class="ruby-keyword">end</span>
   <span class="ruby-identifier">copy</span>
@@ -1209,33 +1239,40 @@
 
       <div id="method-c-unnormalize" class="method-detail anchor-link ">
         <div class="method-header">
+          <div class="method-heading-group">
 
-            <div class="method-heading">
-              <a href="#method-c-unnormalize" title="Link to this method">
-                <span class="method-name">unnormalize</span>
-                <span class="method-args">( string, doctype=nil, filter=nil, illegal=nil, entity_expansion_text_limit: nil, expanding: nil )</span>
-              </a>
+              <div class="method-heading">
+                <a href="#method-c-unnormalize" title="Link to this method">
+                  <span class="method-name">unnormalize</span>
+                  <span class="method-args">(string, doctype=nil, filter=nil, illegal=nil, entity_expansion_text_limit: nil, expanding: nil)</span>
+                </a>
+              </div>
+
+
+
+          </div>
+
+
+            <div class="method-controls">
+              <details class="method-source-toggle">
+                <summary><span class="method-source-icon" aria-hidden="true">{}</span> Source</summary>
+              </details>
             </div>
 
         </div>
 
 
-          <div class="method-controls">
-            <details class="method-source-toggle">
-              <summary>Source</summary>
-            </details>
-          </div>
           <div class="method-source-code" id="unnormalize-source">
             <pre class="ruby"><span class="ruby-comment"># File lib/rexml/text.rb, line 387</span>
-<span class="ruby-keyword">def</span> <span class="ruby-constant">Text</span><span class="ruby-operator">::</span><span class="ruby-identifier ruby-title">unnormalize</span>( <span class="ruby-identifier">string</span>, <span class="ruby-identifier">doctype</span>=<span class="ruby-keyword">nil</span>, <span class="ruby-identifier">filter</span>=<span class="ruby-keyword">nil</span>, <span class="ruby-identifier">illegal</span>=<span class="ruby-keyword">nil</span>, <span class="ruby-value">entity_expansion_text_limit:</span> <span class="ruby-keyword">nil</span>, <span class="ruby-value">expanding:</span> <span class="ruby-keyword">nil</span> )
-  <span class="ruby-identifier">entity_expansion_text_limit</span> <span class="ruby-operator">||=</span> <span class="ruby-constant">Security</span>.<span class="ruby-identifier">entity_expansion_text_limit</span>
+<span class="ruby-keyword">def</span> <span class="ruby-constant">Text</span><span class="ruby-operator">::</span><span class="ruby-identifier">unnormalize</span>( <span class="ruby-identifier">string</span>, <span class="ruby-identifier">doctype</span>=<span class="ruby-keyword">nil</span>, <span class="ruby-identifier">filter</span>=<span class="ruby-keyword">nil</span>, <span class="ruby-identifier">illegal</span>=<span class="ruby-keyword">nil</span>, <span class="ruby-value">entity_expansion_text_limit:</span> <span class="ruby-keyword">nil</span>, <span class="ruby-value">expanding:</span> <span class="ruby-keyword">nil</span> )
+  <span class="ruby-identifier">entity_expansion_text_limit</span> ||= <span class="ruby-constant">Security</span>.<span class="ruby-identifier">entity_expansion_text_limit</span>
   <span class="ruby-identifier">sum</span> = <span class="ruby-value">0</span>
-  <span class="ruby-identifier">string</span>.<span class="ruby-identifier">gsub</span>( <span class="ruby-regexp">/\r\n?/</span>, <span class="ruby-string">&quot;\n&quot;</span> ).<span class="ruby-identifier">gsub</span>( <span class="ruby-constant">REFERENCE</span> ) {
-    <span class="ruby-identifier">s</span> = <span class="ruby-constant">Text</span>.<span class="ruby-identifier">expand</span>(<span class="ruby-node">$&amp;</span>, <span class="ruby-identifier">doctype</span>, <span class="ruby-identifier">filter</span>, <span class="ruby-value">expanding:</span> <span class="ruby-identifier">expanding</span>)
+  <span class="ruby-identifier">string</span>.<span class="ruby-identifier">gsub</span>( <span class="ruby-regexp">/\r\n?/</span>, <span class="ruby-string">&quot;</span><span class="ruby-string">\n</span><span class="ruby-string">&quot;</span> ).<span class="ruby-identifier">gsub</span>( <span class="ruby-constant">REFERENCE</span> ) {
+    <span class="ruby-identifier">s</span> = <span class="ruby-constant">Text</span>.<span class="ruby-identifier">expand</span>(<span class="ruby-identifier">$&amp;</span>, <span class="ruby-identifier">doctype</span>, <span class="ruby-identifier">filter</span>, <span class="ruby-value">expanding</span><span class="ruby-value">:</span> <span class="ruby-identifier">expanding</span>)
     <span class="ruby-keyword">if</span> <span class="ruby-identifier">sum</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">s</span>.<span class="ruby-identifier">bytesize</span> <span class="ruby-operator">&gt;</span> <span class="ruby-identifier">entity_expansion_text_limit</span>
-      <span class="ruby-identifier">raise</span> <span class="ruby-string">&quot;entity expansion has grown too large&quot;</span>
+      <span class="ruby-identifier">raise</span> <span class="ruby-string">&quot;</span><span class="ruby-string">entity expansion has grown too large</span><span class="ruby-string">&quot;</span>
     <span class="ruby-keyword">else</span>
-      <span class="ruby-identifier">sum</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">s</span>.<span class="ruby-identifier">bytesize</span>
+      <span class="ruby-identifier">sum</span> += <span class="ruby-identifier">s</span>.<span class="ruby-identifier">bytesize</span>
     <span class="ruby-keyword">end</span>
     <span class="ruby-identifier">s</span>
   }
@@ -1275,26 +1312,33 @@
 
       <div id="method-i-3C-3C" class="method-detail anchor-link ">
         <div class="method-header">
+          <div class="method-heading-group">
 
-            <div class="method-heading">
-              <a href="#method-i-3C-3C" title="Link to this method">
-                <span class="method-name">&lt;&lt;</span>
-                <span class="method-args">( to_append )</span>
-              </a>
+              <div class="method-heading">
+                <a href="#method-i-3C-3C" title="Link to this method">
+                  <span class="method-name">&lt;&lt;</span>
+                  <span class="method-args">(to_append)</span>
+                </a>
+              </div>
+
+
+
+          </div>
+
+
+            <div class="method-controls">
+              <details class="method-source-toggle">
+                <summary><span class="method-source-icon" aria-hidden="true">{}</span> Source</summary>
+              </details>
             </div>
 
         </div>
 
 
-          <div class="method-controls">
-            <details class="method-source-toggle">
-              <summary>Source</summary>
-            </details>
-          </div>
           <div class="method-source-code" id="3C-3C-source">
             <pre class="ruby"><span class="ruby-comment"># File lib/rexml/text.rb, line 189</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">&lt;&lt;</span>( <span class="ruby-identifier">to_append</span> )
-  <span class="ruby-ivar">@string</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">to_append</span>.<span class="ruby-identifier">gsub</span>( <span class="ruby-regexp">/\r\n?/</span>, <span class="ruby-string">&quot;\n&quot;</span> )
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">&lt;&lt;</span>( <span class="ruby-identifier">to_append</span> )
+  <span class="ruby-ivar">@string</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">to_append</span>.<span class="ruby-identifier">gsub</span>( <span class="ruby-regexp">/\r\n?/</span>, <span class="ruby-string">&quot;</span><span class="ruby-string">\n</span><span class="ruby-string">&quot;</span> )
   <span class="ruby-identifier">clear_cache</span>
   <span class="ruby-keyword">self</span>
 <span class="ruby-keyword">end</span></pre>
@@ -1321,25 +1365,32 @@
 
       <div id="method-i-3C-3D-3E" class="method-detail anchor-link ">
         <div class="method-header">
+          <div class="method-heading-group">
 
-            <div class="method-heading">
-              <a href="#method-i-3C-3D-3E" title="Link to this method">
-                <span class="method-name">&lt;=&gt;</span>
-                <span class="method-args">( other )</span>
-              </a>
+              <div class="method-heading">
+                <a href="#method-i-3C-3D-3E" title="Link to this method">
+                  <span class="method-name">&lt;=&gt;</span>
+                  <span class="method-args">(other)</span>
+                </a>
+              </div>
+
+
+
+          </div>
+
+
+            <div class="method-controls">
+              <details class="method-source-toggle">
+                <summary><span class="method-source-icon" aria-hidden="true">{}</span> Source</summary>
+              </details>
             </div>
 
         </div>
 
 
-          <div class="method-controls">
-            <details class="method-source-toggle">
-              <summary>Source</summary>
-            </details>
-          </div>
           <div class="method-source-code" id="3C-3D-3E-source">
             <pre class="ruby"><span class="ruby-comment"># File lib/rexml/text.rb, line 198</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">&lt;=&gt;</span>( <span class="ruby-identifier">other</span> )
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">&lt;=&gt;</span>( <span class="ruby-identifier">other</span> )
   <span class="ruby-identifier">to_s</span>() <span class="ruby-operator">&lt;=&gt;</span> <span class="ruby-identifier">other</span>.<span class="ruby-identifier">to_s</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
@@ -1363,25 +1414,32 @@
 
       <div id="method-i-clone" class="method-detail anchor-link ">
         <div class="method-header">
+          <div class="method-heading-group">
 
-            <div class="method-heading">
-              <a href="#method-i-clone" title="Link to this method">
-                <span class="method-name">clone</span>
-                <span class="method-args">()</span>
-              </a>
+              <div class="method-heading">
+                <a href="#method-i-clone" title="Link to this method">
+                  <span class="method-name">clone</span>
+                  <span class="method-args">()</span>
+                </a>
+              </div>
+
+
+
+          </div>
+
+
+            <div class="method-controls">
+              <details class="method-source-toggle">
+                <summary><span class="method-source-icon" aria-hidden="true">{}</span> Source</summary>
+              </details>
             </div>
 
         </div>
 
 
-          <div class="method-controls">
-            <details class="method-source-toggle">
-              <summary>Source</summary>
-            </details>
-          </div>
           <div class="method-source-code" id="clone-source">
             <pre class="ruby"><span class="ruby-comment"># File lib/rexml/text.rb, line 179</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">clone</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">clone</span>
   <span class="ruby-constant">Text</span>.<span class="ruby-identifier">new</span>(<span class="ruby-keyword">self</span>, <span class="ruby-keyword">true</span>)
 <span class="ruby-keyword">end</span></pre>
           </div>
@@ -1405,25 +1463,32 @@
 
       <div id="method-i-doctype" class="method-detail anchor-link ">
         <div class="method-header">
+          <div class="method-heading-group">
 
-            <div class="method-heading">
-              <a href="#method-i-doctype" title="Link to this method">
-                <span class="method-name">doctype</span>
-                <span class="method-args">()</span>
-              </a>
+              <div class="method-heading">
+                <a href="#method-i-doctype" title="Link to this method">
+                  <span class="method-name">doctype</span>
+                  <span class="method-args">()</span>
+                </a>
+              </div>
+
+
+
+          </div>
+
+
+            <div class="method-controls">
+              <details class="method-source-toggle">
+                <summary><span class="method-source-icon" aria-hidden="true">{}</span> Source</summary>
+              </details>
             </div>
 
         </div>
 
 
-          <div class="method-controls">
-            <details class="method-source-toggle">
-              <summary>Source</summary>
-            </details>
-          </div>
           <div class="method-source-code" id="doctype-source">
             <pre class="ruby"><span class="ruby-comment"># File lib/rexml/text.rb, line 202</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">doctype</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">doctype</span>
   <span class="ruby-ivar">@parent</span>&amp;.<span class="ruby-identifier">document</span>&amp;.<span class="ruby-identifier">doctype</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
@@ -1447,25 +1512,32 @@
 
       <div id="method-i-empty-3F" class="method-detail anchor-link ">
         <div class="method-header">
+          <div class="method-heading-group">
 
-            <div class="method-heading">
-              <a href="#method-i-empty-3F" title="Link to this method">
-                <span class="method-name">empty?</span>
-                <span class="method-args">()</span>
-              </a>
+              <div class="method-heading">
+                <a href="#method-i-empty-3F" title="Link to this method">
+                  <span class="method-name">empty?</span>
+                  <span class="method-args">()</span>
+                </a>
+              </div>
+
+
+
+          </div>
+
+
+            <div class="method-controls">
+              <details class="method-source-toggle">
+                <summary><span class="method-source-icon" aria-hidden="true">{}</span> Source</summary>
+              </details>
             </div>
 
         </div>
 
 
-          <div class="method-controls">
-            <details class="method-source-toggle">
-              <summary>Source</summary>
-            </details>
-          </div>
           <div class="method-source-code" id="empty-3F-source">
             <pre class="ruby"><span class="ruby-comment"># File lib/rexml/text.rb, line 174</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">empty?</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">empty?</span>
   <span class="ruby-ivar">@string</span>.<span class="ruby-identifier">size</span><span class="ruby-operator">==</span><span class="ruby-value">0</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
@@ -1489,32 +1561,39 @@
 
       <div id="method-i-indent_text" class="method-detail anchor-link ">
         <div class="method-header">
+          <div class="method-heading-group">
 
-            <div class="method-heading">
-              <a href="#method-i-indent_text" title="Link to this method">
-                <span class="method-name">indent_text</span>
-                <span class="method-args">(string, level=1, style=&quot;\t&quot;, indentfirstline=true)</span>
-              </a>
+              <div class="method-heading">
+                <a href="#method-i-indent_text" title="Link to this method">
+                  <span class="method-name">indent_text</span>
+                  <span class="method-args">(string, level=1, style=&quot;\t&quot;, indentfirstline=true)</span>
+                </a>
+              </div>
+
+
+
+          </div>
+
+
+            <div class="method-controls">
+              <details class="method-source-toggle">
+                <summary><span class="method-source-icon" aria-hidden="true">{}</span> Source</summary>
+              </details>
             </div>
 
         </div>
 
 
-          <div class="method-controls">
-            <details class="method-source-toggle">
-              <summary>Source</summary>
-            </details>
-          </div>
           <div class="method-source-code" id="indent_text-source">
             <pre class="ruby"><span class="ruby-comment"># File lib/rexml/text.rb, line 271</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">indent_text</span>(<span class="ruby-identifier">string</span>, <span class="ruby-identifier">level</span>=<span class="ruby-value">1</span>, <span class="ruby-identifier">style</span>=<span class="ruby-string">&quot;\t&quot;</span>, <span class="ruby-identifier">indentfirstline</span>=<span class="ruby-keyword">true</span>)
-  <span class="ruby-constant">Kernel</span>.<span class="ruby-identifier">warn</span>(<span class="ruby-node">&quot;#{self.class.name}#indent_text is deprecated. See REXML::Formatters&quot;</span>, <span class="ruby-value">uplevel:</span> <span class="ruby-value">1</span>)
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">indent_text</span>(<span class="ruby-identifier">string</span>, <span class="ruby-identifier">level</span>=<span class="ruby-value">1</span>, <span class="ruby-identifier">style</span>=<span class="ruby-string">&quot;</span><span class="ruby-string">\t</span><span class="ruby-string">&quot;</span>, <span class="ruby-identifier">indentfirstline</span>=<span class="ruby-keyword">true</span>)
+  <span class="ruby-constant">Kernel</span>.<span class="ruby-identifier">warn</span>(<span class="ruby-string">&quot;</span><span class="ruby-string">#{</span><span class="ruby-keyword">self</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">name</span><span class="ruby-string">}</span><span class="ruby-string">#indent_text is deprecated. See REXML::Formatters</span><span class="ruby-string">&quot;</span>, <span class="ruby-value">uplevel</span><span class="ruby-value">:</span> <span class="ruby-value">1</span>)
   <span class="ruby-keyword">return</span> <span class="ruby-identifier">string</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">level</span> <span class="ruby-operator">&lt;</span> <span class="ruby-value">0</span>
 
-  <span class="ruby-identifier">new_string</span> = <span class="ruby-string">+&#39;&#39;</span>
+  <span class="ruby-identifier">new_string</span> = <span class="ruby-operator">+</span><span class="ruby-string">&#39;</span><span class="ruby-string">&#39;</span>
   <span class="ruby-identifier">string</span>.<span class="ruby-identifier">each_line</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">line</span><span class="ruby-operator">|</span>
     <span class="ruby-identifier">indent_string</span> = <span class="ruby-identifier">style</span> <span class="ruby-operator">*</span> <span class="ruby-identifier">level</span>
-    <span class="ruby-identifier">new_line</span> = (<span class="ruby-identifier">indent_string</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">line</span>).<span class="ruby-identifier">sub</span>(<span class="ruby-regexp">/[\s]+$/</span>,<span class="ruby-string">&#39;&#39;</span>)
+    <span class="ruby-identifier">new_line</span> = (<span class="ruby-identifier">indent_string</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">line</span>).<span class="ruby-identifier">sub</span>(<span class="ruby-regexp">/[\s]+$/</span>,<span class="ruby-string">&#39;</span><span class="ruby-string">&#39;</span>)
     <span class="ruby-identifier">new_string</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">new_line</span>
   }
   <span class="ruby-identifier">new_string</span>.<span class="ruby-identifier">strip!</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">indentfirstline</span>
@@ -1541,25 +1620,32 @@
 
       <div id="method-i-inspect" class="method-detail anchor-link ">
         <div class="method-header">
+          <div class="method-heading-group">
 
-            <div class="method-heading">
-              <a href="#method-i-inspect" title="Link to this method">
-                <span class="method-name">inspect</span>
-                <span class="method-args">()</span>
-              </a>
+              <div class="method-heading">
+                <a href="#method-i-inspect" title="Link to this method">
+                  <span class="method-name">inspect</span>
+                  <span class="method-args">()</span>
+                </a>
+              </div>
+
+
+
+          </div>
+
+
+            <div class="method-controls">
+              <details class="method-source-toggle">
+                <summary><span class="method-source-icon" aria-hidden="true">{}</span> Source</summary>
+              </details>
             </div>
 
         </div>
 
 
-          <div class="method-controls">
-            <details class="method-source-toggle">
-              <summary>Source</summary>
-            </details>
-          </div>
           <div class="method-source-code" id="inspect-source">
             <pre class="ruby"><span class="ruby-comment"># File lib/rexml/text.rb, line 225</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">inspect</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">inspect</span>
   <span class="ruby-ivar">@string</span>.<span class="ruby-identifier">inspect</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
@@ -1583,26 +1669,33 @@
 
       <div id="method-i-node_type" class="method-detail anchor-link ">
         <div class="method-header">
+          <div class="method-heading-group">
 
-            <div class="method-heading">
-              <a href="#method-i-node_type" title="Link to this method">
-                <span class="method-name">node_type</span>
-                <span class="method-args">()</span>
-              </a>
+              <div class="method-heading">
+                <a href="#method-i-node_type" title="Link to this method">
+                  <span class="method-name">node_type</span>
+                  <span class="method-args">()</span>
+                </a>
+              </div>
+
+
+
+          </div>
+
+
+            <div class="method-controls">
+              <details class="method-source-toggle">
+                <summary><span class="method-source-icon" aria-hidden="true">{}</span> Source</summary>
+              </details>
             </div>
 
         </div>
 
 
-          <div class="method-controls">
-            <details class="method-source-toggle">
-              <summary>Source</summary>
-            </details>
-          </div>
           <div class="method-source-code" id="node_type-source">
             <pre class="ruby"><span class="ruby-comment"># File lib/rexml/text.rb, line 170</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">node_type</span>
-  <span class="ruby-value">:text</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">node_type</span>
+  <span class="ruby-value">:</span><span class="ruby-value">text</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
 
@@ -1625,25 +1718,32 @@
 
       <div id="method-i-parent-3D" class="method-detail anchor-link ">
         <div class="method-header">
+          <div class="method-heading-group">
 
-            <div class="method-heading">
-              <a href="#method-i-parent-3D" title="Link to this method">
-                <span class="method-name">parent=</span>
-                <span class="method-args">(parent)</span>
-              </a>
+              <div class="method-heading">
+                <a href="#method-i-parent-3D" title="Link to this method">
+                  <span class="method-name">parent=</span>
+                  <span class="method-args">(parent)</span>
+                </a>
+              </div>
+
+
+
+          </div>
+
+
+            <div class="method-controls">
+              <details class="method-source-toggle">
+                <summary><span class="method-source-icon" aria-hidden="true">{}</span> Source</summary>
+              </details>
             </div>
 
         </div>
 
 
-          <div class="method-controls">
-            <details class="method-source-toggle">
-              <summary>Source</summary>
-            </details>
-          </div>
           <div class="method-source-code" id="parent-3D-source">
             <pre class="ruby"><span class="ruby-comment"># File lib/rexml/text.rb, line 110</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">parent=</span> <span class="ruby-identifier">parent</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">parent=</span> <span class="ruby-identifier">parent</span>
   <span class="ruby-keyword">super</span>(<span class="ruby-identifier">parent</span>)
   <span class="ruby-constant">Text</span>.<span class="ruby-identifier">check</span>(<span class="ruby-ivar">@string</span>, <span class="ruby-constant">NEEDS_A_SECOND_CHECK</span>) <span class="ruby-keyword">if</span> <span class="ruby-ivar">@raw</span> <span class="ruby-keyword">and</span> <span class="ruby-ivar">@parent</span>
 <span class="ruby-keyword">end</span></pre>
@@ -1673,27 +1773,34 @@
 
       <div id="method-i-to_s" class="method-detail anchor-link ">
         <div class="method-header">
+          <div class="method-heading-group">
 
-            <div class="method-heading">
-              <a href="#method-i-to_s" title="Link to this method">
-                <span class="method-name">to_s</span>
-                <span class="method-args">()</span>
-              </a>
+              <div class="method-heading">
+                <a href="#method-i-to_s" title="Link to this method">
+                  <span class="method-name">to_s</span>
+                  <span class="method-args">()</span>
+                </a>
+              </div>
+
+
+
+          </div>
+
+
+            <div class="method-controls">
+              <details class="method-source-toggle">
+                <summary><span class="method-source-icon" aria-hidden="true">{}</span> Source</summary>
+              </details>
             </div>
 
         </div>
 
 
-          <div class="method-controls">
-            <details class="method-source-toggle">
-              <summary>Source</summary>
-            </details>
-          </div>
           <div class="method-source-code" id="to_s-source">
             <pre class="ruby"><span class="ruby-comment"># File lib/rexml/text.rb, line 220</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">to_s</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">to_s</span>
   <span class="ruby-keyword">return</span> <span class="ruby-ivar">@string</span> <span class="ruby-keyword">if</span> <span class="ruby-ivar">@raw</span>
-  <span class="ruby-ivar">@normalized</span> <span class="ruby-operator">||=</span> <span class="ruby-constant">Text</span><span class="ruby-operator">::</span><span class="ruby-identifier">normalize</span>( <span class="ruby-ivar">@string</span>, <span class="ruby-identifier">doctype</span>, <span class="ruby-ivar">@entity_filter</span> )
+  <span class="ruby-ivar">@normalized</span> ||= <span class="ruby-constant">Text</span><span class="ruby-operator">::</span><span class="ruby-identifier">normalize</span>( <span class="ruby-ivar">@string</span>, <span class="ruby-identifier">doctype</span>, <span class="ruby-ivar">@entity_filter</span> )
 <span class="ruby-keyword">end</span></pre>
           </div>
 
@@ -1706,11 +1813,11 @@
 
 <pre class="ruby"><span class="ruby-comment"># Assume that the entity &quot;s&quot; is defined to be &quot;sean&quot;, and that the</span>
 <span class="ruby-comment"># entity &quot;r&quot; is defined to be &quot;russell&quot;</span>
-<span class="ruby-identifier">t</span> = <span class="ruby-constant">Text</span>.<span class="ruby-identifier">new</span>( <span class="ruby-string">&quot;&lt; &amp; sean russell&quot;</span>, <span class="ruby-keyword">false</span>, <span class="ruby-keyword">nil</span>, <span class="ruby-keyword">false</span>, [<span class="ruby-string">&#39;s&#39;</span>] )
+<span class="ruby-identifier">t</span> = <span class="ruby-constant">Text</span>.<span class="ruby-identifier">new</span>( <span class="ruby-string">&quot;</span><span class="ruby-string">&lt; &amp; sean russell</span><span class="ruby-string">&quot;</span>, <span class="ruby-keyword">false</span>, <span class="ruby-keyword">nil</span>, <span class="ruby-keyword">false</span>, [<span class="ruby-string">&#39;</span><span class="ruby-string">s</span><span class="ruby-string">&#39;</span>] )
 <span class="ruby-identifier">t</span>.<span class="ruby-identifier">to_s</span>   <span class="ruby-comment">#-&gt; &quot;&amp;lt; &amp;amp; &amp;s; russell&quot;</span>
-<span class="ruby-identifier">t</span> = <span class="ruby-constant">Text</span>.<span class="ruby-identifier">new</span>( <span class="ruby-string">&quot;&lt; &amp; &amp;s; russell&quot;</span>, <span class="ruby-keyword">false</span>, <span class="ruby-keyword">nil</span>, <span class="ruby-keyword">false</span> )
+<span class="ruby-identifier">t</span> = <span class="ruby-constant">Text</span>.<span class="ruby-identifier">new</span>( <span class="ruby-string">&quot;</span><span class="ruby-string">&lt; &amp; &amp;s; russell</span><span class="ruby-string">&quot;</span>, <span class="ruby-keyword">false</span>, <span class="ruby-keyword">nil</span>, <span class="ruby-keyword">false</span> )
 <span class="ruby-identifier">t</span>.<span class="ruby-identifier">to_s</span>   <span class="ruby-comment">#-&gt; &quot;&amp;lt; &amp;amp; &amp;s; russell&quot;</span>
-<span class="ruby-identifier">u</span> = <span class="ruby-constant">Text</span>.<span class="ruby-identifier">new</span>( <span class="ruby-string">&quot;sean russell&quot;</span>, <span class="ruby-keyword">false</span>, <span class="ruby-keyword">nil</span>, <span class="ruby-keyword">true</span> )
+<span class="ruby-identifier">u</span> = <span class="ruby-constant">Text</span>.<span class="ruby-identifier">new</span>( <span class="ruby-string">&quot;</span><span class="ruby-string">sean russell</span><span class="ruby-string">&quot;</span>, <span class="ruby-keyword">false</span>, <span class="ruby-keyword">nil</span>, <span class="ruby-keyword">true</span> )
 <span class="ruby-identifier">u</span>.<span class="ruby-identifier">to_s</span>   <span class="ruby-comment">#-&gt; &quot;sean russell&quot;</span>
 </pre>
 
@@ -1726,27 +1833,34 @@
 
       <div id="method-i-value" class="method-detail anchor-link ">
         <div class="method-header">
+          <div class="method-heading-group">
 
-            <div class="method-heading">
-              <a href="#method-i-value" title="Link to this method">
-                <span class="method-name">value</span>
-                <span class="method-args">()</span>
-              </a>
+              <div class="method-heading">
+                <a href="#method-i-value" title="Link to this method">
+                  <span class="method-name">value</span>
+                  <span class="method-args">()</span>
+                </a>
+              </div>
+
+
+
+          </div>
+
+
+            <div class="method-controls">
+              <details class="method-source-toggle">
+                <summary><span class="method-source-icon" aria-hidden="true">{}</span> Source</summary>
+              </details>
             </div>
 
         </div>
 
 
-          <div class="method-controls">
-            <details class="method-source-toggle">
-              <summary>Source</summary>
-            </details>
-          </div>
           <div class="method-source-code" id="value-source">
             <pre class="ruby"><span class="ruby-comment"># File lib/rexml/text.rb, line 242</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">value</span>
-  <span class="ruby-ivar">@unnormalized</span> <span class="ruby-operator">||=</span> <span class="ruby-constant">Text</span><span class="ruby-operator">::</span><span class="ruby-identifier">unnormalize</span>(<span class="ruby-ivar">@string</span>, <span class="ruby-identifier">doctype</span>,
-                                      <span class="ruby-value">entity_expansion_text_limit:</span> <span class="ruby-identifier">document</span>&amp;.<span class="ruby-identifier">entity_expansion_text_limit</span>)
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">value</span>
+  <span class="ruby-ivar">@unnormalized</span> ||= <span class="ruby-constant">Text</span><span class="ruby-operator">::</span><span class="ruby-identifier">unnormalize</span>(<span class="ruby-ivar">@string</span>, <span class="ruby-identifier">doctype</span>,
+                                      <span class="ruby-value">entity_expansion_text_limit</span><span class="ruby-value">:</span> <span class="ruby-identifier">document</span>&amp;.<span class="ruby-identifier">entity_expansion_text_limit</span>)
 <span class="ruby-keyword">end</span></pre>
           </div>
 
@@ -1759,11 +1873,11 @@
 
 <pre class="ruby"><span class="ruby-comment"># Assume that the entity &quot;s&quot; is defined to be &quot;sean&quot;, and that the</span>
 <span class="ruby-comment"># entity &quot;r&quot; is defined to be &quot;russell&quot;</span>
-<span class="ruby-identifier">t</span> = <span class="ruby-constant">Text</span>.<span class="ruby-identifier">new</span>( <span class="ruby-string">&quot;&lt; &amp; sean russell&quot;</span>, <span class="ruby-keyword">false</span>, <span class="ruby-keyword">nil</span>, <span class="ruby-keyword">false</span>, [<span class="ruby-string">&#39;s&#39;</span>] )
+<span class="ruby-identifier">t</span> = <span class="ruby-constant">Text</span>.<span class="ruby-identifier">new</span>( <span class="ruby-string">&quot;</span><span class="ruby-string">&lt; &amp; sean russell</span><span class="ruby-string">&quot;</span>, <span class="ruby-keyword">false</span>, <span class="ruby-keyword">nil</span>, <span class="ruby-keyword">false</span>, [<span class="ruby-string">&#39;</span><span class="ruby-string">s</span><span class="ruby-string">&#39;</span>] )
 <span class="ruby-identifier">t</span>.<span class="ruby-identifier">value</span>   <span class="ruby-comment">#-&gt; &quot;&lt; &amp; sean russell&quot;</span>
-<span class="ruby-identifier">t</span> = <span class="ruby-constant">Text</span>.<span class="ruby-identifier">new</span>( <span class="ruby-string">&quot;&lt; &amp; &amp;s; russell&quot;</span>, <span class="ruby-keyword">false</span>, <span class="ruby-keyword">nil</span>, <span class="ruby-keyword">false</span> )
+<span class="ruby-identifier">t</span> = <span class="ruby-constant">Text</span>.<span class="ruby-identifier">new</span>( <span class="ruby-string">&quot;</span><span class="ruby-string">&lt; &amp; &amp;s; russell</span><span class="ruby-string">&quot;</span>, <span class="ruby-keyword">false</span>, <span class="ruby-keyword">nil</span>, <span class="ruby-keyword">false</span> )
 <span class="ruby-identifier">t</span>.<span class="ruby-identifier">value</span>   <span class="ruby-comment">#-&gt; &quot;&lt; &amp; sean russell&quot;</span>
-<span class="ruby-identifier">u</span> = <span class="ruby-constant">Text</span>.<span class="ruby-identifier">new</span>( <span class="ruby-string">&quot;sean russell&quot;</span>, <span class="ruby-keyword">false</span>, <span class="ruby-keyword">nil</span>, <span class="ruby-keyword">true</span> )
+<span class="ruby-identifier">u</span> = <span class="ruby-constant">Text</span>.<span class="ruby-identifier">new</span>( <span class="ruby-string">&quot;</span><span class="ruby-string">sean russell</span><span class="ruby-string">&quot;</span>, <span class="ruby-keyword">false</span>, <span class="ruby-keyword">nil</span>, <span class="ruby-keyword">true</span> )
 <span class="ruby-identifier">u</span>.<span class="ruby-identifier">value</span>   <span class="ruby-comment">#-&gt; &quot;sean russell&quot;</span>
 </pre>
 
@@ -1779,26 +1893,33 @@
 
       <div id="method-i-value-3D" class="method-detail anchor-link ">
         <div class="method-header">
+          <div class="method-heading-group">
 
-            <div class="method-heading">
-              <a href="#method-i-value-3D" title="Link to this method">
-                <span class="method-name">value=</span>
-                <span class="method-args">( val )</span>
-              </a>
+              <div class="method-heading">
+                <a href="#method-i-value-3D" title="Link to this method">
+                  <span class="method-name">value=</span>
+                  <span class="method-args">(val)</span>
+                </a>
+              </div>
+
+
+
+          </div>
+
+
+            <div class="method-controls">
+              <details class="method-source-toggle">
+                <summary><span class="method-source-icon" aria-hidden="true">{}</span> Source</summary>
+              </details>
             </div>
 
         </div>
 
 
-          <div class="method-controls">
-            <details class="method-source-toggle">
-              <summary>Source</summary>
-            </details>
-          </div>
           <div class="method-source-code" id="value-3D-source">
             <pre class="ruby"><span class="ruby-comment"># File lib/rexml/text.rb, line 254</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">value=</span>( <span class="ruby-identifier">val</span> )
-  <span class="ruby-ivar">@string</span> = <span class="ruby-identifier">val</span>.<span class="ruby-identifier">gsub</span>( <span class="ruby-regexp">/\r\n?/</span>, <span class="ruby-string">&quot;\n&quot;</span> )
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">value=</span>( <span class="ruby-identifier">val</span> )
+  <span class="ruby-ivar">@string</span> = <span class="ruby-identifier">val</span>.<span class="ruby-identifier">gsub</span>( <span class="ruby-regexp">/\r\n?/</span>, <span class="ruby-string">&quot;</span><span class="ruby-string">\n</span><span class="ruby-string">&quot;</span> )
   <span class="ruby-identifier">clear_cache</span>
   <span class="ruby-ivar">@raw</span> = <span class="ruby-keyword">false</span>
 <span class="ruby-keyword">end</span></pre>
@@ -1811,10 +1932,10 @@
 
           <p>Sets the contents of this text node.  This expects the text to be unnormalized.  It returns self.</p>
 
-<pre class="ruby"><span class="ruby-identifier">e</span> = <span class="ruby-constant">Element</span>.<span class="ruby-identifier">new</span>( <span class="ruby-string">&quot;a&quot;</span> )
-<span class="ruby-identifier">e</span>.<span class="ruby-identifier">add_text</span>( <span class="ruby-string">&quot;foo&quot;</span> )   <span class="ruby-comment"># &lt;a&gt;foo&lt;/a&gt;</span>
-<span class="ruby-identifier">e</span>[<span class="ruby-value">0</span>].<span class="ruby-identifier">value</span> = <span class="ruby-string">&quot;bar&quot;</span>    <span class="ruby-comment"># &lt;a&gt;bar&lt;/a&gt;</span>
-<span class="ruby-identifier">e</span>[<span class="ruby-value">0</span>].<span class="ruby-identifier">value</span> = <span class="ruby-string">&quot;&lt;a&gt;&quot;</span>    <span class="ruby-comment"># &lt;a&gt;&amp;lt;a&amp;gt;&lt;/a&gt;</span>
+<pre class="ruby"><span class="ruby-identifier">e</span> = <span class="ruby-constant">Element</span>.<span class="ruby-identifier">new</span>( <span class="ruby-string">&quot;</span><span class="ruby-string">a</span><span class="ruby-string">&quot;</span> )
+<span class="ruby-identifier">e</span>.<span class="ruby-identifier">add_text</span>( <span class="ruby-string">&quot;</span><span class="ruby-string">foo</span><span class="ruby-string">&quot;</span> )   <span class="ruby-comment"># &lt;a&gt;foo&lt;/a&gt;</span>
+<span class="ruby-identifier">e</span>[<span class="ruby-value">0</span>].<span class="ruby-identifier">value</span> = <span class="ruby-string">&quot;</span><span class="ruby-string">bar</span><span class="ruby-string">&quot;</span>    <span class="ruby-comment"># &lt;a&gt;bar&lt;/a&gt;</span>
+<span class="ruby-identifier">e</span>[<span class="ruby-value">0</span>].<span class="ruby-identifier">value</span> = <span class="ruby-string">&quot;</span><span class="ruby-string">&lt;a&gt;</span><span class="ruby-string">&quot;</span>    <span class="ruby-comment"># &lt;a&gt;&amp;lt;a&amp;gt;&lt;/a&gt;</span>
 </pre>
 
 
@@ -1829,32 +1950,39 @@
 
       <div id="method-i-wrap" class="method-detail anchor-link ">
         <div class="method-header">
+          <div class="method-heading-group">
 
-            <div class="method-heading">
-              <a href="#method-i-wrap" title="Link to this method">
-                <span class="method-name">wrap</span>
-                <span class="method-args">(string, width, addnewline=false)</span>
-              </a>
+              <div class="method-heading">
+                <a href="#method-i-wrap" title="Link to this method">
+                  <span class="method-name">wrap</span>
+                  <span class="method-args">(string, width, addnewline=false)</span>
+                </a>
+              </div>
+
+
+
+          </div>
+
+
+            <div class="method-controls">
+              <details class="method-source-toggle">
+                <summary><span class="method-source-icon" aria-hidden="true">{}</span> Source</summary>
+              </details>
             </div>
 
         </div>
 
 
-          <div class="method-controls">
-            <details class="method-source-toggle">
-              <summary>Source</summary>
-            </details>
-          </div>
           <div class="method-source-code" id="wrap-source">
             <pre class="ruby"><span class="ruby-comment"># File lib/rexml/text.rb, line 260</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">wrap</span>(<span class="ruby-identifier">string</span>, <span class="ruby-identifier">width</span>, <span class="ruby-identifier">addnewline</span>=<span class="ruby-keyword">false</span>)
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">wrap</span>(<span class="ruby-identifier">string</span>, <span class="ruby-identifier">width</span>, <span class="ruby-identifier">addnewline</span>=<span class="ruby-keyword">false</span>)
   <span class="ruby-comment"># Recursively wrap string at width.</span>
   <span class="ruby-keyword">return</span> <span class="ruby-identifier">string</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">string</span>.<span class="ruby-identifier">length</span> <span class="ruby-operator">&lt;=</span> <span class="ruby-identifier">width</span>
-  <span class="ruby-identifier">place</span> = <span class="ruby-identifier">string</span>.<span class="ruby-identifier">rindex</span>(<span class="ruby-string">&#39; &#39;</span>, <span class="ruby-identifier">width</span>) <span class="ruby-comment"># Position in string with last &#39; &#39; before cutoff</span>
+  <span class="ruby-identifier">place</span> = <span class="ruby-identifier">string</span>.<span class="ruby-identifier">rindex</span>(<span class="ruby-string">&#39;</span><span class="ruby-string"> </span><span class="ruby-string">&#39;</span>, <span class="ruby-identifier">width</span>) <span class="ruby-comment"># Position in string with last &#39; &#39; before cutoff</span>
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">addnewline</span>
-    <span class="ruby-string">&quot;\n&quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">string</span>[<span class="ruby-value">0</span>,<span class="ruby-identifier">place</span>] <span class="ruby-operator">+</span> <span class="ruby-string">&quot;\n&quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">wrap</span>(<span class="ruby-identifier">string</span>[<span class="ruby-identifier">place</span><span class="ruby-value">+1</span><span class="ruby-operator">..</span><span class="ruby-value">-1</span>], <span class="ruby-identifier">width</span>)
+    <span class="ruby-string">&quot;</span><span class="ruby-string">\n</span><span class="ruby-string">&quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">string</span>[<span class="ruby-value">0</span>,<span class="ruby-identifier">place</span>] <span class="ruby-operator">+</span> <span class="ruby-string">&quot;</span><span class="ruby-string">\n</span><span class="ruby-string">&quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">wrap</span>(<span class="ruby-identifier">string</span>[<span class="ruby-identifier">place</span><span class="ruby-operator">+</span><span class="ruby-value">1</span>..-<span class="ruby-value">1</span>], <span class="ruby-identifier">width</span>)
   <span class="ruby-keyword">else</span>
-    <span class="ruby-identifier">string</span>[<span class="ruby-value">0</span>,<span class="ruby-identifier">place</span>] <span class="ruby-operator">+</span> <span class="ruby-string">&quot;\n&quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">wrap</span>(<span class="ruby-identifier">string</span>[<span class="ruby-identifier">place</span><span class="ruby-value">+1</span><span class="ruby-operator">..</span><span class="ruby-value">-1</span>], <span class="ruby-identifier">width</span>)
+    <span class="ruby-identifier">string</span>[<span class="ruby-value">0</span>,<span class="ruby-identifier">place</span>] <span class="ruby-operator">+</span> <span class="ruby-string">&quot;</span><span class="ruby-string">\n</span><span class="ruby-string">&quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">wrap</span>(<span class="ruby-identifier">string</span>[<span class="ruby-identifier">place</span><span class="ruby-operator">+</span><span class="ruby-value">1</span>..-<span class="ruby-value">1</span>], <span class="ruby-identifier">width</span>)
   <span class="ruby-keyword">end</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
@@ -1878,27 +2006,34 @@
 
       <div id="method-i-write" class="method-detail anchor-link ">
         <div class="method-header">
+          <div class="method-heading-group">
 
-            <div class="method-heading">
-              <a href="#method-i-write" title="Link to this method">
-                <span class="method-name">write</span>
-                <span class="method-args">( writer, indent=-1, transitive=false, ie_hack=false )</span>
-              </a>
+              <div class="method-heading">
+                <a href="#method-i-write" title="Link to this method">
+                  <span class="method-name">write</span>
+                  <span class="method-args">(writer, indent=-1, transitive=false, ie_hack=false)</span>
+                </a>
+              </div>
+
+
+
+          </div>
+
+
+            <div class="method-controls">
+              <details class="method-source-toggle">
+                <summary><span class="method-source-icon" aria-hidden="true">{}</span> Source</summary>
+              </details>
             </div>
 
         </div>
 
 
-          <div class="method-controls">
-            <details class="method-source-toggle">
-              <summary>Source</summary>
-            </details>
-          </div>
           <div class="method-source-code" id="write-source">
             <pre class="ruby"><span class="ruby-comment"># File lib/rexml/text.rb, line 288</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">write</span>( <span class="ruby-identifier">writer</span>, <span class="ruby-identifier">indent</span>=<span class="ruby-value">-1</span>, <span class="ruby-identifier">transitive</span>=<span class="ruby-keyword">false</span>, <span class="ruby-identifier">ie_hack</span>=<span class="ruby-keyword">false</span> )
-  <span class="ruby-constant">Kernel</span>.<span class="ruby-identifier">warn</span>(<span class="ruby-node">&quot;#{self.class.name}#write is deprecated.  See REXML::Formatters&quot;</span>, <span class="ruby-value">uplevel:</span> <span class="ruby-value">1</span>)
-  <span class="ruby-identifier">formatter</span> = <span class="ruby-keyword">if</span> <span class="ruby-identifier">indent</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">-1</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">write</span>( <span class="ruby-identifier">writer</span>, <span class="ruby-identifier">indent</span>=-<span class="ruby-value">1</span>, <span class="ruby-identifier">transitive</span>=<span class="ruby-keyword">false</span>, <span class="ruby-identifier">ie_hack</span>=<span class="ruby-keyword">false</span> )
+  <span class="ruby-constant">Kernel</span>.<span class="ruby-identifier">warn</span>(<span class="ruby-string">&quot;</span><span class="ruby-string">#{</span><span class="ruby-keyword">self</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">name</span><span class="ruby-string">}</span><span class="ruby-string">#write is deprecated.  See REXML::Formatters</span><span class="ruby-string">&quot;</span>, <span class="ruby-value">uplevel</span><span class="ruby-value">:</span> <span class="ruby-value">1</span>)
+  <span class="ruby-identifier">formatter</span> = <span class="ruby-keyword">if</span> <span class="ruby-identifier">indent</span> <span class="ruby-operator">&gt;</span> -<span class="ruby-value">1</span>
       <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Formatters</span><span class="ruby-operator">::</span><span class="ruby-constant">Pretty</span>.<span class="ruby-identifier">new</span>( <span class="ruby-identifier">indent</span> )
     <span class="ruby-keyword">else</span>
       <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Formatters</span><span class="ruby-operator">::</span><span class="ruby-constant">Default</span>.<span class="ruby-identifier">new</span>
@@ -1929,25 +2064,32 @@
 
       <div id="method-i-write_with_substitution" class="method-detail anchor-link ">
         <div class="method-header">
+          <div class="method-heading-group">
 
-            <div class="method-heading">
-              <a href="#method-i-write_with_substitution" title="Link to this method">
-                <span class="method-name">write_with_substitution</span>
-                <span class="method-args">(out, input)</span>
-              </a>
+              <div class="method-heading">
+                <a href="#method-i-write_with_substitution" title="Link to this method">
+                  <span class="method-name">write_with_substitution</span>
+                  <span class="method-args">(out, input)</span>
+                </a>
+              </div>
+
+
+
+          </div>
+
+
+            <div class="method-controls">
+              <details class="method-source-toggle">
+                <summary><span class="method-source-icon" aria-hidden="true">{}</span> Source</summary>
+              </details>
             </div>
 
         </div>
 
 
-          <div class="method-controls">
-            <details class="method-source-toggle">
-              <summary>Source</summary>
-            </details>
-          </div>
           <div class="method-source-code" id="write_with_substitution-source">
             <pre class="ruby"><span class="ruby-comment"># File lib/rexml/text.rb, line 318</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">write_with_substitution</span> <span class="ruby-identifier">out</span>, <span class="ruby-identifier">input</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">write_with_substitution</span> <span class="ruby-identifier">out</span>, <span class="ruby-identifier">input</span>
   <span class="ruby-identifier">copy</span> = <span class="ruby-identifier">input</span>.<span class="ruby-identifier">clone</span>
   <span class="ruby-comment"># Doing it like this rather than in a loop improves the speed</span>
   <span class="ruby-identifier">copy</span>.<span class="ruby-identifier">gsub!</span>( <span class="ruby-constant">SPECIALS</span>[<span class="ruby-value">0</span>], <span class="ruby-constant">SUBSTITUTES</span>[<span class="ruby-value">0</span>] )
@@ -1967,13 +2109,13 @@
 
           <p>Writes out text, substituting special characters beforehand. <code>out</code> A String, IO, or any other object supporting &lt;&lt;( String ) <code>input</code> the text to substitute and the write out</p>
 
-<pre class="ruby"><span class="ruby-identifier">z</span>=<span class="ruby-identifier">utf8</span>.<span class="ruby-identifier">unpack</span>(<span class="ruby-string">&quot;U*&quot;</span>)
-<span class="ruby-identifier">ascOut</span>=<span class="ruby-string">&quot;&quot;</span>
+<pre class="ruby"><span class="ruby-identifier">z</span>=<span class="ruby-identifier">utf8</span>.<span class="ruby-identifier">unpack</span>(<span class="ruby-string">&quot;</span><span class="ruby-string">U*</span><span class="ruby-string">&quot;</span>)
+<span class="ruby-identifier">ascOut</span>=<span class="ruby-string">&quot;</span><span class="ruby-string">&quot;</span>
 <span class="ruby-identifier">z</span>.<span class="ruby-identifier">each</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">r</span><span class="ruby-operator">|</span>
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">r</span> <span class="ruby-operator">&lt;</span>  <span class="ruby-value">0x100</span>
     <span class="ruby-identifier">ascOut</span>.<span class="ruby-identifier">concat</span>(<span class="ruby-identifier">r</span>.<span class="ruby-identifier">chr</span>)
   <span class="ruby-keyword">else</span>
-    <span class="ruby-identifier">ascOut</span>.<span class="ruby-identifier">concat</span>(<span class="ruby-identifier">sprintf</span>(<span class="ruby-string">&quot;&amp;#x%x;&quot;</span>, <span class="ruby-identifier">r</span>))
+    <span class="ruby-identifier">ascOut</span>.<span class="ruby-identifier">concat</span>(<span class="ruby-identifier">sprintf</span>(<span class="ruby-string">&quot;</span><span class="ruby-string">&amp;#x%x;</span><span class="ruby-string">&quot;</span>, <span class="ruby-identifier">r</span>))
   <span class="ruby-keyword">end</span>
 }
 <span class="ruby-identifier">puts</span> <span class="ruby-identifier">ascOut</span>
@@ -1991,26 +2133,33 @@
 
       <div id="method-i-xpath" class="method-detail anchor-link ">
         <div class="method-header">
+          <div class="method-heading-group">
 
-            <div class="method-heading">
-              <a href="#method-i-xpath" title="Link to this method">
-                <span class="method-name">xpath</span>
-                <span class="method-args">()</span>
-              </a>
+              <div class="method-heading">
+                <a href="#method-i-xpath" title="Link to this method">
+                  <span class="method-name">xpath</span>
+                  <span class="method-args">()</span>
+                </a>
+              </div>
+
+
+
+          </div>
+
+
+            <div class="method-controls">
+              <details class="method-source-toggle">
+                <summary><span class="method-source-icon" aria-hidden="true">{}</span> Source</summary>
+              </details>
             </div>
 
         </div>
 
 
-          <div class="method-controls">
-            <details class="method-source-toggle">
-              <summary>Source</summary>
-            </details>
-          </div>
           <div class="method-source-code" id="xpath-source">
             <pre class="ruby"><span class="ruby-comment"># File lib/rexml/text.rb, line 300</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">xpath</span>
-  <span class="ruby-ivar">@parent</span>.<span class="ruby-identifier">xpath</span> <span class="ruby-operator">+</span> <span class="ruby-string">&quot;/text()&quot;</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">xpath</span>
+  <span class="ruby-ivar">@parent</span>.<span class="ruby-identifier">xpath</span> <span class="ruby-operator">+</span> <span class="ruby-string">&quot;</span><span class="ruby-string">/text()</span><span class="ruby-string">&quot;</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
 
@@ -2040,7 +2189,7 @@
 
 </main>
 
-<aside class="table-of-contents" role="complementary" aria-label="Table of Contents">
+<aside id="table-of-contents" class="table-of-contents" role="complementary" aria-label="Table of Contents">
   <div class="toc-sticky">
     <h3 class="toc-heading">On This Page</h3>
     <nav class="toc-nav" id="toc-nav" aria-label="Page sections">
@@ -2055,7 +2204,7 @@
 
   <div class="footer-bottom">
     <p>
-      Generated by <a href="https://ruby.github.io/rdoc/">RDoc 7.2.0</a>
+      Generated by <a href="https://ruby.github.io/rdoc/">RDoc 8.0.0</a>
       using the Aliki theme by <a href="http://st0012.dev">Stan Lo</a>
     </p>
   </div>

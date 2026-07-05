@@ -45,46 +45,46 @@
 </script>
 
 <script
-  src="../../../../js/theme-toggle.js?v=7.2.0"
+  src="../../../../js/theme-toggle.js?v=8.0.0"
 ></script>
 
 <script
-  src="../../../../js/search_navigation.js?v=7.2.0"
+  src="../../../../js/search_navigation.js?v=8.0.0"
   defer
 ></script>
 
 <script
-  src="../../../../js/search_data.js?v=7.2.0"
+  src="../../../../js/search_data.js?v=8.0.0"
   defer
 ></script>
 
 <script
-  src="../../../../js/search_ranker.js?v=7.2.0"
+  src="../../../../js/search_ranker.js?v=8.0.0"
   defer
 ></script>
 
 <script
-  src="../../../../js/search_controller.js?v=7.2.0"
+  src="../../../../js/search_controller.js?v=8.0.0"
   defer
 ></script>
 
 <script
-  src="../../../../js/c_highlighter.js?v=7.2.0"
+  src="../../../../js/c_highlighter.js?v=8.0.0"
   defer
 ></script>
 
 <script
-  src="../../../../js/bash_highlighter.js?v=7.2.0"
+  src="../../../../js/bash_highlighter.js?v=8.0.0"
   defer
 ></script>
 
 <script
-  src="../../../../js/aliki.js?v=7.2.0"
+  src="../../../../js/aliki.js?v=8.0.0"
   defer
 ></script>
 
 <link
-  href="../../../../css/rdoc.css?v=7.2.0"
+  href="../../../../css/rdoc.css?v=8.0.0"
   rel="stylesheet"
 >
 
@@ -358,12 +358,12 @@
   </div>
 </div>
 
-<div id="navigation-toggle" role="button" tabindex="0" aria-label="Toggle sidebar" aria-expanded="true" aria-controls="navigation">
+<div id="sidebar-navigation-toggle" role="button" tabindex="0" aria-label="Toggle sidebar" aria-expanded="false" aria-controls="sidebar-navigation">
   <span aria-hidden="true">&#9776;</span>
 </div>
 
 
-<nav id="navigation" role="navigation" hidden>
+<nav id="sidebar-navigation" role="navigation" hidden>
   
 
 
@@ -408,15 +408,6 @@
             <li>
               <a href="../../../../NEWS_md.html">
                 NEWS
-              </a>
-            </li>
-
-
-
-
-            <li>
-              <a href="../../../../README_md.html">
-                README
               </a>
             </li>
 
@@ -637,7 +628,7 @@
 
 <p>Use method <a href="../../../../REXML/Document.html#method-c-new">Document::new</a> to parse an XML string into a new document:</p>
 
-<pre class="ruby"><span class="ruby-identifier">xml_string</span> = <span class="ruby-string">&#39;&lt;root&gt;&lt;a/&gt;text&lt;b/&gt;more&lt;c/&gt;&lt;/root&gt;&#39;</span>
+<pre class="ruby"><span class="ruby-identifier">xml_string</span> = <span class="ruby-string">&#39;</span><span class="ruby-string">&lt;root&gt;&lt;a/&gt;text&lt;b/&gt;more&lt;c/&gt;&lt;/root&gt;</span><span class="ruby-string">&#39;</span>
 <span class="ruby-identifier">d</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">xml_string</span>)
 <span class="ruby-identifier">d</span>.<span class="ruby-identifier">root</span> <span class="ruby-comment"># =&gt; &lt;root&gt; ... &lt;/&gt;</span>
 </pre>
@@ -647,9 +638,9 @@
 
 <p>Use method <a href="../../../../REXML/Document.html#method-c-new">Document::new</a> to parse an XML IO stream into a new document:</p>
 
-<pre class="ruby"><span class="ruby-identifier">xml_string</span> = <span class="ruby-string">&#39;&lt;root&gt;&lt;a/&gt;text&lt;b/&gt;more&lt;c/&gt;&lt;/root&gt;&#39;</span>
-<span class="ruby-constant">File</span>.<span class="ruby-identifier">write</span>(<span class="ruby-string">&#39;t.xml&#39;</span>, <span class="ruby-identifier">xml_string</span>)
-<span class="ruby-identifier">d</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">open</span>(<span class="ruby-string">&#39;t.xml&#39;</span>, <span class="ruby-string">&#39;r&#39;</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">file</span><span class="ruby-operator">|</span>
+<pre class="ruby"><span class="ruby-identifier">xml_string</span> = <span class="ruby-string">&#39;</span><span class="ruby-string">&lt;root&gt;&lt;a/&gt;text&lt;b/&gt;more&lt;c/&gt;&lt;/root&gt;</span><span class="ruby-string">&#39;</span>
+<span class="ruby-constant">File</span>.<span class="ruby-identifier">write</span>(<span class="ruby-string">&#39;</span><span class="ruby-string">t.xml</span><span class="ruby-string">&#39;</span>, <span class="ruby-identifier">xml_string</span>)
+<span class="ruby-identifier">d</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">open</span>(<span class="ruby-string">&#39;</span><span class="ruby-string">t.xml</span><span class="ruby-string">&#39;</span>, <span class="ruby-string">&#39;</span><span class="ruby-string">r</span><span class="ruby-string">&#39;</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">file</span><span class="ruby-operator">|</span>
   <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">file</span>)
 <span class="ruby-keyword">end</span>
 <span class="ruby-identifier">d</span>.<span class="ruby-identifier">root</span> <span class="ruby-comment"># =&gt; &lt;root&gt; ... &lt;/&gt;</span>
@@ -660,11 +651,11 @@
 
 <p>Use method <a href="../../../../REXML/Document.html#method-c-new">Document::new</a> to create a document from an existing document. The context and attributes are copied to the new document, but not the children:</p>
 
-<pre class="ruby"><span class="ruby-identifier">xml_string</span> = <span class="ruby-string">&#39;&lt;root&gt;&lt;a/&gt;text&lt;b/&gt;more&lt;c/&gt;&lt;/root&gt;&#39;</span>
+<pre class="ruby"><span class="ruby-identifier">xml_string</span> = <span class="ruby-string">&#39;</span><span class="ruby-string">&lt;root&gt;&lt;a/&gt;text&lt;b/&gt;more&lt;c/&gt;&lt;/root&gt;</span><span class="ruby-string">&#39;</span>
 <span class="ruby-identifier">d</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">xml_string</span>)
 <span class="ruby-identifier">d</span>.<span class="ruby-identifier">children</span>    <span class="ruby-comment"># =&gt; [&lt;root&gt; ... &lt;/&gt;]</span>
-<span class="ruby-identifier">d</span>.<span class="ruby-identifier">context</span> = {<span class="ruby-value">raw:</span> <span class="ruby-value">:all</span>, <span class="ruby-value">compress_whitespace:</span> <span class="ruby-value">:all</span>}
-<span class="ruby-identifier">d</span>.<span class="ruby-identifier">add_attributes</span>({<span class="ruby-string">&#39;bar&#39;</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-value">0</span>, <span class="ruby-string">&#39;baz&#39;</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-value">1</span>})
+<span class="ruby-identifier">d</span>.<span class="ruby-identifier">context</span> = {<span class="ruby-value">raw</span><span class="ruby-value">:</span> <span class="ruby-value">:</span><span class="ruby-value">all</span>, <span class="ruby-value">compress_whitespace</span><span class="ruby-value">:</span> <span class="ruby-value">:</span><span class="ruby-value">all</span>}
+<span class="ruby-identifier">d</span>.<span class="ruby-identifier">add_attributes</span>({<span class="ruby-string">&#39;</span><span class="ruby-string">bar</span><span class="ruby-string">&#39;</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-value">0</span>, <span class="ruby-string">&#39;</span><span class="ruby-string">baz</span><span class="ruby-string">&#39;</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-value">1</span>})
 <span class="ruby-identifier">d1</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">d</span>)
 <span class="ruby-identifier">d1</span>.<span class="ruby-identifier">context</span>    <span class="ruby-comment"># =&gt; {:raw=&gt;:all, :compress_whitespace=&gt;:all}</span>
 <span class="ruby-identifier">d1</span>.<span class="ruby-identifier">attributes</span> <span class="ruby-comment"># =&gt; {&quot;bar&quot;=&gt;bar=&#39;0&#39;, &quot;baz&quot;=&gt;baz=&#39;1&#39;}</span>
@@ -676,11 +667,11 @@
 
 <p>Use method <a href="../../../../REXML/Document.html#method-i-clone">Document#clone</a> to clone a document. The context and attributes are copied to the new document, but not the children:</p>
 
-<pre class="ruby"><span class="ruby-identifier">xml_string</span> = <span class="ruby-string">&#39;&lt;root&gt;&lt;a/&gt;text&lt;b/&gt;more&lt;c/&gt;&lt;/root&gt;&#39;</span>
+<pre class="ruby"><span class="ruby-identifier">xml_string</span> = <span class="ruby-string">&#39;</span><span class="ruby-string">&lt;root&gt;&lt;a/&gt;text&lt;b/&gt;more&lt;c/&gt;&lt;/root&gt;</span><span class="ruby-string">&#39;</span>
 <span class="ruby-identifier">d</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">xml_string</span>)
 <span class="ruby-identifier">d</span>.<span class="ruby-identifier">children</span>    <span class="ruby-comment"># =&gt; [&lt;root&gt; ... &lt;/&gt;]</span>
-<span class="ruby-identifier">d</span>.<span class="ruby-identifier">context</span> = {<span class="ruby-value">raw:</span> <span class="ruby-value">:all</span>, <span class="ruby-value">compress_whitespace:</span> <span class="ruby-value">:all</span>}
-<span class="ruby-identifier">d</span>.<span class="ruby-identifier">add_attributes</span>({<span class="ruby-string">&#39;bar&#39;</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-value">0</span>, <span class="ruby-string">&#39;baz&#39;</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-value">1</span>})
+<span class="ruby-identifier">d</span>.<span class="ruby-identifier">context</span> = {<span class="ruby-value">raw</span><span class="ruby-value">:</span> <span class="ruby-value">:</span><span class="ruby-value">all</span>, <span class="ruby-value">compress_whitespace</span><span class="ruby-value">:</span> <span class="ruby-value">:</span><span class="ruby-value">all</span>}
+<span class="ruby-identifier">d</span>.<span class="ruby-identifier">add_attributes</span>({<span class="ruby-string">&#39;</span><span class="ruby-string">bar</span><span class="ruby-string">&#39;</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-value">0</span>, <span class="ruby-string">&#39;</span><span class="ruby-string">baz</span><span class="ruby-string">&#39;</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-value">1</span>})
 <span class="ruby-identifier">d1</span> = <span class="ruby-identifier">d</span>.<span class="ruby-identifier">clone</span>  <span class="ruby-comment"># =&gt; &lt; bar=&#39;0&#39; baz=&#39;1&#39;/&gt;</span>
 <span class="ruby-identifier">d1</span>.<span class="ruby-identifier">context</span>    <span class="ruby-comment"># =&gt; {:raw=&gt;:all, :compress_whitespace=&gt;:all}</span>
 <span class="ruby-identifier">d1</span>.<span class="ruby-identifier">attributes</span> <span class="ruby-comment"># =&gt; {&quot;bar&quot;=&gt;bar=&#39;0&#39;, &quot;baz&quot;=&gt;baz=&#39;1&#39;}</span>
@@ -695,9 +686,9 @@
 
 <p>Use method <a href="../../../../REXML/Document.html#method-i-doctype">Document#doctype</a> to get the document type:</p>
 
-<pre class="ruby"><span class="ruby-identifier">d</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;&lt;!DOCTYPE document SYSTEM &quot;subjects.dtd&quot;&gt;&#39;</span>)
+<pre class="ruby"><span class="ruby-identifier">d</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;</span><span class="ruby-string">&lt;!DOCTYPE document SYSTEM &quot;subjects.dtd&quot;&gt;</span><span class="ruby-string">&#39;</span>)
 <span class="ruby-identifier">d</span>.<span class="ruby-identifier">doctype</span>.<span class="ruby-identifier">class</span> <span class="ruby-comment"># =&gt; REXML::DocType</span>
-<span class="ruby-identifier">d</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;&#39;</span>)
+<span class="ruby-identifier">d</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;</span><span class="ruby-string">&#39;</span>)
 <span class="ruby-identifier">d</span>.<span class="ruby-identifier">doctype</span>.<span class="ruby-identifier">class</span> <span class="ruby-comment"># =&gt; nil</span>
 </pre>
 
@@ -706,9 +697,9 @@
 
 <p>Use method <a href="../../../../REXML/Document.html#method-i-add">document#add</a> to add or replace the document type:</p>
 
-<pre class="ruby"><span class="ruby-identifier">d</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;&#39;</span>)
+<pre class="ruby"><span class="ruby-identifier">d</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;</span><span class="ruby-string">&#39;</span>)
 <span class="ruby-identifier">d</span>.<span class="ruby-identifier">doctype</span>.<span class="ruby-identifier">class</span> <span class="ruby-comment"># =&gt; nil</span>
-<span class="ruby-identifier">d</span>.<span class="ruby-identifier">add</span>(<span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">DocType</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;foo&#39;</span>))
+<span class="ruby-identifier">d</span>.<span class="ruby-identifier">add</span>(<span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">DocType</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;</span><span class="ruby-string">foo</span><span class="ruby-string">&#39;</span>))
 <span class="ruby-identifier">d</span>.<span class="ruby-identifier">doctype</span>.<span class="ruby-identifier">class</span> <span class="ruby-comment"># =&gt; REXML::DocType</span>
 </pre>
 
@@ -720,10 +711,10 @@
 
 <p>Use method <a href="../../../../REXML/Document.html#method-i-xml_decl">document#xml_decl</a> to get the XML declaration:</p>
 
-<pre class="ruby"><span class="ruby-identifier">d</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;&lt;!DOCTYPE document SYSTEM &quot;subjects.dtd&quot;&gt;&#39;</span>)
+<pre class="ruby"><span class="ruby-identifier">d</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;</span><span class="ruby-string">&lt;!DOCTYPE document SYSTEM &quot;subjects.dtd&quot;&gt;</span><span class="ruby-string">&#39;</span>)
 <span class="ruby-identifier">d</span>.<span class="ruby-identifier">xml_decl</span>.<span class="ruby-identifier">class</span> <span class="ruby-comment"># =&gt; REXML::XMLDecl</span>
 <span class="ruby-identifier">d</span>.<span class="ruby-identifier">xml_decl</span>       <span class="ruby-comment"># =&gt; &lt;?xml ... ?&gt;</span>
-<span class="ruby-identifier">d</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;&#39;</span>)
+<span class="ruby-identifier">d</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;</span><span class="ruby-string">&#39;</span>)
 <span class="ruby-identifier">d</span>.<span class="ruby-identifier">xml_decl</span>.<span class="ruby-identifier">class</span> <span class="ruby-comment"># =&gt; REXML::XMLDecl</span>
 <span class="ruby-identifier">d</span>.<span class="ruby-identifier">xml_decl</span>       <span class="ruby-comment"># =&gt; &lt;?xml ... ?&gt;</span>
 </pre>
@@ -733,7 +724,7 @@
 
 <p>Use method <a href="../../../../REXML/Document.html#method-i-add">document#add</a> to replace the XML declaration:</p>
 
-<pre class="ruby"><span class="ruby-identifier">d</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;&lt;!DOCTYPE document SYSTEM &quot;subjects.dtd&quot;&gt;&#39;</span>)
+<pre class="ruby"><span class="ruby-identifier">d</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;</span><span class="ruby-string">&lt;!DOCTYPE document SYSTEM &quot;subjects.dtd&quot;&gt;</span><span class="ruby-string">&#39;</span>)
 <span class="ruby-identifier">d</span>.<span class="ruby-identifier">add</span>(<span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">XMLDecl</span>.<span class="ruby-identifier">new</span>)
 </pre>
 
@@ -745,8 +736,8 @@
 
 <p>Use method <a href="../../../../REXML/Document.html#method-i-add_element">document#add_element</a> to add an element to the document:</p>
 
-<pre class="ruby"><span class="ruby-identifier">d</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;&#39;</span>)
-<span class="ruby-identifier">d</span>.<span class="ruby-identifier">add_element</span>(<span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Element</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;root&#39;</span>))
+<pre class="ruby"><span class="ruby-identifier">d</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;</span><span class="ruby-string">&#39;</span>)
+<span class="ruby-identifier">d</span>.<span class="ruby-identifier">add_element</span>(<span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Element</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;</span><span class="ruby-string">root</span><span class="ruby-string">&#39;</span>))
 <span class="ruby-identifier">d</span>.<span class="ruby-identifier">children</span> <span class="ruby-comment"># =&gt; [&lt;root/&gt;]</span>
 </pre>
 
@@ -755,9 +746,9 @@
 
 <p>Use method <a href="../../../../REXML/Document.html#method-i-add">document#add</a> to add a non-element to the document:</p>
 
-<pre class="ruby"><span class="ruby-identifier">xml_string</span> = <span class="ruby-string">&#39;&lt;root&gt;&lt;a/&gt;text&lt;b/&gt;more&lt;c/&gt;&lt;/root&gt;&#39;</span>
+<pre class="ruby"><span class="ruby-identifier">xml_string</span> = <span class="ruby-string">&#39;</span><span class="ruby-string">&lt;root&gt;&lt;a/&gt;text&lt;b/&gt;more&lt;c/&gt;&lt;/root&gt;</span><span class="ruby-string">&#39;</span>
 <span class="ruby-identifier">d</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">xml_string</span>)
-<span class="ruby-identifier">d</span>.<span class="ruby-identifier">add</span>(<span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Text</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;foo&#39;</span>))
+<span class="ruby-identifier">d</span>.<span class="ruby-identifier">add</span>(<span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Text</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;</span><span class="ruby-string">foo</span><span class="ruby-string">&#39;</span>))
 <span class="ruby-identifier">d</span>.<span class="ruby-identifier">children</span> <span class="ruby-comment"># =&gt; [&lt;root&gt; ... &lt;/&gt;, &quot;foo&quot;]</span>
 </pre>
 
@@ -769,7 +760,7 @@
 
 <p>Use method <a href="../../../../REXML/Document.html#method-i-write">document#write</a> to write the document to <code>$stdout</code>:</p>
 
-<pre class="ruby"><span class="ruby-identifier">xml_string</span> = <span class="ruby-string">&#39;&lt;root&gt;&lt;a/&gt;text&lt;b/&gt;more&lt;c/&gt;&lt;/root&gt;&#39;</span>
+<pre class="ruby"><span class="ruby-identifier">xml_string</span> = <span class="ruby-string">&#39;</span><span class="ruby-string">&lt;root&gt;&lt;a/&gt;text&lt;b/&gt;more&lt;c/&gt;&lt;/root&gt;</span><span class="ruby-string">&#39;</span>
 <span class="ruby-identifier">d</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">xml_string</span>)
 <span class="ruby-identifier">d</span>.<span class="ruby-identifier">write</span>
 </pre>
@@ -783,17 +774,17 @@
 
 <p>Use method <a href="../../../../REXML/Document.html#method-i-write">document#write</a> to write the document to <code>$stdout</code>:</p>
 
-<pre class="ruby"><span class="ruby-identifier">xml_string</span> = <span class="ruby-string">&#39;&lt;root&gt;&lt;a/&gt;text&lt;b/&gt;more&lt;c/&gt;&lt;/root&gt;&#39;</span>
+<pre class="ruby"><span class="ruby-identifier">xml_string</span> = <span class="ruby-string">&#39;</span><span class="ruby-string">&lt;root&gt;&lt;a/&gt;text&lt;b/&gt;more&lt;c/&gt;&lt;/root&gt;</span><span class="ruby-string">&#39;</span>
 <span class="ruby-identifier">d</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">xml_string</span>)
-<span class="ruby-constant">File</span>.<span class="ruby-identifier">open</span>(<span class="ruby-string">&#39;t.xml&#39;</span>, <span class="ruby-string">&#39;w&#39;</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">file</span><span class="ruby-operator">|</span>
+<span class="ruby-constant">File</span>.<span class="ruby-identifier">open</span>(<span class="ruby-string">&#39;</span><span class="ruby-string">t.xml</span><span class="ruby-string">&#39;</span>, <span class="ruby-string">&#39;</span><span class="ruby-string">w</span><span class="ruby-string">&#39;</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">file</span><span class="ruby-operator">|</span>
   <span class="ruby-identifier">d</span>.<span class="ruby-identifier">write</span>(<span class="ruby-identifier">file</span>)
 <span class="ruby-keyword">end</span>
-<span class="ruby-identifier">p</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">read</span>(<span class="ruby-string">&#39;t.xml&#39;</span>)
+<span class="ruby-identifier">p</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">read</span>(<span class="ruby-string">&#39;</span><span class="ruby-string">t.xml</span><span class="ruby-string">&#39;</span>)
 </pre>
 
 <p>Output:</p>
 
-<pre class="ruby"><span class="ruby-string">&quot;&lt;root&gt;&lt;a/&gt;text&lt;b/&gt;more&lt;c/&gt;&lt;/root&gt;&quot;</span>
+<pre class="ruby"><span class="ruby-string">&quot;</span><span class="ruby-string">&lt;root&gt;&lt;a/&gt;text&lt;b/&gt;more&lt;c/&gt;&lt;/root&gt;</span><span class="ruby-string">&quot;</span>
 </pre>
 
 <span id="label-Task-3A+Write+with+No+Indentation" class="legacy-anchor"></span>
@@ -801,9 +792,9 @@
 
 <p>Use method <a href="../../../../REXML/Document.html#method-i-write">document#write</a> to write the document with no indentation:</p>
 
-<pre class="ruby"><span class="ruby-identifier">xml_string</span> = <span class="ruby-string">&#39;&lt;root&gt;&lt;a&gt;&lt;b&gt;&lt;c&gt;&lt;/c&gt;&lt;/b&gt;&lt;/a&gt;&lt;/root&gt;&#39;</span>
+<pre class="ruby"><span class="ruby-identifier">xml_string</span> = <span class="ruby-string">&#39;</span><span class="ruby-string">&lt;root&gt;&lt;a&gt;&lt;b&gt;&lt;c&gt;&lt;/c&gt;&lt;/b&gt;&lt;/a&gt;&lt;/root&gt;</span><span class="ruby-string">&#39;</span>
 <span class="ruby-identifier">d</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">xml_string</span>)
-<span class="ruby-identifier">d</span>.<span class="ruby-identifier">write</span>({<span class="ruby-value">indent:</span> <span class="ruby-value">0</span>})
+<span class="ruby-identifier">d</span>.<span class="ruby-identifier">write</span>({<span class="ruby-value">indent</span><span class="ruby-value">:</span> <span class="ruby-value">0</span>})
 </pre>
 
 <p>Output:</p>
@@ -821,9 +812,9 @@
 
 <p>Use method <a href="../../../../REXML/Document.html#method-i-write">document#write</a> to write the document with a specified indentation:</p>
 
-<pre class="ruby"><span class="ruby-identifier">xml_string</span> = <span class="ruby-string">&#39;&lt;root&gt;&lt;a&gt;&lt;b&gt;&lt;c&gt;&lt;/c&gt;&lt;/b&gt;&lt;/a&gt;&lt;/root&gt;&#39;</span>
+<pre class="ruby"><span class="ruby-identifier">xml_string</span> = <span class="ruby-string">&#39;</span><span class="ruby-string">&lt;root&gt;&lt;a&gt;&lt;b&gt;&lt;c&gt;&lt;/c&gt;&lt;/b&gt;&lt;/a&gt;&lt;/root&gt;</span><span class="ruby-string">&#39;</span>
 <span class="ruby-identifier">d</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">xml_string</span>)
-<span class="ruby-identifier">d</span>.<span class="ruby-identifier">write</span>({<span class="ruby-value">indent:</span> <span class="ruby-value">2</span>})
+<span class="ruby-identifier">d</span>.<span class="ruby-identifier">write</span>({<span class="ruby-value">indent</span><span class="ruby-value">:</span> <span class="ruby-value">2</span>})
 </pre>
 
 <p>Output:</p>
@@ -844,7 +835,7 @@
 
 <p>Use method <a href="../../../../REXML/Document.html#method-i-document">document#document</a> to get the document (<code>self</code>); overrides <code>Element#document</code>:</p>
 
-<pre class="ruby"><span class="ruby-identifier">xml_string</span> = <span class="ruby-string">&#39;&lt;root&gt;&lt;a&gt;&lt;b&gt;&lt;c&gt;&lt;/c&gt;&lt;/b&gt;&lt;/a&gt;&lt;/root&gt;&#39;</span>
+<pre class="ruby"><span class="ruby-identifier">xml_string</span> = <span class="ruby-string">&#39;</span><span class="ruby-string">&lt;root&gt;&lt;a&gt;&lt;b&gt;&lt;c&gt;&lt;/c&gt;&lt;/b&gt;&lt;/a&gt;&lt;/root&gt;</span><span class="ruby-string">&#39;</span>
 <span class="ruby-identifier">d</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">xml_string</span>)
 <span class="ruby-identifier">d</span>.<span class="ruby-identifier">document</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">d</span> <span class="ruby-comment"># =&gt; true</span>
 </pre>
@@ -854,7 +845,7 @@
 
 <p>Use method <a href="../../../../REXML/Document.html#method-i-document">document#document</a> to get the document (<code>self</code>); overrides <code>Element#document</code>:</p>
 
-<pre class="ruby"><span class="ruby-identifier">xml_string</span> = <span class="ruby-string">&#39;&lt;root&gt;&lt;a&gt;&lt;b&gt;&lt;c&gt;&lt;/c&gt;&lt;/b&gt;&lt;/a&gt;&lt;/root&gt;&#39;</span>
+<pre class="ruby"><span class="ruby-identifier">xml_string</span> = <span class="ruby-string">&#39;</span><span class="ruby-string">&lt;root&gt;&lt;a&gt;&lt;b&gt;&lt;c&gt;&lt;/c&gt;&lt;/b&gt;&lt;/a&gt;&lt;/root&gt;</span><span class="ruby-string">&#39;</span>
 <span class="ruby-identifier">d</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">xml_string</span>)
 <span class="ruby-identifier">d</span>.<span class="ruby-identifier">encoding</span> <span class="ruby-comment"># =&gt; &quot;UTF-8&quot;</span>
 </pre>
@@ -864,7 +855,7 @@
 
 <p>Use method <a href="../../../../REXML/Document.html#method-i-node_type">document#node_type</a> to get the node type (<code>:document</code>); overrides <code>Element#node_type</code>:</p>
 
-<pre class="ruby"><span class="ruby-identifier">xml_string</span> = <span class="ruby-string">&#39;&lt;root&gt;&lt;a&gt;&lt;b&gt;&lt;c&gt;&lt;/c&gt;&lt;/b&gt;&lt;/a&gt;&lt;/root&gt;&#39;</span>
+<pre class="ruby"><span class="ruby-identifier">xml_string</span> = <span class="ruby-string">&#39;</span><span class="ruby-string">&lt;root&gt;&lt;a&gt;&lt;b&gt;&lt;c&gt;&lt;/c&gt;&lt;/b&gt;&lt;/a&gt;&lt;/root&gt;</span><span class="ruby-string">&#39;</span>
 <span class="ruby-identifier">d</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">xml_string</span>)
 <span class="ruby-identifier">d</span>.<span class="ruby-identifier">node_type</span> <span class="ruby-comment"># =&gt; :document</span>
 </pre>
@@ -874,7 +865,7 @@
 
 <p>Use method <a href="../../../../REXML/Document.html#method-i-root">document#root</a> to get the root element:</p>
 
-<pre class="ruby"><span class="ruby-identifier">xml_string</span> = <span class="ruby-string">&#39;&lt;root&gt;&lt;a&gt;&lt;b&gt;&lt;c&gt;&lt;/c&gt;&lt;/b&gt;&lt;/a&gt;&lt;/root&gt;&#39;</span>
+<pre class="ruby"><span class="ruby-identifier">xml_string</span> = <span class="ruby-string">&#39;</span><span class="ruby-string">&lt;root&gt;&lt;a&gt;&lt;b&gt;&lt;c&gt;&lt;/c&gt;&lt;/b&gt;&lt;/a&gt;&lt;/root&gt;</span><span class="ruby-string">&#39;</span>
 <span class="ruby-identifier">d</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">xml_string</span>)
 <span class="ruby-identifier">d</span>.<span class="ruby-identifier">root</span> <span class="ruby-comment"># =&gt; &lt;root&gt; ... &lt;/&gt;</span>
 </pre>
@@ -884,7 +875,7 @@
 
 <p>Use method <a href="../../../../REXML/Document.html#method-i-stand_alone-3F">document#stand_alone?</a> to get the stand-alone value:</p>
 
-<pre class="ruby"><span class="ruby-identifier">d</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;&lt;?xml standalone=&quot;yes&quot;?&gt;&#39;</span>)
+<pre class="ruby"><span class="ruby-identifier">d</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;</span><span class="ruby-string">&lt;?xml standalone=&quot;yes&quot;?&gt;</span><span class="ruby-string">&#39;</span>)
 <span class="ruby-identifier">d</span>.<span class="ruby-identifier">stand_alone?</span> <span class="ruby-comment"># =&gt; &quot;yes&quot;</span>
 </pre>
 
@@ -893,13 +884,13 @@
 
 <p>Use method <a href="../../../../REXML/Document.html#method-i-version">document#version</a> to get the version:</p>
 
-<pre class="ruby"><span class="ruby-identifier">d</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;&lt;?xml version=&quot;2.0&quot; encoding=&quot;UTF-8&quot;?&gt;&#39;</span>)
+<pre class="ruby"><span class="ruby-identifier">d</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;</span><span class="ruby-string">&lt;?xml version=&quot;2.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span><span class="ruby-string">&#39;</span>)
 <span class="ruby-identifier">d</span>.<span class="ruby-identifier">version</span> <span class="ruby-comment"># =&gt; &quot;2.0&quot;</span>
 </pre>
 
 </main>
 
-<aside class="table-of-contents" role="complementary" aria-label="Table of Contents">
+<aside id="table-of-contents" class="table-of-contents" role="complementary" aria-label="Table of Contents">
   <div class="toc-sticky">
     <h3 class="toc-heading">On This Page</h3>
     <nav class="toc-nav" id="toc-nav" aria-label="Page sections">
@@ -914,7 +905,7 @@
 
   <div class="footer-bottom">
     <p>
-      Generated by <a href="https://ruby.github.io/rdoc/">RDoc 7.2.0</a>
+      Generated by <a href="https://ruby.github.io/rdoc/">RDoc 8.0.0</a>
       using the Aliki theme by <a href="http://st0012.dev">Stan Lo</a>
     </p>
   </div>

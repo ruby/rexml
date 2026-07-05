@@ -56,46 +56,46 @@
 </script>
 
 <script
-  src="../js/theme-toggle.js?v=7.2.0"
+  src="../js/theme-toggle.js?v=8.0.0"
 ></script>
 
 <script
-  src="../js/search_navigation.js?v=7.2.0"
+  src="../js/search_navigation.js?v=8.0.0"
   defer
 ></script>
 
 <script
-  src="../js/search_data.js?v=7.2.0"
+  src="../js/search_data.js?v=8.0.0"
   defer
 ></script>
 
 <script
-  src="../js/search_ranker.js?v=7.2.0"
+  src="../js/search_ranker.js?v=8.0.0"
   defer
 ></script>
 
 <script
-  src="../js/search_controller.js?v=7.2.0"
+  src="../js/search_controller.js?v=8.0.0"
   defer
 ></script>
 
 <script
-  src="../js/c_highlighter.js?v=7.2.0"
+  src="../js/c_highlighter.js?v=8.0.0"
   defer
 ></script>
 
 <script
-  src="../js/bash_highlighter.js?v=7.2.0"
+  src="../js/bash_highlighter.js?v=8.0.0"
   defer
 ></script>
 
 <script
-  src="../js/aliki.js?v=7.2.0"
+  src="../js/aliki.js?v=8.0.0"
   defer
 ></script>
 
 <link
-  href="../css/rdoc.css?v=7.2.0"
+  href="../css/rdoc.css?v=8.0.0"
   rel="stylesheet"
 >
 
@@ -369,12 +369,12 @@
   </div>
 </div>
 
-<div id="navigation-toggle" role="button" tabindex="0" aria-label="Toggle sidebar" aria-expanded="true" aria-controls="navigation">
+<div id="sidebar-navigation-toggle" role="button" tabindex="0" aria-label="Toggle sidebar" aria-expanded="false" aria-controls="sidebar-navigation">
   <span aria-hidden="true">&#9776;</span>
 </div>
 
 
-<nav id="navigation" role="navigation" hidden>
+<nav id="sidebar-navigation" role="navigation" hidden>
   
 
 
@@ -417,15 +417,6 @@
             <li>
               <a href="../NEWS_md.html">
                 NEWS
-              </a>
-            </li>
-
-
-
-
-            <li>
-              <a href="../README_md.html">
-                README
               </a>
             </li>
 
@@ -565,9 +556,11 @@
 
     <ul class="nav-list">
 
+      <li>
 
-      <li><a class="include" href="XMLTokens.html">REXML::XMLTokens</a></li>
+        <a class="include" href="XMLTokens.html">REXML::XMLTokens</a>
 
+      </li>
 
     </ul>
   </details>
@@ -644,7 +637,7 @@
       
       <li>
         
-        <a href="../REXML.html">REXML</a><span>::</span>
+        <a href="../REXML.html">REXML</a><span class="separator">::</span>
         
       </li>
       
@@ -658,8 +651,9 @@
   
 
   <span id="class-REXML::QuickPath" class="legacy-anchor"></span>
-  <h1 id="class-rexml-quickpath" class="anchor-link class">
-    class REXML::QuickPath
+  <h1 id="class-rexml-quickpath" class="anchor-link class page-title">
+    <span class="page-title-kind">class</span>
+    <span class="page-title-name">REXML::QuickPath</span>
   </h1>
 
   <section class="description">
@@ -714,25 +708,32 @@
 
       <div id="method-c-attribute" class="method-detail anchor-link ">
         <div class="method-header">
+          <div class="method-heading-group">
 
-            <div class="method-heading">
-              <a href="#method-c-attribute" title="Link to this method">
-                <span class="method-name">attribute</span>
-                <span class="method-args">( name )</span>
-              </a>
+              <div class="method-heading">
+                <a href="#method-c-attribute" title="Link to this method">
+                  <span class="method-name">attribute</span>
+                  <span class="method-args">(name)</span>
+                </a>
+              </div>
+
+
+
+          </div>
+
+
+            <div class="method-controls">
+              <details class="method-source-toggle">
+                <summary><span class="method-source-icon" aria-hidden="true">{}</span> Source</summary>
+              </details>
             </div>
 
         </div>
 
 
-          <div class="method-controls">
-            <details class="method-source-toggle">
-              <summary>Source</summary>
-            </details>
-          </div>
           <div class="method-source-code" id="attribute-source">
             <pre class="ruby"><span class="ruby-comment"># File lib/rexml/quickpath.rb, line 206</span>
-<span class="ruby-keyword">def</span> <span class="ruby-constant">QuickPath</span><span class="ruby-operator">::</span><span class="ruby-identifier ruby-title">attribute</span>( <span class="ruby-identifier">name</span> )
+<span class="ruby-keyword">def</span> <span class="ruby-constant">QuickPath</span><span class="ruby-operator">::</span><span class="ruby-identifier">attribute</span>( <span class="ruby-identifier">name</span> )
   <span class="ruby-constant">Functions</span>.<span class="ruby-identifier">node</span>.<span class="ruby-identifier">attributes</span>[<span class="ruby-identifier">name</span>] <span class="ruby-keyword">if</span> <span class="ruby-constant">Functions</span>.<span class="ruby-identifier">node</span>.<span class="ruby-identifier">kind_of?</span> <span class="ruby-constant">Element</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
@@ -756,31 +757,38 @@
 
       <div id="method-c-axe" class="method-detail anchor-link ">
         <div class="method-header">
+          <div class="method-heading-group">
 
-            <div class="method-heading">
-              <a href="#method-c-axe" title="Link to this method">
-                <span class="method-name">axe</span>
-                <span class="method-args">( elements, axe_name, rest )</span>
-              </a>
+              <div class="method-heading">
+                <a href="#method-c-axe" title="Link to this method">
+                  <span class="method-name">axe</span>
+                  <span class="method-args">(elements, axe_name, rest)</span>
+                </a>
+              </div>
+
+
+
+          </div>
+
+
+            <div class="method-controls">
+              <details class="method-source-toggle">
+                <summary><span class="method-source-icon" aria-hidden="true">{}</span> Source</summary>
+              </details>
             </div>
 
         </div>
 
 
-          <div class="method-controls">
-            <details class="method-source-toggle">
-              <summary>Source</summary>
-            </details>
-          </div>
           <div class="method-source-code" id="axe-source">
             <pre class="ruby"><span class="ruby-comment"># File lib/rexml/quickpath.rb, line 106</span>
-<span class="ruby-keyword">def</span> <span class="ruby-constant">QuickPath</span><span class="ruby-operator">::</span><span class="ruby-identifier ruby-title">axe</span>( <span class="ruby-identifier">elements</span>, <span class="ruby-identifier">axe_name</span>, <span class="ruby-identifier">rest</span> )
+<span class="ruby-keyword">def</span> <span class="ruby-constant">QuickPath</span><span class="ruby-operator">::</span><span class="ruby-identifier">axe</span>( <span class="ruby-identifier">elements</span>, <span class="ruby-identifier">axe_name</span>, <span class="ruby-identifier">rest</span> )
   <span class="ruby-identifier">matches</span> = []
   <span class="ruby-identifier">matches</span> = <span class="ruby-identifier">filter</span>( <span class="ruby-identifier">elements</span>.<span class="ruby-identifier">dup</span>, <span class="ruby-identifier">rest</span> ) <span class="ruby-keyword">if</span> <span class="ruby-identifier">axe_name</span> <span class="ruby-operator">=~</span> <span class="ruby-regexp">/-or-self$/u</span>
   <span class="ruby-keyword">case</span> <span class="ruby-identifier">axe_name</span>
   <span class="ruby-keyword">when</span> <span class="ruby-regexp">/^descendant/u</span>
     <span class="ruby-identifier">elements</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">element</span><span class="ruby-operator">|</span>
-      <span class="ruby-identifier">matches</span> <span class="ruby-operator">|=</span> <span class="ruby-identifier">filter</span>( <span class="ruby-identifier">element</span>.<span class="ruby-identifier">to_a</span>, <span class="ruby-node">&quot;descendant-or-self::#{rest}&quot;</span> ) <span class="ruby-keyword">if</span> <span class="ruby-identifier">element</span>.<span class="ruby-identifier">kind_of?</span> <span class="ruby-constant">Element</span>
+      <span class="ruby-identifier">matches</span> |= <span class="ruby-identifier">filter</span>( <span class="ruby-identifier">element</span>.<span class="ruby-identifier">to_a</span>, <span class="ruby-string">&quot;</span><span class="ruby-string">descendant-or-self::</span><span class="ruby-string">#{</span><span class="ruby-identifier">rest</span><span class="ruby-string">}</span><span class="ruby-string">&quot;</span> ) <span class="ruby-keyword">if</span> <span class="ruby-identifier">element</span>.<span class="ruby-identifier">kind_of?</span> <span class="ruby-constant">Element</span>
     <span class="ruby-keyword">end</span>
   <span class="ruby-keyword">when</span> <span class="ruby-regexp">/^ancestor/u</span>
     <span class="ruby-identifier">elements</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">element</span><span class="ruby-operator">|</span>
@@ -790,22 +798,22 @@
       <span class="ruby-keyword">end</span>
     <span class="ruby-keyword">end</span>
     <span class="ruby-identifier">matches</span> = <span class="ruby-identifier">filter</span>( <span class="ruby-identifier">matches</span>, <span class="ruby-identifier">rest</span> )
-  <span class="ruby-keyword">when</span> <span class="ruby-string">&quot;self&quot;</span>
+  <span class="ruby-keyword">when</span> <span class="ruby-string">&quot;</span><span class="ruby-string">self</span><span class="ruby-string">&quot;</span>
     <span class="ruby-identifier">matches</span> = <span class="ruby-identifier">filter</span>( <span class="ruby-identifier">elements</span>, <span class="ruby-identifier">rest</span> )
-  <span class="ruby-keyword">when</span> <span class="ruby-string">&quot;child&quot;</span>
+  <span class="ruby-keyword">when</span> <span class="ruby-string">&quot;</span><span class="ruby-string">child</span><span class="ruby-string">&quot;</span>
     <span class="ruby-identifier">elements</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">element</span><span class="ruby-operator">|</span>
-      <span class="ruby-identifier">matches</span> <span class="ruby-operator">|=</span> <span class="ruby-identifier">filter</span>( <span class="ruby-identifier">element</span>.<span class="ruby-identifier">to_a</span>, <span class="ruby-identifier">rest</span> ) <span class="ruby-keyword">if</span> <span class="ruby-identifier">element</span>.<span class="ruby-identifier">kind_of?</span> <span class="ruby-constant">Element</span>
+      <span class="ruby-identifier">matches</span> |= <span class="ruby-identifier">filter</span>( <span class="ruby-identifier">element</span>.<span class="ruby-identifier">to_a</span>, <span class="ruby-identifier">rest</span> ) <span class="ruby-keyword">if</span> <span class="ruby-identifier">element</span>.<span class="ruby-identifier">kind_of?</span> <span class="ruby-constant">Element</span>
     <span class="ruby-keyword">end</span>
-  <span class="ruby-keyword">when</span> <span class="ruby-string">&quot;attribute&quot;</span>
+  <span class="ruby-keyword">when</span> <span class="ruby-string">&quot;</span><span class="ruby-string">attribute</span><span class="ruby-string">&quot;</span>
     <span class="ruby-identifier">elements</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">element</span><span class="ruby-operator">|</span>
       <span class="ruby-identifier">matches</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">element</span>.<span class="ruby-identifier">attributes</span>[ <span class="ruby-identifier">rest</span> ] <span class="ruby-keyword">if</span> <span class="ruby-identifier">element</span>.<span class="ruby-identifier">kind_of?</span> <span class="ruby-constant">Element</span>
     <span class="ruby-keyword">end</span>
-  <span class="ruby-keyword">when</span> <span class="ruby-string">&quot;parent&quot;</span>
+  <span class="ruby-keyword">when</span> <span class="ruby-string">&quot;</span><span class="ruby-string">parent</span><span class="ruby-string">&quot;</span>
     <span class="ruby-identifier">matches</span> = <span class="ruby-identifier">filter</span>(<span class="ruby-identifier">elements</span>.<span class="ruby-identifier">collect</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">element</span><span class="ruby-operator">|</span> <span class="ruby-identifier">element</span>.<span class="ruby-identifier">parent</span>}.<span class="ruby-identifier">uniq</span>, <span class="ruby-identifier">rest</span>)
-  <span class="ruby-keyword">when</span> <span class="ruby-string">&quot;following-sibling&quot;</span>
+  <span class="ruby-keyword">when</span> <span class="ruby-string">&quot;</span><span class="ruby-string">following-sibling</span><span class="ruby-string">&quot;</span>
     <span class="ruby-identifier">matches</span> = <span class="ruby-identifier">filter</span>(<span class="ruby-identifier">elements</span>.<span class="ruby-identifier">collect</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">element</span><span class="ruby-operator">|</span> <span class="ruby-identifier">element</span>.<span class="ruby-identifier">next_sibling</span>}.<span class="ruby-identifier">uniq</span>,
       <span class="ruby-identifier">rest</span>)
-  <span class="ruby-keyword">when</span> <span class="ruby-string">&quot;previous-sibling&quot;</span>
+  <span class="ruby-keyword">when</span> <span class="ruby-string">&quot;</span><span class="ruby-string">previous-sibling</span><span class="ruby-string">&quot;</span>
     <span class="ruby-identifier">matches</span> = <span class="ruby-identifier">filter</span>(<span class="ruby-identifier">elements</span>.<span class="ruby-identifier">collect</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">element</span><span class="ruby-operator">|</span>
       <span class="ruby-identifier">element</span>.<span class="ruby-identifier">previous_sibling</span>}.<span class="ruby-identifier">uniq</span>, <span class="ruby-identifier">rest</span> )
   <span class="ruby-keyword">end</span>
@@ -832,26 +840,33 @@
 
       <div id="method-c-each" class="method-detail anchor-link ">
         <div class="method-header">
+          <div class="method-heading-group">
 
-            <div class="method-heading">
-              <a href="#method-c-each" title="Link to this method">
-                <span class="method-name">each</span>
-                <span class="method-args">(element, path, namespaces=EMPTY_HASH, &amp;block)</span>
-              </a>
+              <div class="method-heading">
+                <a href="#method-c-each" title="Link to this method">
+                  <span class="method-name">each</span>
+                  <span class="method-args">(element, path, namespaces=EMPTY_HASH, &amp;block)</span>
+                </a>
+              </div>
+
+
+
+          </div>
+
+
+            <div class="method-controls">
+              <details class="method-source-toggle">
+                <summary><span class="method-source-icon" aria-hidden="true">{}</span> Source</summary>
+              </details>
             </div>
 
         </div>
 
 
-          <div class="method-controls">
-            <details class="method-source-toggle">
-              <summary>Source</summary>
-            </details>
-          </div>
           <div class="method-source-code" id="each-source">
             <pre class="ruby"><span class="ruby-comment"># File lib/rexml/quickpath.rb, line 17</span>
-<span class="ruby-keyword">def</span> <span class="ruby-constant">QuickPath</span><span class="ruby-operator">::</span><span class="ruby-identifier ruby-title">each</span> <span class="ruby-identifier">element</span>, <span class="ruby-identifier">path</span>, <span class="ruby-identifier">namespaces</span>=<span class="ruby-constant">EMPTY_HASH</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>
-  <span class="ruby-identifier">path</span> = <span class="ruby-string">&quot;*&quot;</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">path</span>
+<span class="ruby-keyword">def</span> <span class="ruby-constant">QuickPath</span><span class="ruby-operator">::</span><span class="ruby-identifier">each</span> <span class="ruby-identifier">element</span>, <span class="ruby-identifier">path</span>, <span class="ruby-identifier">namespaces</span>=<span class="ruby-constant">EMPTY_HASH</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>
+  <span class="ruby-identifier">path</span> = <span class="ruby-string">&quot;</span><span class="ruby-string">*</span><span class="ruby-string">&quot;</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">path</span>
   <span class="ruby-identifier">match</span>(<span class="ruby-identifier">element</span>, <span class="ruby-identifier">path</span>, <span class="ruby-identifier">namespaces</span>).<span class="ruby-identifier">each</span>( <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span> )
 <span class="ruby-keyword">end</span></pre>
           </div>
@@ -875,44 +890,51 @@
 
       <div id="method-c-filter" class="method-detail anchor-link ">
         <div class="method-header">
+          <div class="method-heading-group">
 
-            <div class="method-heading">
-              <a href="#method-c-filter" title="Link to this method">
-                <span class="method-name">filter</span>
-                <span class="method-args">(elements, path)</span>
-              </a>
+              <div class="method-heading">
+                <a href="#method-c-filter" title="Link to this method">
+                  <span class="method-name">filter</span>
+                  <span class="method-args">(elements, path)</span>
+                </a>
+              </div>
+
+
+
+          </div>
+
+
+            <div class="method-controls">
+              <details class="method-source-toggle">
+                <summary><span class="method-source-icon" aria-hidden="true">{}</span> Source</summary>
+              </details>
             </div>
 
         </div>
 
 
-          <div class="method-controls">
-            <details class="method-source-toggle">
-              <summary>Source</summary>
-            </details>
-          </div>
           <div class="method-source-code" id="filter-source">
             <pre class="ruby"><span class="ruby-comment"># File lib/rexml/quickpath.rb, line 49</span>
-<span class="ruby-keyword">def</span> <span class="ruby-constant">QuickPath</span><span class="ruby-operator">::</span><span class="ruby-identifier ruby-title">filter</span> <span class="ruby-identifier">elements</span>, <span class="ruby-identifier">path</span>
-  <span class="ruby-keyword">return</span> <span class="ruby-identifier">elements</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">path</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-keyword">or</span> <span class="ruby-identifier">path</span> <span class="ruby-operator">==</span> <span class="ruby-string">&#39;&#39;</span> <span class="ruby-keyword">or</span> <span class="ruby-identifier">elements</span>.<span class="ruby-identifier">size</span> <span class="ruby-operator">==</span> <span class="ruby-value">0</span>
+<span class="ruby-keyword">def</span> <span class="ruby-constant">QuickPath</span><span class="ruby-operator">::</span><span class="ruby-identifier">filter</span> <span class="ruby-identifier">elements</span>, <span class="ruby-identifier">path</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-identifier">elements</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">path</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-keyword">or</span> <span class="ruby-identifier">path</span> <span class="ruby-operator">==</span> <span class="ruby-string">&#39;</span><span class="ruby-string">&#39;</span> <span class="ruby-keyword">or</span> <span class="ruby-identifier">elements</span>.<span class="ruby-identifier">size</span> <span class="ruby-operator">==</span> <span class="ruby-value">0</span>
   <span class="ruby-keyword">case</span> <span class="ruby-identifier">path</span>
   <span class="ruby-keyword">when</span> <span class="ruby-regexp">/^\/\//u</span>                                                                                     <span class="ruby-comment"># Descendant</span>
-    <span class="ruby-identifier">axe</span>( <span class="ruby-identifier">elements</span>, <span class="ruby-string">&quot;descendant-or-self&quot;</span>, <span class="ruby-node">$&#39;</span> )
+    <span class="ruby-identifier">axe</span>( <span class="ruby-identifier">elements</span>, <span class="ruby-string">&quot;</span><span class="ruby-string">descendant-or-self</span><span class="ruby-string">&quot;</span>, <span class="ruby-identifier">$&#39;</span> )
   <span class="ruby-keyword">when</span> <span class="ruby-regexp">/^\/?\b(\w[-\w]*)\b::/u</span>                                                      <span class="ruby-comment"># Axe</span>
-    <span class="ruby-identifier">axe</span>( <span class="ruby-identifier">elements</span>, <span class="ruby-node">$1</span>, <span class="ruby-node">$&#39;</span> )
+    <span class="ruby-identifier">axe</span>( <span class="ruby-identifier">elements</span>, <span class="ruby-identifier">$1</span>, <span class="ruby-identifier">$&#39;</span> )
   <span class="ruby-keyword">when</span> <span class="ruby-regexp">/^\/(?=\b([:!\w][-\.\w]*:)?[-!\*\.\w]*\b([^:(]|$)|\*)/u</span>      <span class="ruby-comment"># Child</span>
-    <span class="ruby-identifier">rest</span> = <span class="ruby-node">$&#39;</span>
+    <span class="ruby-identifier">rest</span> = <span class="ruby-identifier">$&#39;</span>
     <span class="ruby-identifier">results</span> = []
     <span class="ruby-identifier">elements</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">element</span><span class="ruby-operator">|</span>
-      <span class="ruby-identifier">results</span> <span class="ruby-operator">|=</span> <span class="ruby-identifier">filter</span>( <span class="ruby-identifier">element</span>.<span class="ruby-identifier">to_a</span>, <span class="ruby-identifier">rest</span> )
+      <span class="ruby-identifier">results</span> |= <span class="ruby-identifier">filter</span>( <span class="ruby-identifier">element</span>.<span class="ruby-identifier">to_a</span>, <span class="ruby-identifier">rest</span> )
     <span class="ruby-keyword">end</span>
     <span class="ruby-identifier">results</span>
   <span class="ruby-keyword">when</span> <span class="ruby-regexp">/^\/?(\w[-\w]*)\(/u</span>                                                  <span class="ruby-comment"># / Function</span>
-    <span class="ruby-identifier">function</span>( <span class="ruby-identifier">elements</span>, <span class="ruby-node">$1</span>, <span class="ruby-node">$&#39;</span> )
+    <span class="ruby-identifier">function</span>( <span class="ruby-identifier">elements</span>, <span class="ruby-identifier">$1</span>, <span class="ruby-identifier">$&#39;</span> )
   <span class="ruby-keyword">when</span> <span class="ruby-constant">Namespace</span><span class="ruby-operator">::</span><span class="ruby-constant">NAMESPLIT</span>         <span class="ruby-comment"># Element name</span>
-    <span class="ruby-identifier">name</span> = <span class="ruby-node">$2</span>
-    <span class="ruby-identifier">ns</span> = <span class="ruby-node">$1</span>
-    <span class="ruby-identifier">rest</span> = <span class="ruby-node">$&#39;</span>
+    <span class="ruby-identifier">name</span> = <span class="ruby-identifier">$2</span>
+    <span class="ruby-identifier">ns</span> = <span class="ruby-identifier">$1</span>
+    <span class="ruby-identifier">rest</span> = <span class="ruby-identifier">$&#39;</span>
     <span class="ruby-identifier">elements</span>.<span class="ruby-identifier">delete_if</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">element</span><span class="ruby-operator">|</span>
       <span class="ruby-operator">!</span>(<span class="ruby-identifier">element</span>.<span class="ruby-identifier">kind_of?</span> <span class="ruby-constant">Element</span> <span class="ruby-keyword">and</span>
         (<span class="ruby-identifier">element</span>.<span class="ruby-identifier">expanded_name</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">name</span> <span class="ruby-keyword">or</span>
@@ -923,21 +945,21 @@
   <span class="ruby-keyword">when</span> <span class="ruby-regexp">/^\/\[/u</span>
     <span class="ruby-identifier">matches</span> = []
     <span class="ruby-identifier">elements</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">element</span><span class="ruby-operator">|</span>
-      <span class="ruby-identifier">matches</span> <span class="ruby-operator">|=</span> <span class="ruby-identifier">predicate</span>( <span class="ruby-identifier">element</span>.<span class="ruby-identifier">to_a</span>, <span class="ruby-identifier">path</span>[<span class="ruby-value">1</span><span class="ruby-operator">..</span><span class="ruby-value">-1</span>] ) <span class="ruby-keyword">if</span> <span class="ruby-identifier">element</span>.<span class="ruby-identifier">kind_of?</span> <span class="ruby-constant">Element</span>
+      <span class="ruby-identifier">matches</span> |= <span class="ruby-identifier">predicate</span>( <span class="ruby-identifier">element</span>.<span class="ruby-identifier">to_a</span>, <span class="ruby-identifier">path</span>[<span class="ruby-value">1</span>..-<span class="ruby-value">1</span>] ) <span class="ruby-keyword">if</span> <span class="ruby-identifier">element</span>.<span class="ruby-identifier">kind_of?</span> <span class="ruby-constant">Element</span>
     <span class="ruby-keyword">end</span>
     <span class="ruby-identifier">matches</span>
   <span class="ruby-keyword">when</span> <span class="ruby-regexp">/^\[/u</span>                                                                                               <span class="ruby-comment"># Predicate</span>
     <span class="ruby-identifier">predicate</span>( <span class="ruby-identifier">elements</span>, <span class="ruby-identifier">path</span> )
   <span class="ruby-keyword">when</span> <span class="ruby-regexp">/^\/?\.\.\./u</span>                                                                                <span class="ruby-comment"># Ancestor</span>
-    <span class="ruby-identifier">axe</span>( <span class="ruby-identifier">elements</span>, <span class="ruby-string">&quot;ancestor&quot;</span>, <span class="ruby-node">$&#39;</span> )
+    <span class="ruby-identifier">axe</span>( <span class="ruby-identifier">elements</span>, <span class="ruby-string">&quot;</span><span class="ruby-string">ancestor</span><span class="ruby-string">&quot;</span>, <span class="ruby-identifier">$&#39;</span> )
   <span class="ruby-keyword">when</span> <span class="ruby-regexp">/^\/?\.\./u</span>                                                                                  <span class="ruby-comment"># Parent</span>
-    <span class="ruby-identifier">filter</span>( <span class="ruby-identifier">elements</span>.<span class="ruby-identifier">collect</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">e</span><span class="ruby-operator">|</span><span class="ruby-identifier">e</span>.<span class="ruby-identifier">parent</span>}, <span class="ruby-node">$&#39;</span> )
+    <span class="ruby-identifier">filter</span>( <span class="ruby-identifier">elements</span>.<span class="ruby-identifier">collect</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">e</span><span class="ruby-operator">|</span><span class="ruby-identifier">e</span>.<span class="ruby-identifier">parent</span>}, <span class="ruby-identifier">$&#39;</span> )
   <span class="ruby-keyword">when</span> <span class="ruby-regexp">/^\/?\./u</span>                                                                                            <span class="ruby-comment"># Self</span>
-    <span class="ruby-identifier">filter</span>( <span class="ruby-identifier">elements</span>, <span class="ruby-node">$&#39;</span> )
+    <span class="ruby-identifier">filter</span>( <span class="ruby-identifier">elements</span>, <span class="ruby-identifier">$&#39;</span> )
   <span class="ruby-keyword">when</span> <span class="ruby-regexp">/^\*/u</span>                                                                                                       <span class="ruby-comment"># Any</span>
     <span class="ruby-identifier">results</span> = []
     <span class="ruby-identifier">elements</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">element</span><span class="ruby-operator">|</span>
-      <span class="ruby-identifier">results</span> <span class="ruby-operator">|=</span> <span class="ruby-identifier">filter</span>( [<span class="ruby-identifier">element</span>], <span class="ruby-node">$&#39;</span> ) <span class="ruby-keyword">if</span> <span class="ruby-identifier">element</span>.<span class="ruby-identifier">kind_of?</span> <span class="ruby-constant">Element</span>
+      <span class="ruby-identifier">results</span> |= <span class="ruby-identifier">filter</span>( [<span class="ruby-identifier">element</span>], <span class="ruby-identifier">$&#39;</span> ) <span class="ruby-keyword">if</span> <span class="ruby-identifier">element</span>.<span class="ruby-identifier">kind_of?</span> <span class="ruby-constant">Element</span>
       <span class="ruby-comment">#if element.kind_of? Element</span>
       <span class="ruby-comment">#     children = element.to_a</span>
       <span class="ruby-comment">#     children.delete_if { |child| !child.kind_of?(Element) }</span>
@@ -970,25 +992,32 @@
 
       <div id="method-c-first" class="method-detail anchor-link ">
         <div class="method-header">
+          <div class="method-heading-group">
 
-            <div class="method-heading">
-              <a href="#method-c-first" title="Link to this method">
-                <span class="method-name">first</span>
-                <span class="method-args">(element, path, namespaces=EMPTY_HASH)</span>
-              </a>
+              <div class="method-heading">
+                <a href="#method-c-first" title="Link to this method">
+                  <span class="method-name">first</span>
+                  <span class="method-args">(element, path, namespaces=EMPTY_HASH)</span>
+                </a>
+              </div>
+
+
+
+          </div>
+
+
+            <div class="method-controls">
+              <details class="method-source-toggle">
+                <summary><span class="method-source-icon" aria-hidden="true">{}</span> Source</summary>
+              </details>
             </div>
 
         </div>
 
 
-          <div class="method-controls">
-            <details class="method-source-toggle">
-              <summary>Source</summary>
-            </details>
-          </div>
           <div class="method-source-code" id="first-source">
             <pre class="ruby"><span class="ruby-comment"># File lib/rexml/quickpath.rb, line 13</span>
-<span class="ruby-keyword">def</span> <span class="ruby-constant">QuickPath</span><span class="ruby-operator">::</span><span class="ruby-identifier ruby-title">first</span> <span class="ruby-identifier">element</span>, <span class="ruby-identifier">path</span>, <span class="ruby-identifier">namespaces</span>=<span class="ruby-constant">EMPTY_HASH</span>
+<span class="ruby-keyword">def</span> <span class="ruby-constant">QuickPath</span><span class="ruby-operator">::</span><span class="ruby-identifier">first</span> <span class="ruby-identifier">element</span>, <span class="ruby-identifier">path</span>, <span class="ruby-identifier">namespaces</span>=<span class="ruby-constant">EMPTY_HASH</span>
   <span class="ruby-identifier">match</span>(<span class="ruby-identifier">element</span>, <span class="ruby-identifier">path</span>, <span class="ruby-identifier">namespaces</span>)[<span class="ruby-value">0</span>]
 <span class="ruby-keyword">end</span></pre>
           </div>
@@ -1012,30 +1041,37 @@
 
       <div id="method-c-function" class="method-detail anchor-link ">
         <div class="method-header">
+          <div class="method-heading-group">
 
-            <div class="method-heading">
-              <a href="#method-c-function" title="Link to this method">
-                <span class="method-name">function</span>
-                <span class="method-args">( elements, fname, rest )</span>
-              </a>
+              <div class="method-heading">
+                <a href="#method-c-function" title="Link to this method">
+                  <span class="method-name">function</span>
+                  <span class="method-args">(elements, fname, rest)</span>
+                </a>
+              </div>
+
+
+
+          </div>
+
+
+            <div class="method-controls">
+              <details class="method-source-toggle">
+                <summary><span class="method-source-icon" aria-hidden="true">{}</span> Source</summary>
+              </details>
             </div>
 
         </div>
 
 
-          <div class="method-controls">
-            <details class="method-source-toggle">
-              <summary>Source</summary>
-            </details>
-          </div>
           <div class="method-source-code" id="function-source">
             <pre class="ruby"><span class="ruby-comment"># File lib/rexml/quickpath.rb, line 222</span>
-<span class="ruby-keyword">def</span> <span class="ruby-constant">QuickPath</span><span class="ruby-operator">::</span><span class="ruby-identifier ruby-title">function</span>( <span class="ruby-identifier">elements</span>, <span class="ruby-identifier">fname</span>, <span class="ruby-identifier">rest</span> )
+<span class="ruby-keyword">def</span> <span class="ruby-constant">QuickPath</span><span class="ruby-operator">::</span><span class="ruby-identifier">function</span>( <span class="ruby-identifier">elements</span>, <span class="ruby-identifier">fname</span>, <span class="ruby-identifier">rest</span> )
   <span class="ruby-identifier">args</span> = <span class="ruby-identifier">parse_args</span>( <span class="ruby-identifier">elements</span>, <span class="ruby-identifier">rest</span> )
   <span class="ruby-constant">Functions</span>.<span class="ruby-identifier">pair</span> = [<span class="ruby-value">0</span>, <span class="ruby-identifier">elements</span>.<span class="ruby-identifier">size</span>]
   <span class="ruby-identifier">results</span> = []
   <span class="ruby-identifier">elements</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">element</span><span class="ruby-operator">|</span>
-    <span class="ruby-constant">Functions</span>.<span class="ruby-identifier">pair</span>[<span class="ruby-value">0</span>] <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
+    <span class="ruby-constant">Functions</span>.<span class="ruby-identifier">pair</span>[<span class="ruby-value">0</span>] += <span class="ruby-value">1</span>
     <span class="ruby-constant">Functions</span>.<span class="ruby-identifier">node</span> = <span class="ruby-identifier">element</span>
     <span class="ruby-identifier">res</span> = <span class="ruby-constant">Functions</span>.<span class="ruby-identifier">send</span>( <span class="ruby-identifier">fname</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">args</span> )
     <span class="ruby-keyword">case</span> <span class="ruby-identifier">res</span>
@@ -1068,33 +1104,40 @@
 
       <div id="method-c-match" class="method-detail anchor-link ">
         <div class="method-header">
+          <div class="method-heading-group">
 
-            <div class="method-heading">
-              <a href="#method-c-match" title="Link to this method">
-                <span class="method-name">match</span>
-                <span class="method-args">(element, path, namespaces=EMPTY_HASH)</span>
-              </a>
+              <div class="method-heading">
+                <a href="#method-c-match" title="Link to this method">
+                  <span class="method-name">match</span>
+                  <span class="method-args">(element, path, namespaces=EMPTY_HASH)</span>
+                </a>
+              </div>
+
+
+
+          </div>
+
+
+            <div class="method-controls">
+              <details class="method-source-toggle">
+                <summary><span class="method-source-icon" aria-hidden="true">{}</span> Source</summary>
+              </details>
             </div>
 
         </div>
 
 
-          <div class="method-controls">
-            <details class="method-source-toggle">
-              <summary>Source</summary>
-            </details>
-          </div>
           <div class="method-source-code" id="match-source">
             <pre class="ruby"><span class="ruby-comment"># File lib/rexml/quickpath.rb, line 22</span>
-<span class="ruby-keyword">def</span> <span class="ruby-constant">QuickPath</span><span class="ruby-operator">::</span><span class="ruby-identifier ruby-title">match</span> <span class="ruby-identifier">element</span>, <span class="ruby-identifier">path</span>, <span class="ruby-identifier">namespaces</span>=<span class="ruby-constant">EMPTY_HASH</span>
-  <span class="ruby-identifier">raise</span> <span class="ruby-string">&quot;nil is not a valid xpath&quot;</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">path</span>
+<span class="ruby-keyword">def</span> <span class="ruby-constant">QuickPath</span><span class="ruby-operator">::</span><span class="ruby-identifier">match</span> <span class="ruby-identifier">element</span>, <span class="ruby-identifier">path</span>, <span class="ruby-identifier">namespaces</span>=<span class="ruby-constant">EMPTY_HASH</span>
+  <span class="ruby-identifier">raise</span> <span class="ruby-string">&quot;</span><span class="ruby-string">nil is not a valid xpath</span><span class="ruby-string">&quot;</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">path</span>
   <span class="ruby-identifier">results</span> = <span class="ruby-keyword">nil</span>
   <span class="ruby-constant">Functions</span><span class="ruby-operator">::</span><span class="ruby-identifier">namespace_context</span> = <span class="ruby-identifier">namespaces</span>
   <span class="ruby-keyword">case</span> <span class="ruby-identifier">path</span>
   <span class="ruby-keyword">when</span> <span class="ruby-regexp">/^\/([^\/]|$)/u</span>
     <span class="ruby-comment"># match on root</span>
-    <span class="ruby-identifier">path</span> = <span class="ruby-identifier">path</span>[<span class="ruby-value">1</span><span class="ruby-operator">..</span><span class="ruby-value">-1</span>]
-    <span class="ruby-keyword">return</span> [<span class="ruby-identifier">element</span>.<span class="ruby-identifier">root</span>.<span class="ruby-identifier">parent</span>] <span class="ruby-keyword">if</span> <span class="ruby-identifier">path</span> <span class="ruby-operator">==</span> <span class="ruby-string">&#39;&#39;</span>
+    <span class="ruby-identifier">path</span> = <span class="ruby-identifier">path</span>[<span class="ruby-value">1</span>..-<span class="ruby-value">1</span>]
+    <span class="ruby-keyword">return</span> [<span class="ruby-identifier">element</span>.<span class="ruby-identifier">root</span>.<span class="ruby-identifier">parent</span>] <span class="ruby-keyword">if</span> <span class="ruby-identifier">path</span> <span class="ruby-operator">==</span> <span class="ruby-string">&#39;</span><span class="ruby-string">&#39;</span>
     <span class="ruby-identifier">results</span> = <span class="ruby-identifier">filter</span>([<span class="ruby-identifier">element</span>.<span class="ruby-identifier">root</span>], <span class="ruby-identifier">path</span>)
   <span class="ruby-keyword">when</span> <span class="ruby-regexp">/^[-\w]*::/u</span>
     <span class="ruby-identifier">results</span> = <span class="ruby-identifier">filter</span>([<span class="ruby-identifier">element</span>], <span class="ruby-identifier">path</span>)
@@ -1130,29 +1173,36 @@
 
       <div id="method-c-method_missing" class="method-detail anchor-link ">
         <div class="method-header">
+          <div class="method-heading-group">
 
-            <div class="method-heading">
-              <a href="#method-c-method_missing" title="Link to this method">
-                <span class="method-name">method_missing</span>
-                <span class="method-args">( id, *args )</span>
-              </a>
+              <div class="method-heading">
+                <a href="#method-c-method_missing" title="Link to this method">
+                  <span class="method-name">method_missing</span>
+                  <span class="method-args">(id, *args)</span>
+                </a>
+              </div>
+
+
+
+          </div>
+
+
+            <div class="method-controls">
+              <details class="method-source-toggle">
+                <summary><span class="method-source-icon" aria-hidden="true">{}</span> Source</summary>
+              </details>
             </div>
 
         </div>
 
 
-          <div class="method-controls">
-            <details class="method-source-toggle">
-              <summary>Source</summary>
-            </details>
-          </div>
           <div class="method-source-code" id="method_missing-source">
             <pre class="ruby"><span class="ruby-comment"># File lib/rexml/quickpath.rb, line 214</span>
-<span class="ruby-keyword">def</span> <span class="ruby-constant">QuickPath</span><span class="ruby-operator">::</span><span class="ruby-identifier ruby-title">method_missing</span>( <span class="ruby-identifier">id</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">args</span> )
+<span class="ruby-keyword">def</span> <span class="ruby-constant">QuickPath</span><span class="ruby-operator">::</span><span class="ruby-identifier">method_missing</span>( <span class="ruby-identifier">id</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">args</span> )
   <span class="ruby-keyword">begin</span>
     <span class="ruby-constant">Functions</span>.<span class="ruby-identifier">send</span>( <span class="ruby-identifier">id</span>.<span class="ruby-identifier">id2name</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">args</span> )
   <span class="ruby-keyword">rescue</span> <span class="ruby-constant">Exception</span>
-    <span class="ruby-identifier">raise</span> <span class="ruby-node">&quot;METHOD: #{id.id2name}(#{args.join &#39;, &#39;})\n#{$!.message}&quot;</span>
+    <span class="ruby-identifier">raise</span> <span class="ruby-string">&quot;</span><span class="ruby-string">METHOD: </span><span class="ruby-string">#{</span><span class="ruby-identifier">id</span>.<span class="ruby-identifier">id2name</span><span class="ruby-string">}</span><span class="ruby-string">(</span><span class="ruby-string">#{</span><span class="ruby-identifier">args</span>.<span class="ruby-identifier">join</span> <span class="ruby-string">&#39;</span><span class="ruby-string">, </span><span class="ruby-string">&#39;</span><span class="ruby-string">}</span><span class="ruby-string">)\n</span><span class="ruby-string">#{</span><span class="ruby-identifier">$!</span>.<span class="ruby-identifier">message</span><span class="ruby-string">}</span><span class="ruby-string">&quot;</span>
   <span class="ruby-keyword">end</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
@@ -1176,25 +1226,32 @@
 
       <div id="method-c-name" class="method-detail anchor-link ">
         <div class="method-header">
+          <div class="method-heading-group">
 
-            <div class="method-heading">
-              <a href="#method-c-name" title="Link to this method">
-                <span class="method-name">name</span>
-                <span class="method-args">()</span>
-              </a>
+              <div class="method-heading">
+                <a href="#method-c-name" title="Link to this method">
+                  <span class="method-name">name</span>
+                  <span class="method-args">()</span>
+                </a>
+              </div>
+
+
+
+          </div>
+
+
+            <div class="method-controls">
+              <details class="method-source-toggle">
+                <summary><span class="method-source-icon" aria-hidden="true">{}</span> Source</summary>
+              </details>
             </div>
 
         </div>
 
 
-          <div class="method-controls">
-            <details class="method-source-toggle">
-              <summary>Source</summary>
-            </details>
-          </div>
           <div class="method-source-code" id="name-source">
             <pre class="ruby"><span class="ruby-comment"># File lib/rexml/quickpath.rb, line 210</span>
-<span class="ruby-keyword">def</span> <span class="ruby-constant">QuickPath</span><span class="ruby-operator">::</span><span class="ruby-identifier ruby-title">name</span>()
+<span class="ruby-keyword">def</span> <span class="ruby-constant">QuickPath</span><span class="ruby-operator">::</span><span class="ruby-identifier">name</span>()
   <span class="ruby-constant">Functions</span>.<span class="ruby-identifier">node</span>.<span class="ruby-identifier">name</span> <span class="ruby-keyword">if</span> <span class="ruby-constant">Functions</span>.<span class="ruby-identifier">node</span>.<span class="ruby-identifier">kind_of?</span> <span class="ruby-constant">Element</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
@@ -1218,48 +1275,55 @@
 
       <div id="method-c-parse_args" class="method-detail anchor-link ">
         <div class="method-header">
+          <div class="method-heading-group">
 
-            <div class="method-heading">
-              <a href="#method-c-parse_args" title="Link to this method">
-                <span class="method-name">parse_args</span>
-                <span class="method-args">( element, string )</span>
-              </a>
+              <div class="method-heading">
+                <a href="#method-c-parse_args" title="Link to this method">
+                  <span class="method-name">parse_args</span>
+                  <span class="method-args">(element, string)</span>
+                </a>
+              </div>
+
+
+
+          </div>
+
+
+            <div class="method-controls">
+              <details class="method-source-toggle">
+                <summary><span class="method-source-icon" aria-hidden="true">{}</span> Source</summary>
+              </details>
             </div>
 
         </div>
 
 
-          <div class="method-controls">
-            <details class="method-source-toggle">
-              <summary>Source</summary>
-            </details>
-          </div>
           <div class="method-source-code" id="parse_args-source">
             <pre class="ruby"><span class="ruby-comment"># File lib/rexml/quickpath.rb, line 240</span>
-<span class="ruby-keyword">def</span> <span class="ruby-constant">QuickPath</span><span class="ruby-operator">::</span><span class="ruby-identifier ruby-title">parse_args</span>( <span class="ruby-identifier">element</span>, <span class="ruby-identifier">string</span> )
+<span class="ruby-keyword">def</span> <span class="ruby-constant">QuickPath</span><span class="ruby-operator">::</span><span class="ruby-identifier">parse_args</span>( <span class="ruby-identifier">element</span>, <span class="ruby-identifier">string</span> )
   <span class="ruby-comment"># /.*?(?:\)|,)/</span>
   <span class="ruby-identifier">arguments</span> = []
-  <span class="ruby-identifier">buffer</span> = <span class="ruby-string">&quot;&quot;</span>
-  <span class="ruby-keyword">while</span> <span class="ruby-identifier">string</span> <span class="ruby-keyword">and</span> <span class="ruby-identifier">string</span> <span class="ruby-operator">!=</span> <span class="ruby-string">&quot;&quot;</span>
+  <span class="ruby-identifier">buffer</span> = <span class="ruby-string">&quot;</span><span class="ruby-string">&quot;</span>
+  <span class="ruby-keyword">while</span> <span class="ruby-identifier">string</span> <span class="ruby-keyword">and</span> <span class="ruby-identifier">string</span> <span class="ruby-operator">!=</span> <span class="ruby-string">&quot;</span><span class="ruby-string">&quot;</span>
     <span class="ruby-identifier">c</span> = <span class="ruby-identifier">string</span>[<span class="ruby-value">0</span>]
-    <span class="ruby-identifier">string</span>.<span class="ruby-identifier">sub!</span>(<span class="ruby-regexp">/^./u</span>, <span class="ruby-string">&quot;&quot;</span>)
+    <span class="ruby-identifier">string</span>.<span class="ruby-identifier">sub!</span>(<span class="ruby-regexp">/^./u</span>, <span class="ruby-string">&quot;</span><span class="ruby-string">&quot;</span>)
     <span class="ruby-keyword">case</span> <span class="ruby-identifier">c</span>
-    <span class="ruby-keyword">when</span> <span class="ruby-value">?,</span>
+    <span class="ruby-keyword">when</span> <span class="ruby-string">?</span><span class="ruby-string">,</span>
       <span class="ruby-comment"># if depth = 1, then we start a new argument</span>
       <span class="ruby-identifier">arguments</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">evaluate</span>( <span class="ruby-identifier">buffer</span> )
       <span class="ruby-comment">#arguments &lt;&lt; evaluate( string[0..count] )</span>
-    <span class="ruby-keyword">when</span> <span class="ruby-value">?(</span>
+    <span class="ruby-keyword">when</span> <span class="ruby-string">?</span><span class="ruby-string">(</span>
       <span class="ruby-comment"># start a new method call</span>
       <span class="ruby-identifier">function</span>( <span class="ruby-identifier">element</span>, <span class="ruby-identifier">buffer</span>, <span class="ruby-identifier">string</span> )
-      <span class="ruby-identifier">buffer</span> = <span class="ruby-string">&quot;&quot;</span>
-    <span class="ruby-keyword">when</span> <span class="ruby-value">?)</span>
+      <span class="ruby-identifier">buffer</span> = <span class="ruby-string">&quot;</span><span class="ruby-string">&quot;</span>
+    <span class="ruby-keyword">when</span> <span class="ruby-string">?</span><span class="ruby-string">)</span>
       <span class="ruby-comment"># close the method call and return arguments</span>
       <span class="ruby-keyword">return</span> <span class="ruby-identifier">arguments</span>
     <span class="ruby-keyword">else</span>
       <span class="ruby-identifier">buffer</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">c</span>
     <span class="ruby-keyword">end</span>
   <span class="ruby-keyword">end</span>
-  <span class="ruby-string">&quot;&quot;</span>
+  <span class="ruby-string">&quot;</span><span class="ruby-string">&quot;</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
 
@@ -1282,55 +1346,62 @@
 
       <div id="method-c-predicate" class="method-detail anchor-link ">
         <div class="method-header">
+          <div class="method-heading-group">
 
-            <div class="method-heading">
-              <a href="#method-c-predicate" title="Link to this method">
-                <span class="method-name">predicate</span>
-                <span class="method-args">( elements, path )</span>
-              </a>
+              <div class="method-heading">
+                <a href="#method-c-predicate" title="Link to this method">
+                  <span class="method-name">predicate</span>
+                  <span class="method-args">(elements, path)</span>
+                </a>
+              </div>
+
+
+
+          </div>
+
+
+            <div class="method-controls">
+              <details class="method-source-toggle">
+                <summary><span class="method-source-icon" aria-hidden="true">{}</span> Source</summary>
+              </details>
             </div>
 
         </div>
 
 
-          <div class="method-controls">
-            <details class="method-source-toggle">
-              <summary>Source</summary>
-            </details>
-          </div>
           <div class="method-source-code" id="predicate-source">
             <pre class="ruby"><span class="ruby-comment"># File lib/rexml/quickpath.rb, line 161</span>
-<span class="ruby-keyword">def</span> <span class="ruby-constant">QuickPath</span><span class="ruby-operator">::</span><span class="ruby-identifier ruby-title">predicate</span>( <span class="ruby-identifier">elements</span>, <span class="ruby-identifier">path</span> )
+<span class="ruby-keyword">def</span> <span class="ruby-constant">QuickPath</span><span class="ruby-operator">::</span><span class="ruby-identifier">predicate</span>( <span class="ruby-identifier">elements</span>, <span class="ruby-identifier">path</span> )
   <span class="ruby-identifier">ind</span> = <span class="ruby-value">1</span>
   <span class="ruby-identifier">bcount</span> = <span class="ruby-value">1</span>
   <span class="ruby-keyword">while</span> <span class="ruby-identifier">bcount</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">0</span>
-    <span class="ruby-identifier">bcount</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">path</span>[<span class="ruby-identifier">ind</span>] <span class="ruby-operator">==</span> <span class="ruby-value">?[</span>
-    <span class="ruby-identifier">bcount</span> <span class="ruby-operator">-=</span> <span class="ruby-value">1</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">path</span>[<span class="ruby-identifier">ind</span>] <span class="ruby-operator">==</span> <span class="ruby-value">?]</span>
-    <span class="ruby-identifier">ind</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
+    <span class="ruby-identifier">bcount</span> += <span class="ruby-value">1</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">path</span>[<span class="ruby-identifier">ind</span>] <span class="ruby-operator">==</span> <span class="ruby-string">?</span><span class="ruby-string">[</span>
+    <span class="ruby-identifier">bcount</span> -= <span class="ruby-value">1</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">path</span>[<span class="ruby-identifier">ind</span>] <span class="ruby-operator">==</span> <span class="ruby-string">?</span><span class="ruby-string">]</span>
+    <span class="ruby-identifier">ind</span> += <span class="ruby-value">1</span>
   <span class="ruby-keyword">end</span>
-  <span class="ruby-identifier">ind</span> <span class="ruby-operator">-=</span> <span class="ruby-value">1</span>
-  <span class="ruby-identifier">predicate</span> = <span class="ruby-identifier">path</span>[<span class="ruby-value">1</span><span class="ruby-operator">..</span><span class="ruby-identifier">ind</span><span class="ruby-value">-1</span>]
-  <span class="ruby-identifier">rest</span> = <span class="ruby-identifier">path</span>[<span class="ruby-identifier">ind</span><span class="ruby-value">+1</span><span class="ruby-operator">..</span><span class="ruby-value">-1</span>]
+  <span class="ruby-identifier">ind</span> -= <span class="ruby-value">1</span>
+  <span class="ruby-identifier">predicate</span> = <span class="ruby-identifier">path</span>[<span class="ruby-value">1</span>..<span class="ruby-identifier">ind</span><span class="ruby-operator">-</span><span class="ruby-value">1</span>]
+  <span class="ruby-identifier">rest</span> = <span class="ruby-identifier">path</span>[<span class="ruby-identifier">ind</span><span class="ruby-operator">+</span><span class="ruby-value">1</span>..-<span class="ruby-value">1</span>]
 
   <span class="ruby-comment"># have to change &#39;a [=&lt;&gt;] b [=&lt;&gt;] c&#39; into &#39;a [=&lt;&gt;] b and b [=&lt;&gt;] c&#39;</span>
   <span class="ruby-comment">#</span>
   <span class="ruby-identifier">predicate</span>.<span class="ruby-identifier">gsub!</span>(
-    <span class="ruby-regexp">/#{OPERAND_}\s*([&lt;&gt;=])\s*#{OPERAND_}\s*([&lt;&gt;=])\s*#{OPERAND_}/u</span>,
-    <span class="ruby-string">&#39;\1 \2 \3 and \3 \4 \5&#39;</span> )
+    <span class="ruby-regexp">/</span><span class="ruby-regexp">#{</span><span class="ruby-constant">OPERAND_</span><span class="ruby-regexp">}</span><span class="ruby-regexp">\s*([&lt;&gt;=])\s*</span><span class="ruby-regexp">#{</span><span class="ruby-constant">OPERAND_</span><span class="ruby-regexp">}</span><span class="ruby-regexp">\s*([&lt;&gt;=])\s*</span><span class="ruby-regexp">#{</span><span class="ruby-constant">OPERAND_</span><span class="ruby-regexp">}</span><span class="ruby-regexp">/u</span>,
+    <span class="ruby-string">&#39;</span><span class="ruby-string">\1 \2 \3 and \3 \4 \5</span><span class="ruby-string">&#39;</span> )
   <span class="ruby-comment"># Let&#39;s do some Ruby trickery to avoid some work:</span>
-  <span class="ruby-identifier">predicate</span>.<span class="ruby-identifier">gsub!</span>( <span class="ruby-regexp">/&amp;/u</span>, <span class="ruby-string">&quot;&amp;&amp;&quot;</span> )
-  <span class="ruby-identifier">predicate</span>.<span class="ruby-identifier">gsub!</span>( <span class="ruby-regexp">/=/u</span>, <span class="ruby-string">&quot;==&quot;</span> )
-  <span class="ruby-identifier">predicate</span>.<span class="ruby-identifier">gsub!</span>( <span class="ruby-regexp">/@(\w[-\w.]*)/u</span>, <span class="ruby-string">&#39;attribute(&quot;\1&quot;)&#39;</span> )
-  <span class="ruby-identifier">predicate</span>.<span class="ruby-identifier">gsub!</span>( <span class="ruby-regexp">/\bmod\b/u</span>, <span class="ruby-string">&quot;%&quot;</span> )
+  <span class="ruby-identifier">predicate</span>.<span class="ruby-identifier">gsub!</span>( <span class="ruby-regexp">/&amp;/u</span>, <span class="ruby-string">&quot;</span><span class="ruby-string">&amp;&amp;</span><span class="ruby-string">&quot;</span> )
+  <span class="ruby-identifier">predicate</span>.<span class="ruby-identifier">gsub!</span>( <span class="ruby-regexp">/=/u</span>, <span class="ruby-string">&quot;</span><span class="ruby-string">==</span><span class="ruby-string">&quot;</span> )
+  <span class="ruby-identifier">predicate</span>.<span class="ruby-identifier">gsub!</span>( <span class="ruby-regexp">/@(\w[-\w.]*)/u</span>, <span class="ruby-string">&#39;</span><span class="ruby-string">attribute(&quot;\1&quot;)</span><span class="ruby-string">&#39;</span> )
+  <span class="ruby-identifier">predicate</span>.<span class="ruby-identifier">gsub!</span>( <span class="ruby-regexp">/\bmod\b/u</span>, <span class="ruby-string">&quot;</span><span class="ruby-string">%</span><span class="ruby-string">&quot;</span> )
   <span class="ruby-identifier">predicate</span>.<span class="ruby-identifier">gsub!</span>( <span class="ruby-regexp">/\b(\w[-\w.]*\()/u</span> ) {
-    <span class="ruby-identifier">fname</span> = <span class="ruby-node">$1</span>
-    <span class="ruby-identifier">fname</span>.<span class="ruby-identifier">gsub</span>( <span class="ruby-regexp">/-/u</span>, <span class="ruby-string">&quot;_&quot;</span> )
+    <span class="ruby-identifier">fname</span> = <span class="ruby-identifier">$1</span>
+    <span class="ruby-identifier">fname</span>.<span class="ruby-identifier">gsub</span>( <span class="ruby-regexp">/-/u</span>, <span class="ruby-string">&quot;</span><span class="ruby-string">_</span><span class="ruby-string">&quot;</span> )
   }
 
   <span class="ruby-constant">Functions</span>.<span class="ruby-identifier">pair</span> = [ <span class="ruby-value">0</span>, <span class="ruby-identifier">elements</span>.<span class="ruby-identifier">size</span> ]
   <span class="ruby-identifier">results</span> = []
   <span class="ruby-identifier">elements</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">element</span><span class="ruby-operator">|</span>
-    <span class="ruby-constant">Functions</span>.<span class="ruby-identifier">pair</span>[<span class="ruby-value">0</span>] <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
+    <span class="ruby-constant">Functions</span>.<span class="ruby-identifier">pair</span>[<span class="ruby-value">0</span>] += <span class="ruby-value">1</span>
     <span class="ruby-constant">Functions</span>.<span class="ruby-identifier">node</span> = <span class="ruby-identifier">element</span>
     <span class="ruby-identifier">res</span> = <span class="ruby-identifier">eval</span>( <span class="ruby-identifier">predicate</span> )
     <span class="ruby-keyword">case</span> <span class="ruby-identifier">res</span>
@@ -1380,7 +1451,7 @@
 
 </main>
 
-<aside class="table-of-contents" role="complementary" aria-label="Table of Contents">
+<aside id="table-of-contents" class="table-of-contents" role="complementary" aria-label="Table of Contents">
   <div class="toc-sticky">
     <h3 class="toc-heading">On This Page</h3>
     <nav class="toc-nav" id="toc-nav" aria-label="Page sections">
@@ -1395,7 +1466,7 @@
 
   <div class="footer-bottom">
     <p>
-      Generated by <a href="https://ruby.github.io/rdoc/">RDoc 7.2.0</a>
+      Generated by <a href="https://ruby.github.io/rdoc/">RDoc 8.0.0</a>
       using the Aliki theme by <a href="http://st0012.dev">Stan Lo</a>
     </p>
   </div>

@@ -50,46 +50,46 @@
 </script>
 
 <script
-  src="../js/theme-toggle.js?v=7.2.0"
+  src="../js/theme-toggle.js?v=8.0.0"
 ></script>
 
 <script
-  src="../js/search_navigation.js?v=7.2.0"
+  src="../js/search_navigation.js?v=8.0.0"
   defer
 ></script>
 
 <script
-  src="../js/search_data.js?v=7.2.0"
+  src="../js/search_data.js?v=8.0.0"
   defer
 ></script>
 
 <script
-  src="../js/search_ranker.js?v=7.2.0"
+  src="../js/search_ranker.js?v=8.0.0"
   defer
 ></script>
 
 <script
-  src="../js/search_controller.js?v=7.2.0"
+  src="../js/search_controller.js?v=8.0.0"
   defer
 ></script>
 
 <script
-  src="../js/c_highlighter.js?v=7.2.0"
+  src="../js/c_highlighter.js?v=8.0.0"
   defer
 ></script>
 
 <script
-  src="../js/bash_highlighter.js?v=7.2.0"
+  src="../js/bash_highlighter.js?v=8.0.0"
   defer
 ></script>
 
 <script
-  src="../js/aliki.js?v=7.2.0"
+  src="../js/aliki.js?v=8.0.0"
   defer
 ></script>
 
 <link
-  href="../css/rdoc.css?v=7.2.0"
+  href="../css/rdoc.css?v=8.0.0"
   rel="stylesheet"
 >
 
@@ -363,12 +363,12 @@
   </div>
 </div>
 
-<div id="navigation-toggle" role="button" tabindex="0" aria-label="Toggle sidebar" aria-expanded="true" aria-controls="navigation">
+<div id="sidebar-navigation-toggle" role="button" tabindex="0" aria-label="Toggle sidebar" aria-expanded="false" aria-controls="sidebar-navigation">
   <span aria-hidden="true">&#9776;</span>
 </div>
 
 
-<nav id="navigation" role="navigation" hidden>
+<nav id="sidebar-navigation" role="navigation" hidden>
   
 
 
@@ -411,15 +411,6 @@
             <li>
               <a href="../NEWS_md.html">
                 NEWS
-              </a>
-            </li>
-
-
-
-
-            <li>
-              <a href="../README_md.html">
-                README
               </a>
             </li>
 
@@ -643,7 +634,7 @@
       
       <li>
         
-        <a href="../REXML.html">REXML</a><span>::</span>
+        <a href="../REXML.html">REXML</a><span class="separator">::</span>
         
       </li>
       
@@ -657,8 +648,9 @@
   
 
   <span id="class-REXML::Attributes" class="legacy-anchor"></span>
-  <h1 id="class-rexml-attributes" class="anchor-link class">
-    class REXML::Attributes
+  <h1 id="class-rexml-attributes" class="anchor-link class page-title">
+    <span class="page-title-kind">class</span>
+    <span class="page-title-name">REXML::Attributes</span>
   </h1>
 
   <section class="description">
@@ -690,28 +682,35 @@
 
       <div id="method-c-new" class="method-detail anchor-link ">
         <div class="method-header">
+          <div class="method-heading-group">
 
 
-              <div class="method-heading">
-                <a href="#method-c-new" title="Link to this method">
-                  <span class="method-callseq">
-                    new(element)
-                  </span>
-                </a>
-              </div>
+                <div class="method-heading">
+                  <a href="#method-c-new" title="Link to this method">
+                    <span class="method-callseq">
+                      new(element)
+                    </span>
+                  </a>
+                </div>
 
+
+
+
+          </div>
+
+
+            <div class="method-controls">
+              <details class="method-source-toggle">
+                <summary><span class="method-source-icon" aria-hidden="true">{}</span> Source</summary>
+              </details>
+            </div>
 
         </div>
 
 
-          <div class="method-controls">
-            <details class="method-source-toggle">
-              <summary>Source</summary>
-            </details>
-          </div>
           <div class="method-source-code" id="new-source">
             <pre class="ruby"><span class="ruby-comment"># File lib/rexml/element.rb, line 2150</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span> <span class="ruby-identifier">element</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span> <span class="ruby-identifier">element</span>
   <span class="ruby-ivar">@element</span> = <span class="ruby-identifier">element</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
@@ -723,7 +722,7 @@
 
           <p>Creates and returns a new REXML::Attributes object. The element given by argument <code>element</code> is stored, but its own attributes are not modified:</p>
 
-<pre class="ruby"><span class="ruby-identifier">ele</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Element</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;foo&#39;</span>)
+<pre class="ruby"><span class="ruby-identifier">ele</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Element</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;</span><span class="ruby-string">foo</span><span class="ruby-string">&#39;</span>)
 <span class="ruby-identifier">attrs</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Attributes</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">ele</span>)
 <span class="ruby-identifier">attrs</span>.<span class="ruby-identifier">object_id</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">ele</span>.<span class="ruby-identifier">attributes</span>.<span class="ruby-identifier">object_id</span> <span class="ruby-comment"># =&gt; false</span>
 </pre>
@@ -763,12 +762,18 @@
 
       <div id="method-i-3C-3C" class="method-detail anchor-link method-alias">
         <div class="method-header">
+          <div class="method-heading-group">
 
-            <div class="method-heading">
-              <a href="#method-i-3C-3C" title="Link to this method">
-                <span class="method-name">&lt;&lt;</span>
-              </a>
-            </div>
+              <div class="method-heading">
+                <a href="#method-i-3C-3C" title="Link to this method">
+                  <span class="method-name">&lt;&lt;</span>
+                </a>
+              </div>
+
+
+
+          </div>
+
 
         </div>
 
@@ -788,28 +793,35 @@
 
       <div id="method-i-5B-5D" class="method-detail anchor-link ">
         <div class="method-header">
+          <div class="method-heading-group">
 
 
-              <div class="method-heading">
-                <a href="#method-i-5B-5D" title="Link to this method">
-                  <span class="method-callseq">
-                    [name] &rarr; attribute_value or nil
-                  </span>
-                </a>
-              </div>
+                <div class="method-heading">
+                  <a href="#method-i-5B-5D" title="Link to this method">
+                    <span class="method-callseq">
+                      [name] &rarr; attribute_value or nil
+                    </span>
+                  </a>
+                </div>
 
+
+
+
+          </div>
+
+
+            <div class="method-controls">
+              <details class="method-source-toggle">
+                <summary><span class="method-source-icon" aria-hidden="true">{}</span> Source</summary>
+              </details>
+            </div>
 
         </div>
 
 
-          <div class="method-controls">
-            <details class="method-source-toggle">
-              <summary>Source</summary>
-            </details>
-          </div>
           <div class="method-source-code" id="5B-5D-source">
             <pre class="ruby"><span class="ruby-comment"># File lib/rexml/element.rb, line 2175</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">[]</span>(<span class="ruby-identifier">name</span>)
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">[]</span>(<span class="ruby-identifier">name</span>)
   <span class="ruby-identifier">attr</span> = <span class="ruby-identifier">get_attribute</span>(<span class="ruby-identifier">name</span>)
   <span class="ruby-identifier">attr</span>&amp;.<span class="ruby-identifier">value</span>
 <span class="ruby-keyword">end</span></pre>
@@ -822,16 +834,16 @@
 
           <p>Returns the value for the attribute given by <code>name</code>, if it exists; otherwise <code>nil</code>. The value returned is the unnormalized attribute value, with entities expanded:</p>
 
-<pre class="ruby"><span class="ruby-identifier">xml_string</span> = <span class="ruby-identifier">&lt;&lt;-EOT</span>
-<span class="ruby-value">  &lt;root xmlns:foo=&quot;http://foo&quot; xmlns:bar=&quot;http://bar&quot;&gt;
+<pre class="ruby"><span class="ruby-identifier">xml_string</span> = <span class="ruby-string">&lt;&lt;-EOT</span>
+<span class="ruby-string">  &lt;root xmlns:foo=&quot;http://foo&quot; xmlns:bar=&quot;http://bar&quot;&gt;
      &lt;ele foo:att=&#39;1&#39; bar:att=&#39;2&#39; att=&#39;&amp;lt;&#39;/&gt;
   &lt;/root&gt;</span>
-<span class="ruby-identifier">EOT</span>
+<span class="ruby-string">EOT</span>
 <span class="ruby-identifier">d</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">xml_string</span>)
-<span class="ruby-identifier">ele</span> = <span class="ruby-identifier">d</span>.<span class="ruby-identifier">elements</span>[<span class="ruby-string">&#39;//ele&#39;</span>] <span class="ruby-comment"># =&gt; &lt;a foo:att=&#39;1&#39; bar:att=&#39;2&#39; att=&#39;&amp;lt;&#39;/&gt;</span>
-<span class="ruby-identifier">ele</span>.<span class="ruby-identifier">attributes</span>[<span class="ruby-string">&#39;att&#39;</span>]     <span class="ruby-comment"># =&gt; &quot;&lt;&quot;</span>
-<span class="ruby-identifier">ele</span>.<span class="ruby-identifier">attributes</span>[<span class="ruby-string">&#39;bar:att&#39;</span>] <span class="ruby-comment"># =&gt; &quot;2&quot;</span>
-<span class="ruby-identifier">ele</span>.<span class="ruby-identifier">attributes</span>[<span class="ruby-string">&#39;nosuch&#39;</span>]  <span class="ruby-comment"># =&gt; nil</span>
+<span class="ruby-identifier">ele</span> = <span class="ruby-identifier">d</span>.<span class="ruby-identifier">elements</span>[<span class="ruby-string">&#39;</span><span class="ruby-string">//ele</span><span class="ruby-string">&#39;</span>] <span class="ruby-comment"># =&gt; &lt;a foo:att=&#39;1&#39; bar:att=&#39;2&#39; att=&#39;&amp;lt;&#39;/&gt;</span>
+<span class="ruby-identifier">ele</span>.<span class="ruby-identifier">attributes</span>[<span class="ruby-string">&#39;</span><span class="ruby-string">att</span><span class="ruby-string">&#39;</span>]     <span class="ruby-comment"># =&gt; &quot;&lt;&quot;</span>
+<span class="ruby-identifier">ele</span>.<span class="ruby-identifier">attributes</span>[<span class="ruby-string">&#39;</span><span class="ruby-string">bar:att</span><span class="ruby-string">&#39;</span>] <span class="ruby-comment"># =&gt; &quot;2&quot;</span>
+<span class="ruby-identifier">ele</span>.<span class="ruby-identifier">attributes</span>[<span class="ruby-string">&#39;</span><span class="ruby-string">nosuch</span><span class="ruby-string">&#39;</span>]  <span class="ruby-comment"># =&gt; nil</span>
 </pre>
 
 <p>Related: <a href="Attributes.html#method-i-get_attribute"><code>get_attribute</code></a> (returns an Attribute object).</p>
@@ -848,35 +860,45 @@
 
       <div id="method-i-5B-5D-3D" class="method-detail anchor-link ">
         <div class="method-header">
+          <div class="method-heading-group">
 
 
-              <div class="method-heading">
-                <a href="#method-i-5B-5D-3D" title="Link to this method">
-                  <span class="method-callseq">
-                    [name] = value &rarr; value
-                  </span>
-                </a>
-              </div>
+                <div class="method-heading">
+                  <a href="#method-i-5B-5D-3D" title="Link to this method">
+                    <span class="method-callseq">
+                      [name] = value &rarr; value
+                    </span>
+                  </a>
+                </div>
 
+
+
+
+          </div>
+
+
+            <div class="method-controls">
+              <details class="method-source-toggle">
+                <summary><span class="method-source-icon" aria-hidden="true">{}</span> Source</summary>
+              </details>
+            </div>
 
         </div>
 
 
-          <div class="method-controls">
-            <details class="method-source-toggle">
-              <summary>Source</summary>
-            </details>
-          </div>
           <div class="method-source-code" id="5B-5D-3D-source">
-            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/element.rb, line 2358</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">[]=</span>( <span class="ruby-identifier">name</span>, <span class="ruby-identifier">value</span> )
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/element.rb, line 2326</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">[]=</span>( <span class="ruby-identifier">name</span>, <span class="ruby-identifier">value</span> )
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">value</span>.<span class="ruby-identifier">nil?</span>             <span class="ruby-comment"># Delete the named attribute</span>
-    <span class="ruby-identifier">attr</span> = <span class="ruby-identifier">get_attribute</span>(<span class="ruby-identifier">name</span>)
-    <span class="ruby-identifier">delete</span> <span class="ruby-identifier">attr</span>
+    <span class="ruby-identifier">delete</span> <span class="ruby-identifier">name</span>
     <span class="ruby-keyword">return</span>
   <span class="ruby-keyword">end</span>
 
-  <span class="ruby-keyword">unless</span> <span class="ruby-identifier">value</span>.<span class="ruby-identifier">kind_of?</span> <span class="ruby-constant">Attribute</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">value</span>.<span class="ruby-identifier">kind_of?</span> <span class="ruby-constant">Attribute</span>
+    <span class="ruby-comment"># Use attribute&#39;s expanded name to avoid inconsistency.</span>
+    <span class="ruby-comment"># TODO: Explicitly document that inconsistent names are allowed, or raise/warn about inconsistency.</span>
+    <span class="ruby-identifier">name</span> = <span class="ruby-identifier">value</span>.<span class="ruby-identifier">expanded_name</span>
+  <span class="ruby-keyword">else</span>
     <span class="ruby-identifier">doctype</span> = <span class="ruby-ivar">@element</span>.<span class="ruby-identifier">document</span>&amp;.<span class="ruby-identifier">doctype</span>
     <span class="ruby-keyword">if</span> <span class="ruby-identifier">doctype</span>
       <span class="ruby-identifier">value</span> = <span class="ruby-constant">Text</span><span class="ruby-operator">::</span><span class="ruby-identifier">normalize</span>( <span class="ruby-identifier">value</span>, <span class="ruby-identifier">doctype</span> )
@@ -886,17 +908,7 @@
     <span class="ruby-identifier">value</span> = <span class="ruby-constant">Attribute</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">name</span>, <span class="ruby-identifier">value</span>)
   <span class="ruby-keyword">end</span>
   <span class="ruby-identifier">value</span>.<span class="ruby-identifier">element</span> = <span class="ruby-ivar">@element</span>
-  <span class="ruby-identifier">old_attr</span> = <span class="ruby-identifier">fetch</span>(<span class="ruby-identifier">value</span>.<span class="ruby-identifier">name</span>, <span class="ruby-keyword">nil</span>)
-  <span class="ruby-keyword">if</span> <span class="ruby-identifier">old_attr</span>.<span class="ruby-identifier">nil?</span>
-    <span class="ruby-identifier">store</span>(<span class="ruby-identifier">value</span>.<span class="ruby-identifier">name</span>, <span class="ruby-identifier">value</span>)
-  <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">old_attr</span>.<span class="ruby-identifier">kind_of?</span> <span class="ruby-constant">Hash</span>
-    <span class="ruby-identifier">old_attr</span>[<span class="ruby-identifier">value</span>.<span class="ruby-identifier">prefix</span>] = <span class="ruby-identifier">value</span>
-  <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">old_attr</span>.<span class="ruby-identifier">prefix</span> <span class="ruby-operator">!=</span> <span class="ruby-identifier">value</span>.<span class="ruby-identifier">prefix</span>
-    <span class="ruby-identifier">store</span> <span class="ruby-identifier">value</span>.<span class="ruby-identifier">name</span>, {<span class="ruby-identifier">old_attr</span>.<span class="ruby-identifier">prefix</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-identifier">old_attr</span>,
-                       <span class="ruby-identifier">value</span>.<span class="ruby-identifier">prefix</span>    <span class="ruby-operator">=&gt;</span> <span class="ruby-identifier">value</span>}
-  <span class="ruby-keyword">else</span>
-    <span class="ruby-identifier">store</span> <span class="ruby-identifier">value</span>.<span class="ruby-identifier">name</span>, <span class="ruby-identifier">value</span>
-  <span class="ruby-keyword">end</span>
+  <span class="ruby-identifier">store</span> <span class="ruby-identifier">name</span>, <span class="ruby-identifier">value</span>
   <span class="ruby-ivar">@element</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
@@ -908,22 +920,22 @@
 
           <p>When <code>value</code> is non-<code>nil</code>, assigns that to the attribute for the given <code>name</code>, overwriting the previous value if it exists:</p>
 
-<pre class="ruby"><span class="ruby-identifier">xml_string</span> = <span class="ruby-identifier">&lt;&lt;-EOT</span>
-<span class="ruby-value">  &lt;root xmlns:foo=&quot;http://foo&quot; xmlns:bar=&quot;http://bar&quot;&gt;
+<pre class="ruby"><span class="ruby-identifier">xml_string</span> = <span class="ruby-string">&lt;&lt;-EOT</span>
+<span class="ruby-string">  &lt;root xmlns:foo=&quot;http://foo&quot; xmlns:bar=&quot;http://bar&quot;&gt;
      &lt;ele foo:att=&#39;1&#39; bar:att=&#39;2&#39; att=&#39;&amp;lt;&#39;/&gt;
   &lt;/root&gt;</span>
-<span class="ruby-identifier">EOT</span>
+<span class="ruby-string">EOT</span>
 <span class="ruby-identifier">d</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">xml_string</span>)
-<span class="ruby-identifier">ele</span> = <span class="ruby-identifier">d</span>.<span class="ruby-identifier">root</span>.<span class="ruby-identifier">elements</span>[<span class="ruby-string">&#39;//ele&#39;</span>] <span class="ruby-comment"># =&gt; &lt;a foo:att=&#39;1&#39; bar:att=&#39;2&#39; att=&#39;&amp;lt;&#39;/&gt;</span>
+<span class="ruby-identifier">ele</span> = <span class="ruby-identifier">d</span>.<span class="ruby-identifier">root</span>.<span class="ruby-identifier">elements</span>[<span class="ruby-string">&#39;</span><span class="ruby-string">//ele</span><span class="ruby-string">&#39;</span>] <span class="ruby-comment"># =&gt; &lt;a foo:att=&#39;1&#39; bar:att=&#39;2&#39; att=&#39;&amp;lt;&#39;/&gt;</span>
 <span class="ruby-identifier">attrs</span> = <span class="ruby-identifier">ele</span>.<span class="ruby-identifier">attributes</span>
-<span class="ruby-identifier">attrs</span>[<span class="ruby-string">&#39;foo:att&#39;</span>] = <span class="ruby-string">&#39;2&#39;</span> <span class="ruby-comment"># =&gt; &quot;2&quot;</span>
-<span class="ruby-identifier">attrs</span>[<span class="ruby-string">&#39;baz:att&#39;</span>] = <span class="ruby-string">&#39;3&#39;</span> <span class="ruby-comment"># =&gt; &quot;3&quot;</span>
+<span class="ruby-identifier">attrs</span>[<span class="ruby-string">&#39;</span><span class="ruby-string">foo:att</span><span class="ruby-string">&#39;</span>] = <span class="ruby-string">&#39;</span><span class="ruby-string">2</span><span class="ruby-string">&#39;</span> <span class="ruby-comment"># =&gt; &quot;2&quot;</span>
+<span class="ruby-identifier">attrs</span>[<span class="ruby-string">&#39;</span><span class="ruby-string">baz:att</span><span class="ruby-string">&#39;</span>] = <span class="ruby-string">&#39;</span><span class="ruby-string">3</span><span class="ruby-string">&#39;</span> <span class="ruby-comment"># =&gt; &quot;3&quot;</span>
 </pre>
 
 <p>When <code>value</code> is <code>nil</code>, deletes the attribute if it exists:</p>
 
-<pre class="ruby"><span class="ruby-identifier">attrs</span>[<span class="ruby-string">&#39;baz:att&#39;</span>] = <span class="ruby-keyword">nil</span>
-<span class="ruby-identifier">attrs</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-string">&#39;baz:att&#39;</span>) <span class="ruby-comment"># =&gt; false</span>
+<pre class="ruby"><span class="ruby-identifier">attrs</span>[<span class="ruby-string">&#39;</span><span class="ruby-string">baz:att</span><span class="ruby-string">&#39;</span>] = <span class="ruby-keyword">nil</span>
+<span class="ruby-identifier">attrs</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-string">&#39;</span><span class="ruby-string">baz:att</span><span class="ruby-string">&#39;</span>) <span class="ruby-comment"># =&gt; false</span>
 </pre>
 
 
@@ -938,29 +950,36 @@
 
       <div id="method-i-add" class="method-detail anchor-link ">
         <div class="method-header">
+          <div class="method-heading-group">
 
 
-              <div class="method-heading">
-                <a href="#method-i-add" title="Link to this method">
-                  <span class="method-callseq">
-                    add(attribute) &rarr; attribute
-                  </span>
-                </a>
-              </div>
+                <div class="method-heading">
+                  <a href="#method-i-add" title="Link to this method">
+                    <span class="method-callseq">
+                      add(attribute) &rarr; attribute
+                    </span>
+                  </a>
+                </div>
 
+
+
+
+          </div>
+
+
+            <div class="method-controls">
+              <details class="method-source-toggle">
+                <summary><span class="method-source-icon" aria-hidden="true">{}</span> Source</summary>
+              </details>
+            </div>
 
         </div>
 
 
-          <div class="method-controls">
-            <details class="method-source-toggle">
-              <summary>Source</summary>
-            </details>
-          </div>
           <div class="method-source-code" id="add-source">
-            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/element.rb, line 2516</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">add</span>( <span class="ruby-identifier">attribute</span> )
-  <span class="ruby-keyword">self</span>[<span class="ruby-identifier">attribute</span>.<span class="ruby-identifier">name</span>] = <span class="ruby-identifier">attribute</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/element.rb, line 2438</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">add</span>( <span class="ruby-identifier">attribute</span> )
+  <span class="ruby-keyword">self</span>[<span class="ruby-identifier">attribute</span>.<span class="ruby-identifier">expanded_name</span>] = <span class="ruby-identifier">attribute</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
 
@@ -971,18 +990,18 @@
 
           <p>Adds attribute <code>attribute</code>, replacing the previous attribute of the same name if it exists; returns <code>attribute</code>:</p>
 
-<pre class="ruby"><span class="ruby-identifier">xml_string</span> = <span class="ruby-identifier">&lt;&lt;-EOT</span>
-<span class="ruby-value">  &lt;root xmlns:foo=&quot;http://foo&quot; xmlns:bar=&quot;http://bar&quot;&gt;
+<pre class="ruby"><span class="ruby-identifier">xml_string</span> = <span class="ruby-string">&lt;&lt;-EOT</span>
+<span class="ruby-string">  &lt;root xmlns:foo=&quot;http://foo&quot; xmlns:bar=&quot;http://bar&quot;&gt;
      &lt;ele foo:att=&#39;1&#39; bar:att=&#39;2&#39; att=&#39;&amp;lt;&#39;/&gt;
   &lt;/root&gt;</span>
-<span class="ruby-identifier">EOT</span>
+<span class="ruby-string">EOT</span>
 <span class="ruby-identifier">d</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">xml_string</span>)
-<span class="ruby-identifier">ele</span> = <span class="ruby-identifier">d</span>.<span class="ruby-identifier">root</span>.<span class="ruby-identifier">elements</span>[<span class="ruby-string">&#39;//ele&#39;</span>] <span class="ruby-comment"># =&gt; &lt;a foo:att=&#39;1&#39; bar:att=&#39;2&#39; att=&#39;&amp;lt;&#39;/&gt;</span>
+<span class="ruby-identifier">ele</span> = <span class="ruby-identifier">d</span>.<span class="ruby-identifier">root</span>.<span class="ruby-identifier">elements</span>[<span class="ruby-string">&#39;</span><span class="ruby-string">//ele</span><span class="ruby-string">&#39;</span>] <span class="ruby-comment"># =&gt; &lt;a foo:att=&#39;1&#39; bar:att=&#39;2&#39; att=&#39;&amp;lt;&#39;/&gt;</span>
 <span class="ruby-identifier">attrs</span> = <span class="ruby-identifier">ele</span>.<span class="ruby-identifier">attributes</span>
-<span class="ruby-identifier">attrs</span> <span class="ruby-comment"># =&gt; {&quot;att&quot;=&gt;{&quot;foo&quot;=&gt;foo:att=&#39;1&#39;, &quot;bar&quot;=&gt;bar:att=&#39;2&#39;, &quot;&quot;=&gt;att=&#39;&amp;lt;&#39;}}</span>
-<span class="ruby-identifier">attrs</span>.<span class="ruby-identifier">add</span>(<span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Attribute</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;foo:att&#39;</span>, <span class="ruby-string">&#39;2&#39;</span>)) <span class="ruby-comment"># =&gt; foo:att=&#39;2&#39;</span>
-<span class="ruby-identifier">attrs</span>.<span class="ruby-identifier">add</span>(<span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Attribute</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;baz&#39;</span>, <span class="ruby-string">&#39;3&#39;</span>)) <span class="ruby-comment"># =&gt; baz=&#39;3&#39;</span>
-<span class="ruby-identifier">attrs</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-string">&#39;baz&#39;</span>) <span class="ruby-comment"># =&gt; true</span>
+<span class="ruby-identifier">attrs</span> <span class="ruby-comment"># =&gt; {&quot;foo:att&quot; =&gt; foo:att=&#39;1&#39;, &quot;bar:att&quot; =&gt; bar:att=&#39;2&#39;, &quot;att&quot; =&gt; att=&#39;&amp;lt;&#39;}</span>
+<span class="ruby-identifier">attrs</span>.<span class="ruby-identifier">add</span>(<span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Attribute</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;</span><span class="ruby-string">foo:att</span><span class="ruby-string">&#39;</span>, <span class="ruby-string">&#39;</span><span class="ruby-string">2</span><span class="ruby-string">&#39;</span>)) <span class="ruby-comment"># =&gt; foo:att=&#39;2&#39;</span>
+<span class="ruby-identifier">attrs</span>.<span class="ruby-identifier">add</span>(<span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Attribute</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;</span><span class="ruby-string">baz</span><span class="ruby-string">&#39;</span>, <span class="ruby-string">&#39;</span><span class="ruby-string">3</span><span class="ruby-string">&#39;</span>)) <span class="ruby-comment"># =&gt; baz=&#39;3&#39;</span>
+<span class="ruby-identifier">attrs</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-string">&#39;</span><span class="ruby-string">baz</span><span class="ruby-string">&#39;</span>) <span class="ruby-comment"># =&gt; true</span>
 </pre>
 
 
@@ -1001,57 +1020,47 @@
 
       <div id="method-i-delete" class="method-detail anchor-link ">
         <div class="method-header">
+          <div class="method-heading-group">
 
 
-              <div class="method-heading">
-                <a href="#method-i-delete" title="Link to this method">
-                  <span class="method-callseq">
-                    delete(name) &rarr; element
-                  </span>
-                </a>
-              </div>
+                <div class="method-heading">
+                  <a href="#method-i-delete" title="Link to this method">
+                    <span class="method-callseq">
+                      delete(name) &rarr; element
+                    </span>
+                  </a>
+                </div>
 
-              <div class="method-heading">
-                <a href="#method-i-delete" title="Link to this method">
-                  <span class="method-callseq">
-                    delete(attribute) &rarr; element
-                  </span>
-                </a>
-              </div>
+                <div class="method-heading">
+                  <a href="#method-i-delete" title="Link to this method">
+                    <span class="method-callseq">
+                      delete(attribute) &rarr; element
+                    </span>
+                  </a>
+                </div>
 
+
+
+
+          </div>
+
+
+            <div class="method-controls">
+              <details class="method-source-toggle">
+                <summary><span class="method-source-icon" aria-hidden="true">{}</span> Source</summary>
+              </details>
+            </div>
 
         </div>
 
 
-          <div class="method-controls">
-            <details class="method-source-toggle">
-              <summary>Source</summary>
-            </details>
-          </div>
           <div class="method-source-code" id="delete-source">
-            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/element.rb, line 2471</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">delete</span>( <span class="ruby-identifier">attribute</span> )
-  <span class="ruby-identifier">name</span> = <span class="ruby-keyword">nil</span>
-  <span class="ruby-identifier">prefix</span> = <span class="ruby-keyword">nil</span>
-  <span class="ruby-keyword">if</span> <span class="ruby-identifier">attribute</span>.<span class="ruby-identifier">kind_of?</span> <span class="ruby-constant">Attribute</span>
-    <span class="ruby-identifier">name</span> = <span class="ruby-identifier">attribute</span>.<span class="ruby-identifier">name</span>
-    <span class="ruby-identifier">prefix</span> = <span class="ruby-identifier">attribute</span>.<span class="ruby-identifier">prefix</span>
-  <span class="ruby-keyword">else</span>
-    <span class="ruby-identifier">attribute</span> <span class="ruby-operator">=~</span> <span class="ruby-constant">Namespace</span><span class="ruby-operator">::</span><span class="ruby-constant">NAMESPLIT</span>
-    <span class="ruby-identifier">prefix</span>, <span class="ruby-identifier">name</span> = <span class="ruby-node">$1</span>, <span class="ruby-node">$2</span>
-    <span class="ruby-identifier">prefix</span> = <span class="ruby-string">&#39;&#39;</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">prefix</span>
-  <span class="ruby-keyword">end</span>
-  <span class="ruby-identifier">old</span> = <span class="ruby-identifier">fetch</span>(<span class="ruby-identifier">name</span>, <span class="ruby-keyword">nil</span>)
-  <span class="ruby-keyword">if</span> <span class="ruby-identifier">old</span>.<span class="ruby-identifier">kind_of?</span> <span class="ruby-constant">Hash</span> <span class="ruby-comment"># the supplied attribute is one of many</span>
-    <span class="ruby-identifier">old</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-identifier">prefix</span>)
-    <span class="ruby-keyword">if</span> <span class="ruby-identifier">old</span>.<span class="ruby-identifier">size</span> <span class="ruby-operator">==</span> <span class="ruby-value">1</span>
-      <span class="ruby-identifier">repl</span> = <span class="ruby-keyword">nil</span>
-      <span class="ruby-identifier">old</span>.<span class="ruby-identifier">each_value</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">v</span><span class="ruby-operator">|</span> <span class="ruby-identifier">repl</span> = <span class="ruby-identifier">v</span>}
-      <span class="ruby-identifier">store</span> <span class="ruby-identifier">name</span>, <span class="ruby-identifier">repl</span>
-    <span class="ruby-keyword">end</span>
-  <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">old</span> <span class="ruby-comment"># the supplied attribute is a top-level one</span>
-    <span class="ruby-keyword">super</span>(<span class="ruby-identifier">name</span>)
-  <span class="ruby-keyword">end</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/element.rb, line 2410</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">delete</span>(<span class="ruby-identifier">attribute_or_name</span>)
+  <span class="ruby-identifier">key</span> = <span class="ruby-identifier">attribute_or_name</span>
+  <span class="ruby-identifier">key</span> = <span class="ruby-identifier">attribute_or_name</span>.<span class="ruby-identifier">expanded_name</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">attribute_or_name</span>.<span class="ruby-identifier">kind_of?</span> <span class="ruby-constant">Attribute</span>
+  <span class="ruby-keyword">super</span>(<span class="ruby-identifier">key</span>)
+
   <span class="ruby-ivar">@element</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
@@ -1065,21 +1074,21 @@
 
 <p>When string argument <code>name</code> is given, removes the attribute of that name if it exists:</p>
 
-<pre class="ruby"><span class="ruby-identifier">xml_string</span> = <span class="ruby-identifier">&lt;&lt;-EOT</span>
-<span class="ruby-value">  &lt;root xmlns:foo=&quot;http://foo&quot; xmlns:bar=&quot;http://bar&quot;&gt;
+<pre class="ruby"><span class="ruby-identifier">xml_string</span> = <span class="ruby-string">&lt;&lt;-EOT</span>
+<span class="ruby-string">  &lt;root xmlns:foo=&quot;http://foo&quot; xmlns:bar=&quot;http://bar&quot;&gt;
      &lt;ele foo:att=&#39;1&#39; bar:att=&#39;2&#39; att=&#39;&amp;lt;&#39;/&gt;
   &lt;/root&gt;</span>
-<span class="ruby-identifier">EOT</span>
+<span class="ruby-string">EOT</span>
 <span class="ruby-identifier">d</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">xml_string</span>)
-<span class="ruby-identifier">ele</span> = <span class="ruby-identifier">d</span>.<span class="ruby-identifier">root</span>.<span class="ruby-identifier">elements</span>[<span class="ruby-string">&#39;//ele&#39;</span>] <span class="ruby-comment"># =&gt; &lt;a foo:att=&#39;1&#39; bar:att=&#39;2&#39; att=&#39;&amp;lt;&#39;/&gt;</span>
+<span class="ruby-identifier">ele</span> = <span class="ruby-identifier">d</span>.<span class="ruby-identifier">root</span>.<span class="ruby-identifier">elements</span>[<span class="ruby-string">&#39;</span><span class="ruby-string">//ele</span><span class="ruby-string">&#39;</span>] <span class="ruby-comment"># =&gt; &lt;a foo:att=&#39;1&#39; bar:att=&#39;2&#39; att=&#39;&amp;lt;&#39;/&gt;</span>
 <span class="ruby-identifier">attrs</span> = <span class="ruby-identifier">ele</span>.<span class="ruby-identifier">attributes</span>
-<span class="ruby-identifier">attrs</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-string">&#39;foo:att&#39;</span>) <span class="ruby-comment"># =&gt; &lt;ele bar:att=&#39;2&#39; att=&#39;&amp;lt;&#39;/&gt;</span>
-<span class="ruby-identifier">attrs</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-string">&#39;foo:att&#39;</span>) <span class="ruby-comment"># =&gt; &lt;ele bar:att=&#39;2&#39; att=&#39;&amp;lt;&#39;/&gt;</span>
+<span class="ruby-identifier">attrs</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-string">&#39;</span><span class="ruby-string">foo:att</span><span class="ruby-string">&#39;</span>) <span class="ruby-comment"># =&gt; &lt;ele bar:att=&#39;2&#39; att=&#39;&amp;lt;&#39;/&gt;</span>
+<span class="ruby-identifier">attrs</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-string">&#39;</span><span class="ruby-string">foo:att</span><span class="ruby-string">&#39;</span>) <span class="ruby-comment"># =&gt; &lt;ele bar:att=&#39;2&#39; att=&#39;&amp;lt;&#39;/&gt;</span>
 </pre>
 
 <p>When attribute argument <code>attribute</code> is given, removes that attribute if it exists:</p>
 
-<pre class="ruby"><span class="ruby-identifier">attr</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Attribute</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;bar:att&#39;</span>, <span class="ruby-string">&#39;2&#39;</span>)
+<pre class="ruby"><span class="ruby-identifier">attr</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Attribute</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;</span><span class="ruby-string">bar:att</span><span class="ruby-string">&#39;</span>, <span class="ruby-string">&#39;</span><span class="ruby-string">2</span><span class="ruby-string">&#39;</span>)
 <span class="ruby-identifier">attrs</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-identifier">attr</span>) <span class="ruby-comment"># =&gt; &lt;ele att=&#39;&amp;lt;&#39;/&gt; # =&gt; &lt;ele att=&#39;&amp;lt;&#39;/&gt;</span>
 <span class="ruby-identifier">attrs</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-identifier">attr</span>) <span class="ruby-comment"># =&gt; &lt;ele att=&#39;&amp;lt;&#39;/&gt; # =&gt; &lt;ele/&gt;</span>
 </pre>
@@ -1101,34 +1110,45 @@
 
       <div id="method-i-delete_all" class="method-detail anchor-link ">
         <div class="method-header">
+          <div class="method-heading-group">
 
 
-              <div class="method-heading">
-                <a href="#method-i-delete_all" title="Link to this method">
-                  <span class="method-callseq">
-                    delete_all(name) &rarr; array_of_removed_attributes
-                  </span>
-                </a>
-              </div>
+                <div class="method-heading">
+                  <a href="#method-i-delete_all" title="Link to this method">
+                    <span class="method-callseq">
+                      delete_all(name) &rarr; array_of_removed_attributes
+                    </span>
+                  </a>
+                </div>
 
+
+
+
+          </div>
+
+
+            <div class="method-controls">
+              <details class="method-source-toggle">
+                <summary><span class="method-source-icon" aria-hidden="true">{}</span> Source</summary>
+              </details>
+            </div>
 
         </div>
 
 
-          <div class="method-controls">
-            <details class="method-source-toggle">
-              <summary>Source</summary>
-            </details>
-          </div>
           <div class="method-source-code" id="delete_all-source">
-            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/element.rb, line 2538</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">delete_all</span>( <span class="ruby-identifier">name</span> )
-  <span class="ruby-identifier">rv</span> = []
-  <span class="ruby-identifier">each_attribute</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">attribute</span><span class="ruby-operator">|</span>
-    <span class="ruby-identifier">rv</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">attribute</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">attribute</span>.<span class="ruby-identifier">expanded_name</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">name</span>
-  }
-  <span class="ruby-identifier">rv</span>.<span class="ruby-identifier">each</span>{ <span class="ruby-operator">|</span><span class="ruby-identifier">attr</span><span class="ruby-operator">|</span> <span class="ruby-identifier">attr</span>.<span class="ruby-identifier">remove</span> }
-  <span class="ruby-identifier">rv</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/element.rb, line 2461</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">delete_all</span>( <span class="ruby-identifier">name</span> )
+  <span class="ruby-identifier">attributes</span> = <span class="ruby-identifier">each_attribute</span>.<span class="ruby-identifier">select</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">attribute</span><span class="ruby-operator">|</span>
+    <span class="ruby-comment"># For &lt;element xmlns:foo=&quot;url&quot; ns:foo=&quot;value&quot;/&gt;</span>
+    <span class="ruby-comment"># delete_all(&#39;foo&#39;) should not delete xmlns:foo=&quot;url&quot;</span>
+    <span class="ruby-comment"># because it is a namespace declaration, not a normal attribute.</span>
+    (<span class="ruby-operator">!</span><span class="ruby-identifier">attribute</span>.<span class="ruby-identifier">namespace_declaration?</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">attribute</span>.<span class="ruby-identifier">name</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">name</span>) <span class="ruby-operator">||</span> <span class="ruby-identifier">attribute</span>.<span class="ruby-identifier">expanded_name</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">name</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-identifier">attributes</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">attribute</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">delete</span> <span class="ruby-identifier">attribute</span>.<span class="ruby-identifier">expanded_name</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-identifier">attributes</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
 
@@ -1139,15 +1159,16 @@
 
           <p>Removes all attributes matching the given <code>name</code>; returns an array of the removed attributes:</p>
 
-<pre class="ruby"><span class="ruby-identifier">xml_string</span> = <span class="ruby-identifier">&lt;&lt;-EOT</span>
-<span class="ruby-value">  &lt;root xmlns:foo=&quot;http://foo&quot; xmlns:bar=&quot;http://bar&quot;&gt;
-     &lt;ele foo:att=&#39;1&#39; bar:att=&#39;2&#39; att=&#39;&amp;lt;&#39;/&gt;
+<pre class="ruby"><span class="ruby-identifier">xml_string</span> = <span class="ruby-string">&lt;&lt;-EOT</span>
+<span class="ruby-string">  &lt;root xmlns:foo=&quot;http://foo&quot; xmlns:bar=&quot;http://bar&quot;&gt;
+     &lt;ele foo:att=&#39;1&#39; att=&#39;&amp;lt;&#39; foo:other=&#39;2&#39; other=&#39;3&#39;/&gt;
   &lt;/root&gt;</span>
-<span class="ruby-identifier">EOT</span>
+<span class="ruby-string">EOT</span>
 <span class="ruby-identifier">d</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">xml_string</span>)
-<span class="ruby-identifier">ele</span> = <span class="ruby-identifier">d</span>.<span class="ruby-identifier">root</span>.<span class="ruby-identifier">elements</span>[<span class="ruby-string">&#39;//ele&#39;</span>] <span class="ruby-comment"># =&gt; &lt;a foo:att=&#39;1&#39; bar:att=&#39;2&#39; att=&#39;&amp;lt;&#39;/&gt;</span>
+<span class="ruby-identifier">ele</span> = <span class="ruby-identifier">d</span>.<span class="ruby-identifier">root</span>.<span class="ruby-identifier">elements</span>[<span class="ruby-string">&#39;</span><span class="ruby-string">//ele</span><span class="ruby-string">&#39;</span>] <span class="ruby-comment"># =&gt; &lt;a foo:att=&#39;1&#39; att=&#39;&amp;lt;&#39; foo:other=&#39;2&#39; other=&#39;3&#39;/&gt;</span>
 <span class="ruby-identifier">attrs</span> = <span class="ruby-identifier">ele</span>.<span class="ruby-identifier">attributes</span>
-<span class="ruby-identifier">attrs</span>.<span class="ruby-identifier">delete_all</span>(<span class="ruby-string">&#39;att&#39;</span>) <span class="ruby-comment"># =&gt; [att=&#39;&amp;lt;&#39;]</span>
+<span class="ruby-identifier">attrs</span>.<span class="ruby-identifier">delete_all</span>(<span class="ruby-string">&#39;</span><span class="ruby-string">att</span><span class="ruby-string">&#39;</span>) <span class="ruby-comment"># =&gt; [foo:att=&#39;1&#39;, att=&#39;&amp;lt;&#39;]</span>
+<span class="ruby-identifier">attrs</span>.<span class="ruby-identifier">each_attribute</span>.<span class="ruby-identifier">map</span>(<span class="ruby-operator">&amp;</span><span class="ruby-value">:</span><span class="ruby-value">expanded_name</span>) <span class="ruby-comment">#=&gt; [&#39;foo:other&#39;, &#39;other&#39;]</span>
 </pre>
 
 
@@ -1162,28 +1183,35 @@
 
       <div id="method-i-each" class="method-detail anchor-link ">
         <div class="method-header">
+          <div class="method-heading-group">
 
 
-              <div class="method-heading">
-                <a href="#method-i-each" title="Link to this method">
-                  <span class="method-callseq">
-                    each {|expanded_name, value| ... }
-                  </span>
-                </a>
-              </div>
+                <div class="method-heading">
+                  <a href="#method-i-each" title="Link to this method">
+                    <span class="method-callseq">
+                      each {|expanded_name, value| ... }
+                    </span>
+                  </a>
+                </div>
 
+
+
+
+          </div>
+
+
+            <div class="method-controls">
+              <details class="method-source-toggle">
+                <summary><span class="method-source-icon" aria-hidden="true">{}</span> Source</summary>
+              </details>
+            </div>
 
         </div>
 
 
-          <div class="method-controls">
-            <details class="method-source-toggle">
-              <summary>Source</summary>
-            </details>
-          </div>
           <div class="method-source-code" id="each-source">
-            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/element.rb, line 2276</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">each</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/element.rb, line 2273</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">each</span>
   <span class="ruby-keyword">return</span> <span class="ruby-identifier">to_enum</span>(<span class="ruby-identifier">__method__</span>) <span class="ruby-keyword">unless</span> <span class="ruby-identifier">block_given?</span>
   <span class="ruby-identifier">each_attribute</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">attr</span><span class="ruby-operator">|</span>
     <span class="ruby-keyword">yield</span> [<span class="ruby-identifier">attr</span>.<span class="ruby-identifier">expanded_name</span>, <span class="ruby-identifier">attr</span>.<span class="ruby-identifier">value</span>]
@@ -1198,13 +1226,13 @@
 
           <p>Calls the given block with each expanded-name/value pair:</p>
 
-<pre class="ruby"><span class="ruby-identifier">xml_string</span> = <span class="ruby-identifier">&lt;&lt;-EOT</span>
-<span class="ruby-value">  &lt;root xmlns:foo=&quot;http://foo&quot; xmlns:bar=&quot;http://bar&quot;&gt;
+<pre class="ruby"><span class="ruby-identifier">xml_string</span> = <span class="ruby-string">&lt;&lt;-EOT</span>
+<span class="ruby-string">  &lt;root xmlns:foo=&quot;http://foo&quot; xmlns:bar=&quot;http://bar&quot;&gt;
      &lt;ele foo:att=&#39;1&#39; bar:att=&#39;2&#39; att=&#39;&amp;lt;&#39;/&gt;
   &lt;/root&gt;</span>
-<span class="ruby-identifier">EOT</span>
+<span class="ruby-string">EOT</span>
 <span class="ruby-identifier">d</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">xml_string</span>)
-<span class="ruby-identifier">ele</span> = <span class="ruby-identifier">d</span>.<span class="ruby-identifier">root</span>.<span class="ruby-identifier">elements</span>[<span class="ruby-string">&#39;//ele&#39;</span>]   <span class="ruby-comment"># =&gt; &lt;a foo:att=&#39;1&#39; bar:att=&#39;2&#39; att=&#39;&amp;lt;&#39;/&gt;</span>
+<span class="ruby-identifier">ele</span> = <span class="ruby-identifier">d</span>.<span class="ruby-identifier">root</span>.<span class="ruby-identifier">elements</span>[<span class="ruby-string">&#39;</span><span class="ruby-string">//ele</span><span class="ruby-string">&#39;</span>]   <span class="ruby-comment"># =&gt; &lt;a foo:att=&#39;1&#39; bar:att=&#39;2&#39; att=&#39;&amp;lt;&#39;/&gt;</span>
 <span class="ruby-identifier">ele</span>.<span class="ruby-identifier">attributes</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">expanded_name</span>, <span class="ruby-identifier">value</span><span class="ruby-operator">|</span>
   <span class="ruby-identifier">p</span> [<span class="ruby-identifier">expanded_name</span>, <span class="ruby-identifier">value</span>]
 <span class="ruby-keyword">end</span>
@@ -1212,10 +1240,12 @@
 
 <p>Output:</p>
 
-<pre class="ruby">[<span class="ruby-string">&quot;foo:att&quot;</span>, <span class="ruby-string">&quot;1&quot;</span>]
-[<span class="ruby-string">&quot;bar:att&quot;</span>, <span class="ruby-string">&quot;2&quot;</span>]
-[<span class="ruby-string">&quot;att&quot;</span>, <span class="ruby-string">&quot;&lt;&quot;</span>]
+<pre class="ruby">[<span class="ruby-string">&quot;</span><span class="ruby-string">foo:att</span><span class="ruby-string">&quot;</span>, <span class="ruby-string">&quot;</span><span class="ruby-string">1</span><span class="ruby-string">&quot;</span>]
+[<span class="ruby-string">&quot;</span><span class="ruby-string">bar:att</span><span class="ruby-string">&quot;</span>, <span class="ruby-string">&quot;</span><span class="ruby-string">2</span><span class="ruby-string">&quot;</span>]
+[<span class="ruby-string">&quot;</span><span class="ruby-string">att</span><span class="ruby-string">&quot;</span>, <span class="ruby-string">&quot;</span><span class="ruby-string">&lt;</span><span class="ruby-string">&quot;</span>]
 </pre>
+
+<p>This method doesn’t iterate attributes in the <a href="DTD.html"><code>DTD</code></a>. This may be a bug.</p>
 
 
         </div>
@@ -1229,36 +1259,36 @@
 
       <div id="method-i-each_attribute" class="method-detail anchor-link ">
         <div class="method-header">
+          <div class="method-heading-group">
 
 
-              <div class="method-heading">
-                <a href="#method-i-each_attribute" title="Link to this method">
-                  <span class="method-callseq">
-                    each_attribute {|attr| ... }
-                  </span>
-                </a>
-              </div>
+                <div class="method-heading">
+                  <a href="#method-i-each_attribute" title="Link to this method">
+                    <span class="method-callseq">
+                      each_attribute {|attr| ... }
+                    </span>
+                  </a>
+                </div>
 
+
+
+
+          </div>
+
+
+            <div class="method-controls">
+              <details class="method-source-toggle">
+                <summary><span class="method-source-icon" aria-hidden="true">{}</span> Source</summary>
+              </details>
+            </div>
 
         </div>
 
 
-          <div class="method-controls">
-            <details class="method-source-toggle">
-              <summary>Source</summary>
-            </details>
-          </div>
           <div class="method-source-code" id="each_attribute-source">
-            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/element.rb, line 2243</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">each_attribute</span> <span class="ruby-comment"># :yields: attribute</span>
-  <span class="ruby-keyword">return</span> <span class="ruby-identifier">to_enum</span>(<span class="ruby-identifier">__method__</span>) <span class="ruby-keyword">unless</span> <span class="ruby-identifier">block_given?</span>
-  <span class="ruby-identifier">each_value</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">val</span><span class="ruby-operator">|</span>
-    <span class="ruby-keyword">if</span> <span class="ruby-identifier">val</span>.<span class="ruby-identifier">kind_of?</span> <span class="ruby-constant">Attribute</span>
-      <span class="ruby-keyword">yield</span> <span class="ruby-identifier">val</span>
-    <span class="ruby-keyword">else</span>
-      <span class="ruby-identifier">val</span>.<span class="ruby-identifier">each_value</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">atr</span><span class="ruby-operator">|</span> <span class="ruby-keyword">yield</span> <span class="ruby-identifier">atr</span> }
-    <span class="ruby-keyword">end</span>
-  <span class="ruby-keyword">end</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/element.rb, line 2245</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">each_attribute</span>(<span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>) <span class="ruby-comment"># :yields: attribute</span>
+  <span class="ruby-identifier">each_own_attribute</span>(<span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
 <span class="ruby-keyword">end</span></pre>
           </div>
 
@@ -1269,13 +1299,13 @@
 
           <p>Calls the given block with each REXML::Attribute object:</p>
 
-<pre class="ruby"><span class="ruby-identifier">xml_string</span> = <span class="ruby-identifier">&lt;&lt;-EOT</span>
-<span class="ruby-value">  &lt;root xmlns:foo=&quot;http://foo&quot; xmlns:bar=&quot;http://bar&quot;&gt;
+<pre class="ruby"><span class="ruby-identifier">xml_string</span> = <span class="ruby-string">&lt;&lt;-EOT</span>
+<span class="ruby-string">  &lt;root xmlns:foo=&quot;http://foo&quot; xmlns:bar=&quot;http://bar&quot;&gt;
      &lt;ele foo:att=&#39;1&#39; bar:att=&#39;2&#39; att=&#39;&amp;lt;&#39;/&gt;
   &lt;/root&gt;</span>
-<span class="ruby-identifier">EOT</span>
+<span class="ruby-string">EOT</span>
 <span class="ruby-identifier">d</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">xml_string</span>)
-<span class="ruby-identifier">ele</span> = <span class="ruby-identifier">d</span>.<span class="ruby-identifier">root</span>.<span class="ruby-identifier">elements</span>[<span class="ruby-string">&#39;//ele&#39;</span>]   <span class="ruby-comment"># =&gt; &lt;a foo:att=&#39;1&#39; bar:att=&#39;2&#39; att=&#39;&amp;lt;&#39;/&gt;</span>
+<span class="ruby-identifier">ele</span> = <span class="ruby-identifier">d</span>.<span class="ruby-identifier">root</span>.<span class="ruby-identifier">elements</span>[<span class="ruby-string">&#39;</span><span class="ruby-string">//ele</span><span class="ruby-string">&#39;</span>]   <span class="ruby-comment"># =&gt; &lt;a foo:att=&#39;1&#39; bar:att=&#39;2&#39; att=&#39;&amp;lt;&#39;/&gt;</span>
 <span class="ruby-identifier">ele</span>.<span class="ruby-identifier">attributes</span>.<span class="ruby-identifier">each_attribute</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">attr</span><span class="ruby-operator">|</span>
   <span class="ruby-identifier">p</span> [<span class="ruby-identifier">attr</span>.<span class="ruby-identifier">class</span>, <span class="ruby-identifier">attr</span>]
 <span class="ruby-keyword">end</span>
@@ -1283,10 +1313,12 @@
 
 <p>Output:</p>
 
-<pre class="ruby">[<span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Attribute</span>, <span class="ruby-value">foo:</span><span class="ruby-identifier">att</span>=<span class="ruby-string">&#39;1&#39;</span>]
-[<span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Attribute</span>, <span class="ruby-value">bar:</span><span class="ruby-identifier">att</span>=<span class="ruby-string">&#39;2&#39;</span>]
-[<span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Attribute</span>, <span class="ruby-identifier">att</span>=<span class="ruby-string">&#39;&amp;lt;&#39;</span>]
+<pre class="ruby">[<span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Attribute</span>, <span class="ruby-value">foo</span><span class="ruby-value">:</span><span class="ruby-identifier">att</span>=<span class="ruby-string">&#39;</span><span class="ruby-string">1</span><span class="ruby-string">&#39;</span>]
+[<span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Attribute</span>, <span class="ruby-value">bar</span><span class="ruby-value">:</span><span class="ruby-identifier">att</span>=<span class="ruby-string">&#39;</span><span class="ruby-string">2</span><span class="ruby-string">&#39;</span>]
+[<span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Attribute</span>, <span class="ruby-identifier">att</span>=<span class="ruby-string">&#39;</span><span class="ruby-string">&amp;lt;</span><span class="ruby-string">&#39;</span>]
 </pre>
+
+<p>This method doesn’t iterate attributes in the <a href="DTD.html"><code>DTD</code></a>. This may be a bug.</p>
 
 
         </div>
@@ -1300,58 +1332,36 @@
 
       <div id="method-i-get_attribute" class="method-detail anchor-link ">
         <div class="method-header">
+          <div class="method-heading-group">
 
 
-              <div class="method-heading">
-                <a href="#method-i-get_attribute" title="Link to this method">
-                  <span class="method-callseq">
-                    get_attribute(name) &rarr; attribute_object or nil
-                  </span>
-                </a>
-              </div>
+                <div class="method-heading">
+                  <a href="#method-i-get_attribute" title="Link to this method">
+                    <span class="method-callseq">
+                      get_attribute(name) &rarr; attribute_object or nil
+                    </span>
+                  </a>
+                </div>
 
+
+
+
+          </div>
+
+
+            <div class="method-controls">
+              <details class="method-source-toggle">
+                <summary><span class="method-source-icon" aria-hidden="true">{}</span> Source</summary>
+              </details>
+            </div>
 
         </div>
 
 
-          <div class="method-controls">
-            <details class="method-source-toggle">
-              <summary>Source</summary>
-            </details>
-          </div>
           <div class="method-source-code" id="get_attribute-source">
-            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/element.rb, line 2302</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">get_attribute</span>( <span class="ruby-identifier">name</span> )
-  <span class="ruby-identifier">attr</span> = <span class="ruby-identifier">fetch</span>( <span class="ruby-identifier">name</span>, <span class="ruby-keyword">nil</span> )
-  <span class="ruby-keyword">if</span> <span class="ruby-identifier">attr</span>.<span class="ruby-identifier">nil?</span>
-    <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">name</span>.<span class="ruby-identifier">nil?</span>
-    <span class="ruby-comment"># Look for prefix</span>
-    <span class="ruby-identifier">name</span> <span class="ruby-operator">=~</span> <span class="ruby-constant">Namespace</span><span class="ruby-operator">::</span><span class="ruby-constant">NAMESPLIT</span>
-    <span class="ruby-identifier">prefix</span>, <span class="ruby-identifier">n</span> = <span class="ruby-node">$1</span>, <span class="ruby-node">$2</span>
-    <span class="ruby-keyword">if</span> <span class="ruby-identifier">prefix</span>
-      <span class="ruby-identifier">attr</span> = <span class="ruby-identifier">fetch</span>( <span class="ruby-identifier">n</span>, <span class="ruby-keyword">nil</span> )
-      <span class="ruby-comment"># check prefix</span>
-      <span class="ruby-keyword">if</span> <span class="ruby-identifier">attr</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
-      <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">attr</span>.<span class="ruby-identifier">kind_of?</span> <span class="ruby-constant">Attribute</span>
-        <span class="ruby-keyword">return</span> <span class="ruby-identifier">attr</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">prefix</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">attr</span>.<span class="ruby-identifier">prefix</span>
-      <span class="ruby-keyword">else</span>
-        <span class="ruby-identifier">attr</span> = <span class="ruby-identifier">attr</span>[ <span class="ruby-identifier">prefix</span> ]
-        <span class="ruby-keyword">return</span> <span class="ruby-identifier">attr</span>
-      <span class="ruby-keyword">end</span>
-    <span class="ruby-keyword">end</span>
-    <span class="ruby-identifier">doctype</span> = <span class="ruby-ivar">@element</span>.<span class="ruby-identifier">document</span>&amp;.<span class="ruby-identifier">doctype</span>
-    <span class="ruby-keyword">if</span> <span class="ruby-identifier">doctype</span>
-      <span class="ruby-identifier">expn</span> = <span class="ruby-ivar">@element</span>.<span class="ruby-identifier">expanded_name</span>
-      <span class="ruby-identifier">expn</span> = <span class="ruby-identifier">doctype</span>.<span class="ruby-identifier">name</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">expn</span>.<span class="ruby-identifier">size</span> <span class="ruby-operator">==</span> <span class="ruby-value">0</span>
-      <span class="ruby-identifier">attr_val</span> = <span class="ruby-identifier">doctype</span>.<span class="ruby-identifier">attribute_of</span>(<span class="ruby-identifier">expn</span>, <span class="ruby-identifier">name</span>)
-      <span class="ruby-keyword">return</span> <span class="ruby-constant">Attribute</span>.<span class="ruby-identifier">new</span>( <span class="ruby-identifier">name</span>, <span class="ruby-identifier">attr_val</span> ) <span class="ruby-keyword">if</span> <span class="ruby-identifier">attr_val</span>
-    <span class="ruby-keyword">end</span>
-    <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span>
-  <span class="ruby-keyword">end</span>
-  <span class="ruby-keyword">if</span> <span class="ruby-identifier">attr</span>.<span class="ruby-identifier">kind_of?</span> <span class="ruby-constant">Hash</span>
-    <span class="ruby-identifier">attr</span> = <span class="ruby-identifier">attr</span>[ <span class="ruby-ivar">@element</span>.<span class="ruby-identifier">prefix</span> ]
-  <span class="ruby-keyword">end</span>
-  <span class="ruby-identifier">attr</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/element.rb, line 2299</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">get_attribute</span>( <span class="ruby-identifier">name</span> )
+  <span class="ruby-identifier">fetch</span>(<span class="ruby-identifier">name</span>, <span class="ruby-keyword">nil</span>) <span class="ruby-operator">||</span> <span class="ruby-identifier">attlist_attributes</span>&amp;.[](<span class="ruby-identifier">name</span>)
 <span class="ruby-keyword">end</span></pre>
           </div>
 
@@ -1362,19 +1372,19 @@
 
           <p>Returns the REXML::Attribute object for the given <code>name</code>:</p>
 
-<pre class="ruby"><span class="ruby-identifier">xml_string</span> = <span class="ruby-identifier">&lt;&lt;-EOT</span>
-<span class="ruby-value">  &lt;root xmlns:foo=&quot;http://foo&quot; xmlns:bar=&quot;http://bar&quot;&gt;
+<pre class="ruby"><span class="ruby-identifier">xml_string</span> = <span class="ruby-string">&lt;&lt;-EOT</span>
+<span class="ruby-string">  &lt;root xmlns:foo=&quot;http://foo&quot; xmlns:bar=&quot;http://bar&quot;&gt;
      &lt;ele foo:att=&#39;1&#39; bar:att=&#39;2&#39; att=&#39;&amp;lt;&#39;/&gt;
   &lt;/root&gt;</span>
-<span class="ruby-identifier">EOT</span>
+<span class="ruby-string">EOT</span>
 <span class="ruby-identifier">d</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">xml_string</span>)
-<span class="ruby-identifier">ele</span> = <span class="ruby-identifier">d</span>.<span class="ruby-identifier">root</span>.<span class="ruby-identifier">elements</span>[<span class="ruby-string">&#39;//ele&#39;</span>] <span class="ruby-comment"># =&gt; &lt;a foo:att=&#39;1&#39; bar:att=&#39;2&#39; att=&#39;&amp;lt;&#39;/&gt;</span>
+<span class="ruby-identifier">ele</span> = <span class="ruby-identifier">d</span>.<span class="ruby-identifier">root</span>.<span class="ruby-identifier">elements</span>[<span class="ruby-string">&#39;</span><span class="ruby-string">//ele</span><span class="ruby-string">&#39;</span>] <span class="ruby-comment"># =&gt; &lt;a foo:att=&#39;1&#39; bar:att=&#39;2&#39; att=&#39;&amp;lt;&#39;/&gt;</span>
 <span class="ruby-identifier">attrs</span> = <span class="ruby-identifier">ele</span>.<span class="ruby-identifier">attributes</span>
-<span class="ruby-identifier">attrs</span>.<span class="ruby-identifier">get_attribute</span>(<span class="ruby-string">&#39;foo:att&#39;</span>)       <span class="ruby-comment"># =&gt; foo:att=&#39;1&#39;</span>
-<span class="ruby-identifier">attrs</span>.<span class="ruby-identifier">get_attribute</span>(<span class="ruby-string">&#39;foo:att&#39;</span>).<span class="ruby-identifier">class</span> <span class="ruby-comment"># =&gt; REXML::Attribute</span>
-<span class="ruby-identifier">attrs</span>.<span class="ruby-identifier">get_attribute</span>(<span class="ruby-string">&#39;bar:att&#39;</span>)       <span class="ruby-comment"># =&gt; bar:att=&#39;2&#39;</span>
-<span class="ruby-identifier">attrs</span>.<span class="ruby-identifier">get_attribute</span>(<span class="ruby-string">&#39;att&#39;</span>)           <span class="ruby-comment"># =&gt; att=&#39;&amp;lt;&#39;</span>
-<span class="ruby-identifier">attrs</span>.<span class="ruby-identifier">get_attribute</span>(<span class="ruby-string">&#39;nosuch&#39;</span>)        <span class="ruby-comment"># =&gt; nil</span>
+<span class="ruby-identifier">attrs</span>.<span class="ruby-identifier">get_attribute</span>(<span class="ruby-string">&#39;</span><span class="ruby-string">foo:att</span><span class="ruby-string">&#39;</span>)       <span class="ruby-comment"># =&gt; foo:att=&#39;1&#39;</span>
+<span class="ruby-identifier">attrs</span>.<span class="ruby-identifier">get_attribute</span>(<span class="ruby-string">&#39;</span><span class="ruby-string">foo:att</span><span class="ruby-string">&#39;</span>).<span class="ruby-identifier">class</span> <span class="ruby-comment"># =&gt; REXML::Attribute</span>
+<span class="ruby-identifier">attrs</span>.<span class="ruby-identifier">get_attribute</span>(<span class="ruby-string">&#39;</span><span class="ruby-string">bar:att</span><span class="ruby-string">&#39;</span>)       <span class="ruby-comment"># =&gt; bar:att=&#39;2&#39;</span>
+<span class="ruby-identifier">attrs</span>.<span class="ruby-identifier">get_attribute</span>(<span class="ruby-string">&#39;</span><span class="ruby-string">att</span><span class="ruby-string">&#39;</span>)           <span class="ruby-comment"># =&gt; att=&#39;&amp;lt;&#39;</span>
+<span class="ruby-identifier">attrs</span>.<span class="ruby-identifier">get_attribute</span>(<span class="ruby-string">&#39;</span><span class="ruby-string">nosuch</span><span class="ruby-string">&#39;</span>)        <span class="ruby-comment"># =&gt; nil</span>
 </pre>
 
 
@@ -1389,39 +1399,51 @@
 
       <div id="method-i-get_attribute_ns" class="method-detail anchor-link ">
         <div class="method-header">
+          <div class="method-heading-group">
 
 
-              <div class="method-heading">
-                <a href="#method-i-get_attribute_ns" title="Link to this method">
-                  <span class="method-callseq">
-                    get_attribute_ns(namespace, name)
-                  </span>
-                </a>
-              </div>
+                <div class="method-heading">
+                  <a href="#method-i-get_attribute_ns" title="Link to this method">
+                    <span class="method-callseq">
+                      get_attribute_ns(namespace, name)
+                    </span>
+                  </a>
+                </div>
 
+
+
+
+          </div>
+
+
+            <div class="method-controls">
+              <details class="method-source-toggle">
+                <summary><span class="method-source-icon" aria-hidden="true">{}</span> Source</summary>
+              </details>
+            </div>
 
         </div>
 
 
-          <div class="method-controls">
-            <details class="method-source-toggle">
-              <summary>Source</summary>
-            </details>
-          </div>
           <div class="method-source-code" id="get_attribute_ns-source">
-            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/element.rb, line 2564</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">get_attribute_ns</span>(<span class="ruby-identifier">namespace</span>, <span class="ruby-identifier">name</span>)
-  <span class="ruby-identifier">result</span> = <span class="ruby-keyword">nil</span>
-  <span class="ruby-identifier">each_attribute</span>() { <span class="ruby-operator">|</span><span class="ruby-identifier">attribute</span><span class="ruby-operator">|</span>
-    <span class="ruby-keyword">if</span> <span class="ruby-identifier">name</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">attribute</span>.<span class="ruby-identifier">name</span> <span class="ruby-operator">&amp;&amp;</span>
-      <span class="ruby-identifier">namespace</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">attribute</span>.<span class="ruby-identifier">namespace</span>() <span class="ruby-operator">&amp;&amp;</span>
-      ( <span class="ruby-operator">!</span><span class="ruby-identifier">namespace</span>.<span class="ruby-identifier">empty?</span> <span class="ruby-operator">||</span> <span class="ruby-operator">!</span><span class="ruby-identifier">attribute</span>.<span class="ruby-identifier">fully_expanded_name</span>.<span class="ruby-identifier">index</span>(<span class="ruby-string">&#39;:&#39;</span>) )
-      <span class="ruby-comment"># foo will match xmlns:foo, but only if foo isn&#39;t also an attribute</span>
-      <span class="ruby-identifier">result</span> = <span class="ruby-identifier">attribute</span> <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span><span class="ruby-identifier">result</span> <span class="ruby-keyword">or</span> <span class="ruby-operator">!</span><span class="ruby-identifier">namespace</span>.<span class="ruby-identifier">empty?</span> <span class="ruby-keyword">or</span>
-                            <span class="ruby-operator">!</span><span class="ruby-identifier">attribute</span>.<span class="ruby-identifier">fully_expanded_name</span>.<span class="ruby-identifier">index</span>(<span class="ruby-string">&#39;:&#39;</span>)
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/element.rb, line 2491</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">get_attribute_ns</span>(<span class="ruby-identifier">namespace</span>, <span class="ruby-identifier">name</span>)
+  <span class="ruby-identifier">each_effective_attribute</span>.<span class="ruby-identifier">find</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">attribute</span><span class="ruby-operator">|</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">attribute</span>.<span class="ruby-identifier">namespace_declaration?</span>
+      <span class="ruby-comment"># namespace declarations are not considered as attributes in this method.</span>
+      <span class="ruby-comment"># For example: &lt;elem1 xmlns=&quot;&quot; xmlns:foo=&quot;url&quot; /&gt;&lt;elem2 xmlns=&quot;bar&quot; xmlns:foo=&quot;url&quot; /&gt;</span>
+      <span class="ruby-comment"># Both elem1.get_attribute_ns(&#39;&#39;, &#39;foo&#39;) and elem2.get_attribute_ns(&#39;bar&#39;, &#39;foo&#39;)</span>
+      <span class="ruby-comment"># should not match.</span>
+      <span class="ruby-keyword">false</span>
+    <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">namespace</span>.<span class="ruby-identifier">empty?</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-operator">!</span><span class="ruby-identifier">attribute</span>.<span class="ruby-identifier">prefix</span>.<span class="ruby-identifier">empty?</span>
+      <span class="ruby-comment"># If prefix is present, namespace url shouldn&#39;t be empty, so it never matches.</span>
+      <span class="ruby-comment"># For example, &lt;elem foo:att=&quot;value&quot; /&gt;, even if attribute.namespace returns &#39;&#39;,</span>
+      <span class="ruby-comment"># it just means that namespace lookup failed, it shouldn&#39;t match.</span>
+      <span class="ruby-keyword">false</span>
+    <span class="ruby-keyword">else</span>
+      <span class="ruby-identifier">name</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">attribute</span>.<span class="ruby-identifier">name</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">namespace</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">attribute</span>.<span class="ruby-identifier">namespace</span>()
     <span class="ruby-keyword">end</span>
-  }
-  <span class="ruby-identifier">result</span>
+  <span class="ruby-keyword">end</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
 
@@ -1432,16 +1454,16 @@
 
           <p>Returns the REXML::Attribute object among the attributes that matches the given <code>namespace</code> and <code>name</code>:</p>
 
-<pre class="ruby"><span class="ruby-identifier">xml_string</span> = <span class="ruby-identifier">&lt;&lt;-EOT</span>
-<span class="ruby-value">  &lt;root xmlns:foo=&quot;http://foo&quot; xmlns:bar=&quot;http://bar&quot;&gt;
+<pre class="ruby"><span class="ruby-identifier">xml_string</span> = <span class="ruby-string">&lt;&lt;-EOT</span>
+<span class="ruby-string">  &lt;root xmlns:foo=&quot;http://foo&quot; xmlns:bar=&quot;http://bar&quot;&gt;
      &lt;ele foo:att=&#39;1&#39; bar:att=&#39;2&#39; att=&#39;&amp;lt;&#39;/&gt;
   &lt;/root&gt;</span>
-<span class="ruby-identifier">EOT</span>
+<span class="ruby-string">EOT</span>
 <span class="ruby-identifier">d</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">xml_string</span>)
-<span class="ruby-identifier">ele</span> = <span class="ruby-identifier">d</span>.<span class="ruby-identifier">root</span>.<span class="ruby-identifier">elements</span>[<span class="ruby-string">&#39;//ele&#39;</span>] <span class="ruby-comment"># =&gt; &lt;a foo:att=&#39;1&#39; bar:att=&#39;2&#39; att=&#39;&amp;lt;&#39;/&gt;</span>
+<span class="ruby-identifier">ele</span> = <span class="ruby-identifier">d</span>.<span class="ruby-identifier">root</span>.<span class="ruby-identifier">elements</span>[<span class="ruby-string">&#39;</span><span class="ruby-string">//ele</span><span class="ruby-string">&#39;</span>] <span class="ruby-comment"># =&gt; &lt;a foo:att=&#39;1&#39; bar:att=&#39;2&#39; att=&#39;&amp;lt;&#39;/&gt;</span>
 <span class="ruby-identifier">attrs</span> = <span class="ruby-identifier">ele</span>.<span class="ruby-identifier">attributes</span>
-<span class="ruby-identifier">attrs</span>.<span class="ruby-identifier">get_attribute_ns</span>(<span class="ruby-string">&#39;http://foo&#39;</span>, <span class="ruby-string">&#39;att&#39;</span>)    <span class="ruby-comment"># =&gt; foo:att=&#39;1&#39;</span>
-<span class="ruby-identifier">attrs</span>.<span class="ruby-identifier">get_attribute_ns</span>(<span class="ruby-string">&#39;http://foo&#39;</span>, <span class="ruby-string">&#39;nosuch&#39;</span>) <span class="ruby-comment"># =&gt; nil</span>
+<span class="ruby-identifier">attrs</span>.<span class="ruby-identifier">get_attribute_ns</span>(<span class="ruby-string">&#39;</span><span class="ruby-string">http://foo</span><span class="ruby-string">&#39;</span>, <span class="ruby-string">&#39;</span><span class="ruby-string">att</span><span class="ruby-string">&#39;</span>)    <span class="ruby-comment"># =&gt; foo:att=&#39;1&#39;</span>
+<span class="ruby-identifier">attrs</span>.<span class="ruby-identifier">get_attribute_ns</span>(<span class="ruby-string">&#39;</span><span class="ruby-string">http://foo</span><span class="ruby-string">&#39;</span>, <span class="ruby-string">&#39;</span><span class="ruby-string">nosuch</span><span class="ruby-string">&#39;</span>) <span class="ruby-comment"># =&gt; nil</span>
 </pre>
 
 
@@ -1456,30 +1478,37 @@
 
       <div id="method-i-length" class="method-detail anchor-link ">
         <div class="method-header">
+          <div class="method-heading-group">
 
 
-              <div class="method-heading">
-                <a href="#method-i-length" title="Link to this method">
-                  <span class="method-callseq">
-                    length
-                  </span>
-                </a>
-              </div>
+                <div class="method-heading">
+                  <a href="#method-i-length" title="Link to this method">
+                    <span class="method-callseq">
+                      length
+                    </span>
+                  </a>
+                </div>
 
+
+
+
+          </div>
+
+
+            <div class="method-controls">
+              <details class="method-source-toggle">
+                <summary><span class="method-source-icon" aria-hidden="true">{}</span> Source</summary>
+              </details>
+            </div>
 
         </div>
 
 
-          <div class="method-controls">
-            <details class="method-source-toggle">
-              <summary>Source</summary>
-            </details>
-          </div>
           <div class="method-source-code" id="length-source">
             <pre class="ruby"><span class="ruby-comment"># File lib/rexml/element.rb, line 2214</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">length</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">length</span>
   <span class="ruby-identifier">c</span> = <span class="ruby-value">0</span>
-  <span class="ruby-identifier">each_attribute</span> { <span class="ruby-identifier">c</span><span class="ruby-operator">+=</span><span class="ruby-value">1</span> }
+  <span class="ruby-identifier">each_attribute</span> { <span class="ruby-identifier">c</span>+=<span class="ruby-value">1</span> }
   <span class="ruby-identifier">c</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
@@ -1491,13 +1520,13 @@
 
           <p>Returns the count of attributes:</p>
 
-<pre class="ruby"><span class="ruby-identifier">xml_string</span> = <span class="ruby-identifier">&lt;&lt;-EOT</span>
-<span class="ruby-value">  &lt;root xmlns:foo=&quot;http://foo&quot; xmlns:bar=&quot;http://bar&quot;&gt;
+<pre class="ruby"><span class="ruby-identifier">xml_string</span> = <span class="ruby-string">&lt;&lt;-EOT</span>
+<span class="ruby-string">  &lt;root xmlns:foo=&quot;http://foo&quot; xmlns:bar=&quot;http://bar&quot;&gt;
      &lt;ele foo:att=&#39;1&#39; bar:att=&#39;2&#39; att=&#39;&amp;lt;&#39;/&gt;
   &lt;/root&gt;</span>
-<span class="ruby-identifier">EOT</span>
+<span class="ruby-string">EOT</span>
 <span class="ruby-identifier">d</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">xml_string</span>)
-<span class="ruby-identifier">ele</span> = <span class="ruby-identifier">d</span>.<span class="ruby-identifier">root</span>.<span class="ruby-identifier">elements</span>[<span class="ruby-string">&#39;//ele&#39;</span>]   <span class="ruby-comment"># =&gt; &lt;a foo:att=&#39;1&#39; bar:att=&#39;2&#39; att=&#39;&amp;lt;&#39;/&gt;</span>
+<span class="ruby-identifier">ele</span> = <span class="ruby-identifier">d</span>.<span class="ruby-identifier">root</span>.<span class="ruby-identifier">elements</span>[<span class="ruby-string">&#39;</span><span class="ruby-string">//ele</span><span class="ruby-string">&#39;</span>]   <span class="ruby-comment"># =&gt; &lt;a foo:att=&#39;1&#39; bar:att=&#39;2&#39; att=&#39;&amp;lt;&#39;/&gt;</span>
 <span class="ruby-identifier">ele</span>.<span class="ruby-identifier">attributes</span>.<span class="ruby-identifier">length</span> <span class="ruby-comment"># =&gt; 3</span>
 </pre>
 
@@ -1517,40 +1546,38 @@
 
       <div id="method-i-namespaces" class="method-detail anchor-link ">
         <div class="method-header">
+          <div class="method-heading-group">
 
 
-              <div class="method-heading">
-                <a href="#method-i-namespaces" title="Link to this method">
-                  <span class="method-callseq">
-                    namespaces
-                  </span>
-                </a>
-              </div>
+                <div class="method-heading">
+                  <a href="#method-i-namespaces" title="Link to this method">
+                    <span class="method-callseq">
+                      namespaces
+                    </span>
+                  </a>
+                </div>
 
+
+
+
+          </div>
+
+
+            <div class="method-controls">
+              <details class="method-source-toggle">
+                <summary><span class="method-source-icon" aria-hidden="true">{}</span> Source</summary>
+              </details>
+            </div>
 
         </div>
 
 
-          <div class="method-controls">
-            <details class="method-source-toggle">
-              <summary>Source</summary>
-            </details>
-          </div>
           <div class="method-source-code" id="namespaces-source">
-            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/element.rb, line 2426</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">namespaces</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/element.rb, line 2374</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">namespaces</span>
   <span class="ruby-identifier">namespaces</span> = {}
-  <span class="ruby-identifier">each_attribute</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">attribute</span><span class="ruby-operator">|</span>
-    <span class="ruby-identifier">namespaces</span>[<span class="ruby-identifier">attribute</span>.<span class="ruby-identifier">name</span>] = <span class="ruby-identifier">attribute</span>.<span class="ruby-identifier">value</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">attribute</span>.<span class="ruby-identifier">prefix</span> <span class="ruby-operator">==</span> <span class="ruby-string">&#39;xmlns&#39;</span> <span class="ruby-keyword">or</span> <span class="ruby-identifier">attribute</span>.<span class="ruby-identifier">name</span> <span class="ruby-operator">==</span> <span class="ruby-string">&#39;xmlns&#39;</span>
-  <span class="ruby-keyword">end</span>
-  <span class="ruby-identifier">doctype</span> = <span class="ruby-ivar">@element</span>.<span class="ruby-identifier">document</span>&amp;.<span class="ruby-identifier">doctype</span>
-  <span class="ruby-keyword">if</span> <span class="ruby-identifier">doctype</span>
-    <span class="ruby-identifier">expn</span> = <span class="ruby-ivar">@element</span>.<span class="ruby-identifier">expanded_name</span>
-    <span class="ruby-identifier">expn</span> = <span class="ruby-identifier">doctype</span>.<span class="ruby-identifier">name</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">expn</span>.<span class="ruby-identifier">size</span> <span class="ruby-operator">==</span> <span class="ruby-value">0</span>
-    <span class="ruby-identifier">doctype</span>.<span class="ruby-identifier">attributes_of</span>(<span class="ruby-identifier">expn</span>).<span class="ruby-identifier">each</span> {
-      <span class="ruby-operator">|</span><span class="ruby-identifier">attribute</span><span class="ruby-operator">|</span>
-      <span class="ruby-identifier">namespaces</span>[<span class="ruby-identifier">attribute</span>.<span class="ruby-identifier">name</span>] = <span class="ruby-identifier">attribute</span>.<span class="ruby-identifier">value</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">attribute</span>.<span class="ruby-identifier">prefix</span> <span class="ruby-operator">==</span> <span class="ruby-string">&#39;xmlns&#39;</span> <span class="ruby-keyword">or</span> <span class="ruby-identifier">attribute</span>.<span class="ruby-identifier">name</span> <span class="ruby-operator">==</span> <span class="ruby-string">&#39;xmlns&#39;</span>
-    }
+  <span class="ruby-identifier">each_effective_attribute</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">attribute</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">namespaces</span>[<span class="ruby-identifier">attribute</span>.<span class="ruby-identifier">name</span>] = <span class="ruby-identifier">attribute</span>.<span class="ruby-identifier">value</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">attribute</span>.<span class="ruby-identifier">namespace_declaration?</span>
   <span class="ruby-keyword">end</span>
   <span class="ruby-identifier">namespaces</span>
 <span class="ruby-keyword">end</span></pre>
@@ -1563,7 +1590,7 @@
 
           <p>Returns a hash of name/value pairs for the namespaces:</p>
 
-<pre class="ruby"><span class="ruby-identifier">xml_string</span> = <span class="ruby-string">&#39;&lt;a xmlns=&quot;foo&quot; xmlns:x=&quot;bar&quot; xmlns:y=&quot;twee&quot; z=&quot;glorp&quot;/&gt;&#39;</span>
+<pre class="ruby"><span class="ruby-identifier">xml_string</span> = <span class="ruby-string">&#39;</span><span class="ruby-string">&lt;a xmlns=&quot;foo&quot; xmlns:x=&quot;bar&quot; xmlns:y=&quot;twee&quot; z=&quot;glorp&quot;/&gt;</span><span class="ruby-string">&#39;</span>
 <span class="ruby-identifier">d</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">xml_string</span>)
 <span class="ruby-identifier">d</span>.<span class="ruby-identifier">root</span>.<span class="ruby-identifier">attributes</span>.<span class="ruby-identifier">namespaces</span> <span class="ruby-comment"># =&gt; {&quot;xmlns&quot;=&gt;&quot;foo&quot;, &quot;x&quot;=&gt;&quot;bar&quot;, &quot;y&quot;=&gt;&quot;twee&quot;}</span>
 </pre>
@@ -1580,42 +1607,36 @@
 
       <div id="method-i-prefixes" class="method-detail anchor-link ">
         <div class="method-header">
+          <div class="method-heading-group">
 
 
-              <div class="method-heading">
-                <a href="#method-i-prefixes" title="Link to this method">
-                  <span class="method-callseq">
-                    prefixes &rarr; array_of_prefix_strings
-                  </span>
-                </a>
-              </div>
+                <div class="method-heading">
+                  <a href="#method-i-prefixes" title="Link to this method">
+                    <span class="method-callseq">
+                      prefixes &rarr; array_of_prefix_strings
+                    </span>
+                  </a>
+                </div>
 
+
+
+
+          </div>
+
+
+            <div class="method-controls">
+              <details class="method-source-toggle">
+                <summary><span class="method-source-icon" aria-hidden="true">{}</span> Source</summary>
+              </details>
+            </div>
 
         </div>
 
 
-          <div class="method-controls">
-            <details class="method-source-toggle">
-              <summary>Source</summary>
-            </details>
-          </div>
           <div class="method-source-code" id="prefixes-source">
-            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/element.rb, line 2400</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">prefixes</span>
-  <span class="ruby-identifier">ns</span> = []
-  <span class="ruby-identifier">each_attribute</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">attribute</span><span class="ruby-operator">|</span>
-    <span class="ruby-identifier">ns</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">attribute</span>.<span class="ruby-identifier">name</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">attribute</span>.<span class="ruby-identifier">prefix</span> <span class="ruby-operator">==</span> <span class="ruby-string">&#39;xmlns&#39;</span>
-  <span class="ruby-keyword">end</span>
-  <span class="ruby-identifier">doctype</span> = <span class="ruby-ivar">@element</span>.<span class="ruby-identifier">document</span>&amp;.<span class="ruby-identifier">doctype</span>
-  <span class="ruby-keyword">if</span> <span class="ruby-identifier">doctype</span>
-    <span class="ruby-identifier">expn</span> = <span class="ruby-ivar">@element</span>.<span class="ruby-identifier">expanded_name</span>
-    <span class="ruby-identifier">expn</span> = <span class="ruby-identifier">doctype</span>.<span class="ruby-identifier">name</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">expn</span>.<span class="ruby-identifier">size</span> <span class="ruby-operator">==</span> <span class="ruby-value">0</span>
-    <span class="ruby-identifier">doctype</span>.<span class="ruby-identifier">attributes_of</span>(<span class="ruby-identifier">expn</span>).<span class="ruby-identifier">each</span> {
-      <span class="ruby-operator">|</span><span class="ruby-identifier">attribute</span><span class="ruby-operator">|</span>
-      <span class="ruby-identifier">ns</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">attribute</span>.<span class="ruby-identifier">name</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">attribute</span>.<span class="ruby-identifier">prefix</span> <span class="ruby-operator">==</span> <span class="ruby-string">&#39;xmlns&#39;</span>
-    }
-  <span class="ruby-keyword">end</span>
-  <span class="ruby-identifier">ns</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/element.rb, line 2361</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">prefixes</span>
+  <span class="ruby-identifier">namespaces</span>.<span class="ruby-identifier">keys</span> <span class="ruby-operator">-</span> [<span class="ruby-string">&#39;</span><span class="ruby-string">xmlns</span><span class="ruby-string">&#39;</span>]
 <span class="ruby-keyword">end</span></pre>
           </div>
 
@@ -1626,7 +1647,7 @@
 
           <p>Returns an array of prefix strings in the attributes. The array does not include the default namespace declaration, if one exists.</p>
 
-<pre class="ruby"><span class="ruby-identifier">xml_string</span> = <span class="ruby-string">&#39;&lt;a xmlns=&quot;foo&quot; xmlns:x=&quot;bar&quot; xmlns:y=&quot;twee&quot; z=&quot;glorp&quot;/&gt;&#39;</span>
+<pre class="ruby"><span class="ruby-identifier">xml_string</span> = <span class="ruby-string">&#39;</span><span class="ruby-string">&lt;a xmlns=&quot;foo&quot; xmlns:x=&quot;bar&quot; xmlns:y=&quot;twee&quot; z=&quot;glorp&quot;/&gt;</span><span class="ruby-string">&#39;</span>
 <span class="ruby-identifier">d</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">xml_string</span>)
 <span class="ruby-identifier">d</span>.<span class="ruby-identifier">root</span>.<span class="ruby-identifier">attributes</span>.<span class="ruby-identifier">prefixes</span> <span class="ruby-comment"># =&gt; [&quot;x&quot;, &quot;y&quot;]</span>
 </pre>
@@ -1643,12 +1664,18 @@
 
       <div id="method-i-size" class="method-detail anchor-link method-alias">
         <div class="method-header">
+          <div class="method-heading-group">
 
-            <div class="method-heading">
-              <a href="#method-i-size" title="Link to this method">
-                <span class="method-name">size</span>
-              </a>
-            </div>
+              <div class="method-heading">
+                <a href="#method-i-size" title="Link to this method">
+                  <span class="method-name">size</span>
+                </a>
+              </div>
+
+
+
+          </div>
+
 
         </div>
 
@@ -1668,29 +1695,36 @@
 
       <div id="method-i-to_a" class="method-detail anchor-link ">
         <div class="method-header">
+          <div class="method-heading-group">
 
 
-              <div class="method-heading">
-                <a href="#method-i-to_a" title="Link to this method">
-                  <span class="method-callseq">
-                    to_a &rarr; array_of_attribute_objects
-                  </span>
-                </a>
-              </div>
+                <div class="method-heading">
+                  <a href="#method-i-to_a" title="Link to this method">
+                    <span class="method-callseq">
+                      to_a &rarr; array_of_attribute_objects
+                    </span>
+                  </a>
+                </div>
 
+
+
+
+          </div>
+
+
+            <div class="method-controls">
+              <details class="method-source-toggle">
+                <summary><span class="method-source-icon" aria-hidden="true">{}</span> Source</summary>
+              </details>
+            </div>
 
         </div>
 
 
-          <div class="method-controls">
-            <details class="method-source-toggle">
-              <summary>Source</summary>
-            </details>
-          </div>
           <div class="method-source-code" id="to_a-source">
             <pre class="ruby"><span class="ruby-comment"># File lib/rexml/element.rb, line 2196</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">to_a</span>
-  <span class="ruby-identifier">enum_for</span>(<span class="ruby-value">:each_attribute</span>).<span class="ruby-identifier">to_a</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">to_a</span>
+  <span class="ruby-identifier">enum_for</span>(<span class="ruby-value">:</span><span class="ruby-value">each_attribute</span>).<span class="ruby-identifier">to_a</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
 
@@ -1701,13 +1735,13 @@
 
           <p>Returns an array of REXML::Attribute objects representing the attributes:</p>
 
-<pre class="ruby"><span class="ruby-identifier">xml_string</span> = <span class="ruby-identifier">&lt;&lt;-EOT</span>
-<span class="ruby-value">  &lt;root xmlns:foo=&quot;http://foo&quot; xmlns:bar=&quot;http://bar&quot;&gt;
+<pre class="ruby"><span class="ruby-identifier">xml_string</span> = <span class="ruby-string">&lt;&lt;-EOT</span>
+<span class="ruby-string">  &lt;root xmlns:foo=&quot;http://foo&quot; xmlns:bar=&quot;http://bar&quot;&gt;
      &lt;ele foo:att=&#39;1&#39; bar:att=&#39;2&#39; att=&#39;&amp;lt;&#39;/&gt;
   &lt;/root&gt;</span>
-<span class="ruby-identifier">EOT</span>
+<span class="ruby-string">EOT</span>
 <span class="ruby-identifier">d</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">xml_string</span>)
-<span class="ruby-identifier">ele</span> = <span class="ruby-identifier">d</span>.<span class="ruby-identifier">root</span>.<span class="ruby-identifier">elements</span>[<span class="ruby-string">&#39;//ele&#39;</span>]   <span class="ruby-comment"># =&gt; &lt;a foo:att=&#39;1&#39; bar:att=&#39;2&#39; att=&#39;&amp;lt;&#39;/&gt;</span>
+<span class="ruby-identifier">ele</span> = <span class="ruby-identifier">d</span>.<span class="ruby-identifier">root</span>.<span class="ruby-identifier">elements</span>[<span class="ruby-string">&#39;</span><span class="ruby-string">//ele</span><span class="ruby-string">&#39;</span>]   <span class="ruby-comment"># =&gt; &lt;a foo:att=&#39;1&#39; bar:att=&#39;2&#39; att=&#39;&amp;lt;&#39;/&gt;</span>
 <span class="ruby-identifier">attrs</span> = <span class="ruby-identifier">ele</span>.<span class="ruby-identifier">attributes</span>.<span class="ruby-identifier">to_a</span>      <span class="ruby-comment"># =&gt; [foo:att=&#39;1&#39;, bar:att=&#39;2&#39;, att=&#39;&amp;lt;&#39;]</span>
 <span class="ruby-identifier">attrs</span>.<span class="ruby-identifier">first</span>.<span class="ruby-identifier">class</span>                <span class="ruby-comment"># =&gt; REXML::Attribute</span>
 </pre>
@@ -1731,7 +1765,7 @@
 
 </main>
 
-<aside class="table-of-contents" role="complementary" aria-label="Table of Contents">
+<aside id="table-of-contents" class="table-of-contents" role="complementary" aria-label="Table of Contents">
   <div class="toc-sticky">
     <h3 class="toc-heading">On This Page</h3>
     <nav class="toc-nav" id="toc-nav" aria-label="Page sections">
@@ -1746,7 +1780,7 @@
 
   <div class="footer-bottom">
     <p>
-      Generated by <a href="https://ruby.github.io/rdoc/">RDoc 7.2.0</a>
+      Generated by <a href="https://ruby.github.io/rdoc/">RDoc 8.0.0</a>
       using the Aliki theme by <a href="http://st0012.dev">Stan Lo</a>
     </p>
   </div>

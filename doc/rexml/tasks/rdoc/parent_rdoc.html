@@ -45,46 +45,46 @@
 </script>
 
 <script
-  src="../../../../js/theme-toggle.js?v=7.2.0"
+  src="../../../../js/theme-toggle.js?v=8.0.0"
 ></script>
 
 <script
-  src="../../../../js/search_navigation.js?v=7.2.0"
+  src="../../../../js/search_navigation.js?v=8.0.0"
   defer
 ></script>
 
 <script
-  src="../../../../js/search_data.js?v=7.2.0"
+  src="../../../../js/search_data.js?v=8.0.0"
   defer
 ></script>
 
 <script
-  src="../../../../js/search_ranker.js?v=7.2.0"
+  src="../../../../js/search_ranker.js?v=8.0.0"
   defer
 ></script>
 
 <script
-  src="../../../../js/search_controller.js?v=7.2.0"
+  src="../../../../js/search_controller.js?v=8.0.0"
   defer
 ></script>
 
 <script
-  src="../../../../js/c_highlighter.js?v=7.2.0"
+  src="../../../../js/c_highlighter.js?v=8.0.0"
   defer
 ></script>
 
 <script
-  src="../../../../js/bash_highlighter.js?v=7.2.0"
+  src="../../../../js/bash_highlighter.js?v=8.0.0"
   defer
 ></script>
 
 <script
-  src="../../../../js/aliki.js?v=7.2.0"
+  src="../../../../js/aliki.js?v=8.0.0"
   defer
 ></script>
 
 <link
-  href="../../../../css/rdoc.css?v=7.2.0"
+  href="../../../../css/rdoc.css?v=8.0.0"
   rel="stylesheet"
 >
 
@@ -358,12 +358,12 @@
   </div>
 </div>
 
-<div id="navigation-toggle" role="button" tabindex="0" aria-label="Toggle sidebar" aria-expanded="true" aria-controls="navigation">
+<div id="sidebar-navigation-toggle" role="button" tabindex="0" aria-label="Toggle sidebar" aria-expanded="false" aria-controls="sidebar-navigation">
   <span aria-hidden="true">&#9776;</span>
 </div>
 
 
-<nav id="navigation" role="navigation" hidden>
+<nav id="sidebar-navigation" role="navigation" hidden>
   
 
 
@@ -408,15 +408,6 @@
             <li>
               <a href="../../../../NEWS_md.html">
                 NEWS
-              </a>
-            </li>
-
-
-
-
-            <li>
-              <a href="../../../../README_md.html">
-                README
               </a>
             </li>
 
@@ -616,7 +607,7 @@
 
 <pre class="ruby"><span class="ruby-identifier">p</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Parent</span>.<span class="ruby-identifier">new</span>
 <span class="ruby-identifier">p</span>.<span class="ruby-identifier">size</span> <span class="ruby-comment"># =&gt; 0</span>
-<span class="ruby-identifier">xml_string</span> = <span class="ruby-string">&#39;&lt;root&gt;&lt;a/&gt;&lt;b/&gt;&lt;c/&gt;&lt;/root&gt;&#39;</span>
+<span class="ruby-identifier">xml_string</span> = <span class="ruby-string">&#39;</span><span class="ruby-string">&lt;root&gt;&lt;a/&gt;&lt;b/&gt;&lt;c/&gt;&lt;/root&gt;</span><span class="ruby-string">&#39;</span>
 <span class="ruby-identifier">d</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">xml_string</span>)
 <span class="ruby-identifier">d</span>.<span class="ruby-identifier">root</span>.<span class="ruby-identifier">size</span> <span class="ruby-comment"># =&gt; 3</span>
 </pre>
@@ -626,10 +617,10 @@
 
 <p>Use method <a href="../../../../REXML/Parent.html#method-i-5B-5D">Parent#[]</a> to get the child at a given index:</p>
 
-<pre class="ruby"><span class="ruby-identifier">xml_string</span> = <span class="ruby-string">&#39;&lt;root&gt;&lt;a/&gt;&lt;b/&gt;&lt;c/&gt;&lt;/root&gt;&#39;</span>
+<pre class="ruby"><span class="ruby-identifier">xml_string</span> = <span class="ruby-string">&#39;</span><span class="ruby-string">&lt;root&gt;&lt;a/&gt;&lt;b/&gt;&lt;c/&gt;&lt;/root&gt;</span><span class="ruby-string">&#39;</span>
 <span class="ruby-identifier">d</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">xml_string</span>)
 <span class="ruby-identifier">d</span>.<span class="ruby-identifier">root</span>[<span class="ruby-value">1</span>]  <span class="ruby-comment"># =&gt; &lt;b/&gt;</span>
-<span class="ruby-identifier">d</span>.<span class="ruby-identifier">root</span>[<span class="ruby-value">-1</span>] <span class="ruby-comment"># =&gt; &lt;c/&gt;</span>
+<span class="ruby-identifier">d</span>.<span class="ruby-identifier">root</span>[-<span class="ruby-value">1</span>] <span class="ruby-comment"># =&gt; &lt;c/&gt;</span>
 <span class="ruby-identifier">d</span>.<span class="ruby-identifier">root</span>[<span class="ruby-value">50</span>] <span class="ruby-comment"># =&gt; nil</span>
 </pre>
 
@@ -638,10 +629,10 @@
 
 <p>Use method <a href="../../../../REXML/Parent.html#method-i-index">Parent#index</a> to get the index (0-based offset) of a child:</p>
 
-<pre class="ruby"><span class="ruby-identifier">d</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;&lt;root&gt;&lt;/root&gt;&#39;</span>)
+<pre class="ruby"><span class="ruby-identifier">d</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;</span><span class="ruby-string">&lt;root&gt;&lt;/root&gt;</span><span class="ruby-string">&#39;</span>)
 <span class="ruby-identifier">root</span> = <span class="ruby-identifier">d</span>.<span class="ruby-identifier">root</span>
-<span class="ruby-identifier">e0</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Element</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;foo&#39;</span>)
-<span class="ruby-identifier">e1</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Element</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;bar&#39;</span>)
+<span class="ruby-identifier">e0</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Element</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;</span><span class="ruby-string">foo</span><span class="ruby-string">&#39;</span>)
+<span class="ruby-identifier">e1</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Element</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;</span><span class="ruby-string">bar</span><span class="ruby-string">&#39;</span>)
 <span class="ruby-identifier">root</span>.<span class="ruby-identifier">add</span>(<span class="ruby-identifier">e0</span>)  <span class="ruby-comment"># =&gt; &lt;foo/&gt;</span>
 <span class="ruby-identifier">root</span>.<span class="ruby-identifier">add</span>(<span class="ruby-identifier">e1</span>)  <span class="ruby-comment"># =&gt; &lt;bar/&gt;</span>
 <span class="ruby-identifier">root</span>.<span class="ruby-identifier">add</span>(<span class="ruby-identifier">e0</span>)  <span class="ruby-comment"># =&gt; &lt;foo/&gt;</span>
@@ -655,7 +646,7 @@
 
 <p>Use method <a href="../../../../REXML/Parent.html#method-i-children">Parent#children</a> (or its alias <code>to_a</code>) to get the parent’s children:</p>
 
-<pre class="ruby"><span class="ruby-identifier">xml_string</span> = <span class="ruby-string">&#39;&lt;root&gt;&lt;a/&gt;&lt;b/&gt;&lt;c/&gt;&lt;/root&gt;&#39;</span>
+<pre class="ruby"><span class="ruby-identifier">xml_string</span> = <span class="ruby-string">&#39;</span><span class="ruby-string">&lt;root&gt;&lt;a/&gt;&lt;b/&gt;&lt;c/&gt;&lt;/root&gt;</span><span class="ruby-string">&#39;</span>
 <span class="ruby-identifier">d</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">xml_string</span>)
 <span class="ruby-identifier">d</span>.<span class="ruby-identifier">root</span>.<span class="ruby-identifier">children</span> <span class="ruby-comment"># =&gt; [&lt;a/&gt;, &lt;b/&gt;, &lt;c/&gt;]</span>
 </pre>
@@ -665,7 +656,7 @@
 
 <p>Use method <a href="../../../../REXML/Parent.html#method-i-parent-3F">Parent#parent?</a> to determine whether the node is a parent; class Text derives from Node:</p>
 
-<pre class="ruby"><span class="ruby-identifier">d</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;&lt;root&gt;&lt;a/&gt;text&lt;b/&gt;more&lt;c/&gt;&lt;/root&gt;&#39;</span>)
+<pre class="ruby"><span class="ruby-identifier">d</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;</span><span class="ruby-string">&lt;root&gt;&lt;a/&gt;text&lt;b/&gt;more&lt;c/&gt;&lt;/root&gt;</span><span class="ruby-string">&#39;</span>)
 <span class="ruby-identifier">t</span> = <span class="ruby-identifier">d</span>.<span class="ruby-identifier">root</span>[<span class="ruby-value">1</span>] <span class="ruby-comment"># =&gt; &quot;text&quot;</span>
 <span class="ruby-identifier">t</span>.<span class="ruby-identifier">parent?</span>     <span class="ruby-comment"># =&gt; false</span>
 </pre>
@@ -684,10 +675,10 @@
 
 <p>Use method <a href="../../../../REXML/Parent.html#method-i-unshift">Parent#unshift</a> to add a child as at the beginning of the children:</p>
 
-<pre class="ruby"><span class="ruby-identifier">xml_string</span> = <span class="ruby-string">&#39;&lt;root&gt;&lt;a/&gt;&lt;b/&gt;&lt;c/&gt;&lt;/root&gt;&#39;</span>
+<pre class="ruby"><span class="ruby-identifier">xml_string</span> = <span class="ruby-string">&#39;</span><span class="ruby-string">&lt;root&gt;&lt;a/&gt;&lt;b/&gt;&lt;c/&gt;&lt;/root&gt;</span><span class="ruby-string">&#39;</span>
 <span class="ruby-identifier">d</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">xml_string</span>)
 <span class="ruby-identifier">d</span>.<span class="ruby-identifier">root</span>.<span class="ruby-identifier">children</span> <span class="ruby-comment"># =&gt; [&lt;a/&gt;, &lt;b/&gt;, &lt;c/&gt;]</span>
-<span class="ruby-identifier">d</span>.<span class="ruby-identifier">root</span>.<span class="ruby-identifier">unshift</span> <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Element</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;d&#39;</span>)
+<span class="ruby-identifier">d</span>.<span class="ruby-identifier">root</span>.<span class="ruby-identifier">unshift</span> <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Element</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;</span><span class="ruby-string">d</span><span class="ruby-string">&#39;</span>)
 <span class="ruby-identifier">d</span>.<span class="ruby-identifier">root</span>.<span class="ruby-identifier">children</span> <span class="ruby-comment"># =&gt; [&lt;d/&gt;, &lt;a/&gt;, &lt;b/&gt;, &lt;c/&gt;]</span>
 </pre>
 
@@ -696,10 +687,10 @@
 
 <p>Use method <a href="../../../../REXML/Parent.html#method-i-3C-3C">Parent#&lt;&lt;</a> (or an alias <code>push</code> or <code>add</code>) to add a child as at the end of the children:</p>
 
-<pre class="ruby"><span class="ruby-identifier">xml_string</span> = <span class="ruby-string">&#39;&lt;root&gt;&lt;a/&gt;&lt;b/&gt;&lt;c/&gt;&lt;/root&gt;&#39;</span>
+<pre class="ruby"><span class="ruby-identifier">xml_string</span> = <span class="ruby-string">&#39;</span><span class="ruby-string">&lt;root&gt;&lt;a/&gt;&lt;b/&gt;&lt;c/&gt;&lt;/root&gt;</span><span class="ruby-string">&#39;</span>
 <span class="ruby-identifier">d</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">xml_string</span>)
 <span class="ruby-identifier">d</span>.<span class="ruby-identifier">root</span>.<span class="ruby-identifier">children</span> <span class="ruby-comment"># =&gt; [&lt;a/&gt;, &lt;b/&gt;, &lt;c/&gt;]</span>
-<span class="ruby-identifier">d</span>.<span class="ruby-identifier">root</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Element</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;d&#39;</span>)
+<span class="ruby-identifier">d</span>.<span class="ruby-identifier">root</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Element</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;</span><span class="ruby-string">d</span><span class="ruby-string">&#39;</span>)
 <span class="ruby-identifier">d</span>.<span class="ruby-identifier">root</span>.<span class="ruby-identifier">children</span> <span class="ruby-comment"># =&gt; [&lt;a/&gt;, &lt;b/&gt;, &lt;c/&gt;, &lt;d/&gt;]</span>
 </pre>
 
@@ -708,11 +699,11 @@
 
 <p>Use method <a href="../../../../REXML/Parent.html#method-i-replace">Parent#replace</a></p>
 
-<pre class="ruby"><span class="ruby-identifier">xml_string</span> = <span class="ruby-string">&#39;&lt;root&gt;&lt;a/&gt;&lt;b/&gt;&lt;c/&gt;&lt;/root&gt;&#39;</span>
+<pre class="ruby"><span class="ruby-identifier">xml_string</span> = <span class="ruby-string">&#39;</span><span class="ruby-string">&lt;root&gt;&lt;a/&gt;&lt;b/&gt;&lt;c/&gt;&lt;/root&gt;</span><span class="ruby-string">&#39;</span>
 <span class="ruby-identifier">d</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">xml_string</span>)
 <span class="ruby-identifier">d</span>.<span class="ruby-identifier">root</span>.<span class="ruby-identifier">children</span> <span class="ruby-comment"># =&gt; [&lt;a/&gt;, &lt;b/&gt;, &lt;c/&gt;]</span>
 <span class="ruby-identifier">b</span> = <span class="ruby-identifier">d</span>.<span class="ruby-identifier">root</span>[<span class="ruby-value">1</span>]   <span class="ruby-comment"># =&gt; &lt;b/&gt;</span>
-<span class="ruby-identifier">d</span>.<span class="ruby-identifier">replace_child</span>(<span class="ruby-identifier">b</span>, <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Element</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;d&#39;</span>))
+<span class="ruby-identifier">d</span>.<span class="ruby-identifier">replace_child</span>(<span class="ruby-identifier">b</span>, <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Element</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;</span><span class="ruby-string">d</span><span class="ruby-string">&#39;</span>))
 <span class="ruby-identifier">d</span>.<span class="ruby-identifier">root</span>.<span class="ruby-identifier">children</span> <span class="ruby-comment"># =&gt; [&lt;a/&gt;, &lt;c/&gt;]</span>
 </pre>
 
@@ -721,12 +712,12 @@
 
 <p>Use method <a href="../../../../REXML/Parent.html#method-i-parent-5B-5D-3D">Parent#[]=</a> to replace multiple consecutive children with another child:</p>
 
-<pre class="ruby"><span class="ruby-identifier">xml_string</span> = <span class="ruby-string">&#39;&lt;root&gt;&lt;a/&gt;&lt;b/&gt;&lt;c/&gt;&lt;d/&gt;&lt;/root&gt;&#39;</span>
+<pre class="ruby"><span class="ruby-identifier">xml_string</span> = <span class="ruby-string">&#39;</span><span class="ruby-string">&lt;root&gt;&lt;a/&gt;&lt;b/&gt;&lt;c/&gt;&lt;d/&gt;&lt;/root&gt;</span><span class="ruby-string">&#39;</span>
 <span class="ruby-identifier">d</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">xml_string</span>)
 <span class="ruby-identifier">d</span>.<span class="ruby-identifier">root</span>.<span class="ruby-identifier">children</span> <span class="ruby-comment"># =&gt; [&lt;a/&gt;, &lt;b/&gt;, &lt;c/&gt;, &lt;d/&gt;]</span>
-<span class="ruby-identifier">d</span>.<span class="ruby-identifier">root</span>[<span class="ruby-value">1</span>, <span class="ruby-value">2</span>] = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Element</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;x&#39;</span>)
+<span class="ruby-identifier">d</span>.<span class="ruby-identifier">root</span>[<span class="ruby-value">1</span>, <span class="ruby-value">2</span>] = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Element</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;</span><span class="ruby-string">x</span><span class="ruby-string">&#39;</span>)
 <span class="ruby-identifier">d</span>.<span class="ruby-identifier">root</span>.<span class="ruby-identifier">children</span> <span class="ruby-comment"># =&gt; [&lt;a/&gt;, &lt;x/&gt;, &lt;d/&gt;]</span>
-<span class="ruby-identifier">d</span>.<span class="ruby-identifier">root</span>[<span class="ruby-value">1</span>, <span class="ruby-value">5</span>] = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Element</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;x&#39;</span>)
+<span class="ruby-identifier">d</span>.<span class="ruby-identifier">root</span>[<span class="ruby-value">1</span>, <span class="ruby-value">5</span>] = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Element</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;</span><span class="ruby-string">x</span><span class="ruby-string">&#39;</span>)
 <span class="ruby-identifier">d</span>.<span class="ruby-identifier">root</span>.<span class="ruby-identifier">children</span> <span class="ruby-comment"># =&gt; [&lt;a/&gt;, &lt;x/&gt;] # BUG?</span>
 </pre>
 
@@ -735,11 +726,11 @@
 
 <p>Use method <a href="../../../../REXML/Parent.html#method-i-insert_before">Parent#insert_before</a> to insert a child immediately before a given child:</p>
 
-<pre class="ruby"><span class="ruby-identifier">xml_string</span> = <span class="ruby-string">&#39;&lt;root&gt;&lt;a/&gt;&lt;b/&gt;&lt;c/&gt;&lt;/root&gt;&#39;</span>
+<pre class="ruby"><span class="ruby-identifier">xml_string</span> = <span class="ruby-string">&#39;</span><span class="ruby-string">&lt;root&gt;&lt;a/&gt;&lt;b/&gt;&lt;c/&gt;&lt;/root&gt;</span><span class="ruby-string">&#39;</span>
 <span class="ruby-identifier">d</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">xml_string</span>)
 <span class="ruby-identifier">d</span>.<span class="ruby-identifier">root</span>.<span class="ruby-identifier">children</span> <span class="ruby-comment"># =&gt; [&lt;a/&gt;, &lt;b/&gt;, &lt;c/&gt;]</span>
 <span class="ruby-identifier">b</span> = <span class="ruby-identifier">d</span>.<span class="ruby-identifier">root</span>[<span class="ruby-value">1</span>]   <span class="ruby-comment"># =&gt; &lt;b/&gt;</span>
-<span class="ruby-identifier">x</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Element</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;x&#39;</span>)
+<span class="ruby-identifier">x</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Element</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;</span><span class="ruby-string">x</span><span class="ruby-string">&#39;</span>)
 <span class="ruby-identifier">d</span>.<span class="ruby-identifier">root</span>.<span class="ruby-identifier">insert_before</span>(<span class="ruby-identifier">b</span>, <span class="ruby-identifier">x</span>)
 <span class="ruby-identifier">d</span>.<span class="ruby-identifier">root</span>.<span class="ruby-identifier">children</span> <span class="ruby-comment"># =&gt; [&lt;a/&gt;, &lt;x/&gt;, &lt;b/&gt;, &lt;c/&gt;]</span>
 </pre>
@@ -749,11 +740,11 @@
 
 <p>Use method <a href="../../../../REXML/Parent.html#method-i-insert_after">Parent#insert_after</a> to insert a child immediately after a given child:</p>
 
-<pre class="ruby"><span class="ruby-identifier">xml_string</span> = <span class="ruby-string">&#39;&lt;root&gt;&lt;a/&gt;&lt;b/&gt;&lt;c/&gt;&lt;/root&gt;&#39;</span>
+<pre class="ruby"><span class="ruby-identifier">xml_string</span> = <span class="ruby-string">&#39;</span><span class="ruby-string">&lt;root&gt;&lt;a/&gt;&lt;b/&gt;&lt;c/&gt;&lt;/root&gt;</span><span class="ruby-string">&#39;</span>
 <span class="ruby-identifier">d</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">xml_string</span>)
 <span class="ruby-identifier">d</span>.<span class="ruby-identifier">root</span>.<span class="ruby-identifier">children</span> <span class="ruby-comment"># =&gt; [&lt;a/&gt;, &lt;b/&gt;, &lt;c/&gt;]</span>
 <span class="ruby-identifier">b</span> = <span class="ruby-identifier">d</span>.<span class="ruby-identifier">root</span>[<span class="ruby-value">1</span>]   <span class="ruby-comment"># =&gt; &lt;b/&gt;</span>
-<span class="ruby-identifier">x</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Element</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;x&#39;</span>)
+<span class="ruby-identifier">x</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Element</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;</span><span class="ruby-string">x</span><span class="ruby-string">&#39;</span>)
 <span class="ruby-identifier">d</span>.<span class="ruby-identifier">root</span>.<span class="ruby-identifier">insert_after</span>(<span class="ruby-identifier">b</span>, <span class="ruby-identifier">x</span>)
 <span class="ruby-identifier">d</span>.<span class="ruby-identifier">root</span>.<span class="ruby-identifier">children</span> <span class="ruby-comment"># =&gt; [&lt;a/&gt;, &lt;b/&gt;, &lt;x/&gt;, &lt;c/&gt;]</span>
 </pre>
@@ -766,9 +757,9 @@
 
 <p>Use method <a href="../../../../REXML/Parent.html#method-i-delete">Parent#delete</a> to remove all occurrences of a given child:</p>
 
-<pre class="ruby"><span class="ruby-identifier">d</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;&lt;root&gt;&lt;/root&gt;&#39;</span>)
-<span class="ruby-identifier">a</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Element</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;a&#39;</span>)
-<span class="ruby-identifier">b</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Element</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;b&#39;</span>)
+<pre class="ruby"><span class="ruby-identifier">d</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;</span><span class="ruby-string">&lt;root&gt;&lt;/root&gt;</span><span class="ruby-string">&#39;</span>)
+<span class="ruby-identifier">a</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Element</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;</span><span class="ruby-string">a</span><span class="ruby-string">&#39;</span>)
+<span class="ruby-identifier">b</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Element</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;</span><span class="ruby-string">b</span><span class="ruby-string">&#39;</span>)
 <span class="ruby-identifier">d</span>.<span class="ruby-identifier">root</span>.<span class="ruby-identifier">add</span>(<span class="ruby-identifier">a</span>)
 <span class="ruby-identifier">d</span>.<span class="ruby-identifier">root</span>.<span class="ruby-identifier">add</span>(<span class="ruby-identifier">b</span>)
 <span class="ruby-identifier">d</span>.<span class="ruby-identifier">root</span>.<span class="ruby-identifier">add</span>(<span class="ruby-identifier">a</span>)
@@ -783,9 +774,9 @@
 
 <p>Use method <a href="../../../../REXML/Parent.html#method-i-delete_at">Parent#delete_at</a> to remove the child at a specified offset:</p>
 
-<pre class="ruby"><span class="ruby-identifier">d</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;&lt;root&gt;&lt;/root&gt;&#39;</span>)
-<span class="ruby-identifier">a</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Element</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;a&#39;</span>)
-<span class="ruby-identifier">b</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Element</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;b&#39;</span>)
+<pre class="ruby"><span class="ruby-identifier">d</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;</span><span class="ruby-string">&lt;root&gt;&lt;/root&gt;</span><span class="ruby-string">&#39;</span>)
+<span class="ruby-identifier">a</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Element</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;</span><span class="ruby-string">a</span><span class="ruby-string">&#39;</span>)
+<span class="ruby-identifier">b</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Element</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;</span><span class="ruby-string">b</span><span class="ruby-string">&#39;</span>)
 <span class="ruby-identifier">d</span>.<span class="ruby-identifier">root</span>.<span class="ruby-identifier">add</span>(<span class="ruby-identifier">a</span>)
 <span class="ruby-identifier">d</span>.<span class="ruby-identifier">root</span>.<span class="ruby-identifier">add</span>(<span class="ruby-identifier">b</span>)
 <span class="ruby-identifier">d</span>.<span class="ruby-identifier">root</span>.<span class="ruby-identifier">add</span>(<span class="ruby-identifier">a</span>)
@@ -800,11 +791,11 @@
 
 <p>Use method <a href="../../../../REXML/Parent.html#method-i-delete_if">Parent#delete_if</a> to remove children that meet criteria specified in the given block:</p>
 
-<pre class="ruby"><span class="ruby-identifier">d</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;&lt;root&gt;&lt;/root&gt;&#39;</span>)
-<span class="ruby-identifier">d</span>.<span class="ruby-identifier">root</span>.<span class="ruby-identifier">add</span>(<span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Element</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;x&#39;</span>))
-<span class="ruby-identifier">d</span>.<span class="ruby-identifier">root</span>.<span class="ruby-identifier">add</span>(<span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Element</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;xx&#39;</span>))
-<span class="ruby-identifier">d</span>.<span class="ruby-identifier">root</span>.<span class="ruby-identifier">add</span>(<span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Element</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;xxx&#39;</span>))
-<span class="ruby-identifier">d</span>.<span class="ruby-identifier">root</span>.<span class="ruby-identifier">add</span>(<span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Element</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;xxxx&#39;</span>))
+<pre class="ruby"><span class="ruby-identifier">d</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;</span><span class="ruby-string">&lt;root&gt;&lt;/root&gt;</span><span class="ruby-string">&#39;</span>)
+<span class="ruby-identifier">d</span>.<span class="ruby-identifier">root</span>.<span class="ruby-identifier">add</span>(<span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Element</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;</span><span class="ruby-string">x</span><span class="ruby-string">&#39;</span>))
+<span class="ruby-identifier">d</span>.<span class="ruby-identifier">root</span>.<span class="ruby-identifier">add</span>(<span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Element</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;</span><span class="ruby-string">xx</span><span class="ruby-string">&#39;</span>))
+<span class="ruby-identifier">d</span>.<span class="ruby-identifier">root</span>.<span class="ruby-identifier">add</span>(<span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Element</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;</span><span class="ruby-string">xxx</span><span class="ruby-string">&#39;</span>))
+<span class="ruby-identifier">d</span>.<span class="ruby-identifier">root</span>.<span class="ruby-identifier">add</span>(<span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Element</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;</span><span class="ruby-string">xxxx</span><span class="ruby-string">&#39;</span>))
 <span class="ruby-identifier">d</span>.<span class="ruby-identifier">root</span>.<span class="ruby-identifier">children</span> <span class="ruby-comment"># =&gt; [&lt;x/&gt;, &lt;xx/&gt;, &lt;xxx/&gt;, &lt;xxxx/&gt;]</span>
 <span class="ruby-identifier">d</span>.<span class="ruby-identifier">root</span>.<span class="ruby-identifier">delete_if</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">child</span><span class="ruby-operator">|</span> <span class="ruby-identifier">child</span>.<span class="ruby-identifier">name</span>.<span class="ruby-identifier">size</span>.<span class="ruby-identifier">odd?</span> }
 <span class="ruby-identifier">d</span>.<span class="ruby-identifier">root</span>.<span class="ruby-identifier">children</span> <span class="ruby-comment"># =&gt; [&lt;xx/&gt;, &lt;xxxx/&gt;]</span>
@@ -818,7 +809,7 @@
 
 <p>Use method <a href="../../../../REXML/Parent.html#method-i-each_child">Parent#each_child</a> (or its alias <code>each</code>) to iterate over all children:</p>
 
-<pre class="ruby"><span class="ruby-identifier">xml_string</span> = <span class="ruby-string">&#39;&lt;root&gt;&lt;a/&gt;&lt;b/&gt;&lt;c/&gt;&lt;/root&gt;&#39;</span>
+<pre class="ruby"><span class="ruby-identifier">xml_string</span> = <span class="ruby-string">&#39;</span><span class="ruby-string">&lt;root&gt;&lt;a/&gt;&lt;b/&gt;&lt;c/&gt;&lt;/root&gt;</span><span class="ruby-string">&#39;</span>
 <span class="ruby-identifier">d</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">xml_string</span>)
 <span class="ruby-identifier">d</span>.<span class="ruby-identifier">root</span>.<span class="ruby-identifier">children</span> <span class="ruby-comment"># =&gt; [&lt;a/&gt;, &lt;b/&gt;, &lt;c/&gt;]</span>
 <span class="ruby-identifier">d</span>.<span class="ruby-identifier">root</span>.<span class="ruby-identifier">each_child</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">child</span><span class="ruby-operator">|</span> <span class="ruby-identifier">p</span> <span class="ruby-identifier">child</span> }
@@ -835,7 +826,7 @@
 
 <p>Use method <a href="../../../../REXML/Parent.html#method-i-each_index">Parent#each_index</a> to iterate over all child indexes:</p>
 
-<pre class="ruby"><span class="ruby-identifier">xml_string</span> = <span class="ruby-string">&#39;&lt;root&gt;&lt;a/&gt;&lt;b/&gt;&lt;c/&gt;&lt;/root&gt;&#39;</span>
+<pre class="ruby"><span class="ruby-identifier">xml_string</span> = <span class="ruby-string">&#39;</span><span class="ruby-string">&lt;root&gt;&lt;a/&gt;&lt;b/&gt;&lt;c/&gt;&lt;/root&gt;</span><span class="ruby-string">&#39;</span>
 <span class="ruby-identifier">d</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">xml_string</span>)
 <span class="ruby-identifier">d</span>.<span class="ruby-identifier">root</span>.<span class="ruby-identifier">children</span> <span class="ruby-comment"># =&gt; [&lt;a/&gt;, &lt;b/&gt;, &lt;c/&gt;]</span>
 <span class="ruby-identifier">d</span>.<span class="ruby-identifier">root</span>.<span class="ruby-identifier">each_index</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">child</span><span class="ruby-operator">|</span> <span class="ruby-identifier">p</span> <span class="ruby-identifier">child</span> }
@@ -856,8 +847,8 @@
 
 <p>Use method <a href="../../../../REXML/Parent.html#method-i-deep_clone">Parent#deep_clone</a> to clone deeply; that is, to clone every nested node that is a Parent object:</p>
 
-<pre class="ruby"><span class="ruby-identifier">xml_string</span> = <span class="ruby-identifier">&lt;&lt;-EOT</span>
-<span class="ruby-value">  &lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+<pre class="ruby"><span class="ruby-identifier">xml_string</span> = <span class="ruby-string">&lt;&lt;-EOT</span>
+<span class="ruby-string">  &lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
   &lt;bookstore&gt;
     &lt;book category=&quot;cooking&quot;&gt;
       &lt;title lang=&quot;en&quot;&gt;Everyday Italian&lt;/title&gt;
@@ -878,7 +869,7 @@
       &lt;price&gt;39.95&lt;/price&gt;
     &lt;/book&gt;
   &lt;/bookstore&gt;</span>
-<span class="ruby-identifier">EOT</span>
+<span class="ruby-string">EOT</span>
 <span class="ruby-identifier">d</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">xml_string</span>)
 <span class="ruby-identifier">root</span> = <span class="ruby-identifier">d</span>.<span class="ruby-identifier">root</span>
 <span class="ruby-identifier">shallow</span> = <span class="ruby-identifier">root</span>.<span class="ruby-identifier">clone</span>
@@ -889,7 +880,7 @@
 
 </main>
 
-<aside class="table-of-contents" role="complementary" aria-label="Table of Contents">
+<aside id="table-of-contents" class="table-of-contents" role="complementary" aria-label="Table of Contents">
   <div class="toc-sticky">
     <h3 class="toc-heading">On This Page</h3>
     <nav class="toc-nav" id="toc-nav" aria-label="Page sections">
@@ -904,7 +895,7 @@
 
   <div class="footer-bottom">
     <p>
-      Generated by <a href="https://ruby.github.io/rdoc/">RDoc 7.2.0</a>
+      Generated by <a href="https://ruby.github.io/rdoc/">RDoc 8.0.0</a>
       using the Aliki theme by <a href="http://st0012.dev">Stan Lo</a>
     </p>
   </div>

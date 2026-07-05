@@ -50,46 +50,46 @@
 </script>
 
 <script
-  src="../../js/theme-toggle.js?v=7.2.0"
+  src="../../js/theme-toggle.js?v=8.0.0"
 ></script>
 
 <script
-  src="../../js/search_navigation.js?v=7.2.0"
+  src="../../js/search_navigation.js?v=8.0.0"
   defer
 ></script>
 
 <script
-  src="../../js/search_data.js?v=7.2.0"
+  src="../../js/search_data.js?v=8.0.0"
   defer
 ></script>
 
 <script
-  src="../../js/search_ranker.js?v=7.2.0"
+  src="../../js/search_ranker.js?v=8.0.0"
   defer
 ></script>
 
 <script
-  src="../../js/search_controller.js?v=7.2.0"
+  src="../../js/search_controller.js?v=8.0.0"
   defer
 ></script>
 
 <script
-  src="../../js/c_highlighter.js?v=7.2.0"
+  src="../../js/c_highlighter.js?v=8.0.0"
   defer
 ></script>
 
 <script
-  src="../../js/bash_highlighter.js?v=7.2.0"
+  src="../../js/bash_highlighter.js?v=8.0.0"
   defer
 ></script>
 
 <script
-  src="../../js/aliki.js?v=7.2.0"
+  src="../../js/aliki.js?v=8.0.0"
   defer
 ></script>
 
 <link
-  href="../../css/rdoc.css?v=7.2.0"
+  href="../../css/rdoc.css?v=8.0.0"
   rel="stylesheet"
 >
 
@@ -363,12 +363,12 @@
   </div>
 </div>
 
-<div id="navigation-toggle" role="button" tabindex="0" aria-label="Toggle sidebar" aria-expanded="true" aria-controls="navigation">
+<div id="sidebar-navigation-toggle" role="button" tabindex="0" aria-label="Toggle sidebar" aria-expanded="false" aria-controls="sidebar-navigation">
   <span aria-hidden="true">&#9776;</span>
 </div>
 
 
-<nav id="navigation" role="navigation" hidden>
+<nav id="sidebar-navigation" role="navigation" hidden>
   
 
 
@@ -411,15 +411,6 @@
             <li>
               <a href="../../NEWS_md.html">
                 NEWS
-              </a>
-            </li>
-
-
-
-
-            <li>
-              <a href="../../README_md.html">
-                README
               </a>
             </li>
 
@@ -655,13 +646,13 @@
       
       <li>
         
-        <a href="../../REXML.html">REXML</a><span>::</span>
+        <a href="../../REXML.html">REXML</a><span class="separator">::</span>
         
       </li>
       
       <li>
         
-        <a href="../../REXML/Light.html">Light</a><span>::</span>
+        <a href="../../REXML/Light.html">Light</a><span class="separator">::</span>
         
       </li>
       
@@ -675,8 +666,9 @@
   
 
   <span id="class-REXML::Light::Node" class="legacy-anchor"></span>
-  <h1 id="class-rexml-light-node" class="anchor-link class">
-    class REXML::Light::Node
+  <h1 id="class-rexml-light-node" class="anchor-link class page-title">
+    <span class="page-title-kind">class</span>
+    <span class="page-title-name">REXML::Light::Node</span>
   </h1>
 
   <section class="description">
@@ -733,36 +725,43 @@
 
       <div id="method-c-new" class="method-detail anchor-link ">
         <div class="method-header">
+          <div class="method-heading-group">
 
-            <div class="method-heading">
-              <a href="#method-c-new" title="Link to this method">
-                <span class="method-name">new</span>
-                <span class="method-args">(node=nil)</span>
-              </a>
+              <div class="method-heading">
+                <a href="#method-c-new" title="Link to this method">
+                  <span class="method-name">new</span>
+                  <span class="method-args">(node=nil)</span>
+                </a>
+              </div>
+
+
+
+          </div>
+
+
+            <div class="method-controls">
+              <details class="method-source-toggle">
+                <summary><span class="method-source-icon" aria-hidden="true">{}</span> Source</summary>
+              </details>
             </div>
 
         </div>
 
 
-          <div class="method-controls">
-            <details class="method-source-toggle">
-              <summary>Source</summary>
-            </details>
-          </div>
           <div class="method-source-code" id="new-source">
             <pre class="ruby"><span class="ruby-comment"># File lib/rexml/light/node.rb, line 13</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span> <span class="ruby-identifier">node</span>=<span class="ruby-keyword">nil</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span> <span class="ruby-identifier">node</span>=<span class="ruby-keyword">nil</span>
   <span class="ruby-ivar">@node</span> = <span class="ruby-identifier">node</span>
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">node</span>.<span class="ruby-identifier">kind_of?</span> <span class="ruby-constant">String</span>
-    <span class="ruby-identifier">node</span> = [ <span class="ruby-value">:text</span>, <span class="ruby-identifier">node</span> ]
+    <span class="ruby-identifier">node</span> = [ <span class="ruby-value">:</span><span class="ruby-value">text</span>, <span class="ruby-identifier">node</span> ]
   <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">node</span>.<span class="ruby-identifier">nil?</span>
-    <span class="ruby-identifier">node</span> = [ <span class="ruby-value">:document</span>, <span class="ruby-keyword">nil</span>, <span class="ruby-keyword">nil</span> ]
-  <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">node</span>[<span class="ruby-value">0</span>] <span class="ruby-operator">==</span> <span class="ruby-value">:start_element</span>
-    <span class="ruby-identifier">node</span>[<span class="ruby-value">0</span>] = <span class="ruby-value">:element</span>
-  <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">node</span>[<span class="ruby-value">0</span>] <span class="ruby-operator">==</span> <span class="ruby-value">:start_doctype</span>
-    <span class="ruby-identifier">node</span>[<span class="ruby-value">0</span>] = <span class="ruby-value">:doctype</span>
-  <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">node</span>[<span class="ruby-value">0</span>] <span class="ruby-operator">==</span> <span class="ruby-value">:start_document</span>
-    <span class="ruby-identifier">node</span>[<span class="ruby-value">0</span>] = <span class="ruby-value">:document</span>
+    <span class="ruby-identifier">node</span> = [ <span class="ruby-value">:</span><span class="ruby-value">document</span>, <span class="ruby-keyword">nil</span>, <span class="ruby-keyword">nil</span> ]
+  <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">node</span>[<span class="ruby-value">0</span>] <span class="ruby-operator">==</span> <span class="ruby-value">:</span><span class="ruby-value">start_element</span>
+    <span class="ruby-identifier">node</span>[<span class="ruby-value">0</span>] = <span class="ruby-value">:</span><span class="ruby-value">element</span>
+  <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">node</span>[<span class="ruby-value">0</span>] <span class="ruby-operator">==</span> <span class="ruby-value">:</span><span class="ruby-value">start_doctype</span>
+    <span class="ruby-identifier">node</span>[<span class="ruby-value">0</span>] = <span class="ruby-value">:</span><span class="ruby-value">doctype</span>
+  <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">node</span>[<span class="ruby-value">0</span>] <span class="ruby-operator">==</span> <span class="ruby-value">:</span><span class="ruby-value">start_document</span>
+    <span class="ruby-identifier">node</span>[<span class="ruby-value">0</span>] = <span class="ruby-value">:</span><span class="ruby-value">document</span>
   <span class="ruby-keyword">end</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
@@ -800,33 +799,40 @@
 
       <div id="method-i-3C-3C" class="method-detail anchor-link ">
         <div class="method-header">
+          <div class="method-heading-group">
 
-            <div class="method-heading">
-              <a href="#method-i-3C-3C" title="Link to this method">
-                <span class="method-name">&lt;&lt;</span>
-                <span class="method-args">(element)</span>
-              </a>
+              <div class="method-heading">
+                <a href="#method-i-3C-3C" title="Link to this method">
+                  <span class="method-name">&lt;&lt;</span>
+                  <span class="method-args">(element)</span>
+                </a>
+              </div>
+
+
+
+          </div>
+
+
+            <div class="method-controls">
+              <details class="method-source-toggle">
+                <summary><span class="method-source-icon" aria-hidden="true">{}</span> Source</summary>
+              </details>
             </div>
 
         </div>
 
 
-          <div class="method-controls">
-            <details class="method-source-toggle">
-              <summary>Source</summary>
-            </details>
-          </div>
           <div class="method-source-code" id="3C-3C-source">
             <pre class="ruby"><span class="ruby-comment"># File lib/rexml/light/node.rb, line 114</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">&lt;&lt;</span> <span class="ruby-identifier">element</span>
-  <span class="ruby-keyword">if</span> <span class="ruby-identifier">node_type</span>() <span class="ruby-operator">==</span> <span class="ruby-value">:text</span>
-    <span class="ruby-identifier">at</span>(<span class="ruby-value">-1</span>) <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">element</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">&lt;&lt;</span> <span class="ruby-identifier">element</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">node_type</span>() <span class="ruby-operator">==</span> <span class="ruby-value">:</span><span class="ruby-value">text</span>
+    <span class="ruby-identifier">at</span>(-<span class="ruby-value">1</span>) <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">element</span>
   <span class="ruby-keyword">else</span>
     <span class="ruby-identifier">newnode</span> = <span class="ruby-constant">Node</span>.<span class="ruby-identifier">new</span>( <span class="ruby-identifier">element</span> )
     <span class="ruby-identifier">newnode</span>.<span class="ruby-identifier">parent</span> = <span class="ruby-keyword">self</span>
     <span class="ruby-keyword">self</span>.<span class="ruby-identifier">push</span>( <span class="ruby-identifier">newnode</span> )
   <span class="ruby-keyword">end</span>
-  <span class="ruby-identifier">at</span>(<span class="ruby-value">-1</span>)
+  <span class="ruby-identifier">at</span>(-<span class="ruby-value">1</span>)
 <span class="ruby-keyword">end</span></pre>
           </div>
 
@@ -849,25 +855,32 @@
 
       <div id="method-i-3D~" class="method-detail anchor-link ">
         <div class="method-header">
+          <div class="method-heading-group">
 
-            <div class="method-heading">
-              <a href="#method-i-3D~" title="Link to this method">
-                <span class="method-name">=~</span>
-                <span class="method-args">( path )</span>
-              </a>
+              <div class="method-heading">
+                <a href="#method-i-3D~" title="Link to this method">
+                  <span class="method-name">=~</span>
+                  <span class="method-args">(path)</span>
+                </a>
+              </div>
+
+
+
+          </div>
+
+
+            <div class="method-controls">
+              <details class="method-source-toggle">
+                <summary><span class="method-source-icon" aria-hidden="true">{}</span> Source</summary>
+              </details>
             </div>
 
         </div>
 
 
-          <div class="method-controls">
-            <details class="method-source-toggle">
-              <summary>Source</summary>
-            </details>
-          </div>
           <div class="method-source-code" id="3D~-source">
             <pre class="ruby"><span class="ruby-comment"># File lib/rexml/light/node.rb, line 90</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">=~</span>( <span class="ruby-identifier">path</span> )
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">=~</span>( <span class="ruby-identifier">path</span> )
   <span class="ruby-constant">XPath</span>.<span class="ruby-identifier">match</span>( <span class="ruby-keyword">self</span>, <span class="ruby-identifier">path</span> )
 <span class="ruby-keyword">end</span></pre>
           </div>
@@ -891,29 +904,36 @@
 
       <div id="method-i-5B-5D" class="method-detail anchor-link ">
         <div class="method-header">
+          <div class="method-heading-group">
 
-            <div class="method-heading">
-              <a href="#method-i-5B-5D" title="Link to this method">
-                <span class="method-name">[]</span>
-                <span class="method-args">( reference, ns=nil )</span>
-              </a>
+              <div class="method-heading">
+                <a href="#method-i-5B-5D" title="Link to this method">
+                  <span class="method-name">[]</span>
+                  <span class="method-args">(reference, ns=nil)</span>
+                </a>
+              </div>
+
+
+
+          </div>
+
+
+            <div class="method-controls">
+              <details class="method-source-toggle">
+                <summary><span class="method-source-icon" aria-hidden="true">{}</span> Source</summary>
+              </details>
             </div>
 
         </div>
 
 
-          <div class="method-controls">
-            <details class="method-source-toggle">
-              <summary>Source</summary>
-            </details>
-          </div>
           <div class="method-source-code" id="5B-5D-source">
             <pre class="ruby"><span class="ruby-comment"># File lib/rexml/light/node.rb, line 78</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">[]</span>( <span class="ruby-identifier">reference</span>, <span class="ruby-identifier">ns</span>=<span class="ruby-keyword">nil</span> )
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">[]</span>( <span class="ruby-identifier">reference</span>, <span class="ruby-identifier">ns</span>=<span class="ruby-keyword">nil</span> )
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">reference</span>.<span class="ruby-identifier">kind_of?</span> <span class="ruby-constant">String</span>
-    <span class="ruby-identifier">pfx</span> = <span class="ruby-string">&#39;&#39;</span>
-    <span class="ruby-identifier">pfx</span> = <span class="ruby-node">&quot;#{prefix(ns)}:&quot;</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">ns</span>
-    <span class="ruby-identifier">at</span>(<span class="ruby-value">3</span>)[<span class="ruby-node">&quot;#{pfx}#{reference}&quot;</span>]
+    <span class="ruby-identifier">pfx</span> = <span class="ruby-string">&#39;</span><span class="ruby-string">&#39;</span>
+    <span class="ruby-identifier">pfx</span> = <span class="ruby-string">&quot;</span><span class="ruby-string">#{</span><span class="ruby-identifier">prefix</span>(<span class="ruby-identifier">ns</span>)<span class="ruby-string">}</span><span class="ruby-string">:</span><span class="ruby-string">&quot;</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">ns</span>
+    <span class="ruby-identifier">at</span>(<span class="ruby-value">3</span>)[<span class="ruby-string">&quot;</span><span class="ruby-string">#{</span><span class="ruby-identifier">pfx</span><span class="ruby-string">}</span><span class="ruby-string">#{</span><span class="ruby-identifier">reference</span><span class="ruby-string">}</span><span class="ruby-string">&quot;</span>]
   <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">reference</span>.<span class="ruby-identifier">kind_of?</span> <span class="ruby-constant">Range</span>
     <span class="ruby-identifier">_old_get</span>( <span class="ruby-constant">Range</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">4</span><span class="ruby-operator">+</span><span class="ruby-identifier">reference</span>.<span class="ruby-identifier">begin</span>, <span class="ruby-identifier">reference</span>.<span class="ruby-identifier">end</span>, <span class="ruby-identifier">reference</span>.<span class="ruby-identifier">exclude_end?</span>) )
   <span class="ruby-keyword">else</span>
@@ -941,25 +961,32 @@
 
       <div id="method-i-5B-5D-3D" class="method-detail anchor-link ">
         <div class="method-header">
+          <div class="method-heading-group">
 
-            <div class="method-heading">
-              <a href="#method-i-5B-5D-3D" title="Link to this method">
-                <span class="method-name">[]=</span>
-                <span class="method-args">( reference, ns, value=nil )</span>
-              </a>
+              <div class="method-heading">
+                <a href="#method-i-5B-5D-3D" title="Link to this method">
+                  <span class="method-name">[]=</span>
+                  <span class="method-args">(reference, ns, value=nil)</span>
+                </a>
+              </div>
+
+
+
+          </div>
+
+
+            <div class="method-controls">
+              <details class="method-source-toggle">
+                <summary><span class="method-source-icon" aria-hidden="true">{}</span> Source</summary>
+              </details>
             </div>
 
         </div>
 
 
-          <div class="method-controls">
-            <details class="method-source-toggle">
-              <summary>Source</summary>
-            </details>
-          </div>
           <div class="method-source-code" id="5B-5D-3D-source">
             <pre class="ruby"><span class="ruby-comment"># File lib/rexml/light/node.rb, line 95</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">[]=</span>( <span class="ruby-identifier">reference</span>, <span class="ruby-identifier">ns</span>, <span class="ruby-identifier">value</span>=<span class="ruby-keyword">nil</span> )
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">[]=</span>( <span class="ruby-identifier">reference</span>, <span class="ruby-identifier">ns</span>, <span class="ruby-identifier">value</span>=<span class="ruby-keyword">nil</span> )
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">reference</span>.<span class="ruby-identifier">kind_of?</span> <span class="ruby-constant">String</span>
     <span class="ruby-identifier">value</span> = <span class="ruby-identifier">ns</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">value</span>
     <span class="ruby-identifier">at</span>( <span class="ruby-value">3</span> )[<span class="ruby-identifier">reference</span>] = <span class="ruby-identifier">value</span>
@@ -994,25 +1021,32 @@
 
       <div id="method-i-children" class="method-detail anchor-link ">
         <div class="method-header">
+          <div class="method-heading-group">
 
-            <div class="method-heading">
-              <a href="#method-i-children" title="Link to this method">
-                <span class="method-name">children</span>
-                <span class="method-args">()</span>
-              </a>
+              <div class="method-heading">
+                <a href="#method-i-children" title="Link to this method">
+                  <span class="method-name">children</span>
+                  <span class="method-args">()</span>
+                </a>
+              </div>
+
+
+
+          </div>
+
+
+            <div class="method-controls">
+              <details class="method-source-toggle">
+                <summary><span class="method-source-icon" aria-hidden="true">{}</span> Source</summary>
+              </details>
             </div>
 
         </div>
 
 
-          <div class="method-controls">
-            <details class="method-source-toggle">
-              <summary>Source</summary>
-            </details>
-          </div>
           <div class="method-source-code" id="children-source">
             <pre class="ruby"><span class="ruby-comment"># File lib/rexml/light/node.rb, line 143</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">children</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">children</span>
   <span class="ruby-keyword">self</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
@@ -1036,26 +1070,33 @@
 
       <div id="method-i-each" class="method-detail anchor-link ">
         <div class="method-header">
+          <div class="method-heading-group">
 
-            <div class="method-heading">
-              <a href="#method-i-each" title="Link to this method">
-                <span class="method-name">each</span>
-                <span class="method-args">() { |at(x+4)| ... }</span>
-              </a>
+              <div class="method-heading">
+                <a href="#method-i-each" title="Link to this method">
+                  <span class="method-name">each</span>
+                  <span class="method-args">() { |at(x+4)| ... }</span>
+                </a>
+              </div>
+
+
+
+          </div>
+
+
+            <div class="method-controls">
+              <details class="method-source-toggle">
+                <summary><span class="method-source-icon" aria-hidden="true">{}</span> Source</summary>
+              </details>
             </div>
 
         </div>
 
 
-          <div class="method-controls">
-            <details class="method-source-toggle">
-              <summary>Source</summary>
-            </details>
-          </div>
           <div class="method-source-code" id="each-source">
             <pre class="ruby"><span class="ruby-comment"># File lib/rexml/light/node.rb, line 36</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">each</span>
-  <span class="ruby-identifier">size</span>.<span class="ruby-identifier">times</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">x</span><span class="ruby-operator">|</span> <span class="ruby-keyword">yield</span>( <span class="ruby-identifier">at</span>(<span class="ruby-identifier">x</span><span class="ruby-value">+4</span>) ) }
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">each</span>
+  <span class="ruby-identifier">size</span>.<span class="ruby-identifier">times</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">x</span><span class="ruby-operator">|</span> <span class="ruby-keyword">yield</span>( <span class="ruby-identifier">at</span>(<span class="ruby-identifier">x</span><span class="ruby-operator">+</span><span class="ruby-value">4</span>) ) }
 <span class="ruby-keyword">end</span></pre>
           </div>
 
@@ -1078,25 +1119,32 @@
 
       <div id="method-i-has_name-3F" class="method-detail anchor-link ">
         <div class="method-header">
+          <div class="method-heading-group">
 
-            <div class="method-heading">
-              <a href="#method-i-has_name-3F" title="Link to this method">
-                <span class="method-name">has_name?</span>
-                <span class="method-args">( name, namespace = &#39;&#39; )</span>
-              </a>
+              <div class="method-heading">
+                <a href="#method-i-has_name-3F" title="Link to this method">
+                  <span class="method-name">has_name?</span>
+                  <span class="method-args">(name, namespace = &#39;&#39;)</span>
+                </a>
+              </div>
+
+
+
+          </div>
+
+
+            <div class="method-controls">
+              <details class="method-source-toggle">
+                <summary><span class="method-source-icon" aria-hidden="true">{}</span> Source</summary>
+              </details>
             </div>
 
         </div>
 
 
-          <div class="method-controls">
-            <details class="method-source-toggle">
-              <summary>Source</summary>
-            </details>
-          </div>
           <div class="method-source-code" id="has_name-3F-source">
             <pre class="ruby"><span class="ruby-comment"># File lib/rexml/light/node.rb, line 139</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">has_name?</span>( <span class="ruby-identifier">name</span>, <span class="ruby-identifier">namespace</span> = <span class="ruby-string">&#39;&#39;</span> )
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">has_name?</span>( <span class="ruby-identifier">name</span>, <span class="ruby-identifier">namespace</span> = <span class="ruby-string">&#39;</span><span class="ruby-string">&#39;</span> )
   <span class="ruby-identifier">at</span>(<span class="ruby-value">3</span>) <span class="ruby-operator">==</span> <span class="ruby-identifier">name</span> <span class="ruby-keyword">and</span> <span class="ruby-identifier">namespace</span>() <span class="ruby-operator">==</span> <span class="ruby-identifier">namespace</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
@@ -1120,25 +1168,32 @@
 
       <div id="method-i-local_name" class="method-detail anchor-link ">
         <div class="method-header">
+          <div class="method-heading-group">
 
-            <div class="method-heading">
-              <a href="#method-i-local_name" title="Link to this method">
-                <span class="method-name">local_name</span>
-                <span class="method-args">()</span>
-              </a>
+              <div class="method-heading">
+                <a href="#method-i-local_name" title="Link to this method">
+                  <span class="method-name">local_name</span>
+                  <span class="method-args">()</span>
+                </a>
+              </div>
+
+
+
+          </div>
+
+
+            <div class="method-controls">
+              <details class="method-source-toggle">
+                <summary><span class="method-source-icon" aria-hidden="true">{}</span> Source</summary>
+              </details>
             </div>
 
         </div>
 
 
-          <div class="method-controls">
-            <details class="method-source-toggle">
-              <summary>Source</summary>
-            </details>
-          </div>
           <div class="method-source-code" id="local_name-source">
             <pre class="ruby"><span class="ruby-comment"># File lib/rexml/light/node.rb, line 54</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">local_name</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">local_name</span>
   <span class="ruby-identifier">namesplit</span>
   <span class="ruby-ivar">@name</span>
 <span class="ruby-keyword">end</span></pre>
@@ -1163,26 +1218,33 @@
 
       <div id="method-i-local_name-3D" class="method-detail anchor-link ">
         <div class="method-header">
+          <div class="method-heading-group">
 
-            <div class="method-heading">
-              <a href="#method-i-local_name-3D" title="Link to this method">
-                <span class="method-name">local_name=</span>
-                <span class="method-args">( name_str )</span>
-              </a>
+              <div class="method-heading">
+                <a href="#method-i-local_name-3D" title="Link to this method">
+                  <span class="method-name">local_name=</span>
+                  <span class="method-args">(name_str)</span>
+                </a>
+              </div>
+
+
+
+          </div>
+
+
+            <div class="method-controls">
+              <details class="method-source-toggle">
+                <summary><span class="method-source-icon" aria-hidden="true">{}</span> Source</summary>
+              </details>
             </div>
 
         </div>
 
 
-          <div class="method-controls">
-            <details class="method-source-toggle">
-              <summary>Source</summary>
-            </details>
-          </div>
           <div class="method-source-code" id="local_name-3D-source">
             <pre class="ruby"><span class="ruby-comment"># File lib/rexml/light/node.rb, line 59</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">local_name=</span>( <span class="ruby-identifier">name_str</span> )
-  <span class="ruby-identifier">_old_put</span>( <span class="ruby-value">1</span>, <span class="ruby-node">&quot;#@prefix:#{name_str}&quot;</span> )
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">local_name=</span>( <span class="ruby-identifier">name_str</span> )
+  <span class="ruby-identifier">_old_put</span>( <span class="ruby-value">1</span>, <span class="ruby-string">&quot;</span><span class="ruby-string">#</span><span class="ruby-ivar">@prefix</span><span class="ruby-string">:</span><span class="ruby-string">#{</span><span class="ruby-identifier">name_str</span><span class="ruby-string">}</span><span class="ruby-string">&quot;</span> )
 <span class="ruby-keyword">end</span></pre>
           </div>
 
@@ -1205,25 +1267,32 @@
 
       <div id="method-i-name" class="method-detail anchor-link ">
         <div class="method-header">
+          <div class="method-heading-group">
 
-            <div class="method-heading">
-              <a href="#method-i-name" title="Link to this method">
-                <span class="method-name">name</span>
-                <span class="method-args">()</span>
-              </a>
+              <div class="method-heading">
+                <a href="#method-i-name" title="Link to this method">
+                  <span class="method-name">name</span>
+                  <span class="method-args">()</span>
+                </a>
+              </div>
+
+
+
+          </div>
+
+
+            <div class="method-controls">
+              <details class="method-source-toggle">
+                <summary><span class="method-source-icon" aria-hidden="true">{}</span> Source</summary>
+              </details>
             </div>
 
         </div>
 
 
-          <div class="method-controls">
-            <details class="method-source-toggle">
-              <summary>Source</summary>
-            </details>
-          </div>
           <div class="method-source-code" id="name-source">
             <pre class="ruby"><span class="ruby-comment"># File lib/rexml/light/node.rb, line 40</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">name</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">name</span>
   <span class="ruby-identifier">at</span>(<span class="ruby-value">2</span>)
 <span class="ruby-keyword">end</span></pre>
           </div>
@@ -1247,28 +1316,35 @@
 
       <div id="method-i-name-3D" class="method-detail anchor-link ">
         <div class="method-header">
+          <div class="method-heading-group">
 
-            <div class="method-heading">
-              <a href="#method-i-name-3D" title="Link to this method">
-                <span class="method-name">name=</span>
-                <span class="method-args">( name_str, ns=nil )</span>
-              </a>
+              <div class="method-heading">
+                <a href="#method-i-name-3D" title="Link to this method">
+                  <span class="method-name">name=</span>
+                  <span class="method-args">(name_str, ns=nil)</span>
+                </a>
+              </div>
+
+
+
+          </div>
+
+
+            <div class="method-controls">
+              <details class="method-source-toggle">
+                <summary><span class="method-source-icon" aria-hidden="true">{}</span> Source</summary>
+              </details>
             </div>
 
         </div>
 
 
-          <div class="method-controls">
-            <details class="method-source-toggle">
-              <summary>Source</summary>
-            </details>
-          </div>
           <div class="method-source-code" id="name-3D-source">
             <pre class="ruby"><span class="ruby-comment"># File lib/rexml/light/node.rb, line 44</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">name=</span>( <span class="ruby-identifier">name_str</span>, <span class="ruby-identifier">ns</span>=<span class="ruby-keyword">nil</span> )
-  <span class="ruby-identifier">pfx</span> = <span class="ruby-string">&#39;&#39;</span>
-  <span class="ruby-identifier">pfx</span> = <span class="ruby-node">&quot;#{prefix(ns)}:&quot;</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">ns</span>
-  <span class="ruby-identifier">_old_put</span>(<span class="ruby-value">2</span>, <span class="ruby-node">&quot;#{pfx}#{name_str}&quot;</span>)
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">name=</span>( <span class="ruby-identifier">name_str</span>, <span class="ruby-identifier">ns</span>=<span class="ruby-keyword">nil</span> )
+  <span class="ruby-identifier">pfx</span> = <span class="ruby-string">&#39;</span><span class="ruby-string">&#39;</span>
+  <span class="ruby-identifier">pfx</span> = <span class="ruby-string">&quot;</span><span class="ruby-string">#{</span><span class="ruby-identifier">prefix</span>(<span class="ruby-identifier">ns</span>)<span class="ruby-string">}</span><span class="ruby-string">:</span><span class="ruby-string">&quot;</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">ns</span>
+  <span class="ruby-identifier">_old_put</span>(<span class="ruby-value">2</span>, <span class="ruby-string">&quot;</span><span class="ruby-string">#{</span><span class="ruby-identifier">pfx</span><span class="ruby-string">}</span><span class="ruby-string">#{</span><span class="ruby-identifier">name_str</span><span class="ruby-string">}</span><span class="ruby-string">&quot;</span>)
 <span class="ruby-keyword">end</span></pre>
           </div>
 
@@ -1291,25 +1367,32 @@
 
       <div id="method-i-namespace" class="method-detail anchor-link ">
         <div class="method-header">
+          <div class="method-heading-group">
 
-            <div class="method-heading">
-              <a href="#method-i-namespace" title="Link to this method">
-                <span class="method-name">namespace</span>
-                <span class="method-args">( prefix=prefix() )</span>
-              </a>
+              <div class="method-heading">
+                <a href="#method-i-namespace" title="Link to this method">
+                  <span class="method-name">namespace</span>
+                  <span class="method-args">(prefix=prefix())</span>
+                </a>
+              </div>
+
+
+
+          </div>
+
+
+            <div class="method-controls">
+              <details class="method-source-toggle">
+                <summary><span class="method-source-icon" aria-hidden="true">{}</span> Source</summary>
+              </details>
             </div>
 
         </div>
 
 
-          <div class="method-controls">
-            <details class="method-source-toggle">
-              <summary>Source</summary>
-            </details>
-          </div>
           <div class="method-source-code" id="namespace-source">
             <pre class="ruby"><span class="ruby-comment"># File lib/rexml/light/node.rb, line 67</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">namespace</span>( <span class="ruby-identifier">prefix</span>=<span class="ruby-identifier">prefix</span>() )
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">namespace</span>( <span class="ruby-identifier">prefix</span>=<span class="ruby-identifier">prefix</span>() )
   <span class="ruby-identifier">namespace_of</span>( <span class="ruby-keyword">self</span>, <span class="ruby-identifier">prefix</span> )
 <span class="ruby-keyword">end</span></pre>
           </div>
@@ -1333,29 +1416,36 @@
 
       <div id="method-i-namespace-3D" class="method-detail anchor-link ">
         <div class="method-header">
+          <div class="method-heading-group">
 
-            <div class="method-heading">
-              <a href="#method-i-namespace-3D" title="Link to this method">
-                <span class="method-name">namespace=</span>
-                <span class="method-args">( namespace )</span>
-              </a>
+              <div class="method-heading">
+                <a href="#method-i-namespace-3D" title="Link to this method">
+                  <span class="method-name">namespace=</span>
+                  <span class="method-args">(namespace)</span>
+                </a>
+              </div>
+
+
+
+          </div>
+
+
+            <div class="method-controls">
+              <details class="method-source-toggle">
+                <summary><span class="method-source-icon" aria-hidden="true">{}</span> Source</summary>
+              </details>
             </div>
 
         </div>
 
 
-          <div class="method-controls">
-            <details class="method-source-toggle">
-              <summary>Source</summary>
-            </details>
-          </div>
           <div class="method-source-code" id="namespace-3D-source">
             <pre class="ruby"><span class="ruby-comment"># File lib/rexml/light/node.rb, line 71</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">namespace=</span>( <span class="ruby-identifier">namespace</span> )
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">namespace=</span>( <span class="ruby-identifier">namespace</span> )
   <span class="ruby-ivar">@prefix</span> = <span class="ruby-identifier">prefix</span>( <span class="ruby-identifier">namespace</span> )
-  <span class="ruby-identifier">pfx</span> = <span class="ruby-string">&#39;&#39;</span>
-  <span class="ruby-identifier">pfx</span> = <span class="ruby-string">&quot;#@prefix:&quot;</span> <span class="ruby-keyword">if</span> <span class="ruby-ivar">@prefix</span>.<span class="ruby-identifier">size</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">0</span>
-  <span class="ruby-identifier">_old_put</span>(<span class="ruby-value">1</span>, <span class="ruby-node">&quot;#{pfx}#@name&quot;</span>)
+  <span class="ruby-identifier">pfx</span> = <span class="ruby-string">&#39;</span><span class="ruby-string">&#39;</span>
+  <span class="ruby-identifier">pfx</span> = <span class="ruby-string">&quot;</span><span class="ruby-string">#</span><span class="ruby-ivar">@prefix</span><span class="ruby-string">:</span><span class="ruby-string">&quot;</span> <span class="ruby-keyword">if</span> <span class="ruby-ivar">@prefix</span>.<span class="ruby-identifier">size</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">0</span>
+  <span class="ruby-identifier">_old_put</span>(<span class="ruby-value">1</span>, <span class="ruby-string">&quot;</span><span class="ruby-string">#{</span><span class="ruby-identifier">pfx</span><span class="ruby-string">}</span><span class="ruby-string">#</span><span class="ruby-ivar">@name</span><span class="ruby-string">&quot;</span>)
 <span class="ruby-keyword">end</span></pre>
           </div>
 
@@ -1378,25 +1468,32 @@
 
       <div id="method-i-node_type" class="method-detail anchor-link ">
         <div class="method-header">
+          <div class="method-heading-group">
 
-            <div class="method-heading">
-              <a href="#method-i-node_type" title="Link to this method">
-                <span class="method-name">node_type</span>
-                <span class="method-args">()</span>
-              </a>
+              <div class="method-heading">
+                <a href="#method-i-node_type" title="Link to this method">
+                  <span class="method-name">node_type</span>
+                  <span class="method-args">()</span>
+                </a>
+              </div>
+
+
+
+          </div>
+
+
+            <div class="method-controls">
+              <details class="method-source-toggle">
+                <summary><span class="method-source-icon" aria-hidden="true">{}</span> Source</summary>
+              </details>
             </div>
 
         </div>
 
 
-          <div class="method-controls">
-            <details class="method-source-toggle">
-              <summary>Source</summary>
-            </details>
-          </div>
           <div class="method-source-code" id="node_type-source">
             <pre class="ruby"><span class="ruby-comment"># File lib/rexml/light/node.rb, line 125</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">node_type</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">node_type</span>
   <span class="ruby-identifier">_old_get</span>(<span class="ruby-value">0</span>)
 <span class="ruby-keyword">end</span></pre>
           </div>
@@ -1420,25 +1517,32 @@
 
       <div id="method-i-parent" class="method-detail anchor-link ">
         <div class="method-header">
+          <div class="method-heading-group">
 
-            <div class="method-heading">
-              <a href="#method-i-parent" title="Link to this method">
-                <span class="method-name">parent</span>
-                <span class="method-args">()</span>
-              </a>
+              <div class="method-heading">
+                <a href="#method-i-parent" title="Link to this method">
+                  <span class="method-name">parent</span>
+                  <span class="method-args">()</span>
+                </a>
+              </div>
+
+
+
+          </div>
+
+
+            <div class="method-controls">
+              <details class="method-source-toggle">
+                <summary><span class="method-source-icon" aria-hidden="true">{}</span> Source</summary>
+              </details>
             </div>
 
         </div>
 
 
-          <div class="method-controls">
-            <details class="method-source-toggle">
-              <summary>Source</summary>
-            </details>
-          </div>
           <div class="method-source-code" id="parent-source">
             <pre class="ruby"><span class="ruby-comment"># File lib/rexml/light/node.rb, line 147</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">parent</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">parent</span>
   <span class="ruby-identifier">at</span>(<span class="ruby-value">1</span>)
 <span class="ruby-keyword">end</span></pre>
           </div>
@@ -1462,25 +1566,32 @@
 
       <div id="method-i-parent-3D" class="method-detail anchor-link ">
         <div class="method-header">
+          <div class="method-heading-group">
 
-            <div class="method-heading">
-              <a href="#method-i-parent-3D" title="Link to this method">
-                <span class="method-name">parent=</span>
-                <span class="method-args">( node )</span>
-              </a>
+              <div class="method-heading">
+                <a href="#method-i-parent-3D" title="Link to this method">
+                  <span class="method-name">parent=</span>
+                  <span class="method-args">(node)</span>
+                </a>
+              </div>
+
+
+
+          </div>
+
+
+            <div class="method-controls">
+              <details class="method-source-toggle">
+                <summary><span class="method-source-icon" aria-hidden="true">{}</span> Source</summary>
+              </details>
             </div>
 
         </div>
 
 
-          <div class="method-controls">
-            <details class="method-source-toggle">
-              <summary>Source</summary>
-            </details>
-          </div>
           <div class="method-source-code" id="parent-3D-source">
             <pre class="ruby"><span class="ruby-comment"># File lib/rexml/light/node.rb, line 50</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">parent=</span>( <span class="ruby-identifier">node</span> )
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">parent=</span>( <span class="ruby-identifier">node</span> )
   <span class="ruby-identifier">_old_put</span>(<span class="ruby-value">1</span>,<span class="ruby-identifier">node</span>)
 <span class="ruby-keyword">end</span></pre>
           </div>
@@ -1504,25 +1615,32 @@
 
       <div id="method-i-prefix" class="method-detail anchor-link ">
         <div class="method-header">
+          <div class="method-heading-group">
 
-            <div class="method-heading">
-              <a href="#method-i-prefix" title="Link to this method">
-                <span class="method-name">prefix</span>
-                <span class="method-args">( namespace=nil )</span>
-              </a>
+              <div class="method-heading">
+                <a href="#method-i-prefix" title="Link to this method">
+                  <span class="method-name">prefix</span>
+                  <span class="method-args">(namespace=nil)</span>
+                </a>
+              </div>
+
+
+
+          </div>
+
+
+            <div class="method-controls">
+              <details class="method-source-toggle">
+                <summary><span class="method-source-icon" aria-hidden="true">{}</span> Source</summary>
+              </details>
             </div>
 
         </div>
 
 
-          <div class="method-controls">
-            <details class="method-source-toggle">
-              <summary>Source</summary>
-            </details>
-          </div>
           <div class="method-source-code" id="prefix-source">
             <pre class="ruby"><span class="ruby-comment"># File lib/rexml/light/node.rb, line 63</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">prefix</span>( <span class="ruby-identifier">namespace</span>=<span class="ruby-keyword">nil</span> )
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">prefix</span>( <span class="ruby-identifier">namespace</span>=<span class="ruby-keyword">nil</span> )
   <span class="ruby-identifier">prefix_of</span>( <span class="ruby-keyword">self</span>, <span class="ruby-identifier">namespace</span> )
 <span class="ruby-keyword">end</span></pre>
           </div>
@@ -1546,25 +1664,32 @@
 
       <div id="method-i-root" class="method-detail anchor-link ">
         <div class="method-header">
+          <div class="method-heading-group">
 
-            <div class="method-heading">
-              <a href="#method-i-root" title="Link to this method">
-                <span class="method-name">root</span>
-                <span class="method-args">()</span>
-              </a>
+              <div class="method-heading">
+                <a href="#method-i-root" title="Link to this method">
+                  <span class="method-name">root</span>
+                  <span class="method-args">()</span>
+                </a>
+              </div>
+
+
+
+          </div>
+
+
+            <div class="method-controls">
+              <details class="method-source-toggle">
+                <summary><span class="method-source-icon" aria-hidden="true">{}</span> Source</summary>
+              </details>
             </div>
 
         </div>
 
 
-          <div class="method-controls">
-            <details class="method-source-toggle">
-              <summary>Source</summary>
-            </details>
-          </div>
           <div class="method-source-code" id="root-source">
             <pre class="ruby"><span class="ruby-comment"># File lib/rexml/light/node.rb, line 134</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">root</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">root</span>
   <span class="ruby-identifier">context</span> = <span class="ruby-keyword">self</span>
   <span class="ruby-identifier">context</span> = <span class="ruby-identifier">context</span>.<span class="ruby-identifier">at</span>(<span class="ruby-value">1</span>) <span class="ruby-keyword">while</span> <span class="ruby-identifier">context</span>.<span class="ruby-identifier">at</span>(<span class="ruby-value">1</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -1589,27 +1714,34 @@
 
       <div id="method-i-size" class="method-detail anchor-link ">
         <div class="method-header">
+          <div class="method-heading-group">
 
-            <div class="method-heading">
-              <a href="#method-i-size" title="Link to this method">
-                <span class="method-name">size</span>
-                <span class="method-args">()</span>
-              </a>
+              <div class="method-heading">
+                <a href="#method-i-size" title="Link to this method">
+                  <span class="method-name">size</span>
+                  <span class="method-args">()</span>
+                </a>
+              </div>
+
+
+
+          </div>
+
+
+            <div class="method-controls">
+              <details class="method-source-toggle">
+                <summary><span class="method-source-icon" aria-hidden="true">{}</span> Source</summary>
+              </details>
             </div>
 
         </div>
 
 
-          <div class="method-controls">
-            <details class="method-source-toggle">
-              <summary>Source</summary>
-            </details>
-          </div>
           <div class="method-source-code" id="size-source">
             <pre class="ruby"><span class="ruby-comment"># File lib/rexml/light/node.rb, line 28</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">size</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">size</span>
   <span class="ruby-keyword">if</span> <span class="ruby-constant">PARENTS</span>.<span class="ruby-identifier">include?</span> <span class="ruby-ivar">@node</span>[<span class="ruby-value">0</span>]
-    <span class="ruby-ivar">@node</span>[<span class="ruby-value">-1</span>].<span class="ruby-identifier">size</span>
+    <span class="ruby-ivar">@node</span>[-<span class="ruby-value">1</span>].<span class="ruby-identifier">size</span>
   <span class="ruby-keyword">else</span>
     <span class="ruby-value">0</span>
   <span class="ruby-keyword">end</span>
@@ -1635,25 +1767,32 @@
 
       <div id="method-i-text-3D" class="method-detail anchor-link ">
         <div class="method-header">
+          <div class="method-heading-group">
 
-            <div class="method-heading">
-              <a href="#method-i-text-3D" title="Link to this method">
-                <span class="method-name">text=</span>
-                <span class="method-args">( foo )</span>
-              </a>
+              <div class="method-heading">
+                <a href="#method-i-text-3D" title="Link to this method">
+                  <span class="method-name">text=</span>
+                  <span class="method-args">(foo)</span>
+                </a>
+              </div>
+
+
+
+          </div>
+
+
+            <div class="method-controls">
+              <details class="method-source-toggle">
+                <summary><span class="method-source-icon" aria-hidden="true">{}</span> Source</summary>
+              </details>
             </div>
 
         </div>
 
 
-          <div class="method-controls">
-            <details class="method-source-toggle">
-              <summary>Source</summary>
-            </details>
-          </div>
           <div class="method-source-code" id="text-3D-source">
             <pre class="ruby"><span class="ruby-comment"># File lib/rexml/light/node.rb, line 129</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">text=</span>( <span class="ruby-identifier">foo</span> )
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">text=</span>( <span class="ruby-identifier">foo</span> )
   <span class="ruby-identifier">replace</span> = <span class="ruby-identifier">at</span>(<span class="ruby-value">4</span>).<span class="ruby-identifier">kind_of?</span>(<span class="ruby-constant">String</span>)<span class="ruby-operator">?</span> <span class="ruby-value">1</span> <span class="ruby-operator">:</span> <span class="ruby-value">0</span>
   <span class="ruby-keyword">self</span>.<span class="ruby-identifier">_old_put</span>(<span class="ruby-value">4</span>,<span class="ruby-identifier">replace</span>, <span class="ruby-identifier">normalizefoo</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -1678,25 +1817,32 @@
 
       <div id="method-i-to_s" class="method-detail anchor-link ">
         <div class="method-header">
+          <div class="method-heading-group">
 
-            <div class="method-heading">
-              <a href="#method-i-to_s" title="Link to this method">
-                <span class="method-name">to_s</span>
-                <span class="method-args">()</span>
-              </a>
+              <div class="method-heading">
+                <a href="#method-i-to_s" title="Link to this method">
+                  <span class="method-name">to_s</span>
+                  <span class="method-args">()</span>
+                </a>
+              </div>
+
+
+
+          </div>
+
+
+            <div class="method-controls">
+              <details class="method-source-toggle">
+                <summary><span class="method-source-icon" aria-hidden="true">{}</span> Source</summary>
+              </details>
             </div>
 
         </div>
 
 
-          <div class="method-controls">
-            <details class="method-source-toggle">
-              <summary>Source</summary>
-            </details>
-          </div>
           <div class="method-source-code" id="to_s-source">
             <pre class="ruby"><span class="ruby-comment"># File lib/rexml/light/node.rb, line 151</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">to_s</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">to_s</span>
 
 <span class="ruby-keyword">end</span></pre>
           </div>
@@ -1727,7 +1873,7 @@
 
 </main>
 
-<aside class="table-of-contents" role="complementary" aria-label="Table of Contents">
+<aside id="table-of-contents" class="table-of-contents" role="complementary" aria-label="Table of Contents">
   <div class="toc-sticky">
     <h3 class="toc-heading">On This Page</h3>
     <nav class="toc-nav" id="toc-nav" aria-label="Page sections">
@@ -1742,7 +1888,7 @@
 
   <div class="footer-bottom">
     <p>
-      Generated by <a href="https://ruby.github.io/rdoc/">RDoc 7.2.0</a>
+      Generated by <a href="https://ruby.github.io/rdoc/">RDoc 8.0.0</a>
       using the Aliki theme by <a href="http://st0012.dev">Stan Lo</a>
     </p>
   </div>

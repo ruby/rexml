@@ -50,46 +50,46 @@
 </script>
 
 <script
-  src="../../js/theme-toggle.js?v=7.2.0"
+  src="../../js/theme-toggle.js?v=8.0.0"
 ></script>
 
 <script
-  src="../../js/search_navigation.js?v=7.2.0"
+  src="../../js/search_navigation.js?v=8.0.0"
   defer
 ></script>
 
 <script
-  src="../../js/search_data.js?v=7.2.0"
+  src="../../js/search_data.js?v=8.0.0"
   defer
 ></script>
 
 <script
-  src="../../js/search_ranker.js?v=7.2.0"
+  src="../../js/search_ranker.js?v=8.0.0"
   defer
 ></script>
 
 <script
-  src="../../js/search_controller.js?v=7.2.0"
+  src="../../js/search_controller.js?v=8.0.0"
   defer
 ></script>
 
 <script
-  src="../../js/c_highlighter.js?v=7.2.0"
+  src="../../js/c_highlighter.js?v=8.0.0"
   defer
 ></script>
 
 <script
-  src="../../js/bash_highlighter.js?v=7.2.0"
+  src="../../js/bash_highlighter.js?v=8.0.0"
   defer
 ></script>
 
 <script
-  src="../../js/aliki.js?v=7.2.0"
+  src="../../js/aliki.js?v=8.0.0"
   defer
 ></script>
 
 <link
-  href="../../css/rdoc.css?v=7.2.0"
+  href="../../css/rdoc.css?v=8.0.0"
   rel="stylesheet"
 >
 
@@ -363,12 +363,12 @@
   </div>
 </div>
 
-<div id="navigation-toggle" role="button" tabindex="0" aria-label="Toggle sidebar" aria-expanded="true" aria-controls="navigation">
+<div id="sidebar-navigation-toggle" role="button" tabindex="0" aria-label="Toggle sidebar" aria-expanded="false" aria-controls="sidebar-navigation">
   <span aria-hidden="true">&#9776;</span>
 </div>
 
 
-<nav id="navigation" role="navigation" hidden>
+<nav id="sidebar-navigation" role="navigation" hidden>
   
 
 
@@ -411,15 +411,6 @@
             <li>
               <a href="../../NEWS_md.html">
                 NEWS
-              </a>
-            </li>
-
-
-
-
-            <li>
-              <a href="../../README_md.html">
-                README
               </a>
             </li>
 
@@ -647,13 +638,13 @@
       
       <li>
         
-        <a href="../../REXML.html">REXML</a><span>::</span>
+        <a href="../../REXML.html">REXML</a><span class="separator">::</span>
         
       </li>
       
       <li>
         
-        <a href="../../REXML/Parsers.html">Parsers</a><span>::</span>
+        <a href="../../REXML/Parsers.html">Parsers</a><span class="separator">::</span>
         
       </li>
       
@@ -667,8 +658,9 @@
   
 
   <span id="class-REXML::Parsers::PullEvent" class="legacy-anchor"></span>
-  <h1 id="class-rexml-parsers-pullevent" class="anchor-link class">
-    class REXML::Parsers::PullEvent
+  <h1 id="class-rexml-parsers-pullevent" class="anchor-link class page-title">
+    <span class="page-title-kind">class</span>
+    <span class="page-title-name">REXML::Parsers::PullEvent</span>
   </h1>
 
   <section class="description">
@@ -700,25 +692,32 @@
 
       <div id="method-c-new" class="method-detail anchor-link ">
         <div class="method-header">
+          <div class="method-heading-group">
 
-            <div class="method-heading">
-              <a href="#method-c-new" title="Link to this method">
-                <span class="method-name">new</span>
-                <span class="method-args">(arg)</span>
-              </a>
+              <div class="method-heading">
+                <a href="#method-c-new" title="Link to this method">
+                  <span class="method-name">new</span>
+                  <span class="method-args">(arg)</span>
+                </a>
+              </div>
+
+
+
+          </div>
+
+
+            <div class="method-controls">
+              <details class="method-source-toggle">
+                <summary><span class="method-source-icon" aria-hidden="true">{}</span> Source</summary>
+              </details>
             </div>
 
         </div>
 
 
-          <div class="method-controls">
-            <details class="method-source-toggle">
-              <summary>Source</summary>
-            </details>
-          </div>
           <div class="method-source-code" id="new-source">
             <pre class="ruby"><span class="ruby-comment"># File lib/rexml/parsers/pullparser.rb, line 111</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(<span class="ruby-identifier">arg</span>)
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">arg</span>)
   <span class="ruby-ivar">@contents</span> = <span class="ruby-identifier">arg</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
@@ -756,35 +755,42 @@
 
       <div id="method-i-5B-5D" class="method-detail anchor-link ">
         <div class="method-header">
+          <div class="method-heading-group">
 
-            <div class="method-heading">
-              <a href="#method-i-5B-5D" title="Link to this method">
-                <span class="method-name">[]</span>
-                <span class="method-args">( start, endd=nil)</span>
-              </a>
+              <div class="method-heading">
+                <a href="#method-i-5B-5D" title="Link to this method">
+                  <span class="method-name">[]</span>
+                  <span class="method-args">(start, endd=nil)</span>
+                </a>
+              </div>
+
+
+
+          </div>
+
+
+            <div class="method-controls">
+              <details class="method-source-toggle">
+                <summary><span class="method-source-icon" aria-hidden="true">{}</span> Source</summary>
+              </details>
             </div>
 
         </div>
 
 
-          <div class="method-controls">
-            <details class="method-source-toggle">
-              <summary>Source</summary>
-            </details>
-          </div>
           <div class="method-source-code" id="5B-5D-source">
             <pre class="ruby"><span class="ruby-comment"># File lib/rexml/parsers/pullparser.rb, line 115</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">[]</span>( <span class="ruby-identifier">start</span>, <span class="ruby-identifier">endd</span>=<span class="ruby-keyword">nil</span>)
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">[]</span>( <span class="ruby-identifier">start</span>, <span class="ruby-identifier">endd</span>=<span class="ruby-keyword">nil</span>)
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">start</span>.<span class="ruby-identifier">kind_of?</span> <span class="ruby-constant">Range</span>
-    <span class="ruby-ivar">@contents</span>.<span class="ruby-identifier">slice</span>( <span class="ruby-identifier">start</span>.<span class="ruby-identifier">begin</span><span class="ruby-value">+1</span> <span class="ruby-operator">..</span> <span class="ruby-identifier">start</span>.<span class="ruby-identifier">end</span> )
+    <span class="ruby-ivar">@contents</span>.<span class="ruby-identifier">slice</span>( <span class="ruby-identifier">start</span>.<span class="ruby-identifier">begin</span><span class="ruby-operator">+</span><span class="ruby-value">1</span> .. <span class="ruby-identifier">start</span>.<span class="ruby-identifier">end</span> )
   <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">start</span>.<span class="ruby-identifier">kind_of?</span> <span class="ruby-constant">Numeric</span>
     <span class="ruby-keyword">if</span> <span class="ruby-identifier">endd</span>.<span class="ruby-identifier">nil?</span>
-      <span class="ruby-ivar">@contents</span>.<span class="ruby-identifier">slice</span>( <span class="ruby-identifier">start</span><span class="ruby-value">+1</span> )
+      <span class="ruby-ivar">@contents</span>.<span class="ruby-identifier">slice</span>( <span class="ruby-identifier">start</span><span class="ruby-operator">+</span><span class="ruby-value">1</span> )
     <span class="ruby-keyword">else</span>
-      <span class="ruby-ivar">@contents</span>.<span class="ruby-identifier">slice</span>( <span class="ruby-identifier">start</span><span class="ruby-value">+1</span>, <span class="ruby-identifier">endd</span> )
+      <span class="ruby-ivar">@contents</span>.<span class="ruby-identifier">slice</span>( <span class="ruby-identifier">start</span><span class="ruby-operator">+</span><span class="ruby-value">1</span>, <span class="ruby-identifier">endd</span> )
     <span class="ruby-keyword">end</span>
   <span class="ruby-keyword">else</span>
-    <span class="ruby-identifier">raise</span> <span class="ruby-node">&quot;Illegal argument #{start.inspect} (#{start.class})&quot;</span>
+    <span class="ruby-identifier">raise</span> <span class="ruby-string">&quot;</span><span class="ruby-string">Illegal argument </span><span class="ruby-string">#{</span><span class="ruby-identifier">start</span>.<span class="ruby-identifier">inspect</span><span class="ruby-string">}</span><span class="ruby-string"> (</span><span class="ruby-string">#{</span><span class="ruby-identifier">start</span>.<span class="ruby-identifier">class</span><span class="ruby-string">}</span><span class="ruby-string">)</span><span class="ruby-string">&quot;</span>
   <span class="ruby-keyword">end</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
@@ -808,26 +814,33 @@
 
       <div id="method-i-attlistdecl-3F" class="method-detail anchor-link ">
         <div class="method-header">
+          <div class="method-heading-group">
 
-            <div class="method-heading">
-              <a href="#method-i-attlistdecl-3F" title="Link to this method">
-                <span class="method-name">attlistdecl?</span>
-                <span class="method-args">()</span>
-              </a>
+              <div class="method-heading">
+                <a href="#method-i-attlistdecl-3F" title="Link to this method">
+                  <span class="method-name">attlistdecl?</span>
+                  <span class="method-args">()</span>
+                </a>
+              </div>
+
+
+
+          </div>
+
+
+            <div class="method-controls">
+              <details class="method-source-toggle">
+                <summary><span class="method-source-icon" aria-hidden="true">{}</span> Source</summary>
+              </details>
             </div>
 
         </div>
 
 
-          <div class="method-controls">
-            <details class="method-source-toggle">
-              <summary>Source</summary>
-            </details>
-          </div>
           <div class="method-source-code" id="attlistdecl-3F-source">
             <pre class="ruby"><span class="ruby-comment"># File lib/rexml/parsers/pullparser.rb, line 164</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">attlistdecl?</span>
-  <span class="ruby-ivar">@contents</span>[<span class="ruby-value">0</span>] <span class="ruby-operator">==</span> <span class="ruby-value">:attlistdecl</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">attlistdecl?</span>
+  <span class="ruby-ivar">@contents</span>[<span class="ruby-value">0</span>] <span class="ruby-operator">==</span> <span class="ruby-value">:</span><span class="ruby-value">attlistdecl</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
 
@@ -850,26 +863,33 @@
 
       <div id="method-i-cdata-3F" class="method-detail anchor-link ">
         <div class="method-header">
+          <div class="method-heading-group">
 
-            <div class="method-heading">
-              <a href="#method-i-cdata-3F" title="Link to this method">
-                <span class="method-name">cdata?</span>
-                <span class="method-args">()</span>
-              </a>
+              <div class="method-heading">
+                <a href="#method-i-cdata-3F" title="Link to this method">
+                  <span class="method-name">cdata?</span>
+                  <span class="method-args">()</span>
+                </a>
+              </div>
+
+
+
+          </div>
+
+
+            <div class="method-controls">
+              <details class="method-source-toggle">
+                <summary><span class="method-source-icon" aria-hidden="true">{}</span> Source</summary>
+              </details>
             </div>
 
         </div>
 
 
-          <div class="method-controls">
-            <details class="method-source-toggle">
-              <summary>Source</summary>
-            </details>
-          </div>
           <div class="method-source-code" id="cdata-3F-source">
             <pre class="ruby"><span class="ruby-comment"># File lib/rexml/parsers/pullparser.rb, line 195</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">cdata?</span>
-  <span class="ruby-ivar">@contents</span>[<span class="ruby-value">0</span>] <span class="ruby-operator">==</span> <span class="ruby-value">:cdata</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">cdata?</span>
+  <span class="ruby-ivar">@contents</span>[<span class="ruby-value">0</span>] <span class="ruby-operator">==</span> <span class="ruby-value">:</span><span class="ruby-value">cdata</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
 
@@ -892,26 +912,33 @@
 
       <div id="method-i-comment-3F" class="method-detail anchor-link ">
         <div class="method-header">
+          <div class="method-heading-group">
 
-            <div class="method-heading">
-              <a href="#method-i-comment-3F" title="Link to this method">
-                <span class="method-name">comment?</span>
-                <span class="method-args">()</span>
-              </a>
+              <div class="method-heading">
+                <a href="#method-i-comment-3F" title="Link to this method">
+                  <span class="method-name">comment?</span>
+                  <span class="method-args">()</span>
+                </a>
+              </div>
+
+
+
+          </div>
+
+
+            <div class="method-controls">
+              <details class="method-source-toggle">
+                <summary><span class="method-source-icon" aria-hidden="true">{}</span> Source</summary>
+              </details>
             </div>
 
         </div>
 
 
-          <div class="method-controls">
-            <details class="method-source-toggle">
-              <summary>Source</summary>
-            </details>
-          </div>
           <div class="method-source-code" id="comment-3F-source">
             <pre class="ruby"><span class="ruby-comment"># File lib/rexml/parsers/pullparser.rb, line 154</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">comment?</span>
-  <span class="ruby-ivar">@contents</span>[<span class="ruby-value">0</span>] <span class="ruby-operator">==</span> <span class="ruby-value">:comment</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">comment?</span>
+  <span class="ruby-ivar">@contents</span>[<span class="ruby-value">0</span>] <span class="ruby-operator">==</span> <span class="ruby-value">:</span><span class="ruby-value">comment</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
 
@@ -934,26 +961,33 @@
 
       <div id="method-i-doctype-3F" class="method-detail anchor-link ">
         <div class="method-header">
+          <div class="method-heading-group">
 
-            <div class="method-heading">
-              <a href="#method-i-doctype-3F" title="Link to this method">
-                <span class="method-name">doctype?</span>
-                <span class="method-args">()</span>
-              </a>
+              <div class="method-heading">
+                <a href="#method-i-doctype-3F" title="Link to this method">
+                  <span class="method-name">doctype?</span>
+                  <span class="method-args">()</span>
+                </a>
+              </div>
+
+
+
+          </div>
+
+
+            <div class="method-controls">
+              <details class="method-source-toggle">
+                <summary><span class="method-source-icon" aria-hidden="true">{}</span> Source</summary>
+              </details>
             </div>
 
         </div>
 
 
-          <div class="method-controls">
-            <details class="method-source-toggle">
-              <summary>Source</summary>
-            </details>
-          </div>
           <div class="method-source-code" id="doctype-3F-source">
             <pre class="ruby"><span class="ruby-comment"># File lib/rexml/parsers/pullparser.rb, line 159</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">doctype?</span>
-  <span class="ruby-ivar">@contents</span>[<span class="ruby-value">0</span>] <span class="ruby-operator">==</span> <span class="ruby-value">:start_doctype</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">doctype?</span>
+  <span class="ruby-ivar">@contents</span>[<span class="ruby-value">0</span>] <span class="ruby-operator">==</span> <span class="ruby-value">:</span><span class="ruby-value">start_doctype</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
 
@@ -976,26 +1010,33 @@
 
       <div id="method-i-elementdecl-3F" class="method-detail anchor-link ">
         <div class="method-header">
+          <div class="method-heading-group">
 
-            <div class="method-heading">
-              <a href="#method-i-elementdecl-3F" title="Link to this method">
-                <span class="method-name">elementdecl?</span>
-                <span class="method-args">()</span>
-              </a>
+              <div class="method-heading">
+                <a href="#method-i-elementdecl-3F" title="Link to this method">
+                  <span class="method-name">elementdecl?</span>
+                  <span class="method-args">()</span>
+                </a>
+              </div>
+
+
+
+          </div>
+
+
+            <div class="method-controls">
+              <details class="method-source-toggle">
+                <summary><span class="method-source-icon" aria-hidden="true">{}</span> Source</summary>
+              </details>
             </div>
 
         </div>
 
 
-          <div class="method-controls">
-            <details class="method-source-toggle">
-              <summary>Source</summary>
-            </details>
-          </div>
           <div class="method-source-code" id="elementdecl-3F-source">
             <pre class="ruby"><span class="ruby-comment"># File lib/rexml/parsers/pullparser.rb, line 169</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">elementdecl?</span>
-  <span class="ruby-ivar">@contents</span>[<span class="ruby-value">0</span>] <span class="ruby-operator">==</span> <span class="ruby-value">:elementdecl</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">elementdecl?</span>
+  <span class="ruby-ivar">@contents</span>[<span class="ruby-value">0</span>] <span class="ruby-operator">==</span> <span class="ruby-value">:</span><span class="ruby-value">elementdecl</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
 
@@ -1018,26 +1059,33 @@
 
       <div id="method-i-end_element-3F" class="method-detail anchor-link ">
         <div class="method-header">
+          <div class="method-heading-group">
 
-            <div class="method-heading">
-              <a href="#method-i-end_element-3F" title="Link to this method">
-                <span class="method-name">end_element?</span>
-                <span class="method-args">()</span>
-              </a>
+              <div class="method-heading">
+                <a href="#method-i-end_element-3F" title="Link to this method">
+                  <span class="method-name">end_element?</span>
+                  <span class="method-args">()</span>
+                </a>
+              </div>
+
+
+
+          </div>
+
+
+            <div class="method-controls">
+              <details class="method-source-toggle">
+                <summary><span class="method-source-icon" aria-hidden="true">{}</span> Source</summary>
+              </details>
             </div>
 
         </div>
 
 
-          <div class="method-controls">
-            <details class="method-source-toggle">
-              <summary>Source</summary>
-            </details>
-          </div>
           <div class="method-source-code" id="end_element-3F-source">
             <pre class="ruby"><span class="ruby-comment"># File lib/rexml/parsers/pullparser.rb, line 139</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">end_element?</span>
-  <span class="ruby-ivar">@contents</span>[<span class="ruby-value">0</span>] <span class="ruby-operator">==</span> <span class="ruby-value">:end_element</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">end_element?</span>
+  <span class="ruby-ivar">@contents</span>[<span class="ruby-value">0</span>] <span class="ruby-operator">==</span> <span class="ruby-value">:</span><span class="ruby-value">end_element</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
 
@@ -1060,26 +1108,33 @@
 
       <div id="method-i-entity-3F" class="method-detail anchor-link ">
         <div class="method-header">
+          <div class="method-heading-group">
 
-            <div class="method-heading">
-              <a href="#method-i-entity-3F" title="Link to this method">
-                <span class="method-name">entity?</span>
-                <span class="method-args">()</span>
-              </a>
+              <div class="method-heading">
+                <a href="#method-i-entity-3F" title="Link to this method">
+                  <span class="method-name">entity?</span>
+                  <span class="method-args">()</span>
+                </a>
+              </div>
+
+
+
+          </div>
+
+
+            <div class="method-controls">
+              <details class="method-source-toggle">
+                <summary><span class="method-source-icon" aria-hidden="true">{}</span> Source</summary>
+              </details>
             </div>
 
         </div>
 
 
-          <div class="method-controls">
-            <details class="method-source-toggle">
-              <summary>Source</summary>
-            </details>
-          </div>
           <div class="method-source-code" id="entity-3F-source">
             <pre class="ruby"><span class="ruby-comment"># File lib/rexml/parsers/pullparser.rb, line 190</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">entity?</span>
-  <span class="ruby-ivar">@contents</span>[<span class="ruby-value">0</span>] <span class="ruby-operator">==</span> <span class="ruby-value">:entity</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">entity?</span>
+  <span class="ruby-ivar">@contents</span>[<span class="ruby-value">0</span>] <span class="ruby-operator">==</span> <span class="ruby-value">:</span><span class="ruby-value">entity</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
 
@@ -1102,26 +1157,33 @@
 
       <div id="method-i-entitydecl-3F" class="method-detail anchor-link ">
         <div class="method-header">
+          <div class="method-heading-group">
 
-            <div class="method-heading">
-              <a href="#method-i-entitydecl-3F" title="Link to this method">
-                <span class="method-name">entitydecl?</span>
-                <span class="method-args">()</span>
-              </a>
+              <div class="method-heading">
+                <a href="#method-i-entitydecl-3F" title="Link to this method">
+                  <span class="method-name">entitydecl?</span>
+                  <span class="method-args">()</span>
+                </a>
+              </div>
+
+
+
+          </div>
+
+
+            <div class="method-controls">
+              <details class="method-source-toggle">
+                <summary><span class="method-source-icon" aria-hidden="true">{}</span> Source</summary>
+              </details>
             </div>
 
         </div>
 
 
-          <div class="method-controls">
-            <details class="method-source-toggle">
-              <summary>Source</summary>
-            </details>
-          </div>
           <div class="method-source-code" id="entitydecl-3F-source">
             <pre class="ruby"><span class="ruby-comment"># File lib/rexml/parsers/pullparser.rb, line 180</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">entitydecl?</span>
-  <span class="ruby-ivar">@contents</span>[<span class="ruby-value">0</span>] <span class="ruby-operator">==</span> <span class="ruby-value">:entitydecl</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">entitydecl?</span>
+  <span class="ruby-ivar">@contents</span>[<span class="ruby-value">0</span>] <span class="ruby-operator">==</span> <span class="ruby-value">:</span><span class="ruby-value">entitydecl</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
 
@@ -1151,26 +1213,33 @@
 
       <div id="method-i-error-3F" class="method-detail anchor-link ">
         <div class="method-header">
+          <div class="method-heading-group">
 
-            <div class="method-heading">
-              <a href="#method-i-error-3F" title="Link to this method">
-                <span class="method-name">error?</span>
-                <span class="method-args">()</span>
-              </a>
+              <div class="method-heading">
+                <a href="#method-i-error-3F" title="Link to this method">
+                  <span class="method-name">error?</span>
+                  <span class="method-args">()</span>
+                </a>
+              </div>
+
+
+
+          </div>
+
+
+            <div class="method-controls">
+              <details class="method-source-toggle">
+                <summary><span class="method-source-icon" aria-hidden="true">{}</span> Source</summary>
+              </details>
             </div>
 
         </div>
 
 
-          <div class="method-controls">
-            <details class="method-source-toggle">
-              <summary>Source</summary>
-            </details>
-          </div>
           <div class="method-source-code" id="error-3F-source">
             <pre class="ruby"><span class="ruby-comment"># File lib/rexml/parsers/pullparser.rb, line 204</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">error?</span>
-  <span class="ruby-ivar">@contents</span>[<span class="ruby-value">0</span>] <span class="ruby-operator">==</span> <span class="ruby-value">:error</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">error?</span>
+  <span class="ruby-ivar">@contents</span>[<span class="ruby-value">0</span>] <span class="ruby-operator">==</span> <span class="ruby-value">:</span><span class="ruby-value">error</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
 
@@ -1193,25 +1262,32 @@
 
       <div id="method-i-event_type" class="method-detail anchor-link ">
         <div class="method-header">
+          <div class="method-heading-group">
 
-            <div class="method-heading">
-              <a href="#method-i-event_type" title="Link to this method">
-                <span class="method-name">event_type</span>
-                <span class="method-args">()</span>
-              </a>
+              <div class="method-heading">
+                <a href="#method-i-event_type" title="Link to this method">
+                  <span class="method-name">event_type</span>
+                  <span class="method-args">()</span>
+                </a>
+              </div>
+
+
+
+          </div>
+
+
+            <div class="method-controls">
+              <details class="method-source-toggle">
+                <summary><span class="method-source-icon" aria-hidden="true">{}</span> Source</summary>
+              </details>
             </div>
 
         </div>
 
 
-          <div class="method-controls">
-            <details class="method-source-toggle">
-              <summary>Source</summary>
-            </details>
-          </div>
           <div class="method-source-code" id="event_type-source">
             <pre class="ruby"><span class="ruby-comment"># File lib/rexml/parsers/pullparser.rb, line 129</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">event_type</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">event_type</span>
   <span class="ruby-ivar">@contents</span>[<span class="ruby-value">0</span>]
 <span class="ruby-keyword">end</span></pre>
           </div>
@@ -1235,26 +1311,33 @@
 
       <div id="method-i-inspect" class="method-detail anchor-link ">
         <div class="method-header">
+          <div class="method-heading-group">
 
-            <div class="method-heading">
-              <a href="#method-i-inspect" title="Link to this method">
-                <span class="method-name">inspect</span>
-                <span class="method-args">()</span>
-              </a>
+              <div class="method-heading">
+                <a href="#method-i-inspect" title="Link to this method">
+                  <span class="method-name">inspect</span>
+                  <span class="method-args">()</span>
+                </a>
+              </div>
+
+
+
+          </div>
+
+
+            <div class="method-controls">
+              <details class="method-source-toggle">
+                <summary><span class="method-source-icon" aria-hidden="true">{}</span> Source</summary>
+              </details>
             </div>
 
         </div>
 
 
-          <div class="method-controls">
-            <details class="method-source-toggle">
-              <summary>Source</summary>
-            </details>
-          </div>
           <div class="method-source-code" id="inspect-source">
             <pre class="ruby"><span class="ruby-comment"># File lib/rexml/parsers/pullparser.rb, line 208</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">inspect</span>
-  <span class="ruby-ivar">@contents</span>[<span class="ruby-value">0</span>].<span class="ruby-identifier">to_s</span> <span class="ruby-operator">+</span> <span class="ruby-string">&quot;: &quot;</span> <span class="ruby-operator">+</span> <span class="ruby-ivar">@contents</span>[<span class="ruby-value">1</span><span class="ruby-operator">..</span><span class="ruby-value">-1</span>].<span class="ruby-identifier">inspect</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">inspect</span>
+  <span class="ruby-ivar">@contents</span>[<span class="ruby-value">0</span>].<span class="ruby-identifier">to_s</span> <span class="ruby-operator">+</span> <span class="ruby-string">&quot;</span><span class="ruby-string">: </span><span class="ruby-string">&quot;</span> <span class="ruby-operator">+</span> <span class="ruby-ivar">@contents</span>[<span class="ruby-value">1</span>..-<span class="ruby-value">1</span>].<span class="ruby-identifier">inspect</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
 
@@ -1277,26 +1360,33 @@
 
       <div id="method-i-instruction-3F" class="method-detail anchor-link ">
         <div class="method-header">
+          <div class="method-heading-group">
 
-            <div class="method-heading">
-              <a href="#method-i-instruction-3F" title="Link to this method">
-                <span class="method-name">instruction?</span>
-                <span class="method-args">()</span>
-              </a>
+              <div class="method-heading">
+                <a href="#method-i-instruction-3F" title="Link to this method">
+                  <span class="method-name">instruction?</span>
+                  <span class="method-args">()</span>
+                </a>
+              </div>
+
+
+
+          </div>
+
+
+            <div class="method-controls">
+              <details class="method-source-toggle">
+                <summary><span class="method-source-icon" aria-hidden="true">{}</span> Source</summary>
+              </details>
             </div>
 
         </div>
 
 
-          <div class="method-controls">
-            <details class="method-source-toggle">
-              <summary>Source</summary>
-            </details>
-          </div>
           <div class="method-source-code" id="instruction-3F-source">
             <pre class="ruby"><span class="ruby-comment"># File lib/rexml/parsers/pullparser.rb, line 149</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">instruction?</span>
-  <span class="ruby-ivar">@contents</span>[<span class="ruby-value">0</span>] <span class="ruby-operator">==</span> <span class="ruby-value">:processing_instruction</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">instruction?</span>
+  <span class="ruby-ivar">@contents</span>[<span class="ruby-value">0</span>] <span class="ruby-operator">==</span> <span class="ruby-value">:</span><span class="ruby-value">processing_instruction</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
 
@@ -1319,26 +1409,33 @@
 
       <div id="method-i-notationdecl-3F" class="method-detail anchor-link ">
         <div class="method-header">
+          <div class="method-heading-group">
 
-            <div class="method-heading">
-              <a href="#method-i-notationdecl-3F" title="Link to this method">
-                <span class="method-name">notationdecl?</span>
-                <span class="method-args">()</span>
-              </a>
+              <div class="method-heading">
+                <a href="#method-i-notationdecl-3F" title="Link to this method">
+                  <span class="method-name">notationdecl?</span>
+                  <span class="method-args">()</span>
+                </a>
+              </div>
+
+
+
+          </div>
+
+
+            <div class="method-controls">
+              <details class="method-source-toggle">
+                <summary><span class="method-source-icon" aria-hidden="true">{}</span> Source</summary>
+              </details>
             </div>
 
         </div>
 
 
-          <div class="method-controls">
-            <details class="method-source-toggle">
-              <summary>Source</summary>
-            </details>
-          </div>
           <div class="method-source-code" id="notationdecl-3F-source">
             <pre class="ruby"><span class="ruby-comment"># File lib/rexml/parsers/pullparser.rb, line 185</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">notationdecl?</span>
-  <span class="ruby-ivar">@contents</span>[<span class="ruby-value">0</span>] <span class="ruby-operator">==</span> <span class="ruby-value">:notationdecl</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">notationdecl?</span>
+  <span class="ruby-ivar">@contents</span>[<span class="ruby-value">0</span>] <span class="ruby-operator">==</span> <span class="ruby-value">:</span><span class="ruby-value">notationdecl</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
 
@@ -1361,26 +1458,33 @@
 
       <div id="method-i-start_element-3F" class="method-detail anchor-link ">
         <div class="method-header">
+          <div class="method-heading-group">
 
-            <div class="method-heading">
-              <a href="#method-i-start_element-3F" title="Link to this method">
-                <span class="method-name">start_element?</span>
-                <span class="method-args">()</span>
-              </a>
+              <div class="method-heading">
+                <a href="#method-i-start_element-3F" title="Link to this method">
+                  <span class="method-name">start_element?</span>
+                  <span class="method-args">()</span>
+                </a>
+              </div>
+
+
+
+          </div>
+
+
+            <div class="method-controls">
+              <details class="method-source-toggle">
+                <summary><span class="method-source-icon" aria-hidden="true">{}</span> Source</summary>
+              </details>
             </div>
 
         </div>
 
 
-          <div class="method-controls">
-            <details class="method-source-toggle">
-              <summary>Source</summary>
-            </details>
-          </div>
           <div class="method-source-code" id="start_element-3F-source">
             <pre class="ruby"><span class="ruby-comment"># File lib/rexml/parsers/pullparser.rb, line 134</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">start_element?</span>
-  <span class="ruby-ivar">@contents</span>[<span class="ruby-value">0</span>] <span class="ruby-operator">==</span> <span class="ruby-value">:start_element</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">start_element?</span>
+  <span class="ruby-ivar">@contents</span>[<span class="ruby-value">0</span>] <span class="ruby-operator">==</span> <span class="ruby-value">:</span><span class="ruby-value">start_element</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
 
@@ -1403,26 +1507,33 @@
 
       <div id="method-i-text-3F" class="method-detail anchor-link ">
         <div class="method-header">
+          <div class="method-heading-group">
 
-            <div class="method-heading">
-              <a href="#method-i-text-3F" title="Link to this method">
-                <span class="method-name">text?</span>
-                <span class="method-args">()</span>
-              </a>
+              <div class="method-heading">
+                <a href="#method-i-text-3F" title="Link to this method">
+                  <span class="method-name">text?</span>
+                  <span class="method-args">()</span>
+                </a>
+              </div>
+
+
+
+          </div>
+
+
+            <div class="method-controls">
+              <details class="method-source-toggle">
+                <summary><span class="method-source-icon" aria-hidden="true">{}</span> Source</summary>
+              </details>
             </div>
 
         </div>
 
 
-          <div class="method-controls">
-            <details class="method-source-toggle">
-              <summary>Source</summary>
-            </details>
-          </div>
           <div class="method-source-code" id="text-3F-source">
             <pre class="ruby"><span class="ruby-comment"># File lib/rexml/parsers/pullparser.rb, line 144</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">text?</span>
-  <span class="ruby-ivar">@contents</span>[<span class="ruby-value">0</span>] <span class="ruby-operator">==</span> <span class="ruby-value">:text</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">text?</span>
+  <span class="ruby-ivar">@contents</span>[<span class="ruby-value">0</span>] <span class="ruby-operator">==</span> <span class="ruby-value">:</span><span class="ruby-value">text</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
 
@@ -1445,26 +1556,33 @@
 
       <div id="method-i-xmldecl-3F" class="method-detail anchor-link ">
         <div class="method-header">
+          <div class="method-heading-group">
 
-            <div class="method-heading">
-              <a href="#method-i-xmldecl-3F" title="Link to this method">
-                <span class="method-name">xmldecl?</span>
-                <span class="method-args">()</span>
-              </a>
+              <div class="method-heading">
+                <a href="#method-i-xmldecl-3F" title="Link to this method">
+                  <span class="method-name">xmldecl?</span>
+                  <span class="method-args">()</span>
+                </a>
+              </div>
+
+
+
+          </div>
+
+
+            <div class="method-controls">
+              <details class="method-source-toggle">
+                <summary><span class="method-source-icon" aria-hidden="true">{}</span> Source</summary>
+              </details>
             </div>
 
         </div>
 
 
-          <div class="method-controls">
-            <details class="method-source-toggle">
-              <summary>Source</summary>
-            </details>
-          </div>
           <div class="method-source-code" id="xmldecl-3F-source">
             <pre class="ruby"><span class="ruby-comment"># File lib/rexml/parsers/pullparser.rb, line 200</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">xmldecl?</span>
-  <span class="ruby-ivar">@contents</span>[<span class="ruby-value">0</span>] <span class="ruby-operator">==</span> <span class="ruby-value">:xmldecl</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">xmldecl?</span>
+  <span class="ruby-ivar">@contents</span>[<span class="ruby-value">0</span>] <span class="ruby-operator">==</span> <span class="ruby-value">:</span><span class="ruby-value">xmldecl</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
 
@@ -1494,7 +1612,7 @@
 
 </main>
 
-<aside class="table-of-contents" role="complementary" aria-label="Table of Contents">
+<aside id="table-of-contents" class="table-of-contents" role="complementary" aria-label="Table of Contents">
   <div class="toc-sticky">
     <h3 class="toc-heading">On This Page</h3>
     <nav class="toc-nav" id="toc-nav" aria-label="Page sections">
@@ -1509,7 +1627,7 @@
 
   <div class="footer-bottom">
     <p>
-      Generated by <a href="https://ruby.github.io/rdoc/">RDoc 7.2.0</a>
+      Generated by <a href="https://ruby.github.io/rdoc/">RDoc 8.0.0</a>
       using the Aliki theme by <a href="http://st0012.dev">Stan Lo</a>
     </p>
   </div>

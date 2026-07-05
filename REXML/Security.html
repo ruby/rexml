@@ -56,46 +56,46 @@
 </script>
 
 <script
-  src="../js/theme-toggle.js?v=7.2.0"
+  src="../js/theme-toggle.js?v=8.0.0"
 ></script>
 
 <script
-  src="../js/search_navigation.js?v=7.2.0"
+  src="../js/search_navigation.js?v=8.0.0"
   defer
 ></script>
 
 <script
-  src="../js/search_data.js?v=7.2.0"
+  src="../js/search_data.js?v=8.0.0"
   defer
 ></script>
 
 <script
-  src="../js/search_ranker.js?v=7.2.0"
+  src="../js/search_ranker.js?v=8.0.0"
   defer
 ></script>
 
 <script
-  src="../js/search_controller.js?v=7.2.0"
+  src="../js/search_controller.js?v=8.0.0"
   defer
 ></script>
 
 <script
-  src="../js/c_highlighter.js?v=7.2.0"
+  src="../js/c_highlighter.js?v=8.0.0"
   defer
 ></script>
 
 <script
-  src="../js/bash_highlighter.js?v=7.2.0"
+  src="../js/bash_highlighter.js?v=8.0.0"
   defer
 ></script>
 
 <script
-  src="../js/aliki.js?v=7.2.0"
+  src="../js/aliki.js?v=8.0.0"
   defer
 ></script>
 
 <link
-  href="../css/rdoc.css?v=7.2.0"
+  href="../css/rdoc.css?v=8.0.0"
   rel="stylesheet"
 >
 
@@ -369,12 +369,12 @@
   </div>
 </div>
 
-<div id="navigation-toggle" role="button" tabindex="0" aria-label="Toggle sidebar" aria-expanded="true" aria-controls="navigation">
+<div id="sidebar-navigation-toggle" role="button" tabindex="0" aria-label="Toggle sidebar" aria-expanded="false" aria-controls="sidebar-navigation">
   <span aria-hidden="true">&#9776;</span>
 </div>
 
 
-<nav id="navigation" role="navigation" hidden>
+<nav id="sidebar-navigation" role="navigation" hidden>
   
 
 
@@ -417,15 +417,6 @@
             <li>
               <a href="../NEWS_md.html">
                 NEWS
-              </a>
-            </li>
-
-
-
-
-            <li>
-              <a href="../README_md.html">
-                README
               </a>
             </li>
 
@@ -593,7 +584,7 @@
       
       <li>
         
-        <a href="../REXML.html">REXML</a><span>::</span>
+        <a href="../REXML.html">REXML</a><span class="separator">::</span>
         
       </li>
       
@@ -607,8 +598,9 @@
   
 
   <span id="module-REXML::Security" class="legacy-anchor"></span>
-  <h1 id="module-rexml-security" class="anchor-link module">
-    module REXML::Security
+  <h1 id="module-rexml-security" class="anchor-link module page-title">
+    <span class="page-title-kind">module</span>
+    <span class="page-title-name">REXML::Security</span>
   </h1>
 
   <section class="description">
@@ -638,25 +630,32 @@
 
       <div id="method-c-entity_expansion_limit" class="method-detail anchor-link ">
         <div class="method-header">
+          <div class="method-heading-group">
 
-            <div class="method-heading">
-              <a href="#method-c-entity_expansion_limit" title="Link to this method">
-                <span class="method-name">entity_expansion_limit</span>
-                <span class="method-args">()</span>
-              </a>
+              <div class="method-heading">
+                <a href="#method-c-entity_expansion_limit" title="Link to this method">
+                  <span class="method-name">entity_expansion_limit</span>
+                  <span class="method-args">()</span>
+                </a>
+              </div>
+
+
+
+          </div>
+
+
+            <div class="method-controls">
+              <details class="method-source-toggle">
+                <summary><span class="method-source-icon" aria-hidden="true">{}</span> Source</summary>
+              </details>
             </div>
 
         </div>
 
 
-          <div class="method-controls">
-            <details class="method-source-toggle">
-              <summary>Source</summary>
-            </details>
-          </div>
           <div class="method-source-code" id="entity_expansion_limit-source">
             <pre class="ruby"><span class="ruby-comment"># File lib/rexml/security.rb, line 12</span>
-<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">entity_expansion_limit</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">entity_expansion_limit</span>
   <span class="ruby-identifier">@@entity_expansion_limit</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
@@ -680,25 +679,32 @@
 
       <div id="method-c-entity_expansion_limit-3D" class="method-detail anchor-link ">
         <div class="method-header">
+          <div class="method-heading-group">
 
-            <div class="method-heading">
-              <a href="#method-c-entity_expansion_limit-3D" title="Link to this method">
-                <span class="method-name">entity_expansion_limit=</span>
-                <span class="method-args">( val )</span>
-              </a>
+              <div class="method-heading">
+                <a href="#method-c-entity_expansion_limit-3D" title="Link to this method">
+                  <span class="method-name">entity_expansion_limit=</span>
+                  <span class="method-args">(val)</span>
+                </a>
+              </div>
+
+
+
+          </div>
+
+
+            <div class="method-controls">
+              <details class="method-source-toggle">
+                <summary><span class="method-source-icon" aria-hidden="true">{}</span> Source</summary>
+              </details>
             </div>
 
         </div>
 
 
-          <div class="method-controls">
-            <details class="method-source-toggle">
-              <summary>Source</summary>
-            </details>
-          </div>
           <div class="method-source-code" id="entity_expansion_limit-3D-source">
             <pre class="ruby"><span class="ruby-comment"># File lib/rexml/security.rb, line 7</span>
-<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">entity_expansion_limit=</span>( <span class="ruby-identifier">val</span> )
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">entity_expansion_limit=</span>( <span class="ruby-identifier">val</span> )
   <span class="ruby-identifier">@@entity_expansion_limit</span> = <span class="ruby-identifier">val</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
@@ -722,25 +728,32 @@
 
       <div id="method-c-entity_expansion_text_limit" class="method-detail anchor-link ">
         <div class="method-header">
+          <div class="method-heading-group">
 
-            <div class="method-heading">
-              <a href="#method-c-entity_expansion_text_limit" title="Link to this method">
-                <span class="method-name">entity_expansion_text_limit</span>
-                <span class="method-args">()</span>
-              </a>
+              <div class="method-heading">
+                <a href="#method-c-entity_expansion_text_limit" title="Link to this method">
+                  <span class="method-name">entity_expansion_text_limit</span>
+                  <span class="method-args">()</span>
+                </a>
+              </div>
+
+
+
+          </div>
+
+
+            <div class="method-controls">
+              <details class="method-source-toggle">
+                <summary><span class="method-source-icon" aria-hidden="true">{}</span> Source</summary>
+              </details>
             </div>
 
         </div>
 
 
-          <div class="method-controls">
-            <details class="method-source-toggle">
-              <summary>Source</summary>
-            </details>
-          </div>
           <div class="method-source-code" id="entity_expansion_text_limit-source">
             <pre class="ruby"><span class="ruby-comment"># File lib/rexml/security.rb, line 24</span>
-<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">entity_expansion_text_limit</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">entity_expansion_text_limit</span>
   <span class="ruby-identifier">@@entity_expansion_text_limit</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
@@ -764,25 +777,32 @@
 
       <div id="method-c-entity_expansion_text_limit-3D" class="method-detail anchor-link ">
         <div class="method-header">
+          <div class="method-heading-group">
 
-            <div class="method-heading">
-              <a href="#method-c-entity_expansion_text_limit-3D" title="Link to this method">
-                <span class="method-name">entity_expansion_text_limit=</span>
-                <span class="method-args">( val )</span>
-              </a>
+              <div class="method-heading">
+                <a href="#method-c-entity_expansion_text_limit-3D" title="Link to this method">
+                  <span class="method-name">entity_expansion_text_limit=</span>
+                  <span class="method-args">(val)</span>
+                </a>
+              </div>
+
+
+
+          </div>
+
+
+            <div class="method-controls">
+              <details class="method-source-toggle">
+                <summary><span class="method-source-icon" aria-hidden="true">{}</span> Source</summary>
+              </details>
             </div>
 
         </div>
 
 
-          <div class="method-controls">
-            <details class="method-source-toggle">
-              <summary>Source</summary>
-            </details>
-          </div>
           <div class="method-source-code" id="entity_expansion_text_limit-3D-source">
             <pre class="ruby"><span class="ruby-comment"># File lib/rexml/security.rb, line 19</span>
-<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">entity_expansion_text_limit=</span>( <span class="ruby-identifier">val</span> )
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">entity_expansion_text_limit=</span>( <span class="ruby-identifier">val</span> )
   <span class="ruby-identifier">@@entity_expansion_text_limit</span> = <span class="ruby-identifier">val</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
@@ -819,7 +839,7 @@
 
 </main>
 
-<aside class="table-of-contents" role="complementary" aria-label="Table of Contents">
+<aside id="table-of-contents" class="table-of-contents" role="complementary" aria-label="Table of Contents">
   <div class="toc-sticky">
     <h3 class="toc-heading">On This Page</h3>
     <nav class="toc-nav" id="toc-nav" aria-label="Page sections">
@@ -834,7 +854,7 @@
 
   <div class="footer-bottom">
     <p>
-      Generated by <a href="https://ruby.github.io/rdoc/">RDoc 7.2.0</a>
+      Generated by <a href="https://ruby.github.io/rdoc/">RDoc 8.0.0</a>
       using the Aliki theme by <a href="http://st0012.dev">Stan Lo</a>
     </p>
   </div>

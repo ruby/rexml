@@ -50,46 +50,46 @@
 </script>
 
 <script
-  src="../js/theme-toggle.js?v=7.2.0"
+  src="../js/theme-toggle.js?v=8.0.0"
 ></script>
 
 <script
-  src="../js/search_navigation.js?v=7.2.0"
+  src="../js/search_navigation.js?v=8.0.0"
   defer
 ></script>
 
 <script
-  src="../js/search_data.js?v=7.2.0"
+  src="../js/search_data.js?v=8.0.0"
   defer
 ></script>
 
 <script
-  src="../js/search_ranker.js?v=7.2.0"
+  src="../js/search_ranker.js?v=8.0.0"
   defer
 ></script>
 
 <script
-  src="../js/search_controller.js?v=7.2.0"
+  src="../js/search_controller.js?v=8.0.0"
   defer
 ></script>
 
 <script
-  src="../js/c_highlighter.js?v=7.2.0"
+  src="../js/c_highlighter.js?v=8.0.0"
   defer
 ></script>
 
 <script
-  src="../js/bash_highlighter.js?v=7.2.0"
+  src="../js/bash_highlighter.js?v=8.0.0"
   defer
 ></script>
 
 <script
-  src="../js/aliki.js?v=7.2.0"
+  src="../js/aliki.js?v=8.0.0"
   defer
 ></script>
 
 <link
-  href="../css/rdoc.css?v=7.2.0"
+  href="../css/rdoc.css?v=8.0.0"
   rel="stylesheet"
 >
 
@@ -363,12 +363,12 @@
   </div>
 </div>
 
-<div id="navigation-toggle" role="button" tabindex="0" aria-label="Toggle sidebar" aria-expanded="true" aria-controls="navigation">
+<div id="sidebar-navigation-toggle" role="button" tabindex="0" aria-label="Toggle sidebar" aria-expanded="false" aria-controls="sidebar-navigation">
   <span aria-hidden="true">&#9776;</span>
 </div>
 
 
-<nav id="navigation" role="navigation" hidden>
+<nav id="sidebar-navigation" role="navigation" hidden>
   
 
 
@@ -411,15 +411,6 @@
             <li>
               <a href="../NEWS_md.html">
                 NEWS
-              </a>
-            </li>
-
-
-
-
-            <li>
-              <a href="../README_md.html">
-                README
               </a>
             </li>
 
@@ -607,7 +598,7 @@
       
       <li>
         
-        <a href="../REXML.html">REXML</a><span>::</span>
+        <a href="../REXML.html">REXML</a><span class="separator">::</span>
         
       </li>
       
@@ -621,8 +612,9 @@
   
 
   <span id="module-REXML::StreamListener" class="legacy-anchor"></span>
-  <h1 id="module-rexml-streamlistener" class="anchor-link module">
-    module REXML::StreamListener
+  <h1 id="module-rexml-streamlistener" class="anchor-link module page-title">
+    <span class="page-title-kind">module</span>
+    <span class="page-title-name">REXML::StreamListener</span>
   </h1>
 
   <section class="description">
@@ -660,25 +652,32 @@
 
       <div id="method-i-attlistdecl" class="method-detail anchor-link ">
         <div class="method-header">
+          <div class="method-heading-group">
 
-            <div class="method-heading">
-              <a href="#method-i-attlistdecl" title="Link to this method">
-                <span class="method-name">attlistdecl</span>
-                <span class="method-args">(element_name, attributes, raw_content)</span>
-              </a>
+              <div class="method-heading">
+                <a href="#method-i-attlistdecl" title="Link to this method">
+                  <span class="method-name">attlistdecl</span>
+                  <span class="method-args">(element_name, attributes, raw_content)</span>
+                </a>
+              </div>
+
+
+
+          </div>
+
+
+            <div class="method-controls">
+              <details class="method-source-toggle">
+                <summary><span class="method-source-icon" aria-hidden="true">{}</span> Source</summary>
+              </details>
             </div>
 
         </div>
 
 
-          <div class="method-controls">
-            <details class="method-source-toggle">
-              <summary>Source</summary>
-            </details>
-          </div>
           <div class="method-source-code" id="attlistdecl-source">
             <pre class="ruby"><span class="ruby-comment"># File lib/rexml/streamlistener.rb, line 51</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">attlistdecl</span> <span class="ruby-identifier">element_name</span>, <span class="ruby-identifier">attributes</span>, <span class="ruby-identifier">raw_content</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">attlistdecl</span> <span class="ruby-identifier">element_name</span>, <span class="ruby-identifier">attributes</span>, <span class="ruby-identifier">raw_content</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
 
@@ -687,7 +686,7 @@
         <div class="method-description">
 
 
-          <p>If a doctype includes an ATTLIST declaration, it will cause this method to be called.  The content is the declaration itself, unparsed. EG, &lt;!ATTLIST el attr CDATA REQUIRED&gt; will come to this method as “el attr CDATA REQUIRED”.  This is the same for all of the .*decl methods.</p>
+          <p>If a doctype includes an ATTLIST declaration, it will cause this method to be called.  The content is the declaration itself, unparsed. EG, &lt;!ATTLIST el attr CDATA #REQUIRED&gt; will come to this method as “el attr CDATA #REQUIRED”.  This is the same for all of the .*decl methods.</p>
 
 
         </div>
@@ -701,25 +700,32 @@
 
       <div id="method-i-cdata" class="method-detail anchor-link ">
         <div class="method-header">
+          <div class="method-heading-group">
 
-            <div class="method-heading">
-              <a href="#method-i-cdata" title="Link to this method">
-                <span class="method-name">cdata</span>
-                <span class="method-args">(content)</span>
-              </a>
+              <div class="method-heading">
+                <a href="#method-i-cdata" title="Link to this method">
+                  <span class="method-name">cdata</span>
+                  <span class="method-args">(content)</span>
+                </a>
+              </div>
+
+
+
+          </div>
+
+
+            <div class="method-controls">
+              <details class="method-source-toggle">
+                <summary><span class="method-source-icon" aria-hidden="true">{}</span> Source</summary>
+              </details>
             </div>
 
         </div>
 
 
-          <div class="method-controls">
-            <details class="method-source-toggle">
-              <summary>Source</summary>
-            </details>
-          </div>
           <div class="method-source-code" id="cdata-source">
             <pre class="ruby"><span class="ruby-comment"># File lib/rexml/streamlistener.rb, line 83</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">cdata</span> <span class="ruby-identifier">content</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">cdata</span> <span class="ruby-identifier">content</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
 
@@ -742,25 +748,32 @@
 
       <div id="method-i-comment" class="method-detail anchor-link ">
         <div class="method-header">
+          <div class="method-heading-group">
 
-            <div class="method-heading">
-              <a href="#method-i-comment" title="Link to this method">
-                <span class="method-name">comment</span>
-                <span class="method-args">(comment)</span>
-              </a>
+              <div class="method-heading">
+                <a href="#method-i-comment" title="Link to this method">
+                  <span class="method-name">comment</span>
+                  <span class="method-args">(comment)</span>
+                </a>
+              </div>
+
+
+
+          </div>
+
+
+            <div class="method-controls">
+              <details class="method-source-toggle">
+                <summary><span class="method-source-icon" aria-hidden="true">{}</span> Source</summary>
+              </details>
             </div>
 
         </div>
 
 
-          <div class="method-controls">
-            <details class="method-source-toggle">
-              <summary>Source</summary>
-            </details>
-          </div>
           <div class="method-source-code" id="comment-source">
             <pre class="ruby"><span class="ruby-comment"># File lib/rexml/streamlistener.rb, line 33</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">comment</span> <span class="ruby-identifier">comment</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">comment</span> <span class="ruby-identifier">comment</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
 
@@ -783,25 +796,32 @@
 
       <div id="method-i-doctype" class="method-detail anchor-link ">
         <div class="method-header">
+          <div class="method-heading-group">
 
-            <div class="method-heading">
-              <a href="#method-i-doctype" title="Link to this method">
-                <span class="method-name">doctype</span>
-                <span class="method-args">(name, pub_sys, long_name, uri)</span>
-              </a>
+              <div class="method-heading">
+                <a href="#method-i-doctype" title="Link to this method">
+                  <span class="method-name">doctype</span>
+                  <span class="method-args">(name, pub_sys, long_name, uri)</span>
+                </a>
+              </div>
+
+
+
+          </div>
+
+
+            <div class="method-controls">
+              <details class="method-source-toggle">
+                <summary><span class="method-source-icon" aria-hidden="true">{}</span> Source</summary>
+              </details>
             </div>
 
         </div>
 
 
-          <div class="method-controls">
-            <details class="method-source-toggle">
-              <summary>Source</summary>
-            </details>
-          </div>
           <div class="method-source-code" id="doctype-source">
             <pre class="ruby"><span class="ruby-comment"># File lib/rexml/streamlistener.rb, line 41</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">doctype</span> <span class="ruby-identifier">name</span>, <span class="ruby-identifier">pub_sys</span>, <span class="ruby-identifier">long_name</span>, <span class="ruby-identifier">uri</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">doctype</span> <span class="ruby-identifier">name</span>, <span class="ruby-identifier">pub_sys</span>, <span class="ruby-identifier">long_name</span>, <span class="ruby-identifier">uri</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
 
@@ -824,25 +844,32 @@
 
       <div id="method-i-doctype_end" class="method-detail anchor-link ">
         <div class="method-header">
+          <div class="method-heading-group">
 
-            <div class="method-heading">
-              <a href="#method-i-doctype_end" title="Link to this method">
-                <span class="method-name">doctype_end</span>
-                <span class="method-args">()</span>
-              </a>
+              <div class="method-heading">
+                <a href="#method-i-doctype_end" title="Link to this method">
+                  <span class="method-name">doctype_end</span>
+                  <span class="method-args">()</span>
+                </a>
+              </div>
+
+
+
+          </div>
+
+
+            <div class="method-controls">
+              <details class="method-source-toggle">
+                <summary><span class="method-source-icon" aria-hidden="true">{}</span> Source</summary>
+              </details>
             </div>
 
         </div>
 
 
-          <div class="method-controls">
-            <details class="method-source-toggle">
-              <summary>Source</summary>
-            </details>
-          </div>
           <div class="method-source-code" id="doctype_end-source">
             <pre class="ruby"><span class="ruby-comment"># File lib/rexml/streamlistener.rb, line 44</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">doctype_end</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">doctype_end</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
 
@@ -865,25 +892,32 @@
 
       <div id="method-i-elementdecl" class="method-detail anchor-link ">
         <div class="method-header">
+          <div class="method-heading-group">
 
-            <div class="method-heading">
-              <a href="#method-i-elementdecl" title="Link to this method">
-                <span class="method-name">elementdecl</span>
-                <span class="method-args">(content)</span>
-              </a>
+              <div class="method-heading">
+                <a href="#method-i-elementdecl" title="Link to this method">
+                  <span class="method-name">elementdecl</span>
+                  <span class="method-args">(content)</span>
+                </a>
+              </div>
+
+
+
+          </div>
+
+
+            <div class="method-controls">
+              <details class="method-source-toggle">
+                <summary><span class="method-source-icon" aria-hidden="true">{}</span> Source</summary>
+              </details>
             </div>
 
         </div>
 
 
-          <div class="method-controls">
-            <details class="method-source-toggle">
-              <summary>Source</summary>
-            </details>
-          </div>
           <div class="method-source-code" id="elementdecl-source">
             <pre class="ruby"><span class="ruby-comment"># File lib/rexml/streamlistener.rb, line 54</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">elementdecl</span> <span class="ruby-identifier">content</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">elementdecl</span> <span class="ruby-identifier">content</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
 
@@ -906,25 +940,32 @@
 
       <div id="method-i-entity" class="method-detail anchor-link ">
         <div class="method-header">
+          <div class="method-heading-group">
 
-            <div class="method-heading">
-              <a href="#method-i-entity" title="Link to this method">
-                <span class="method-name">entity</span>
-                <span class="method-args">(content)</span>
-              </a>
+              <div class="method-heading">
+                <a href="#method-i-entity" title="Link to this method">
+                  <span class="method-name">entity</span>
+                  <span class="method-args">(content)</span>
+                </a>
+              </div>
+
+
+
+          </div>
+
+
+            <div class="method-controls">
+              <details class="method-source-toggle">
+                <summary><span class="method-source-icon" aria-hidden="true">{}</span> Source</summary>
+              </details>
             </div>
 
         </div>
 
 
-          <div class="method-controls">
-            <details class="method-source-toggle">
-              <summary>Source</summary>
-            </details>
-          </div>
           <div class="method-source-code" id="entity-source">
             <pre class="ruby"><span class="ruby-comment"># File lib/rexml/streamlistener.rb, line 79</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">entity</span> <span class="ruby-identifier">content</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">entity</span> <span class="ruby-identifier">content</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
 
@@ -947,25 +988,32 @@
 
       <div id="method-i-entitydecl" class="method-detail anchor-link ">
         <div class="method-header">
+          <div class="method-heading-group">
 
-            <div class="method-heading">
-              <a href="#method-i-entitydecl" title="Link to this method">
-                <span class="method-name">entitydecl</span>
-                <span class="method-args">(content)</span>
-              </a>
+              <div class="method-heading">
+                <a href="#method-i-entitydecl" title="Link to this method">
+                  <span class="method-name">entitydecl</span>
+                  <span class="method-args">(content)</span>
+                </a>
+              </div>
+
+
+
+          </div>
+
+
+            <div class="method-controls">
+              <details class="method-source-toggle">
+                <summary><span class="method-source-icon" aria-hidden="true">{}</span> Source</summary>
+              </details>
             </div>
 
         </div>
 
 
-          <div class="method-controls">
-            <details class="method-source-toggle">
-              <summary>Source</summary>
-            </details>
-          </div>
           <div class="method-source-code" id="entitydecl-source">
             <pre class="ruby"><span class="ruby-comment"># File lib/rexml/streamlistener.rb, line 72</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">entitydecl</span> <span class="ruby-identifier">content</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">entitydecl</span> <span class="ruby-identifier">content</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
 
@@ -1001,25 +1049,32 @@
 
       <div id="method-i-instruction" class="method-detail anchor-link ">
         <div class="method-header">
+          <div class="method-heading-group">
 
-            <div class="method-heading">
-              <a href="#method-i-instruction" title="Link to this method">
-                <span class="method-name">instruction</span>
-                <span class="method-args">(name, instruction)</span>
-              </a>
+              <div class="method-heading">
+                <a href="#method-i-instruction" title="Link to this method">
+                  <span class="method-name">instruction</span>
+                  <span class="method-args">(name, instruction)</span>
+                </a>
+              </div>
+
+
+
+          </div>
+
+
+            <div class="method-controls">
+              <details class="method-source-toggle">
+                <summary><span class="method-source-icon" aria-hidden="true">{}</span> Source</summary>
+              </details>
             </div>
 
         </div>
 
 
-          <div class="method-controls">
-            <details class="method-source-toggle">
-              <summary>Source</summary>
-            </details>
-          </div>
           <div class="method-source-code" id="instruction-source">
             <pre class="ruby"><span class="ruby-comment"># File lib/rexml/streamlistener.rb, line 29</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">instruction</span> <span class="ruby-identifier">name</span>, <span class="ruby-identifier">instruction</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">instruction</span> <span class="ruby-identifier">name</span>, <span class="ruby-identifier">instruction</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
 
@@ -1042,25 +1097,32 @@
 
       <div id="method-i-notationdecl" class="method-detail anchor-link ">
         <div class="method-header">
+          <div class="method-heading-group">
 
-            <div class="method-heading">
-              <a href="#method-i-notationdecl" title="Link to this method">
-                <span class="method-name">notationdecl</span>
-                <span class="method-args">(content)</span>
-              </a>
+              <div class="method-heading">
+                <a href="#method-i-notationdecl" title="Link to this method">
+                  <span class="method-name">notationdecl</span>
+                  <span class="method-args">(content)</span>
+                </a>
+              </div>
+
+
+
+          </div>
+
+
+            <div class="method-controls">
+              <details class="method-source-toggle">
+                <summary><span class="method-source-icon" aria-hidden="true">{}</span> Source</summary>
+              </details>
             </div>
 
         </div>
 
 
-          <div class="method-controls">
-            <details class="method-source-toggle">
-              <summary>Source</summary>
-            </details>
-          </div>
           <div class="method-source-code" id="notationdecl-source">
             <pre class="ruby"><span class="ruby-comment"># File lib/rexml/streamlistener.rb, line 75</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">notationdecl</span> <span class="ruby-identifier">content</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">notationdecl</span> <span class="ruby-identifier">content</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
 
@@ -1083,25 +1145,32 @@
 
       <div id="method-i-tag_end" class="method-detail anchor-link ">
         <div class="method-header">
+          <div class="method-heading-group">
 
-            <div class="method-heading">
-              <a href="#method-i-tag_end" title="Link to this method">
-                <span class="method-name">tag_end</span>
-                <span class="method-args">(name)</span>
-              </a>
+              <div class="method-heading">
+                <a href="#method-i-tag_end" title="Link to this method">
+                  <span class="method-name">tag_end</span>
+                  <span class="method-args">(name)</span>
+                </a>
+              </div>
+
+
+
+          </div>
+
+
+            <div class="method-controls">
+              <details class="method-source-toggle">
+                <summary><span class="method-source-icon" aria-hidden="true">{}</span> Source</summary>
+              </details>
             </div>
 
         </div>
 
 
-          <div class="method-controls">
-            <details class="method-source-toggle">
-              <summary>Source</summary>
-            </details>
-          </div>
           <div class="method-source-code" id="tag_end-source">
             <pre class="ruby"><span class="ruby-comment"># File lib/rexml/streamlistener.rb, line 19</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">tag_end</span> <span class="ruby-identifier">name</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">tag_end</span> <span class="ruby-identifier">name</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
 
@@ -1124,25 +1193,32 @@
 
       <div id="method-i-tag_start" class="method-detail anchor-link ">
         <div class="method-header">
+          <div class="method-heading-group">
 
-            <div class="method-heading">
-              <a href="#method-i-tag_start" title="Link to this method">
-                <span class="method-name">tag_start</span>
-                <span class="method-args">(name, attrs)</span>
-              </a>
+              <div class="method-heading">
+                <a href="#method-i-tag_start" title="Link to this method">
+                  <span class="method-name">tag_start</span>
+                  <span class="method-args">(name, attrs)</span>
+                </a>
+              </div>
+
+
+
+          </div>
+
+
+            <div class="method-controls">
+              <details class="method-source-toggle">
+                <summary><span class="method-source-icon" aria-hidden="true">{}</span> Source</summary>
+              </details>
             </div>
 
         </div>
 
 
-          <div class="method-controls">
-            <details class="method-source-toggle">
-              <summary>Source</summary>
-            </details>
-          </div>
           <div class="method-source-code" id="tag_start-source">
             <pre class="ruby"><span class="ruby-comment"># File lib/rexml/streamlistener.rb, line 14</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">tag_start</span> <span class="ruby-identifier">name</span>, <span class="ruby-identifier">attrs</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">tag_start</span> <span class="ruby-identifier">name</span>, <span class="ruby-identifier">attrs</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
 
@@ -1165,25 +1241,32 @@
 
       <div id="method-i-text" class="method-detail anchor-link ">
         <div class="method-header">
+          <div class="method-heading-group">
 
-            <div class="method-heading">
-              <a href="#method-i-text" title="Link to this method">
-                <span class="method-name">text</span>
-                <span class="method-args">(text)</span>
-              </a>
+              <div class="method-heading">
+                <a href="#method-i-text" title="Link to this method">
+                  <span class="method-name">text</span>
+                  <span class="method-args">(text)</span>
+                </a>
+              </div>
+
+
+
+          </div>
+
+
+            <div class="method-controls">
+              <details class="method-source-toggle">
+                <summary><span class="method-source-icon" aria-hidden="true">{}</span> Source</summary>
+              </details>
             </div>
 
         </div>
 
 
-          <div class="method-controls">
-            <details class="method-source-toggle">
-              <summary>Source</summary>
-            </details>
-          </div>
           <div class="method-source-code" id="text-source">
             <pre class="ruby"><span class="ruby-comment"># File lib/rexml/streamlistener.rb, line 23</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">text</span> <span class="ruby-identifier">text</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">text</span> <span class="ruby-identifier">text</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
 
@@ -1206,25 +1289,32 @@
 
       <div id="method-i-xmldecl" class="method-detail anchor-link ">
         <div class="method-header">
+          <div class="method-heading-group">
 
-            <div class="method-heading">
-              <a href="#method-i-xmldecl" title="Link to this method">
-                <span class="method-name">xmldecl</span>
-                <span class="method-args">(version, encoding, standalone)</span>
-              </a>
+              <div class="method-heading">
+                <a href="#method-i-xmldecl" title="Link to this method">
+                  <span class="method-name">xmldecl</span>
+                  <span class="method-args">(version, encoding, standalone)</span>
+                </a>
+              </div>
+
+
+
+          </div>
+
+
+            <div class="method-controls">
+              <details class="method-source-toggle">
+                <summary><span class="method-source-icon" aria-hidden="true">{}</span> Source</summary>
+              </details>
             </div>
 
         </div>
 
 
-          <div class="method-controls">
-            <details class="method-source-toggle">
-              <summary>Source</summary>
-            </details>
-          </div>
           <div class="method-source-code" id="xmldecl-source">
             <pre class="ruby"><span class="ruby-comment"># File lib/rexml/streamlistener.rb, line 90</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">xmldecl</span> <span class="ruby-identifier">version</span>, <span class="ruby-identifier">encoding</span>, <span class="ruby-identifier">standalone</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">xmldecl</span> <span class="ruby-identifier">version</span>, <span class="ruby-identifier">encoding</span>, <span class="ruby-identifier">standalone</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
 
@@ -1254,7 +1344,7 @@
 
 </main>
 
-<aside class="table-of-contents" role="complementary" aria-label="Table of Contents">
+<aside id="table-of-contents" class="table-of-contents" role="complementary" aria-label="Table of Contents">
   <div class="toc-sticky">
     <h3 class="toc-heading">On This Page</h3>
     <nav class="toc-nav" id="toc-nav" aria-label="Page sections">
@@ -1269,7 +1359,7 @@
 
   <div class="footer-bottom">
     <p>
-      Generated by <a href="https://ruby.github.io/rdoc/">RDoc 7.2.0</a>
+      Generated by <a href="https://ruby.github.io/rdoc/">RDoc 8.0.0</a>
       using the Aliki theme by <a href="http://st0012.dev">Stan Lo</a>
     </p>
   </div>

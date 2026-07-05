@@ -56,46 +56,46 @@
 </script>
 
 <script
-  src="../../js/theme-toggle.js?v=7.2.0"
+  src="../../js/theme-toggle.js?v=8.0.0"
 ></script>
 
 <script
-  src="../../js/search_navigation.js?v=7.2.0"
+  src="../../js/search_navigation.js?v=8.0.0"
   defer
 ></script>
 
 <script
-  src="../../js/search_data.js?v=7.2.0"
+  src="../../js/search_data.js?v=8.0.0"
   defer
 ></script>
 
 <script
-  src="../../js/search_ranker.js?v=7.2.0"
+  src="../../js/search_ranker.js?v=8.0.0"
   defer
 ></script>
 
 <script
-  src="../../js/search_controller.js?v=7.2.0"
+  src="../../js/search_controller.js?v=8.0.0"
   defer
 ></script>
 
 <script
-  src="../../js/c_highlighter.js?v=7.2.0"
+  src="../../js/c_highlighter.js?v=8.0.0"
   defer
 ></script>
 
 <script
-  src="../../js/bash_highlighter.js?v=7.2.0"
+  src="../../js/bash_highlighter.js?v=8.0.0"
   defer
 ></script>
 
 <script
-  src="../../js/aliki.js?v=7.2.0"
+  src="../../js/aliki.js?v=8.0.0"
   defer
 ></script>
 
 <link
-  href="../../css/rdoc.css?v=7.2.0"
+  href="../../css/rdoc.css?v=8.0.0"
   rel="stylesheet"
 >
 
@@ -369,12 +369,12 @@
   </div>
 </div>
 
-<div id="navigation-toggle" role="button" tabindex="0" aria-label="Toggle sidebar" aria-expanded="true" aria-controls="navigation">
+<div id="sidebar-navigation-toggle" role="button" tabindex="0" aria-label="Toggle sidebar" aria-expanded="false" aria-controls="sidebar-navigation">
   <span aria-hidden="true">&#9776;</span>
 </div>
 
 
-<nav id="navigation" role="navigation" hidden>
+<nav id="sidebar-navigation" role="navigation" hidden>
   
 
 
@@ -417,15 +417,6 @@
             <li>
               <a href="../../NEWS_md.html">
                 NEWS
-              </a>
-            </li>
-
-
-
-
-            <li>
-              <a href="../../README_md.html">
-                README
               </a>
             </li>
 
@@ -633,13 +624,13 @@
       
       <li>
         
-        <a href="../../REXML.html">REXML</a><span>::</span>
+        <a href="../../REXML.html">REXML</a><span class="separator">::</span>
         
       </li>
       
       <li>
         
-        <a href="../../REXML/Formatters.html">Formatters</a><span>::</span>
+        <a href="../../REXML/Formatters.html">Formatters</a><span class="separator">::</span>
         
       </li>
       
@@ -653,8 +644,9 @@
   
 
   <span id="class-REXML::Formatters::Default" class="legacy-anchor"></span>
-  <h1 id="class-rexml-formatters-default" class="anchor-link class">
-    class REXML::Formatters::Default
+  <h1 id="class-rexml-formatters-default" class="anchor-link class page-title">
+    <span class="page-title-kind">class</span>
+    <span class="page-title-name">REXML::Formatters::Default</span>
   </h1>
 
   <section class="description">
@@ -684,25 +676,32 @@
 
       <div id="method-c-new" class="method-detail anchor-link ">
         <div class="method-header">
+          <div class="method-heading-group">
 
-            <div class="method-heading">
-              <a href="#method-c-new" title="Link to this method">
-                <span class="method-name">new</span>
-                <span class="method-args">( ie_hack=false )</span>
-              </a>
+              <div class="method-heading">
+                <a href="#method-c-new" title="Link to this method">
+                  <span class="method-name">new</span>
+                  <span class="method-args">(ie_hack=false)</span>
+                </a>
+              </div>
+
+
+
+          </div>
+
+
+            <div class="method-controls">
+              <details class="method-source-toggle">
+                <summary><span class="method-source-icon" aria-hidden="true">{}</span> Source</summary>
+              </details>
             </div>
 
         </div>
 
 
-          <div class="method-controls">
-            <details class="method-source-toggle">
-              <summary>Source</summary>
-            </details>
-          </div>
           <div class="method-source-code" id="new-source">
             <pre class="ruby"><span class="ruby-comment"># File lib/rexml/formatters/default.rb, line 12</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>( <span class="ruby-identifier">ie_hack</span>=<span class="ruby-keyword">false</span> )
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span>( <span class="ruby-identifier">ie_hack</span>=<span class="ruby-keyword">false</span> )
   <span class="ruby-ivar">@ie_hack</span> = <span class="ruby-identifier">ie_hack</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
@@ -744,29 +743,36 @@
 
       <div id="method-i-write" class="method-detail anchor-link ">
         <div class="method-header">
+          <div class="method-heading-group">
 
-            <div class="method-heading">
-              <a href="#method-i-write" title="Link to this method">
-                <span class="method-name">write</span>
-                <span class="method-args">( node, output )</span>
-              </a>
+              <div class="method-heading">
+                <a href="#method-i-write" title="Link to this method">
+                  <span class="method-name">write</span>
+                  <span class="method-args">(node, output)</span>
+                </a>
+              </div>
+
+
+
+          </div>
+
+
+            <div class="method-controls">
+              <details class="method-source-toggle">
+                <summary><span class="method-source-icon" aria-hidden="true">{}</span> Source</summary>
+              </details>
             </div>
 
         </div>
 
 
-          <div class="method-controls">
-            <details class="method-source-toggle">
-              <summary>Source</summary>
-            </details>
-          </div>
           <div class="method-source-code" id="write-source">
             <pre class="ruby"><span class="ruby-comment"># File lib/rexml/formatters/default.rb, line 23</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">write</span>( <span class="ruby-identifier">node</span>, <span class="ruby-identifier">output</span> )
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">write</span>( <span class="ruby-identifier">node</span>, <span class="ruby-identifier">output</span> )
   <span class="ruby-keyword">case</span> <span class="ruby-identifier">node</span>
 
   <span class="ruby-keyword">when</span> <span class="ruby-constant">Document</span>
-    <span class="ruby-keyword">if</span> <span class="ruby-identifier">node</span>.<span class="ruby-identifier">xml_decl</span>.<span class="ruby-identifier">encoding</span> <span class="ruby-operator">!=</span> <span class="ruby-string">&#39;UTF-8&#39;</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-operator">!</span><span class="ruby-identifier">output</span>.<span class="ruby-identifier">kind_of?</span>(<span class="ruby-constant">Output</span>)
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">node</span>.<span class="ruby-identifier">xml_decl</span>.<span class="ruby-identifier">encoding</span> <span class="ruby-operator">!=</span> <span class="ruby-string">&#39;</span><span class="ruby-string">UTF-8</span><span class="ruby-string">&#39;</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-operator">!</span><span class="ruby-identifier">output</span>.<span class="ruby-identifier">kind_of?</span>(<span class="ruby-constant">Output</span>)
       <span class="ruby-identifier">output</span> = <span class="ruby-constant">Output</span>.<span class="ruby-identifier">new</span>( <span class="ruby-identifier">output</span>, <span class="ruby-identifier">node</span>.<span class="ruby-identifier">xml_decl</span>.<span class="ruby-identifier">encoding</span> )
     <span class="ruby-keyword">end</span>
     <span class="ruby-identifier">write_document</span>( <span class="ruby-identifier">node</span>, <span class="ruby-identifier">output</span> )
@@ -776,7 +782,7 @@
 
   <span class="ruby-keyword">when</span> <span class="ruby-constant">Declaration</span>, <span class="ruby-constant">ElementDecl</span>, <span class="ruby-constant">NotationDecl</span>, <span class="ruby-constant">ExternalEntity</span>, <span class="ruby-constant">Entity</span>,
        <span class="ruby-constant">Attribute</span>, <span class="ruby-constant">AttlistDecl</span>
-    <span class="ruby-identifier">node</span>.<span class="ruby-identifier">write</span>( <span class="ruby-identifier">output</span>,<span class="ruby-value">-1</span> )
+    <span class="ruby-identifier">node</span>.<span class="ruby-identifier">write</span>( <span class="ruby-identifier">output</span>,-<span class="ruby-value">1</span> )
 
   <span class="ruby-keyword">when</span> <span class="ruby-constant">Instruction</span>
     <span class="ruby-identifier">write_instruction</span>( <span class="ruby-identifier">node</span>, <span class="ruby-identifier">output</span> )
@@ -794,7 +800,7 @@
     <span class="ruby-identifier">write_text</span>( <span class="ruby-identifier">node</span>, <span class="ruby-identifier">output</span> )
 
   <span class="ruby-keyword">else</span>
-    <span class="ruby-identifier">raise</span> <span class="ruby-constant">Exception</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&quot;XML FORMATTING ERROR&quot;</span>)
+    <span class="ruby-identifier">raise</span> <span class="ruby-constant">Exception</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&quot;</span><span class="ruby-string">XML FORMATTING ERROR</span><span class="ruby-string">&quot;</span>)
 
   <span class="ruby-keyword">end</span>
 <span class="ruby-keyword">end</span></pre>
@@ -835,25 +841,32 @@
 
       <div id="method-i-write_cdata" class="method-detail anchor-link ">
         <div class="method-header">
+          <div class="method-heading-group">
 
-            <div class="method-heading">
-              <a href="#method-i-write_cdata" title="Link to this method">
-                <span class="method-name">write_cdata</span>
-                <span class="method-args">( node, output )</span>
-              </a>
+              <div class="method-heading">
+                <a href="#method-i-write_cdata" title="Link to this method">
+                  <span class="method-name">write_cdata</span>
+                  <span class="method-args">(node, output)</span>
+                </a>
+              </div>
+
+
+
+          </div>
+
+
+            <div class="method-controls">
+              <details class="method-source-toggle">
+                <summary><span class="method-source-icon" aria-hidden="true">{}</span> Source</summary>
+              </details>
             </div>
 
         </div>
 
 
-          <div class="method-controls">
-            <details class="method-source-toggle">
-              <summary>Source</summary>
-            </details>
-          </div>
           <div class="method-source-code" id="write_cdata-source">
             <pre class="ruby"><span class="ruby-comment"># File lib/rexml/formatters/default.rb, line 98</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">write_cdata</span>( <span class="ruby-identifier">node</span>, <span class="ruby-identifier">output</span> )
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">write_cdata</span>( <span class="ruby-identifier">node</span>, <span class="ruby-identifier">output</span> )
   <span class="ruby-identifier">output</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-constant">CData</span><span class="ruby-operator">::</span><span class="ruby-constant">START</span>
   <span class="ruby-identifier">output</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">node</span>.<span class="ruby-identifier">to_s</span>
   <span class="ruby-identifier">output</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-constant">CData</span><span class="ruby-operator">::</span><span class="ruby-constant">STOP</span>
@@ -879,25 +892,32 @@
 
       <div id="method-i-write_comment" class="method-detail anchor-link ">
         <div class="method-header">
+          <div class="method-heading-group">
 
-            <div class="method-heading">
-              <a href="#method-i-write_comment" title="Link to this method">
-                <span class="method-name">write_comment</span>
-                <span class="method-args">( node, output )</span>
-              </a>
+              <div class="method-heading">
+                <a href="#method-i-write_comment" title="Link to this method">
+                  <span class="method-name">write_comment</span>
+                  <span class="method-args">(node, output)</span>
+                </a>
+              </div>
+
+
+
+          </div>
+
+
+            <div class="method-controls">
+              <details class="method-source-toggle">
+                <summary><span class="method-source-icon" aria-hidden="true">{}</span> Source</summary>
+              </details>
             </div>
 
         </div>
 
 
-          <div class="method-controls">
-            <details class="method-source-toggle">
-              <summary>Source</summary>
-            </details>
-          </div>
           <div class="method-source-code" id="write_comment-source">
             <pre class="ruby"><span class="ruby-comment"># File lib/rexml/formatters/default.rb, line 92</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">write_comment</span>( <span class="ruby-identifier">node</span>, <span class="ruby-identifier">output</span> )
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">write_comment</span>( <span class="ruby-identifier">node</span>, <span class="ruby-identifier">output</span> )
   <span class="ruby-identifier">output</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-constant">Comment</span><span class="ruby-operator">::</span><span class="ruby-constant">START</span>
   <span class="ruby-identifier">output</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">node</span>.<span class="ruby-identifier">to_s</span>
   <span class="ruby-identifier">output</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-constant">Comment</span><span class="ruby-operator">::</span><span class="ruby-constant">STOP</span>
@@ -923,25 +943,32 @@
 
       <div id="method-i-write_document" class="method-detail anchor-link ">
         <div class="method-header">
+          <div class="method-heading-group">
 
-            <div class="method-heading">
-              <a href="#method-i-write_document" title="Link to this method">
-                <span class="method-name">write_document</span>
-                <span class="method-args">( node, output )</span>
-              </a>
+              <div class="method-heading">
+                <a href="#method-i-write_document" title="Link to this method">
+                  <span class="method-name">write_document</span>
+                  <span class="method-args">(node, output)</span>
+                </a>
+              </div>
+
+
+
+          </div>
+
+
+            <div class="method-controls">
+              <details class="method-source-toggle">
+                <summary><span class="method-source-icon" aria-hidden="true">{}</span> Source</summary>
+              </details>
             </div>
 
         </div>
 
 
-          <div class="method-controls">
-            <details class="method-source-toggle">
-              <summary>Source</summary>
-            </details>
-          </div>
           <div class="method-source-code" id="write_document-source">
             <pre class="ruby"><span class="ruby-comment"># File lib/rexml/formatters/default.rb, line 61</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">write_document</span>( <span class="ruby-identifier">node</span>, <span class="ruby-identifier">output</span> )
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">write_document</span>( <span class="ruby-identifier">node</span>, <span class="ruby-identifier">output</span> )
   <span class="ruby-identifier">node</span>.<span class="ruby-identifier">children</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">child</span><span class="ruby-operator">|</span> <span class="ruby-identifier">write</span>( <span class="ruby-identifier">child</span>, <span class="ruby-identifier">output</span> ) }
 <span class="ruby-keyword">end</span></pre>
           </div>
@@ -965,45 +992,52 @@
 
       <div id="method-i-write_element" class="method-detail anchor-link ">
         <div class="method-header">
+          <div class="method-heading-group">
 
-            <div class="method-heading">
-              <a href="#method-i-write_element" title="Link to this method">
-                <span class="method-name">write_element</span>
-                <span class="method-args">( node, output )</span>
-              </a>
+              <div class="method-heading">
+                <a href="#method-i-write_element" title="Link to this method">
+                  <span class="method-name">write_element</span>
+                  <span class="method-args">(node, output)</span>
+                </a>
+              </div>
+
+
+
+          </div>
+
+
+            <div class="method-controls">
+              <details class="method-source-toggle">
+                <summary><span class="method-source-icon" aria-hidden="true">{}</span> Source</summary>
+              </details>
             </div>
 
         </div>
 
 
-          <div class="method-controls">
-            <details class="method-source-toggle">
-              <summary>Source</summary>
-            </details>
-          </div>
           <div class="method-source-code" id="write_element-source">
             <pre class="ruby"><span class="ruby-comment"># File lib/rexml/formatters/default.rb, line 65</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">write_element</span>( <span class="ruby-identifier">node</span>, <span class="ruby-identifier">output</span> )
-  <span class="ruby-identifier">output</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">&quot;&lt;#{node.expanded_name}&quot;</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">write_element</span>( <span class="ruby-identifier">node</span>, <span class="ruby-identifier">output</span> )
+  <span class="ruby-identifier">output</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-string">&quot;</span><span class="ruby-string">&lt;</span><span class="ruby-string">#{</span><span class="ruby-identifier">node</span>.<span class="ruby-identifier">expanded_name</span><span class="ruby-string">}</span><span class="ruby-string">&quot;</span>
 
   <span class="ruby-identifier">node</span>.<span class="ruby-identifier">attributes</span>.<span class="ruby-identifier">to_a</span>.<span class="ruby-identifier">map</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">a</span><span class="ruby-operator">|</span>
-    <span class="ruby-constant">Hash</span> <span class="ruby-operator">===</span> <span class="ruby-identifier">a</span> <span class="ruby-operator">?</span> <span class="ruby-identifier">a</span>.<span class="ruby-identifier">values</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">a</span>
+    <span class="ruby-constant">Hash</span> === <span class="ruby-identifier">a</span> <span class="ruby-operator">?</span> <span class="ruby-identifier">a</span>.<span class="ruby-identifier">values</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">a</span>
   }.<span class="ruby-identifier">flatten</span>.<span class="ruby-identifier">sort_by</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">attr</span><span class="ruby-operator">|</span> <span class="ruby-identifier">attr</span>.<span class="ruby-identifier">name</span>}.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">attr</span><span class="ruby-operator">|</span>
-    <span class="ruby-identifier">output</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-string">&quot; &quot;</span>
+    <span class="ruby-identifier">output</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-string">&quot;</span><span class="ruby-string"> </span><span class="ruby-string">&quot;</span>
     <span class="ruby-identifier">attr</span>.<span class="ruby-identifier">write</span>( <span class="ruby-identifier">output</span> )
   <span class="ruby-keyword">end</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">node</span>.<span class="ruby-identifier">attributes</span>.<span class="ruby-identifier">empty?</span>
 
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">node</span>.<span class="ruby-identifier">children</span>.<span class="ruby-identifier">empty?</span>
-    <span class="ruby-identifier">output</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-string">&quot; &quot;</span> <span class="ruby-keyword">if</span> <span class="ruby-ivar">@ie_hack</span>
-    <span class="ruby-identifier">output</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-string">&quot;/&quot;</span>
+    <span class="ruby-identifier">output</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-string">&quot;</span><span class="ruby-string"> </span><span class="ruby-string">&quot;</span> <span class="ruby-keyword">if</span> <span class="ruby-ivar">@ie_hack</span>
+    <span class="ruby-identifier">output</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-string">&quot;</span><span class="ruby-string">/</span><span class="ruby-string">&quot;</span>
   <span class="ruby-keyword">else</span>
-    <span class="ruby-identifier">output</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-string">&quot;&gt;&quot;</span>
+    <span class="ruby-identifier">output</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-string">&quot;</span><span class="ruby-string">&gt;</span><span class="ruby-string">&quot;</span>
     <span class="ruby-identifier">node</span>.<span class="ruby-identifier">children</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">child</span><span class="ruby-operator">|</span>
       <span class="ruby-identifier">write</span>( <span class="ruby-identifier">child</span>, <span class="ruby-identifier">output</span> )
     }
-    <span class="ruby-identifier">output</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">&quot;&lt;/#{node.expanded_name}&quot;</span>
+    <span class="ruby-identifier">output</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-string">&quot;</span><span class="ruby-string">&lt;/</span><span class="ruby-string">#{</span><span class="ruby-identifier">node</span>.<span class="ruby-identifier">expanded_name</span><span class="ruby-string">}</span><span class="ruby-string">&quot;</span>
   <span class="ruby-keyword">end</span>
-  <span class="ruby-identifier">output</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-string">&quot;&gt;&quot;</span>
+  <span class="ruby-identifier">output</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-string">&quot;</span><span class="ruby-string">&gt;</span><span class="ruby-string">&quot;</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
 
@@ -1026,30 +1060,37 @@
 
       <div id="method-i-write_instruction" class="method-detail anchor-link ">
         <div class="method-header">
+          <div class="method-heading-group">
 
-            <div class="method-heading">
-              <a href="#method-i-write_instruction" title="Link to this method">
-                <span class="method-name">write_instruction</span>
-                <span class="method-args">( node, output )</span>
-              </a>
+              <div class="method-heading">
+                <a href="#method-i-write_instruction" title="Link to this method">
+                  <span class="method-name">write_instruction</span>
+                  <span class="method-args">(node, output)</span>
+                </a>
+              </div>
+
+
+
+          </div>
+
+
+            <div class="method-controls">
+              <details class="method-source-toggle">
+                <summary><span class="method-source-icon" aria-hidden="true">{}</span> Source</summary>
+              </details>
             </div>
 
         </div>
 
 
-          <div class="method-controls">
-            <details class="method-source-toggle">
-              <summary>Source</summary>
-            </details>
-          </div>
           <div class="method-source-code" id="write_instruction-source">
             <pre class="ruby"><span class="ruby-comment"># File lib/rexml/formatters/default.rb, line 104</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">write_instruction</span>( <span class="ruby-identifier">node</span>, <span class="ruby-identifier">output</span> )
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">write_instruction</span>( <span class="ruby-identifier">node</span>, <span class="ruby-identifier">output</span> )
   <span class="ruby-identifier">output</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-constant">Instruction</span><span class="ruby-operator">::</span><span class="ruby-constant">START</span>
   <span class="ruby-identifier">output</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">node</span>.<span class="ruby-identifier">target</span>
   <span class="ruby-identifier">content</span> = <span class="ruby-identifier">node</span>.<span class="ruby-identifier">content</span>
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">content</span>
-    <span class="ruby-identifier">output</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-string">&#39; &#39;</span>
+    <span class="ruby-identifier">output</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-string">&#39;</span><span class="ruby-string"> </span><span class="ruby-string">&#39;</span>
     <span class="ruby-identifier">output</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">content</span>
   <span class="ruby-keyword">end</span>
   <span class="ruby-identifier">output</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-constant">Instruction</span><span class="ruby-operator">::</span><span class="ruby-constant">STOP</span>
@@ -1075,25 +1116,32 @@
 
       <div id="method-i-write_text" class="method-detail anchor-link ">
         <div class="method-header">
+          <div class="method-heading-group">
 
-            <div class="method-heading">
-              <a href="#method-i-write_text" title="Link to this method">
-                <span class="method-name">write_text</span>
-                <span class="method-args">( node, output )</span>
-              </a>
+              <div class="method-heading">
+                <a href="#method-i-write_text" title="Link to this method">
+                  <span class="method-name">write_text</span>
+                  <span class="method-args">(node, output)</span>
+                </a>
+              </div>
+
+
+
+          </div>
+
+
+            <div class="method-controls">
+              <details class="method-source-toggle">
+                <summary><span class="method-source-icon" aria-hidden="true">{}</span> Source</summary>
+              </details>
             </div>
 
         </div>
 
 
-          <div class="method-controls">
-            <details class="method-source-toggle">
-              <summary>Source</summary>
-            </details>
-          </div>
           <div class="method-source-code" id="write_text-source">
             <pre class="ruby"><span class="ruby-comment"># File lib/rexml/formatters/default.rb, line 88</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">write_text</span>( <span class="ruby-identifier">node</span>, <span class="ruby-identifier">output</span> )
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">write_text</span>( <span class="ruby-identifier">node</span>, <span class="ruby-identifier">output</span> )
   <span class="ruby-identifier">output</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">node</span>.<span class="ruby-identifier">to_s</span>()
 <span class="ruby-keyword">end</span></pre>
           </div>
@@ -1123,7 +1171,7 @@
 
 </main>
 
-<aside class="table-of-contents" role="complementary" aria-label="Table of Contents">
+<aside id="table-of-contents" class="table-of-contents" role="complementary" aria-label="Table of Contents">
   <div class="toc-sticky">
     <h3 class="toc-heading">On This Page</h3>
     <nav class="toc-nav" id="toc-nav" aria-label="Page sections">
@@ -1138,7 +1186,7 @@
 
   <div class="footer-bottom">
     <p>
-      Generated by <a href="https://ruby.github.io/rdoc/">RDoc 7.2.0</a>
+      Generated by <a href="https://ruby.github.io/rdoc/">RDoc 8.0.0</a>
       using the Aliki theme by <a href="http://st0012.dev">Stan Lo</a>
     </p>
   </div>

@@ -50,46 +50,46 @@
 </script>
 
 <script
-  src="../js/theme-toggle.js?v=7.2.0"
+  src="../js/theme-toggle.js?v=8.0.0"
 ></script>
 
 <script
-  src="../js/search_navigation.js?v=7.2.0"
+  src="../js/search_navigation.js?v=8.0.0"
   defer
 ></script>
 
 <script
-  src="../js/search_data.js?v=7.2.0"
+  src="../js/search_data.js?v=8.0.0"
   defer
 ></script>
 
 <script
-  src="../js/search_ranker.js?v=7.2.0"
+  src="../js/search_ranker.js?v=8.0.0"
   defer
 ></script>
 
 <script
-  src="../js/search_controller.js?v=7.2.0"
+  src="../js/search_controller.js?v=8.0.0"
   defer
 ></script>
 
 <script
-  src="../js/c_highlighter.js?v=7.2.0"
+  src="../js/c_highlighter.js?v=8.0.0"
   defer
 ></script>
 
 <script
-  src="../js/bash_highlighter.js?v=7.2.0"
+  src="../js/bash_highlighter.js?v=8.0.0"
   defer
 ></script>
 
 <script
-  src="../js/aliki.js?v=7.2.0"
+  src="../js/aliki.js?v=8.0.0"
   defer
 ></script>
 
 <link
-  href="../css/rdoc.css?v=7.2.0"
+  href="../css/rdoc.css?v=8.0.0"
   rel="stylesheet"
 >
 
@@ -363,12 +363,12 @@
   </div>
 </div>
 
-<div id="navigation-toggle" role="button" tabindex="0" aria-label="Toggle sidebar" aria-expanded="true" aria-controls="navigation">
+<div id="sidebar-navigation-toggle" role="button" tabindex="0" aria-label="Toggle sidebar" aria-expanded="false" aria-controls="sidebar-navigation">
   <span aria-hidden="true">&#9776;</span>
 </div>
 
 
-<nav id="navigation" role="navigation" hidden>
+<nav id="sidebar-navigation" role="navigation" hidden>
   
 
 
@@ -411,15 +411,6 @@
             <li>
               <a href="../NEWS_md.html">
                 NEWS
-              </a>
-            </li>
-
-
-
-
-            <li>
-              <a href="../README_md.html">
-                README
               </a>
             </li>
 
@@ -596,7 +587,7 @@
       
       <li>
         
-        <a href="../REXML.html">REXML</a><span>::</span>
+        <a href="../REXML.html">REXML</a><span class="separator">::</span>
         
       </li>
       
@@ -610,8 +601,9 @@
   
 
   <span id="class-REXML::SourceFactory" class="legacy-anchor"></span>
-  <h1 id="class-rexml-sourcefactory" class="anchor-link class">
-    class REXML::SourceFactory
+  <h1 id="class-rexml-sourcefactory" class="anchor-link class page-title">
+    <span class="page-title-kind">class</span>
+    <span class="page-title-name">REXML::SourceFactory</span>
   </h1>
 
   <section class="description">
@@ -643,37 +635,44 @@
 
       <div id="method-c-create_from" class="method-detail anchor-link ">
         <div class="method-header">
+          <div class="method-heading-group">
 
-            <div class="method-heading">
-              <a href="#method-c-create_from" title="Link to this method">
-                <span class="method-name">create_from</span>
-                <span class="method-args">(arg)</span>
-              </a>
+              <div class="method-heading">
+                <a href="#method-c-create_from" title="Link to this method">
+                  <span class="method-name">create_from</span>
+                  <span class="method-args">(arg)</span>
+                </a>
+              </div>
+
+
+
+          </div>
+
+
+            <div class="method-controls">
+              <details class="method-source-toggle">
+                <summary><span class="method-source-icon" aria-hidden="true">{}</span> Source</summary>
+              </details>
             </div>
 
         </div>
 
 
-          <div class="method-controls">
-            <details class="method-source-toggle">
-              <summary>Source</summary>
-            </details>
-          </div>
           <div class="method-source-code" id="create_from-source">
             <pre class="ruby"><span class="ruby-comment"># File lib/rexml/source.rb, line 42</span>
-<span class="ruby-keyword">def</span> <span class="ruby-constant">SourceFactory</span><span class="ruby-operator">::</span><span class="ruby-identifier ruby-title">create_from</span>(<span class="ruby-identifier">arg</span>)
-  <span class="ruby-keyword">if</span> <span class="ruby-identifier">arg</span>.<span class="ruby-identifier">respond_to?</span> <span class="ruby-value">:read</span> <span class="ruby-keyword">and</span>
-      <span class="ruby-identifier">arg</span>.<span class="ruby-identifier">respond_to?</span> <span class="ruby-value">:readline</span> <span class="ruby-keyword">and</span>
-      <span class="ruby-identifier">arg</span>.<span class="ruby-identifier">respond_to?</span> <span class="ruby-value">:nil?</span> <span class="ruby-keyword">and</span>
-      <span class="ruby-identifier">arg</span>.<span class="ruby-identifier">respond_to?</span> <span class="ruby-value">:eof?</span>
+<span class="ruby-keyword">def</span> <span class="ruby-constant">SourceFactory</span><span class="ruby-operator">::</span><span class="ruby-identifier">create_from</span>(<span class="ruby-identifier">arg</span>)
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">arg</span>.<span class="ruby-identifier">respond_to?</span> <span class="ruby-value">:</span><span class="ruby-value">read</span> <span class="ruby-keyword">and</span>
+      <span class="ruby-identifier">arg</span>.<span class="ruby-identifier">respond_to?</span> <span class="ruby-value">:</span><span class="ruby-value">readline</span> <span class="ruby-keyword">and</span>
+      <span class="ruby-identifier">arg</span>.<span class="ruby-identifier">respond_to?</span> <span class="ruby-value">:</span><span class="ruby-value">nil?</span> <span class="ruby-keyword">and</span>
+      <span class="ruby-identifier">arg</span>.<span class="ruby-identifier">respond_to?</span> <span class="ruby-value">:</span><span class="ruby-value">eof?</span>
     <span class="ruby-constant">IOSource</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">arg</span>)
-  <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">arg</span>.<span class="ruby-identifier">respond_to?</span> <span class="ruby-value">:to_str</span>
+  <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">arg</span>.<span class="ruby-identifier">respond_to?</span> <span class="ruby-value">:</span><span class="ruby-value">to_str</span>
     <span class="ruby-constant">IOSource</span>.<span class="ruby-identifier">new</span>(<span class="ruby-constant">StringIO</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">arg</span>))
   <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">arg</span>.<span class="ruby-identifier">kind_of?</span> <span class="ruby-constant">Source</span>
     <span class="ruby-identifier">arg</span>
   <span class="ruby-keyword">else</span>
-    <span class="ruby-identifier">raise</span> <span class="ruby-node">&quot;#{arg.class} is not a valid input stream.  It must walk \n&quot;</span><span class="ruby-operator">+</span>
-      <span class="ruby-string">&quot;like either a String, an IO, or a Source.&quot;</span>
+    <span class="ruby-identifier">raise</span> <span class="ruby-string">&quot;</span><span class="ruby-string">#{</span><span class="ruby-identifier">arg</span>.<span class="ruby-identifier">class</span><span class="ruby-string">}</span><span class="ruby-string"> is not a valid input stream.  It must walk \n</span><span class="ruby-string">&quot;</span><span class="ruby-operator">+</span>
+      <span class="ruby-string">&quot;</span><span class="ruby-string">like either a String, an IO, or a Source.</span><span class="ruby-string">&quot;</span>
   <span class="ruby-keyword">end</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
@@ -710,7 +709,7 @@
 
 </main>
 
-<aside class="table-of-contents" role="complementary" aria-label="Table of Contents">
+<aside id="table-of-contents" class="table-of-contents" role="complementary" aria-label="Table of Contents">
   <div class="toc-sticky">
     <h3 class="toc-heading">On This Page</h3>
     <nav class="toc-nav" id="toc-nav" aria-label="Page sections">
@@ -725,7 +724,7 @@
 
   <div class="footer-bottom">
     <p>
-      Generated by <a href="https://ruby.github.io/rdoc/">RDoc 7.2.0</a>
+      Generated by <a href="https://ruby.github.io/rdoc/">RDoc 8.0.0</a>
       using the Aliki theme by <a href="http://st0012.dev">Stan Lo</a>
     </p>
   </div>

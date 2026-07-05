@@ -45,46 +45,46 @@
 </script>
 
 <script
-  src="../../../../js/theme-toggle.js?v=7.2.0"
+  src="../../../../js/theme-toggle.js?v=8.0.0"
 ></script>
 
 <script
-  src="../../../../js/search_navigation.js?v=7.2.0"
+  src="../../../../js/search_navigation.js?v=8.0.0"
   defer
 ></script>
 
 <script
-  src="../../../../js/search_data.js?v=7.2.0"
+  src="../../../../js/search_data.js?v=8.0.0"
   defer
 ></script>
 
 <script
-  src="../../../../js/search_ranker.js?v=7.2.0"
+  src="../../../../js/search_ranker.js?v=8.0.0"
   defer
 ></script>
 
 <script
-  src="../../../../js/search_controller.js?v=7.2.0"
+  src="../../../../js/search_controller.js?v=8.0.0"
   defer
 ></script>
 
 <script
-  src="../../../../js/c_highlighter.js?v=7.2.0"
+  src="../../../../js/c_highlighter.js?v=8.0.0"
   defer
 ></script>
 
 <script
-  src="../../../../js/bash_highlighter.js?v=7.2.0"
+  src="../../../../js/bash_highlighter.js?v=8.0.0"
   defer
 ></script>
 
 <script
-  src="../../../../js/aliki.js?v=7.2.0"
+  src="../../../../js/aliki.js?v=8.0.0"
   defer
 ></script>
 
 <link
-  href="../../../../css/rdoc.css?v=7.2.0"
+  href="../../../../css/rdoc.css?v=8.0.0"
   rel="stylesheet"
 >
 
@@ -358,12 +358,12 @@
   </div>
 </div>
 
-<div id="navigation-toggle" role="button" tabindex="0" aria-label="Toggle sidebar" aria-expanded="true" aria-controls="navigation">
+<div id="sidebar-navigation-toggle" role="button" tabindex="0" aria-label="Toggle sidebar" aria-expanded="false" aria-controls="sidebar-navigation">
   <span aria-hidden="true">&#9776;</span>
 </div>
 
 
-<nav id="navigation" role="navigation" hidden>
+<nav id="sidebar-navigation" role="navigation" hidden>
   
 
 
@@ -408,15 +408,6 @@
             <li>
               <a href="../../../../NEWS_md.html">
                 NEWS
-              </a>
-            </li>
-
-
-
-
-            <li>
-              <a href="../../../../README_md.html">
-                README
               </a>
             </li>
 
@@ -687,7 +678,7 @@
 
 <p>Use method <a href="../../../../REXML/Element.html#method-c-new">Element::new</a> with a string name argument to create a named element:</p>
 
-<pre class="ruby"><span class="ruby-identifier">e</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Element</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;foo&#39;</span>)
+<pre class="ruby"><span class="ruby-identifier">e</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Element</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;</span><span class="ruby-string">foo</span><span class="ruby-string">&#39;</span>)
 <span class="ruby-identifier">e</span>.<span class="ruby-identifier">name</span>    <span class="ruby-comment"># =&gt; &quot;foo&quot;</span>
 <span class="ruby-identifier">e</span>.<span class="ruby-identifier">parent</span>  <span class="ruby-comment"># =&gt; nil</span>
 <span class="ruby-identifier">e</span>.<span class="ruby-identifier">context</span> <span class="ruby-comment"># =&gt; nil</span>
@@ -699,7 +690,7 @@
 <p>Use method <a href="../../../../REXML/Element.html#method-c-new">Element::new</a> with name and parent arguments to create an element with name and parent:</p>
 
 <pre class="ruby"><span class="ruby-identifier">p</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Parent</span>.<span class="ruby-identifier">new</span>
-<span class="ruby-identifier">e</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Element</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;foo&#39;</span>, <span class="ruby-identifier">p</span>)
+<span class="ruby-identifier">e</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Element</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;</span><span class="ruby-string">foo</span><span class="ruby-string">&#39;</span>, <span class="ruby-identifier">p</span>)
 <span class="ruby-identifier">e</span>.<span class="ruby-identifier">name</span>    <span class="ruby-comment"># =&gt; &quot;foo&quot;</span>
 <span class="ruby-identifier">e</span>.<span class="ruby-identifier">parent</span>  <span class="ruby-comment"># =&gt; #&lt;REXML::Parent @parent=nil, @children=[&lt;foo/&gt;]&gt;</span>
 <span class="ruby-identifier">e</span>.<span class="ruby-identifier">context</span> <span class="ruby-comment"># =&gt; nil</span>
@@ -711,7 +702,7 @@
 <p>Use method <a href="../../../../REXML/Element.html#method-c-new">Element::new</a> with name, parent, and context arguments to create an element with name, parent, and context:</p>
 
 <pre class="ruby"><span class="ruby-identifier">p</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Parent</span>.<span class="ruby-identifier">new</span>
-<span class="ruby-identifier">e</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Element</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;foo&#39;</span>, <span class="ruby-identifier">p</span>, {<span class="ruby-value">compress_whitespace:</span> <span class="ruby-value">:all</span>})
+<span class="ruby-identifier">e</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Element</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;</span><span class="ruby-string">foo</span><span class="ruby-string">&#39;</span>, <span class="ruby-identifier">p</span>, {<span class="ruby-value">compress_whitespace</span><span class="ruby-value">:</span> <span class="ruby-value">:</span><span class="ruby-value">all</span>})
 <span class="ruby-identifier">e</span>.<span class="ruby-identifier">name</span>    <span class="ruby-comment"># =&gt; &quot;foo&quot;</span>
 <span class="ruby-identifier">e</span>.<span class="ruby-identifier">parent</span>  <span class="ruby-comment"># =&gt; #&lt;REXML::Parent @parent=nil, @children=[&lt;foo/&gt;]&gt;</span>
 <span class="ruby-identifier">e</span>.<span class="ruby-identifier">context</span> <span class="ruby-comment"># =&gt; {:compress_whitespace=&gt;:all}</span>
@@ -722,9 +713,9 @@
 
 <p>Use method <a href="../../../../REXML/Element.html#method-i-clone">Element#clone</a> to create a shallow clone of an element, copying only the name, attributes, and context:</p>
 
-<pre class="ruby"><span class="ruby-identifier">e0</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Element</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;foo&#39;</span>, <span class="ruby-keyword">nil</span>, {<span class="ruby-value">compress_whitespace:</span> <span class="ruby-value">:all</span>})
-<span class="ruby-identifier">e0</span>.<span class="ruby-identifier">add_attribute</span>(<span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Attribute</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;bar&#39;</span>, <span class="ruby-string">&#39;baz&#39;</span>))
-<span class="ruby-identifier">e0</span>.<span class="ruby-identifier">context</span> = {<span class="ruby-value">compress_whitespace:</span> <span class="ruby-value">:all</span>}
+<pre class="ruby"><span class="ruby-identifier">e0</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Element</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;</span><span class="ruby-string">foo</span><span class="ruby-string">&#39;</span>, <span class="ruby-keyword">nil</span>, {<span class="ruby-value">compress_whitespace</span><span class="ruby-value">:</span> <span class="ruby-value">:</span><span class="ruby-value">all</span>})
+<span class="ruby-identifier">e0</span>.<span class="ruby-identifier">add_attribute</span>(<span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Attribute</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;</span><span class="ruby-string">bar</span><span class="ruby-string">&#39;</span>, <span class="ruby-string">&#39;</span><span class="ruby-string">baz</span><span class="ruby-string">&#39;</span>))
+<span class="ruby-identifier">e0</span>.<span class="ruby-identifier">context</span> = {<span class="ruby-value">compress_whitespace</span><span class="ruby-value">:</span> <span class="ruby-value">:</span><span class="ruby-value">all</span>}
 <span class="ruby-identifier">e1</span> = <span class="ruby-identifier">e0</span>.<span class="ruby-identifier">clone</span> <span class="ruby-comment"># =&gt; &lt;foo bar=&#39;baz&#39;/&gt;</span>
 <span class="ruby-identifier">e1</span>.<span class="ruby-identifier">name</span> <span class="ruby-comment"># =&gt; &quot;foo&quot;</span>
 <span class="ruby-identifier">e1</span>.<span class="ruby-identifier">context</span> <span class="ruby-comment"># =&gt; {:compress_whitespace=&gt;:all}</span>
@@ -739,10 +730,10 @@
 <p>Use method <a href="../../../../REXML/Element.html#method-i-add_attribute">Element#add_attribute</a> to create and add an attribute:</p>
 
 <pre class="ruby"><span class="ruby-identifier">e</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Element</span>.<span class="ruby-identifier">new</span>
-<span class="ruby-identifier">e</span>.<span class="ruby-identifier">add_attribute</span>(<span class="ruby-string">&#39;attr&#39;</span>, <span class="ruby-string">&#39;value&#39;</span>) <span class="ruby-comment"># =&gt; &quot;value&quot;</span>
-<span class="ruby-identifier">e</span>[<span class="ruby-string">&#39;attr&#39;</span>] <span class="ruby-comment"># =&gt; &quot;value&quot;</span>
-<span class="ruby-identifier">e</span>.<span class="ruby-identifier">add_attribute</span>(<span class="ruby-string">&#39;attr&#39;</span>, <span class="ruby-string">&#39;VALUE&#39;</span>) <span class="ruby-comment"># =&gt; &quot;VALUE&quot;</span>
-<span class="ruby-identifier">e</span>[<span class="ruby-string">&#39;attr&#39;</span>] <span class="ruby-comment"># =&gt; &quot;VALUE&quot;</span>
+<span class="ruby-identifier">e</span>.<span class="ruby-identifier">add_attribute</span>(<span class="ruby-string">&#39;</span><span class="ruby-string">attr</span><span class="ruby-string">&#39;</span>, <span class="ruby-string">&#39;</span><span class="ruby-string">value</span><span class="ruby-string">&#39;</span>) <span class="ruby-comment"># =&gt; &quot;value&quot;</span>
+<span class="ruby-identifier">e</span>[<span class="ruby-string">&#39;</span><span class="ruby-string">attr</span><span class="ruby-string">&#39;</span>] <span class="ruby-comment"># =&gt; &quot;value&quot;</span>
+<span class="ruby-identifier">e</span>.<span class="ruby-identifier">add_attribute</span>(<span class="ruby-string">&#39;</span><span class="ruby-string">attr</span><span class="ruby-string">&#39;</span>, <span class="ruby-string">&#39;</span><span class="ruby-string">VALUE</span><span class="ruby-string">&#39;</span>) <span class="ruby-comment"># =&gt; &quot;VALUE&quot;</span>
+<span class="ruby-identifier">e</span>[<span class="ruby-string">&#39;</span><span class="ruby-string">attr</span><span class="ruby-string">&#39;</span>] <span class="ruby-comment"># =&gt; &quot;VALUE&quot;</span>
 </pre>
 
 <span id="label-Task-3A+Add+an+Existing+Attribute" class="legacy-anchor"></span>
@@ -751,12 +742,12 @@
 <p>Use method <a href="../../../../REXML/Element.html#method-i-add_attribute">Element#add_attribute</a> to add an existing attribute:</p>
 
 <pre class="ruby"><span class="ruby-identifier">e</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Element</span>.<span class="ruby-identifier">new</span>
-<span class="ruby-identifier">a</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Attribute</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;attr&#39;</span>, <span class="ruby-string">&#39;value&#39;</span>)
+<span class="ruby-identifier">a</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Attribute</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;</span><span class="ruby-string">attr</span><span class="ruby-string">&#39;</span>, <span class="ruby-string">&#39;</span><span class="ruby-string">value</span><span class="ruby-string">&#39;</span>)
 <span class="ruby-identifier">e</span>.<span class="ruby-identifier">add_attribute</span>(<span class="ruby-identifier">a</span>)
-<span class="ruby-identifier">e</span>[<span class="ruby-string">&#39;attr&#39;</span>] <span class="ruby-comment"># =&gt; &quot;value&quot;</span>
-<span class="ruby-identifier">a</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Attribute</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;attr&#39;</span>, <span class="ruby-string">&#39;VALUE&#39;</span>)
+<span class="ruby-identifier">e</span>[<span class="ruby-string">&#39;</span><span class="ruby-string">attr</span><span class="ruby-string">&#39;</span>] <span class="ruby-comment"># =&gt; &quot;value&quot;</span>
+<span class="ruby-identifier">a</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Attribute</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;</span><span class="ruby-string">attr</span><span class="ruby-string">&#39;</span>, <span class="ruby-string">&#39;</span><span class="ruby-string">VALUE</span><span class="ruby-string">&#39;</span>)
 <span class="ruby-identifier">e</span>.<span class="ruby-identifier">add_attribute</span>(<span class="ruby-identifier">a</span>)
-<span class="ruby-identifier">e</span>[<span class="ruby-string">&#39;attr&#39;</span>] <span class="ruby-comment"># =&gt; &quot;VALUE&quot;</span>
+<span class="ruby-identifier">e</span>[<span class="ruby-string">&#39;</span><span class="ruby-string">attr</span><span class="ruby-string">&#39;</span>] <span class="ruby-comment"># =&gt; &quot;VALUE&quot;</span>
 </pre>
 
 <span id="label-Task-3A+Add+Multiple+Attributes+from+a+Hash" class="legacy-anchor"></span>
@@ -765,10 +756,10 @@
 <p>Use method <a href="../../../../REXML/Element.html#method-i-add_attributes">Element#add_attributes</a> to add multiple attributes from a hash:</p>
 
 <pre class="ruby"><span class="ruby-identifier">e</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Element</span>.<span class="ruby-identifier">new</span>
-<span class="ruby-identifier">h</span> = {<span class="ruby-string">&#39;foo&#39;</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-value">0</span>, <span class="ruby-string">&#39;bar&#39;</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-value">1</span>}
+<span class="ruby-identifier">h</span> = {<span class="ruby-string">&#39;</span><span class="ruby-string">foo</span><span class="ruby-string">&#39;</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-value">0</span>, <span class="ruby-string">&#39;</span><span class="ruby-string">bar</span><span class="ruby-string">&#39;</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-value">1</span>}
 <span class="ruby-identifier">e</span>.<span class="ruby-identifier">add_attributes</span>(<span class="ruby-identifier">h</span>)
-<span class="ruby-identifier">e</span>[<span class="ruby-string">&#39;foo&#39;</span>] <span class="ruby-comment"># =&gt; &quot;0&quot;</span>
-<span class="ruby-identifier">e</span>[<span class="ruby-string">&#39;bar&#39;</span>] <span class="ruby-comment"># =&gt; &quot;1&quot;</span>
+<span class="ruby-identifier">e</span>[<span class="ruby-string">&#39;</span><span class="ruby-string">foo</span><span class="ruby-string">&#39;</span>] <span class="ruby-comment"># =&gt; &quot;0&quot;</span>
+<span class="ruby-identifier">e</span>[<span class="ruby-string">&#39;</span><span class="ruby-string">bar</span><span class="ruby-string">&#39;</span>] <span class="ruby-comment"># =&gt; &quot;1&quot;</span>
 </pre>
 
 <span id="label-Task-3A+Add+Multiple+Attributes+from+an+Array" class="legacy-anchor"></span>
@@ -777,10 +768,10 @@
 <p>Use method <a href="../../../../REXML/Element.html#method-i-add_attributes">Element#add_attributes</a> to add multiple attributes from an array:</p>
 
 <pre class="ruby"><span class="ruby-identifier">e</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Element</span>.<span class="ruby-identifier">new</span>
-<span class="ruby-identifier">a</span> = [[<span class="ruby-string">&#39;foo&#39;</span>, <span class="ruby-value">0</span>], [<span class="ruby-string">&#39;bar&#39;</span>, <span class="ruby-value">1</span>]]
+<span class="ruby-identifier">a</span> = [[<span class="ruby-string">&#39;</span><span class="ruby-string">foo</span><span class="ruby-string">&#39;</span>, <span class="ruby-value">0</span>], [<span class="ruby-string">&#39;</span><span class="ruby-string">bar</span><span class="ruby-string">&#39;</span>, <span class="ruby-value">1</span>]]
 <span class="ruby-identifier">e</span>.<span class="ruby-identifier">add_attributes</span>(<span class="ruby-identifier">a</span>)
-<span class="ruby-identifier">e</span>[<span class="ruby-string">&#39;foo&#39;</span>] <span class="ruby-comment"># =&gt; &quot;0&quot;</span>
-<span class="ruby-identifier">e</span>[<span class="ruby-string">&#39;bar&#39;</span>] <span class="ruby-comment"># =&gt; &quot;1&quot;</span>
+<span class="ruby-identifier">e</span>[<span class="ruby-string">&#39;</span><span class="ruby-string">foo</span><span class="ruby-string">&#39;</span>] <span class="ruby-comment"># =&gt; &quot;0&quot;</span>
+<span class="ruby-identifier">e</span>[<span class="ruby-string">&#39;</span><span class="ruby-string">bar</span><span class="ruby-string">&#39;</span>] <span class="ruby-comment"># =&gt; &quot;1&quot;</span>
 </pre>
 
 <span id="label-Task-3A+Retrieve+the+Value+for+an+Attribute+Name" class="legacy-anchor"></span>
@@ -789,8 +780,8 @@
 <p>Use method <a href="../../../../REXML/Element.html#method-i-5B-5D">Element#[]</a> to retrieve the value for an attribute name:</p>
 
 <pre class="ruby"><span class="ruby-identifier">e</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Element</span>.<span class="ruby-identifier">new</span>
-<span class="ruby-identifier">e</span>.<span class="ruby-identifier">add_attribute</span>(<span class="ruby-string">&#39;attr&#39;</span>, <span class="ruby-string">&#39;value&#39;</span>) <span class="ruby-comment"># =&gt; &quot;value&quot;</span>
-<span class="ruby-identifier">e</span>[<span class="ruby-string">&#39;attr&#39;</span>] <span class="ruby-comment"># =&gt; &quot;value&quot;</span>
+<span class="ruby-identifier">e</span>.<span class="ruby-identifier">add_attribute</span>(<span class="ruby-string">&#39;</span><span class="ruby-string">attr</span><span class="ruby-string">&#39;</span>, <span class="ruby-string">&#39;</span><span class="ruby-string">value</span><span class="ruby-string">&#39;</span>) <span class="ruby-comment"># =&gt; &quot;value&quot;</span>
+<span class="ruby-identifier">e</span>[<span class="ruby-string">&#39;</span><span class="ruby-string">attr</span><span class="ruby-string">&#39;</span>] <span class="ruby-comment"># =&gt; &quot;value&quot;</span>
 </pre>
 
 <span id="label-Task-3A+Retrieve+the+Attribute+Value+for+a+Name+and+Namespace" class="legacy-anchor"></span>
@@ -798,11 +789,11 @@
 
 <p>Use method <a href="../../../../REXML/Element.html#method-i-attribute">Element#attribute</a> to retrieve the value for an attribute name:</p>
 
-<pre class="ruby"><span class="ruby-identifier">xml_string</span> = <span class="ruby-string">&quot;&lt;root xmlns:a=&#39;a&#39; a:x=&#39;a:x&#39; x=&#39;x&#39;/&gt;&quot;</span>
+<pre class="ruby"><span class="ruby-identifier">xml_string</span> = <span class="ruby-string">&quot;</span><span class="ruby-string">&lt;root xmlns:a=&#39;a&#39; a:x=&#39;a:x&#39; x=&#39;x&#39;/&gt;</span><span class="ruby-string">&quot;</span>
 <span class="ruby-identifier">d</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">xml_string</span>)
 <span class="ruby-identifier">e</span> = <span class="ruby-identifier">d</span>.<span class="ruby-identifier">root</span>
-<span class="ruby-identifier">e</span>.<span class="ruby-identifier">attribute</span>(<span class="ruby-string">&quot;x&quot;</span>)      <span class="ruby-comment"># =&gt; x=&#39;x&#39;</span>
-<span class="ruby-identifier">e</span>.<span class="ruby-identifier">attribute</span>(<span class="ruby-string">&quot;x&quot;</span>, <span class="ruby-string">&quot;a&quot;</span>) <span class="ruby-comment"># =&gt; a:x=&#39;a:x&#39;</span>
+<span class="ruby-identifier">e</span>.<span class="ruby-identifier">attribute</span>(<span class="ruby-string">&quot;</span><span class="ruby-string">x</span><span class="ruby-string">&quot;</span>)      <span class="ruby-comment"># =&gt; x=&#39;x&#39;</span>
+<span class="ruby-identifier">e</span>.<span class="ruby-identifier">attribute</span>(<span class="ruby-string">&quot;</span><span class="ruby-string">x</span><span class="ruby-string">&quot;</span>, <span class="ruby-string">&quot;</span><span class="ruby-string">a</span><span class="ruby-string">&quot;</span>) <span class="ruby-comment"># =&gt; a:x=&#39;a:x&#39;</span>
 </pre>
 
 <span id="label-Task-3A+Delete+an+Attribute" class="legacy-anchor"></span>
@@ -810,11 +801,11 @@
 
 <p>Use method <a href="../../../../REXML/Element.html#method-i-delete_attribute">Element#delete_attribute</a> to remove an attribute:</p>
 
-<pre class="ruby"><span class="ruby-identifier">e</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Element</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;foo&#39;</span>)
-<span class="ruby-identifier">e</span>.<span class="ruby-identifier">add_attribute</span>(<span class="ruby-string">&#39;bar&#39;</span>, <span class="ruby-string">&#39;baz&#39;</span>)
-<span class="ruby-identifier">e</span>.<span class="ruby-identifier">delete_attribute</span>(<span class="ruby-string">&#39;bar&#39;</span>)
-<span class="ruby-identifier">e</span>.<span class="ruby-identifier">delete_attribute</span>(<span class="ruby-string">&#39;bar&#39;</span>)
-<span class="ruby-identifier">e</span>[<span class="ruby-string">&#39;bar&#39;</span>] <span class="ruby-comment"># =&gt; nil</span>
+<pre class="ruby"><span class="ruby-identifier">e</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Element</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;</span><span class="ruby-string">foo</span><span class="ruby-string">&#39;</span>)
+<span class="ruby-identifier">e</span>.<span class="ruby-identifier">add_attribute</span>(<span class="ruby-string">&#39;</span><span class="ruby-string">bar</span><span class="ruby-string">&#39;</span>, <span class="ruby-string">&#39;</span><span class="ruby-string">baz</span><span class="ruby-string">&#39;</span>)
+<span class="ruby-identifier">e</span>.<span class="ruby-identifier">delete_attribute</span>(<span class="ruby-string">&#39;</span><span class="ruby-string">bar</span><span class="ruby-string">&#39;</span>)
+<span class="ruby-identifier">e</span>.<span class="ruby-identifier">delete_attribute</span>(<span class="ruby-string">&#39;</span><span class="ruby-string">bar</span><span class="ruby-string">&#39;</span>)
+<span class="ruby-identifier">e</span>[<span class="ruby-string">&#39;</span><span class="ruby-string">bar</span><span class="ruby-string">&#39;</span>] <span class="ruby-comment"># =&gt; nil</span>
 </pre>
 
 <span id="label-Task-3A+Determine+Whether+the+Element+Has+Attributes" class="legacy-anchor"></span>
@@ -822,9 +813,9 @@
 
 <p>Use method <a href="../../../../REXML/Element.html#method-i-has_attributes-3F">Element#has_attributes?</a> to determine whether the element has attributes:</p>
 
-<pre class="ruby"><span class="ruby-identifier">e</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Element</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;foo&#39;</span>)
+<pre class="ruby"><span class="ruby-identifier">e</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Element</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;</span><span class="ruby-string">foo</span><span class="ruby-string">&#39;</span>)
 <span class="ruby-identifier">e</span>.<span class="ruby-identifier">has_attributes?</span> <span class="ruby-comment"># =&gt; false</span>
-<span class="ruby-identifier">e</span>.<span class="ruby-identifier">add_attribute</span>(<span class="ruby-string">&#39;bar&#39;</span>, <span class="ruby-string">&#39;baz&#39;</span>)
+<span class="ruby-identifier">e</span>.<span class="ruby-identifier">add_attribute</span>(<span class="ruby-string">&#39;</span><span class="ruby-string">bar</span><span class="ruby-string">&#39;</span>, <span class="ruby-string">&#39;</span><span class="ruby-string">baz</span><span class="ruby-string">&#39;</span>)
 <span class="ruby-identifier">e</span>.<span class="ruby-identifier">has_attributes?</span> <span class="ruby-comment"># =&gt; true</span>
 </pre>
 
@@ -838,8 +829,8 @@
 
 <p>Use method <a href="../../../../REXML/Element.html#method-i-add_element">Element#add_element</a> to create a new element and add it to this element:</p>
 
-<pre class="ruby"><span class="ruby-identifier">e0</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Element</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;foo&#39;</span>)
-<span class="ruby-identifier">e0</span>.<span class="ruby-identifier">add_element</span>(<span class="ruby-string">&#39;bar&#39;</span>)
+<pre class="ruby"><span class="ruby-identifier">e0</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Element</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;</span><span class="ruby-string">foo</span><span class="ruby-string">&#39;</span>)
+<span class="ruby-identifier">e0</span>.<span class="ruby-identifier">add_element</span>(<span class="ruby-string">&#39;</span><span class="ruby-string">bar</span><span class="ruby-string">&#39;</span>)
 <span class="ruby-identifier">e0</span>.<span class="ruby-identifier">children</span> <span class="ruby-comment"># =&gt; [&lt;bar/&gt;]</span>
 </pre>
 
@@ -848,8 +839,8 @@
 
 <p>Use method <a href="../../../../REXML/Element.html#method-i-add_element">Element#add_element</a> to add an element to this element:</p>
 
-<pre class="ruby"><span class="ruby-identifier">e0</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Element</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;foo&#39;</span>)
-<span class="ruby-identifier">e1</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Element</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;bar&#39;</span>)
+<pre class="ruby"><span class="ruby-identifier">e0</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Element</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;</span><span class="ruby-string">foo</span><span class="ruby-string">&#39;</span>)
+<span class="ruby-identifier">e1</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Element</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;</span><span class="ruby-string">bar</span><span class="ruby-string">&#39;</span>)
 <span class="ruby-identifier">e0</span>.<span class="ruby-identifier">add_element</span>(<span class="ruby-identifier">e1</span>)
 <span class="ruby-identifier">e0</span>.<span class="ruby-identifier">children</span> <span class="ruby-comment"># =&gt; [&lt;bar/&gt;]</span>
 </pre>
@@ -859,8 +850,8 @@
 
 <p>Use method <a href="../../../../REXML/Element.html#method-i-add_element">Element#add_element</a> to create a new element with attributes, and add it to this element:</p>
 
-<pre class="ruby"><span class="ruby-identifier">e0</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Element</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;foo&#39;</span>)
-<span class="ruby-identifier">e0</span>.<span class="ruby-identifier">add_element</span>(<span class="ruby-string">&#39;bar&#39;</span>, {<span class="ruby-string">&#39;name&#39;</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-string">&#39;value&#39;</span>})
+<pre class="ruby"><span class="ruby-identifier">e0</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Element</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;</span><span class="ruby-string">foo</span><span class="ruby-string">&#39;</span>)
+<span class="ruby-identifier">e0</span>.<span class="ruby-identifier">add_element</span>(<span class="ruby-string">&#39;</span><span class="ruby-string">bar</span><span class="ruby-string">&#39;</span>, {<span class="ruby-string">&#39;</span><span class="ruby-string">name</span><span class="ruby-string">&#39;</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-string">&#39;</span><span class="ruby-string">value</span><span class="ruby-string">&#39;</span>})
 <span class="ruby-identifier">e0</span>.<span class="ruby-identifier">children</span> <span class="ruby-comment"># =&gt; [&lt;bar name=&#39;value&#39;/&gt;]</span>
 </pre>
 
@@ -869,9 +860,9 @@
 
 <p>Use method <a href="../../../../REXML/Element.html#method-i-add_element">Element#add_element</a> to add an element to this element:</p>
 
-<pre class="ruby"><span class="ruby-identifier">e0</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Element</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;foo&#39;</span>)
-<span class="ruby-identifier">e1</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Element</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;bar&#39;</span>)
-<span class="ruby-identifier">e0</span>.<span class="ruby-identifier">add_element</span>(<span class="ruby-identifier">e1</span>, {<span class="ruby-string">&#39;name&#39;</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-string">&#39;value&#39;</span>})
+<pre class="ruby"><span class="ruby-identifier">e0</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Element</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;</span><span class="ruby-string">foo</span><span class="ruby-string">&#39;</span>)
+<span class="ruby-identifier">e1</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Element</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;</span><span class="ruby-string">bar</span><span class="ruby-string">&#39;</span>)
+<span class="ruby-identifier">e0</span>.<span class="ruby-identifier">add_element</span>(<span class="ruby-identifier">e1</span>, {<span class="ruby-string">&#39;</span><span class="ruby-string">name</span><span class="ruby-string">&#39;</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-string">&#39;</span><span class="ruby-string">value</span><span class="ruby-string">&#39;</span>})
 <span class="ruby-identifier">e0</span>.<span class="ruby-identifier">children</span> <span class="ruby-comment"># =&gt; [&lt;bar name=&#39;value&#39;/&gt;]</span>
 </pre>
 
@@ -880,8 +871,8 @@
 
 <p>Use method <a href="../../../../REXML/Element.html#method-i-delete_element">Element#delete_element</a> to remove a specified element from this element:</p>
 
-<pre class="ruby"><span class="ruby-identifier">e0</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Element</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;foo&#39;</span>)
-<span class="ruby-identifier">e1</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Element</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;bar&#39;</span>)
+<pre class="ruby"><span class="ruby-identifier">e0</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Element</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;</span><span class="ruby-string">foo</span><span class="ruby-string">&#39;</span>)
+<span class="ruby-identifier">e1</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Element</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;</span><span class="ruby-string">bar</span><span class="ruby-string">&#39;</span>)
 <span class="ruby-identifier">e0</span>.<span class="ruby-identifier">add_element</span>(<span class="ruby-identifier">e1</span>)
 <span class="ruby-identifier">e0</span>.<span class="ruby-identifier">children</span> <span class="ruby-comment"># =&gt; [&lt;bar/&gt;]</span>
 <span class="ruby-identifier">e0</span>.<span class="ruby-identifier">delete_element</span>(<span class="ruby-identifier">e1</span>)
@@ -893,8 +884,8 @@
 
 <p>Use method <a href="../../../../REXML/Element.html#method-i-delete_element">Element#delete_element</a> to remove an element from this element by index:</p>
 
-<pre class="ruby"><span class="ruby-identifier">e0</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Element</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;foo&#39;</span>)
-<span class="ruby-identifier">e1</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Element</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;bar&#39;</span>)
+<pre class="ruby"><span class="ruby-identifier">e0</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Element</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;</span><span class="ruby-string">foo</span><span class="ruby-string">&#39;</span>)
+<span class="ruby-identifier">e1</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Element</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;</span><span class="ruby-string">bar</span><span class="ruby-string">&#39;</span>)
 <span class="ruby-identifier">e0</span>.<span class="ruby-identifier">add_element</span>(<span class="ruby-identifier">e1</span>)
 <span class="ruby-identifier">e0</span>.<span class="ruby-identifier">children</span> <span class="ruby-comment"># =&gt; [&lt;bar/&gt;]</span>
 <span class="ruby-identifier">e0</span>.<span class="ruby-identifier">delete_element</span>(<span class="ruby-value">1</span>)
@@ -906,11 +897,11 @@
 
 <p>Use method <a href="../../../../REXML/Element.html#method-i-delete_element">Element#delete_element</a> to remove an element from this element by XPath:</p>
 
-<pre class="ruby"><span class="ruby-identifier">e0</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Element</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;foo&#39;</span>)
-<span class="ruby-identifier">e1</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Element</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;bar&#39;</span>)
+<pre class="ruby"><span class="ruby-identifier">e0</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Element</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;</span><span class="ruby-string">foo</span><span class="ruby-string">&#39;</span>)
+<span class="ruby-identifier">e1</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Element</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;</span><span class="ruby-string">bar</span><span class="ruby-string">&#39;</span>)
 <span class="ruby-identifier">e0</span>.<span class="ruby-identifier">add_element</span>(<span class="ruby-identifier">e1</span>)
 <span class="ruby-identifier">e0</span>.<span class="ruby-identifier">children</span> <span class="ruby-comment"># =&gt; [&lt;bar/&gt;]</span>
-<span class="ruby-identifier">e0</span>.<span class="ruby-identifier">delete_element</span>(<span class="ruby-string">&#39;//bar/&#39;</span>)
+<span class="ruby-identifier">e0</span>.<span class="ruby-identifier">delete_element</span>(<span class="ruby-string">&#39;</span><span class="ruby-string">//bar/</span><span class="ruby-string">&#39;</span>)
 <span class="ruby-identifier">e0</span>.<span class="ruby-identifier">children</span> <span class="ruby-comment"># =&gt; []</span>
 </pre>
 
@@ -919,9 +910,9 @@
 
 <p>Use method <a href="../../../../REXML/Element.html#method-i-has_elements-3F">Element#has_elements?</a> to determine whether the element has element children:</p>
 
-<pre class="ruby"><span class="ruby-identifier">e0</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Element</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;foo&#39;</span>)
+<pre class="ruby"><span class="ruby-identifier">e0</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Element</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;</span><span class="ruby-string">foo</span><span class="ruby-string">&#39;</span>)
 <span class="ruby-identifier">e0</span>.<span class="ruby-identifier">has_elements?</span> <span class="ruby-comment"># =&gt; false</span>
-<span class="ruby-identifier">e0</span>.<span class="ruby-identifier">add_element</span>(<span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Element</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;bar&#39;</span>))
+<span class="ruby-identifier">e0</span>.<span class="ruby-identifier">add_element</span>(<span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Element</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;</span><span class="ruby-string">bar</span><span class="ruby-string">&#39;</span>))
 <span class="ruby-identifier">e0</span>.<span class="ruby-identifier">has_elements?</span> <span class="ruby-comment"># =&gt; true</span>
 </pre>
 
@@ -930,15 +921,15 @@
 
 <p>Use method <a href="../../../../REXML/Element.html#method-i-get_elements">Element#get_elements</a> to fetch all element descendant children by XPath:</p>
 
-<pre class="ruby"><span class="ruby-identifier">xml_string</span> = <span class="ruby-identifier">&lt;&lt;-EOT</span>
-<span class="ruby-value">&lt;root&gt;
+<pre class="ruby"><span class="ruby-identifier">xml_string</span> = <span class="ruby-string">&lt;&lt;-EOT</span>
+<span class="ruby-string">&lt;root&gt;
   &lt;a level=&#39;1&#39;&gt;
     &lt;a level=&#39;2&#39;/&gt;
   &lt;/a&gt;
 &lt;/root&gt;</span>
-<span class="ruby-identifier">EOT</span>
+<span class="ruby-string">EOT</span>
 <span class="ruby-identifier">d</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">xml_string</span>)
-<span class="ruby-identifier">d</span>.<span class="ruby-identifier">root</span>.<span class="ruby-identifier">get_elements</span>(<span class="ruby-string">&#39;//a&#39;</span>) <span class="ruby-comment"># =&gt; [&lt;a level=&#39;1&#39;&gt; ... &lt;/&gt;, &lt;a level=&#39;2&#39;/&gt;]</span>
+<span class="ruby-identifier">d</span>.<span class="ruby-identifier">root</span>.<span class="ruby-identifier">get_elements</span>(<span class="ruby-string">&#39;</span><span class="ruby-string">//a</span><span class="ruby-string">&#39;</span>) <span class="ruby-comment"># =&gt; [&lt;a level=&#39;1&#39;&gt; ... &lt;/&gt;, &lt;a level=&#39;2&#39;/&gt;]</span>
 </pre>
 
 <span id="label-Task-3A+Get+Next+Element+Sibling" class="legacy-anchor"></span>
@@ -946,9 +937,9 @@
 
 <p>Use method <a href="../../../../REXML/Element.html#method-i-next_element">Element#next_element</a> to retrieve the next element sibling:</p>
 
-<pre class="ruby"><span class="ruby-identifier">d</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span> <span class="ruby-string">&#39;&lt;a&gt;&lt;b/&gt;text&lt;c/&gt;&lt;/a&gt;&#39;</span>
-<span class="ruby-identifier">d</span>.<span class="ruby-identifier">root</span>.<span class="ruby-identifier">elements</span>[<span class="ruby-string">&#39;b&#39;</span>].<span class="ruby-identifier">next_element</span> <span class="ruby-comment">#-&gt; &lt;c/&gt;</span>
-<span class="ruby-identifier">d</span>.<span class="ruby-identifier">root</span>.<span class="ruby-identifier">elements</span>[<span class="ruby-string">&#39;c&#39;</span>].<span class="ruby-identifier">next_element</span> <span class="ruby-comment">#-&gt; nil</span>
+<pre class="ruby"><span class="ruby-identifier">d</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span> <span class="ruby-string">&#39;</span><span class="ruby-string">&lt;a&gt;&lt;b/&gt;text&lt;c/&gt;&lt;/a&gt;</span><span class="ruby-string">&#39;</span>
+<span class="ruby-identifier">d</span>.<span class="ruby-identifier">root</span>.<span class="ruby-identifier">elements</span>[<span class="ruby-string">&#39;</span><span class="ruby-string">b</span><span class="ruby-string">&#39;</span>].<span class="ruby-identifier">next_element</span> <span class="ruby-comment">#-&gt; &lt;c/&gt;</span>
+<span class="ruby-identifier">d</span>.<span class="ruby-identifier">root</span>.<span class="ruby-identifier">elements</span>[<span class="ruby-string">&#39;</span><span class="ruby-string">c</span><span class="ruby-string">&#39;</span>].<span class="ruby-identifier">next_element</span> <span class="ruby-comment">#-&gt; nil</span>
 </pre>
 
 <span id="label-Task-3A+Get+Previous+Element+Sibling" class="legacy-anchor"></span>
@@ -956,9 +947,9 @@
 
 <p>Use method <a href="../../../../REXML/Element.html#method-i-previous_element">Element#previous_element</a> to retrieve the previous element sibling:</p>
 
-<pre class="ruby"><span class="ruby-identifier">d</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span> <span class="ruby-string">&#39;&lt;a&gt;&lt;b/&gt;text&lt;c/&gt;&lt;/a&gt;&#39;</span>
-<span class="ruby-identifier">d</span>.<span class="ruby-identifier">root</span>.<span class="ruby-identifier">elements</span>[<span class="ruby-string">&#39;c&#39;</span>].<span class="ruby-identifier">previous_element</span> <span class="ruby-comment">#-&gt; &lt;b/&gt;</span>
-<span class="ruby-identifier">d</span>.<span class="ruby-identifier">root</span>.<span class="ruby-identifier">elements</span>[<span class="ruby-string">&#39;b&#39;</span>].<span class="ruby-identifier">previous_element</span> <span class="ruby-comment">#-&gt; nil</span>
+<pre class="ruby"><span class="ruby-identifier">d</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span> <span class="ruby-string">&#39;</span><span class="ruby-string">&lt;a&gt;&lt;b/&gt;text&lt;c/&gt;&lt;/a&gt;</span><span class="ruby-string">&#39;</span>
+<span class="ruby-identifier">d</span>.<span class="ruby-identifier">root</span>.<span class="ruby-identifier">elements</span>[<span class="ruby-string">&#39;</span><span class="ruby-string">c</span><span class="ruby-string">&#39;</span>].<span class="ruby-identifier">previous_element</span> <span class="ruby-comment">#-&gt; &lt;b/&gt;</span>
+<span class="ruby-identifier">d</span>.<span class="ruby-identifier">root</span>.<span class="ruby-identifier">elements</span>[<span class="ruby-string">&#39;</span><span class="ruby-string">b</span><span class="ruby-string">&#39;</span>].<span class="ruby-identifier">previous_element</span> <span class="ruby-comment">#-&gt; nil</span>
 </pre>
 
 <p><em>Text Children</em></p>
@@ -968,11 +959,11 @@
 
 <p>Use method <a href="../../../../REXML/Element.html#method-i-add_text">Element#add_text</a> to add a text node to the element:</p>
 
-<pre class="ruby"><span class="ruby-identifier">d</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;&lt;a&gt;foo&lt;b/&gt;bar&lt;/a&gt;&#39;</span>)
+<pre class="ruby"><span class="ruby-identifier">d</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;</span><span class="ruby-string">&lt;a&gt;foo&lt;b/&gt;bar&lt;/a&gt;</span><span class="ruby-string">&#39;</span>)
 <span class="ruby-identifier">e</span> = <span class="ruby-identifier">d</span>.<span class="ruby-identifier">root</span>
-<span class="ruby-identifier">e</span>.<span class="ruby-identifier">add_text</span>(<span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Text</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;baz&#39;</span>))
+<span class="ruby-identifier">e</span>.<span class="ruby-identifier">add_text</span>(<span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Text</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;</span><span class="ruby-string">baz</span><span class="ruby-string">&#39;</span>))
 <span class="ruby-identifier">e</span>.<span class="ruby-identifier">to_a</span> <span class="ruby-comment"># =&gt; [&quot;foo&quot;, &lt;b/&gt;, &quot;bar&quot;, &quot;baz&quot;]</span>
-<span class="ruby-identifier">e</span>.<span class="ruby-identifier">add_text</span>(<span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Text</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;baz&#39;</span>))
+<span class="ruby-identifier">e</span>.<span class="ruby-identifier">add_text</span>(<span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Text</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;</span><span class="ruby-string">baz</span><span class="ruby-string">&#39;</span>))
 <span class="ruby-identifier">e</span>.<span class="ruby-identifier">to_a</span> <span class="ruby-comment"># =&gt; [&quot;foo&quot;, &lt;b/&gt;, &quot;bar&quot;, &quot;baz&quot;, &quot;baz&quot;]</span>
 </pre>
 
@@ -981,10 +972,10 @@
 
 <p>Use method <a href="../../../../REXML/Element.html#method-i-text-3D">Element#text=</a> to replace the first text node in the element:</p>
 
-<pre class="ruby"><span class="ruby-identifier">d</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;&lt;root&gt;&lt;a/&gt;text&lt;b/&gt;more&lt;c/&gt;&lt;/root&gt;&#39;</span>)
+<pre class="ruby"><span class="ruby-identifier">d</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;</span><span class="ruby-string">&lt;root&gt;&lt;a/&gt;text&lt;b/&gt;more&lt;c/&gt;&lt;/root&gt;</span><span class="ruby-string">&#39;</span>)
 <span class="ruby-identifier">e</span> = <span class="ruby-identifier">d</span>.<span class="ruby-identifier">root</span>
 <span class="ruby-identifier">e</span>.<span class="ruby-identifier">to_a</span> <span class="ruby-comment"># =&gt; [&lt;a/&gt;, &quot;text&quot;, &lt;b/&gt;, &quot;more&quot;, &lt;c/&gt;]</span>
-<span class="ruby-identifier">e</span>.<span class="ruby-identifier">text</span> = <span class="ruby-string">&#39;oops&#39;</span>
+<span class="ruby-identifier">e</span>.<span class="ruby-identifier">text</span> = <span class="ruby-string">&#39;</span><span class="ruby-string">oops</span><span class="ruby-string">&#39;</span>
 <span class="ruby-identifier">e</span>.<span class="ruby-identifier">to_a</span> <span class="ruby-comment"># =&gt; [&lt;a/&gt;, &quot;oops&quot;, &lt;b/&gt;, &quot;more&quot;, &lt;c/&gt;]</span>
 </pre>
 
@@ -993,7 +984,7 @@
 
 <p>Use method <a href="../../../../REXML/Element.html#method-i-text-3D">Element#text=</a> to remove the first text node in the element:</p>
 
-<pre class="ruby"><span class="ruby-identifier">d</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;&lt;root&gt;&lt;a/&gt;text&lt;b/&gt;more&lt;c/&gt;&lt;/root&gt;&#39;</span>)
+<pre class="ruby"><span class="ruby-identifier">d</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;</span><span class="ruby-string">&lt;root&gt;&lt;a/&gt;text&lt;b/&gt;more&lt;c/&gt;&lt;/root&gt;</span><span class="ruby-string">&#39;</span>)
 <span class="ruby-identifier">e</span> = <span class="ruby-identifier">d</span>.<span class="ruby-identifier">root</span>
 <span class="ruby-identifier">e</span>.<span class="ruby-identifier">to_a</span> <span class="ruby-comment"># =&gt; [&lt;a/&gt;, &quot;text&quot;, &lt;b/&gt;, &quot;more&quot;, &lt;c/&gt;]</span>
 <span class="ruby-identifier">e</span>.<span class="ruby-identifier">text</span> = <span class="ruby-keyword">nil</span>
@@ -1005,7 +996,7 @@
 
 <p>Use method <a href="../../../../REXML/Element.html#method-i-get_text">Element#get_text</a> to retrieve the first text node in the element:</p>
 
-<pre class="ruby"><span class="ruby-identifier">d</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;&lt;root&gt;&lt;a/&gt;text&lt;b/&gt;more&lt;c/&gt;&lt;/root&gt;&#39;</span>)
+<pre class="ruby"><span class="ruby-identifier">d</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;</span><span class="ruby-string">&lt;root&gt;&lt;a/&gt;text&lt;b/&gt;more&lt;c/&gt;&lt;/root&gt;</span><span class="ruby-string">&#39;</span>)
 <span class="ruby-identifier">e</span> = <span class="ruby-identifier">d</span>.<span class="ruby-identifier">root</span>
 <span class="ruby-identifier">e</span>.<span class="ruby-identifier">to_a</span> <span class="ruby-comment"># =&gt; [&lt;a/&gt;, &quot;text&quot;, &lt;b/&gt;, &quot;more&quot;, &lt;c/&gt;]</span>
 <span class="ruby-identifier">e</span>.<span class="ruby-identifier">get_text</span> <span class="ruby-comment"># =&gt; &quot;text&quot;</span>
@@ -1016,10 +1007,10 @@
 
 <p>Use method <a href="../../../../REXML/Element.html#method-i-get_text">Element#get_text</a> to retrieve the first text node in a specified element:</p>
 
-<pre class="ruby"><span class="ruby-identifier">d</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span> <span class="ruby-string">&quot;&lt;root&gt;some text &lt;b&gt;this is bold!&lt;/b&gt; more text&lt;/root&gt;&quot;</span>
+<pre class="ruby"><span class="ruby-identifier">d</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span> <span class="ruby-string">&quot;</span><span class="ruby-string">&lt;root&gt;some text &lt;b&gt;this is bold!&lt;/b&gt; more text&lt;/root&gt;</span><span class="ruby-string">&quot;</span>
 <span class="ruby-identifier">e</span> = <span class="ruby-identifier">d</span>.<span class="ruby-identifier">root</span>
-<span class="ruby-identifier">e</span>.<span class="ruby-identifier">get_text</span>(<span class="ruby-string">&#39;//root&#39;</span>) <span class="ruby-comment"># =&gt; &quot;some text &quot;</span>
-<span class="ruby-identifier">e</span>.<span class="ruby-identifier">get_text</span>(<span class="ruby-string">&#39;//b&#39;</span>)    <span class="ruby-comment"># =&gt; &quot;this is bold!&quot;</span>
+<span class="ruby-identifier">e</span>.<span class="ruby-identifier">get_text</span>(<span class="ruby-string">&#39;</span><span class="ruby-string">//root</span><span class="ruby-string">&#39;</span>) <span class="ruby-comment"># =&gt; &quot;some text &quot;</span>
+<span class="ruby-identifier">e</span>.<span class="ruby-identifier">get_text</span>(<span class="ruby-string">&#39;</span><span class="ruby-string">//b</span><span class="ruby-string">&#39;</span>)    <span class="ruby-comment"># =&gt; &quot;this is bold!&quot;</span>
 </pre>
 
 <span id="label-Task-3A+Determine+Whether+the+Element+has+Text+Nodes" class="legacy-anchor"></span>
@@ -1027,9 +1018,9 @@
 
 <p>Use method <a href="../../../../REXML/Element.html#method-i-has_text-3F">Element#has_text?</a> to determine whether the element has text:</p>
 
-<pre class="ruby"><span class="ruby-identifier">e</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Element</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;foo&#39;</span>)
+<pre class="ruby"><span class="ruby-identifier">e</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Element</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;</span><span class="ruby-string">foo</span><span class="ruby-string">&#39;</span>)
 <span class="ruby-identifier">e</span>.<span class="ruby-identifier">has_text?</span> <span class="ruby-comment"># =&gt; false</span>
-<span class="ruby-identifier">e</span>.<span class="ruby-identifier">add_text</span>(<span class="ruby-string">&#39;bar&#39;</span>)
+<span class="ruby-identifier">e</span>.<span class="ruby-identifier">add_text</span>(<span class="ruby-string">&#39;</span><span class="ruby-string">bar</span><span class="ruby-string">&#39;</span>)
 <span class="ruby-identifier">e</span>.<span class="ruby-identifier">has_text?</span> <span class="ruby-comment"># =&gt; true</span>
 </pre>
 
@@ -1040,7 +1031,7 @@
 
 <p>Use method <a href="../../../../REXML/Element.html#method-i-5B-5D">Element#[]</a> to retrieve the child at a given index:</p>
 
-<pre class="ruby"><span class="ruby-identifier">d</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span> <span class="ruby-string">&#39;&gt;&lt;root&gt;&lt;a/&gt;text&lt;b/&gt;more&lt;c/&gt;&lt;/root&gt;&#39;</span>
+<pre class="ruby"><span class="ruby-identifier">d</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span> <span class="ruby-string">&#39;</span><span class="ruby-string">&gt;&lt;root&gt;&lt;a/&gt;text&lt;b/&gt;more&lt;c/&gt;&lt;/root&gt;</span><span class="ruby-string">&#39;</span>
 <span class="ruby-identifier">e</span> = <span class="ruby-identifier">d</span>.<span class="ruby-identifier">root</span>
 <span class="ruby-identifier">e</span>[<span class="ruby-value">0</span>] <span class="ruby-comment"># =&gt; &lt;a/&gt;</span>
 <span class="ruby-identifier">e</span>[<span class="ruby-value">1</span>] <span class="ruby-comment"># =&gt; &quot;text&quot;</span>
@@ -1052,12 +1043,12 @@
 
 <p>Use method <a href="../../../../REXML/Element.html#method-i-cdatas">Element#cdatas</a> to retrieve all CDATA children:</p>
 
-<pre class="ruby"><span class="ruby-identifier">xml_string</span> = <span class="ruby-identifier">&lt;&lt;-EOT</span>
-<span class="ruby-value">  &lt;root&gt;
+<pre class="ruby"><span class="ruby-identifier">xml_string</span> = <span class="ruby-string">&lt;&lt;-EOT</span>
+<span class="ruby-string">  &lt;root&gt;
     &lt;![CDATA[foo]]&gt;
     &lt;![CDATA[bar]]&gt;
   &lt;/root&gt;</span>
-<span class="ruby-identifier">EOT</span>
+<span class="ruby-string">EOT</span>
 <span class="ruby-identifier">d</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">xml_string</span>)
 <span class="ruby-identifier">d</span>.<span class="ruby-identifier">root</span>.<span class="ruby-identifier">cdatas</span> <span class="ruby-comment"># =&gt; [&quot;foo&quot;, &quot;bar&quot;]</span>
 </pre>
@@ -1067,12 +1058,12 @@
 
 <p>Use method <a href="../../../../REXML/Element.html#method-i-comments">Element#comments</a> to retrieve all comment children:</p>
 
-<pre class="ruby"><span class="ruby-identifier">xml_string</span> = <span class="ruby-identifier">&lt;&lt;-EOT</span>
-<span class="ruby-value">  &lt;root&gt;
+<pre class="ruby"><span class="ruby-identifier">xml_string</span> = <span class="ruby-string">&lt;&lt;-EOT</span>
+<span class="ruby-string">  &lt;root&gt;
     &lt;!--foo--&gt;
     &lt;!--bar--&gt;
   &lt;/root&gt;</span>
-<span class="ruby-identifier">EOT</span>
+<span class="ruby-string">EOT</span>
 <span class="ruby-identifier">d</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">xml_string</span>)
 <span class="ruby-identifier">d</span>.<span class="ruby-identifier">root</span>.<span class="ruby-identifier">comments</span>.<span class="ruby-identifier">map</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">comment</span><span class="ruby-operator">|</span> <span class="ruby-identifier">comment</span>.<span class="ruby-identifier">to_s</span> } <span class="ruby-comment"># =&gt; [&quot;foo&quot;, &quot;bar&quot;]</span>
 </pre>
@@ -1082,12 +1073,12 @@
 
 <p>Use method <a href="../../../../REXML/Element.html#method-i-instructions">Element#instructions</a> to retrieve all processing instruction children:</p>
 
-<pre class="ruby"><span class="ruby-identifier">xml_string</span> = <span class="ruby-identifier">&lt;&lt;-EOT</span>
-<span class="ruby-value">  &lt;root&gt;
+<pre class="ruby"><span class="ruby-identifier">xml_string</span> = <span class="ruby-string">&lt;&lt;-EOT</span>
+<span class="ruby-string">  &lt;root&gt;
     &lt;?target0 foo?&gt;
     &lt;?target1 bar?&gt;
   &lt;/root&gt;</span>
-<span class="ruby-identifier">EOT</span>
+<span class="ruby-string">EOT</span>
 <span class="ruby-identifier">d</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">xml_string</span>)
 <span class="ruby-identifier">instructions</span> = <span class="ruby-identifier">d</span>.<span class="ruby-identifier">root</span>.<span class="ruby-identifier">instructions</span>.<span class="ruby-identifier">map</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">instruction</span><span class="ruby-operator">|</span> <span class="ruby-identifier">instruction</span>.<span class="ruby-identifier">to_s</span> }
 <span class="ruby-identifier">instructions</span> <span class="ruby-comment"># =&gt; [&quot;&lt;?target0 foo?&gt;&quot;, &quot;&lt;?target1 bar?&gt;&quot;]</span>
@@ -1098,7 +1089,7 @@
 
 <p>Use method <a href="../../../../REXML/Element.html#method-i-texts">Element#texts</a> to retrieve all text children:</p>
 
-<pre class="ruby"><span class="ruby-identifier">xml_string</span> = <span class="ruby-string">&#39;&lt;root&gt;&lt;a/&gt;text&lt;b/&gt;more&lt;c/&gt;&lt;/root&gt;&#39;</span>
+<pre class="ruby"><span class="ruby-identifier">xml_string</span> = <span class="ruby-string">&#39;</span><span class="ruby-string">&lt;root&gt;&lt;a/&gt;text&lt;b/&gt;more&lt;c/&gt;&lt;/root&gt;</span><span class="ruby-string">&#39;</span>
 <span class="ruby-identifier">d</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">xml_string</span>)
 <span class="ruby-identifier">d</span>.<span class="ruby-identifier">root</span>.<span class="ruby-identifier">texts</span> <span class="ruby-comment"># =&gt; [&quot;text&quot;, &quot;more&quot;]</span>
 </pre>
@@ -1111,8 +1102,8 @@
 
 <p>Use method <a href="../../../../REXML/Element.html#method-i-add_namespace">Element#add_namespace</a> to add a namespace to the element:</p>
 
-<pre class="ruby"><span class="ruby-identifier">e</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Element</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;foo&#39;</span>)
-<span class="ruby-identifier">e</span>.<span class="ruby-identifier">add_namespace</span>(<span class="ruby-string">&#39;bar&#39;</span>)
+<pre class="ruby"><span class="ruby-identifier">e</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Element</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;</span><span class="ruby-string">foo</span><span class="ruby-string">&#39;</span>)
+<span class="ruby-identifier">e</span>.<span class="ruby-identifier">add_namespace</span>(<span class="ruby-string">&#39;</span><span class="ruby-string">bar</span><span class="ruby-string">&#39;</span>)
 <span class="ruby-identifier">e</span>.<span class="ruby-identifier">namespaces</span> <span class="ruby-comment"># =&gt; {&quot;xmlns&quot;=&gt;&quot;bar&quot;}</span>
 </pre>
 
@@ -1121,7 +1112,7 @@
 
 <p>Use method <a href="../../../../REXML/Element.html#method-i-delete_namespace">Element#delete_namespace</a> to remove the default namespace from the element:</p>
 
-<pre class="ruby"><span class="ruby-identifier">d</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span> <span class="ruby-string">&quot;&lt;a xmlns:foo=&#39;bar&#39; xmlns=&#39;twiddle&#39;/&gt;&quot;</span>
+<pre class="ruby"><span class="ruby-identifier">d</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span> <span class="ruby-string">&quot;</span><span class="ruby-string">&lt;a xmlns:foo=&#39;bar&#39; xmlns=&#39;twiddle&#39;/&gt;</span><span class="ruby-string">&quot;</span>
 <span class="ruby-identifier">d</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-comment"># =&gt; &quot;&lt;a xmlns:foo=&#39;bar&#39; xmlns=&#39;twiddle&#39;/&gt;&quot;</span>
 <span class="ruby-identifier">d</span>.<span class="ruby-identifier">root</span>.<span class="ruby-identifier">delete_namespace</span> <span class="ruby-comment"># =&gt; &lt;a xmlns:foo=&#39;bar&#39;/&gt;</span>
 <span class="ruby-identifier">d</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-comment"># =&gt; &quot;&lt;a xmlns:foo=&#39;bar&#39;/&gt;&quot;</span>
@@ -1132,11 +1123,11 @@
 
 <p>Use method <a href="../../../../REXML/Element.html#method-i-delete_namespace">Element#delete_namespace</a> to remove a specific namespace from the element:</p>
 
-<pre class="ruby"><span class="ruby-identifier">d</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span> <span class="ruby-string">&quot;&lt;a xmlns:foo=&#39;bar&#39; xmlns=&#39;twiddle&#39;/&gt;&quot;</span>
+<pre class="ruby"><span class="ruby-identifier">d</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span> <span class="ruby-string">&quot;</span><span class="ruby-string">&lt;a xmlns:foo=&#39;bar&#39; xmlns=&#39;twiddle&#39;/&gt;</span><span class="ruby-string">&quot;</span>
 <span class="ruby-identifier">d</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-comment"># =&gt; &quot;&lt;a xmlns:foo=&#39;bar&#39; xmlns=&#39;twiddle&#39;/&gt;&quot;</span>
 <span class="ruby-identifier">d</span>.<span class="ruby-identifier">root</span>.<span class="ruby-identifier">delete_namespace</span> <span class="ruby-comment"># =&gt; &lt;a xmlns:foo=&#39;bar&#39;/&gt;</span>
 <span class="ruby-identifier">d</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-comment"># =&gt; &quot;&lt;a xmlns:foo=&#39;bar&#39;/&gt;&quot;</span>
-<span class="ruby-identifier">d</span>.<span class="ruby-identifier">root</span>.<span class="ruby-identifier">delete_namespace</span>(<span class="ruby-string">&#39;foo&#39;</span>)
+<span class="ruby-identifier">d</span>.<span class="ruby-identifier">root</span>.<span class="ruby-identifier">delete_namespace</span>(<span class="ruby-string">&#39;</span><span class="ruby-string">foo</span><span class="ruby-string">&#39;</span>)
 <span class="ruby-identifier">d</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-comment"># =&gt; &quot;&lt;a/&gt;&quot;</span>
 </pre>
 
@@ -1145,18 +1136,18 @@
 
 <p>Use method <a href="../../../../REXML/Element.html#method-i-namespace">Element#namespace</a> to retrieve a specific namespace URI for the element:</p>
 
-<pre class="ruby"><span class="ruby-identifier">xml_string</span> = <span class="ruby-identifier">&lt;&lt;-EOT</span>
-<span class="ruby-value">  &lt;root&gt;
+<pre class="ruby"><span class="ruby-identifier">xml_string</span> = <span class="ruby-string">&lt;&lt;-EOT</span>
+<span class="ruby-string">  &lt;root&gt;
      &lt;a xmlns=&#39;1&#39; xmlns:y=&#39;2&#39;&gt;
        &lt;b/&gt;
        &lt;c xmlns:z=&#39;3&#39;/&gt;
      &lt;/a&gt;
   &lt;/root&gt;</span>
-<span class="ruby-identifier">EOT</span>
+<span class="ruby-string">EOT</span>
 <span class="ruby-identifier">d</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">xml_string</span>)
-<span class="ruby-identifier">b</span> = <span class="ruby-identifier">d</span>.<span class="ruby-identifier">elements</span>[<span class="ruby-string">&#39;//b&#39;</span>]
+<span class="ruby-identifier">b</span> = <span class="ruby-identifier">d</span>.<span class="ruby-identifier">elements</span>[<span class="ruby-string">&#39;</span><span class="ruby-string">//b</span><span class="ruby-string">&#39;</span>]
 <span class="ruby-identifier">b</span>.<span class="ruby-identifier">namespace</span>      <span class="ruby-comment"># =&gt; &quot;1&quot;</span>
-<span class="ruby-identifier">b</span>.<span class="ruby-identifier">namespace</span>(<span class="ruby-string">&#39;y&#39;</span>) <span class="ruby-comment"># =&gt; &quot;2&quot;</span>
+<span class="ruby-identifier">b</span>.<span class="ruby-identifier">namespace</span>(<span class="ruby-string">&#39;</span><span class="ruby-string">y</span><span class="ruby-string">&#39;</span>) <span class="ruby-comment"># =&gt; &quot;2&quot;</span>
 </pre>
 
 <span id="label-Task-3A+Retrieve+Namespaces" class="legacy-anchor"></span>
@@ -1164,7 +1155,7 @@
 
 <p>Use method <a href="../../../../REXML/Element.html#method-i-namespaces">Element#namespaces</a> to retrieve all namespaces for the element:</p>
 
-<pre class="ruby"><span class="ruby-identifier">xml_string</span> = <span class="ruby-string">&#39;&lt;a xmlns=&quot;foo&quot; xmlns:x=&quot;bar&quot; xmlns:y=&quot;twee&quot; z=&quot;glorp&quot;/&gt;&#39;</span>
+<pre class="ruby"><span class="ruby-identifier">xml_string</span> = <span class="ruby-string">&#39;</span><span class="ruby-string">&lt;a xmlns=&quot;foo&quot; xmlns:x=&quot;bar&quot; xmlns:y=&quot;twee&quot; z=&quot;glorp&quot;/&gt;</span><span class="ruby-string">&#39;</span>
 <span class="ruby-identifier">d</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">xml_string</span>)
 <span class="ruby-identifier">d</span>.<span class="ruby-identifier">root</span>.<span class="ruby-identifier">attributes</span>.<span class="ruby-identifier">namespaces</span> <span class="ruby-comment"># =&gt; {&quot;xmlns&quot;=&gt;&quot;foo&quot;, &quot;x&quot;=&gt;&quot;bar&quot;, &quot;y&quot;=&gt;&quot;twee&quot;}</span>
 </pre>
@@ -1174,18 +1165,18 @@
 
 <p>Use method <a href="../../../../REXML/Element.html#method-i-prefixes">Element#prefixes</a> to retrieve all prefixes (namespace names) for the element:</p>
 
-<pre class="ruby"><span class="ruby-identifier">xml_string</span> = <span class="ruby-identifier">&lt;&lt;-EOT</span>
-<span class="ruby-value">  &lt;root&gt;
+<pre class="ruby"><span class="ruby-identifier">xml_string</span> = <span class="ruby-string">&lt;&lt;-EOT</span>
+<span class="ruby-string">  &lt;root&gt;
      &lt;a xmlns:x=&#39;1&#39; xmlns:y=&#39;2&#39;&gt;
        &lt;b/&gt;
        &lt;c xmlns:z=&#39;3&#39;/&gt;
      &lt;/a&gt;
   &lt;/root&gt;</span>
-<span class="ruby-identifier">EOT</span>
-<span class="ruby-identifier">d</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">xml_string</span>, {<span class="ruby-value">compress_whitespace:</span> <span class="ruby-value">:all</span>})
-<span class="ruby-identifier">d</span>.<span class="ruby-identifier">elements</span>[<span class="ruby-string">&#39;//a&#39;</span>].<span class="ruby-identifier">prefixes</span> <span class="ruby-comment"># =&gt; [&quot;x&quot;, &quot;y&quot;]</span>
-<span class="ruby-identifier">d</span>.<span class="ruby-identifier">elements</span>[<span class="ruby-string">&#39;//b&#39;</span>].<span class="ruby-identifier">prefixes</span> <span class="ruby-comment"># =&gt; [&quot;x&quot;, &quot;y&quot;]</span>
-<span class="ruby-identifier">d</span>.<span class="ruby-identifier">elements</span>[<span class="ruby-string">&#39;//c&#39;</span>].<span class="ruby-identifier">prefixes</span> <span class="ruby-comment"># =&gt; [&quot;x&quot;, &quot;y&quot;, &quot;z&quot;]</span>
+<span class="ruby-string">EOT</span>
+<span class="ruby-identifier">d</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">xml_string</span>, {<span class="ruby-value">compress_whitespace</span><span class="ruby-value">:</span> <span class="ruby-value">:</span><span class="ruby-value">all</span>})
+<span class="ruby-identifier">d</span>.<span class="ruby-identifier">elements</span>[<span class="ruby-string">&#39;</span><span class="ruby-string">//a</span><span class="ruby-string">&#39;</span>].<span class="ruby-identifier">prefixes</span> <span class="ruby-comment"># =&gt; [&quot;x&quot;, &quot;y&quot;]</span>
+<span class="ruby-identifier">d</span>.<span class="ruby-identifier">elements</span>[<span class="ruby-string">&#39;</span><span class="ruby-string">//b</span><span class="ruby-string">&#39;</span>].<span class="ruby-identifier">prefixes</span> <span class="ruby-comment"># =&gt; [&quot;x&quot;, &quot;y&quot;]</span>
+<span class="ruby-identifier">d</span>.<span class="ruby-identifier">elements</span>[<span class="ruby-string">&#39;</span><span class="ruby-string">//c</span><span class="ruby-string">&#39;</span>].<span class="ruby-identifier">prefixes</span> <span class="ruby-comment"># =&gt; [&quot;x&quot;, &quot;y&quot;, &quot;z&quot;]</span>
 </pre>
 
 <span id="label-Iteration" class="legacy-anchor"></span>
@@ -1196,7 +1187,7 @@
 
 <p>Use method <a href="../../../../REXML/Element.html#method-i-each_element">Element#each_element</a> to iterate over element children:</p>
 
-<pre class="ruby"><span class="ruby-identifier">d</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span> <span class="ruby-string">&#39;&lt;a&gt;&lt;b&gt;b&lt;/b&gt;&lt;c&gt;b&lt;/c&gt;&lt;d&gt;d&lt;/d&gt;&lt;e/&gt;&lt;/a&gt;&#39;</span>
+<pre class="ruby"><span class="ruby-identifier">d</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span> <span class="ruby-string">&#39;</span><span class="ruby-string">&lt;a&gt;&lt;b&gt;b&lt;/b&gt;&lt;c&gt;b&lt;/c&gt;&lt;d&gt;d&lt;/d&gt;&lt;e/&gt;&lt;/a&gt;</span><span class="ruby-string">&#39;</span>
 <span class="ruby-identifier">d</span>.<span class="ruby-identifier">root</span>.<span class="ruby-identifier">each_element</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">e</span><span class="ruby-operator">|</span> <span class="ruby-identifier">p</span> <span class="ruby-identifier">e</span> }
 </pre>
 
@@ -1212,9 +1203,9 @@
 
 <p>Use method <a href="../../../../REXML/Element.html#method-i-each_element_with_attribute">Element#each_element_with_attribute</a> to iterate over element children that have a specified attribute:</p>
 
-<pre class="ruby"><span class="ruby-identifier">d</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span> <span class="ruby-string">&#39;&lt;a&gt;&lt;b id=&quot;1&quot;/&gt;&lt;c id=&quot;2&quot;/&gt;&lt;d id=&quot;1&quot;/&gt;&lt;e/&gt;&lt;/a&gt;&#39;</span>
+<pre class="ruby"><span class="ruby-identifier">d</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span> <span class="ruby-string">&#39;</span><span class="ruby-string">&lt;a&gt;&lt;b id=&quot;1&quot;/&gt;&lt;c id=&quot;2&quot;/&gt;&lt;d id=&quot;1&quot;/&gt;&lt;e/&gt;&lt;/a&gt;</span><span class="ruby-string">&#39;</span>
 <span class="ruby-identifier">a</span> = <span class="ruby-identifier">d</span>.<span class="ruby-identifier">root</span>
-<span class="ruby-identifier">a</span>.<span class="ruby-identifier">each_element_with_attribute</span>(<span class="ruby-string">&#39;id&#39;</span>) {<span class="ruby-operator">|</span><span class="ruby-identifier">e</span><span class="ruby-operator">|</span> <span class="ruby-identifier">p</span> <span class="ruby-identifier">e</span> }
+<span class="ruby-identifier">a</span>.<span class="ruby-identifier">each_element_with_attribute</span>(<span class="ruby-string">&#39;</span><span class="ruby-string">id</span><span class="ruby-string">&#39;</span>) {<span class="ruby-operator">|</span><span class="ruby-identifier">e</span><span class="ruby-operator">|</span> <span class="ruby-identifier">p</span> <span class="ruby-identifier">e</span> }
 </pre>
 
 <p>Output:</p>
@@ -1228,9 +1219,9 @@
 
 <p>Use method <a href="../../../../REXML/Element.html#method-i-each_element_with_attribute">Element#each_element_with_attribute</a> to iterate over element children that have a specified attribute and value:</p>
 
-<pre class="ruby"><span class="ruby-identifier">d</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span> <span class="ruby-string">&#39;&lt;a&gt;&lt;b id=&quot;1&quot;/&gt;&lt;c id=&quot;2&quot;/&gt;&lt;d id=&quot;1&quot;/&gt;&lt;e/&gt;&lt;/a&gt;&#39;</span>
+<pre class="ruby"><span class="ruby-identifier">d</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span> <span class="ruby-string">&#39;</span><span class="ruby-string">&lt;a&gt;&lt;b id=&quot;1&quot;/&gt;&lt;c id=&quot;2&quot;/&gt;&lt;d id=&quot;1&quot;/&gt;&lt;e/&gt;&lt;/a&gt;</span><span class="ruby-string">&#39;</span>
 <span class="ruby-identifier">a</span> = <span class="ruby-identifier">d</span>.<span class="ruby-identifier">root</span>
-<span class="ruby-identifier">a</span>.<span class="ruby-identifier">each_element_with_attribute</span>(<span class="ruby-string">&#39;id&#39;</span>, <span class="ruby-string">&#39;1&#39;</span>) {<span class="ruby-operator">|</span><span class="ruby-identifier">e</span><span class="ruby-operator">|</span> <span class="ruby-identifier">p</span> <span class="ruby-identifier">e</span> }
+<span class="ruby-identifier">a</span>.<span class="ruby-identifier">each_element_with_attribute</span>(<span class="ruby-string">&#39;</span><span class="ruby-string">id</span><span class="ruby-string">&#39;</span>, <span class="ruby-string">&#39;</span><span class="ruby-string">1</span><span class="ruby-string">&#39;</span>) {<span class="ruby-operator">|</span><span class="ruby-identifier">e</span><span class="ruby-operator">|</span> <span class="ruby-identifier">p</span> <span class="ruby-identifier">e</span> }
 </pre>
 
 <p>Output:</p>
@@ -1246,16 +1237,16 @@
 <span id="label-Context" class="legacy-anchor"></span>
 <h3 id="context"><a href="#context">Context</a></h3>
 
-<p>whitespace ignore_whitespace_nodes raw</p>
+<p>#whitespace #ignore_whitespace_nodes #raw</p>
 
 <span id="label-Other+Getters" class="legacy-anchor"></span>
 <h3 id="other-getters"><a href="#other-getters">Other Getters</a></h3>
 
-<p>document root root_node node_type xpath inspect</p>
+<p>#document #root #root_node #node_type #xpath #inspect</p>
 
 </main>
 
-<aside class="table-of-contents" role="complementary" aria-label="Table of Contents">
+<aside id="table-of-contents" class="table-of-contents" role="complementary" aria-label="Table of Contents">
   <div class="toc-sticky">
     <h3 class="toc-heading">On This Page</h3>
     <nav class="toc-nav" id="toc-nav" aria-label="Page sections">
@@ -1270,7 +1261,7 @@
 
   <div class="footer-bottom">
     <p>
-      Generated by <a href="https://ruby.github.io/rdoc/">RDoc 7.2.0</a>
+      Generated by <a href="https://ruby.github.io/rdoc/">RDoc 8.0.0</a>
       using the Aliki theme by <a href="http://st0012.dev">Stan Lo</a>
     </p>
   </div>
