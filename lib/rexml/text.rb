@@ -11,11 +11,11 @@ module REXML
   class Text < Child
     include Comparable
     # The order in which the substitutions occur
-    SPECIALS = [ /&(?!#?[\w-]+;)/u, /</u, />/u, /"/u, /'/u, /\r/u ]
-    SUBSTITUTES = ['&amp;', '&lt;', '&gt;', '&quot;', '&apos;', '&#13;']
+    SPECIALS = [ /&(?!#?[\w-]+;)/u, /</u, />/u, /"/u, /'/u, /\r/u ].freeze
+    SUBSTITUTES = ['&amp;', '&lt;', '&gt;', '&quot;', '&apos;', '&#13;'].freeze
     # Characters which are substituted in written strings
-    SLAICEPS = [ '<', '>', '"', "'", '&' ]
-    SETUTITSBUS = [ /&lt;/u, /&gt;/u, /&quot;/u, /&apos;/u, /&amp;/u ]
+    SLAICEPS = [ '<', '>', '"', "'", '&' ].freeze
+    SETUTITSBUS = [ /&lt;/u, /&gt;/u, /&quot;/u, /&apos;/u, /&amp;/u ].freeze
 
     # If +raw+ is true, then REXML leaves the value alone
     attr_accessor :raw
@@ -27,7 +27,7 @@ module REXML
       (0x20..0xD7FF),
       (0xE000..0xFFFD),
       (0x10000..0x10FFFF)
-    ]
+    ].freeze
 
     VALID_XML_CHARS = Regexp.new('^['+
       VALID_CHAR.map { |item|
@@ -38,7 +38,7 @@ module REXML
           [item.first, '-'.ord, item.last].pack('UUU').force_encoding('utf-8')
         end
       }.join +
-    ']*$')
+    ']*$').freeze
 
     # Constructor
     # +arg+ if a String, the content is set to the String.  If a Text,
