@@ -100,6 +100,7 @@ module REXMLTests
 
       assert_equal(%w[2 7 9], XPath.match(doc, "/a/anchor/preceding-sibling::b[position() = 3]").map {|n| n.attributes["id"] })
       assert_equal(%w[2 3 4 7 8 9 10 11], XPath.match(doc, "/a/anchor/preceding-sibling::b[position() <= 3]").map {|n| n.attributes["id"] })
+      assert_equal(%w[2 3 4 7 8 9 10 11], XPath.match(doc, "/a/anchor/preceding-sibling::b[4 > position()]").map {|n| n.attributes["id"] })
       assert_equal(%w[1 2 3 4 5 6 7 8], XPath.match(doc, "/a/anchor/preceding-sibling::b[position() >= 4]").map {|n| n.attributes["id"] })
       assert_equal(%w[2 7 a2], XPath.match(doc, "/a/anchor/preceding-sibling::*[@id][position() = 3]").map {|n| n.attributes["id"] })
       assert_equal(%w[2 3 4 7 8 9 a2 10 11], XPath.match(doc, "/a/anchor/preceding-sibling::*[@id][position() <= 3]").map {|n| n.attributes["id"] })
@@ -108,9 +109,22 @@ module REXMLTests
       assert_equal(%w[7 12], XPath.match(doc, "/a/anchor/following-sibling::b[position() = 3]").map {|n| n.attributes["id"] })
       assert_equal(%w[5 6 7 10 11 12], XPath.match(doc, "/a/anchor/following-sibling::b[position() <= 3]").map {|n| n.attributes["id"] })
       assert_equal(%w[8 9 10 11 12], XPath.match(doc, "/a/anchor/following-sibling::b[position() >= 4]").map {|n| n.attributes["id"] })
+      assert_equal(%w[8 9 10 11 12], XPath.match(doc, "/a/anchor/following-sibling::b[3 < position()]").map {|n| n.attributes["id"] })
       assert_equal(%w[7 a3], XPath.match(doc, "/a/anchor/following-sibling::*[@id][position() = 3]").map {|n| n.attributes["id"] })
       assert_equal(%w[5 6 7 10 11 a3 12], XPath.match(doc, "/a/anchor/following-sibling::*[@id][position() <= 3]").map {|n| n.attributes["id"] })
       assert_equal(%w[8 9 a2 10 11 a3 12], XPath.match(doc, "/a/anchor/following-sibling::*[@id][position() >= 4]").map {|n| n.attributes["id"] })
+
+      assert_equal(%w[1], XPath.match(doc, "/a/anchor/preceding-sibling::b[last()]").map {|n| n.attributes["id"] })
+      assert_equal(%w[4], XPath.match(doc, "/a/anchor/preceding-sibling::b[last() - 3]").map {|n| n.attributes["id"] })
+      assert_equal(%w[4 5 6 7 8 9 10 11], XPath.match(doc, "/a/anchor/preceding-sibling::b[position() <= last() - 3]").map {|n| n.attributes["id"] })
+      assert_equal(%w[4 5 6 7 8 9 10 11], XPath.match(doc, "/a/anchor/preceding-sibling::b[last() - 2 > position()]").map {|n| n.attributes["id"] })
+      assert_equal(%w[1 2 3 4 5], XPath.match(doc, "/a/anchor/preceding-sibling::b[position() >= last() - 4]").map {|n| n.attributes["id"] })
+
+      assert_equal(%w[12], XPath.match(doc, "/a/anchor/following-sibling::b[last()]").map {|n| n.attributes["id"] })
+      assert_equal(%w[9], XPath.match(doc, "/a/anchor/following-sibling::b[last() - 3]").map {|n| n.attributes["id"] })
+      assert_equal(%w[5 6 7 8 9], XPath.match(doc, "/a/anchor/following-sibling::b[position() <= last() - 3]").map {|n| n.attributes["id"] })
+      assert_equal(%w[8 9 10 11 12], XPath.match(doc, "/a/anchor/following-sibling::b[position() >= last() - 4]").map {|n| n.attributes["id"] })
+      assert_equal(%w[8 9 10 11 12], XPath.match(doc, "/a/anchor/following-sibling::b[last() - 5 < position()]").map {|n| n.attributes["id"] })
     end
   end
 end
