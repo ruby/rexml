@@ -57,5 +57,5 @@ Gem::Specification.new do |spec|
   spec.rdoc_options.concat(["--main", "README.md"])
   spec.extra_rdoc_files = rdoc_files
 
-  spec.required_ruby_version = '>= 2.5.0'
+  spec.required_ruby_version = '>= 2.6.0'
 end
