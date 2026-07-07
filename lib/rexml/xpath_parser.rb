@@ -347,6 +347,8 @@ module REXML
     # TODO: Decide whether REXML should warn, raise, or ignore when a variable value is invalid.
     def coerce_variable(value)
       case value
+      when REXML::Node
+        [value]
       when Array
         value.grep(REXML::Node).uniq
       when Numeric, String, true, false

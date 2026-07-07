@@ -1592,6 +1592,8 @@ EOF
       assert_equal([b, c, d], XPath.match(doc, '$x', nil, { 'x' => [d, c, b] }))
       assert_equal([a], XPath.match(doc, '//*[name()=$x]', nil, { 'x' => 'a' }))
       assert_equal([c, e], XPath.match(doc, '$x/*', nil, { 'x' => [b, d] }))
+      assert_equal([c], XPath.match(doc, '$x/*', nil, { 'x' => [b] }))
+      assert_equal([c], XPath.match(doc, '$x/*', nil, { 'x' => b }))
     end
 
     def test_variables_invalid_predicates
