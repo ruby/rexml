@@ -98,6 +98,9 @@ module REXMLTests
         </a>
       XML
 
+      assert_equal(%w[1 3 4 5 7 9 11], XPath.match(doc, "/a/anchor/preceding-sibling::b[@id][position() mod 4 = 1]").map {|n| n.attributes["id"] })
+      assert_equal(%w[5 9 10 12], XPath.match(doc, "/a/anchor/following-sibling::b[@id][position() mod 4 = 1]").map {|n| n.attributes["id"] })
+
       assert_equal(%w[2 7 9], XPath.match(doc, "/a/anchor/preceding-sibling::b[position() = 3]").map {|n| n.attributes["id"] })
       assert_equal(%w[2 3 4 7 8 9 10 11], XPath.match(doc, "/a/anchor/preceding-sibling::b[position() <= 3]").map {|n| n.attributes["id"] })
       assert_equal(%w[2 3 4 7 8 9 10 11], XPath.match(doc, "/a/anchor/preceding-sibling::b[4 > position()]").map {|n| n.attributes["id"] })

@@ -93,6 +93,56 @@ module REXMLTests
       assert_equal( 1, XPath.match( doc, "/descendant::z[1]" ).size )
     end
 
+    def test_descendant_positions
+      positions = ['[1]', '[position() <= 2]', '[last()]', '[position() mod 3 = 1]']
+      anchors = {
+        '//a[@id=1]'  => [%w[2], %w[2 3], %w[18], %w[2 5 8 10 13 16]],
+        '//b[@id=2]'  => [%w[3], %w[3 4], %w[4], %w[3]],
+        '//e[@id=9]'  => [%w[10], %w[10 11], %w[14], %w[10 13]],
+        '//f[@id=12]' => [%w[13], %w[13], %w[13], %w[13]],
+      }
+      anchors.each do |anchor_xpath, expecteds|
+        positions.zip(expecteds).each do |position, expected|
+          xpath = "#{anchor_xpath}/descendant::*#{position}"
+          assert_equal(expected, XPath.match(@@doc, xpath).map {|n| n['id'] }, xpath)
+        end
+      end
+      expecteds = anchors.values.transpose.map {|ids| ids.flatten.uniq.sort_by(&:to_i) }
+      positions.zip(expecteds).each do |position, expected|
+        xpath = "(#{anchors.keys.join('|')})/descendant::*#{position}"
+        assert_equal(expected, XPath.match(@@doc, xpath).map {|n| n['id'] }, xpath)
+      end
+    end
+
+    def test_descendant_or_self_positions
+      positions = ['[1]', '[position() <= 2]', '[last()]', '[position() mod 3 = 1]']
+      anchors = {
+        '//a[@id=1]'  => [%w[1], %w[1 2], %w[18], %w[1 4 7 9 12 15 18]],
+        '//b[@id=2]'  => [%w[2], %w[2 3], %w[4], %w[2]],
+        '//e[@id=9]'  => [%w[9], %w[9 10], %w[14], %w[9 12]],
+        '//f[@id=12]' => [%w[12], %w[12 13], %w[13], %w[12]],
+      }
+      anchors.each do |anchor_xpath, expecteds|
+        positions.zip(expecteds).each do |position, expected|
+          xpath = "#{anchor_xpath}/descendant-or-self::*#{position}"
+          assert_equal(expected, XPath.match(@@doc, xpath).map {|n| n['id'] }, xpath)
+        end
+      end
+      expecteds = anchors.values.transpose.map {|ids| ids.flatten.uniq.sort_by(&:to_i) }
+      positions.zip(expecteds).each do |position, expected|
+        xpath = "(#{anchors.keys.join('|')})/descendant-or-self::*#{position}"
+        assert_equal(expected, XPath.match(@@doc, xpath).map {|n| n['id'] }, xpath)
+      end
+    end
+
+    def test_following_positions
+      anchor_xpath = '(//b[@id=2]|//e[@id=9]|//f[@id=12])'
+      assert_equal(%w[5 14 15], XPath.match(@@doc, "#{anchor_xpath}/following::*[1]").map {|n| n['id'] })
+      assert_equal(%w[5 6 14 15 16], XPath.match(@@doc, "#{anchor_xpath}/following::*[position()<=2]").map {|n| n['id'] })
+      assert_equal(%w[18], XPath.match(@@doc, "#{anchor_xpath}/following::*[last()]").map {|n| n['id'] })
+      assert_equal(%w[5 8 10 13 14 15 16 17 18], XPath.match(@@doc, "#{anchor_xpath}/following::*[position() mod 3 = 1]").map {|n| n['id'] })
+    end
+
     def test_root
       source = "<a><b/></a>"
       doc = Document.new( source )
