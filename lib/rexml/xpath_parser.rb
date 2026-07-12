@@ -63,6 +63,9 @@ module REXML
       @namespaces = nil
       @variables = {}
       @functions = FunctionsClass.new
+      @attlist_mappings = nil
+      @document = nil
+      @element_namespaces_cache = {}
       @nest = 0
       @strict = strict
     end
@@ -85,18 +88,12 @@ module REXML
         node = node.first
       end
 
-      document = node.document
-      if document
-        document.__send__(:enable_cache) do
-          match( path_stack, node )
-        end
-      else
-        match( path_stack, node )
-      end
+      match(path_stack, node)
     end
 
     def get_first path, node
       path_stack = @parser.parse( path )
+      @document = node.document
       first( path_stack, node )
     end
 
@@ -152,6 +149,7 @@ module REXML
 
 
     def match(path_stack, node)
+      @document = node.document
       nodeset = [node]
       result = expr(path_stack, nodeset)
       case result
@@ -167,20 +165,45 @@ module REXML
       @strict
     end
 
-    # Returns a String namespace for a node, given a prefix
+    # Returns a String namespace for a prefix used in xpath
     # The rules are:
     #
     #  1. Use the supplied namespace mapping first.
-    #  2. If no mapping was supplied, use the context node to look up the namespace
-    def get_namespace( node, prefix )
+    #  2. If no mapping was supplied, use the context node to look up the namespace as a fallback.
+    def get_xpath_namespace(node, prefix)
       if @namespaces
         @namespaces[prefix] || ''
+      elsif node.node_type == :element
+        element_namespace_lookup(node, prefix)
       else
-        return node.namespace( prefix ) if node.node_type == :element
         ''
       end
     end
 
+    # Returns attribute's namespace URI while caching the
+    # intermediate result to speed up retrieval of namespaces
+    def attribute_namespace(attribute)
+      attribute.prefix == '' ? '' : element_namespace_lookup(attribute.element, attribute.prefix)
+    end
+
+    # Return element's namespace URI while caching the
+    # intermediate result to speed up retrieval of namespaces
+    def element_namespace(element)
+      element._namespace_internal(element_namespaces(element))
+    end
+
+    # Returns a hash of namespaces for the given element while caching the
+    # intermediate result to speed up retrieval of namespaces
+    def element_namespaces(element)
+      @attlist_mappings ||= @document&.doctype&._attlist_mappings || {}
+      element._calculate_namespaces(@element_namespaces_cache, @attlist_mappings)
+    end
+
+    # Returns namespace of the prefix in the context of the element,
+    # while caching the intermediate result to speed up retrieval of namespaces
+    def element_namespace_lookup(element, prefix)
+      element._namespace_lookup_internal(prefix, element_namespaces(element))
+    end
 
     # Expr takes a stack of path elements and a set of nodes (either a Parent
     # or an Array and returns an Array of matching nodes
@@ -641,20 +664,20 @@ module REXML
               node.name == name
             elsif prefix.empty?
               if strict?
-                node.name == name and node.namespace == ""
+                node.name == name and element_namespace(node) == ""
               else
-                node.name == name and node.namespace == get_namespace(node, prefix)
+                node.name == name and element_namespace(node) == get_xpath_namespace(node, prefix)
               end
             else
-              node.name == name and node.namespace == get_namespace(node, prefix)
+              node.name == name and element_namespace(node) == get_xpath_namespace(node, prefix)
             end
           when :attribute
             if prefix.nil?
               node.name == name
             elsif prefix.empty?
-              node.name == name and node.namespace == ""
+              node.name == name and attribute_namespace(node) == ""
             else
-              node.name == name and node.namespace == get_namespace(node.element, prefix)
+              node.name == name and attribute_namespace(node) == get_xpath_namespace(node.element, prefix)
             end
           else
             false
@@ -665,11 +688,11 @@ module REXML
         ->(node) do
           case node.node_type
           when :element
-            namespaces = @namespaces || node.namespaces
-            node.namespace == namespaces[prefix]
+            namespaces = @namespaces || element_namespaces(node)
+            element_namespace(node) == namespaces[prefix]
           when :attribute
-            namespaces = @namespaces || node.element.namespaces
-            node.namespace == namespaces[prefix]
+            namespaces = @namespaces || element_namespaces(node.element)
+            attribute_namespace(node) == namespaces[prefix]
           else
             false
           end

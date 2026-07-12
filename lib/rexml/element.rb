@@ -588,12 +588,7 @@ module REXML
     #   d.elements['//c'].namespaces # => {"x"=>"1", "y"=>"2", "z"=>"3"}
     #
     def namespaces
-      namespaces_cache = document&.__send__(:namespaces_cache)
-      if namespaces_cache
-        namespaces_cache[self] ||= calculate_namespaces
-      else
-        calculate_namespaces
-      end
+      _calculate_namespaces
     end
 
     # :call-seq:
@@ -618,13 +613,10 @@ module REXML
     #
     def namespace(prefix=nil)
       if prefix.nil?
-        prefix = prefix()
+        _namespace_internal
+      else
+        _namespace_lookup_internal(prefix)
       end
-      prefix = (prefix == '') ? 'xmlns' : prefix.delete_prefix("xmlns:")
-      ns = namespaces[prefix]
-
-      ns = '' if ns.nil? and prefix == 'xmlns'
-      ns
     end
 
     # :call-seq:
@@ -1507,14 +1499,31 @@ module REXML
       formatter.write( self, output )
     end
 
-    private
-    def calculate_namespaces
-      if parent
-        parent.namespaces.merge(attributes.namespaces)
-      else
-        attributes.namespaces
-      end
+    # Returns namespace of the element
+    def _namespace_internal(namespaces = _calculate_namespaces) # :nodoc:
+      _namespace_lookup_internal(prefix, namespaces)
     end
+
+    # Lookup namespace for the given prefix in the context of the element
+    def _namespace_lookup_internal(prefix, namespaces = _calculate_namespaces) # :nodoc:
+      prefix = (prefix == '') ? 'xmlns' : prefix.delete_prefix("xmlns:")
+      ns = namespaces[prefix]
+      ns = '' if ns.nil? and prefix == 'xmlns'
+      ns
+    end
+
+    def _calculate_namespaces(cache_hash = nil, attlist_mappings = nil) # :nodoc:
+      return cache_hash[self] if cache_hash && cache_hash.key?(self)
+
+      attlist_mappings ||= document&.doctype&._attlist_mappings || {}
+      inherited_namespaces = parent ? parent._calculate_namespaces(cache_hash, attlist_mappings) : {}
+      attr_namespaces = attributes._calculate_namespaces(attlist_mappings)
+      namespaces = attr_namespaces.any? ? inherited_namespaces.merge(attr_namespaces) : inherited_namespaces
+      cache_hash[self] = namespaces if cache_hash
+      namespaces
+    end
+
+    private
 
     def __to_xpath_helper node
       rv = node.expanded_name.clone
@@ -2297,7 +2306,7 @@ module REXML
     #   attrs.get_attribute('nosuch')        # => nil
     #
     def get_attribute( name )
-      fetch(name, nil) || attlist_attributes&.[](name)
+      fetch(name, nil) || attlist_attributes[name]
     end
 
     # :call-seq:
@@ -2372,11 +2381,7 @@ module REXML
     #   d.root.attributes.namespaces # => {"xmlns"=>"foo", "x"=>"bar", "y"=>"twee"}
     #
     def namespaces
-      namespaces = {}
-      each_effective_attribute do |attribute|
-        namespaces[attribute.name] = attribute.value if attribute.namespace_declaration?
-      end
-      namespaces
+      _calculate_namespaces
     end
 
     # :call-seq:
@@ -2507,16 +2512,24 @@ module REXML
       end
     end
 
+    def _calculate_namespaces(attlist_mappings = nil) # :nodoc:
+      namespaces = {}
+      each_effective_attribute(attlist_mappings) do |attribute|
+        namespaces[attribute.name] = attribute.value if attribute.namespace_declaration?
+      end
+      namespaces
+    end
+
     private
 
     # Iterates over the attributes of the element and those in the DTD.
     # If the element has an attribute with the same name as one in the DTD,
     # the element's attribute takes precedence.
-    def each_effective_attribute
-      return to_enum(__method__) unless block_given?
-      attr = attlist_attributes
-      attr = attr ? attr.merge(self) : self
-      attr.each_value do |attribute|
+    def each_effective_attribute(attlist_mappings = nil)
+      return to_enum(__method__, attlist_mappings) unless block_given?
+      attlist = attlist_attributes(attlist_mappings)
+      attributes = attlist.empty? ? self : attlist.merge(self)
+      attributes.each_value do |attribute|
         yield attribute
       end
     end
@@ -2524,16 +2537,16 @@ module REXML
     alias each_own_attribute each_value
     private :each_own_attribute
 
-    def attlist_attributes
-      doctype = @element.document&.doctype
-      if doctype
-        expn = @element.is_a?(Document) ? doctype.name : @element.expanded_name
-        doctype.attribute_declarations_of(expn).map do |key, value|
-          attr = Attribute.new(key, value)
-          attr.element = @element
-          [key, attr]
-        end.to_h
-      end
+    def attlist_attributes(attlist_mappings = nil)
+      attlist_mappings ||= @element.document&.doctype&._attlist_mappings
+      return {} unless attlist_mappings
+
+      expn = @element.is_a?(Document) ? @element.doctype&.name : @element.expanded_name
+      attlist_mappings[expn]&.map do |key, value|
+        attr = Attribute.new(key, value)
+        attr.element = @element
+        [key, attr]
+      end.to_h
     end
   end
 end
