@@ -1600,6 +1600,12 @@ EOF
       assert_equal([c], XPath.match(doc, '$x/*', nil, { 'x' => b }))
     end
 
+    def test_attribute_variables
+      doc = Document.new("<a a='1'><b a='1'/></a>")
+      a1, a2 = XPath.match(doc, '//attribute::*')
+      assert_equal([a1, a2], XPath.match(doc, '$x', nil, { 'x' => [a2, a1] }))
+    end
+
     def test_variables_invalid_predicates
       doc = Document.new("<root/>")
       # Predicates after variable may be invalid depending on variable type.
