@@ -317,7 +317,10 @@ module REXML
             expr(arg, nodeset, target_context)
           end
           @functions.context = target_context
-          return @functions.send(func_name, *args)
+          result = @functions.send(func_name, *args)
+          return result if path_stack.empty?
+
+          nodeset = apply_remaining_predicates(path_stack, result)
         when :group
           sub_expression = path_stack.shift
           result = expr(sub_expression, nodeset, context)
