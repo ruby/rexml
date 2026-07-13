@@ -1584,9 +1584,13 @@ EOF
     def test_variables
       doc = Document.new("<a><b><c/></b><d><e/></d></a>")
       a, b, c, d, e = XPath.match(doc, '//*')
-      assert_equal([''], XPath.match(doc, '$x', nil, {}))
+      assert_raise(NameError) { XPath.match(doc, '$y', nil, { 'x' => 1 }) }
+      assert_raise(TypeError) { XPath.match(doc, '$x', nil, { 'x' => Object.new }) }
+      assert_raise(TypeError) { XPath.match(doc, '/a', nil, { 'x' => Object.new }) }
+      assert_raise(TypeError) { XPath.match(doc, '$x', nil, { 'x' => [a, Object.new, b] }) }
+      assert_equal([1], XPath.match(doc, '$x', nil, { 'x' => 1 }))
+      assert_equal([false], XPath.match(doc, '$x', nil, { 'x' => false }))
       assert_equal([''], XPath.match(doc, '$x', nil, { 'x' => nil }))
-      assert_equal([''], XPath.match(doc, '$x', nil, { 'x' => Object.new }))
       assert_equal([3], XPath.match(doc, 'count($x)', nil, { 'x' => [b, c, d] }))
       assert_equal([3], XPath.match(doc, 'count($x)', nil, { 'x' => [a, a, b, b, c, c] }))
       assert_equal([b, c, d], XPath.match(doc, '$x', nil, { 'x' => [d, c, b] }))

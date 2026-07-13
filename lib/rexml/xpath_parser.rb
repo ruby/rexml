@@ -72,7 +72,8 @@ module REXML
       @namespaces = namespaces
     end
 
-    def variables=( vars={} )
+    def variables=(vars)
+      vars = vars.transform_values { |v| coerce_variable(v) }
       @functions.variables = vars
       @variables = vars
     end
@@ -244,7 +245,8 @@ module REXML
           end
         when :variable
           var_name = path_stack.shift
-          value = coerce_variable(@variables[var_name])
+          value = @variables[var_name]
+          raise NameError, "Undefined variable: $#{var_name}" if value.nil?
           return value if path_stack.empty?
 
           nodeset = apply_remaining_predicates(path_stack, value)
@@ -346,18 +348,23 @@ module REXML
       end
     end
 
-    # Coerces a variable value to a type that can be used in XPath expressions.
-    # TODO: Decide whether REXML should warn, raise, or ignore when a variable value is invalid.
+    # Validates and coerces a variable value to a type that can be used in XPath expressions.
     def coerce_variable(value)
       case value
       when REXML::Node
         [value]
       when Array
-        value.grep(REXML::Node).uniq
+        unless value.all?(REXML::Node)
+          raise TypeError, 'Array variable must contain only REXML::Node objects'
+        end
+        value.uniq
       when Numeric, String, true, false
         value
-      else
+      when nil
+        # Convert to an empty string for backward compatibility
         ""
+      else
+        raise TypeError, "Unsupported variable type: #{value.class}"
       end
     end
 
