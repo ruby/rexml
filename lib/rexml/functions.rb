@@ -7,7 +7,7 @@ module REXML
   # (2) all method calls from XML will have "-" replaced with "_".
   # Therefore, in XML, "local-name()" is identical (and actually becomes)
   # "local_name()"
-  class FunctionsClass
+  class FunctionsClass # :nodoc:
     @@available_functions = {}
 
     def initialize
@@ -434,5 +434,5 @@ module REXML
   # Using this singleton instance may cause thread-safety issues
   # especially when accessing variables, context and namespace_context.
   # Consider instantiating your own FunctionsClass object.
-  Functions = FunctionsClass.new
+  Functions = FunctionsClass.new # :nodoc:
 end

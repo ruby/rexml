@@ -8,7 +8,7 @@ require_relative 'encoding'
 
 module REXML
   if StringScanner::Version < "1.0.0"
-    module StringScannerCheckScanString
+    module StringScannerCheckScanString # :nodoc:
       refine StringScanner do
         def check(pattern)
           pattern = /#{Regexp.escape(pattern)}/ if pattern.is_a?(String)
@@ -35,7 +35,7 @@ module REXML
   end
 
   # Generates Source-s.  USE THIS CLASS.
-  class SourceFactory
+  class SourceFactory # :nodoc:
     # Generates a Source object
     # @param arg Either a String, or an IO
     # @return a Source, or nil if a bad argument was given
@@ -58,7 +58,7 @@ module REXML
 
   # A Source can be searched for patterns, and wraps buffers and other
   # objects and provides consumption of text
-  class Source
+  class Source # :nodoc: all
     include Encoding
     # The line number of the last consumed text
     attr_reader :line
@@ -217,7 +217,7 @@ module REXML
 
   # A Source that wraps an IO.  See the Source class for method
   # documentation
-  class IOSource < Source
+  class IOSource < Source # :nodoc:
     #attr_reader :block_size
 
     # block_size has been deprecated

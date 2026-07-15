@@ -2,7 +2,7 @@
 require_relative 'encoding'
 
 module REXML
-  class Output
+  class Output # :nodoc:
     include Encoding
 
     attr_reader :encoding

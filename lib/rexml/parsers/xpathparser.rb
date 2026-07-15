@@ -9,7 +9,7 @@ module REXML
     # for this class.  Believe me.  You don't want to poke around in here.
     # There is strange, dark magic at work in this code.  Beware.  Go back!  Go
     # back while you still can!
-    class XPathParser
+    class XPathParser # :nodoc:
       include XMLTokens
       LITERAL    = /^'([^']*)'|^"([^"]*)"/u
 
