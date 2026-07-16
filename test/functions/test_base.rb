@@ -13,6 +13,16 @@ module REXMLTests
       REXML::Functions.context = nil
     end
 
+    def test_available_functions
+      expected_functions = %w[
+        boolean ceiling concat contains count false floor id lang last local-name
+        name namespace-uri normalize-space not number position round starts-with
+        string string-length substring substring-after substring-before sum translate true
+      ]
+      methods = REXML::FunctionsClass.class_variable_get(:@@available_functions).keys.sort
+      assert_equal expected_functions, methods.map { |m| m.to_s.tr('_', '-') }.sort
+    end
+
     def test_functions
       # trivial text() test
       # confuse-a-function

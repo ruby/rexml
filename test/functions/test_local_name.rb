@@ -16,7 +16,7 @@ module REXMLTests
   <x:child/>
 </root>
       XML
-      node_set = document.root.children
+      node_set = document.root.elements.to_a
       assert_equal("child", REXML::Functions.local_name(node_set))
     end
 
@@ -27,12 +27,26 @@ module REXMLTests
   <x:child2/>
 </root>
       XML
-      node_set = document.root.children
+      node_set = document.root.elements.to_a
       assert_equal("child1", REXML::Functions.local_name(node_set))
     end
 
     def test_nonexistent
       assert_equal("", REXML::Functions.local_name([]))
+    end
+
+    def test_attribute
+      document = REXML::Document.new("<root xmlns:x='http://example.com/x/' x:attr='value' />")
+      node_set = [document.root.attributes.to_a.last]
+      assert_equal("attr", REXML::Functions.local_name(node_set))
+    end
+
+    def test_non_named
+      document = REXML::Document.new("<root>text<!-- comment --><a/></root>")
+      children = document.root.children
+      assert_equal("", REXML::Functions.local_name([children[0]]))
+      assert_equal("", REXML::Functions.local_name([children[1]]))
+      assert_equal("", REXML::Functions.local_name(children))
     end
 
     def test_context
