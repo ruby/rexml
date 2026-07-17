@@ -245,8 +245,7 @@ module REXML
           end
         when :variable
           var_name = path_stack.shift
-          value = @variables[var_name]
-          raise NameError, "Undefined variable: $#{var_name}" if value.nil?
+          value = @variables.key?(var_name) ? @variables[var_name] : ""
           return value if path_stack.empty?
 
           nodeset = apply_remaining_predicates(path_stack, value)

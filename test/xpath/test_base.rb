@@ -1584,7 +1584,7 @@ EOF
     def test_variables
       doc = Document.new("<a><b><c/></b><d><e/></d></a>")
       a, b, c, d, e = XPath.match(doc, '//*')
-      assert_raise(NameError) { XPath.match(doc, '$y', nil, { 'x' => 1 }) }
+      assert_equal([''], XPath.match(doc, '$y', nil, { 'x' => 1 }))
       assert_raise(TypeError) { XPath.match(doc, '$x', nil, { 'x' => Object.new }) }
       assert_raise(TypeError) { XPath.match(doc, '/a', nil, { 'x' => Object.new }) }
       assert_raise(TypeError) { XPath.match(doc, '$x', nil, { 'x' => [a, Object.new, b] }) }
