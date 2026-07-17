@@ -107,7 +107,7 @@ module REXML
     end
 
     def []=( variable_name, value )
-      @variables[ variable_name ] = value
+      @variables[variable_name] = coerce_variable(value)
     end
 
 
