@@ -75,7 +75,8 @@ module REXML
       @namespaces = namespaces
     end
 
-    def variables=( vars={} )
+    def variables=(vars)
+      vars = vars.transform_values { |v| coerce_variable(v) }
       @functions.variables = vars
       @variables = vars
     end
@@ -103,7 +104,7 @@ module REXML
     end
 
     def []=( variable_name, value )
-      @variables[ variable_name ] = value
+      @variables[variable_name] = coerce_variable(value)
     end
 
 
@@ -267,8 +268,10 @@ module REXML
           end
         when :variable
           var_name = path_stack.shift
-          return @variables[var_name]
+          value = @variables.key?(var_name) ? @variables[var_name] : ""
+          return value if path_stack.empty?
 
+          nodeset = apply_remaining_predicates(path_stack, value)
         when :eq, :neq, :lt, :lteq, :gt, :gteq
           left = expr( path_stack.shift, nodeset.dup, context )
           right = expr( path_stack.shift, nodeset.dup, context )
@@ -338,19 +341,16 @@ module REXML
             expr(arg, nodeset, target_context)
           end
           @functions.context = target_context
-          return @functions.send(func_name, *args)
+          result = @functions.send(func_name, *args)
+          return result if path_stack.empty?
+
+          nodeset = apply_remaining_predicates(path_stack, result)
         when :group
           sub_expression = path_stack.shift
           result = expr(sub_expression, nodeset, context)
-          if result.is_a?(Array)
-            # If result is a nodeset, apply following predicates
-            path_stack.unshift(:node)
-            nodeset = step(path_stack) do
-              [:iterate_nodesets, [XPathParser.sort(result)]]
-            end
-          else
-            return result
-          end
+          return result if path_stack.empty?
+
+          nodeset = apply_remaining_predicates(path_stack, result)
         else
           raise "[BUG] Unexpected path: <#{op.inspect}>: <#{path_stack.inspect}>"
         end
@@ -358,6 +358,34 @@ module REXML
       return nodeset
     ensure
       leave(:expr, path_stack, nodeset) if @debug
+    end
+
+    def apply_remaining_predicates(path_stack, value)
+      value = [] unless value.is_a?(Array)
+      path_stack.unshift(:node)
+      step(path_stack) do
+        [:iterate_nodesets, [XPathParser.sort(value)]]
+      end
+    end
+
+    # Validates and coerces a variable value to a type that can be used in XPath expressions.
+    def coerce_variable(value)
+      case value
+      when REXML::Node
+        [value]
+      when Array
+        unless value.all?(REXML::Node)
+          raise TypeError, 'Array variable must contain only REXML::Node objects'
+        end
+        value.uniq
+      when Numeric, String, true, false
+        value
+      when nil
+        # Convert to an empty string for backward compatibility
+        ""
+      else
+        raise TypeError, "Unsupported variable type: #{value.class}"
+      end
     end
 
     # Determines if a predicate expression is dependent on the position of nodes.
