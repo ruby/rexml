@@ -338,8 +338,6 @@ module REXML
     end
 
     def apply_remaining_predicates(path_stack, value)
-      # If evaluated value is not a nodeset, treat it as an empty nodeset.
-      # TODO: Decide whether REXML should raise type error or keep this behavior.
       value = [] unless value.is_a?(Array)
       path_stack.unshift(:node)
       step(path_stack) do
