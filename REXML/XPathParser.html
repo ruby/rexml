@@ -801,7 +801,7 @@
 
 
           <div class="method-source-code" id="sort-source">
-            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/xpath_parser.rb, line 787</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/xpath_parser.rb, line 815</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">sort</span>(<span class="ruby-identifier">array_of_nodes</span>)
   <span class="ruby-keyword">return</span> <span class="ruby-identifier">array_of_nodes</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">array_of_nodes</span>.<span class="ruby-identifier">size</span> <span class="ruby-operator">&lt;=</span> <span class="ruby-value">1</span>
 
@@ -883,9 +883,9 @@
 
 
           <div class="method-source-code" id="5B-5D-3D-source">
-            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/xpath_parser.rb, line 105</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/xpath_parser.rb, line 106</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">[]=</span>( <span class="ruby-identifier">variable_name</span>, <span class="ruby-identifier">value</span> )
-  <span class="ruby-ivar">@variables</span>[ <span class="ruby-identifier">variable_name</span> ] = <span class="ruby-identifier">value</span>
+  <span class="ruby-ivar">@variables</span>[<span class="ruby-identifier">variable_name</span>] = <span class="ruby-identifier">coerce_variable</span>(<span class="ruby-identifier">value</span>)
 <span class="ruby-keyword">end</span></pre>
           </div>
 
@@ -932,7 +932,7 @@
 
 
           <div class="method-source-code" id="first-source">
-            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/xpath_parser.rb, line 114</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/xpath_parser.rb, line 115</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">first</span>( <span class="ruby-identifier">path_stack</span>, <span class="ruby-identifier">node</span> )
   <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">path</span>.<span class="ruby-identifier">size</span> <span class="ruby-operator">==</span> <span class="ruby-value">0</span>
 
@@ -1015,7 +1015,7 @@
 
 
           <div class="method-source-code" id="get_first-source">
-            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/xpath_parser.rb, line 94</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/xpath_parser.rb, line 95</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">get_first</span> <span class="ruby-identifier">path</span>, <span class="ruby-identifier">node</span>
   <span class="ruby-identifier">path_stack</span> = <span class="ruby-ivar">@parser</span>.<span class="ruby-identifier">parse</span>( <span class="ruby-identifier">path</span> )
   <span class="ruby-ivar">@document</span> = <span class="ruby-identifier">node</span>.<span class="ruby-identifier">document</span>
@@ -1066,7 +1066,7 @@
 
 
           <div class="method-source-code" id="match-source">
-            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/xpath_parser.rb, line 151</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/xpath_parser.rb, line 152</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">match</span>(<span class="ruby-identifier">path_stack</span>, <span class="ruby-identifier">node</span>)
   <span class="ruby-ivar">@document</span> = <span class="ruby-identifier">node</span>.<span class="ruby-identifier">document</span>
   <span class="ruby-identifier">nodeset</span> = [<span class="ruby-identifier">node</span>]
@@ -1173,7 +1173,7 @@
 
 
           <div class="method-source-code" id="parse-source">
-            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/xpath_parser.rb, line 83</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/xpath_parser.rb, line 84</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">parse</span> <span class="ruby-identifier">path</span>, <span class="ruby-identifier">node</span>
   <span class="ruby-identifier">path_stack</span> = <span class="ruby-ivar">@parser</span>.<span class="ruby-identifier">parse</span>( <span class="ruby-identifier">path</span> )
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">node</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Array</span>)
@@ -1229,7 +1229,7 @@
 
 
           <div class="method-source-code" id="predicate-source">
-            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/xpath_parser.rb, line 100</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/xpath_parser.rb, line 101</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">predicate</span> <span class="ruby-identifier">path</span>, <span class="ruby-identifier">node</span>
   <span class="ruby-identifier">path_stack</span> = <span class="ruby-ivar">@parser</span>.<span class="ruby-identifier">parse</span>( <span class="ruby-identifier">path</span> )
   <span class="ruby-identifier">match</span>( <span class="ruby-identifier">path_stack</span>, <span class="ruby-identifier">node</span> )
@@ -1260,7 +1260,7 @@
               <div class="method-heading">
                 <a href="#method-i-variables-3D" title="Link to this method">
                   <span class="method-name">variables=</span>
-                  <span class="method-args">(vars={})</span>
+                  <span class="method-args">(vars)</span>
                 </a>
               </div>
 
@@ -1280,7 +1280,8 @@
 
           <div class="method-source-code" id="variables-3D-source">
             <pre class="ruby"><span class="ruby-comment"># File lib/rexml/xpath_parser.rb, line 78</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">variables=</span>( <span class="ruby-identifier">vars</span>={} )
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">variables=</span>(<span class="ruby-identifier">vars</span>)
+  <span class="ruby-identifier">vars</span> = <span class="ruby-identifier">vars</span>.<span class="ruby-identifier">transform_values</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">v</span><span class="ruby-operator">|</span> <span class="ruby-identifier">coerce_variable</span>(<span class="ruby-identifier">v</span>) }
   <span class="ruby-ivar">@functions</span>.<span class="ruby-identifier">variables</span> = <span class="ruby-identifier">vars</span>
   <span class="ruby-ivar">@variables</span> = <span class="ruby-identifier">vars</span>
 <span class="ruby-keyword">end</span></pre>
