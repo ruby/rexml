@@ -79,9 +79,9 @@ module REXML
       node =
         case node_set
         when nil
-          node = @context[:node]
+          @context[:node]
         when Array
-          node = XPathParser.sort(node_set).first
+          XPathParser.sort(node_set).first
         end
       node if node.respond_to?(:namespace)
     end
