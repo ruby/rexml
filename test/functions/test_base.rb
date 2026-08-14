@@ -126,6 +126,8 @@ module REXMLTests
     def test_substring_angrez
       testString = REXML::Functions::substring_after("helloworld","hello")
       assert_equal( 'world', testString )
+      testString = REXML::Functions::substring_after("helloworld","hel.o")
+      assert_equal( '', testString )
     end
 
     def test_translate

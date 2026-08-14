@@ -205,8 +205,13 @@ module REXML
     # Kouhei fixed this too
     def substring_after( string, test )
       ruby_string = string(string)
-      return $1 if ruby_string =~ /#{test}(.*)/
-      ""
+      ruby_test = string(test)
+      ruby_index = ruby_string.index(ruby_test)
+      if ruby_index.nil?
+        ""
+      else
+        ruby_string[(ruby_index + ruby_test.length)..-1]
+      end
     end
 
     # Take equal portions of Mike Stok and Sean Russell; mix
