@@ -804,6 +804,11 @@ module REXML
       trace(:leave, tag, *args)
     end
 
+    # Sorts before any real child index, so that the attributes of an element
+    # come after the element itself but before its children.
+    ATTRIBUTE_POSITION = -1
+    private_constant :ATTRIBUTE_POSITION
+
     # Reorders an array of nodes so that they are in document order
     # It tries to do this efficiently.
     #
@@ -815,23 +820,52 @@ module REXML
     def self.sort(array_of_nodes)
       return array_of_nodes if array_of_nodes.size <= 1
 
-      new_arry = []
-      array_of_nodes.each { |node|
-        node_idx = []
-        np = node.node_type == :attribute ? node.element : node
-        while np.parent and np.parent.node_type == :element
-          node_idx << np.parent.index( np )
-          np = np.parent
+      attribute_positions = {}.compare_by_identity
+      array_of_nodes.sort_by do |node|
+        if node.node_type == :attribute
+          # An attribute has no place of its own in the child tree, so its key
+          # extends that of the element carrying it.
+          ancestor_indexes(node.element) <<
+            ATTRIBUTE_POSITION << attribute_position(node, attribute_positions)
+        else
+          ancestor_indexes(node)
         end
-        new_arry << [ node_idx.reverse, node ]
-      }
-      ordered = new_arry.sort_by do |index, node|
-        index
-      end
-      ordered.collect do |_index, node|
-        node
       end
     end
+
+    # The index the node holds under each of its ancestors, outermost first.
+    def self.ancestor_indexes(node)
+      indexes = []
+      # Walk all the way up to the document.  Stopping at the root element
+      # would leave every node outside it, and the root itself, with the same
+      # empty key, and ties are then broken arbitrarily.
+      while (parent = node.parent)
+        indexes << parent.index(node)
+        node = parent
+      end
+      indexes.reverse!
+    end
+    private_class_method :ancestor_indexes
+
+    # Where the attribute sits among the attributes of its element.  XPath 1.0
+    # leaves the relative order of those implementation dependent, but document
+    # order is a total ordering, so they do need one; this keeps them in the
+    # order they were written in.
+    def self.attribute_position(attribute, positions)
+      position = positions[attribute]
+      return position if position
+
+      # Index the whole attribute list at once.  A node set often holds every
+      # attribute of an element, and looking each one up on its own would make
+      # sorting quadratic in the number of attributes.
+      i = 0
+      attribute.element.attributes.each_attribute do |other|
+        positions[other] ||= i
+        i += 1
+      end
+      positions[attribute]
+    end
+    private_class_method :attribute_position
 
     # Scanner for descendant-or-self axis
     def descendant_or_self(nodeset, tester, selector)

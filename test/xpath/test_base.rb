@@ -1,8 +1,11 @@
 # frozen_string_literal: false
 
+require "core_assertions"
+
 module REXMLTests
   class TestXPathBase < Test::Unit::TestCase
     include Helper::Fixture
+    include Test::Unit::CoreAssertions
     include REXML
     SOURCE = <<-EOF
       <a id='1'>
@@ -1564,6 +1567,83 @@ EOF
       assert_equal(["e"], XPath.match(doc, "//e[preceding-sibling::* = '1']").map(&:name))
     end
 
+    def test_document_order_top_level_nodes
+      # Nodes outside the root element are still ordered against each other.
+      doc = Document.new("<!--c1--><?pi1?><root/><!--c2--><?pi2?>")
+      nodes = XPath.match(doc, "//comment() | //processing-instruction()")
+      assert_equal(["c1", "pi1", "c2", "pi2"], stringify_nodes(nodes))
+    end
+
+    def test_document_order_descendant_or_self_from_document
+      doc = Document.new("<!--c1--><root><a/></root><!--c2-->")
+      nodes = XPath.match(doc, "/descendant-or-self::node()")
+      assert_equal(["DOC", "c1", "root", "a", "c2"], stringify_nodes(nodes))
+    end
+
+    # The relative order of attributes of one element is implementation
+    # dependent, but they must all come after the element that carries them,
+    # whichever way round the union is written.
+    def test_document_order_element_precedes_its_attributes
+      doc = Document.new("<root><a x='1' y='2'/></root>")
+      nodes = XPath.match(doc, "//a | //a/@*")
+      assert_equal("a", nodes.first.name)
+      assert_equal(["x", "y"], nodes[1..-1].collect(&:name).sort)
+    end
+
+    def test_document_order_element_precedes_its_attributes_reversed_union
+      doc = Document.new("<root><a x='1' y='2'/></root>")
+      nodes = XPath.match(doc, "//a/@* | //a")
+      assert_equal("a", nodes.first.name)
+      assert_equal(["x", "y"], nodes[1..-1].collect(&:name).sort)
+    end
+
+    def test_document_order_attributes_of_one_element
+      # XPath 1.0 leaves the relative order of the attributes of one element
+      # implementation dependent, but document order is a total ordering, so it
+      # still has to be decided: they come out in the order they were written.
+      names = ("a".."z").to_a.reverse
+      # Give each attribute its own value, so that string(), which takes the
+      # first node in document order, tells the order apart too.
+      attributes = names.collect {|name| "#{name}='#{name}'" }.join(" ")
+      doc = Document.new("<root><a #{attributes}/></root>")
+      assert_equal(names, XPath.match(doc, "//a/@*").collect(&:name))
+      assert_equal("z", XPath.match(doc, "string(//a/@*)").first)
+    end
+
+    def test_linear_performance_sort_attributes_of_one_element
+      # Ordering the attributes of an element must not cost more than the
+      # attributes themselves: one whole list is indexed per element, not one
+      # list per attribute.
+      omit("This is fragile on JRuby") if RUBY_ENGINE == "jruby"
+      seq = [1000, 5000, 10000, 20000, 40000]
+      build = ->(n) {
+        attributes = n.times.collect {|i| "a#{i}='1'" }.join(" ")
+        Document.new("<root><a #{attributes}/></root>")
+      }
+      assert_linear_performance(seq, rehearsal: 10, pre: build) do |doc|
+        XPath.match(doc, "//a/@*")
+      end
+    end
+
+    def test_document_order_attribute_axis_across_elements
+      # Attributes of different elements are ordered by their owning elements.
+      doc = Document.new("<root><a id='1'/><a id='2'/><a id='3'/></root>")
+      assert_equal(["1", "2", "3"], XPath.match(doc, "//a/@id").collect(&:value))
+    end
+
+    def test_document_order_mixed_text_and_element_children
+      source = <<-XML
+<root>
+  <a>before0<b/>after0</a>
+  <a>before1<c/>after1</a>
+</root>
+      XML
+      doc = Document.new(source)
+      nodes = XPath.match(doc, "//a/node()")
+      assert_equal(["before0", "b", "after0", "before1", "c", "after1"],
+                   stringify_nodes(nodes))
+    end
+
     def test_unimplemented_id_should_not_contaminate_nil
       doc = Document.new("<root/>")
       assert_equal([], XPath.match(doc, 'id("foo")'))
@@ -1606,6 +1686,22 @@ EOF
       assert_includes(valid_result, actual)
       actual = (XPath.match(doc, '($x)[1<2]', nil, { 'x' => 42 }) rescue :exception)
       assert_includes(valid_result, actual)
+    end
+
+    private
+
+    # Stringifies each node of a node set, whichever kind of node it is, so
+    # that document order can be asserted on a set that mixes them.
+    def stringify_nodes(nodes)
+      nodes.collect do |node|
+        case node.node_type
+        when :document then "DOC"
+        when :comment then node.string
+        when :processing_instruction then node.target
+        when :text then node.value
+        else node.name
+        end
+      end
     end
   end
 end
