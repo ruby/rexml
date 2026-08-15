@@ -1269,20 +1269,22 @@ module REXML
     #   document.root.attribute("x", "a") # => a:x='a:x'
     #
     def attribute( name, namespace=nil )
-      prefix = namespaces.key(namespace) if namespace
-      prefix = nil if prefix == 'xmlns'
+      prefixes = namespace ? namespaces.select {|_, uri| uri == namespace}.keys : []
 
-      ret_val =
-        attributes.get_attribute( prefix ? "#{prefix}:#{name}" : name )
+      # An unprefixed attribute is used for the default namespace.
+      if prefixes.empty? or prefixes.include?( 'xmlns' )
+        ret_val = attributes.get_attribute( name )
+        return ret_val unless ret_val.nil?
+      end
 
-      return ret_val unless ret_val.nil?
-      return nil if prefix.nil?
+      # The same namespace URI may be bound to multiple prefixes.
+      prefixes.each do |prefix|
+        next if prefix == 'xmlns'
+        ret_val = attributes.get_attribute( "#{prefix}:#{name}" )
+        return ret_val unless ret_val.nil?
+      end
 
-      # now check that prefix'es namespace is not the same as the
-      # default namespace
-      return nil unless ( namespaces[ prefix ] == namespaces[ 'xmlns' ] )
-
-      attributes.get_attribute( name )
+      nil
     end
 
     # :call-seq:
