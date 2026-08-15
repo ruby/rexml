@@ -62,27 +62,32 @@ module REXML
         node.children.each { |child| write( child, output ) }
       end
 
+      # Descendants are walked with an explicit stack instead of recursion so
+      # that a deeply nested document doesn't exhaust the machine stack. A
+      # String on the stack is an end tag waiting to be written.
       def write_element( node, output )
-        output << "<#{node.expanded_name}"
-
-        node.attributes.to_a.map { |a|
-          Hash === a ? a.values : a
-        }.flatten.sort_by {|attr| attr.name}.each do |attr|
-          output << " "
-          attr.write( output )
-        end unless node.attributes.empty?
-
-        if node.children.empty?
-          output << " " if @ie_hack
-          output << "/"
-        else
-          output << ">"
-          node.children.each { |child|
-            write( child, output )
-          }
-          output << "</#{node.expanded_name}"
+        stack = [node]
+        until stack.empty?
+          current = stack.pop
+          case current
+          when String
+            output << current
+          when Element
+            output << "<#{current.expanded_name}"
+            write_element_attributes( current, output )
+            children = current.children
+            if children.empty?
+              output << " " if @ie_hack
+              output << "/>"
+            else
+              output << ">"
+              stack << "</#{current.expanded_name}>"
+              stack.concat(children.reverse)
+            end
+          else
+            write( current, output )
+          end
         end
-        output << ">"
       end
 
       def write_text( node, output )
@@ -110,6 +115,17 @@ module REXML
           output << content
         end
         output << Instruction::STOP
+      end
+
+      private
+      def write_element_attributes( node, output )
+        return if node.attributes.empty?
+        node.attributes.to_a.map { |a|
+          Hash === a ? a.values : a
+        }.flatten.sort_by {|attr| attr.name}.each do |attr|
+          output << " "
+          attr.write( output )
+        end
       end
     end
   end
