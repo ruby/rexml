@@ -865,7 +865,7 @@
 
 
           <div class="method-source-code" id="write_cdata-source">
-            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/formatters/default.rb, line 98</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/formatters/default.rb, line 103</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">write_cdata</span>( <span class="ruby-identifier">node</span>, <span class="ruby-identifier">output</span> )
   <span class="ruby-identifier">output</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-constant">CData</span><span class="ruby-operator">::</span><span class="ruby-constant">START</span>
   <span class="ruby-identifier">output</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">node</span>.<span class="ruby-identifier">to_s</span>
@@ -916,7 +916,7 @@
 
 
           <div class="method-source-code" id="write_comment-source">
-            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/formatters/default.rb, line 92</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/formatters/default.rb, line 97</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">write_comment</span>( <span class="ruby-identifier">node</span>, <span class="ruby-identifier">output</span> )
   <span class="ruby-identifier">output</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-constant">Comment</span><span class="ruby-operator">::</span><span class="ruby-constant">START</span>
   <span class="ruby-identifier">output</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">node</span>.<span class="ruby-identifier">to_s</span>
@@ -1016,28 +1016,30 @@
 
 
           <div class="method-source-code" id="write_element-source">
-            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/formatters/default.rb, line 65</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/formatters/default.rb, line 68</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">write_element</span>( <span class="ruby-identifier">node</span>, <span class="ruby-identifier">output</span> )
-  <span class="ruby-identifier">output</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-string">&quot;</span><span class="ruby-string">&lt;</span><span class="ruby-string">#{</span><span class="ruby-identifier">node</span>.<span class="ruby-identifier">expanded_name</span><span class="ruby-string">}</span><span class="ruby-string">&quot;</span>
-
-  <span class="ruby-identifier">node</span>.<span class="ruby-identifier">attributes</span>.<span class="ruby-identifier">to_a</span>.<span class="ruby-identifier">map</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">a</span><span class="ruby-operator">|</span>
-    <span class="ruby-constant">Hash</span> === <span class="ruby-identifier">a</span> <span class="ruby-operator">?</span> <span class="ruby-identifier">a</span>.<span class="ruby-identifier">values</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">a</span>
-  }.<span class="ruby-identifier">flatten</span>.<span class="ruby-identifier">sort_by</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">attr</span><span class="ruby-operator">|</span> <span class="ruby-identifier">attr</span>.<span class="ruby-identifier">name</span>}.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">attr</span><span class="ruby-operator">|</span>
-    <span class="ruby-identifier">output</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-string">&quot;</span><span class="ruby-string"> </span><span class="ruby-string">&quot;</span>
-    <span class="ruby-identifier">attr</span>.<span class="ruby-identifier">write</span>( <span class="ruby-identifier">output</span> )
-  <span class="ruby-keyword">end</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">node</span>.<span class="ruby-identifier">attributes</span>.<span class="ruby-identifier">empty?</span>
-
-  <span class="ruby-keyword">if</span> <span class="ruby-identifier">node</span>.<span class="ruby-identifier">children</span>.<span class="ruby-identifier">empty?</span>
-    <span class="ruby-identifier">output</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-string">&quot;</span><span class="ruby-string"> </span><span class="ruby-string">&quot;</span> <span class="ruby-keyword">if</span> <span class="ruby-ivar">@ie_hack</span>
-    <span class="ruby-identifier">output</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-string">&quot;</span><span class="ruby-string">/</span><span class="ruby-string">&quot;</span>
-  <span class="ruby-keyword">else</span>
-    <span class="ruby-identifier">output</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-string">&quot;</span><span class="ruby-string">&gt;</span><span class="ruby-string">&quot;</span>
-    <span class="ruby-identifier">node</span>.<span class="ruby-identifier">children</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">child</span><span class="ruby-operator">|</span>
-      <span class="ruby-identifier">write</span>( <span class="ruby-identifier">child</span>, <span class="ruby-identifier">output</span> )
-    }
-    <span class="ruby-identifier">output</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-string">&quot;</span><span class="ruby-string">&lt;/</span><span class="ruby-string">#{</span><span class="ruby-identifier">node</span>.<span class="ruby-identifier">expanded_name</span><span class="ruby-string">}</span><span class="ruby-string">&quot;</span>
+  <span class="ruby-identifier">stack</span> = [<span class="ruby-identifier">node</span>]
+  <span class="ruby-keyword">until</span> <span class="ruby-identifier">stack</span>.<span class="ruby-identifier">empty?</span>
+    <span class="ruby-identifier">current</span> = <span class="ruby-identifier">stack</span>.<span class="ruby-identifier">pop</span>
+    <span class="ruby-keyword">case</span> <span class="ruby-identifier">current</span>
+    <span class="ruby-keyword">when</span> <span class="ruby-constant">String</span>
+      <span class="ruby-identifier">output</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">current</span>
+    <span class="ruby-keyword">when</span> <span class="ruby-constant">Element</span>
+      <span class="ruby-identifier">output</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-string">&quot;</span><span class="ruby-string">&lt;</span><span class="ruby-string">#{</span><span class="ruby-identifier">current</span>.<span class="ruby-identifier">expanded_name</span><span class="ruby-string">}</span><span class="ruby-string">&quot;</span>
+      <span class="ruby-identifier">write_element_attributes</span>( <span class="ruby-identifier">current</span>, <span class="ruby-identifier">output</span> )
+      <span class="ruby-identifier">children</span> = <span class="ruby-identifier">current</span>.<span class="ruby-identifier">children</span>
+      <span class="ruby-keyword">if</span> <span class="ruby-identifier">children</span>.<span class="ruby-identifier">empty?</span>
+        <span class="ruby-identifier">output</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-string">&quot;</span><span class="ruby-string"> </span><span class="ruby-string">&quot;</span> <span class="ruby-keyword">if</span> <span class="ruby-ivar">@ie_hack</span>
+        <span class="ruby-identifier">output</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-string">&quot;</span><span class="ruby-string">/&gt;</span><span class="ruby-string">&quot;</span>
+      <span class="ruby-keyword">else</span>
+        <span class="ruby-identifier">output</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-string">&quot;</span><span class="ruby-string">&gt;</span><span class="ruby-string">&quot;</span>
+        <span class="ruby-identifier">stack</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-string">&quot;</span><span class="ruby-string">&lt;/</span><span class="ruby-string">#{</span><span class="ruby-identifier">current</span>.<span class="ruby-identifier">expanded_name</span><span class="ruby-string">}</span><span class="ruby-string">&gt;</span><span class="ruby-string">&quot;</span>
+        <span class="ruby-identifier">stack</span>.<span class="ruby-identifier">concat</span>(<span class="ruby-identifier">children</span>.<span class="ruby-identifier">reverse</span>)
+      <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">else</span>
+      <span class="ruby-identifier">write</span>( <span class="ruby-identifier">current</span>, <span class="ruby-identifier">output</span> )
+    <span class="ruby-keyword">end</span>
   <span class="ruby-keyword">end</span>
-  <span class="ruby-identifier">output</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-string">&quot;</span><span class="ruby-string">&gt;</span><span class="ruby-string">&quot;</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
 
@@ -1046,7 +1048,7 @@
         <div class="method-description">
 
 
-          
+          <p>Descendants are walked with an explicit stack instead of recursion so that a deeply nested document doesn’t exhaust the machine stack. A String on the stack is an end tag waiting to be written.</p>
 
 
         </div>
@@ -1084,7 +1086,7 @@
 
 
           <div class="method-source-code" id="write_instruction-source">
-            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/formatters/default.rb, line 104</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/formatters/default.rb, line 109</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">write_instruction</span>( <span class="ruby-identifier">node</span>, <span class="ruby-identifier">output</span> )
   <span class="ruby-identifier">output</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-constant">Instruction</span><span class="ruby-operator">::</span><span class="ruby-constant">START</span>
   <span class="ruby-identifier">output</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">node</span>.<span class="ruby-identifier">target</span>
@@ -1140,7 +1142,7 @@
 
 
           <div class="method-source-code" id="write_text-source">
-            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/formatters/default.rb, line 88</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/formatters/default.rb, line 93</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">write_text</span>( <span class="ruby-identifier">node</span>, <span class="ruby-identifier">output</span> )
   <span class="ruby-identifier">output</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">node</span>.<span class="ruby-identifier">to_s</span>()
 <span class="ruby-keyword">end</span></pre>
