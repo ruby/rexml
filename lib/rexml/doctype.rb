@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+# frozen_string_literal: true
 require_relative "parent"
 require_relative "parseexception"
 require_relative "namespace"
@@ -288,7 +288,7 @@ module REXML
 
     def to_s
       context = parent&.context
-      notation = "<!NOTATION #{@name}"
+      notation = +"<!NOTATION #{@name}"
       reference_writer = ReferenceWriter.new(@middle, @public, @system, context)
       reference_writer.write(notation)
       notation << ">"
