@@ -1268,6 +1268,22 @@ module REXML
     #   document.root.attribute("x")      # => x='x'
     #   document.root.attribute("x", "a") # => a:x='a:x'
     #
+    # This method matches +namespace+ loosely.  An unprefixed attribute is
+    # taken to be in the default namespace, and a +namespace+ that no prefix
+    # is bound to falls back to the unprefixed attribute:
+    #
+    #   xml_string = "<root xmlns='ns0' a='a'/>"
+    #   document = REXML::Document.new(xml_string)
+    #   document.root.attribute("a", "ns0")    # => a='a'
+    #   document.root.attribute("a", "nosuch") # => a='a'
+    #
+    # The XML Namespaces specification says that an unprefixed attribute has
+    # no namespace, so neither of those should match.
+    # REXML::Attributes#get_attribute_ns follows the XML Namespaces
+    # specification and returns +nil+ for both; use it when you need the
+    # namespace to be matched strictly.  The looser behavior here is kept for
+    # compatibility.
+    #
     def attribute( name, namespace=nil )
       prefix = namespaces.key(namespace) if namespace
       prefix = nil if prefix == 'xmlns'
@@ -2492,6 +2508,18 @@ module REXML
     #   attrs = ele.attributes
     #   attrs.get_attribute_ns('http://foo', 'att')    # => foo:att='1'
     #   attrs.get_attribute_ns('http://foo', 'nosuch') # => nil
+    #
+    # +namespace+ is matched as the XML Namespaces specification defines it,
+    # where an unprefixed attribute has no namespace of its own and does not
+    # take the default one:
+    #
+    #   xml_string = "<root xmlns='ns0' a='a'/>"
+    #   attrs = REXML::Document.new(xml_string).root.attributes
+    #   attrs.get_attribute_ns('ns0', 'a') # => nil
+    #   attrs.get_attribute_ns('', 'a')    # => a='a'
+    #
+    # REXML::Element#attribute matches more loosely and returns the attribute
+    # for both of those.
     #
     def get_attribute_ns(namespace, name)
       each_effective_attribute.find do |attribute|
