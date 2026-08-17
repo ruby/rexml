@@ -1466,7 +1466,7 @@
 
 
           <div class="method-source-code" id="add_attribute-source">
-            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/element.rb, line 1328</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/element.rb, line 1344</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">add_attribute</span>( <span class="ruby-identifier">key</span>, <span class="ruby-identifier">value</span>=<span class="ruby-keyword">nil</span> )
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">key</span>.<span class="ruby-identifier">kind_of?</span> <span class="ruby-constant">Attribute</span>
     <span class="ruby-ivar">@attributes</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">key</span>
@@ -1549,7 +1549,7 @@
 
 
           <div class="method-source-code" id="add_attributes-source">
-            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/element.rb, line 1359</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/element.rb, line 1375</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">add_attributes</span> <span class="ruby-identifier">hash</span>
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">hash</span>.<span class="ruby-identifier">kind_of?</span> <span class="ruby-constant">Hash</span>
     <span class="ruby-identifier">hash</span>.<span class="ruby-identifier">each_pair</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">key</span>, <span class="ruby-identifier">value</span><span class="ruby-operator">|</span> <span class="ruby-ivar">@attributes</span>[<span class="ruby-identifier">key</span>] = <span class="ruby-identifier">value</span> }
@@ -1880,7 +1880,7 @@
 
 
           <div class="method-source-code" id="attribute-source">
-            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/element.rb, line 1271</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/element.rb, line 1287</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">attribute</span>( <span class="ruby-identifier">name</span>, <span class="ruby-identifier">namespace</span>=<span class="ruby-keyword">nil</span> )
   <span class="ruby-identifier">prefix</span> = <span class="ruby-identifier">namespaces</span>.<span class="ruby-identifier">key</span>(<span class="ruby-identifier">namespace</span>) <span class="ruby-keyword">if</span> <span class="ruby-identifier">namespace</span>
   <span class="ruby-identifier">prefix</span> = <span class="ruby-keyword">nil</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">prefix</span> <span class="ruby-operator">==</span> <span class="ruby-string">&#39;</span><span class="ruby-string">xmlns</span><span class="ruby-string">&#39;</span>
@@ -1930,6 +1930,16 @@
 <span class="ruby-identifier">document</span>.<span class="ruby-identifier">root</span>.<span class="ruby-identifier">attribute</span>(<span class="ruby-string">&quot;</span><span class="ruby-string">x</span><span class="ruby-string">&quot;</span>, <span class="ruby-string">&quot;</span><span class="ruby-string">a</span><span class="ruby-string">&quot;</span>) <span class="ruby-comment"># =&gt; a:x=&#39;a:x&#39;</span>
 </pre>
 
+<p>This method matches <code>namespace</code> loosely.  An unprefixed attribute is taken to be in the default namespace, and a <code>namespace</code> that no prefix is bound to falls back to the unprefixed attribute:</p>
+
+<pre class="ruby"><span class="ruby-identifier">xml_string</span> = <span class="ruby-string">&quot;</span><span class="ruby-string">&lt;root xmlns=&#39;ns0&#39; a=&#39;a&#39;/&gt;</span><span class="ruby-string">&quot;</span>
+<span class="ruby-identifier">document</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">xml_string</span>)
+<span class="ruby-identifier">document</span>.<span class="ruby-identifier">root</span>.<span class="ruby-identifier">attribute</span>(<span class="ruby-string">&quot;</span><span class="ruby-string">a</span><span class="ruby-string">&quot;</span>, <span class="ruby-string">&quot;</span><span class="ruby-string">ns0</span><span class="ruby-string">&quot;</span>)    <span class="ruby-comment"># =&gt; a=&#39;a&#39;</span>
+<span class="ruby-identifier">document</span>.<span class="ruby-identifier">root</span>.<span class="ruby-identifier">attribute</span>(<span class="ruby-string">&quot;</span><span class="ruby-string">a</span><span class="ruby-string">&quot;</span>, <span class="ruby-string">&quot;</span><span class="ruby-string">nosuch</span><span class="ruby-string">&quot;</span>) <span class="ruby-comment"># =&gt; a=&#39;a&#39;</span>
+</pre>
+
+<p>The XML Namespaces specification says that an unprefixed attribute has no namespace, so neither of those should match. <a href="Attributes.html#method-i-get_attribute_ns"><code>REXML::Attributes#get_attribute_ns</code></a> follows the XML Namespaces specification and returns <code>nil</code> for both; use it when you need the namespace to be matched strictly.  The looser behavior here is kept for compatibility.</p>
+
 
         </div>
 
@@ -1969,7 +1979,7 @@
 
 
           <div class="method-source-code" id="cdatas-source">
-            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/element.rb, line 1403</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/element.rb, line 1419</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">cdatas</span>
   <span class="ruby-identifier">find_all</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">child</span><span class="ruby-operator">|</span> <span class="ruby-identifier">child</span>.<span class="ruby-identifier">kind_of?</span> <span class="ruby-constant">CData</span> }.<span class="ruby-identifier">freeze</span>
 <span class="ruby-keyword">end</span></pre>
@@ -2090,7 +2100,7 @@
 
 
           <div class="method-source-code" id="comments-source">
-            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/element.rb, line 1424</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/element.rb, line 1440</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">comments</span>
   <span class="ruby-identifier">find_all</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">child</span><span class="ruby-operator">|</span> <span class="ruby-identifier">child</span>.<span class="ruby-identifier">kind_of?</span> <span class="ruby-constant">Comment</span> }.<span class="ruby-identifier">freeze</span>
 <span class="ruby-keyword">end</span></pre>
@@ -2155,7 +2165,7 @@
 
 
           <div class="method-source-code" id="delete_attribute-source">
-            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/element.rb, line 1378</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/element.rb, line 1394</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">delete_attribute</span>(<span class="ruby-identifier">key</span>)
   <span class="ruby-identifier">attr</span> = <span class="ruby-ivar">@attributes</span>.<span class="ruby-identifier">get_attribute</span>(<span class="ruby-identifier">key</span>)
   <span class="ruby-identifier">attr</span>.<span class="ruby-identifier">remove</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">attr</span>.<span class="ruby-identifier">nil?</span>
@@ -2850,7 +2860,7 @@
 
 
           <div class="method-source-code" id="has_attributes-3F-source">
-            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/element.rb, line 1298</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/element.rb, line 1314</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">has_attributes?</span>
   <span class="ruby-operator">!</span><span class="ruby-ivar">@attributes</span>.<span class="ruby-identifier">empty?</span>
 <span class="ruby-keyword">end</span></pre>
@@ -3169,7 +3179,7 @@
 
 
           <div class="method-source-code" id="instructions-source">
-            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/element.rb, line 1445</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/element.rb, line 1461</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">instructions</span>
   <span class="ruby-identifier">find_all</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">child</span><span class="ruby-operator">|</span> <span class="ruby-identifier">child</span>.<span class="ruby-identifier">kind_of?</span> <span class="ruby-constant">Instruction</span> }.<span class="ruby-identifier">freeze</span>
 <span class="ruby-keyword">end</span></pre>
@@ -3989,7 +3999,7 @@
 
 
           <div class="method-source-code" id="texts-source">
-            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/element.rb, line 1461</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/element.rb, line 1477</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">texts</span>
   <span class="ruby-identifier">find_all</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">child</span><span class="ruby-operator">|</span> <span class="ruby-identifier">child</span>.<span class="ruby-identifier">kind_of?</span> <span class="ruby-constant">Text</span> }.<span class="ruby-identifier">freeze</span>
 <span class="ruby-keyword">end</span></pre>
@@ -4114,7 +4124,7 @@
 
 
           <div class="method-source-code" id="write-source">
-            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/element.rb, line 1487</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/element.rb, line 1503</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">write</span>(<span class="ruby-identifier">output</span>=<span class="ruby-identifier">$stdout</span>, <span class="ruby-identifier">indent</span>=-<span class="ruby-value">1</span>, <span class="ruby-identifier">transitive</span>=<span class="ruby-keyword">false</span>, <span class="ruby-identifier">ie_hack</span>=<span class="ruby-keyword">false</span>)
   <span class="ruby-constant">Kernel</span>.<span class="ruby-identifier">warn</span>(<span class="ruby-string">&quot;</span><span class="ruby-string">#{</span><span class="ruby-keyword">self</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">name</span><span class="ruby-string">}</span><span class="ruby-string">#write is deprecated.  See REXML::Formatters</span><span class="ruby-string">&quot;</span>, <span class="ruby-value">uplevel</span><span class="ruby-value">:</span> <span class="ruby-value">1</span>)
   <span class="ruby-identifier">formatter</span> = <span class="ruby-keyword">if</span> <span class="ruby-identifier">indent</span> <span class="ruby-operator">&gt;</span> -<span class="ruby-value">1</span>
