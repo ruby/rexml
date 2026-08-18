@@ -23,8 +23,21 @@ module REXMLTests
         root.attribute("c", "url2"),
         root.attribute("d", "url2"),
       ]
-      assert_equal(["a", "ns1:b", "ns2:c", "ns3:d"],
+      assert_equal(["ns1:a", "ns1:b", "ns2:c", "ns3:d"],
                    attributes.collect {|attribute| attribute&.expanded_name})
+    end
+
+    def test_attribute_prefixed_match_independent_of_declaration_order
+      sources = [
+        "<root xmlns:ns1='url1' xmlns='url1' a='A' ns1:a='NS1A'/>",
+        "<root a='A' xmlns:ns1='url1' xmlns='url1' ns1:a='NS1A'/>",
+        "<root xmlns:ns1='url1' xmlns='url1' ns1:a='NS1A' a='A'/>",
+        "<root xmlns='url1' xmlns:ns1='url1' ns1:a='NS1A' a='A'/>",
+      ]
+      expanded_names = sources.collect do |source|
+        REXML::Document.new(source).root.attribute("a", "url1").expanded_name
+      end
+      assert_equal(["ns1:a"] * 4, expanded_names)
     end
   end
 end
