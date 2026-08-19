@@ -1,6 +1,7 @@
 # frozen_string_literal: false
 
 require "pp"
+require "set"
 
 require_relative 'namespace'
 require_relative 'xmltokens'
