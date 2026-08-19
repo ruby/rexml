@@ -753,6 +753,7 @@
   <span class="ruby-ivar">@attlist_mappings</span> = <span class="ruby-keyword">nil</span>
   <span class="ruby-ivar">@document</span> = <span class="ruby-keyword">nil</span>
   <span class="ruby-ivar">@element_namespaces_cache</span> = {}
+  <span class="ruby-ivar">@node_indexes</span> = <span class="ruby-keyword">nil</span>
   <span class="ruby-ivar">@nest</span> = <span class="ruby-value">0</span>
   <span class="ruby-ivar">@strict</span> = <span class="ruby-identifier">strict</span>
 <span class="ruby-keyword">end</span></pre>
@@ -782,7 +783,7 @@
               <div class="method-heading">
                 <a href="#method-c-sort" title="Link to this method">
                   <span class="method-name">sort</span>
-                  <span class="method-args">(array_of_nodes)</span>
+                  <span class="method-args">(array_of_nodes, node_indexes = nil)</span>
                 </a>
               </div>
 
@@ -801,19 +802,18 @@
 
 
           <div class="method-source-code" id="sort-source">
-            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/xpath_parser.rb, line 820</span>
-<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">sort</span>(<span class="ruby-identifier">array_of_nodes</span>)
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/xpath_parser.rb, line 836</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">sort</span>(<span class="ruby-identifier">array_of_nodes</span>, <span class="ruby-identifier">node_indexes</span> = <span class="ruby-keyword">nil</span>)
   <span class="ruby-keyword">return</span> <span class="ruby-identifier">array_of_nodes</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">array_of_nodes</span>.<span class="ruby-identifier">size</span> <span class="ruby-operator">&lt;=</span> <span class="ruby-value">1</span>
-
-  <span class="ruby-identifier">attribute_positions</span> = {}.<span class="ruby-identifier">compare_by_identity</span>
+  <span class="ruby-identifier">node_indexes</span> ||= {}.<span class="ruby-identifier">compare_by_identity</span>
   <span class="ruby-identifier">array_of_nodes</span>.<span class="ruby-identifier">sort_by</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">node</span><span class="ruby-operator">|</span>
     <span class="ruby-keyword">if</span> <span class="ruby-identifier">node</span>.<span class="ruby-identifier">node_type</span> <span class="ruby-operator">==</span> <span class="ruby-value">:</span><span class="ruby-value">attribute</span>
       <span class="ruby-comment"># An attribute has no place of its own in the child tree, so its key</span>
       <span class="ruby-comment"># extends that of the element carrying it.</span>
-      <span class="ruby-identifier">ancestor_indexes</span>(<span class="ruby-identifier">node</span>.<span class="ruby-identifier">element</span>) <span class="ruby-operator">&lt;&lt;</span>
-        <span class="ruby-constant">ATTRIBUTE_POSITION</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">attribute_position</span>(<span class="ruby-identifier">node</span>, <span class="ruby-identifier">attribute_positions</span>)
+      <span class="ruby-identifier">ancestor_indexes</span>(<span class="ruby-identifier">node</span>.<span class="ruby-identifier">element</span>, <span class="ruby-identifier">node_indexes</span>) <span class="ruby-operator">&lt;&lt;</span>
+        <span class="ruby-constant">ATTRIBUTE_POSITION</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">attribute_position</span>(<span class="ruby-identifier">node</span>, <span class="ruby-identifier">node_indexes</span>)
     <span class="ruby-keyword">else</span>
-      <span class="ruby-identifier">ancestor_indexes</span>(<span class="ruby-identifier">node</span>)
+      <span class="ruby-identifier">ancestor_indexes</span>(<span class="ruby-identifier">node</span>, <span class="ruby-identifier">node_indexes</span>)
     <span class="ruby-keyword">end</span>
   <span class="ruby-keyword">end</span>
 <span class="ruby-keyword">end</span></pre>
@@ -824,9 +824,11 @@
         <div class="method-description">
 
 
-          <p>Reorders an array of nodes so that they are in document order It tries to do this efficiently.</p>
+          <p>Reorders an array of nodes so that they are in document order.</p>
 
-<p>FIXME: I need to get rid of this, but the issue is that most of the <a href="XPath.html"><code>XPath</code></a> interpreter functions as a filter, which means that we lose context going in and out of function calls.  If I knew what the index of the nodes was, I wouldn’t have to do this.  Maybe add a document IDX for each node? Problems with mutable documents.  Or, rewrite everything.</p>
+<p><a href="Node.html"><code>Node</code></a> sets are built up as unordered sets by the axis scanners, so they have to be put back into order here.  A node is keyed on the index it holds under each of its ancestors, outermost first, so that comparing two keys compares them at their first differing ancestor.</p>
+
+<p><code>node_indexes</code> caches the index of every child and attribute that had to be looked up.  Pass the same one to every sort of an evaluation: a sort can happen many times per evaluation (Functions#string sorts once per candidate node), and those sorts usually revisit the same parents. Passing nothing just means the caching lasts for this one call.</p>
 
 
         </div>
@@ -878,7 +880,7 @@
 
 
           <div class="method-source-code" id="5B-5D-3D-source">
-            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/xpath_parser.rb, line 106</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/xpath_parser.rb, line 107</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">[]=</span>( <span class="ruby-identifier">variable_name</span>, <span class="ruby-identifier">value</span> )
   <span class="ruby-ivar">@variables</span>[<span class="ruby-identifier">variable_name</span>] = <span class="ruby-identifier">coerce_variable</span>(<span class="ruby-identifier">value</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -927,7 +929,7 @@
 
 
           <div class="method-source-code" id="first-source">
-            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/xpath_parser.rb, line 115</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/xpath_parser.rb, line 116</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">first</span>( <span class="ruby-identifier">path_stack</span>, <span class="ruby-identifier">node</span> )
   <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">path</span>.<span class="ruby-identifier">size</span> <span class="ruby-operator">==</span> <span class="ruby-value">0</span>
 
@@ -1010,7 +1012,7 @@
 
 
           <div class="method-source-code" id="get_first-source">
-            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/xpath_parser.rb, line 95</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/xpath_parser.rb, line 96</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">get_first</span> <span class="ruby-identifier">path</span>, <span class="ruby-identifier">node</span>
   <span class="ruby-identifier">path_stack</span> = <span class="ruby-ivar">@parser</span>.<span class="ruby-identifier">parse</span>( <span class="ruby-identifier">path</span> )
   <span class="ruby-ivar">@document</span> = <span class="ruby-identifier">node</span>.<span class="ruby-identifier">document</span>
@@ -1061,17 +1063,28 @@
 
 
           <div class="method-source-code" id="match-source">
-            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/xpath_parser.rb, line 152</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/xpath_parser.rb, line 153</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">match</span>(<span class="ruby-identifier">path_stack</span>, <span class="ruby-identifier">node</span>)
   <span class="ruby-ivar">@document</span> = <span class="ruby-identifier">node</span>.<span class="ruby-identifier">document</span>
+  <span class="ruby-comment"># A fresh cache per evaluation, so that a document modified between two</span>
+  <span class="ruby-comment"># evaluations is not ordered by stale indexes.</span>
+  <span class="ruby-ivar">@node_indexes</span> = {}.<span class="ruby-identifier">compare_by_identity</span>
+  <span class="ruby-ivar">@functions</span>.<span class="ruby-identifier">node_indexes</span> = <span class="ruby-ivar">@node_indexes</span>
   <span class="ruby-identifier">nodeset</span> = [<span class="ruby-identifier">node</span>]
   <span class="ruby-identifier">result</span> = <span class="ruby-identifier">expr</span>(<span class="ruby-identifier">path_stack</span>, <span class="ruby-identifier">nodeset</span>)
   <span class="ruby-keyword">case</span> <span class="ruby-identifier">result</span>
   <span class="ruby-keyword">when</span> <span class="ruby-constant">Array</span> <span class="ruby-comment"># nodeset</span>
-    <span class="ruby-constant">XPathParser</span>.<span class="ruby-identifier">sort</span>(<span class="ruby-identifier">result</span>)
+    <span class="ruby-constant">XPathParser</span>.<span class="ruby-identifier">sort</span>(<span class="ruby-identifier">result</span>, <span class="ruby-ivar">@node_indexes</span>)
   <span class="ruby-keyword">else</span>
     [<span class="ruby-identifier">result</span>]
   <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">ensure</span>
+  <span class="ruby-comment"># Let go of the indexes: they are no use to the next evaluation, and the</span>
+  <span class="ruby-comment"># cache holds one entry per node it had to look up.  The document itself</span>
+  <span class="ruby-comment"># stays reachable through @document and @element_namespaces_cache, which</span>
+  <span class="ruby-comment"># outlive the evaluation.</span>
+  <span class="ruby-ivar">@node_indexes</span> = <span class="ruby-keyword">nil</span>
+  <span class="ruby-ivar">@functions</span>.<span class="ruby-identifier">node_indexes</span> = <span class="ruby-keyword">nil</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
 
@@ -1118,7 +1131,7 @@
 
 
           <div class="method-source-code" id="namespaces-3D-source">
-            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/xpath_parser.rb, line 73</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/xpath_parser.rb, line 74</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">namespaces=</span>( <span class="ruby-identifier">namespaces</span>={} )
   <span class="ruby-ivar">@functions</span>.<span class="ruby-identifier">namespace_context</span> = <span class="ruby-identifier">namespaces</span>
   <span class="ruby-ivar">@namespaces</span> = <span class="ruby-identifier">namespaces</span>
@@ -1168,7 +1181,7 @@
 
 
           <div class="method-source-code" id="parse-source">
-            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/xpath_parser.rb, line 84</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/xpath_parser.rb, line 85</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">parse</span> <span class="ruby-identifier">path</span>, <span class="ruby-identifier">node</span>
   <span class="ruby-identifier">path_stack</span> = <span class="ruby-ivar">@parser</span>.<span class="ruby-identifier">parse</span>( <span class="ruby-identifier">path</span> )
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">node</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Array</span>)
@@ -1224,7 +1237,7 @@
 
 
           <div class="method-source-code" id="predicate-source">
-            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/xpath_parser.rb, line 101</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/xpath_parser.rb, line 102</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">predicate</span> <span class="ruby-identifier">path</span>, <span class="ruby-identifier">node</span>
   <span class="ruby-identifier">path_stack</span> = <span class="ruby-ivar">@parser</span>.<span class="ruby-identifier">parse</span>( <span class="ruby-identifier">path</span> )
   <span class="ruby-identifier">match</span>( <span class="ruby-identifier">path_stack</span>, <span class="ruby-identifier">node</span> )
@@ -1274,7 +1287,7 @@
 
 
           <div class="method-source-code" id="variables-3D-source">
-            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/xpath_parser.rb, line 78</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/xpath_parser.rb, line 79</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">variables=</span>(<span class="ruby-identifier">vars</span>)
   <span class="ruby-identifier">vars</span> = <span class="ruby-identifier">vars</span>.<span class="ruby-identifier">transform_values</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">v</span><span class="ruby-operator">|</span> <span class="ruby-identifier">coerce_variable</span>(<span class="ruby-identifier">v</span>) }
   <span class="ruby-ivar">@functions</span>.<span class="ruby-identifier">variables</span> = <span class="ruby-identifier">vars</span>
