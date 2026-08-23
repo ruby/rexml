@@ -1285,20 +1285,17 @@ module REXML
     # compatibility.
     #
     def attribute( name, namespace=nil )
-      prefix = namespaces.key(namespace) if namespace
-      prefix = nil if prefix == 'xmlns'
+      return attributes.get_attribute( name ) if namespace.nil?
 
-      ret_val =
-        attributes.get_attribute( prefix ? "#{prefix}:#{name}" : name )
-
+      ret_val = attributes.get_attribute_ns( namespace, name )
       return ret_val unless ret_val.nil?
-      return nil if prefix.nil?
 
-      # now check that prefix'es namespace is not the same as the
-      # default namespace
-      return nil unless ( namespaces[ prefix ] == namespaces[ 'xmlns' ] )
-
-      attributes.get_attribute( name )
+      # Kept for compatibility: an unprefixed attribute also matches when the
+      # requested URI is the default namespace or is not declared on this
+      # element, even though such an attribute is not in that namespace.
+      if namespace == namespaces[ 'xmlns' ] or !namespaces.has_value?( namespace )
+        attributes.get_attribute( name )
+      end
     end
 
     # :call-seq:
