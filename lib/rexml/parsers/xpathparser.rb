@@ -14,7 +14,6 @@ module REXML
       LITERAL    = /^'([^']*)'|^"([^"]*)"/u
 
       def namespaces=( namespaces )
-        Functions::namespace_context = namespaces
         @namespaces = namespaces
       end
 

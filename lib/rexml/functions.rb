@@ -12,16 +12,10 @@ module REXML
 
     def initialize
       @context = nil
-      @namespace_context = {}
-      @variables = {}
       @node_indexes = nil
     end
 
     INTERNAL_METHODS = [
-      :namespace_context,
-      :namespace_context=,
-      :variables,
-      :variables=,
       :context=,
       :node_indexes=,
       :target_named_node,
@@ -36,11 +30,6 @@ module REXML
         end
       end
     end
-
-    def namespace_context=(x) ; @namespace_context=x ; end
-    def variables=(x) ; @variables=x ; end
-    def namespace_context ; @namespace_context ; end
-    def variables ; @variables ; end
 
     def context=(value); @context = value; end
 
@@ -433,8 +422,7 @@ module REXML
     end
   end
 
-  # Using this singleton instance may cause thread-safety issues
-  # especially when accessing variables, context and namespace_context.
+  # Using this singleton instance may cause thread-safety issues.
   # Consider instantiating your own FunctionsClass object.
   Functions = FunctionsClass.new # :nodoc:
 end

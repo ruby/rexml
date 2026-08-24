@@ -73,14 +73,11 @@ module REXML
     end
 
     def namespaces=( namespaces={} )
-      @functions.namespace_context = namespaces
       @namespaces = namespaces
     end
 
     def variables=(vars)
-      vars = vars.transform_values { |v| coerce_variable(v) }
-      @functions.variables = vars
-      @variables = vars
+      @variables = vars.transform_values { |v| coerce_variable(v) }
     end
 
     def parse path, node
