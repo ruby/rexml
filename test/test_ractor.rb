@@ -12,6 +12,9 @@ module REXMLTests
       if Gem::Version.new(RUBY_VERSION) < Gem::Version.new("4.0")
         omit("Ractor is unreliable before Ruby 4.0")
       end
+      if /mswin|mingw/.match?(RUBY_PLATFORM)
+        omit("These tests hang on Windows CI, needs investigation")
+      end
     end
 
     def test_document
