@@ -428,7 +428,7 @@ module REXML
       else
         # TODO: Maybe, this is not XPath spec behavior.
         # This behavior must be reconsidered.
-        XPath.match(@context[:node], name.to_s)
+        []
       end
     end
   end
