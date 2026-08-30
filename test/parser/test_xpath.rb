@@ -68,8 +68,14 @@ module REXMLTests
       end
 
       def test_function_with_underscore
+        assert_equal("local_name(*)",
+                     abbreviate("local_name(*)"))
+      end
+
+      def test_function_with_underscore_in_strict_mode
+        parser = REXML::Parsers::XPathParser.new(strict: true)
         assert_raise(REXML::ParseException) do
-          abbreviate("local_name(*)")
+          parser.abbreviate("local_name(*)")
         end
       end
 

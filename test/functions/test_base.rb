@@ -164,8 +164,8 @@ module REXMLTests
 
     def test_local_name
       d = REXML::Document.new("<a xmlns:x='foo'><b/><x:b/></a>")
-      assert_equal 2, d.root.elements.to_a('*[local-name() = "b"]').size
-      assert_equal 2, d.elements.to_a('//*[local-name() = "b"]').size
+      assert_equal 2, d.root.elements.to_a('*[local_name() = "b"]').size
+      assert_equal 2, d.elements.to_a('//*[local_name() = "b"]').size
     end
 
     def test_substring2
@@ -242,7 +242,7 @@ module REXMLTests
     def test_normalize_space
       source = "<a><!--COMMENT A--><b><!-- COMMENT A --></b></a>"
       doc = REXML::Document.new(source)
-      predicate = "string(.)=normalize-space('\nCOMMENT    \n A \n\n ')"
+      predicate = "string(.)=normalize_space('\nCOMMENT    \n A \n\n ')"
       m = REXML::XPath.match(doc, "//comment()[#{predicate}]")
       assert_equal( [REXML::Comment.new("COMMENT A")], m )
     end
@@ -292,8 +292,13 @@ Coffee beans
 
     def test_unregistered_method_with_underscore
       doc = Document.new("<root/>")
+      assert_nil(XPath::first(doc.root, "to_s()"))
+    end
+
+    def test_unregistered_method_with_underscore_in_strict_mode
+      doc = Document.new("<root/>")
       assert_raise(REXML::ParseException) do
-        XPath::first(doc.root, "to_s()")
+        XPath::first(doc.root, "to_s()", nil, {}, strict: true)
       end
     end
 
