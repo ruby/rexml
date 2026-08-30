@@ -1,6 +1,7 @@
 # frozen_string_literal: false
 
 require "test/unit"
+require "rexml/parseexception"
 require "rexml/parsers/xpathparser"
 
 module REXMLTests
@@ -64,6 +65,12 @@ module REXMLTests
       def test_function
         assert_equal("string-length(a/b[last()])",
                      abbreviate("string-length(a/b[last()])"))
+      end
+
+      def test_function_with_underscore
+        assert_raise(REXML::ParseException) do
+          abbreviate("local_name(*)")
+        end
       end
 
       def test_descendant_or_self_only

@@ -4,9 +4,8 @@ module REXML
   # (1) the first argument will always be a list of nodes from which to
   # filter.  In the case of context methods (such as position), the function
   # should return an array with a value for each child in the array.
-  # (2) all method calls from XML will have "-" replaced with "_".
-  # Therefore, in XML, "local-name()" is identical (and actually becomes)
-  # "local_name()"
+  # (2) all valid method calls from XML will have "-" replaced with "_"
+  # after parsing. For example, "local-name()" calls #local_name.
   class FunctionsClass # :nodoc:
     @@available_functions = {}
 

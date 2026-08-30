@@ -419,10 +419,10 @@ module REXMLTests
         </foo>
       EOF
       doc = Document.new source
-      res = XPath::first(doc, "//*[local_name()='bar']")
+      res = XPath::first(doc, "//*[local-name()='bar']")
       assert res, "looking for //*[name()='bar']"
       assert_equal 'this', res.namespace
-      res = XPath::first(doc.root, "*[namespace_uri()='that']")
+      res = XPath::first(doc.root, "*[namespace-uri()='that']")
       assert_equal 'that bar', res.text
     end
 
@@ -879,8 +879,8 @@ module REXMLTests
 
     def test_local_name
       d = REXML::Document.new("<a xmlns:x='foo'><b/><x:b/></a>")
-      assert_equal 2, d.root.elements.to_a('*[local_name() = "b"]').size
-      assert_equal 2, d.elements.to_a('//*[local_name() = "b"]').size
+      assert_equal 2, d.root.elements.to_a('*[local-name() = "b"]').size
+      assert_equal 2, d.elements.to_a('//*[local-name() = "b"]').size
     end
 
     def test_comparisons

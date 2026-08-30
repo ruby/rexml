@@ -653,6 +653,7 @@ module REXML
           #arry << @variables[ varname ]
         when /^(\w[-\w]*)(?:\()/
           fname = $1
+          return path if fname.include?("_")
           tmp = $'
           return path if fname =~ NT
           path = tmp
