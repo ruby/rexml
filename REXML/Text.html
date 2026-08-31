@@ -955,7 +955,7 @@
 
 
           <div class="method-source-code" id="expand-source">
-            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/text.rb, line 401</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/text.rb, line 389</span>
 <span class="ruby-keyword">def</span> <span class="ruby-constant">Text</span>.<span class="ruby-identifier">expand</span>(<span class="ruby-identifier">ref</span>, <span class="ruby-identifier">doctype</span>, <span class="ruby-identifier">filter</span>, <span class="ruby-value">expanding:</span> <span class="ruby-keyword">nil</span>)
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">ref</span>[<span class="ruby-value">1</span>] <span class="ruby-operator">==</span> <span class="ruby-string">?</span><span class="ruby-string">#</span>
     <span class="ruby-keyword">if</span> <span class="ruby-identifier">ref</span>[<span class="ruby-value">2</span>] <span class="ruby-operator">==</span> <span class="ruby-string">?</span><span class="ruby-string">x</span>
@@ -1126,7 +1126,7 @@
 
 
           <div class="method-source-code" id="normalize-source">
-            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/text.rb, line 363</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/text.rb, line 351</span>
 <span class="ruby-keyword">def</span> <span class="ruby-constant">Text</span><span class="ruby-operator">::</span><span class="ruby-identifier">normalize</span>( <span class="ruby-identifier">input</span>, <span class="ruby-identifier">doctype</span>=<span class="ruby-keyword">nil</span>, <span class="ruby-identifier">entity_filter</span>=<span class="ruby-keyword">nil</span> )
   <span class="ruby-identifier">copy</span> = <span class="ruby-identifier">input</span>.<span class="ruby-identifier">to_s</span>
   <span class="ruby-comment"># Doing it like this rather than in a loop improves the speed</span>
@@ -1194,29 +1194,15 @@
 
 
           <div class="method-source-code" id="read_with_substitution-source">
-            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/text.rb, line 337</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/text.rb, line 339</span>
 <span class="ruby-keyword">def</span> <span class="ruby-constant">Text</span><span class="ruby-operator">::</span><span class="ruby-identifier">read_with_substitution</span>( <span class="ruby-identifier">input</span>, <span class="ruby-identifier">illegal</span>=<span class="ruby-keyword">nil</span> )
-  <span class="ruby-identifier">copy</span> = <span class="ruby-identifier">input</span>.<span class="ruby-identifier">clone</span>
-
-  <span class="ruby-keyword">if</span> <span class="ruby-identifier">copy</span> <span class="ruby-operator">=~</span> <span class="ruby-identifier">illegal</span>
+  <span class="ruby-constant">Kernel</span>.<span class="ruby-identifier">warn</span>(<span class="ruby-string">&quot;</span><span class="ruby-string">#{</span><span class="ruby-identifier">name</span><span class="ruby-string">}</span><span class="ruby-string">.read_with_substitution is deprecated. </span><span class="ruby-string">&quot;</span> <span class="ruby-operator">+</span>
+              <span class="ruby-string">&quot;</span><span class="ruby-string">Use </span><span class="ruby-string">#{</span><span class="ruby-identifier">name</span><span class="ruby-string">}</span><span class="ruby-string">.unnormalize instead.</span><span class="ruby-string">&quot;</span>, <span class="ruby-value">uplevel</span><span class="ruby-value">:</span> <span class="ruby-value">1</span>)
+  <span class="ruby-identifier">copy</span> = <span class="ruby-identifier">input</span>.<span class="ruby-identifier">to_s</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">illegal</span> <span class="ruby-keyword">and</span> <span class="ruby-identifier">copy</span> <span class="ruby-operator">=~</span> <span class="ruby-identifier">illegal</span>
     <span class="ruby-identifier">raise</span> <span class="ruby-constant">ParseException</span>.<span class="ruby-identifier">new</span>( <span class="ruby-string">&quot;</span><span class="ruby-string">malformed text: Illegal character </span><span class="ruby-string">#</span><span class="ruby-identifier">$&amp;</span><span class="ruby-string"> in \&quot;</span><span class="ruby-string">#{</span><span class="ruby-identifier">copy</span><span class="ruby-string">}</span><span class="ruby-string">\&quot;</span><span class="ruby-string">&quot;</span> )
-  <span class="ruby-keyword">end</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">illegal</span>
-
-  <span class="ruby-identifier">copy</span>.<span class="ruby-identifier">gsub!</span>( <span class="ruby-regexp">/\r\n?/</span>, <span class="ruby-string">&quot;</span><span class="ruby-string">\n</span><span class="ruby-string">&quot;</span> )
-  <span class="ruby-keyword">if</span> <span class="ruby-identifier">copy</span>.<span class="ruby-identifier">include?</span> <span class="ruby-string">?</span><span class="ruby-string">&amp;</span>
-    <span class="ruby-identifier">copy</span>.<span class="ruby-identifier">gsub!</span>( <span class="ruby-constant">SETUTITSBUS</span>[<span class="ruby-value">0</span>], <span class="ruby-constant">SLAICEPS</span>[<span class="ruby-value">0</span>] )
-    <span class="ruby-identifier">copy</span>.<span class="ruby-identifier">gsub!</span>( <span class="ruby-constant">SETUTITSBUS</span>[<span class="ruby-value">1</span>], <span class="ruby-constant">SLAICEPS</span>[<span class="ruby-value">1</span>] )
-    <span class="ruby-identifier">copy</span>.<span class="ruby-identifier">gsub!</span>( <span class="ruby-constant">SETUTITSBUS</span>[<span class="ruby-value">2</span>], <span class="ruby-constant">SLAICEPS</span>[<span class="ruby-value">2</span>] )
-    <span class="ruby-identifier">copy</span>.<span class="ruby-identifier">gsub!</span>( <span class="ruby-constant">SETUTITSBUS</span>[<span class="ruby-value">3</span>], <span class="ruby-constant">SLAICEPS</span>[<span class="ruby-value">3</span>] )
-    <span class="ruby-identifier">copy</span>.<span class="ruby-identifier">gsub!</span>( <span class="ruby-constant">SETUTITSBUS</span>[<span class="ruby-value">4</span>], <span class="ruby-constant">SLAICEPS</span>[<span class="ruby-value">4</span>] )
-    <span class="ruby-identifier">copy</span>.<span class="ruby-identifier">gsub!</span>( <span class="ruby-regexp">/&amp;#0*((?:\d+)|(?:x[a-f0-9]+));/</span> ) {
-      <span class="ruby-identifier">m</span>=<span class="ruby-identifier">$1</span>
-      <span class="ruby-comment">#m=&#39;0&#39; if m==&#39;&#39;</span>
-      <span class="ruby-identifier">m</span> = <span class="ruby-string">&quot;</span><span class="ruby-string">0</span><span class="ruby-string">#{</span><span class="ruby-identifier">m</span><span class="ruby-string">}</span><span class="ruby-string">&quot;</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">m</span>[<span class="ruby-value">0</span>] <span class="ruby-operator">==</span> <span class="ruby-string">?</span><span class="ruby-string">x</span>
-      [<span class="ruby-constant">Integer</span>(<span class="ruby-identifier">m</span>)].<span class="ruby-identifier">pack</span>(<span class="ruby-string">&#39;</span><span class="ruby-string">U*</span><span class="ruby-string">&#39;</span>)
-    }
   <span class="ruby-keyword">end</span>
-  <span class="ruby-identifier">copy</span>
+  <span class="ruby-identifier">unnormalize</span>(<span class="ruby-identifier">copy</span>)
 <span class="ruby-keyword">end</span></pre>
           </div>
 
@@ -1226,6 +1212,8 @@
 
 
           <p>Reads text, substituting entities</p>
+
+<p>Deprecated since 3.4.5. Use <a href="Text.html#method-c-unnormalize"><code>Text.unnormalize</code></a> instead.</p>
 
 
         </div>
@@ -1263,7 +1251,7 @@
 
 
           <div class="method-source-code" id="unnormalize-source">
-            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/text.rb, line 387</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/text.rb, line 375</span>
 <span class="ruby-keyword">def</span> <span class="ruby-constant">Text</span><span class="ruby-operator">::</span><span class="ruby-identifier">unnormalize</span>( <span class="ruby-identifier">string</span>, <span class="ruby-identifier">doctype</span>=<span class="ruby-keyword">nil</span>, <span class="ruby-identifier">filter</span>=<span class="ruby-keyword">nil</span>, <span class="ruby-identifier">illegal</span>=<span class="ruby-keyword">nil</span>, <span class="ruby-value">entity_expansion_text_limit:</span> <span class="ruby-keyword">nil</span>, <span class="ruby-value">expanding:</span> <span class="ruby-keyword">nil</span> )
   <span class="ruby-identifier">entity_expansion_text_limit</span> ||= <span class="ruby-constant">Security</span>.<span class="ruby-identifier">entity_expansion_text_limit</span>
   <span class="ruby-identifier">sum</span> = <span class="ruby-value">0</span>
