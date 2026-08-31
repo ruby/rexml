@@ -299,8 +299,10 @@ Coffee beans
       doc = Document.new("<root><nonexistent/></root>")
       # TODO: Maybe, this is not XPath spec behavior.
       # This behavior must be reconsidered.
-      assert_equal(doc.root.elements[1],
-                   XPath::first(doc.root, "nonexistent()"))
+      assert_nil(XPath::first(doc.root, "nonexistent()"))
+      assert_empty(XPath::match(doc.root, "nonexistent()"))
+      assert_empty(XPath::match(doc, "42()/*"))
+      assert_empty(Functions.send('42'))
     end
   end
 end
