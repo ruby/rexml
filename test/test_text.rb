@@ -77,5 +77,21 @@ module REXMLTests
         assert_equal("\tline1\tline2\tline3", text.indent_text("line1\r\nline2\r\nline3\r\n"))
       end
     end
+
+    def test_read_with_substitution
+      suppress_warning do
+        assert_equal("a <b> & \"c\" 'd' A B",
+                     Text.read_with_substitution(
+                       "a &lt;b&gt; &amp; &quot;c&quot; &apos;d&apos; &#65; &#x42;"))
+      end
+    end
+
+    def test_read_with_substitution_illegal
+      suppress_warning do
+        assert_raise(REXML::ParseException) do
+          Text.read_with_substitution("bad <", /</)
+        end
+      end
+    end
   end
 end

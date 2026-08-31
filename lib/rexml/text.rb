@@ -334,28 +334,16 @@ module REXML
     end
 
     # Reads text, substituting entities
+    #
+    # Deprecated since 3.4.5. Use Text.unnormalize instead.
     def Text::read_with_substitution( input, illegal=nil )
-      copy = input.clone
-
-      if copy =~ illegal
+      Kernel.warn("#{name}.read_with_substitution is deprecated. " +
+                  "Use #{name}.unnormalize instead.", uplevel: 1)
+      copy = input.to_s
+      if illegal and copy =~ illegal
         raise ParseException.new( "malformed text: Illegal character #$& in \"#{copy}\"" )
-      end if illegal
-
-      copy.gsub!( /\r\n?/, "\n" )
-      if copy.include? ?&
-        copy.gsub!( SETUTITSBUS[0], SLAICEPS[0] )
-        copy.gsub!( SETUTITSBUS[1], SLAICEPS[1] )
-        copy.gsub!( SETUTITSBUS[2], SLAICEPS[2] )
-        copy.gsub!( SETUTITSBUS[3], SLAICEPS[3] )
-        copy.gsub!( SETUTITSBUS[4], SLAICEPS[4] )
-        copy.gsub!( /&#0*((?:\d+)|(?:x[a-f0-9]+));/ ) {
-          m=$1
-          #m='0' if m==''
-          m = "0#{m}" if m[0] == ?x
-          [Integer(m)].pack('U*')
-        }
       end
-      copy
+      unnormalize(copy)
     end
 
     EREFERENCE = /&(?!#{Entity::NAME};)/
