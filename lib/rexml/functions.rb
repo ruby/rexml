@@ -1,4 +1,7 @@
 # frozen_string_literal: false
+
+require 'set'
+
 module REXML
   # If you add a method, keep in mind two things:
   # (1) the first argument will always be a list of nodes from which to
@@ -13,14 +16,35 @@ module REXML
       @node_indexes = nil
     end
 
-    INTERNAL_METHODS = [
-      :context=,
-      :node_indexes=,
-      :target_named_node,
-      :send,
-      :compare_language,
-      :string_value,
-    ].freeze
+    AVAILABLE_FUNCTIONS = %w[
+      boolean
+      ceiling
+      concat
+      contains
+      count
+      false
+      floor
+      id
+      lang
+      last
+      local-name
+      name
+      namespace-uri
+      normalize-space
+      not
+      number
+      position
+      round
+      starts-with
+      string
+      string-length
+      substring
+      substring-after
+      substring-before
+      sum
+      translate
+      true
+    ].to_set.freeze
 
     def context=(value); @context = value; end
 
@@ -402,16 +426,20 @@ module REXML
       end
     end
 
-    def send(name, *args)
-      name = name.to_sym
-      if self.class.method_defined?(name, false) and
-          !INTERNAL_METHODS.include?(name)
-        super
+    def call(name, args:, fallback: nil)
+      name = name.to_s
+      if AVAILABLE_FUNCTIONS.include?(name)
+        __send__(name.tr('-', '_'), *args)
+      elsif fallback.nil?
+        raise ArgumentError, "Unknown XPath function: #{name}"
       else
-        # TODO: Maybe, this is not XPath spec behavior.
-        # This behavior must be reconsidered.
-        []
+        fallback
       end
+    end
+
+    # For compatibility. Use `call` instead.
+    def send(name, *args)
+      call(name.to_s.tr('_', '-'), args: args, fallback: [])
     end
   end
 
