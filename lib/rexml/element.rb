@@ -1268,9 +1268,11 @@ module REXML
     #   document.root.attribute("x")      # => x='x'
     #   document.root.attribute("x", "a") # => a:x='a:x'
     #
-    # This method matches +namespace+ loosely.  An unprefixed attribute is
-    # taken to be in the default namespace, and a +namespace+ that no prefix
-    # is bound to falls back to the unprefixed attribute:
+    # This method matches +namespace+ as the XML Namespaces specification says
+    # first, then falls back to a looser match kept for compatibility: an
+    # unprefixed attribute is taken to be in the default namespace, and a
+    # +namespace+ that no prefix is bound to falls back to the unprefixed
+    # attribute:
     #
     #   xml_string = "<root xmlns='ns0' a='a'/>"
     #   document = REXML::Document.new(xml_string)
@@ -1278,11 +1280,16 @@ module REXML
     #   document.root.attribute("a", "nosuch") # => a='a'
     #
     # The XML Namespaces specification says that an unprefixed attribute has
-    # no namespace, so neither of those should match.
-    # REXML::Attributes#get_attribute_ns follows the XML Namespaces
-    # specification and returns +nil+ for both; use it when you need the
-    # namespace to be matched strictly.  The looser behavior here is kept for
-    # compatibility.
+    # no namespace, so neither of those should match; the fallback answers
+    # them.  The fallback only answers when nothing matches strictly, so an
+    # attribute that does is returned instead of the unprefixed one:
+    #
+    #   xml_string = "<root xmlns='ns0' xmlns:p='ns0' a='A' p:a='PA'/>"
+    #   document = REXML::Document.new(xml_string)
+    #   document.root.attribute("a", "ns0") # => p:a='PA'
+    #
+    # REXML::Attributes#get_attribute_ns matches strictly and only strictly,
+    # returning +nil+ where the fallback would answer.
     #
     def attribute( name, namespace=nil )
       return attributes.get_attribute( name ) if namespace.nil?
