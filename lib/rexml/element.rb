@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+# frozen_string_literal: true
 require_relative "parent"
 require_relative "namespace"
 require_relative "attribute"
@@ -356,7 +356,7 @@ module REXML
     #   e.inspect # => "<foo bar='0' baz='1'> ... </>"
     #
     def inspect
-      rv = "<#@expanded_name"
+      rv = +"<#@expanded_name"
 
       @attributes.each_attribute do |attr|
         rv << " "
@@ -1528,7 +1528,7 @@ module REXML
     def _namespace_lookup_internal(prefix, namespaces = _calculate_namespaces) # :nodoc:
       prefix = (prefix == '') ? 'xmlns' : prefix.delete_prefix("xmlns:")
       ns = namespaces[prefix]
-      ns = '' if ns.nil? and prefix == 'xmlns'
+      ns = +'' if ns.nil? and prefix == 'xmlns'
       ns
     end
 

@@ -8,8 +8,6 @@ module REXML
   # Therefore, in XML, "local-name()" is identical (and actually becomes)
   # "local_name()"
   class FunctionsClass # :nodoc:
-    @@available_functions = {}
-
     def initialize
       @context = nil
       @node_indexes = nil
@@ -22,14 +20,7 @@ module REXML
       :send,
       :compare_language,
       :string_value,
-    ]
-    class << self
-      def method_added(name)
-        unless INTERNAL_METHODS.include?(name)
-          @@available_functions[name] = true
-        end
-      end
-    end
+    ].freeze
 
     def context=(value); @context = value; end
 
@@ -412,7 +403,9 @@ module REXML
     end
 
     def send(name, *args)
-      if @@available_functions[name.to_sym]
+      name = name.to_sym
+      if self.class.method_defined?(name, false) and
+          !INTERNAL_METHODS.include?(name)
         super
       else
         # TODO: Maybe, this is not XPath spec behavior.
