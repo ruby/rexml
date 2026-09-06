@@ -960,7 +960,7 @@
             <pre class="ruby"><span class="ruby-comment"># File lib/rexml/doctype.rb, line 184</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">add</span> <span class="ruby-identifier">child</span>
   <span class="ruby-keyword">super</span>(<span class="ruby-identifier">child</span>)
-  <span class="ruby-ivar">@entities</span> = <span class="ruby-constant">DEFAULT_ENTITIES</span>.<span class="ruby-identifier">clone</span> <span class="ruby-keyword">if</span> <span class="ruby-ivar">@entities</span> <span class="ruby-operator">==</span> <span class="ruby-constant">DEFAULT_ENTITIES</span>
+  <span class="ruby-ivar">@entities</span> = <span class="ruby-constant">DEFAULT_ENTITIES</span>.<span class="ruby-identifier">dup</span> <span class="ruby-keyword">if</span> <span class="ruby-ivar">@entities</span> <span class="ruby-operator">==</span> <span class="ruby-constant">DEFAULT_ENTITIES</span>
   <span class="ruby-ivar">@entities</span>[ <span class="ruby-identifier">child</span>.<span class="ruby-identifier">name</span> ] = <span class="ruby-identifier">child</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">child</span>.<span class="ruby-identifier">kind_of?</span> <span class="ruby-constant">Entity</span>
 <span class="ruby-keyword">end</span></pre>
           </div>

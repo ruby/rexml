@@ -3103,7 +3103,7 @@
           <div class="method-source-code" id="inspect-source">
             <pre class="ruby"><span class="ruby-comment"># File lib/rexml/element.rb, line 358</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">inspect</span>
-  <span class="ruby-identifier">rv</span> = <span class="ruby-string">&quot;</span><span class="ruby-string">&lt;</span><span class="ruby-string">#</span><span class="ruby-ivar">@expanded_name</span><span class="ruby-string">&quot;</span>
+  <span class="ruby-identifier">rv</span> = <span class="ruby-operator">+</span><span class="ruby-string">&quot;</span><span class="ruby-string">&lt;</span><span class="ruby-string">#</span><span class="ruby-ivar">@expanded_name</span><span class="ruby-string">&quot;</span>
 
   <span class="ruby-ivar">@attributes</span>.<span class="ruby-identifier">each_attribute</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">attr</span><span class="ruby-operator">|</span>
     <span class="ruby-identifier">rv</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-string">&quot;</span><span class="ruby-string"> </span><span class="ruby-string">&quot;</span>

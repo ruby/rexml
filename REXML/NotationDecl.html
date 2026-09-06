@@ -854,7 +854,7 @@
             <pre class="ruby"><span class="ruby-comment"># File lib/rexml/doctype.rb, line 289</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">to_s</span>
   <span class="ruby-identifier">context</span> = <span class="ruby-identifier">parent</span>&amp;.<span class="ruby-identifier">context</span>
-  <span class="ruby-identifier">notation</span> = <span class="ruby-string">&quot;</span><span class="ruby-string">&lt;!NOTATION </span><span class="ruby-string">#{</span><span class="ruby-ivar">@name</span><span class="ruby-string">}</span><span class="ruby-string">&quot;</span>
+  <span class="ruby-identifier">notation</span> = <span class="ruby-operator">+</span><span class="ruby-string">&quot;</span><span class="ruby-string">&lt;!NOTATION </span><span class="ruby-string">#{</span><span class="ruby-ivar">@name</span><span class="ruby-string">}</span><span class="ruby-string">&quot;</span>
   <span class="ruby-identifier">reference_writer</span> = <span class="ruby-constant">ReferenceWriter</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@middle</span>, <span class="ruby-ivar">@public</span>, <span class="ruby-ivar">@system</span>, <span class="ruby-identifier">context</span>)
   <span class="ruby-identifier">reference_writer</span>.<span class="ruby-identifier">write</span>(<span class="ruby-identifier">notation</span>)
   <span class="ruby-identifier">notation</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-string">&quot;</span><span class="ruby-string">&gt;</span><span class="ruby-string">&quot;</span>

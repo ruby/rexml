@@ -766,8 +766,8 @@
     <span class="ruby-ivar">@content</span> = <span class="ruby-identifier">target</span>.<span class="ruby-identifier">content</span>
   <span class="ruby-keyword">else</span>
     <span class="ruby-identifier">message</span> =
-      <span class="ruby-string">&quot;</span><span class="ruby-string">processing instruction target must be String or REXML::Instruction: </span><span class="ruby-string">&quot;</span>
-    <span class="ruby-identifier">message</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-string">&quot;</span><span class="ruby-string">&lt;</span><span class="ruby-string">#{</span><span class="ruby-identifier">target</span>.<span class="ruby-identifier">inspect</span><span class="ruby-string">}</span><span class="ruby-string">&gt;</span><span class="ruby-string">&quot;</span>
+      <span class="ruby-string">&quot;</span><span class="ruby-string">processing instruction target must be String or REXML::Instruction: </span><span class="ruby-string">&quot;</span> \
+      <span class="ruby-string">&quot;</span><span class="ruby-string">&lt;</span><span class="ruby-string">#{</span><span class="ruby-identifier">target</span>.<span class="ruby-identifier">inspect</span><span class="ruby-string">}</span><span class="ruby-string">&gt;</span><span class="ruby-string">&quot;</span>
     <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span>, <span class="ruby-identifier">message</span>
   <span class="ruby-keyword">end</span>
   <span class="ruby-ivar">@content</span>.<span class="ruby-identifier">strip!</span> <span class="ruby-keyword">if</span> <span class="ruby-ivar">@content</span>

@@ -1326,7 +1326,7 @@
 
 
           <div class="method-source-code" id="new-source">
-            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/parsers/baseparser.rb, line 167</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/parsers/baseparser.rb, line 168</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span>( <span class="ruby-identifier">source</span> )
   <span class="ruby-keyword">self</span>.<span class="ruby-identifier">stream</span> = <span class="ruby-identifier">source</span>
   <span class="ruby-ivar">@listeners</span> = []
@@ -1396,7 +1396,7 @@
 
 
           <div class="method-source-code" id="add_listener-source">
-            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/parsers/baseparser.rb, line 178</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/parsers/baseparser.rb, line 179</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">add_listener</span>( <span class="ruby-identifier">listener</span> )
   <span class="ruby-ivar">@listeners</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">listener</span>
 <span class="ruby-keyword">end</span></pre>
@@ -1445,7 +1445,7 @@
 
 
           <div class="method-source-code" id="empty-3F-source">
-            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/parsers/baseparser.rb, line 213</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/parsers/baseparser.rb, line 214</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">empty?</span>
   (<span class="ruby-ivar">@source</span>.<span class="ruby-identifier">empty?</span> <span class="ruby-keyword">and</span> <span class="ruby-ivar">@stack</span>.<span class="ruby-identifier">empty?</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -1494,7 +1494,7 @@
 
 
           <div class="method-source-code" id="entity-source">
-            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/parsers/baseparser.rb, line 538</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/parsers/baseparser.rb, line 539</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">entity</span>( <span class="ruby-identifier">reference</span>, <span class="ruby-identifier">entities</span>, <span class="ruby-value">expanding:</span> <span class="ruby-keyword">nil</span> )
   <span class="ruby-keyword">return</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">entities</span>
 
@@ -1555,7 +1555,7 @@
 
 
           <div class="method-source-code" id="has_next-3F-source">
-            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/parsers/baseparser.rb, line 218</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/parsers/baseparser.rb, line 219</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">has_next?</span>
   <span class="ruby-operator">!</span>(<span class="ruby-ivar">@source</span>.<span class="ruby-identifier">empty?</span> <span class="ruby-keyword">and</span> <span class="ruby-ivar">@stack</span>.<span class="ruby-identifier">empty?</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -1604,7 +1604,7 @@
 
 
           <div class="method-source-code" id="normalize-source">
-            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/parsers/baseparser.rb, line 555</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/parsers/baseparser.rb, line 556</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">normalize</span>( <span class="ruby-identifier">input</span>, <span class="ruby-identifier">entities</span>=<span class="ruby-keyword">nil</span>, <span class="ruby-identifier">entity_filter</span>=<span class="ruby-keyword">nil</span> )
   <span class="ruby-identifier">copy</span> = <span class="ruby-identifier">input</span>.<span class="ruby-identifier">clone</span>
   <span class="ruby-comment"># Doing it like this rather than in a loop improves the speed</span>
@@ -1664,7 +1664,7 @@
 
 
           <div class="method-source-code" id="peek-source">
-            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/parsers/baseparser.rb, line 234</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/parsers/baseparser.rb, line 235</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">peek</span> <span class="ruby-identifier">depth</span>=<span class="ruby-value">0</span>
   <span class="ruby-identifier">raise</span> <span class="ruby-string">%Q[</span><span class="ruby-string">Illegal argument &quot;</span><span class="ruby-string">#{</span><span class="ruby-identifier">depth</span><span class="ruby-string">}</span><span class="ruby-string">&quot;</span><span class="ruby-string">]</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">depth</span> <span class="ruby-operator">&lt;</span> -<span class="ruby-value">1</span>
   <span class="ruby-identifier">temp</span> = []
@@ -1723,7 +1723,7 @@
 
 
           <div class="method-source-code" id="position-source">
-            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/parsers/baseparser.rb, line 203</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/parsers/baseparser.rb, line 204</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">position</span>
   <span class="ruby-keyword">if</span> <span class="ruby-ivar">@source</span>.<span class="ruby-identifier">respond_to?</span> <span class="ruby-value">:</span><span class="ruby-value">position</span>
     <span class="ruby-ivar">@source</span>.<span class="ruby-identifier">position</span>
@@ -1777,7 +1777,7 @@
 
 
           <div class="method-source-code" id="pull-source">
-            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/parsers/baseparser.rb, line 249</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/parsers/baseparser.rb, line 250</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">pull</span>
   <span class="ruby-ivar">@source</span>.<span class="ruby-identifier">drop_parsed_content</span>
 
@@ -1832,7 +1832,7 @@
 
 
           <div class="method-source-code" id="reset-source">
-            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/parsers/baseparser.rb, line 192</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/parsers/baseparser.rb, line 193</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">reset</span>
   <span class="ruby-ivar">@closed</span> = <span class="ruby-keyword">nil</span>
   <span class="ruby-ivar">@have_root</span> = <span class="ruby-keyword">false</span>
@@ -1888,7 +1888,7 @@
 
 
           <div class="method-source-code" id="stream-3D-source">
-            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/parsers/baseparser.rb, line 187</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/parsers/baseparser.rb, line 188</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">stream=</span>( <span class="ruby-identifier">source</span> )
   <span class="ruby-ivar">@source</span> = <span class="ruby-constant">SourceFactory</span>.<span class="ruby-identifier">create_from</span>( <span class="ruby-identifier">source</span> )
   <span class="ruby-identifier">reset</span>
@@ -1938,7 +1938,7 @@
 
 
           <div class="method-source-code" id="unnormalize-source">
-            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/parsers/baseparser.rb, line 571</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/parsers/baseparser.rb, line 572</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">unnormalize</span>( <span class="ruby-identifier">string</span>, <span class="ruby-identifier">entities</span>=<span class="ruby-keyword">nil</span>, <span class="ruby-identifier">filter</span>=<span class="ruby-keyword">nil</span>, <span class="ruby-value">expanding:</span> <span class="ruby-keyword">nil</span> )
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">string</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-string">&quot;</span><span class="ruby-string">\r</span><span class="ruby-string">&quot;</span>)
     <span class="ruby-identifier">rv</span> = <span class="ruby-identifier">string</span>.<span class="ruby-identifier">gsub</span>( <span class="ruby-constant">Private</span><span class="ruby-operator">::</span><span class="ruby-constant">CARRIAGE_RETURN_NEWLINE_PATTERN</span>, <span class="ruby-string">&quot;</span><span class="ruby-string">\n</span><span class="ruby-string">&quot;</span> )
@@ -2031,7 +2031,7 @@
 
 
           <div class="method-source-code" id="unshift-source">
-            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/parsers/baseparser.rb, line 224</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/parsers/baseparser.rb, line 225</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">unshift</span> <span class="ruby-identifier">token</span>
   <span class="ruby-ivar">@stack</span>.<span class="ruby-identifier">unshift</span>(<span class="ruby-identifier">token</span>)
 <span class="ruby-keyword">end</span></pre>
