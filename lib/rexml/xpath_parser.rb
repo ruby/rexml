@@ -1,6 +1,5 @@
 # frozen_string_literal: false
 
-require "pp"
 require "set"
 
 require_relative 'namespace'
@@ -798,6 +797,11 @@ module REXML
     end
 
     def trace(*args)
+      # Loaded here rather than at the top of the file because this method is
+      # only reached when REXML_XPATH_PARSER_DEBUG is set. Requiring pp
+      # eagerly made every REXML user pay for a debugging aid.
+      require "pp"
+
       indent = "  " * @nest
       PP.pp(args, "").each_line do |line|
         puts("#{indent}#{line}")
