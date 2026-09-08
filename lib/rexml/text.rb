@@ -356,9 +356,10 @@ module REXML
       if doctype
         # Replace all ampersands that aren't part of an entity
         doctype.entities.each_value do |entity|
-          copy = copy.gsub( entity.value,
-            "&#{entity.name};" ) if entity.value and
-              not( entity_filter and entity_filter.include?(entity.name) )
+          # Skip an empty value because String#gsub("") matches at every position
+          next if entity.value.nil? or entity.value.empty?
+          next if entity_filter and entity_filter.include?(entity.name)
+          copy = copy.gsub( entity.value, "&#{entity.name};" )
         end
       else
         # Replace all ampersands that aren't part of an entity

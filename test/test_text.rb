@@ -51,6 +51,18 @@ module REXMLTests
                    Text.new(text, false, document.root, nil, ["b"]).to_s)
     end
 
+    def test_new_text_empty_entity
+      document = REXML::Document.new(<<-XML)
+<!DOCTYPE root [
+  <!ENTITY empty "">
+  <!ENTITY a "aaa">
+]>
+<root/>
+      XML
+      assert_equal("abc &a;",
+                   Text.new("abc aaa", false, document.root).to_s)
+    end
+
     def test_shift_operator_chain
       text = Text.new("original\r\n")
       text << "append1\r\n" << "append2\r\n"
