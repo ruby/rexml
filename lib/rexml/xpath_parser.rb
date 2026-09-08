@@ -329,7 +329,7 @@ module REXML
           return -@functions.number(res)
         when :not
         when :function
-          func_name = path_stack.shift.tr('-','_')
+          func_name = path_stack.shift
           arguments = path_stack.shift
 
           if nodeset.size != 1
@@ -351,7 +351,11 @@ module REXML
             expr(arg, nodeset, target_context)
           end
           @functions.context = target_context
-          result = @functions.send(func_name, *args)
+
+          # TODO: Maybe, this is not XPath spec behavior.
+          # This behavior must be reconsidered.
+          result = @functions.call(func_name.tr('_', '-'), args: args, fallback: [])
+
           return result if path_stack.empty?
 
           nodeset = apply_remaining_predicates(path_stack, result)

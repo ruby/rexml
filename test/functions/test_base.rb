@@ -19,9 +19,12 @@ module REXMLTests
         name namespace-uri normalize-space not number position round starts-with
         string string-length substring substring-after substring-before sum translate true
       ]
-      methods = REXML::FunctionsClass.instance_methods(false) -
-        REXML::FunctionsClass::INTERNAL_METHODS
-      assert_equal expected_functions, methods.map { |m| m.to_s.tr('_', '-') }.sort
+      assert_equal expected_functions, REXML::FunctionsClass::AVAILABLE_FUNCTIONS.to_a.sort
+      expected_functions.each do |name|
+        assert do
+          REXML::FunctionsClass.method_defined?(name.tr('-', '_'))
+        end
+      end
     end
 
     def test_functions
@@ -297,13 +300,21 @@ Coffee beans
     end
 
     def test_nonexistent_function
+      assert_raise(ArgumentError) { Functions.call('nonexistent', args: []) }
+      assert_raise(ArgumentError) { Functions.call('string_length', args: ['abc']) }
+      assert_empty(Functions.call('string_length', args: ['abc'], fallback: []))
+      assert_equal(false, Functions.call('nonexistent', args: [], fallback: false))
+      assert_equal(3, Functions.call(:'string-length', args: ['abc']))
+
       doc = Document.new("<root><nonexistent/></root>")
       # TODO: Maybe, this is not XPath spec behavior.
       # This behavior must be reconsidered.
       assert_nil(XPath::first(doc.root, "nonexistent()"))
       assert_empty(XPath::match(doc.root, "nonexistent()"))
       assert_empty(XPath::match(doc, "42()/*"))
-      assert_empty(Functions.send('42'))
+      assert_equal(3, Functions.send('string_length', 'abc'))
+      assert_equal(3, Functions.send(:string_length, 'abc'))
+      assert_empty(Functions.send(:nonexistent))
     end
   end
 end
