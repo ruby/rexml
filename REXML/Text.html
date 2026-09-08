@@ -955,7 +955,7 @@
 
 
           <div class="method-source-code" id="expand-source">
-            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/text.rb, line 389</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/text.rb, line 390</span>
 <span class="ruby-keyword">def</span> <span class="ruby-constant">Text</span>.<span class="ruby-identifier">expand</span>(<span class="ruby-identifier">ref</span>, <span class="ruby-identifier">doctype</span>, <span class="ruby-identifier">filter</span>, <span class="ruby-value">expanding:</span> <span class="ruby-keyword">nil</span>)
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">ref</span>[<span class="ruby-value">1</span>] <span class="ruby-operator">==</span> <span class="ruby-string">?</span><span class="ruby-string">#</span>
     <span class="ruby-keyword">if</span> <span class="ruby-identifier">ref</span>[<span class="ruby-value">2</span>] <span class="ruby-operator">==</span> <span class="ruby-string">?</span><span class="ruby-string">x</span>
@@ -1135,9 +1135,10 @@
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">doctype</span>
     <span class="ruby-comment"># Replace all ampersands that aren&#39;t part of an entity</span>
     <span class="ruby-identifier">doctype</span>.<span class="ruby-identifier">entities</span>.<span class="ruby-identifier">each_value</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">entity</span><span class="ruby-operator">|</span>
-      <span class="ruby-identifier">copy</span> = <span class="ruby-identifier">copy</span>.<span class="ruby-identifier">gsub</span>( <span class="ruby-identifier">entity</span>.<span class="ruby-identifier">value</span>,
-        <span class="ruby-string">&quot;</span><span class="ruby-string">&amp;</span><span class="ruby-string">#{</span><span class="ruby-identifier">entity</span>.<span class="ruby-identifier">name</span><span class="ruby-string">}</span><span class="ruby-string">;</span><span class="ruby-string">&quot;</span> ) <span class="ruby-keyword">if</span> <span class="ruby-identifier">entity</span>.<span class="ruby-identifier">value</span> <span class="ruby-keyword">and</span>
-          <span class="ruby-keyword">not</span>( <span class="ruby-identifier">entity_filter</span> <span class="ruby-keyword">and</span> <span class="ruby-identifier">entity_filter</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">entity</span>.<span class="ruby-identifier">name</span>) )
+      <span class="ruby-comment"># Skip an empty value because String#gsub(&quot;&quot;) matches at every position</span>
+      <span class="ruby-keyword">next</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">entity</span>.<span class="ruby-identifier">value</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-keyword">or</span> <span class="ruby-identifier">entity</span>.<span class="ruby-identifier">value</span>.<span class="ruby-identifier">empty?</span>
+      <span class="ruby-keyword">next</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">entity_filter</span> <span class="ruby-keyword">and</span> <span class="ruby-identifier">entity_filter</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">entity</span>.<span class="ruby-identifier">name</span>)
+      <span class="ruby-identifier">copy</span> = <span class="ruby-identifier">copy</span>.<span class="ruby-identifier">gsub</span>( <span class="ruby-identifier">entity</span>.<span class="ruby-identifier">value</span>, <span class="ruby-string">&quot;</span><span class="ruby-string">&amp;</span><span class="ruby-string">#{</span><span class="ruby-identifier">entity</span>.<span class="ruby-identifier">name</span><span class="ruby-string">}</span><span class="ruby-string">;</span><span class="ruby-string">&quot;</span> )
     <span class="ruby-keyword">end</span>
   <span class="ruby-keyword">else</span>
     <span class="ruby-comment"># Replace all ampersands that aren&#39;t part of an entity</span>
@@ -1251,7 +1252,7 @@
 
 
           <div class="method-source-code" id="unnormalize-source">
-            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/text.rb, line 375</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/text.rb, line 376</span>
 <span class="ruby-keyword">def</span> <span class="ruby-constant">Text</span><span class="ruby-operator">::</span><span class="ruby-identifier">unnormalize</span>( <span class="ruby-identifier">string</span>, <span class="ruby-identifier">doctype</span>=<span class="ruby-keyword">nil</span>, <span class="ruby-identifier">filter</span>=<span class="ruby-keyword">nil</span>, <span class="ruby-identifier">illegal</span>=<span class="ruby-keyword">nil</span>, <span class="ruby-value">entity_expansion_text_limit:</span> <span class="ruby-keyword">nil</span>, <span class="ruby-value">expanding:</span> <span class="ruby-keyword">nil</span> )
   <span class="ruby-identifier">entity_expansion_text_limit</span> ||= <span class="ruby-constant">Security</span>.<span class="ruby-identifier">entity_expansion_text_limit</span>
   <span class="ruby-identifier">sum</span> = <span class="ruby-value">0</span>
