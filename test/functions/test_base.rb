@@ -21,7 +21,9 @@ module REXMLTests
       ]
       assert_equal expected_functions, REXML::FunctionsClass::AVAILABLE_FUNCTIONS.to_a.sort
       expected_functions.each do |name|
-        assert(REXML::FunctionsClass.method_defined?(name.tr('-', '_')), name)
+        assert do
+          REXML::FunctionsClass.method_defined?(name.tr('-', '_'))
+        end
       end
     end
 
