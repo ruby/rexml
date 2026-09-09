@@ -105,5 +105,96 @@ module REXMLTests
         end
       end
     end
+
+    def test_expand_character_reference_decimal
+      assert_equal("A", Text.expand("&#65;", nil, nil))
+    end
+
+    def test_expand_character_reference_hexadecimal
+      assert_equal("A", Text.expand("&#x41;", nil, nil))
+    end
+
+    def test_expand_character_reference_supplementary_plane
+      assert_equal("\u{1F600}", Text.expand("&#x1F600;", nil, nil))
+    end
+
+    def test_expand_character_reference_forbidden_null
+      exception = assert_raise(REXML::ParseException) do
+        Text.expand("&#0;", nil, nil)
+      end
+      assert_equal("Illegal character reference: <&#0;>", exception.to_s)
+    end
+
+    def test_expand_character_reference_forbidden_start_of_heading
+      exception = assert_raise(REXML::ParseException) do
+        Text.expand("&#1;", nil, nil)
+      end
+      assert_equal("Illegal character reference: <&#1;>", exception.to_s)
+    end
+
+    def test_expand_character_reference_forbidden_backspace
+      exception = assert_raise(REXML::ParseException) do
+        Text.expand("&#8;", nil, nil)
+      end
+      assert_equal("Illegal character reference: <&#8;>", exception.to_s)
+    end
+
+    def test_expand_character_reference_forbidden_vertical_tab_decimal
+      exception = assert_raise(REXML::ParseException) do
+        Text.expand("&#11;", nil, nil)
+      end
+      assert_equal("Illegal character reference: <&#11;>", exception.to_s)
+    end
+
+    def test_expand_character_reference_forbidden_vertical_tab_hexadecimal
+      exception = assert_raise(REXML::ParseException) do
+        Text.expand("&#xB;", nil, nil)
+      end
+      assert_equal("Illegal character reference: <&#xB;>", exception.to_s)
+    end
+
+    def test_expand_character_reference_forbidden_noncharacter_fffe
+      exception = assert_raise(REXML::ParseException) do
+        Text.expand("&#xFFFE;", nil, nil)
+      end
+      assert_equal("Illegal character reference: <&#xFFFE;>", exception.to_s)
+    end
+
+    def test_expand_character_reference_forbidden_noncharacter_ffff
+      exception = assert_raise(REXML::ParseException) do
+        Text.expand("&#xFFFF;", nil, nil)
+      end
+      assert_equal("Illegal character reference: <&#xFFFF;>", exception.to_s)
+    end
+
+    def test_expand_character_reference_forbidden_beyond_unicode
+      exception = assert_raise(REXML::ParseException) do
+        Text.expand("&#x110000;", nil, nil)
+      end
+      assert_equal("Illegal character reference: <&#x110000;>", exception.to_s)
+    end
+
+    def test_expand_character_reference_forbidden_out_of_range
+      exception = assert_raise(REXML::ParseException) do
+        Text.expand("&#x80000000;", nil, nil)
+      end
+      assert_equal("Illegal character reference: <&#x80000000;>", exception.to_s)
+    end
+
+    def test_unnormalize_forbidden_character_reference
+      exception = assert_raise(REXML::ParseException) do
+        Text.unnormalize("safe text &#0; more")
+      end
+      assert_equal("Illegal character reference: <&#0;>", exception.to_s)
+    end
+
+    def test_entity_value_forbidden_character_reference
+      document = REXML::Document.new(
+        "<!DOCTYPE a [<!ENTITY e '&#0;'>]><a>&e;</a>")
+      exception = assert_raise(REXML::ParseException) do
+        document.root.children.first.value
+      end
+      assert_equal("Illegal character reference: <&#0;>", exception.to_s)
+    end
   end
 end

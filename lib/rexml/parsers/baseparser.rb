@@ -3,6 +3,7 @@ require_relative '../parseexception'
 require_relative '../undefinednamespaceexception'
 require_relative '../security'
 require_relative '../source'
+require_relative '../text'
 require 'set'
 require "strscan"
 
@@ -584,7 +585,7 @@ module REXML
           else
             code_point = Integer(m, 10)
           end
-          [code_point].pack('U*')
+          Text.expand_character_reference(code_point, "&##{m};")
         }
         matches.collect!{|x|x[0]}.compact!
         if filter
