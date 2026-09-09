@@ -86,9 +86,8 @@ module REXML
       end
 
       def write_text( node, output )
-        s = node.to_s()
-        s.gsub!(/\s/,' ')
-        s.squeeze!(" ")
+        # Not gsub!/squeeze!: Text#to_s returns the node's own string.
+        s = node.to_s().gsub(/\s/, ' ').squeeze(" ")
         s = wrap(s, @width - @level)
         s = indent_text(s, @level, " ", true)
         output << (' '*@level + s)
