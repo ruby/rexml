@@ -387,12 +387,26 @@ module REXML
       }
     end
 
+    # Expands a numeric character reference's code point to a String.
+    # Code points that are not valid XML characters are rejected, matching
+    # the validation Text.check applies to literal references. This keeps the
+    # entity-expansion path from emitting XML-forbidden characters (NUL,
+    # control chars, U+FFFE/U+FFFF, code points beyond U+10FFFF, ...).
+    def Text.expand_character_reference(code_point, reference)
+      case code_point
+      when *VALID_CHAR
+        [code_point].pack('U*')
+      else
+        raise ParseException.new("Illegal character reference: <#{reference}>")
+      end
+    end
+
     def Text.expand(ref, doctype, filter, expanding: nil)
       if ref[1] == ?#
         if ref[2] == ?x
-          [ref[3...-1].to_i(16)].pack('U*')
+          expand_character_reference(ref[3...-1].to_i(16), ref)
         else
-          [ref[2...-1].to_i].pack('U*')
+          expand_character_reference(ref[2...-1].to_i, ref)
         end
       elsif ref == '&amp;'
         '&'
