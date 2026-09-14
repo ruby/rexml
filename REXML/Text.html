@@ -581,6 +581,8 @@
 
         <li ><a href="#method-c-expand">expand</a></li>
 
+        <li ><a href="#method-c-expand_character_reference">expand_character_reference</a></li>
+
         <li class="calls-super" ><a href="#method-c-new">new</a></li>
 
         <li ><a href="#method-c-normalize">normalize</a></li>
@@ -955,13 +957,13 @@
 
 
           <div class="method-source-code" id="expand-source">
-            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/text.rb, line 390</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/text.rb, line 404</span>
 <span class="ruby-keyword">def</span> <span class="ruby-constant">Text</span>.<span class="ruby-identifier">expand</span>(<span class="ruby-identifier">ref</span>, <span class="ruby-identifier">doctype</span>, <span class="ruby-identifier">filter</span>, <span class="ruby-value">expanding:</span> <span class="ruby-keyword">nil</span>)
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">ref</span>[<span class="ruby-value">1</span>] <span class="ruby-operator">==</span> <span class="ruby-string">?</span><span class="ruby-string">#</span>
     <span class="ruby-keyword">if</span> <span class="ruby-identifier">ref</span>[<span class="ruby-value">2</span>] <span class="ruby-operator">==</span> <span class="ruby-string">?</span><span class="ruby-string">x</span>
-      [<span class="ruby-identifier">ref</span>[<span class="ruby-value">3</span>...-<span class="ruby-value">1</span>].<span class="ruby-identifier">to_i</span>(<span class="ruby-value">16</span>)].<span class="ruby-identifier">pack</span>(<span class="ruby-string">&#39;</span><span class="ruby-string">U*</span><span class="ruby-string">&#39;</span>)
+      <span class="ruby-identifier">expand_character_reference</span>(<span class="ruby-identifier">ref</span>[<span class="ruby-value">3</span>...-<span class="ruby-value">1</span>].<span class="ruby-identifier">to_i</span>(<span class="ruby-value">16</span>), <span class="ruby-identifier">ref</span>)
     <span class="ruby-keyword">else</span>
-      [<span class="ruby-identifier">ref</span>[<span class="ruby-value">2</span>...-<span class="ruby-value">1</span>].<span class="ruby-identifier">to_i</span>].<span class="ruby-identifier">pack</span>(<span class="ruby-string">&#39;</span><span class="ruby-string">U*</span><span class="ruby-string">&#39;</span>)
+      <span class="ruby-identifier">expand_character_reference</span>(<span class="ruby-identifier">ref</span>[<span class="ruby-value">2</span>...-<span class="ruby-value">1</span>].<span class="ruby-identifier">to_i</span>, <span class="ruby-identifier">ref</span>)
     <span class="ruby-keyword">end</span>
   <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">ref</span> <span class="ruby-operator">==</span> <span class="ruby-string">&#39;</span><span class="ruby-string">&amp;amp;</span><span class="ruby-string">&#39;</span>
     <span class="ruby-string">&#39;</span><span class="ruby-string">&amp;</span><span class="ruby-string">&#39;</span>
@@ -982,6 +984,60 @@
 
 
           
+
+
+        </div>
+
+
+
+
+
+      </div>
+
+
+      <div id="method-c-expand_character_reference" class="method-detail anchor-link ">
+        <div class="method-header">
+          <div class="method-heading-group">
+
+              <div class="method-heading">
+                <a href="#method-c-expand_character_reference" title="Link to this method">
+                  <span class="method-name">expand_character_reference</span>
+                  <span class="method-args">(code_point, reference)</span>
+                </a>
+              </div>
+
+
+
+          </div>
+
+
+            <div class="method-controls">
+              <details class="method-source-toggle">
+                <summary><span class="method-source-icon" aria-hidden="true">{}</span> Source</summary>
+              </details>
+            </div>
+
+        </div>
+
+
+          <div class="method-source-code" id="expand_character_reference-source">
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/text.rb, line 395</span>
+<span class="ruby-keyword">def</span> <span class="ruby-constant">Text</span>.<span class="ruby-identifier">expand_character_reference</span>(<span class="ruby-identifier">code_point</span>, <span class="ruby-identifier">reference</span>)
+  <span class="ruby-keyword">case</span> <span class="ruby-identifier">code_point</span>
+  <span class="ruby-keyword">when</span> <span class="ruby-operator">*</span><span class="ruby-constant">VALID_CHAR</span>
+    [<span class="ruby-identifier">code_point</span>].<span class="ruby-identifier">pack</span>(<span class="ruby-string">&#39;</span><span class="ruby-string">U*</span><span class="ruby-string">&#39;</span>)
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-identifier">raise</span> <span class="ruby-constant">ParseException</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&quot;</span><span class="ruby-string">Illegal character reference: &lt;</span><span class="ruby-string">#{</span><span class="ruby-identifier">reference</span><span class="ruby-string">}</span><span class="ruby-string">&gt;</span><span class="ruby-string">&quot;</span>)
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+
+
+
+        <div class="method-description">
+
+
+          <p>Expands a numeric character reference’s code point to a String. Code points that are not valid XML characters are rejected, matching the validation <a href="Text.html#method-c-check"><code>Text.check</code></a> applies to literal references. This keeps the entity-expansion path from emitting XML-forbidden characters (NUL, control chars, U+FFFE/U+FFFF, code points beyond U+10FFFF, …).</p>
 
 
         </div>
