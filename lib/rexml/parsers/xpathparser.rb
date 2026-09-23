@@ -13,6 +13,10 @@ module REXML
       include XMLTokens
       LITERAL    = /^'([^']*)'|^"([^"]*)"/u
 
+      def initialize(strict: false)
+        @strict = strict
+      end
+
       def namespaces=( namespaces )
         @namespaces = namespaces
       end
@@ -652,6 +656,7 @@ module REXML
           #arry << @variables[ varname ]
         when /^(\w[-\w]*)(?:\()/
           fname = $1
+          return path if @strict && fname.include?("_")
           tmp = $'
           return path if fname =~ NT
           path = tmp
