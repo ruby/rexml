@@ -814,7 +814,7 @@
 
 
           <div class="method-source-code" id="write_cdata-source">
-            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/formatters/pretty.rb, line 102</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/formatters/pretty.rb, line 101</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">write_cdata</span>( <span class="ruby-identifier">node</span>, <span class="ruby-identifier">output</span>)
   <span class="ruby-identifier">output</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-string">&#39;</span><span class="ruby-string"> </span><span class="ruby-string">&#39;</span> <span class="ruby-operator">*</span> <span class="ruby-ivar">@level</span>
   <span class="ruby-keyword">super</span>
@@ -869,7 +869,7 @@
 
 
           <div class="method-source-code" id="write_comment-source">
-            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/formatters/pretty.rb, line 97</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/formatters/pretty.rb, line 96</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">write_comment</span>( <span class="ruby-identifier">node</span>, <span class="ruby-identifier">output</span>)
   <span class="ruby-identifier">output</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-string">&#39;</span><span class="ruby-string"> </span><span class="ruby-string">&#39;</span> <span class="ruby-operator">*</span> <span class="ruby-ivar">@level</span>
   <span class="ruby-keyword">super</span>
@@ -924,7 +924,7 @@
 
 
           <div class="method-source-code" id="write_document-source">
-            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/formatters/pretty.rb, line 107</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/formatters/pretty.rb, line 106</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">write_document</span>( <span class="ruby-identifier">node</span>, <span class="ruby-identifier">output</span> )
   <span class="ruby-comment"># Ok, this is a bit odd.  All XML documents have an XML declaration,</span>
   <span class="ruby-comment"># but it may not write itself if the user didn&#39;t specifically add it,</span>
@@ -1081,9 +1081,8 @@
           <div class="method-source-code" id="write_text-source">
             <pre class="ruby"><span class="ruby-comment"># File lib/rexml/formatters/pretty.rb, line 88</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">write_text</span>( <span class="ruby-identifier">node</span>, <span class="ruby-identifier">output</span> )
-  <span class="ruby-identifier">s</span> = <span class="ruby-identifier">node</span>.<span class="ruby-identifier">to_s</span>()
-  <span class="ruby-identifier">s</span>.<span class="ruby-identifier">gsub!</span>(<span class="ruby-regexp">/\s/</span>,<span class="ruby-string">&#39;</span><span class="ruby-string"> </span><span class="ruby-string">&#39;</span>)
-  <span class="ruby-identifier">s</span>.<span class="ruby-identifier">squeeze!</span>(<span class="ruby-string">&quot;</span><span class="ruby-string"> </span><span class="ruby-string">&quot;</span>)
+  <span class="ruby-comment"># Not gsub!/squeeze!: Text#to_s returns the node&#39;s own string.</span>
+  <span class="ruby-identifier">s</span> = <span class="ruby-identifier">node</span>.<span class="ruby-identifier">to_s</span>().<span class="ruby-identifier">gsub</span>(<span class="ruby-regexp">/\s/</span>, <span class="ruby-string">&#39;</span><span class="ruby-string"> </span><span class="ruby-string">&#39;</span>).<span class="ruby-identifier">squeeze</span>(<span class="ruby-string">&quot;</span><span class="ruby-string"> </span><span class="ruby-string">&quot;</span>)
   <span class="ruby-identifier">s</span> = <span class="ruby-identifier">wrap</span>(<span class="ruby-identifier">s</span>, <span class="ruby-ivar">@width</span> <span class="ruby-operator">-</span> <span class="ruby-ivar">@level</span>)
   <span class="ruby-identifier">s</span> = <span class="ruby-identifier">indent_text</span>(<span class="ruby-identifier">s</span>, <span class="ruby-ivar">@level</span>, <span class="ruby-string">&quot;</span><span class="ruby-string"> </span><span class="ruby-string">&quot;</span>, <span class="ruby-keyword">true</span>)
   <span class="ruby-identifier">output</span> <span class="ruby-operator">&lt;&lt;</span> (<span class="ruby-string">&#39;</span><span class="ruby-string"> </span><span class="ruby-string">&#39;</span><span class="ruby-operator">*</span><span class="ruby-ivar">@level</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">s</span>)
