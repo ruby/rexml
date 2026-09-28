@@ -365,7 +365,9 @@ module REXML
     end
 
     def compare_language lang1, lang2
-      lang2.downcase.index(lang1.downcase) == 0
+      lang1 = lang1.downcase
+      lang2 = lang2.downcase
+      lang2 == lang1 or lang2.start_with?("#{lang1}-")
     end
 
     # a string that consists of optional whitespace followed by an optional
