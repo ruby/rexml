@@ -237,6 +237,21 @@ module REXMLTests
       assert_equal(5, d.elements.to_a("//*[lang('en')]").size)
     end
 
+    def test_lang_prefix_is_not_sublanguage
+      d = Document.new(<<-XML)
+      <root>
+      <para xml:lang="en"/>
+      <para xml:lang="eng"/>
+      <para xml:lang="en-GB"/>
+      </root>
+      XML
+
+      assert_equal(["en", "en-GB"],
+                   d.elements.to_a("//para[lang('en')]").collect {|e| e.attributes["xml:lang"]})
+      assert_equal([],
+                   d.elements.to_a("//para[lang('e')]").collect {|e| e.attributes["xml:lang"]})
+    end
+
     def test_ticket_60
       document = REXML::Document.new("<a><b>A</b><b>1</b></a>")
       assert_equal( "A", REXML::XPath.first(document, '//b[.="A"]').text )
