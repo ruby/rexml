@@ -60,7 +60,7 @@ module REXML
 
     def initialize(strict: false)
       @debug = DEBUG
-      @parser = REXML::Parsers::XPathParser.new
+      @parser = REXML::Parsers::XPathParser.new(strict: strict)
       @namespaces = nil
       @variables = {}
       @functions = FunctionsClass.new
