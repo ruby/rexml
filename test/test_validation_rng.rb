@@ -775,6 +775,54 @@ module REXMLTests
 
 
 
+    def test_document_with_declaration
+      rng = <<-XML
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0">
+  <start>
+    <element name="root"/>
+  </start>
+</grammar>
+      XML
+      validator = REXML::Validation::RelaxNG.new(rng)
+
+      no_error(validator, <<-XML)
+<?xml version="1.0" encoding="UTF-8"?>
+<root/>
+      XML
+      error(validator, <<-XML)
+<?xml version="1.0" encoding="UTF-8"?>
+<other/>
+      XML
+    end
+
+    def test_document_with_prolog_and_trailing_misc
+      rng = <<-XML
+<grammar xmlns="http://relaxng.org/ns/structure/1.0">
+  <start>
+    <element name="root">
+      <element name="a"><text/></element>
+    </element>
+  </start>
+</grammar>
+      XML
+      validator = REXML::Validation::RelaxNG.new(rng)
+
+      no_error(validator, <<-XML)
+<?xml version="1.0"?>
+<!DOCTYPE root [<!ELEMENT root ANY>]>
+<!-- before -->
+<?target data?>
+<root><!-- inside --><a>text</a><?target data?></root>
+<!-- after -->
+      XML
+      error(validator, <<-XML)
+<?xml version="1.0"?>
+<!-- before -->
+<root><b/></root>
+      XML
+    end
+
     def error( validator, source )
       parser = REXML::Parsers::TreeParser.new( source )
       parser.add_listener( validator.reset )
