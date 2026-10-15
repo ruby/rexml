@@ -154,6 +154,8 @@ module REXML
         when Float
           if object.nan?
             "NaN"
+          elsif object.infinite?
+            object > 0 ? "Infinity" : "-Infinity"
           else
             integer = object.to_i
             if object == integer
@@ -410,11 +412,21 @@ module REXML
     end
 
     def floor( number )
-      number(number).floor
+      number = number(number)
+      begin
+        number.floor
+      rescue FloatDomainError
+        number
+      end
     end
 
     def ceiling( number )
-      number(number).ceil
+      number = number(number)
+      begin
+        number.ceil
+      rescue FloatDomainError
+        number
+      end
     end
 
     def round( number )

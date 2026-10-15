@@ -207,6 +207,31 @@ module REXMLTests
       end
     end
 
+    def test_floor_ceiling_not_finite
+      doc = REXML::Document.new("<a/>")
+      assert_equal([
+                     "NaN", "Infinity", "-Infinity",
+                     "NaN", "Infinity", "-Infinity",
+                   ],
+                   [
+                     REXML::XPath.first(doc, "string(floor('x'))"),
+                     REXML::XPath.first(doc, "string(floor(1 div 0))"),
+                     REXML::XPath.first(doc, "string(floor(-1 div 0))"),
+                     REXML::XPath.first(doc, "string(ceiling('x'))"),
+                     REXML::XPath.first(doc, "string(ceiling(1 div 0))"),
+                     REXML::XPath.first(doc, "string(ceiling(-1 div 0))"),
+                   ])
+    end
+
+    def test_string_infinity
+      doc = REXML::Document.new("<a/>")
+      assert_equal(["Infinity", "-Infinity"],
+                   [
+                     REXML::XPath.first(doc, "string(1 div 0)"),
+                     REXML::XPath.first(doc, "string(-1 div 0)"),
+                   ])
+    end
+
     # Submitted by Kou
     def test_lang
       d = Document.new(<<-XML)
