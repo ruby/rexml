@@ -576,6 +576,8 @@ module REXML
         else
           rv = string.dup
         end
+        return rv if rv.valid_encoding? && !rv.include?("&")
+
         matches = rv.scan( REFERENCE_RE )
         return rv if matches.size == 0
         rv.gsub!( Private::CHARACTER_REFERENCES ) {

@@ -1,0 +1,36 @@
+loop_count: 1000
+contexts:
+  - gems:
+      rexml: 3.2.6
+    require: false
+    prelude: require 'rexml'
+  - name: master
+    prelude: |
+      $LOAD_PATH.unshift(File.expand_path("lib"))
+      require 'rexml'
+  - name: 3.2.6(YJIT)
+    gems:
+      rexml: 3.2.6
+    require: false
+    prelude: |
+      require 'rexml'
+      RubyVM::YJIT.enable
+  - name: master(YJIT)
+    prelude: |
+      $LOAD_PATH.unshift(File.expand_path("lib"))
+      require 'rexml'
+      RubyVM::YJIT.enable
+
+prelude: |
+  require 'rexml/text'
+
+  plain_text = "Hello World! Plain text extraction without entities."
+  long_plain_text = "A" * 1000
+  crlf_text = "Line 1\r\nLine 2\r\nLine 3"
+  entity_text = "Hello &amp; World &lt;test&gt; &#x2022; text"
+
+benchmark:
+  "Text.unnormalize (plain)": REXML::Text.unnormalize(plain_text)
+  "Text.unnormalize (1000 chars plain)": REXML::Text.unnormalize(long_plain_text)
+  "Text.unnormalize (with CRLF)": REXML::Text.unnormalize(crlf_text)
+  "Text.unnormalize (with entities)": REXML::Text.unnormalize(entity_text)
