@@ -119,7 +119,39 @@ module REXML
         end while event[0] != :end_document
       end
 
+      # RELAX NG validates elements, attributes and text only. The XML
+      # declaration, the document type declaration, comments and processing
+      # instructions are not part of the data model being validated.
+      IGNORED_EVENTS = [
+        :xmldecl,
+        :start_doctype,
+        :end_doctype,
+        :elementdecl,
+        :entitydecl,
+        :attlistdecl,
+        :notationdecl,
+        :externalentity,
+        :comment,
+        :processing_instruction,
+      ].freeze
+
+      def reset
+        @depth = 0
+        super
+      end
+
       def receive event
+        return if IGNORED_EVENTS.include?(event[0])
+        @depth ||= 0
+        case event[0]
+        when :start_element
+          @depth += 1
+        when :end_element
+          @depth -= 1
+        when :text
+          # Only white space can appear outside the document element.
+          return if @depth.zero?
+        end
         validate( event )
       end
     end
