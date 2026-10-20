@@ -339,6 +339,13 @@ Coffee beans
       assert_nil(XPath::first(doc.root, "to_s()"))
     end
 
+    def test_underscored_function_name_in_strict_mode
+      doc = Document.new("<root/>")
+      assert_equal(["root"], XPath::match(doc, "local_name(*)"))
+      assert_equal(XPath::match(doc, "localname(*)", nil, {}, strict: true),
+                   XPath::match(doc, "local_name(*)", nil, {}, strict: true))
+    end
+
     def test_nonexistent_function
       assert_raise(ArgumentError) { Functions.call('nonexistent', args: []) }
       assert_raise(ArgumentError) { Functions.call('string_length', args: ['abc']) }
