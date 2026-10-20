@@ -60,7 +60,7 @@ module REXML
 
     def initialize(strict: false)
       @debug = DEBUG
-      @parser = REXML::Parsers::XPathParser.new(strict: strict)
+      @parser = REXML::Parsers::XPathParser.new
       @namespaces = nil
       @variables = {}
       @functions = FunctionsClass.new
@@ -354,7 +354,8 @@ module REXML
 
           # TODO: Maybe, this is not XPath spec behavior.
           # This behavior must be reconsidered.
-          result = @functions.call(func_name.tr('_', '-'), args: args, fallback: [])
+          func_name = func_name.tr('_', '-') unless strict?
+          result = @functions.call(func_name, args: args, fallback: [])
 
           return result if path_stack.empty?
 

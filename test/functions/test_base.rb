@@ -334,16 +334,16 @@ Coffee beans
                                       {"n" => nil}))
     end
 
-    def test_unregistered_method_with_underscore
+    def test_unregistered_method
       doc = Document.new("<root/>")
       assert_nil(XPath::first(doc.root, "to_s()"))
     end
 
-    def test_unregistered_method_with_underscore_in_strict_mode
+    def test_underscored_function_name_in_strict_mode
       doc = Document.new("<root/>")
-      assert_raise(REXML::ParseException) do
-        XPath::first(doc.root, "to_s()", nil, {}, strict: true)
-      end
+      assert_equal(["root"], XPath::match(doc, "local_name(*)"))
+      assert_equal(XPath::match(doc, "localname(*)", nil, {}, strict: true),
+                   XPath::match(doc, "local_name(*)", nil, {}, strict: true))
     end
 
     def test_nonexistent_function
