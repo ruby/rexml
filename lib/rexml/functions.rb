@@ -1,4 +1,7 @@
 # frozen_string_literal: false
+
+require 'set'
+
 module REXML
   # If you add a method, keep in mind two things:
   # (1) the first argument will always be a list of nodes from which to
@@ -8,39 +11,40 @@ module REXML
   # Therefore, in XML, "local-name()" is identical (and actually becomes)
   # "local_name()"
   class FunctionsClass # :nodoc:
-    @@available_functions = {}
-
     def initialize
       @context = nil
-      @namespace_context = {}
-      @variables = {}
       @node_indexes = nil
     end
 
-    INTERNAL_METHODS = [
-      :namespace_context,
-      :namespace_context=,
-      :variables,
-      :variables=,
-      :context=,
-      :node_indexes=,
-      :target_named_node,
-      :send,
-      :compare_language,
-      :string_value,
-    ]
-    class << self
-      def method_added(name)
-        unless INTERNAL_METHODS.include?(name)
-          @@available_functions[name] = true
-        end
-      end
-    end
-
-    def namespace_context=(x) ; @namespace_context=x ; end
-    def variables=(x) ; @variables=x ; end
-    def namespace_context ; @namespace_context ; end
-    def variables ; @variables ; end
+    AVAILABLE_FUNCTIONS = %w[
+      boolean
+      ceiling
+      concat
+      contains
+      count
+      false
+      floor
+      id
+      lang
+      last
+      local-name
+      name
+      namespace-uri
+      normalize-space
+      not
+      number
+      position
+      round
+      starts-with
+      string
+      string-length
+      substring
+      substring-after
+      substring-before
+      sum
+      translate
+      true
+    ].to_set.freeze
 
     def context=(value); @context = value; end
 
@@ -150,6 +154,8 @@ module REXML
         when Float
           if object.nan?
             "NaN"
+          elsif object.infinite?
+            object > 0 ? "Infinity" : "-Infinity"
           else
             integer = object.to_i
             if object == integer
@@ -361,7 +367,9 @@ module REXML
     end
 
     def compare_language lang1, lang2
-      lang2.downcase.index(lang1.downcase) == 0
+      lang1 = lang1.downcase
+      lang2 = lang2.downcase
+      lang2 == lang1 or lang2.start_with?("#{lang1}-")
     end
 
     # a string that consists of optional whitespace followed by an optional
@@ -404,11 +412,21 @@ module REXML
     end
 
     def floor( number )
-      number(number).floor
+      number = number(number)
+      begin
+        number.floor
+      rescue FloatDomainError
+        number
+      end
     end
 
     def ceiling( number )
-      number(number).ceil
+      number = number(number)
+      begin
+        number.ceil
+      rescue FloatDomainError
+        number
+      end
     end
 
     def round( number )
@@ -422,19 +440,24 @@ module REXML
       end
     end
 
-    def send(name, *args)
-      if @@available_functions[name.to_sym]
-        super
+    def call(name, args:, fallback: nil)
+      name = name.to_s
+      if AVAILABLE_FUNCTIONS.include?(name)
+        __send__(name.tr('-', '_'), *args)
+      elsif fallback.nil?
+        raise ArgumentError, "Unknown XPath function: #{name}"
       else
-        # TODO: Maybe, this is not XPath spec behavior.
-        # This behavior must be reconsidered.
-        XPath.match(@context[:node], name.to_s)
+        fallback
       end
+    end
+
+    # For compatibility. Use `call` instead.
+    def send(name, *args)
+      call(name.to_s.tr('_', '-'), args: args, fallback: [])
     end
   end
 
-  # Using this singleton instance may cause thread-safety issues
-  # especially when accessing variables, context and namespace_context.
+  # Using this singleton instance may cause thread-safety issues.
   # Consider instantiating your own FunctionsClass object.
   Functions = FunctionsClass.new # :nodoc:
 end

@@ -3,6 +3,7 @@ require_relative '../parseexception'
 require_relative '../undefinednamespaceexception'
 require_relative '../security'
 require_relative '../source'
+require_relative '../text'
 require 'set'
 require "strscan"
 
@@ -134,11 +135,11 @@ module REXML
       EREFERENCE = /&(?!#{NAME};)/
 
       DEFAULT_ENTITIES = {
-        'gt' => [/&gt;/, '&gt;', '>', />/],
-        'lt' => [/&lt;/, '&lt;', '<', /</],
-        'quot' => [/&quot;/, '&quot;', '"', /"/],
-        "apos" => [/&apos;/, "&apos;", "'", /'/]
-      }
+        'gt' => [/&gt;/, '&gt;', '>', />/].freeze,
+        'lt' => [/&lt;/, '&lt;', '<', /</].freeze,
+        'quot' => [/&quot;/, '&quot;', '"', /"/].freeze,
+        "apos" => [/&apos;/, "&apos;", "'", /'/].freeze
+      }.freeze
 
       module Private
         PEREFERENCE_PATTERN = /#{PEREFERENCE}/um
@@ -157,6 +158,7 @@ module REXML
         default_entities.each do |term|
           DEFAULT_ENTITIES_PATTERNS[term] = /&#{term};/
         end
+        DEFAULT_ENTITIES_PATTERNS.freeze
         XML_PREFIXED_NAMESPACE = "http://www.w3.org/XML/1998/namespace"
         EXTERNAL_ID_PUBLIC_PATTERN = /\s+#{PUBIDLITERAL}\s+#{SYSTEMLITERAL}/um
         EXTERNAL_ID_SYSTEM_PATTERN  = /\s+#{SYSTEMLITERAL}/um
@@ -583,7 +585,7 @@ module REXML
           else
             code_point = Integer(m, 10)
           end
-          [code_point].pack('U*')
+          Text.expand_character_reference(code_point, "&##{m};")
         }
         matches.collect!{|x|x[0]}.compact!
         if filter

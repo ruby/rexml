@@ -19,8 +19,12 @@ module REXMLTests
         name namespace-uri normalize-space not number position round starts-with
         string string-length substring substring-after substring-before sum translate true
       ]
-      methods = REXML::FunctionsClass.class_variable_get(:@@available_functions).keys.sort
-      assert_equal expected_functions, methods.map { |m| m.to_s.tr('_', '-') }.sort
+      assert_equal expected_functions, REXML::FunctionsClass::AVAILABLE_FUNCTIONS.to_a.sort
+      expected_functions.each do |name|
+        assert do
+          REXML::FunctionsClass.method_defined?(name.tr('-', '_'))
+        end
+      end
     end
 
     def test_functions
@@ -203,6 +207,31 @@ module REXMLTests
       end
     end
 
+    def test_floor_ceiling_not_finite
+      doc = REXML::Document.new("<a/>")
+      assert_equal([
+                     "NaN", "Infinity", "-Infinity",
+                     "NaN", "Infinity", "-Infinity",
+                   ],
+                   [
+                     REXML::XPath.first(doc, "string(floor('x'))"),
+                     REXML::XPath.first(doc, "string(floor(1 div 0))"),
+                     REXML::XPath.first(doc, "string(floor(-1 div 0))"),
+                     REXML::XPath.first(doc, "string(ceiling('x'))"),
+                     REXML::XPath.first(doc, "string(ceiling(1 div 0))"),
+                     REXML::XPath.first(doc, "string(ceiling(-1 div 0))"),
+                   ])
+    end
+
+    def test_string_infinity
+      doc = REXML::Document.new("<a/>")
+      assert_equal(["Infinity", "-Infinity"],
+                   [
+                     REXML::XPath.first(doc, "string(1 div 0)"),
+                     REXML::XPath.first(doc, "string(-1 div 0)"),
+                   ])
+    end
+
     # Submitted by Kou
     def test_lang
       d = Document.new(<<-XML)
@@ -231,6 +260,21 @@ module REXMLTests
       XML
 
       assert_equal(5, d.elements.to_a("//*[lang('en')]").size)
+    end
+
+    def test_lang_prefix_is_not_sublanguage
+      d = Document.new(<<-XML)
+      <root>
+      <para xml:lang="en"/>
+      <para xml:lang="eng"/>
+      <para xml:lang="en-GB"/>
+      </root>
+      XML
+
+      assert_equal(["en", "en-GB"],
+                   d.elements.to_a("//para[lang('en')]").collect {|e| e.attributes["xml:lang"]})
+      assert_equal([],
+                   d.elements.to_a("//para[lang('e')]").collect {|e| e.attributes["xml:lang"]})
     end
 
     def test_ticket_60
@@ -303,11 +347,21 @@ Coffee beans
     end
 
     def test_nonexistent_function
+      assert_raise(ArgumentError) { Functions.call('nonexistent', args: []) }
+      assert_raise(ArgumentError) { Functions.call('string_length', args: ['abc']) }
+      assert_empty(Functions.call('string_length', args: ['abc'], fallback: []))
+      assert_equal(false, Functions.call('nonexistent', args: [], fallback: false))
+      assert_equal(3, Functions.call(:'string-length', args: ['abc']))
+
       doc = Document.new("<root><nonexistent/></root>")
       # TODO: Maybe, this is not XPath spec behavior.
       # This behavior must be reconsidered.
-      assert_equal(doc.root.elements[1],
-                   XPath::first(doc.root, "nonexistent()"))
+      assert_nil(XPath::first(doc.root, "nonexistent()"))
+      assert_empty(XPath::match(doc.root, "nonexistent()"))
+      assert_empty(XPath::match(doc, "42()/*"))
+      assert_equal(3, Functions.send('string_length', 'abc'))
+      assert_equal(3, Functions.send(:string_length, 'abc'))
+      assert_empty(Functions.send(:nonexistent))
     end
   end
 end

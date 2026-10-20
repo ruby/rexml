@@ -11,11 +11,11 @@ module REXML
   class Text < Child
     include Comparable
     # The order in which the substitutions occur
-    SPECIALS = [ /&(?!#?[\w-]+;)/u, /</u, />/u, /"/u, /'/u, /\r/u ]
-    SUBSTITUTES = ['&amp;', '&lt;', '&gt;', '&quot;', '&apos;', '&#13;']
+    SPECIALS = [ /&(?!#?[\w-]+;)/u, /</u, />/u, /"/u, /'/u, /\r/u ].freeze
+    SUBSTITUTES = ['&amp;', '&lt;', '&gt;', '&quot;', '&apos;', '&#13;'].freeze
     # Characters which are substituted in written strings
-    SLAICEPS = [ '<', '>', '"', "'", '&' ]
-    SETUTITSBUS = [ /&lt;/u, /&gt;/u, /&quot;/u, /&apos;/u, /&amp;/u ]
+    SLAICEPS = [ '<', '>', '"', "'", '&' ].freeze
+    SETUTITSBUS = [ /&lt;/u, /&gt;/u, /&quot;/u, /&apos;/u, /&amp;/u ].freeze
 
     # If +raw+ is true, then REXML leaves the value alone
     attr_accessor :raw
@@ -27,7 +27,7 @@ module REXML
       (0x20..0xD7FF),
       (0xE000..0xFFFD),
       (0x10000..0x10FFFF)
-    ]
+    ].freeze
 
     VALID_XML_CHARS = Regexp.new('^['+
       VALID_CHAR.map { |item|
@@ -38,7 +38,7 @@ module REXML
           [item.first, '-'.ord, item.last].pack('UUU').force_encoding('utf-8')
         end
       }.join +
-    ']*$')
+    ']*$').freeze
 
     # Constructor
     # +arg+ if a String, the content is set to the String.  If a Text,
@@ -334,28 +334,16 @@ module REXML
     end
 
     # Reads text, substituting entities
+    #
+    # Deprecated since 3.4.5. Use Text.unnormalize instead.
     def Text::read_with_substitution( input, illegal=nil )
-      copy = input.clone
-
-      if copy =~ illegal
+      Kernel.warn("#{name}.read_with_substitution is deprecated. " +
+                  "Use #{name}.unnormalize instead.", uplevel: 1)
+      copy = input.to_s
+      if illegal and copy =~ illegal
         raise ParseException.new( "malformed text: Illegal character #$& in \"#{copy}\"" )
-      end if illegal
-
-      copy.gsub!( /\r\n?/, "\n" )
-      if copy.include? ?&
-        copy.gsub!( SETUTITSBUS[0], SLAICEPS[0] )
-        copy.gsub!( SETUTITSBUS[1], SLAICEPS[1] )
-        copy.gsub!( SETUTITSBUS[2], SLAICEPS[2] )
-        copy.gsub!( SETUTITSBUS[3], SLAICEPS[3] )
-        copy.gsub!( SETUTITSBUS[4], SLAICEPS[4] )
-        copy.gsub!( /&#0*((?:\d+)|(?:x[a-f0-9]+));/ ) {
-          m=$1
-          #m='0' if m==''
-          m = "0#{m}" if m[0] == ?x
-          [Integer(m)].pack('U*')
-        }
       end
-      copy
+      unnormalize(copy)
     end
 
     EREFERENCE = /&(?!#{Entity::NAME};)/
@@ -368,9 +356,10 @@ module REXML
       if doctype
         # Replace all ampersands that aren't part of an entity
         doctype.entities.each_value do |entity|
-          copy = copy.gsub( entity.value,
-            "&#{entity.name};" ) if entity.value and
-              not( entity_filter and entity_filter.include?(entity.name) )
+          # Skip an empty value because String#gsub("") matches at every position
+          next if entity.value.nil? or entity.value.empty?
+          next if entity_filter and entity_filter.include?(entity.name)
+          copy = copy.gsub( entity.value, "&#{entity.name};" )
         end
       else
         # Replace all ampersands that aren't part of an entity
@@ -398,12 +387,26 @@ module REXML
       }
     end
 
+    # Expands a numeric character reference's code point to a String.
+    # Code points that are not valid XML characters are rejected, matching
+    # the validation Text.check applies to literal references. This keeps the
+    # entity-expansion path from emitting XML-forbidden characters (NUL,
+    # control chars, U+FFFE/U+FFFF, code points beyond U+10FFFF, ...).
+    def Text.expand_character_reference(code_point, reference)
+      case code_point
+      when *VALID_CHAR
+        [code_point].pack('U*')
+      else
+        raise ParseException.new("Illegal character reference: <#{reference}>")
+      end
+    end
+
     def Text.expand(ref, doctype, filter, expanding: nil)
       if ref[1] == ?#
         if ref[2] == ?x
-          [ref[3...-1].to_i(16)].pack('U*')
+          expand_character_reference(ref[3...-1].to_i(16), ref)
         else
-          [ref[2...-1].to_i].pack('U*')
+          expand_character_reference(ref[2...-1].to_i, ref)
         end
       elsif ref == '&amp;'
         '&'

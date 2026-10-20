@@ -17,5 +17,17 @@ module REXMLTests
       assert_equal(true, REXML::Attribute.new("xmlns:name").namespace_declaration?)
       # REXML::Attribute.new("xmlns:xmlns") is not tested because it's invalid
     end
+
+    def test_to_string_entity
+      document = REXML::Document.new(<<-XML)
+<!DOCTYPE root [
+  <!ENTITY empty "">
+  <!ENTITY a "aaa">
+]>
+<root/>
+      XML
+      document.root.add_attribute("attr", "abc aaa")
+      assert_equal("<root attr='abc &a;'/>", document.root.to_s)
+    end
   end
 end

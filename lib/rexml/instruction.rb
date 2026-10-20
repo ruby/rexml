@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+# frozen_string_literal: true
 
 require_relative "child"
 require_relative "source"
@@ -34,8 +34,8 @@ module REXML
         @content = target.content
       else
         message =
-          "processing instruction target must be String or REXML::Instruction: "
-        message << "<#{target.inspect}>"
+          "processing instruction target must be String or REXML::Instruction: " \
+          "<#{target.inspect}>"
         raise ArgumentError, message
       end
       @content.strip! if @content

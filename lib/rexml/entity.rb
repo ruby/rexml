@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+# frozen_string_literal: true
 require 'set'
 require_relative 'child'
 require_relative 'parseexception'
@@ -127,7 +127,7 @@ module REXML
 
     # Returns this entity as a string.  See write().
     def to_s
-      rv = ''
+      rv = +''
       write rv
       rv
     end
@@ -138,14 +138,14 @@ module REXML
   # CAUTION: these entities does not have parent and document
   module EntityConst
     # +>+
-    GT = Entity.new( 'gt', '>' )
+    GT = Entity.new( 'gt', '>' ).freeze
     # +<+
-    LT = Entity.new( 'lt', '<' )
+    LT = Entity.new( 'lt', '<' ).freeze
     # +&+
-    AMP = Entity.new( 'amp', '&' )
+    AMP = Entity.new( 'amp', '&' ).freeze
     # +"+
-    QUOT = Entity.new( 'quot', '"' )
+    QUOT = Entity.new( 'quot', '"' ).freeze
     # +'+
-    APOS = Entity.new( 'apos', "'" )
+    APOS = Entity.new( 'apos', "'" ).freeze
   end
 end
