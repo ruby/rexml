@@ -24,6 +24,11 @@ module REXMLTests
         assert_equal("name", doctype.notation("name").name)
       end
 
+      def test_non_ascii_name
+        doctype = parse("<!NOTATION été PUBLIC 'urn:public-id'>")
+        assert_equal("été", doctype.notation("été").name)
+      end
+
       def test_no_name
         exception = assert_raise(REXML::ParseException) do
           parse(<<-INTERNAL_SUBSET)
