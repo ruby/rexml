@@ -425,6 +425,8 @@ module REXML
             else
               raise REXML::ParseException.new("Malformed node: Started with '<!' but not a comment nor ELEMENT,ENTITY,ATTLIST,NOTATION", @source)
             end
+          elsif @source.match?("<?", true)
+            return process_instruction
           elsif match = @source.match(/(%.*?;)\s*/um, true)
             return [ :externalentity, match[1] ]
           elsif @source.match?(/\]\s*>/um, true)
