@@ -81,6 +81,24 @@ Last 80 unconsumed characters:
         DETAIL
       end
 
+      def test_xml_declaration_in_internal_subset
+        exception = assert_raise(REXML::ParseException) do
+          parse(<<-XML)
+<!DOCTYPE r [
+<?xml version="1.0"?>
+]>
+<r/>
+          XML
+        end
+        assert_equal(<<-DETAIL.chomp, exception.to_s)
+Malformed XML: XML declaration is not at the start
+Line: 2
+Position: 35
+Last 80 unconsumed characters:
+ version="1.0"?>
+        DETAIL
+      end
+
       def test_xml_declaration_missing_spaces
         exception = assert_raise(REXML::ParseException) do
           parser = REXML::Parsers::BaseParser.new('<?xml?>')
@@ -227,6 +245,19 @@ Last 80 unconsumed characters:
       end
 
       assert_equal("abc", events[:processing_instruction])
+    end
+
+    def test_in_internal_subset
+      doc = parse(<<-XML)
+<!DOCTYPE r [
+<?x y?>
+<!ELEMENT r EMPTY>
+]>
+<r/>
+      XML
+      instruction = doc.doctype.children.first
+      assert_equal(["x", "y"],
+                   [instruction.target, instruction.content])
     end
 
     def test_content_question
