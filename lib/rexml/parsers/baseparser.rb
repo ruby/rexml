@@ -4,6 +4,7 @@ require_relative '../undefinednamespaceexception'
 require_relative '../security'
 require_relative '../source'
 require_relative '../text'
+require_relative '../xmltokens'
 require 'set'
 require "strscan"
 
@@ -70,8 +71,8 @@ module REXML
       # It's not used in REXML.
       UNAME_STR= "(?:#{NCNAME_STR}:)?#{NCNAME_STR}"
 
-      NAMECHAR = '[\-\w\.:]'
-      NAME = "([\\w:]#{NAMECHAR}*)"
+      NAMECHAR = XMLTokens::NAME_CHAR
+      NAME = XMLTokens::NAME
       NMTOKEN = "(?:#{NAMECHAR})+"
       NMTOKENS = "#{NMTOKEN}(\\s+#{NMTOKEN})*"
       REFERENCE = "&(?:#{NAME};|#\\d+;|#x[0-9a-fA-F]+;)"

@@ -234,6 +234,11 @@ Last 80 unconsumed characters:
       assert_equal("con?tent", document.root.children.first.content)
     end
 
+    def test_non_ascii_target
+      document = parse("<?été content?><r/>")
+      assert_equal("été", document.children.first.target)
+    end
+
     def test_linear_performance_gt
       seq = [10000, 50000, 100000, 150000, 200000]
       assert_linear_performance(seq, rehearsal: 10) do |n|
