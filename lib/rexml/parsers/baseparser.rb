@@ -59,8 +59,10 @@ module REXML
       LETTER = '[:alpha:]'
       DIGIT = '[:digit:]'
 
-      COMBININGCHAR = '' # TODO
-      EXTENDER = ''      # TODO
+      # Only the ones that aren't [:alpha:], to avoid duplicated ranges in
+      # the NCNAME_STR character class
+      COMBININGCHAR = '[\p{M}&&[^[:alpha:]]]'
+      EXTENDER = '\u00B7\u0387'
 
       NCNAME_STR= "[#{LETTER}_][-[:alnum:]._#{COMBININGCHAR}#{EXTENDER}]*"
       QNAME_STR= "(?:(#{NCNAME_STR}):)?(#{NCNAME_STR})"
