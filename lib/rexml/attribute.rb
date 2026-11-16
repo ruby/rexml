@@ -120,6 +120,15 @@ module REXML
     #  b.to_string     # -> "ns:x='y'"
     def to_string
       value = to_s
+      # A conforming parser normalizes a literal tab, newline or carriage
+      # return in an attribute value to a space, so write them as character
+      # references to keep the value intact. See XML 1.0 section 3.3.3.
+      if value.match?(/[\t\n\r]/)
+        value = value.gsub(/[\t\n\r]/,
+                           "\t" => "&#9;",
+                           "\n" => "&#10;",
+                           "\r" => "&#13;")
+      end
       if @element and @element.context and @element.context[:attribute_quote] == :quote
         value = value.gsub('"', '&quot;') if value.include?('"')
         %Q^#@expanded_name="#{value}"^
