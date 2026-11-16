@@ -120,6 +120,7 @@ module REXML
       end
 
       def receive event
+        return if event[0] == :xmldecl
         validate( event )
       end
     end

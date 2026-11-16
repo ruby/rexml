@@ -1,5 +1,6 @@
 # frozen_string_literal: false
 
+require "stringio"
 require "rexml/validation/relaxng"
 
 module REXMLTests
@@ -29,6 +30,46 @@ module REXMLTests
 
       no_error( validator, %q{<A><B><C X="x"><E/><E/></C><D/></B></A>} )
       error( validator, %q{<A><B><D/><C X="x"/></B></A>} )
+    end
+
+
+    def test_document_with_declaration
+      rng = <<-XML
+<?xml version="1.0" encoding="UTF-8"?>
+<element name="root" xmlns="http://relaxng.org/ns/structure/1.0">
+  <empty/>
+</element>
+      XML
+      validator = REXML::Validation::RelaxNG.new( rng )
+
+      [
+        '',
+        '<?xml version="1.0"?>',
+        '<?xml version="1.0" encoding="UTF-8"?>',
+        '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>',
+        '<?xml version="1.0" standalone="no"?>',
+      ].each do |declaration|
+        source = "#{declaration}<root/>"
+        no_error( validator, source )
+        no_error( validator, StringIO.new(source) )
+      end
+    end
+
+    def test_document_with_declaration_and_invalid_structure
+      rng = <<-XML
+<element name="root" xmlns="http://relaxng.org/ns/structure/1.0">
+  <element name="child"><empty/></element>
+</element>
+      XML
+      validator = REXML::Validation::RelaxNG.new( rng )
+      declaration = '<?xml version="1.0"?>'
+
+      error( validator, declaration + '<wrong><child/></wrong>' )
+      error( validator, declaration + '<root/>' )
+      error( validator, declaration + '<root><wrong/></root>' )
+      no_error( validator, declaration + '<root><child/></root>' )
+      error( validator, declaration + '<root/>' )
+      no_error( validator, '<root><child/></root>' )
     end
 
 
