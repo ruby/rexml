@@ -36,6 +36,25 @@ module REXMLTests
     def test_document_with_declaration
       rng = <<-XML
 <?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0">
+  <start>
+    <element name="root"/>
+  </start>
+</grammar>
+XML
+      validator = REXML::Validation::RelaxNG.new(rng)
+
+      source = <<-XML
+<?xml version="1.0" encoding="UTF-8"?>
+<root/>
+XML
+
+      no_error(validator, source)
+    end
+
+    def test_document_with_declaration_variants
+      rng = <<-XML
+<?xml version="1.0" encoding="UTF-8"?>
 <element name="root" xmlns="http://relaxng.org/ns/structure/1.0">
   <empty/>
 </element>
@@ -70,6 +89,88 @@ module REXMLTests
       no_error( validator, declaration + '<root><child/></root>' )
       error( validator, declaration + '<root/>' )
       no_error( validator, '<root><child/></root>' )
+    end
+
+
+    def test_document_with_outer_whitespace
+      rng = '<element name="root"><empty/></element>'
+      validator = REXML::Validation::RelaxNG.new( rng )
+      ['', '<?xml version="1.0"?>'].each do |declaration|
+        ['', " \t\r\n"].each do |before|
+          ['', " \t\r\n"].each do |after|
+            source = "#{declaration}#{before}<root/>#{after}"
+            no_error( validator, source )
+            no_error( validator, StringIO.new(source) )
+          end
+        end
+      end
+    end
+
+    def test_document_with_outer_whitespace_without_reset
+      rng = '<element name="root"><empty/></element>'
+      validator = REXML::Validation::RelaxNG.new( rng )
+      source = "<?xml version=\"1.0\"?>\n<root/>\n"
+      parser = REXML::Parsers::TreeParser.new( source )
+      parser.add_listener( validator )
+      assert_nothing_raised { parser.parse }
+
+      2.times do
+        no_error( validator, source )
+        no_error( validator, "\t<root/>\r\n" )
+      end
+
+      validator.reset
+      validator.receive( [:start_element, 'root', {}] )
+      no_error( validator, source )
+    end
+
+    def test_document_with_outer_whitespace_and_invalid_structure
+      rng = '<element name="root"><element name="child"><empty/></element></element>'
+      validator = REXML::Validation::RelaxNG.new( rng )
+      ['', '<?xml version="1.0"?>'].each do |declaration|
+        error( validator, "#{declaration}\n<wrong><child/></wrong>\n" )
+        error( validator, "#{declaration}\n<root/>\n" )
+        error( validator, "#{declaration}\n<root><wrong/></root>\n" )
+        error( validator, "#{declaration}\n<root> \t\n<child/></root>\n" )
+        no_error( validator, "#{declaration}\n<root><child/></root>\n" )
+      end
+    end
+
+    def test_document_with_outer_whitespace_and_text
+      rng = '<element name="root"><text/></element>'
+      validator = REXML::Validation::RelaxNG.new( rng )
+      source = "<?xml version=\"1.0\"?>\n<root> \t\r\n</root>\n"
+      no_error( validator, source )
+      no_error( validator, "\n<root>text</root>\n" )
+      error( validator, "\n<root/>\n" )
+    end
+
+    def test_document_with_outer_whitespace_and_value
+      rng = '<element name="root"><value> </value></element>'
+      validator = REXML::Validation::RelaxNG.new( rng )
+      ['', '<?xml version="1.0"?>'].each do |declaration|
+        no_error( validator, "#{declaration}\n<root> </root>\n" )
+        error( validator, "#{declaration}\n<root>  </root>\n" )
+        error( validator, "#{declaration}\n<root>\t</root>\n" )
+        error( validator, "#{declaration}\n<root/>\n" )
+      end
+    end
+
+    def test_only_xml_whitespace_is_ignored_outside_root
+      rng = '<element name="root"><empty/></element>'
+      validator = REXML::Validation::RelaxNG.new( rng )
+      ["text", " \ttext\n", "\u00a0", "\v", "\f"].each do |text|
+        validator.reset
+        assert_raise( REXML::Validation::ValidationException ) do
+          validator.receive( [:text, text] )
+        end
+        validator.reset
+        validator.receive( [:start_element, 'root', {}] )
+        validator.receive( [:end_element, 'root'] )
+        assert_raise( REXML::Validation::ValidationException ) do
+          validator.receive( [:text, text] )
+        end
+      end
     end
 
 
