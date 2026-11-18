@@ -232,34 +232,25 @@ module REXML
     # vigorously, and pour into a tall, chilled glass.  Serves 10,000.
     def substring( string, start, length=nil )
       ruby_string = string(string)
-      ruby_length = if length.nil?
-                      ruby_string.length.to_f
-                    else
-                      number(length)
-                    end
-      ruby_start = number(start)
+      # The returned substring contains each character whose position p
+      # satisfies: round(start) <= p < round(start) + round(length)
+      first = round(start)
+      last = if length.nil?
+               Float::INFINITY
+             else
+               first + round(length)
+             end
+      # This is also false when first or last is NaN.
+      return '' unless first < last
 
-      # Handle the special cases
-      return '' if (
-        ruby_length.nan? or
-        ruby_start.nan? or
-        ruby_start.infinite?
-      )
-
-      infinite_length = ruby_length.infinite? == 1
-      ruby_length = ruby_string.length if infinite_length
-
-      # Now, get the bounds.  The XPath bounds are 1..length; the ruby bounds
-      # are 0..length.  Therefore, we have to offset the bounds by one.
-      ruby_start = round(ruby_start) - 1
-      ruby_length = round(ruby_length)
-
-      if ruby_start < 0
-       ruby_length += ruby_start unless infinite_length
-       ruby_start = 0
+      ruby_start = first < 1 ? 0 : first - 1
+      if last > ruby_string.length
+        ruby_string[ruby_start..-1] || ''
+      elsif last - 1 > ruby_start
+        ruby_string[ruby_start...(last - 1)]
+      else
+        ''
       end
-      return '' if ruby_length <= 0
-      ruby_string[ruby_start,ruby_length]
     end
 
     def string_length( object=@context[:node] )
@@ -431,13 +422,14 @@ module REXML
 
     def round( number )
       number = number(number)
-      begin
-        neg = number.negative?
-        number = number.abs.round
-        neg ? -number : number
-      rescue FloatDomainError
-        number
-      end
+      return number if number.nan? or number.infinite?
+      # If there are two integers closest to the number, the one that is
+      # closest to positive infinity is returned. If the number is less than
+      # zero but greater than or equal to -0.5, negative zero is returned.
+      return -0.0 if number < 0 and number >= -0.5
+      rounded = number.floor
+      rounded += 1 if number - rounded >= 0.5
+      rounded
     end
 
     def call(name, args:, fallback: nil)
