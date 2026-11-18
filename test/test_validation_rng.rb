@@ -74,6 +74,32 @@ XML
       end
     end
 
+    def test_comments_and_processing_instructions
+      validator = REXML::Validation::RelaxNG.new('<element name="root"><empty/></element>')
+      ['<!-- comment -->', '<?xml-stylesheet href="a.xsl"?>'].each do |markup|
+        no_error(validator, "#{markup}\n<root/>")
+        no_error(validator, "<root/>\n#{markup}")
+        no_error(validator, "<root>#{markup}</root>")
+        error(validator, "<root>#{markup}<unexpected/></root>")
+      end
+    end
+
+    def test_document_with_doctype
+      validator = REXML::Validation::RelaxNG.new('<element name="root"><empty/></element>')
+      no_error(validator, "<?xml version=\"1.0\"?>\n<!DOCTYPE root>\n<root/>")
+      doctype = <<~XML
+        <!DOCTYPE root [
+          <!ELEMENT root EMPTY>
+          <!ATTLIST root id ID #IMPLIED>
+          <!ENTITY % empty "">
+          %empty;
+          <!NOTATION image SYSTEM "image-format">
+        ]>
+      XML
+      no_error(validator, doctype + "<root/>")
+      error(validator, doctype + "<wrong/>")
+    end
+
     def test_document_with_declaration_and_invalid_structure
       rng = <<-XML
 <element name="root" xmlns="http://relaxng.org/ns/structure/1.0">

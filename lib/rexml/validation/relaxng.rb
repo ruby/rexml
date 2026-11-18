@@ -122,7 +122,10 @@ module REXML
 
       def receive event
         case event[0]
-        when :xmldecl
+        when :xmldecl, :comment, :processing_instruction,
+             :start_doctype, :end_doctype, :elementdecl, :entitydecl,
+             :attlistdecl, :notationdecl, :externalentity
+          # These events carry no RELAX NG document content.
           return
         when :text
           # Whitespace outside the root is not element content.
