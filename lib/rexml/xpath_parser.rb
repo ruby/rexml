@@ -1154,38 +1154,28 @@ module REXML
           compare(node_string1, op, node_string2)
         end
       elsif set1.kind_of? Array or set2.kind_of? Array
-        # If one is nodeset and other is number, compare number to each item
-        # in nodeset s.t. number op number(string(item))
-        # If one is nodeset and other is string, compare string to each item
-        # in nodeset s.t. string op string(item)
-        # If one is nodeset and other is boolean, compare boolean to each item
-        # in nodeset s.t. boolean op boolean(item)
-        if set1.kind_of? Array
-          a = set1
-          b = set2
-        else
-          a = set2
-          b = set1
-        end
-
-        case b
-        when true, false
-          a.any? do |node|
-            compare(@functions.boolean(node), op, b)
-          end
-        when Numeric
-          a.any? do |node|
-            compare(@functions.number(node), op, b)
-          end
-        when /\A\d+(\.\d+)?\z/
-          b = @functions.number(b)
-          a.any? do |node|
-            compare(@functions.number(node), op, b)
+        if [set1, set2].any? {|value| value == true or value == false}
+          # If one object to be compared is a node-set and the other is
+          # a boolean, then the comparison will be true if and only if
+          # the result of performing the comparison on the boolean and
+          # on the result of converting the node-set to a boolean using
+          # the boolean function is true.
+          compare(@functions.boolean(set1), op, @functions.boolean(set2))
+        elsif set1.kind_of? Array
+          # If one object to be compared is a node-set and the other is
+          # a number (string), then the comparison will be true if and
+          # only if there is a node in the node-set such that the result
+          # of performing the comparison on the number to be compared
+          # and on the result of converting the string-value of that
+          # node to a number using the number function (on the
+          # string-value of the node and the other string) is true.
+          set1.any? do |node|
+            compare(node_set_item_value(node, set2), op, set2)
           end
         else
-          b = @functions.string(b)
-          a.any? do |node|
-            compare(@functions.string(node), op, b)
+          # Keep the operand order: "1 < @n" is not "@n < 1".
+          set2.any? do |node|
+            compare(set1, op, node_set_item_value(node, set1))
           end
         end
       else
@@ -1197,6 +1187,14 @@ module REXML
         #   Else
         #     Convert both to numbers and compare
         compare(set1, op, set2)
+      end
+    end
+
+    def node_set_item_value(node, other)
+      if other.kind_of? Numeric
+        @functions.number(node)
+      else
+        @functions.string(node)
       end
     end
 
