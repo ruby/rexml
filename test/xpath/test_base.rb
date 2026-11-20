@@ -1090,6 +1090,23 @@ module REXMLTests
       assert_equal( 0, XPath.match( d, xp8 ).length )
     end
 
+    def test_mod
+      d = Document.new("<a/>")
+      assert_equal([1.0, 1.0, -1.0, -1.0, -0.5],
+                   [
+                     XPath.first(d, "5 mod 2"),
+                     XPath.first(d, "5 mod -2"),
+                     XPath.first(d, "-5 mod 2"),
+                     XPath.first(d, "-5 mod -2"),
+                     XPath.first(d, "-0.5 mod 3"),
+                   ])
+    end
+
+    def test_mod_zero
+      d = Document.new("<a/>")
+      assert_predicate(XPath.first(d, "5 mod 0"), :nan?)
+    end
+
     def test_tobis_preceding
       doc_string = '<a>
   <b/>
