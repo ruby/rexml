@@ -310,6 +310,15 @@ x'>
                      doctype.children.collect(&:class))
       end
 
+      def test_instruction_element
+        doctype = parse(<<-INTERNAL_SUBSET)
+<?target content?>
+<!ELEMENT element-name EMPTY>
+        INTERNAL_SUBSET
+        assert_equal([REXML::Instruction, REXML::ElementDecl],
+                     doctype.children.collect(&:class))
+      end
+
       private
       def parse(internal_subset)
         super(<<-DOCTYPE)
