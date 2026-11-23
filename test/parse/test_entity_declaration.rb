@@ -40,6 +40,14 @@ Last 80 unconsumed characters:
  invalid&name "valid-entity-value">]>
           DETAIL
         end
+
+        def test_non_ascii
+          document = REXML::Document.new(<<-XML)
+<!DOCTYPE r [<!ENTITY été "summer">]>
+<r>&été;</r>
+          XML
+          assert_equal("summer", document.root.text)
+        end
       end
 
       # https://www.w3.org/TR/2006/REC-xml11-20060816/#NT-EntityDef

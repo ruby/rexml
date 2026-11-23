@@ -24,6 +24,13 @@ module REXMLTests
         assert_equal("r", doctype.name)
       end
 
+      def test_non_ascii
+        doctype = parse(<<-DOCTYPE)
+<!DOCTYPE été>
+        DOCTYPE
+        assert_equal("été", doctype.name)
+      end
+
       def test_garbage_plus_before_name_at_line_start
         exception = assert_raise(REXML::ParseException) do
           parse(<<-DOCTYPE)
