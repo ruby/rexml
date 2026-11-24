@@ -209,6 +209,32 @@ module REXMLTests
       assert_equal "b", XPath::first( @@doc, "//b[@x]" ).name
     end
 
+    sub_test_case("word operators after predicates") do
+      data("and" => ["//v[1] and true()", [true]],
+           "or" => ["//missing[1] or true()", [true]],
+           "div" => ["/r/v[1] div 3", [2.0]],
+           "mod" => ["/r/v[1] mod 4", [2.0]],
+           "and after consecutive predicates" =>
+             ["//v[position() <= 2] [1] and true()", [true]],
+           "or after consecutive predicates" =>
+             ["//missing[1] [1] or true()", [true]],
+           "div after consecutive predicates" =>
+             ["/r/v[position() <= 2] [1] div 3", [2.0]],
+           "mod after consecutive predicates" =>
+             ["/r/v[position() <= 2] [1] mod 4", [2.0]])
+      def test_word_operator(data)
+        xpath, expected = data
+        document = Document.new("<r><v>6</v><v>2</v></r>")
+        assert_equal(expected, XPath.match(document, xpath))
+      end
+
+      def test_word_operator_in_nested_predicate
+        document = Document.new("<r><v>6</v><v>2</v></r>")
+        assert_equal([],
+                     XPath.match(document, "/r/v[../v[1] div 3 = 3]"))
+      end
+    end
+
     def test_node_type
       doc = Document.new "<a><?foo bar?><!--comment-->text</a>"
       #res = XPath::first(doc.root, "text()")
