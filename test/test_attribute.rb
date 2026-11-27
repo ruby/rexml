@@ -29,5 +29,11 @@ module REXMLTests
       document.root.add_attribute("attr", "abc aaa")
       assert_equal("<root attr='abc &a;'/>", document.root.to_s)
     end
+
+    def test_to_string_whitespace
+      document = REXML::Document.new("<root/>")
+      document.root.add_attribute("attr", "a\tb\nc\rd")
+      assert_equal("<root attr='a&#9;b&#10;c&#13;d'/>", document.root.to_s)
+    end
   end
 end
