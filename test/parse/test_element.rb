@@ -164,6 +164,20 @@ Last 80 unconsumed characters:
       end
     end
 
+    def test_combining_character_in_name
+      # U+0301 COMBINING ACUTE ACCENT
+      document = parse("<cafe\u0301 e\u0301t\u0301e\u0301=\"1\"/>")
+      assert_equal(["cafe\u0301", "1"],
+                   [document.root.name,
+                    document.root.attributes["e\u0301t\u0301e\u0301"]])
+    end
+
+    def test_extender_in_name
+      # U+00B7 MIDDLE DOT
+      document = parse("<col\u00B7leccio/>")
+      assert_equal("col\u00B7leccio", document.root.name)
+    end
+
     def test_linear_performance_attribute_value_gt
       seq = [10000, 50000, 100000, 150000, 200000]
       assert_linear_performance(seq, rehearsal: 10) do |n|
