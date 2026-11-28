@@ -196,5 +196,17 @@ module REXMLTests
       end
       assert_equal("Illegal character reference: <&#0;>", exception.to_s)
     end
+
+    def test_unnormalize_without_entities
+      assert_equal("plain text", Text.unnormalize("plain text"))
+      assert_equal("line1\nline2", Text.unnormalize("line1\r\nline2"))
+    end
+
+    def test_unnormalize_invalid_encoding
+      invalid_utf8 = "abc\xFFdef".force_encoding("UTF-8")
+      assert_raise(ArgumentError) do
+        Text.unnormalize(invalid_utf8)
+      end
+    end
   end
 end

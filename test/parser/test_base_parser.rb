@@ -58,5 +58,19 @@ module REXMLTests
                     {"xml:lang" => "ja", "lang" => "ja"}],
                    p)
     end
+
+    def test_unnormalize_without_entities
+      parser = REXML::Parsers::BaseParser.new("")
+      assert_equal("plain text", parser.unnormalize("plain text"))
+      assert_equal("line1\nline2", parser.unnormalize("line1\r\nline2"))
+    end
+
+    def test_unnormalize_invalid_encoding
+      parser = REXML::Parsers::BaseParser.new("")
+      invalid_utf8 = "abc\xFFdef".force_encoding("UTF-8")
+      assert_raise(ArgumentError) do
+        parser.unnormalize(invalid_utf8)
+      end
+    end
   end
 end

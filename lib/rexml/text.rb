@@ -374,9 +374,17 @@ module REXML
 
     # Unescapes all possible entities
     def Text::unnormalize( string, doctype=nil, filter=nil, illegal=nil, entity_expansion_text_limit: nil, expanding: nil )
+      is_valid = string.valid_encoding?
+      has_cr = string.include?("\r")
+      has_amp = string.include?("&")
+      return string.dup if is_valid && !has_cr && !has_amp
+
+      rv = has_cr ? string.gsub( /\r\n?/, "\n" ) : string
+      return rv.dup if is_valid && !has_amp
+
       entity_expansion_text_limit ||= Security.entity_expansion_text_limit
       sum = 0
-      string.gsub( /\r\n?/, "\n" ).gsub( REFERENCE ) {
+      rv.gsub( REFERENCE ) {
         s = Text.expand($&, doctype, filter, expanding: expanding)
         if sum + s.bytesize > entity_expansion_text_limit
           raise "entity expansion has grown too large"
