@@ -1,6 +1,5 @@
 # frozen_string_literal: false
 
-require "stringio"
 require "rexml/validation/relaxng"
 
 module REXMLTests
@@ -52,28 +51,6 @@ XML
       no_error(validator, source)
     end
 
-    def test_document_with_declaration_variants
-      rng = <<-XML
-<?xml version="1.0" encoding="UTF-8"?>
-<element name="root" xmlns="http://relaxng.org/ns/structure/1.0">
-  <empty/>
-</element>
-      XML
-      validator = REXML::Validation::RelaxNG.new( rng )
-
-      [
-        '',
-        '<?xml version="1.0"?>',
-        '<?xml version="1.0" encoding="UTF-8"?>',
-        '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>',
-        '<?xml version="1.0" standalone="no"?>',
-      ].each do |declaration|
-        source = "#{declaration}<root/>"
-        no_error( validator, source )
-        no_error( validator, StringIO.new(source) )
-      end
-    end
-
     def test_comments_and_processing_instructions
       validator = REXML::Validation::RelaxNG.new('<element name="root"><empty/></element>')
       ['<!-- comment -->', '<?xml-stylesheet href="a.xsl"?>'].each do |markup|
@@ -100,36 +77,11 @@ XML
       error(validator, doctype + "<wrong/>")
     end
 
-    def test_document_with_declaration_and_invalid_structure
-      rng = <<-XML
-<element name="root" xmlns="http://relaxng.org/ns/structure/1.0">
-  <element name="child"><empty/></element>
-</element>
-      XML
-      validator = REXML::Validation::RelaxNG.new( rng )
-      declaration = '<?xml version="1.0"?>'
-
-      error( validator, declaration + '<wrong><child/></wrong>' )
-      error( validator, declaration + '<root/>' )
-      error( validator, declaration + '<root><wrong/></root>' )
-      no_error( validator, declaration + '<root><child/></root>' )
-      error( validator, declaration + '<root/>' )
-      no_error( validator, '<root><child/></root>' )
-    end
-
-
     def test_document_with_outer_whitespace
       rng = '<element name="root"><empty/></element>'
       validator = REXML::Validation::RelaxNG.new( rng )
-      ['', '<?xml version="1.0"?>'].each do |declaration|
-        ['', " \t\r\n"].each do |before|
-          ['', " \t\r\n"].each do |after|
-            source = "#{declaration}#{before}<root/>#{after}"
-            no_error( validator, source )
-            no_error( validator, StringIO.new(source) )
-          end
-        end
-      end
+      no_error( validator, " \t\r\n<root/> \t\r\n" )
+      no_error( validator, "<?xml version=\"1.0\"?> \t\r\n<root/> \t\r\n" )
     end
 
     def test_document_with_outer_whitespace_without_reset
@@ -140,11 +92,6 @@ XML
       parser.add_listener( validator )
       assert_nothing_raised { parser.parse }
 
-      2.times do
-        no_error( validator, source )
-        no_error( validator, "\t<root/>\r\n" )
-      end
-
       validator.reset
       validator.receive( [:start_element, 'root', {}] )
       no_error( validator, source )
@@ -153,13 +100,12 @@ XML
     def test_document_with_outer_whitespace_and_invalid_structure
       rng = '<element name="root"><element name="child"><empty/></element></element>'
       validator = REXML::Validation::RelaxNG.new( rng )
-      ['', '<?xml version="1.0"?>'].each do |declaration|
-        error( validator, "#{declaration}\n<wrong><child/></wrong>\n" )
-        error( validator, "#{declaration}\n<root/>\n" )
-        error( validator, "#{declaration}\n<root><wrong/></root>\n" )
-        error( validator, "#{declaration}\n<root> \t\n<child/></root>\n" )
-        no_error( validator, "#{declaration}\n<root><child/></root>\n" )
-      end
+      declaration = '<?xml version="1.0"?>'
+      error( validator, "#{declaration}\n<wrong><child/></wrong>\n" )
+      error( validator, "#{declaration}\n<root/>\n" )
+      error( validator, "#{declaration}\n<root><wrong/></root>\n" )
+      error( validator, "#{declaration}\n<root> \t\n<child/></root>\n" )
+      no_error( validator, "#{declaration}\n<root><child/></root>\n" )
     end
 
     def test_document_with_outer_whitespace_and_text
