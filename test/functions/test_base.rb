@@ -177,6 +177,28 @@ module REXMLTests
       assert_equal(1,doc.elements.to_a("//test[substring(@string,2)='2345']").size)
     end
 
+    def test_substring_start_before_first_character
+      doc = Document.new("<a/>")
+      assert_equal([
+                     "12345",
+                     "12345",
+                     "12345",
+                     "12345",
+                     "1",
+                     "",
+                     "",
+                   ],
+                   [
+                     XPath.first(doc, "substring('12345', 0)"),
+                     XPath.first(doc, "substring('12345', -1)"),
+                     XPath.first(doc, "substring('12345', -0.5)"),
+                     XPath.first(doc, "substring('12345', -1 div 0)"),
+                     XPath.first(doc, "substring('12345', -0.5, 1.5)"),
+                     XPath.first(doc, "substring('12345', -1, 1)"),
+                     XPath.first(doc, "substring('12345', 6)"),
+                   ])
+    end
+
     # Submitted by Kouhei
     def test_floor_ceiling_round
       source = "<a><b id='1'/><b id='2'/><b id='3'/></a>"
@@ -205,6 +227,23 @@ module REXMLTests
           assert_equal(value[i], REXML::XPath.match(doc, xpath))
         end
       end
+    end
+
+    def test_round_half_toward_positive_infinity
+      doc = REXML::Document.new("<a/>")
+      assert_equal([
+                     "3", "-2", "0", "-Infinity", "-Infinity",
+                     "1", "0",
+                   ],
+                   [
+                     REXML::XPath.first(doc, "string(round(2.5))"),
+                     REXML::XPath.first(doc, "string(round(-2.5))"),
+                     REXML::XPath.first(doc, "string(round(-0.5))"),
+                     REXML::XPath.first(doc, "string(1 div round(-0.5))"),
+                     REXML::XPath.first(doc, "string(1 div round(-0.4))"),
+                     REXML::XPath.first(doc, "string(round(0.5))"),
+                     REXML::XPath.first(doc, "string(round(0.49999999999999994))"),
+                   ])
     end
 
     def test_floor_ceiling_not_finite
