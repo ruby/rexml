@@ -664,7 +664,7 @@
 
 
           <div class="method-source-code" id="expected-source">
-            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/validation/relaxng.rb, line 276</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/validation/relaxng.rb, line 287</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">expected</span>
   <span class="ruby-keyword">return</span> [ <span class="ruby-ivar">@prior</span>.<span class="ruby-identifier">expected</span>, <span class="ruby-ivar">@events</span>[<span class="ruby-value">0</span>] ].<span class="ruby-identifier">flatten</span> <span class="ruby-keyword">if</span> <span class="ruby-ivar">@current</span> <span class="ruby-operator">==</span> <span class="ruby-value">0</span>
   [<span class="ruby-ivar">@events</span>[<span class="ruby-ivar">@current</span>]]
@@ -714,7 +714,7 @@
 
 
           <div class="method-source-code" id="matches-3F-source">
-            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/validation/relaxng.rb, line 271</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/validation/relaxng.rb, line 282</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">matches?</span>(<span class="ruby-identifier">event</span>)
   <span class="ruby-ivar">@events</span>[<span class="ruby-ivar">@current</span>].<span class="ruby-identifier">matches?</span>(<span class="ruby-identifier">event</span>) <span class="ruby-operator">||</span>
   (<span class="ruby-ivar">@current</span> <span class="ruby-operator">==</span> <span class="ruby-value">0</span> <span class="ruby-keyword">and</span> <span class="ruby-ivar">@previous</span>[-<span class="ruby-value">1</span>].<span class="ruby-identifier">matches?</span>(<span class="ruby-identifier">event</span>))
@@ -764,7 +764,7 @@
 
 
           <div class="method-source-code" id="next-source">
-            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/validation/relaxng.rb, line 260</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/validation/relaxng.rb, line 271</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">next</span>( <span class="ruby-identifier">event</span> )
   <span class="ruby-keyword">if</span> <span class="ruby-ivar">@current</span> <span class="ruby-operator">==</span> <span class="ruby-value">0</span>
     <span class="ruby-identifier">rv</span> = <span class="ruby-keyword">super</span>

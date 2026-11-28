@@ -691,7 +691,7 @@
 
 
           <div class="method-source-code" id="new-source">
-            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/validation/relaxng.rb, line 128</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/validation/relaxng.rb, line 139</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span>( <span class="ruby-identifier">context</span> )
   <span class="ruby-ivar">@previous</span> = []
   <span class="ruby-ivar">@events</span> = []
@@ -759,7 +759,7 @@
 
 
           <div class="method-source-code" id="3C-3C-source">
-            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/validation/relaxng.rb, line 192</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/validation/relaxng.rb, line 203</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">&lt;&lt;</span>( <span class="ruby-identifier">event</span> )
   <span class="ruby-identifier">add_event_to_arry</span>( <span class="ruby-ivar">@events</span>, <span class="ruby-identifier">event</span> )
 <span class="ruby-keyword">end</span></pre>
@@ -808,7 +808,7 @@
 
 
           <div class="method-source-code" id="expected-source">
-            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/validation/relaxng.rb, line 188</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/validation/relaxng.rb, line 199</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">expected</span>
   [<span class="ruby-ivar">@events</span>[<span class="ruby-ivar">@current</span>]]
 <span class="ruby-keyword">end</span></pre>
@@ -857,7 +857,7 @@
 
 
           <div class="method-source-code" id="inspect-source">
-            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/validation/relaxng.rb, line 181</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/validation/relaxng.rb, line 192</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">inspect</span>
   <span class="ruby-string">&quot;</span><span class="ruby-string">&lt; </span><span class="ruby-string">#{</span><span class="ruby-identifier">to_s</span><span class="ruby-string">}</span><span class="ruby-string"> </span><span class="ruby-string">#{</span><span class="ruby-ivar">@events</span>.<span class="ruby-identifier">collect</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">e</span><span class="ruby-operator">|</span>
     <span class="ruby-identifier">pre</span> = <span class="ruby-identifier">e</span> <span class="ruby-operator">==</span> <span class="ruby-ivar">@events</span>[<span class="ruby-ivar">@current</span>] <span class="ruby-operator">?</span> <span class="ruby-string">&#39;</span><span class="ruby-string">#</span><span class="ruby-string">&#39;</span> <span class="ruby-operator">:</span> <span class="ruby-string">&#39;</span><span class="ruby-string">&#39;</span>
@@ -909,7 +909,7 @@
 
 
           <div class="method-source-code" id="next-source">
-            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/validation/relaxng.rb, line 147</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/validation/relaxng.rb, line 158</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">next</span>( <span class="ruby-identifier">event</span> )
   <span class="ruby-comment">#print &quot;In next with #{event.inspect}.  &quot;</span>
   <span class="ruby-comment">#p @previous</span>
@@ -980,7 +980,7 @@
 
 
           <div class="method-source-code" id="previous-3D-source">
-            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/validation/relaxng.rb, line 143</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/validation/relaxng.rb, line 154</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">previous=</span>( <span class="ruby-identifier">previous</span> )
   <span class="ruby-ivar">@previous</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">previous</span>
 <span class="ruby-keyword">end</span></pre>
@@ -1029,7 +1029,7 @@
 
 
           <div class="method-source-code" id="reset-source">
-            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/validation/relaxng.rb, line 137</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/validation/relaxng.rb, line 148</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">reset</span>
   <span class="ruby-keyword">return</span> <span class="ruby-keyword">if</span> <span class="ruby-ivar">@current</span> <span class="ruby-operator">==</span> <span class="ruby-value">0</span>
   <span class="ruby-ivar">@current</span> = <span class="ruby-value">0</span>
@@ -1080,7 +1080,7 @@
 
 
           <div class="method-source-code" id="to_s-source">
-            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/validation/relaxng.rb, line 173</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/validation/relaxng.rb, line 184</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">to_s</span>
   <span class="ruby-comment"># Abbreviated:</span>
   <span class="ruby-keyword">self</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">name</span> <span class="ruby-operator">=~</span> <span class="ruby-regexp">/(?:::)(\w)\w+$/</span>
@@ -1142,7 +1142,7 @@
 
 
           <div class="method-source-code" id="add_event_to_arry-source">
-            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/validation/relaxng.rb, line 206</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/validation/relaxng.rb, line 217</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">add_event_to_arry</span>( <span class="ruby-identifier">arry</span>, <span class="ruby-identifier">evt</span> )
   <span class="ruby-identifier">evt</span> = <span class="ruby-identifier">generate_event</span>( <span class="ruby-identifier">evt</span> )
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">evt</span>.<span class="ruby-identifier">kind_of?</span> <span class="ruby-constant">String</span>
@@ -1197,7 +1197,7 @@
 
 
           <div class="method-source-code" id="expand_ref_in-source">
-            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/validation/relaxng.rb, line 198</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/validation/relaxng.rb, line 209</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">expand_ref_in</span>( <span class="ruby-identifier">arry</span>, <span class="ruby-identifier">ind</span> )
   <span class="ruby-identifier">new_events</span> = []
   <span class="ruby-ivar">@references</span>[ <span class="ruby-identifier">arry</span>[<span class="ruby-identifier">ind</span>].<span class="ruby-identifier">to_s</span> ].<span class="ruby-identifier">each</span>{ <span class="ruby-operator">|</span><span class="ruby-identifier">evt</span><span class="ruby-operator">|</span>
@@ -1250,7 +1250,7 @@
 
 
           <div class="method-source-code" id="generate_event-source">
-            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/validation/relaxng.rb, line 216</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/validation/relaxng.rb, line 227</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">generate_event</span>( <span class="ruby-identifier">event</span> )
   <span class="ruby-keyword">return</span> <span class="ruby-identifier">event</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">event</span>.<span class="ruby-identifier">kind_of?</span> <span class="ruby-constant">State</span> <span class="ruby-keyword">or</span> <span class="ruby-identifier">event</span>.<span class="ruby-identifier">class</span> <span class="ruby-operator">==</span> <span class="ruby-constant">Ref</span>
   <span class="ruby-identifier">evt</span> = <span class="ruby-keyword">nil</span>

@@ -843,6 +843,7 @@
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span> <span class="ruby-identifier">source</span>
   <span class="ruby-identifier">parser</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Parsers</span><span class="ruby-operator">::</span><span class="ruby-constant">BaseParser</span>.<span class="ruby-identifier">new</span>( <span class="ruby-identifier">source</span> )
 
+  <span class="ruby-ivar">@attr_stack</span> = []
   <span class="ruby-ivar">@count</span> = <span class="ruby-value">0</span>
   <span class="ruby-ivar">@references</span> = {}
   <span class="ruby-ivar">@root</span> = <span class="ruby-ivar">@current</span> = <span class="ruby-constant">Sequence</span>.<span class="ruby-identifier">new</span>(<span class="ruby-keyword">self</span>)
@@ -974,8 +975,18 @@
 
 
           <div class="method-source-code" id="receive-source">
-            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/validation/relaxng.rb, line 122</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/rexml/validation/relaxng.rb, line 123</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">receive</span> <span class="ruby-identifier">event</span>
+  <span class="ruby-keyword">case</span> <span class="ruby-identifier">event</span>[<span class="ruby-value">0</span>]
+  <span class="ruby-keyword">when</span> <span class="ruby-value">:</span><span class="ruby-value">xmldecl</span>, <span class="ruby-value">:</span><span class="ruby-value">comment</span>, <span class="ruby-value">:</span><span class="ruby-value">processing_instruction</span>,
+       <span class="ruby-value">:</span><span class="ruby-value">start_doctype</span>, <span class="ruby-value">:</span><span class="ruby-value">end_doctype</span>, <span class="ruby-value">:</span><span class="ruby-value">elementdecl</span>, <span class="ruby-value">:</span><span class="ruby-value">entitydecl</span>,
+       <span class="ruby-value">:</span><span class="ruby-value">attlistdecl</span>, <span class="ruby-value">:</span><span class="ruby-value">notationdecl</span>, <span class="ruby-value">:</span><span class="ruby-value">externalentity</span>
+    <span class="ruby-comment"># These events carry no RELAX NG document content.</span>
+    <span class="ruby-keyword">return</span>
+  <span class="ruby-keyword">when</span> <span class="ruby-value">:</span><span class="ruby-value">text</span>
+    <span class="ruby-comment"># Whitespace outside the root is not element content.</span>
+    <span class="ruby-keyword">return</span> <span class="ruby-keyword">if</span> <span class="ruby-ivar">@attr_stack</span>.<span class="ruby-identifier">empty?</span> <span class="ruby-keyword">and</span> <span class="ruby-regexp">/\A[ \t\r\n]*\z/</span>.<span class="ruby-identifier">match?</span>(<span class="ruby-identifier">event</span>[<span class="ruby-value">1</span>])
+  <span class="ruby-keyword">end</span>
   <span class="ruby-identifier">validate</span>( <span class="ruby-identifier">event</span> )
 <span class="ruby-keyword">end</span></pre>
           </div>
