@@ -46,6 +46,7 @@ module REXML
       def initialize source
         parser = REXML::Parsers::BaseParser.new( source )
 
+        @attr_stack = []
         @count = 0
         @references = {}
         @root = @current = Sequence.new(self)
@@ -120,6 +121,16 @@ module REXML
       end
 
       def receive event
+        case event[0]
+        when :xmldecl, :comment, :processing_instruction,
+             :start_doctype, :end_doctype, :elementdecl, :entitydecl,
+             :attlistdecl, :notationdecl, :externalentity
+          # These events carry no RELAX NG document content.
+          return
+        when :text
+          # Whitespace outside the root is not element content.
+          return if @attr_stack.empty? and /\A[ \t\r\n]*\z/.match?(event[1])
+        end
         validate( event )
       end
     end
