@@ -411,7 +411,8 @@ module REXML
         while path[0] == ?[
           path, expr = get_group(path)
           predicates << expr[1..-2] if expr
-          path = path.lstrip
+          stripped_path = path.lstrip
+          path = stripped_path if stripped_path.start_with?("[")
         end
         predicates.each{ |pred|
           preds = []
