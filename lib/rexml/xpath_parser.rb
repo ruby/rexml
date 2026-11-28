@@ -310,7 +310,8 @@ module REXML
           when :div
             return left / right
           when :mod
-            return left % right
+            return Float::NAN if right.zero?
+            return left.remainder(right)
           when :mult
             return left * right
           when :plus
