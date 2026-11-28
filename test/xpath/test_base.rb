@@ -1092,14 +1092,11 @@ module REXMLTests
 
     def test_mod
       d = Document.new("<a/>")
-      assert_equal([1.0, 1.0, -1.0, -1.0, -0.5],
-                   [
-                     XPath.first(d, "5 mod 2"),
-                     XPath.first(d, "5 mod -2"),
-                     XPath.first(d, "-5 mod 2"),
-                     XPath.first(d, "-5 mod -2"),
-                     XPath.first(d, "-0.5 mod 3"),
-                   ])
+      assert_equal(1.0, XPath.first(d, "5 mod 2"))
+      assert_equal(1.0, XPath.first(d, "5 mod -2"))
+      assert_equal(-1.0, XPath.first(d, "-5 mod 2"))
+      assert_equal(-1.0, XPath.first(d, "-5 mod -2"))
+      assert_equal(-0.5, XPath.first(d, "-0.5 mod 3"))
     end
 
     def test_mod_zero
